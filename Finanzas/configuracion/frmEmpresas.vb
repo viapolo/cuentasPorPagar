@@ -8,8 +8,6 @@
         Me.CXP_c_MonedaTableAdapter.Fill(Me.DsProduction2.CXP_c_Moneda)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction2.CXP_c_RegimenFiscal' Puede moverla o quitarla según sea necesario.
         Me.CXP_c_RegimenFiscalTableAdapter.Fill(Me.DsProduction2.CXP_c_RegimenFiscal)
-        'TODO: esta línea de código carga datos en la tabla 'DsProduction1.CXP_c_Estado' Puede moverla o quitarla según sea necesario.
-        Me.CXP_c_EstadoTableAdapter.Fill(Me.DsProduction1.CXP_c_Estado)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Empresas' Puede moverla o quitarla según sea necesario.
         Me.CXP_EmpresasTableAdapter.Fill(Me.DsProduction.CXP_Empresas)
     End Sub

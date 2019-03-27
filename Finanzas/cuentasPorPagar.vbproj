@@ -148,6 +148,12 @@
     <Compile Include="catalogos\frmContTipoDocumentos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="catalogos\frmTipoGasto.Designer.vb">
+      <DependentUpon>frmTipoGasto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmTipoGasto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ClaseHash.vb" />
     <Compile Include="configuracion\frmEmpresas.Designer.vb">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmContTipoDocumentos.resx">
       <DependentUpon>frmContTipoDocumentos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmTipoGasto.resx">
+      <DependentUpon>frmTipoGasto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmEmpresas.resx">
       <DependentUpon>frmEmpresas.vb</DependentUpon>

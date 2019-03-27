@@ -51,6 +51,7 @@ Partial Class mdicuentasPorPagar
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.TipoDeGastoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -160,7 +161,7 @@ Partial Class mdicuentasPorPagar
         '
         'ContabilidadToolStripMenuItem
         '
-        Me.ContabilidadToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CuentasBancariasToolStripMenuItem, Me.CuentasContablesToolStripMenuItem, Me.ProveedoresToolStripMenuItem, Me.TipoDeDocumentoToolStripMenuItem})
+        Me.ContabilidadToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CuentasBancariasToolStripMenuItem, Me.CuentasContablesToolStripMenuItem, Me.ProveedoresToolStripMenuItem, Me.TipoDeDocumentoToolStripMenuItem, Me.TipoDeGastoToolStripMenuItem})
         Me.ContabilidadToolStripMenuItem.Enabled = False
         Me.ContabilidadToolStripMenuItem.Name = "ContabilidadToolStripMenuItem"
         Me.ContabilidadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
@@ -244,6 +245,13 @@ Partial Class mdicuentasPorPagar
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(42, 17)
         Me.ToolStripStatusLabel.Text = "Estado"
         '
+        'TipoDeGastoToolStripMenuItem
+        '
+        Me.TipoDeGastoToolStripMenuItem.Enabled = False
+        Me.TipoDeGastoToolStripMenuItem.Name = "TipoDeGastoToolStripMenuItem"
+        Me.TipoDeGastoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TipoDeGastoToolStripMenuItem.Text = "Tipo de Gasto"
+        '
         'mdicuentasPorPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -291,4 +299,5 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents PaisesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FacturasElectrónicasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NombrePerfilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TipoDeGastoToolStripMenuItem As ToolStripMenuItem
 End Class
