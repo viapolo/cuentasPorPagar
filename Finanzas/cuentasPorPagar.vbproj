@@ -88,6 +88,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="catalogos\frmCodigoAgrupador.Designer.vb">
+      <DependentUpon>frmCodigoAgrupador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmCodigoAgrupador.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalogos\frmConceptos.Designer.vb">
+      <DependentUpon>frmConceptos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmConceptos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="catalogos\frmContCuentasBancarias.Designer.vb">
       <DependentUpon>frmContCuentasBancarias.vb</DependentUpon>
     </Compile>
@@ -104,6 +116,12 @@
       <DependentUpon>frmContProveedoresClientes.vb</DependentUpon>
     </Compile>
     <Compile Include="catalogos\frmContProveedoresClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalogos\frmNacionalidades.Designer.vb">
+      <DependentUpon>frmNacionalidades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmNacionalidades.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="catalogos\frmSatBancos.Designer.vb">
@@ -124,16 +142,23 @@
     <Compile Include="catalogos\frmSATMonedas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="catalogos\frmSATTipoImpuestos.Designer.vb">
-      <DependentUpon>frmSATTipoImpuestos.vb</DependentUpon>
+    <Compile Include="catalogos\frmContTipoDocumentos.Designer.vb">
+      <DependentUpon>frmContTipoDocumentos.vb</DependentUpon>
     </Compile>
-    <Compile Include="catalogos\frmSATTipoImpuestos.vb">
+    <Compile Include="catalogos\frmContTipoDocumentos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ClaseHash.vb" />
     <Compile Include="configuracion\frmEmpresas.Designer.vb">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
     </Compile>
     <Compile Include="configuracion\frmEmpresas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="configuracion\frmNombrePerfiles.Designer.vb">
+      <DependentUpon>frmNombrePerfiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion\frmNombrePerfiles.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="configuracion\frmPerfiles.Designer.vb">
@@ -159,6 +184,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsProduction.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsProduction.vb">
+      <DependentUpon>dsProduction.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsSeguridad.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSeguridad.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistroDeDiario.Designer.vb">
       <DependentUpon>frmRegistroDeDiario.vb</DependentUpon>
     </Compile>
@@ -169,6 +202,12 @@
       <DependentUpon>frmSugerenciaDePago.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSugerenciaDePago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lfrInicio.Designer.vb">
+      <DependentUpon>lfrInicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="lfrInicio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mdicuentasPorPagar.Designer.vb">
@@ -192,13 +231,44 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="utilerias.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="catalogos\frmCodigoAgrupador.resx">
+      <DependentUpon>frmCodigoAgrupador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmConceptos.resx">
+      <DependentUpon>frmConceptos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmContCuentasBancarias.resx">
+      <DependentUpon>frmContCuentasBancarias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmContCuentasContables.resx">
+      <DependentUpon>frmContCuentasContables.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmContProveedoresClientes.resx">
       <DependentUpon>frmContProveedoresClientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmNacionalidades.resx">
+      <DependentUpon>frmNacionalidades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmSatBancos.resx">
+      <DependentUpon>frmSatBancos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmSATImpuestos.resx">
+      <DependentUpon>frmSATImpuestos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmSATMonedas.resx">
+      <DependentUpon>frmSATMonedas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmContTipoDocumentos.resx">
+      <DependentUpon>frmContTipoDocumentos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmEmpresas.resx">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="configuracion\frmNombrePerfiles.resx">
+      <DependentUpon>frmNombrePerfiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmPerfiles.resx">
       <DependentUpon>frmPerfiles.vb</DependentUpon>
@@ -208,6 +278,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSugerenciaDePago.resx">
+      <DependentUpon>frmSugerenciaDePago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lfrInicio.resx">
+      <DependentUpon>lfrInicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mdicuentasPorPagar.resx">
       <DependentUpon>mdicuentasPorPagar.vb</DependentUpon>
@@ -231,6 +307,16 @@
     <None Include="dsProduction.xss">
       <DependentUpon>dsProduction.xsd</DependentUpon>
     </None>
+    <None Include="dsSeguridad.xsc">
+      <DependentUpon>dsSeguridad.xsd</DependentUpon>
+    </None>
+    <None Include="dsSeguridad.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSeguridad.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsSeguridad.xss">
+      <DependentUpon>dsSeguridad.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -253,6 +339,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGO FINAGIL.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGOpeque2.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
