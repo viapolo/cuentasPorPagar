@@ -17,9 +17,14 @@ Public Class lfrInicio
                     Me.Hide()
                     Dim f As New mdicuentasPorPagar
                     f.varGlUser = rowUsuarios.Item("usuario")
+                    varGlobal_NombreUsuario = rowUsuarios.Item("usuario")
                     f.varGlIdUser = rowUsuarios.Item("idUsuario")
+                    varGlobal_IdUsuario = rowUsuarios.Item("idUsuario")
                     f.varGlPerfil = rowUsuarios.Item("perfil")
                     f.varGlEmpresa = cmbEmpresa.SelectedValue
+                    varGlobal_IdEmpresa = cmbEmpresa.SelectedValue
+                    f.varGlEmpresaD = cmbEmpresa.Text
+                    varGlobal_Empresa = cmbEmpresa.Text
                     f.ShowDialog()
                 Else
                     MsgBox("La contraseña son incorrecta...", MsgBoxStyle.Critical)

@@ -185,6 +185,18 @@
     <Compile Include="configuracion\frmUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="diarios\frmDiariosFe.Designer.vb">
+      <DependentUpon>frmDiariosFe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="diarios\frmDiariosFe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="diarios\frmEspecificaTipoDocumento.Designer.vb">
+      <DependentUpon>frmEspecificaTipoDocumento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="diarios\frmEspecificaTipoDocumento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dsProduction.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,6 +299,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="diarios\frmDiariosFe.resx">
+      <DependentUpon>frmDiariosFe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="diarios\frmEspecificaTipoDocumento.resx">
+      <DependentUpon>frmEspecificaTipoDocumento.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSugerenciaDePago.resx">
       <DependentUpon>frmSugerenciaDePago.vb</DependentUpon>

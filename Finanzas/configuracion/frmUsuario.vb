@@ -97,11 +97,10 @@
     End Sub
 
     Private Sub UsuarioTextBox_TextChanged(sender As Object, e As EventArgs) Handles UsuarioTextBox.TextChanged
-
-
+        actualiza()
     End Sub
 
-    Public Sub actualiza()
+    Private Sub actualiza()
         If UsuarioTextBox.Text <> "" Then
             dgvEmpresas.Rows.Clear()
             arrayEmpresas = taUsuarios.ObtEmpr_ScalarQuery(UsuarioTextBox.Text).ToString.Split(",") 'CXP_UsuariosBindingSource.Current("empresas").ToString.Split(",")

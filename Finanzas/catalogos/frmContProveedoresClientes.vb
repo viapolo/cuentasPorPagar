@@ -14,6 +14,8 @@
     End Sub
 
     Private Sub frmContProveedoresClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Bancos' Puede moverla o quitarla según sea necesario.
+        Me.CXP_BancosTableAdapter.Fill(Me.DsProduction.CXP_Bancos)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_c_Pais' Puede moverla o quitarla según sea necesario.
         Me.CXP_c_PaisTableAdapter.Fill(Me.DsProduction.CXP_c_Pais)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Empresas' Puede moverla o quitarla según sea necesario.

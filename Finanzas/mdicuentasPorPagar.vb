@@ -5,6 +5,7 @@ Public Class mdicuentasPorPagar
     Public varGlIdUser As String
     Public varGlPerfil As String
     Public varGlEmpresa As String
+    Public varGlEmpresaD As String
     Dim taPerfil As New dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter
     Dim t As New dsProduction.CXP_PerfilesUsuarioDataTable
     Dim dtPerfiles As New DataTable
@@ -133,6 +134,9 @@ Public Class mdicuentasPorPagar
 
     Private Sub mdicuentasPorPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        tssUsuario.Text = "Usuario: " & varGlUser
+        tssEmpresa.Text = "Empresa: " & varGlEmpresaD
+
         If varGlUser = "viapolo" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 vLocMnuOpciones.Enabled = True
@@ -200,6 +204,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmTipoGasto.MdiParent = Me
         frmTipoGasto.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiariosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmEspecificaTipoDocumento.MdiParent = Me
+        frmEspecificaTipoDocumento.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

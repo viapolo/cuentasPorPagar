@@ -46,7 +46,6 @@
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        'CXP_PerfilesUsuarioDataGridView.Rows.Add(cmbNombrePerfil.SelectedValue, cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, "Eliminar")
         taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue)
         cmbSubMenu1.Text = ""
         cmbSubMenu1.Items.Clear()
