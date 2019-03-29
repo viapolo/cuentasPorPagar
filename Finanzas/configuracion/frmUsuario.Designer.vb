@@ -70,12 +70,12 @@ Partial Class frmUsuario
         Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CXPPerfilesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction2 = New cuentasPorPagar.dsProduction()
         Me.CXPPerfilesUsuarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CXP_PerfilesUsuarioTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter()
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
-        Me.DsProduction2 = New cuentasPorPagar.dsProduction()
-        Me.CXPPerfilesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_PerfilesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesTableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
@@ -91,10 +91,10 @@ Partial Class frmUsuario
         CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEmpresasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvEmpresas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPPerfilesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPPerfilesUsuarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsProduction2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXPPerfilesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -175,8 +175,10 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
@@ -184,6 +186,7 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Me.CXP_UsuariosTableAdapter
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -489,6 +492,16 @@ Partial Class frmUsuario
         Me.ComboBox1.TabIndex = 21
         Me.ComboBox1.ValueMember = "idPerf"
         '
+        'CXPPerfilesBindingSource
+        '
+        Me.CXPPerfilesBindingSource.DataMember = "CXP_Perfiles"
+        Me.CXPPerfilesBindingSource.DataSource = Me.DsProduction2
+        '
+        'DsProduction2
+        '
+        Me.DsProduction2.DataSetName = "dsProduction"
+        Me.DsProduction2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'CXPPerfilesUsuarioBindingSource
         '
         Me.CXPPerfilesUsuarioBindingSource.DataMember = "CXP_PerfilesUsuario"
@@ -511,16 +524,6 @@ Partial Class frmUsuario
         '
         Me.DsProduction1.DataSetName = "dsProduction"
         Me.DsProduction1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DsProduction2
-        '
-        Me.DsProduction2.DataSetName = "dsProduction"
-        Me.DsProduction2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXPPerfilesBindingSource
-        '
-        Me.CXPPerfilesBindingSource.DataMember = "CXP_Perfiles"
-        Me.CXPPerfilesBindingSource.DataSource = Me.DsProduction2
         '
         'CXP_PerfilesTableAdapter
         '
@@ -554,6 +557,7 @@ Partial Class frmUsuario
         Me.Controls.Add(NombreLabel)
         Me.Controls.Add(Me.NombreTextBox)
         Me.Controls.Add(Me.CXP_UsuariosBindingNavigator)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmUsuario"
         Me.Text = "Usuarios"
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
@@ -565,10 +569,10 @@ Partial Class frmUsuario
         CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPEmpresasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvEmpresas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPPerfilesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPPerfilesUsuarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsProduction2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXPPerfilesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
