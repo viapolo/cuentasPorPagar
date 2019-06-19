@@ -27,6 +27,7 @@
 
     Private Sub CXP_UsuariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_UsuariosBindingNavigatorSaveItem.Click
         Me.Validate()
+        Me.CXP_UsuariosBindingSource.Current("activo") = True
         Me.CXP_UsuariosBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DsProduction)
 
@@ -50,6 +51,8 @@
                     DepartamentoTextBox.Text = rows.id_depto
                     SucursalTextBox.Text = rows.id_sucursal
                     PwTextBox.Text = rows.password
+                    ActivoCheckBox.Checked = True
+                    'ActivoCheckBox.CheckState = CheckState.Checked
                 Next
             End If
         End If

@@ -1,5 +1,6 @@
 ﻿Public Class frmSATImpuestos
     Private Sub CXP_ImpuestoBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_ImpuestoBindingNavigatorSaveItem.Click
+        CXP_ImpuestoBindingSource.Current("idEmpresa") = varGlobal_IdEmpresa
         Me.Validate()
         Me.CXP_ImpuestoBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DsProduction)
@@ -8,9 +9,17 @@
 
     Private Sub frmSATImpuestos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_CuentasContables' Puede moverla o quitarla según sea necesario.
-        Me.CXP_CuentasContablesTableAdapter.Fill(Me.DsProduction.CXP_CuentasContables)
+        Me.CXP_CuentasContablesTableAdapter.Fill(Me.DsProduction.CXP_CuentasContables, varGlobal_IdEmpresa)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Impuesto' Puede moverla o quitarla según sea necesario.
-        Me.CXP_ImpuestoTableAdapter.Fill(Me.DsProduction.CXP_Impuesto)
+        Me.CXP_ImpuestoTableAdapter.Fill(Me.DsProduction.CXP_Impuesto, varGlobal_IdEmpresa)
+
+        If cmbTipo.Text = "Local" Then
+            cmbDescripcion.Enabled = False
+            cmbFactor.Enabled = False
+        Else
+            cmbDescripcion.Enabled = True
+            cmbFactor.Enabled = True
+        End If
 
     End Sub
 
@@ -40,5 +49,19 @@
             MsgBox("El impuesto ISR no puede ser trasladado", MsgBoxStyle.Information)
             cmbEfecto.Text = "RET"
         End If
+    End Sub
+
+    Private Sub cmbTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipo.SelectedIndexChanged
+        If cmbTipo.Text = "Local" Then
+            cmbDescripcion.Enabled = False
+            cmbFactor.Enabled = False
+        Else
+            cmbDescripcion.Enabled = True
+            cmbFactor.Enabled = True
+        End If
+    End Sub
+
+    Private Sub cmbFactor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFactor.SelectedIndexChanged
+
     End Sub
 End Class

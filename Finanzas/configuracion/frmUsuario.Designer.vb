@@ -29,6 +29,7 @@ Partial Class frmUsuario
         Dim DepartamentoLabel As System.Windows.Forms.Label
         Dim SucursalLabel As System.Windows.Forms.Label
         Dim PwLabel As System.Windows.Forms.Label
+        Dim ActivoLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUsuario))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_UsuariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -77,12 +78,14 @@ Partial Class frmUsuario
         Me.CXP_PerfilesUsuarioTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter()
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.CXP_PerfilesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesTableAdapter()
+        Me.ActivoCheckBox = New System.Windows.Forms.CheckBox()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
         MailLabel = New System.Windows.Forms.Label()
         DepartamentoLabel = New System.Windows.Forms.Label()
         SucursalLabel = New System.Windows.Forms.Label()
         PwLabel = New System.Windows.Forms.Label()
+        ActivoLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_UsuariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_UsuariosBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,6 +154,15 @@ Partial Class frmUsuario
         PwLabel.TabIndex = 13
         PwLabel.Text = "Contraseña:"
         '
+        'ActivoLabel
+        '
+        ActivoLabel.AutoSize = True
+        ActivoLabel.Location = New System.Drawing.Point(221, 122)
+        ActivoLabel.Name = "ActivoLabel"
+        ActivoLabel.Size = New System.Drawing.Size(40, 13)
+        ActivoLabel.TabIndex = 23
+        ActivoLabel.Text = "Activo:"
+        '
         'DsProduction
         '
         Me.DsProduction.DataSetName = "dsProduction"
@@ -186,8 +198,11 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Me.CXP_UsuariosTableAdapter
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CXP_UsuariosBindingNavigator
@@ -204,7 +219,7 @@ Partial Class frmUsuario
         Me.CXP_UsuariosBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_UsuariosBindingNavigator.Name = "CXP_UsuariosBindingNavigator"
         Me.CXP_UsuariosBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_UsuariosBindingNavigator.Size = New System.Drawing.Size(505, 25)
+        Me.CXP_UsuariosBindingNavigator.Size = New System.Drawing.Size(516, 25)
         Me.CXP_UsuariosBindingNavigator.TabIndex = 0
         Me.CXP_UsuariosBindingNavigator.Text = "BindingNavigator1"
         '
@@ -220,8 +235,8 @@ Partial Class frmUsuario
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorDeleteItem
@@ -529,11 +544,25 @@ Partial Class frmUsuario
         '
         Me.CXP_PerfilesTableAdapter.ClearBeforeFill = True
         '
+        'ActivoCheckBox
+        '
+        Me.ActivoCheckBox.Checked = True
+        Me.ActivoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ActivoCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.CXP_UsuariosBindingSource, "activo", True))
+        Me.ActivoCheckBox.Enabled = False
+        Me.ActivoCheckBox.Location = New System.Drawing.Point(266, 117)
+        Me.ActivoCheckBox.Name = "ActivoCheckBox"
+        Me.ActivoCheckBox.Size = New System.Drawing.Size(104, 24)
+        Me.ActivoCheckBox.TabIndex = 24
+        Me.ActivoCheckBox.UseVisualStyleBackColor = True
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(505, 476)
+        Me.ClientSize = New System.Drawing.Size(516, 484)
+        Me.Controls.Add(ActivoLabel)
+        Me.Controls.Add(Me.ActivoCheckBox)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.btnAgregar)
@@ -625,4 +654,5 @@ Partial Class frmUsuario
     Friend WithEvents DsProduction2 As dsProduction
     Friend WithEvents CXPPerfilesBindingSource As BindingSource
     Friend WithEvents CXP_PerfilesTableAdapter As dsProductionTableAdapters.CXP_PerfilesTableAdapter
+    Friend WithEvents ActivoCheckBox As CheckBox
 End Class

@@ -51,13 +51,8 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub SucursalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SucursalesToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmSucursales.MdiParent = Me
-        frmSucursales.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub SucursalesToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub ImpuestosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImpuestosToolStripMenuItem.Click
@@ -211,8 +206,44 @@ Public Class mdicuentasPorPagar
     Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiariosToolStripMenuItem.Click
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
-        frmEspecificaTipoDocumento.MdiParent = Me
-        frmEspecificaTipoDocumento.Show()
+        frmPolizasDiario.MdiParent = Me
+        frmPolizasDiario.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub TipoDeDocumentoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TipoDeDocumentoToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSATTipoDocumento.MdiParent = Me
+        frmSATTipoDocumento.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub FacturasElectrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasElectrónicasToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSolicitudesDePago.MdiParent = Me
+        frmSolicitudesDePago.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SucursalesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SucursalesToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSucursales.MdiParent = Me
+        frmSucursales.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub AutorizadoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AutorizadoresToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmAutorizaciones.MdiParent = Me
+        frmAutorizaciones.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

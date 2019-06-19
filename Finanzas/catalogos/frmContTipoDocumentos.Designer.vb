@@ -26,10 +26,7 @@ Partial Class frmContTipoDocumentos
         Dim ClaveTipoDocumentoLabel As System.Windows.Forms.Label
         Dim NombreLabel As System.Windows.Forms.Label
         Dim FechaRegistroLabel As System.Windows.Forms.Label
-        Dim OrigenLabel As System.Windows.Forms.Label
         Dim DocumentoDeLabel As System.Windows.Forms.Label
-        Dim NaturalezaContableLabel As System.Windows.Forms.Label
-        Dim NaturalezaBancariaLabel As System.Windows.Forms.Label
         Dim FolioInicialLabel As System.Windows.Forms.Label
         Dim FolioFinalLabel As System.Windows.Forms.Label
         Dim FolioActualLabel As System.Windows.Forms.Label
@@ -54,9 +51,6 @@ Partial Class frmContTipoDocumentos
         Me.ClaveTipoDocumentoTextBox = New System.Windows.Forms.TextBox()
         Me.NombreTextBox = New System.Windows.Forms.TextBox()
         Me.FechaRegistroDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.OrigenTextBox = New System.Windows.Forms.TextBox()
-        Me.NaturalezaContableTextBox = New System.Windows.Forms.TextBox()
-        Me.NaturalezaBancariaTextBox = New System.Windows.Forms.TextBox()
         Me.FolioInicialTextBox = New System.Windows.Forms.TextBox()
         Me.FolioFinalTextBox = New System.Windows.Forms.TextBox()
         Me.FolioActualTextBox = New System.Windows.Forms.TextBox()
@@ -65,10 +59,7 @@ Partial Class frmContTipoDocumentos
         ClaveTipoDocumentoLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
         FechaRegistroLabel = New System.Windows.Forms.Label()
-        OrigenLabel = New System.Windows.Forms.Label()
         DocumentoDeLabel = New System.Windows.Forms.Label()
-        NaturalezaContableLabel = New System.Windows.Forms.Label()
-        NaturalezaBancariaLabel = New System.Windows.Forms.Label()
         FolioInicialLabel = New System.Windows.Forms.Label()
         FolioFinalLabel = New System.Windows.Forms.Label()
         FolioActualLabel = New System.Windows.Forms.Label()
@@ -105,15 +96,6 @@ Partial Class frmContTipoDocumentos
         FechaRegistroLabel.TabIndex = 5
         FechaRegistroLabel.Text = "Fecha de Reg:"
         '
-        'OrigenLabel
-        '
-        OrigenLabel.AutoSize = True
-        OrigenLabel.Location = New System.Drawing.Point(70, 82)
-        OrigenLabel.Name = "OrigenLabel"
-        OrigenLabel.Size = New System.Drawing.Size(41, 13)
-        OrigenLabel.TabIndex = 7
-        OrigenLabel.Text = "Origen:"
-        '
         'DocumentoDeLabel
         '
         DocumentoDeLabel.AutoSize = True
@@ -123,28 +105,10 @@ Partial Class frmContTipoDocumentos
         DocumentoDeLabel.TabIndex = 9
         DocumentoDeLabel.Text = "Documento de:"
         '
-        'NaturalezaContableLabel
-        '
-        NaturalezaContableLabel.AutoSize = True
-        NaturalezaContableLabel.Location = New System.Drawing.Point(5, 108)
-        NaturalezaContableLabel.Name = "NaturalezaContableLabel"
-        NaturalezaContableLabel.Size = New System.Drawing.Size(106, 13)
-        NaturalezaContableLabel.TabIndex = 11
-        NaturalezaContableLabel.Text = "Naturaleza Contable:"
-        '
-        'NaturalezaBancariaLabel
-        '
-        NaturalezaBancariaLabel.AutoSize = True
-        NaturalezaBancariaLabel.Location = New System.Drawing.Point(307, 108)
-        NaturalezaBancariaLabel.Name = "NaturalezaBancariaLabel"
-        NaturalezaBancariaLabel.Size = New System.Drawing.Size(106, 13)
-        NaturalezaBancariaLabel.TabIndex = 13
-        NaturalezaBancariaLabel.Text = "Naturaleza Bancaria:"
-        '
         'FolioInicialLabel
         '
         FolioInicialLabel.AutoSize = True
-        FolioInicialLabel.Location = New System.Drawing.Point(50, 134)
+        FolioInicialLabel.Location = New System.Drawing.Point(50, 82)
         FolioInicialLabel.Name = "FolioInicialLabel"
         FolioInicialLabel.Size = New System.Drawing.Size(62, 13)
         FolioInicialLabel.TabIndex = 15
@@ -153,7 +117,7 @@ Partial Class frmContTipoDocumentos
         'FolioFinalLabel
         '
         FolioFinalLabel.AutoSize = True
-        FolioFinalLabel.Location = New System.Drawing.Point(55, 160)
+        FolioFinalLabel.Location = New System.Drawing.Point(55, 108)
         FolioFinalLabel.Name = "FolioFinalLabel"
         FolioFinalLabel.Size = New System.Drawing.Size(57, 13)
         FolioFinalLabel.TabIndex = 17
@@ -162,7 +126,7 @@ Partial Class frmContTipoDocumentos
         'FolioActualLabel
         '
         FolioActualLabel.AutoSize = True
-        FolioActualLabel.Location = New System.Drawing.Point(47, 186)
+        FolioActualLabel.Location = New System.Drawing.Point(47, 134)
         FolioActualLabel.Name = "FolioActualLabel"
         FolioActualLabel.Size = New System.Drawing.Size(65, 13)
         FolioActualLabel.TabIndex = 19
@@ -185,14 +149,31 @@ Partial Class frmContTipoDocumentos
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Me.CXP_tipoDeDocumentoTableAdapter
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CXP_tipoDeDocumentoBindingNavigator
@@ -209,7 +190,7 @@ Partial Class frmContTipoDocumentos
         Me.CXP_tipoDeDocumentoBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_tipoDeDocumentoBindingNavigator.Name = "CXP_tipoDeDocumentoBindingNavigator"
         Me.CXP_tipoDeDocumentoBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_tipoDeDocumentoBindingNavigator.Size = New System.Drawing.Size(531, 25)
+        Me.CXP_tipoDeDocumentoBindingNavigator.Size = New System.Drawing.Size(527, 25)
         Me.CXP_tipoDeDocumentoBindingNavigator.TabIndex = 0
         Me.CXP_tipoDeDocumentoBindingNavigator.Text = "BindingNavigator1"
         '
@@ -225,8 +206,8 @@ Partial Class frmContTipoDocumentos
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorDeleteItem
@@ -332,34 +313,10 @@ Partial Class frmContTipoDocumentos
         Me.FechaRegistroDateTimePicker.Size = New System.Drawing.Size(200, 20)
         Me.FechaRegistroDateTimePicker.TabIndex = 6
         '
-        'OrigenTextBox
-        '
-        Me.OrigenTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "origen", True))
-        Me.OrigenTextBox.Location = New System.Drawing.Point(115, 79)
-        Me.OrigenTextBox.Name = "OrigenTextBox"
-        Me.OrigenTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.OrigenTextBox.TabIndex = 8
-        '
-        'NaturalezaContableTextBox
-        '
-        Me.NaturalezaContableTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "naturalezaContable", True))
-        Me.NaturalezaContableTextBox.Location = New System.Drawing.Point(115, 105)
-        Me.NaturalezaContableTextBox.Name = "NaturalezaContableTextBox"
-        Me.NaturalezaContableTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.NaturalezaContableTextBox.TabIndex = 12
-        '
-        'NaturalezaBancariaTextBox
-        '
-        Me.NaturalezaBancariaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "naturalezaBancaria", True))
-        Me.NaturalezaBancariaTextBox.Location = New System.Drawing.Point(417, 105)
-        Me.NaturalezaBancariaTextBox.Name = "NaturalezaBancariaTextBox"
-        Me.NaturalezaBancariaTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.NaturalezaBancariaTextBox.TabIndex = 14
-        '
         'FolioInicialTextBox
         '
         Me.FolioInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioInicial", True))
-        Me.FolioInicialTextBox.Location = New System.Drawing.Point(115, 131)
+        Me.FolioInicialTextBox.Location = New System.Drawing.Point(115, 79)
         Me.FolioInicialTextBox.Name = "FolioInicialTextBox"
         Me.FolioInicialTextBox.Size = New System.Drawing.Size(100, 20)
         Me.FolioInicialTextBox.TabIndex = 16
@@ -367,7 +324,7 @@ Partial Class frmContTipoDocumentos
         'FolioFinalTextBox
         '
         Me.FolioFinalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioFinal", True))
-        Me.FolioFinalTextBox.Location = New System.Drawing.Point(115, 157)
+        Me.FolioFinalTextBox.Location = New System.Drawing.Point(115, 105)
         Me.FolioFinalTextBox.Name = "FolioFinalTextBox"
         Me.FolioFinalTextBox.Size = New System.Drawing.Size(100, 20)
         Me.FolioFinalTextBox.TabIndex = 18
@@ -375,14 +332,15 @@ Partial Class frmContTipoDocumentos
         'FolioActualTextBox
         '
         Me.FolioActualTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioActual", True))
-        Me.FolioActualTextBox.Location = New System.Drawing.Point(115, 183)
+        Me.FolioActualTextBox.Location = New System.Drawing.Point(115, 131)
         Me.FolioActualTextBox.Name = "FolioActualTextBox"
+        Me.FolioActualTextBox.ReadOnly = True
         Me.FolioActualTextBox.Size = New System.Drawing.Size(100, 20)
         Me.FolioActualTextBox.TabIndex = 20
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(442, 202)
+        Me.btnSalir.Location = New System.Drawing.Point(442, 131)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 21
@@ -392,8 +350,9 @@ Partial Class frmContTipoDocumentos
         'ComboBox1
         '
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "documentoDe", True))
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Ingreso", "Egreso"})
+        Me.ComboBox1.Items.AddRange(New Object() {"Ingreso", "Egreso", "Diario"})
         Me.ComboBox1.Location = New System.Drawing.Point(417, 79)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(100, 21)
@@ -403,7 +362,7 @@ Partial Class frmContTipoDocumentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(531, 237)
+        Me.ClientSize = New System.Drawing.Size(527, 164)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(FolioActualLabel)
@@ -412,13 +371,7 @@ Partial Class frmContTipoDocumentos
         Me.Controls.Add(Me.FolioFinalTextBox)
         Me.Controls.Add(FolioInicialLabel)
         Me.Controls.Add(Me.FolioInicialTextBox)
-        Me.Controls.Add(NaturalezaBancariaLabel)
-        Me.Controls.Add(Me.NaturalezaBancariaTextBox)
-        Me.Controls.Add(NaturalezaContableLabel)
-        Me.Controls.Add(Me.NaturalezaContableTextBox)
         Me.Controls.Add(DocumentoDeLabel)
-        Me.Controls.Add(OrigenLabel)
-        Me.Controls.Add(Me.OrigenTextBox)
         Me.Controls.Add(FechaRegistroLabel)
         Me.Controls.Add(Me.FechaRegistroDateTimePicker)
         Me.Controls.Add(NombreLabel)
@@ -428,7 +381,7 @@ Partial Class frmContTipoDocumentos
         Me.Controls.Add(Me.CXP_tipoDeDocumentoBindingNavigator)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmContTipoDocumentos"
-        Me.Text = "Tipo de Documentos"
+        Me.Text = "Tipo de Poliza"
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_tipoDeDocumentoBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
@@ -459,9 +412,6 @@ Partial Class frmContTipoDocumentos
     Friend WithEvents ClaveTipoDocumentoTextBox As TextBox
     Friend WithEvents NombreTextBox As TextBox
     Friend WithEvents FechaRegistroDateTimePicker As DateTimePicker
-    Friend WithEvents OrigenTextBox As TextBox
-    Friend WithEvents NaturalezaContableTextBox As TextBox
-    Friend WithEvents NaturalezaBancariaTextBox As TextBox
     Friend WithEvents FolioInicialTextBox As TextBox
     Friend WithEvents FolioFinalTextBox As TextBox
     Friend WithEvents FolioActualTextBox As TextBox

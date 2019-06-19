@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmContCuentasContables
+Partial Class frmSATTipoDocumento
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -23,16 +23,15 @@ Partial Class frmContCuentasContables
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim NombreLabel As System.Windows.Forms.Label
-        Dim CuentaLabel As System.Windows.Forms.Label
+        Dim ClaveSatLabel As System.Windows.Forms.Label
+        Dim DescripcionLabel As System.Windows.Forms.Label
         Dim TipoLabel As System.Windows.Forms.Label
-        Dim ActivoLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContCuentasContables))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSATTipoDocumento))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.CXP_CuentasContablesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
+        Me.CXP_tipoDocumentoSatBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_tipoDocumentoSatTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDocumentoSatTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
-        Me.CXP_CuentasContablesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.CXP_tipoDocumentoSatBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
@@ -44,77 +43,64 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.CXP_CuentasContablesBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.NombreTextBox = New System.Windows.Forms.TextBox()
-        Me.ActivoCheckBox = New System.Windows.Forms.CheckBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
+        Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.ClaveSatTextBox = New System.Windows.Forms.TextBox()
+        Me.DescripcionTextBox = New System.Windows.Forms.TextBox()
+        Me.cmbTipoDocumento = New System.Windows.Forms.ComboBox()
         Me.btnSalir = New System.Windows.Forms.Button()
-        NombreLabel = New System.Windows.Forms.Label()
-        CuentaLabel = New System.Windows.Forms.Label()
+        ClaveSatLabel = New System.Windows.Forms.Label()
+        DescripcionLabel = New System.Windows.Forms.Label()
         TipoLabel = New System.Windows.Forms.Label()
-        ActivoLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXP_CuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXP_CuentasContablesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CXP_CuentasContablesBindingNavigator.SuspendLayout()
+        CType(Me.CXP_tipoDocumentoSatBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXP_tipoDocumentoSatBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CXP_tipoDocumentoSatBindingNavigator.SuspendLayout()
         Me.SuspendLayout()
         '
-        'NombreLabel
+        'ClaveSatLabel
         '
-        NombreLabel.AutoSize = True
-        NombreLabel.Location = New System.Drawing.Point(52, 31)
-        NombreLabel.Name = "NombreLabel"
-        NombreLabel.Size = New System.Drawing.Size(47, 13)
-        NombreLabel.TabIndex = 1
-        NombreLabel.Text = "Nombre:"
+        ClaveSatLabel.AutoSize = True
+        ClaveSatLabel.Location = New System.Drawing.Point(19, 31)
+        ClaveSatLabel.Name = "ClaveSatLabel"
+        ClaveSatLabel.Size = New System.Drawing.Size(56, 13)
+        ClaveSatLabel.TabIndex = 1
+        ClaveSatLabel.Text = "Clave Sat:"
         '
-        'CuentaLabel
+        'DescripcionLabel
         '
-        CuentaLabel.AutoSize = True
-        CuentaLabel.Location = New System.Drawing.Point(54, 57)
-        CuentaLabel.Name = "CuentaLabel"
-        CuentaLabel.Size = New System.Drawing.Size(44, 13)
-        CuentaLabel.TabIndex = 3
-        CuentaLabel.Text = "Cuenta:"
+        DescripcionLabel.AutoSize = True
+        DescripcionLabel.Location = New System.Drawing.Point(10, 57)
+        DescripcionLabel.Name = "DescripcionLabel"
+        DescripcionLabel.Size = New System.Drawing.Size(66, 13)
+        DescripcionLabel.TabIndex = 3
+        DescripcionLabel.Text = "Descripción:"
         '
         'TipoLabel
         '
         TipoLabel.AutoSize = True
-        TipoLabel.Location = New System.Drawing.Point(235, 57)
+        TipoLabel.Location = New System.Drawing.Point(43, 83)
         TipoLabel.Name = "TipoLabel"
         TipoLabel.Size = New System.Drawing.Size(31, 13)
         TipoLabel.TabIndex = 5
         TipoLabel.Text = "Tipo:"
-        AddHandler TipoLabel.Click, AddressOf Me.TipoLabel_Click
-        '
-        'ActivoLabel
-        '
-        ActivoLabel.AutoSize = True
-        ActivoLabel.Location = New System.Drawing.Point(410, 58)
-        ActivoLabel.Name = "ActivoLabel"
-        ActivoLabel.Size = New System.Drawing.Size(40, 13)
-        ActivoLabel.TabIndex = 7
-        ActivoLabel.Text = "Activa:"
         '
         'DsProduction
         '
         Me.DsProduction.DataSetName = "dsProduction"
         Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'CXP_CuentasContablesBindingSource
+        'CXP_tipoDocumentoSatBindingSource
         '
-        Me.CXP_CuentasContablesBindingSource.DataMember = "CXP_CuentasContables"
-        Me.CXP_CuentasContablesBindingSource.DataSource = Me.DsProduction
+        Me.CXP_tipoDocumentoSatBindingSource.DataMember = "CXP_tipoDocumentoSat"
+        Me.CXP_tipoDocumentoSatBindingSource.DataSource = Me.DsProduction
         '
-        'CXP_CuentasContablesTableAdapter
+        'CXP_tipoDocumentoSatTableAdapter
         '
-        Me.CXP_CuentasContablesTableAdapter.ClearBeforeFill = True
+        Me.CXP_tipoDocumentoSatTableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
@@ -124,40 +110,37 @@ Partial Class frmContCuentasContables
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Me.CXP_CuentasContablesTableAdapter
+        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Me.CXP_tipoDocumentoSatTableAdapter
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
-        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'CXP_CuentasContablesBindingNavigator
+        'CXP_tipoDocumentoSatBindingNavigator
         '
-        Me.CXP_CuentasContablesBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.CXP_CuentasContablesBindingNavigator.BindingSource = Me.CXP_CuentasContablesBindingSource
-        Me.CXP_CuentasContablesBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.CXP_CuentasContablesBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.CXP_CuentasContablesBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.CXP_CuentasContablesBindingNavigatorSaveItem})
-        Me.CXP_CuentasContablesBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.CXP_CuentasContablesBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.CXP_CuentasContablesBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.CXP_CuentasContablesBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.CXP_CuentasContablesBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.CXP_CuentasContablesBindingNavigator.Name = "CXP_CuentasContablesBindingNavigator"
-        Me.CXP_CuentasContablesBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_CuentasContablesBindingNavigator.Size = New System.Drawing.Size(569, 25)
-        Me.CXP_CuentasContablesBindingNavigator.TabIndex = 0
-        Me.CXP_CuentasContablesBindingNavigator.Text = "BindingNavigator1"
+        Me.CXP_tipoDocumentoSatBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.BindingSource = Me.CXP_tipoDocumentoSatBindingSource
+        Me.CXP_tipoDocumentoSatBindingNavigator.CountItem = Me.BindingNavigatorCountItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem})
+        Me.CXP_tipoDocumentoSatBindingNavigator.Location = New System.Drawing.Point(0, 0)
+        Me.CXP_tipoDocumentoSatBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.Name = "CXP_tipoDocumentoSatBindingNavigator"
+        Me.CXP_tipoDocumentoSatBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
+        Me.CXP_tipoDocumentoSatBindingNavigator.Size = New System.Drawing.Size(485, 25)
+        Me.CXP_tipoDocumentoSatBindingNavigator.TabIndex = 0
+        Me.CXP_tipoDocumentoSatBindingNavigator.Text = "BindingNavigator1"
         '
         'BindingNavigatorAddNewItem
         '
@@ -166,14 +149,14 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
         Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
+        Me.BindingNavigatorAddNewItem.Text = "Agregar nuevo"
         '
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
         Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
         Me.BindingNavigatorCountItem.Text = "de {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
+        Me.BindingNavigatorCountItem.ToolTipText = "Número total de elementos"
         '
         'BindingNavigatorDeleteItem
         '
@@ -182,7 +165,7 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
         Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
+        Me.BindingNavigatorDeleteItem.Text = "Eliminar"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -191,7 +174,7 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
         Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
+        Me.BindingNavigatorMoveFirstItem.Text = "Mover primero"
         '
         'BindingNavigatorMovePreviousItem
         '
@@ -200,7 +183,7 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
         Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
+        Me.BindingNavigatorMovePreviousItem.Text = "Mover anterior"
         '
         'BindingNavigatorSeparator
         '
@@ -209,12 +192,12 @@ Partial Class frmContCuentasContables
         '
         'BindingNavigatorPositionItem
         '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
+        Me.BindingNavigatorPositionItem.AccessibleName = "Posición"
         Me.BindingNavigatorPositionItem.AutoSize = False
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
         Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
+        Me.BindingNavigatorPositionItem.ToolTipText = "Posición actual"
         '
         'BindingNavigatorSeparator1
         '
@@ -228,7 +211,7 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
         Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Move next"
+        Me.BindingNavigatorMoveNextItem.Text = "Mover siguiente"
         '
         'BindingNavigatorMoveLastItem
         '
@@ -237,101 +220,88 @@ Partial Class frmContCuentasContables
         Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
         Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Move last"
+        Me.BindingNavigatorMoveLastItem.Text = "Mover último"
         '
         'BindingNavigatorSeparator2
         '
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'CXP_CuentasContablesBindingNavigatorSaveItem
+        'CXP_tipoDocumentoSatBindingNavigatorSaveItem
         '
-        Me.CXP_CuentasContablesBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.CXP_CuentasContablesBindingNavigatorSaveItem.Image = CType(resources.GetObject("CXP_CuentasContablesBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.CXP_CuentasContablesBindingNavigatorSaveItem.Name = "CXP_CuentasContablesBindingNavigatorSaveItem"
-        Me.CXP_CuentasContablesBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.CXP_CuentasContablesBindingNavigatorSaveItem.Text = "Guardar datos"
+        Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem.Image = CType(resources.GetObject("CXP_tipoDocumentoSatBindingNavigatorSaveItem.Image"), System.Drawing.Image)
+        Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem.Name = "CXP_tipoDocumentoSatBindingNavigatorSaveItem"
+        Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
+        Me.CXP_tipoDocumentoSatBindingNavigatorSaveItem.Text = "Guardar datos"
         '
-        'NombreTextBox
+        'ClaveSatTextBox
         '
-        Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasContablesBindingSource, "nombre", True))
-        Me.NombreTextBox.Location = New System.Drawing.Point(103, 28)
-        Me.NombreTextBox.Name = "NombreTextBox"
-        Me.NombreTextBox.Size = New System.Drawing.Size(456, 20)
-        Me.NombreTextBox.TabIndex = 1
+        Me.ClaveSatTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDocumentoSatBindingSource, "claveSat", True))
+        Me.ClaveSatTextBox.Location = New System.Drawing.Point(80, 28)
+        Me.ClaveSatTextBox.Name = "ClaveSatTextBox"
+        Me.ClaveSatTextBox.Size = New System.Drawing.Size(121, 20)
+        Me.ClaveSatTextBox.TabIndex = 2
         '
-        'ActivoCheckBox
+        'DescripcionTextBox
         '
-        Me.ActivoCheckBox.Checked = True
-        Me.ActivoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ActivoCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_CuentasContablesBindingSource, "activo", True))
-        Me.ActivoCheckBox.Location = New System.Drawing.Point(455, 53)
-        Me.ActivoCheckBox.Name = "ActivoCheckBox"
-        Me.ActivoCheckBox.Size = New System.Drawing.Size(104, 24)
-        Me.ActivoCheckBox.TabIndex = 4
-        Me.ActivoCheckBox.UseVisualStyleBackColor = True
+        Me.DescripcionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDocumentoSatBindingSource, "descripcion", True))
+        Me.DescripcionTextBox.Location = New System.Drawing.Point(80, 54)
+        Me.DescripcionTextBox.Name = "DescripcionTextBox"
+        Me.DescripcionTextBox.Size = New System.Drawing.Size(392, 20)
+        Me.DescripcionTextBox.TabIndex = 4
         '
-        'ComboBox1
+        'cmbTipoDocumento
         '
-        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasContablesBindingSource, "tipo", True))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Ingreso", "Gasto"})
-        Me.ComboBox1.Location = New System.Drawing.Point(272, 53)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 3
-        '
-        'MaskedTextBox1
-        '
-        Me.MaskedTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasContablesBindingSource, "cuenta", True))
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(103, 54)
-        Me.MaskedTextBox1.Mask = "0000-00-00-0000"
-        Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(121, 20)
-        Me.MaskedTextBox1.TabIndex = 2
+        Me.cmbTipoDocumento.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDocumentoSatBindingSource, "tipo", True))
+        Me.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTipoDocumento.FormattingEnabled = True
+        Me.cmbTipoDocumento.Items.AddRange(New Object() {"Ingreso", "Egreso"})
+        Me.cmbTipoDocumento.Location = New System.Drawing.Point(80, 80)
+        Me.cmbTipoDocumento.Name = "cmbTipoDocumento"
+        Me.cmbTipoDocumento.Size = New System.Drawing.Size(121, 21)
+        Me.cmbTipoDocumento.TabIndex = 6
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(484, 83)
+        Me.btnSalir.Location = New System.Drawing.Point(397, 120)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 5
+        Me.btnSalir.TabIndex = 7
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'frmContCuentasContables
+        'frmSATTipoDocumento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(569, 117)
+        Me.ClientSize = New System.Drawing.Size(485, 156)
         Me.Controls.Add(Me.btnSalir)
-        Me.Controls.Add(Me.MaskedTextBox1)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(ActivoLabel)
-        Me.Controls.Add(Me.ActivoCheckBox)
+        Me.Controls.Add(Me.cmbTipoDocumento)
         Me.Controls.Add(TipoLabel)
-        Me.Controls.Add(CuentaLabel)
-        Me.Controls.Add(NombreLabel)
-        Me.Controls.Add(Me.NombreTextBox)
-        Me.Controls.Add(Me.CXP_CuentasContablesBindingNavigator)
+        Me.Controls.Add(DescripcionLabel)
+        Me.Controls.Add(Me.DescripcionTextBox)
+        Me.Controls.Add(ClaveSatLabel)
+        Me.Controls.Add(Me.ClaveSatTextBox)
+        Me.Controls.Add(Me.CXP_tipoDocumentoSatBindingNavigator)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Name = "frmContCuentasContables"
-        Me.Text = "Cuentas Contables"
+        Me.Name = "frmSATTipoDocumento"
+        Me.Text = "Tipo de Documento"
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXP_CuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXP_CuentasContablesBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.CXP_CuentasContablesBindingNavigator.ResumeLayout(False)
-        Me.CXP_CuentasContablesBindingNavigator.PerformLayout()
+        CType(Me.CXP_tipoDocumentoSatBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXP_tipoDocumentoSatBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.CXP_tipoDocumentoSatBindingNavigator.ResumeLayout(False)
+        Me.CXP_tipoDocumentoSatBindingNavigator.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents DsProduction As dsProduction
-    Friend WithEvents CXP_CuentasContablesBindingSource As BindingSource
-    Friend WithEvents CXP_CuentasContablesTableAdapter As dsProductionTableAdapters.CXP_CuentasContablesTableAdapter
+    Friend WithEvents CXP_tipoDocumentoSatBindingSource As BindingSource
+    Friend WithEvents CXP_tipoDocumentoSatTableAdapter As dsProductionTableAdapters.CXP_tipoDocumentoSatTableAdapter
     Friend WithEvents TableAdapterManager As dsProductionTableAdapters.TableAdapterManager
-    Friend WithEvents CXP_CuentasContablesBindingNavigator As BindingNavigator
+    Friend WithEvents CXP_tipoDocumentoSatBindingNavigator As BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
     Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
@@ -343,10 +313,9 @@ Partial Class frmContCuentasContables
     Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents CXP_CuentasContablesBindingNavigatorSaveItem As ToolStripButton
-    Friend WithEvents NombreTextBox As TextBox
-    Friend WithEvents ActivoCheckBox As CheckBox
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents MaskedTextBox1 As MaskedTextBox
+    Friend WithEvents CXP_tipoDocumentoSatBindingNavigatorSaveItem As ToolStripButton
+    Friend WithEvents ClaveSatTextBox As TextBox
+    Friend WithEvents DescripcionTextBox As TextBox
+    Friend WithEvents cmbTipoDocumento As ComboBox
     Friend WithEvents btnSalir As Button
 End Class

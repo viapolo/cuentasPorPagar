@@ -26,15 +26,15 @@ Partial Class frmConceptos
         Dim NombreLabel As System.Windows.Forms.Label
         Dim ImpuestoLabel As System.Windows.Forms.Label
         Dim TipoProductoLabel As System.Windows.Forms.Label
-        Dim CuentaEgresoLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConceptos))
         Dim CuentaProvLabel As System.Windows.Forms.Label
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.CXP_ConceptosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_ConceptosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ConceptosTableAdapter()
-        Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Dim Label1 As System.Windows.Forms.Label
+        Dim IdConceptoLabel As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConceptos))
         Me.CXP_ConceptosBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.CXP_ConceptosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
@@ -49,44 +49,59 @@ Partial Class frmConceptos
         Me.NombreTextBox = New System.Windows.Forms.TextBox()
         Me.cmbCuentaEgreso = New System.Windows.Forms.ComboBox()
         Me.CXPCuentasContablesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
         Me.cmbImpuesto = New System.Windows.Forms.ComboBox()
         Me.CXPImpuestoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cmbTipoProducto = New System.Windows.Forms.ComboBox()
         Me.CXPTipoGastoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_ImpuestoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ImpuestoTableAdapter()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.CXP_TipoGastoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_TipoGastoTableAdapter()
         Me.dgvImpuestos = New System.Windows.Forms.DataGridView()
-        Me.idImpuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.impuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.idImpuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.CXPCuentasContablesBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction1 = New cuentasPorPagar.dsProduction()
+        Me.IdConceptoTextBox = New System.Windows.Forms.TextBox()
+        Me.VwCXPImpConBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction2 = New cuentasPorPagar.dsProduction()
+        Me.CXP_ConceptosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ConceptosTableAdapter()
+        Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
+        Me.CXP_ImpuestoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ImpuestoTableAdapter()
+        Me.CXP_TipoGastoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_TipoGastoTableAdapter()
+        Me.Vw_CXP_ImpConTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_ImpConTableAdapter()
+        Me.cmbTipoPoliza = New System.Windows.Forms.ComboBox()
+        Me.CXPtipoDeDocumentoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         ImpuestoLabel = New System.Windows.Forms.Label()
         TipoProductoLabel = New System.Windows.Forms.Label()
-        CuentaEgresoLabel = New System.Windows.Forms.Label()
         CuentaProvLabel = New System.Windows.Forms.Label()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXP_ConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Label1 = New System.Windows.Forms.Label()
+        IdConceptoLabel = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
         CType(Me.CXP_ConceptosBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_ConceptosBindingNavigator.SuspendLayout()
+        CType(Me.CXP_ConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPImpuestoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPTipoGastoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvImpuestos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasContablesBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCXPImpConBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPtipoDeDocumentoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
         '
         NombreLabel.AutoSize = True
-        NombreLabel.Location = New System.Drawing.Point(35, 42)
+        NombreLabel.Location = New System.Drawing.Point(49, 37)
         NombreLabel.Name = "NombreLabel"
         NombreLabel.Size = New System.Drawing.Size(56, 13)
         NombreLabel.TabIndex = 1
@@ -95,7 +110,7 @@ Partial Class frmConceptos
         'ImpuestoLabel
         '
         ImpuestoLabel.AutoSize = True
-        ImpuestoLabel.Location = New System.Drawing.Point(403, 42)
+        ImpuestoLabel.Location = New System.Drawing.Point(20, 192)
         ImpuestoLabel.Name = "ImpuestoLabel"
         ImpuestoLabel.Size = New System.Drawing.Size(53, 13)
         ImpuestoLabel.TabIndex = 7
@@ -104,59 +119,47 @@ Partial Class frmConceptos
         'TipoProductoLabel
         '
         TipoProductoLabel.AutoSize = True
-        TipoProductoLabel.Location = New System.Drawing.Point(-1, 68)
+        TipoProductoLabel.Location = New System.Drawing.Point(13, 63)
         TipoProductoLabel.Name = "TipoProductoLabel"
         TipoProductoLabel.Size = New System.Drawing.Size(92, 13)
         TipoProductoLabel.TabIndex = 15
         TipoProductoLabel.Text = "Tipo de Producto:"
         '
-        'CuentaEgresoLabel
+        'CuentaProvLabel
         '
-        CuentaEgresoLabel.AutoSize = True
-        CuentaEgresoLabel.Location = New System.Drawing.Point(11, 94)
-        CuentaEgresoLabel.Name = "CuentaEgresoLabel"
-        CuentaEgresoLabel.Size = New System.Drawing.Size(80, 13)
-        CuentaEgresoLabel.TabIndex = 16
-        CuentaEgresoLabel.Text = "Cuenta Egreso:"
-        AddHandler CuentaEgresoLabel.Click, AddressOf Me.CuentaEgresoLabel_Click
+        CuentaProvLabel.AutoSize = True
+        CuentaProvLabel.Location = New System.Drawing.Point(28, 116)
+        CuentaProvLabel.Name = "CuentaProvLabel"
+        CuentaProvLabel.Size = New System.Drawing.Size(78, 13)
+        CuentaProvLabel.TabIndex = 22
+        CuentaProvLabel.Text = "Cuenta Abono:"
         '
-        'DsProduction
+        'Label1
         '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Label1.AutoSize = True
+        Label1.Location = New System.Drawing.Point(28, 89)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(75, 13)
+        Label1.TabIndex = 25
+        Label1.Text = "Cuenta Cargo:"
         '
-        'CXP_ConceptosBindingSource
+        'IdConceptoLabel
         '
-        Me.CXP_ConceptosBindingSource.DataMember = "CXP_Conceptos"
-        Me.CXP_ConceptosBindingSource.DataSource = Me.DsProduction
+        IdConceptoLabel.AutoSize = True
+        IdConceptoLabel.Location = New System.Drawing.Point(20, 366)
+        IdConceptoLabel.Name = "IdConceptoLabel"
+        IdConceptoLabel.Size = New System.Drawing.Size(68, 13)
+        IdConceptoLabel.TabIndex = 26
+        IdConceptoLabel.Text = "Id Concepto:"
         '
-        'CXP_ConceptosTableAdapter
+        'Label2
         '
-        Me.CXP_ConceptosTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Me.CXP_ConceptosTableAdapter
-        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(17, 143)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(89, 13)
+        Label2.TabIndex = 29
+        Label2.Text = "Poliza de Egreso:"
         '
         'CXP_ConceptosBindingNavigator
         '
@@ -172,7 +175,7 @@ Partial Class frmConceptos
         Me.CXP_ConceptosBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_ConceptosBindingNavigator.Name = "CXP_ConceptosBindingNavigator"
         Me.CXP_ConceptosBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_ConceptosBindingNavigator.Size = New System.Drawing.Size(760, 25)
+        Me.CXP_ConceptosBindingNavigator.Size = New System.Drawing.Size(492, 25)
         Me.CXP_ConceptosBindingNavigator.TabIndex = 0
         Me.CXP_ConceptosBindingNavigator.Text = "BindingNavigator1"
         '
@@ -185,11 +188,21 @@ Partial Class frmConceptos
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorAddNewItem.Text = "Add new"
         '
+        'CXP_ConceptosBindingSource
+        '
+        Me.CXP_ConceptosBindingSource.DataMember = "CXP_Conceptos"
+        Me.CXP_ConceptosBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorDeleteItem
@@ -272,9 +285,9 @@ Partial Class frmConceptos
         'NombreTextBox
         '
         Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ConceptosBindingSource, "nombre", True))
-        Me.NombreTextBox.Location = New System.Drawing.Point(98, 39)
+        Me.NombreTextBox.Location = New System.Drawing.Point(112, 34)
         Me.NombreTextBox.Name = "NombreTextBox"
-        Me.NombreTextBox.Size = New System.Drawing.Size(294, 20)
+        Me.NombreTextBox.Size = New System.Drawing.Size(362, 20)
         Me.NombreTextBox.TabIndex = 2
         '
         'cmbCuentaEgreso
@@ -283,9 +296,9 @@ Partial Class frmConceptos
         Me.cmbCuentaEgreso.DataSource = Me.CXPCuentasContablesBindingSource
         Me.cmbCuentaEgreso.DisplayMember = "nombre"
         Me.cmbCuentaEgreso.FormattingEnabled = True
-        Me.cmbCuentaEgreso.Location = New System.Drawing.Point(98, 91)
+        Me.cmbCuentaEgreso.Location = New System.Drawing.Point(112, 86)
         Me.cmbCuentaEgreso.Name = "cmbCuentaEgreso"
-        Me.cmbCuentaEgreso.Size = New System.Drawing.Size(294, 21)
+        Me.cmbCuentaEgreso.Size = New System.Drawing.Size(362, 21)
         Me.cmbCuentaEgreso.TabIndex = 17
         Me.cmbCuentaEgreso.ValueMember = "idCuentaContable"
         '
@@ -295,19 +308,15 @@ Partial Class frmConceptos
         Me.CXPCuentasContablesBindingSource.DataSource = Me.DsProduction
         Me.CXPCuentasContablesBindingSource.Filter = "tipo='Gasto'"
         '
-        'CXP_CuentasContablesTableAdapter
-        '
-        Me.CXP_CuentasContablesTableAdapter.ClearBeforeFill = True
-        '
         'cmbImpuesto
         '
-        Me.cmbImpuesto.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ConceptosBindingSource, "impuesto", True))
         Me.cmbImpuesto.DataSource = Me.CXPImpuestoBindingSource
-        Me.cmbImpuesto.DisplayMember = "descripcion"
+        Me.cmbImpuesto.DisplayMember = "descripcionLarga"
+        Me.cmbImpuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbImpuesto.FormattingEnabled = True
-        Me.cmbImpuesto.Location = New System.Drawing.Point(462, 39)
+        Me.cmbImpuesto.Location = New System.Drawing.Point(79, 189)
         Me.cmbImpuesto.Name = "cmbImpuesto"
-        Me.cmbImpuesto.Size = New System.Drawing.Size(219, 21)
+        Me.cmbImpuesto.Size = New System.Drawing.Size(327, 21)
         Me.cmbImpuesto.TabIndex = 18
         Me.cmbImpuesto.ValueMember = "idImpuesto"
         '
@@ -318,13 +327,13 @@ Partial Class frmConceptos
         '
         'cmbTipoProducto
         '
-        Me.cmbTipoProducto.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ConceptosBindingSource, "tipoProducto", True))
+        Me.cmbTipoProducto.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ConceptosBindingSource, "impuesto", True))
         Me.cmbTipoProducto.DataSource = Me.CXPTipoGastoBindingSource
         Me.cmbTipoProducto.DisplayMember = "nombre"
         Me.cmbTipoProducto.FormattingEnabled = True
-        Me.cmbTipoProducto.Location = New System.Drawing.Point(98, 65)
+        Me.cmbTipoProducto.Location = New System.Drawing.Point(112, 60)
         Me.cmbTipoProducto.Name = "cmbTipoProducto"
-        Me.cmbTipoProducto.Size = New System.Drawing.Size(294, 21)
+        Me.cmbTipoProducto.Size = New System.Drawing.Size(362, 21)
         Me.cmbTipoProducto.TabIndex = 19
         Me.cmbTipoProducto.ValueMember = "idTipoGasto"
         '
@@ -333,22 +342,14 @@ Partial Class frmConceptos
         Me.CXPTipoGastoBindingSource.DataMember = "CXP_TipoGasto"
         Me.CXPTipoGastoBindingSource.DataSource = Me.DsProduction
         '
-        'CXP_ImpuestoTableAdapter
-        '
-        Me.CXP_ImpuestoTableAdapter.ClearBeforeFill = True
-        '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(674, 145)
+        Me.btnSalir.Location = New System.Drawing.Point(399, 363)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 20
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'CXP_TipoGastoTableAdapter
-        '
-        Me.CXP_TipoGastoTableAdapter.ClearBeforeFill = True
         '
         'dgvImpuestos
         '
@@ -356,64 +357,57 @@ Partial Class frmConceptos
         Me.dgvImpuestos.AllowUserToDeleteRows = False
         Me.dgvImpuestos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.dgvImpuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvImpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idImpuesto, Me.impuesto, Me.cuenta, Me.eliminar})
-        Me.dgvImpuestos.Location = New System.Drawing.Point(406, 68)
+        Me.dgvImpuestos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.impuesto, Me.cuenta, Me.eliminar, Me.idImpuesto})
+        Me.dgvImpuestos.Location = New System.Drawing.Point(14, 216)
         Me.dgvImpuestos.Name = "dgvImpuestos"
         Me.dgvImpuestos.ReadOnly = True
-        Me.dgvImpuestos.Size = New System.Drawing.Size(343, 71)
+        Me.dgvImpuestos.RowHeadersVisible = False
+        Me.dgvImpuestos.Size = New System.Drawing.Size(460, 138)
         Me.dgvImpuestos.TabIndex = 21
         '
-        'idImpuesto
+        'id
         '
-        Me.idImpuesto.Frozen = True
-        Me.idImpuesto.HeaderText = "Id"
-        Me.idImpuesto.Name = "idImpuesto"
-        Me.idImpuesto.ReadOnly = True
-        Me.idImpuesto.Visible = False
-        Me.idImpuesto.Width = 30
+        Me.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.id.HeaderText = "Id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Width = 41
         '
         'impuesto
         '
-        Me.impuesto.Frozen = True
+        Me.impuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.impuesto.HeaderText = "Impuesto"
         Me.impuesto.Name = "impuesto"
         Me.impuesto.ReadOnly = True
-        Me.impuesto.Width = 150
+        Me.impuesto.Width = 75
         '
         'cuenta
         '
-        Me.cuenta.Frozen = True
         Me.cuenta.HeaderText = "Cuenta"
         Me.cuenta.Name = "cuenta"
         Me.cuenta.ReadOnly = True
         '
         'eliminar
         '
-        Me.eliminar.Frozen = True
-        Me.eliminar.HeaderText = ""
+        Me.eliminar.HeaderText = "Eliminar"
         Me.eliminar.Name = "eliminar"
         Me.eliminar.ReadOnly = True
-        Me.eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.eliminar.Width = 50
+        '
+        'idImpuesto
+        '
+        Me.idImpuesto.HeaderText = "IdImpuesto"
+        Me.idImpuesto.Name = "idImpuesto"
+        Me.idImpuesto.ReadOnly = True
+        Me.idImpuesto.Visible = False
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(687, 37)
+        Me.btnAgregar.Location = New System.Drawing.Point(412, 188)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(62, 23)
         Me.btnAgregar.TabIndex = 22
         Me.btnAgregar.Text = "Agregar"
         Me.btnAgregar.UseVisualStyleBackColor = True
-        '
-        'CuentaProvLabel
-        '
-        CuentaProvLabel.AutoSize = True
-        CuentaProvLabel.Location = New System.Drawing.Point(14, 121)
-        CuentaProvLabel.Name = "CuentaProvLabel"
-        CuentaProvLabel.Size = New System.Drawing.Size(78, 13)
-        CuentaProvLabel.TabIndex = 22
-        CuentaProvLabel.Text = "Cuenta Abono:"
         '
         'ComboBox1
         '
@@ -421,27 +415,124 @@ Partial Class frmConceptos
         Me.ComboBox1.DataSource = Me.CXPCuentasContablesBindingSource1
         Me.ComboBox1.DisplayMember = "nombre"
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(98, 118)
+        Me.ComboBox1.Location = New System.Drawing.Point(112, 113)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(294, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(362, 21)
         Me.ComboBox1.TabIndex = 23
         Me.ComboBox1.ValueMember = "idCuentaContable"
+        '
+        'CXPCuentasContablesBindingSource1
+        '
+        Me.CXPCuentasContablesBindingSource1.DataMember = "CXP_CuentasContables"
+        Me.CXPCuentasContablesBindingSource1.DataSource = Me.DsProduction1
+        Me.CXPCuentasContablesBindingSource1.Filter = ""
         '
         'DsProduction1
         '
         Me.DsProduction1.DataSetName = "dsProduction"
         Me.DsProduction1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'CXPCuentasContablesBindingSource1
+        'IdConceptoTextBox
         '
-        Me.CXPCuentasContablesBindingSource1.DataMember = "CXP_CuentasContables"
-        Me.CXPCuentasContablesBindingSource1.DataSource = Me.DsProduction1
+        Me.IdConceptoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ConceptosBindingSource, "idConcepto", True))
+        Me.IdConceptoTextBox.Location = New System.Drawing.Point(93, 363)
+        Me.IdConceptoTextBox.Name = "IdConceptoTextBox"
+        Me.IdConceptoTextBox.ReadOnly = True
+        Me.IdConceptoTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.IdConceptoTextBox.TabIndex = 27
+        '
+        'VwCXPImpConBindingSource
+        '
+        Me.VwCXPImpConBindingSource.DataMember = "Vw_CXP_ImpCon"
+        Me.VwCXPImpConBindingSource.DataSource = Me.DsProduction2
+        '
+        'DsProduction2
+        '
+        Me.DsProduction2.DataSetName = "dsProduction"
+        Me.DsProduction2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_ConceptosTableAdapter
+        '
+        Me.CXP_ConceptosTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Me.CXP_ConceptosTableAdapter
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'CXP_CuentasContablesTableAdapter
+        '
+        Me.CXP_CuentasContablesTableAdapter.ClearBeforeFill = True
+        '
+        'CXP_ImpuestoTableAdapter
+        '
+        Me.CXP_ImpuestoTableAdapter.ClearBeforeFill = True
+        '
+        'CXP_TipoGastoTableAdapter
+        '
+        Me.CXP_TipoGastoTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_CXP_ImpConTableAdapter
+        '
+        Me.Vw_CXP_ImpConTableAdapter.ClearBeforeFill = True
+        '
+        'cmbTipoPoliza
+        '
+        Me.cmbTipoPoliza.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ConceptosBindingSource, "tipoProducto", True))
+        Me.cmbTipoPoliza.DataSource = Me.CXPtipoDeDocumentoBindingSource1
+        Me.cmbTipoPoliza.DisplayMember = "claveTipoDocumento"
+        Me.cmbTipoPoliza.FormattingEnabled = True
+        Me.cmbTipoPoliza.Location = New System.Drawing.Point(112, 140)
+        Me.cmbTipoPoliza.Name = "cmbTipoPoliza"
+        Me.cmbTipoPoliza.Size = New System.Drawing.Size(362, 21)
+        Me.cmbTipoPoliza.TabIndex = 28
+        Me.cmbTipoPoliza.ValueMember = "idTipoDeDocumento"
+        '
+        'CXPtipoDeDocumentoBindingSource1
+        '
+        Me.CXPtipoDeDocumentoBindingSource1.DataMember = "CXP_tipoDeDocumento"
+        Me.CXPtipoDeDocumentoBindingSource1.DataSource = Me.DsProduction
+        Me.CXPtipoDeDocumentoBindingSource1.Filter = "documentoDe = 'Egreso'"
+        '
+        'CXP_tipoDeDocumentoTableAdapter
+        '
+        Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
         '
         'frmConceptos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(760, 181)
+        Me.ClientSize = New System.Drawing.Size(492, 398)
+        Me.Controls.Add(Label2)
+        Me.Controls.Add(Me.cmbTipoPoliza)
+        Me.Controls.Add(IdConceptoLabel)
+        Me.Controls.Add(Me.IdConceptoTextBox)
+        Me.Controls.Add(Label1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(CuentaProvLabel)
         Me.Controls.Add(Me.btnAgregar)
@@ -450,7 +541,6 @@ Partial Class frmConceptos
         Me.Controls.Add(Me.cmbTipoProducto)
         Me.Controls.Add(Me.cmbImpuesto)
         Me.Controls.Add(Me.cmbCuentaEgreso)
-        Me.Controls.Add(CuentaEgresoLabel)
         Me.Controls.Add(TipoProductoLabel)
         Me.Controls.Add(ImpuestoLabel)
         Me.Controls.Add(NombreLabel)
@@ -459,17 +549,20 @@ Partial Class frmConceptos
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmConceptos"
         Me.Text = "Conceptos"
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXP_ConceptosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_ConceptosBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CXP_ConceptosBindingNavigator.ResumeLayout(False)
         Me.CXP_ConceptosBindingNavigator.PerformLayout()
+        CType(Me.CXP_ConceptosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPImpuestoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPTipoGastoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvImpuestos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasContablesBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCXPImpConBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPtipoDeDocumentoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -505,11 +598,19 @@ Partial Class frmConceptos
     Friend WithEvents CXP_TipoGastoTableAdapter As dsProductionTableAdapters.CXP_TipoGastoTableAdapter
     Friend WithEvents dgvImpuestos As DataGridView
     Friend WithEvents btnAgregar As Button
-    Friend WithEvents idImpuesto As DataGridViewTextBoxColumn
-    Friend WithEvents impuesto As DataGridViewTextBoxColumn
-    Friend WithEvents cuenta As DataGridViewTextBoxColumn
-    Friend WithEvents eliminar As DataGridViewLinkColumn
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents DsProduction1 As dsProduction
     Friend WithEvents CXPCuentasContablesBindingSource1 As BindingSource
+    Friend WithEvents IdConceptoTextBox As TextBox
+    Friend WithEvents DsProduction2 As dsProduction
+    Friend WithEvents VwCXPImpConBindingSource As BindingSource
+    Friend WithEvents Vw_CXP_ImpConTableAdapter As dsProductionTableAdapters.Vw_CXP_ImpConTableAdapter
+    Friend WithEvents id As DataGridViewTextBoxColumn
+    Friend WithEvents impuesto As DataGridViewTextBoxColumn
+    Friend WithEvents cuenta As DataGridViewTextBoxColumn
+    Friend WithEvents eliminar As DataGridViewLinkColumn
+    Friend WithEvents idImpuesto As DataGridViewTextBoxColumn
+    Friend WithEvents cmbTipoPoliza As ComboBox
+    Friend WithEvents CXPtipoDeDocumentoBindingSource1 As BindingSource
+    Friend WithEvents CXP_tipoDeDocumentoTableAdapter As dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter
 End Class

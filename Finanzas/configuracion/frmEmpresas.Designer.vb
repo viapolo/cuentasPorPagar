@@ -37,6 +37,7 @@ Partial Class frmEmpresas
         Dim RfcLabel As System.Windows.Forms.Label
         Dim RazonSocialLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEmpresas))
+        Dim FolioSolLabel As System.Windows.Forms.Label
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_EmpresasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_EmpresasTableAdapter()
@@ -53,6 +54,7 @@ Partial Class frmEmpresas
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.CodigoPostalTextBox = New System.Windows.Forms.TextBox()
         Me.cmbPais = New System.Windows.Forms.ComboBox()
+        Me.CXPcPaisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CondicionesDePagoTextBox = New System.Windows.Forms.TextBox()
         Me.DelegacionTextBox = New System.Windows.Forms.TextBox()
         Me.ColoniaTextBox = New System.Windows.Forms.TextBox()
@@ -82,8 +84,8 @@ Partial Class frmEmpresas
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
         Me.CXP_c_CodigoPostalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXPcMonedaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXPcPaisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_c_PaisTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_c_PaisTableAdapter()
+        Me.FolioSolTextBox = New System.Windows.Forms.TextBox()
         IdRegimenFiscalLabel = New System.Windows.Forms.Label()
         CondicionesDePagoLabel = New System.Windows.Forms.Label()
         IdMonedaLabel = New System.Windows.Forms.Label()
@@ -97,6 +99,7 @@ Partial Class frmEmpresas
         CalleLabel = New System.Windows.Forms.Label()
         RfcLabel = New System.Windows.Forms.Label()
         RazonSocialLabel = New System.Windows.Forms.Label()
+        FolioSolLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxInformaciongeneral.SuspendLayout()
         CType(Me.CXP_EmpresasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,11 +109,11 @@ Partial Class frmEmpresas
         CType(Me.DsProduction3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPcEstadoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPcPaisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_EmpresasBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_EmpresasBindingNavigator.SuspendLayout()
         CType(Me.CXP_c_CodigoPostalBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXPcPaisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IdRegimenFiscalLabel
@@ -233,7 +236,7 @@ Partial Class frmEmpresas
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(625, 233)
+        Me.btnSalir.Location = New System.Drawing.Point(625, 261)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 29
@@ -373,6 +376,11 @@ Partial Class frmEmpresas
         Me.cmbPais.TabIndex = 52
         Me.cmbPais.ValueMember = "c_Pais"
         '
+        'CXPcPaisBindingSource
+        '
+        Me.CXPcPaisBindingSource.DataMember = "CXP_c_Pais"
+        Me.CXPcPaisBindingSource.DataSource = Me.DsProduction
+        '
         'CondicionesDePagoTextBox
         '
         Me.CondicionesDePagoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_EmpresasBindingSource, "condicionesDePago", True))
@@ -456,8 +464,8 @@ Partial Class frmEmpresas
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorSeparator1
@@ -484,7 +492,7 @@ Partial Class frmEmpresas
         Me.CXP_EmpresasBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_EmpresasBindingNavigator.Name = "CXP_EmpresasBindingNavigator"
         Me.CXP_EmpresasBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_EmpresasBindingNavigator.Size = New System.Drawing.Size(715, 25)
+        Me.CXP_EmpresasBindingNavigator.Size = New System.Drawing.Size(720, 25)
         Me.CXP_EmpresasBindingNavigator.TabIndex = 32
         Me.CXP_EmpresasBindingNavigator.Text = "BindingNavigator1"
         '
@@ -578,6 +586,7 @@ Partial Class frmEmpresas
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
@@ -585,13 +594,22 @@ Partial Class frmEmpresas
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CXP_c_CodigoPostalBindingSource
@@ -604,14 +622,27 @@ Partial Class frmEmpresas
         Me.CXPcMonedaBindingSource.DataMember = "CXP_c_Moneda"
         Me.CXPcMonedaBindingSource.DataSource = Me.DsProduction2
         '
-        'CXPcPaisBindingSource
-        '
-        Me.CXPcPaisBindingSource.DataMember = "CXP_c_Pais"
-        Me.CXPcPaisBindingSource.DataSource = Me.DsProduction
-        '
         'CXP_c_PaisTableAdapter
         '
         Me.CXP_c_PaisTableAdapter.ClearBeforeFill = True
+        '
+        'FolioSolLabel
+        '
+        FolioSolLabel.AutoSize = True
+        FolioSolLabel.Location = New System.Drawing.Point(58, 236)
+        FolioSolLabel.Name = "FolioSolLabel"
+        FolioSolLabel.Size = New System.Drawing.Size(118, 13)
+        FolioSolLabel.TabIndex = 33
+        FolioSolLabel.Text = "Folio Solicitud de Pago:"
+        '
+        'FolioSolTextBox
+        '
+        Me.FolioSolTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_EmpresasBindingSource, "folioSol", True))
+        Me.FolioSolTextBox.Location = New System.Drawing.Point(176, 233)
+        Me.FolioSolTextBox.Name = "FolioSolTextBox"
+        Me.FolioSolTextBox.ReadOnly = True
+        Me.FolioSolTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.FolioSolTextBox.TabIndex = 34
         '
         'frmEmpresas
         '
@@ -619,7 +650,9 @@ Partial Class frmEmpresas
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(715, 271)
+        Me.ClientSize = New System.Drawing.Size(720, 304)
+        Me.Controls.Add(FolioSolLabel)
+        Me.Controls.Add(Me.FolioSolTextBox)
         Me.Controls.Add(Me.RazonSocialTextBox)
         Me.Controls.Add(Me.CXP_EmpresasBindingNavigator)
         Me.Controls.Add(Me.cmbRazonSocial)
@@ -640,12 +673,12 @@ Partial Class frmEmpresas
         CType(Me.DsProduction3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPcEstadoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPcPaisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_EmpresasBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CXP_EmpresasBindingNavigator.ResumeLayout(False)
         Me.CXP_EmpresasBindingNavigator.PerformLayout()
         CType(Me.CXP_c_CodigoPostalBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXPcPaisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -699,4 +732,5 @@ Partial Class frmEmpresas
     Friend WithEvents cmbRegimenFiscal As ComboBox
     Friend WithEvents CXPcPaisBindingSource As BindingSource
     Friend WithEvents CXP_c_PaisTableAdapter As dsProductionTableAdapters.CXP_c_PaisTableAdapter
+    Friend WithEvents FolioSolTextBox As TextBox
 End Class

@@ -148,6 +148,12 @@
     <Compile Include="catalogos\frmContTipoDocumentos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="catalogos\frmSATTipoDocumento.Designer.vb">
+      <DependentUpon>frmSATTipoDocumento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmSATTipoDocumento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="catalogos\frmTipoGasto.Designer.vb">
       <DependentUpon>frmTipoGasto.vb</DependentUpon>
     </Compile>
@@ -155,6 +161,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClaseHash.vb" />
+    <Compile Include="configuracion\frmAutorizaciones.Designer.vb">
+      <DependentUpon>frmAutorizaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion\frmAutorizaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="configuracion\frmEmpresas.Designer.vb">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
     </Compile>
@@ -185,16 +197,22 @@
     <Compile Include="configuracion\frmUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="diarios\frmDiariosFe.Designer.vb">
-      <DependentUpon>frmDiariosFe.vb</DependentUpon>
+    <Compile Include="diarios\frmPolizasDiario.Designer.vb">
+      <DependentUpon>frmPolizasDiario.vb</DependentUpon>
     </Compile>
-    <Compile Include="diarios\frmDiariosFe.vb">
+    <Compile Include="diarios\frmPolizasDiario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="diarios\frmEspecificaTipoDocumento.Designer.vb">
-      <DependentUpon>frmEspecificaTipoDocumento.vb</DependentUpon>
+    <Compile Include="diarios\frmSolicitudesDePago.Designer.vb">
+      <DependentUpon>frmSolicitudesDePago.vb</DependentUpon>
     </Compile>
-    <Compile Include="diarios\frmEspecificaTipoDocumento.vb">
+    <Compile Include="diarios\frmSolicitudesDePago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="diarios\frmSolicitudesDePagoCFDI.Designer.vb">
+      <DependentUpon>frmSolicitudesDePagoCFDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="diarios\frmSolicitudesDePagoCFDI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dsProduction.Designer.vb">
@@ -209,18 +227,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSeguridad.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="frmRegistroDeDiario.Designer.vb">
-      <DependentUpon>frmRegistroDeDiario.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRegistroDeDiario.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSugerenciaDePago.Designer.vb">
-      <DependentUpon>frmSugerenciaDePago.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSugerenciaDePago.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="lfrInicio.Designer.vb">
       <DependentUpon>lfrInicio.vb</DependentUpon>
@@ -282,8 +288,14 @@
     <EmbeddedResource Include="catalogos\frmContTipoDocumentos.resx">
       <DependentUpon>frmContTipoDocumentos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmSATTipoDocumento.resx">
+      <DependentUpon>frmSATTipoDocumento.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmTipoGasto.resx">
       <DependentUpon>frmTipoGasto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="configuracion\frmAutorizaciones.resx">
+      <DependentUpon>frmAutorizaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmEmpresas.resx">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
@@ -300,14 +312,14 @@
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="diarios\frmDiariosFe.resx">
-      <DependentUpon>frmDiariosFe.vb</DependentUpon>
+    <EmbeddedResource Include="diarios\frmPolizasDiario.resx">
+      <DependentUpon>frmPolizasDiario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="diarios\frmEspecificaTipoDocumento.resx">
-      <DependentUpon>frmEspecificaTipoDocumento.vb</DependentUpon>
+    <EmbeddedResource Include="diarios\frmSolicitudesDePago.resx">
+      <DependentUpon>frmSolicitudesDePago.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSugerenciaDePago.resx">
-      <DependentUpon>frmSugerenciaDePago.vb</DependentUpon>
+    <EmbeddedResource Include="diarios\frmSolicitudesDePagoCFDI.resx">
+      <DependentUpon>frmSolicitudesDePagoCFDI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lfrInicio.resx">
       <DependentUpon>lfrInicio.vb</DependentUpon>
@@ -372,6 +384,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LOGOpeque2.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondoconteblanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo-shop-primary.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

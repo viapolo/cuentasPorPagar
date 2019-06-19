@@ -38,6 +38,14 @@ Partial Class frmPerfiles
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CXP_PerfilesUsuarioDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_PerfilesUsuarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -48,14 +56,7 @@ Partial Class frmPerfiles
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.CXP_PerfilesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesTableAdapter()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.chkAccesoWeb = New System.Windows.Forms.CheckBox()
         CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsSeguridadBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.USUARIOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +89,6 @@ Partial Class frmPerfiles
         'cmbMenu
         '
         Me.cmbMenu.DropDownWidth = 121
-        Me.cmbMenu.Enabled = False
         Me.cmbMenu.FormattingEnabled = True
         Me.cmbMenu.Location = New System.Drawing.Point(12, 85)
         Me.cmbMenu.Name = "cmbMenu"
@@ -97,7 +97,6 @@ Partial Class frmPerfiles
         '
         'cmbSubMenu1
         '
-        Me.cmbSubMenu1.Enabled = False
         Me.cmbSubMenu1.FormattingEnabled = True
         Me.cmbSubMenu1.Location = New System.Drawing.Point(218, 85)
         Me.cmbSubMenu1.Name = "cmbSubMenu1"
@@ -106,7 +105,6 @@ Partial Class frmPerfiles
         '
         'cmbSubMenu2
         '
-        Me.cmbSubMenu2.Enabled = False
         Me.cmbSubMenu2.FormattingEnabled = True
         Me.cmbSubMenu2.Location = New System.Drawing.Point(427, 85)
         Me.cmbSubMenu2.Name = "cmbSubMenu2"
@@ -116,7 +114,6 @@ Partial Class frmPerfiles
         'chkLectura
         '
         Me.chkLectura.AutoSize = True
-        Me.chkLectura.Enabled = False
         Me.chkLectura.Location = New System.Drawing.Point(632, 87)
         Me.chkLectura.Name = "chkLectura"
         Me.chkLectura.Size = New System.Drawing.Size(62, 17)
@@ -127,7 +124,6 @@ Partial Class frmPerfiles
         'chkEscritura
         '
         Me.chkEscritura.AutoSize = True
-        Me.chkEscritura.Enabled = False
         Me.chkEscritura.Location = New System.Drawing.Point(700, 87)
         Me.chkEscritura.Name = "chkEscritura"
         Me.chkEscritura.Size = New System.Drawing.Size(114, 17)
@@ -164,7 +160,6 @@ Partial Class frmPerfiles
         '
         'btnAgregar
         '
-        Me.btnAgregar.Enabled = False
         Me.btnAgregar.Location = New System.Drawing.Point(820, 83)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(60, 23)
@@ -193,90 +188,6 @@ Partial Class frmPerfiles
         Me.CXP_PerfilesUsuarioDataGridView.ReadOnly = True
         Me.CXP_PerfilesUsuarioDataGridView.Size = New System.Drawing.Size(934, 192)
         Me.CXP_PerfilesUsuarioDataGridView.TabIndex = 11
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(296, 30)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 12
-        Me.Button1.Text = "Buscar"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXP_PerfilesUsuarioBindingSource
-        '
-        Me.CXP_PerfilesUsuarioBindingSource.DataMember = "CXP_PerfilesUsuario"
-        Me.CXP_PerfilesUsuarioBindingSource.DataSource = Me.DsProduction
-        '
-        'CXP_PerfilesUsuarioTableAdapter
-        '
-        Me.CXP_PerfilesUsuarioTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Me.CXP_PerfilesUsuarioTableAdapter
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'cmbNombrePerfil
-        '
-        Me.cmbNombrePerfil.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_PerfilesUsuarioBindingSource, "nombrePerfil", True))
-        Me.cmbNombrePerfil.DataSource = Me.CXPPerfilesBindingSource
-        Me.cmbNombrePerfil.DisplayMember = "nombrePerfil"
-        Me.cmbNombrePerfil.FormattingEnabled = True
-        Me.cmbNombrePerfil.Location = New System.Drawing.Point(91, 32)
-        Me.cmbNombrePerfil.Name = "cmbNombrePerfil"
-        Me.cmbNombrePerfil.Size = New System.Drawing.Size(199, 21)
-        Me.cmbNombrePerfil.TabIndex = 13
-        Me.cmbNombrePerfil.ValueMember = "idPerf"
-        '
-        'CXPPerfilesBindingSource
-        '
-        Me.CXPPerfilesBindingSource.DataMember = "CXP_Perfiles"
-        Me.CXPPerfilesBindingSource.DataSource = Me.DsProduction1
-        '
-        'DsProduction1
-        '
-        Me.DsProduction1.DataSetName = "dsProduction"
-        Me.DsProduction1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXP_PerfilesTableAdapter
-        '
-        Me.CXP_PerfilesTableAdapter.ClearBeforeFill = True
-        '
-        'btnCancelar
-        '
-        Me.btnCancelar.Enabled = False
-        Me.btnCancelar.Location = New System.Drawing.Point(885, 83)
-        Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(60, 23)
-        Me.btnCancelar.TabIndex = 14
-        Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'DataGridViewTextBoxColumn5
         '
@@ -338,11 +249,108 @@ Partial Class frmPerfiles
         Me.DataGridViewTextBoxColumn1.Visible = False
         Me.DataGridViewTextBoxColumn1.Width = 30
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(296, 30)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 12
+        Me.Button1.Text = "Buscar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_PerfilesUsuarioBindingSource
+        '
+        Me.CXP_PerfilesUsuarioBindingSource.DataMember = "CXP_PerfilesUsuario"
+        Me.CXP_PerfilesUsuarioBindingSource.DataSource = Me.DsProduction
+        '
+        'CXP_PerfilesUsuarioTableAdapter
+        '
+        Me.CXP_PerfilesUsuarioTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Me.CXP_PerfilesUsuarioTableAdapter
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'cmbNombrePerfil
+        '
+        Me.cmbNombrePerfil.DataSource = Me.CXPPerfilesBindingSource
+        Me.cmbNombrePerfil.DisplayMember = "nombrePerfil"
+        Me.cmbNombrePerfil.FormattingEnabled = True
+        Me.cmbNombrePerfil.Location = New System.Drawing.Point(91, 32)
+        Me.cmbNombrePerfil.Name = "cmbNombrePerfil"
+        Me.cmbNombrePerfil.Size = New System.Drawing.Size(199, 21)
+        Me.cmbNombrePerfil.TabIndex = 13
+        Me.cmbNombrePerfil.ValueMember = "idPerf"
+        '
+        'CXPPerfilesBindingSource
+        '
+        Me.CXPPerfilesBindingSource.DataMember = "CXP_Perfiles"
+        Me.CXPPerfilesBindingSource.DataSource = Me.DsProduction1
+        '
+        'DsProduction1
+        '
+        Me.DsProduction1.DataSetName = "dsProduction"
+        Me.DsProduction1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_PerfilesTableAdapter
+        '
+        Me.CXP_PerfilesTableAdapter.ClearBeforeFill = True
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.Location = New System.Drawing.Point(885, 83)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(60, 23)
+        Me.btnCancelar.TabIndex = 14
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = True
+        '
+        'chkAccesoWeb
+        '
+        Me.chkAccesoWeb.Appearance = System.Windows.Forms.Appearance.Button
+        Me.chkAccesoWeb.AutoSize = True
+        Me.chkAccesoWeb.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.CXP_PerfilesUsuarioBindingSource, "web", True))
+        Me.chkAccesoWeb.Location = New System.Drawing.Point(632, 54)
+        Me.chkAccesoWeb.Name = "chkAccesoWeb"
+        Me.chkAccesoWeb.Size = New System.Drawing.Size(79, 23)
+        Me.chkAccesoWeb.TabIndex = 15
+        Me.chkAccesoWeb.Text = "Acceso Web"
+        Me.chkAccesoWeb.UseVisualStyleBackColor = True
+        '
         'frmPerfiles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(957, 335)
+        Me.Controls.Add(Me.chkAccesoWeb)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.cmbNombrePerfil)
         Me.Controls.Add(Me.Button1)
@@ -404,4 +412,5 @@ Partial Class frmPerfiles
     Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
     Friend WithEvents eliminar As DataGridViewLinkColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents chkAccesoWeb As CheckBox
 End Class

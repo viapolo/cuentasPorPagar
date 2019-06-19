@@ -46,7 +46,7 @@
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue)
+        taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue, chkAccesoWeb.Checked)
         cmbSubMenu1.Text = ""
         cmbSubMenu1.Items.Clear()
         cmbSubMenu2.Text = ""
@@ -56,13 +56,7 @@
         For Each rowsa As dsProduction.CXP_PerfilesUsuarioRow In DsProduction.CXP_PerfilesUsuario.Rows
             CXP_PerfilesUsuarioDataGridView.Rows.Add(rowsa.nombrePerfil, rowsa.menu, rowsa.submenu1, rowsa.submenu2, rowsa.lectura, rowsa.lecturaEscritura, "Eliminar", rowsa.idPerfil)
         Next
-        cmbMenu.Enabled = False
-        cmbSubMenu1.Enabled = False
-        cmbSubMenu2.Enabled = False
-        chkEscritura.Enabled = False
-        chkLectura.Enabled = False
-        btnAgregar.Enabled = False
-        cmbNombrePerfil.Enabled = True
+        cmbMenu.Enabled = True
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -71,8 +65,8 @@
         For Each rowsa As dsProduction.CXP_PerfilesUsuarioRow In DsProduction.CXP_PerfilesUsuario.Rows
             CXP_PerfilesUsuarioDataGridView.Rows.Add(rowsa.nombrePerfil, rowsa.menu, rowsa.submenu1, rowsa.submenu2, rowsa.lectura, rowsa.lecturaEscritura, "Eliminar", rowsa.idPerfil)
         Next
-        cmbMenu.Enabled = True
-        cmbNombrePerfil.Enabled = False
+        'cmbMenu.Enabled = True
+        'cmbNombrePerfil.Enabled = False
     End Sub
 
     Private Sub CXP_PerfilesUsuarioDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CXP_PerfilesUsuarioDataGridView.CellContentClick
@@ -93,5 +87,13 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         cmbNombrePerfil.Enabled = True
+    End Sub
+
+    Private Sub chkAccesoWeb_CheckedChanged(sender As Object, e As EventArgs) Handles chkAccesoWeb.CheckedChanged
+
+    End Sub
+
+    Private Sub chkAccesoWeb_Click(sender As Object, e As EventArgs) Handles chkAccesoWeb.Click
+        taPerfiles.ActWeb_UpdateQuery(chkAccesoWeb.Checked, cmbNombrePerfil.SelectedValue)
     End Sub
 End Class
