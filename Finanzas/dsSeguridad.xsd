@@ -231,7 +231,7 @@ GROUP BY id_depto</CommandText>
   <xs:element name="dsSeguridad" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsSeguridad" msprop:Generator_UserDSName="dsSeguridad">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="USUARIO" msprop:Generator_TableClassName="USUARIODataTable" msprop:Generator_TableVarName="tableUSUARIO" msprop:Generator_TablePropName="USUARIO" msprop:Generator_RowDeletingName="USUARIORowDeleting" msprop:Generator_RowChangingName="USUARIORowChanging" msprop:Generator_RowEvHandlerName="USUARIORowChangeEventHandler" msprop:Generator_RowDeletedName="USUARIORowDeleted" msprop:Generator_UserTableName="USUARIO" msprop:Generator_RowChangedName="USUARIORowChanged" msprop:Generator_RowEvArgName="USUARIORowChangeEvent" msprop:Generator_RowClassName="USUARIORow">
+        <xs:element name="USUARIO" msprop:Generator_TableClassName="USUARIODataTable" msprop:Generator_TableVarName="tableUSUARIO" msprop:Generator_RowChangedName="USUARIORowChanged" msprop:Generator_TablePropName="USUARIO" msprop:Generator_RowDeletingName="USUARIORowDeleting" msprop:Generator_RowChangingName="USUARIORowChanging" msprop:Generator_RowEvHandlerName="USUARIORowChangeEventHandler" msprop:Generator_RowDeletedName="USUARIORowDeleted" msprop:Generator_RowClassName="USUARIORow" msprop:Generator_UserTableName="USUARIO" msprop:Generator_RowEvArgName="USUARIORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cve_empleado" msprop:Generator_ColumnVarNameInTable="columncve_empleado" msprop:Generator_ColumnPropNameInRow="cve_empleado" msprop:Generator_ColumnPropNameInTable="cve_empleadoColumn" msprop:Generator_UserColumnName="cve_empleado">
@@ -349,7 +349,7 @@ GROUP BY id_depto</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="USUARIO1" msprop:Generator_TableClassName="USUARIO1DataTable" msprop:Generator_TableVarName="tableUSUARIO1" msprop:Generator_TablePropName="USUARIO1" msprop:Generator_RowDeletingName="USUARIO1RowDeleting" msprop:Generator_RowChangingName="USUARIO1RowChanging" msprop:Generator_RowEvHandlerName="USUARIO1RowChangeEventHandler" msprop:Generator_RowDeletedName="USUARIO1RowDeleted" msprop:Generator_UserTableName="USUARIO1" msprop:Generator_RowChangedName="USUARIO1RowChanged" msprop:Generator_RowEvArgName="USUARIO1RowChangeEvent" msprop:Generator_RowClassName="USUARIO1Row">
+        <xs:element name="USUARIO1" msprop:Generator_TableClassName="USUARIO1DataTable" msprop:Generator_TableVarName="tableUSUARIO1" msprop:Generator_RowChangedName="USUARIO1RowChanged" msprop:Generator_TablePropName="USUARIO1" msprop:Generator_RowDeletingName="USUARIO1RowDeleting" msprop:Generator_RowChangingName="USUARIO1RowChanging" msprop:Generator_RowEvHandlerName="USUARIO1RowChangeEventHandler" msprop:Generator_RowDeletedName="USUARIO1RowDeleted" msprop:Generator_RowClassName="USUARIO1Row" msprop:Generator_UserTableName="USUARIO1" msprop:Generator_RowEvArgName="USUARIO1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_depto" msprop:Generator_ColumnVarNameInTable="columnid_depto" msprop:Generator_ColumnPropNameInRow="id_depto" msprop:Generator_ColumnPropNameInTable="id_deptoColumn" msprop:Generator_UserColumnName="id_depto" minOccurs="0">

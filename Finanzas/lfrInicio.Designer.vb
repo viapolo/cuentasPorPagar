@@ -14,11 +14,8 @@ Partial Class lfrInicio
             MyBase.Dispose(disposing)
         End Try
     End Sub
-    Friend WithEvents LogoPictureBox As System.Windows.Forms.PictureBox
     Friend WithEvents UsernameLabel As System.Windows.Forms.Label
-    Friend WithEvents PasswordLabel As System.Windows.Forms.Label
     Friend WithEvents UsernameTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents PasswordTextBox As System.Windows.Forms.TextBox
     Friend WithEvents OK As System.Windows.Forms.Button
     Friend WithEvents Cancel As System.Windows.Forms.Button
 
@@ -32,12 +29,9 @@ Partial Class lfrInicio
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.UsernameLabel = New System.Windows.Forms.Label()
-        Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.UsernameTextBox = New System.Windows.Forms.TextBox()
-        Me.PasswordTextBox = New System.Windows.Forms.TextBox()
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
-        Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.cmbEmpresa = New System.Windows.Forms.ComboBox()
         Me.CXPEmpresasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsProduction = New cuentasPorPagar.dsProduction()
@@ -45,7 +39,6 @@ Partial Class lfrInicio
         Me.CXP_EmpresasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_EmpresasTableAdapter()
         Me.CXPUauriosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_UsuariosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_UsuariosTableAdapter()
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEmpresasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPUauriosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,40 +46,24 @@ Partial Class lfrInicio
         '
         'UsernameLabel
         '
-        Me.UsernameLabel.Location = New System.Drawing.Point(172, 24)
+        Me.UsernameLabel.Location = New System.Drawing.Point(10, 5)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
         Me.UsernameLabel.TabIndex = 0
         Me.UsernameLabel.Text = "Nombre de usuario:"
         Me.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'PasswordLabel
-        '
-        Me.PasswordLabel.Location = New System.Drawing.Point(172, 70)
-        Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
-        Me.PasswordLabel.TabIndex = 2
-        Me.PasswordLabel.Text = "Contraseña:"
-        Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'UsernameTextBox
         '
-        Me.UsernameTextBox.Location = New System.Drawing.Point(174, 44)
+        Me.UsernameTextBox.Enabled = False
+        Me.UsernameTextBox.Location = New System.Drawing.Point(12, 25)
         Me.UsernameTextBox.Name = "UsernameTextBox"
-        Me.UsernameTextBox.Size = New System.Drawing.Size(220, 20)
+        Me.UsernameTextBox.Size = New System.Drawing.Size(230, 20)
         Me.UsernameTextBox.TabIndex = 1
-        '
-        'PasswordTextBox
-        '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(174, 90)
-        Me.PasswordTextBox.Name = "PasswordTextBox"
-        Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.PasswordTextBox.Size = New System.Drawing.Size(220, 20)
-        Me.PasswordTextBox.TabIndex = 3
         '
         'OK
         '
-        Me.OK.Location = New System.Drawing.Point(195, 179)
+        Me.OK.Location = New System.Drawing.Point(26, 96)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(94, 23)
         Me.OK.TabIndex = 4
@@ -95,30 +72,21 @@ Partial Class lfrInicio
         'Cancel
         '
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Location = New System.Drawing.Point(298, 179)
+        Me.Cancel.Location = New System.Drawing.Point(129, 96)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(94, 23)
         Me.Cancel.TabIndex = 5
         Me.Cancel.Text = "&Cancelar"
         '
-        'LogoPictureBox
-        '
-        Me.LogoPictureBox.Image = Global.cuentasPorPagar.My.Resources.Resources.LOGOpeque2
-        Me.LogoPictureBox.Location = New System.Drawing.Point(12, 44)
-        Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(146, 87)
-        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.LogoPictureBox.TabIndex = 0
-        Me.LogoPictureBox.TabStop = False
-        '
         'cmbEmpresa
         '
         Me.cmbEmpresa.DataSource = Me.CXPEmpresasBindingSource
         Me.cmbEmpresa.DisplayMember = "razonSocial"
+        Me.cmbEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbEmpresa.FormattingEnabled = True
-        Me.cmbEmpresa.Location = New System.Drawing.Point(174, 136)
+        Me.cmbEmpresa.Location = New System.Drawing.Point(13, 69)
         Me.cmbEmpresa.Name = "cmbEmpresa"
-        Me.cmbEmpresa.Size = New System.Drawing.Size(220, 21)
+        Me.cmbEmpresa.Size = New System.Drawing.Size(229, 21)
         Me.cmbEmpresa.TabIndex = 6
         Me.cmbEmpresa.ValueMember = "idEmpresas"
         '
@@ -134,11 +102,11 @@ Partial Class lfrInicio
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(172, 113)
+        Me.Label1.Location = New System.Drawing.Point(10, 48)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(220, 23)
+        Me.Label1.Size = New System.Drawing.Size(239, 23)
         Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Empresa:"
+        Me.Label1.Text = "Seleccione la empresa a la que desea ingresar:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'CXP_EmpresasTableAdapter
@@ -160,24 +128,20 @@ Partial Class lfrInicio
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(401, 214)
-        Me.Controls.Add(Me.Label1)
+        Me.ClientSize = New System.Drawing.Size(254, 128)
         Me.Controls.Add(Me.cmbEmpresa)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
-        Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.UsernameTextBox)
-        Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.UsernameLabel)
-        Me.Controls.Add(Me.LogoPictureBox)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "lfrInicio"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Inicio"
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Cuentas por Pagar"
         CType(Me.CXPEmpresasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPUauriosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

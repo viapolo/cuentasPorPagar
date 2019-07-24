@@ -1,4 +1,11 @@
-﻿Imports System.Windows.Forms
+﻿Option Explicit On
+Imports System.Windows.Forms
+Imports Microsoft.Win32
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Collections.Specialized
+Imports System.Web
+Imports System.Deployment.Application
 
 Public Class mdicuentasPorPagar
     Public varGlUser As String
@@ -10,6 +17,8 @@ Public Class mdicuentasPorPagar
     Dim t As New dsProduction.CXP_PerfilesUsuarioDataTable
     Dim dtPerfiles As New DataTable
     Dim drPerfiles As DataRow
+    Dim USUARIOX As String
+
 
     Private Sub PerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PerfilesToolStripMenuItem.Click
         Me.Cursor = Cursors.WaitCursor
@@ -128,48 +137,160 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub mdicuentasPorPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim cn As New SqlConnection()
+        Dim strSelect As String
+        Dim Usuario As String
+        Dim Password As String
+        Dim strConnectionSecurity As String
+        Dim cm As New SqlCommand()
+        Dim dsAgil As New DataSet()
+        Dim daMenus As New SqlDataAdapter(cm)
+        Dim drMenu As DataRow
+        Dim i As Integer
+        Dim j As Integer
+        Dim k As Integer
 
-        tssUsuario.Text = "Usuario: " & varGlUser
-        tssEmpresa.Text = "Empresa: " & varGlEmpresaD
+        Dim Args() As String
+        Try
+            Args = AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData
+        Catch ex As Exception
+            ReDim Args(1)
+            Args(0) = "1"
+        End Try
 
-        If varGlUser = "viapolo" Then
-            For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-                vLocMnuOpciones.Enabled = True
-                For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-                    submenu1.Enabled = True
-                    For Each submenu2 As ToolStripMenuItem In submenu1.DropDownItems
-                        submenu2.Enabled = True
-                    Next
+        Try
+            Dim rkCurrentUser As RegistryKey = Registry.CurrentUser
+            ' Obtain the test key (read-only) and display it.
+            Dim rkTest As RegistryKey = rkCurrentUser.OpenSubKey("Software\INFO100\FINANCIERA")
+            rkTest.Close()
+            rkCurrentUser.Close()
+            rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\FINANCIERA")
+            rkTest.Close()
+            rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\FINANCIERA", True)
+            strConnectionSecurity = My.Settings.SeguridadNvaConnectionString
+            Dim cadenacon As String
+            cadenacon = rkTest.GetValue("FINANCIERA").ToString
+            'Usuario = Mid(cadenacon, InStr(cadenacon, "user ID ="), 10)
+            'Password = rkTest.GetValue("Contrasena").ToString
+            Usuario = varGlUser 'rkTest.GetValue("Usuario").ToString
+            'USUARIOX = Usuario
+            'varGlUser = Usuario
+            Password = rkTest.GetValue("Contrasena").ToString
+            rkTest.Close()
+
+            'If varGlUser <> "desarrollo" And varGlUser <> "lgarciacX" Then
+            '    If (InStr(Args(0), "Agil.application") <= 0 And InStr(Args(0), "Finagil.application") <= 0) And varGlUser <> "desarrollo" Then
+            '        MessageBox.Show("Faltan argumentos para iniciar esta aplicación. (Error1) " & Args(0) & " " & varGlUser, "Error de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '        End
+            '    End If
+            'End If
+
+        Catch eException As Exception
+            Console.WriteLine("The file could not be read:")
+            MessageBox.Show(eException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End
+        End Try
+
+        strSelect = "SELECT cve_menu, cve_submenu, cve_ssubmenu, cve_sssubmenu FROM SEG_MAESTRA " &
+       "WHERE cve_perfil IN (SELECT PERFILES.cve_perfil FROM PERFILES " &
+                             "INNER JOIN USUARIOS_PERFILES ON PERFILES.cve_perfil = USUARIOS_PERFILES.cve_perfil " &
+                             "INNER JOIN USUARIO ON USUARIOS_PERFILES.cve_empleado = USUARIO.cve_empleado " &
+                             "WHERE nom_sistema = 'TESORERIAFINAGIL' AND (USUARIO.id_usuario = '" & Usuario & "' ))" &
+       "ORDER BY cve_menu, cve_submenu, cve_ssubmenu, cve_sssubmenu"
+
+        cn.ConnectionString = strConnectionSecurity
+
+        With cm
+            .Connection = cn
+            .CommandText = strSelect
+        End With
+
+        ' Llenar el DataSet lo cual abre y cierra la conexión
+
+        daMenus.Fill(dsAgil, "Menus")
+
+        'UsuarioGlobalNombre = USER_SEC.ScalarNombre(Usuario)
+        'UsuarioGlobalDepto = USER_SEC.ScalarDepto(Usuario)
+        'UsuarioGlobalCorreo = USER_SEC.ScalarCorreo(Usuario)
+
+        For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
+            For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+                For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
+                    submenu2a.Enabled = False
                 Next
+                submenu1.Enabled = False
             Next
-        Else
-            taPerfil.ObtDetPerfil_FillBy(t, varGlPerfil)
-            If t.Rows.Count > 0 Then
-                For Each rows As dsProduction.CXP_PerfilesUsuarioRow In t
-                    For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-                        If rows.Item("menu") = vLocMnuOpciones.Name Then
-                            vLocMnuOpciones.Enabled = True
-                            For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-                                If rows.Item("submenu1") = submenu1.Name Then
-                                    submenu1.Enabled = True
-                                    If rows.Item("submenu2") = "" Then
-                                        For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
-                                            submenu2a.Enabled = True
-                                        Next
-                                    Else
-                                        For Each submenu2 As ToolStripMenuItem In submenu1.DropDownItems
-                                            If rows.Item("submenu2") = submenu2.Name Then
-                                                submenu2.Enabled = True
-                                            End If
-                                        Next
-                                    End If
+            vLocMnuOpciones.Enabled = False
+        Next
+
+        For Each drMenu In dsAgil.Tables("Menus").Rows
+            i = drMenu(0) - 1
+            j = drMenu(1) - 1
+            k = drMenu(2) - 1
+            If drMenu(0) = 5 Then
+                i = i
+            End If
+
+            If i >= 0 Then
+                For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
+                    If j >= 0 Then
+                        For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+                            For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
+                                If k >= 0 Then
+                                    submenu2a.Enabled = True
                                 End If
                             Next
-                        End If
-                    Next
+                            submenu1.Enabled = True
+                        Next
+                    Else
+                        vLocMnuOpciones.Enabled = True
+                    End If
                 Next
             End If
-        End If
+
+        Next
+
+        'tssUsuario.Text = "Usuario: " & varGlUser
+        'tssEmpresa.Text = "Empresa: " & varGlEmpresaD
+
+        'If varGlUser = "viapolo" Then
+        '    For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
+        '        vLocMnuOpciones.Enabled = True
+        '        For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+        '            submenu1.Enabled = True
+        '            For Each submenu2 As ToolStripMenuItem In submenu1.DropDownItems
+        '                submenu2.Enabled = True
+        '            Next
+        '        Next
+        '    Next
+        'Else
+        '    taPerfil.ObtDetPerfil_FillBy(t, varGlPerfil)
+        '    If t.Rows.Count > 0 Then
+        '        For Each rows As dsProduction.CXP_PerfilesUsuarioRow In t
+        '            For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
+        '                If rows.Item("menu") = vLocMnuOpciones.Name Then
+        '                    vLocMnuOpciones.Enabled = True
+        '                    For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+        '                        If rows.Item("submenu1") = submenu1.Name Then
+        '                            submenu1.Enabled = True
+        '                            If rows.Item("submenu2") = "" Then
+        '                                For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
+        '                                    submenu2a.Enabled = True
+        '                                Next
+        '                            Else
+        '                                For Each submenu2 As ToolStripMenuItem In submenu1.DropDownItems
+        '                                    If rows.Item("submenu2") = submenu2.Name Then
+        '                                        submenu2.Enabled = True
+        '                                    End If
+        '                                Next
+        '                            End If
+        '                        End If
+        '                    Next
+        '                End If
+        '            Next
+        '        Next
+        '    End If
+        'End If
     End Sub
 
     Private Sub NombrePerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NombrePerfilesToolStripMenuItem.Click
@@ -244,6 +365,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmAutorizaciones.MdiParent = Me
         frmAutorizaciones.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub TipoDeCuentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeCuentaToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmTipoCuentaContable.MdiParent = Me
+        frmTipoCuentaContable.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

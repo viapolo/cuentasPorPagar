@@ -1,3 +1,9 @@
+Imports Microsoft.Win32
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Collections.Specialized
+Imports System.Web
+Imports System.Deployment.Application
 Public Class lfrInicio
 
     Dim Hash As New ClaseHash
@@ -7,15 +13,55 @@ Public Class lfrInicio
     Dim t As New dsProduction.CXP_UsuariosDataTable
     Dim dtUsuarios As New DataTable
     Dim rowUsuarios As DataRow
+    Dim Usuario As String = ""
+    Dim strConnectionSecurity As String
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
-        taUsuarios.ObtEmpresas_FillBy(t, UsernameTextBox.Text)
+
+        Dim f As New mdicuentasPorPagar
+
+
+
 
         If t.Rows.Count > 0 Then
             rowUsuarios = t.Rows(0)
             If CBool(rowUsuarios.Item("activo")) = True Then
-                If (UsernameTextBox.Text = rowUsuarios.Item("usuario")) And (Hash.verifyMd5Hash(PasswordTextBox.Text, rowUsuarios("pw").ToString)) Then
+                If (UsernameTextBox.Text = rowUsuarios.Item("usuario")) Then
                     Me.Hide()
-                    Dim f As New mdicuentasPorPagar
+
+
+                    f.varGlUser = rowUsuarios.Item("usuario")
+                    varGlobal_NombreUsuario = rowUsuarios.Item("usuario")
+                    f.varGlIdUser = rowUsuarios.Item("idUsuario")
+                    varGlobal_IdUsuario = rowUsuarios.Item("idUsuario")
+                    f.varGlPerfil = rowUsuarios.Item("perfil")
+                    f.varGlEmpresa = cmbEmpresa.SelectedValue
+                    varGlobal_IdEmpresa = cmbEmpresa.SelectedValue
+                    f.varGlEmpresaD = cmbEmpresa.Text
+                    varGlobal_Empresa = cmbEmpresa.Text
+                    f.ShowDialog()
+                Else
+                    MsgBox("La contraseña son incorrecta...", MsgBoxStyle.Critical)
+
+                End If
+
+                If (UsernameTextBox.Text = rowUsuarios.Item("usuario")) Then
+                    Me.Hide()
+                    'Dim Args() As String
+                    'Try
+                    '    Args = AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData
+                    'Catch ex As Exception
+                    '    ReDim Args(1)
+                    '    Args(0) = "1"
+                    'End Try
+
+                    'Dim rkCurrentUser As RegistryKey = Registry.CurrentUser
+                    'Dim f As New mdicuentasPorPagar
+                    'Dim rkTest As RegistryKey = rkCurrentUser.OpenSubKey("Software\INFO100\TESORERIAFINAGIL")
+                    'rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\TESORERIAFINAGIL", True)
+                    'strConnectionSecurity = My.Settings.SeguridadNvaConnectionString
+
+                    'UsernameTextBox.Text = rkTest.GetValue("Usuario").ToString
+
                     f.varGlUser = rowUsuarios.Item("usuario")
                     varGlobal_NombreUsuario = rowUsuarios.Item("usuario")
                     f.varGlIdUser = rowUsuarios.Item("idUsuario")
@@ -51,5 +97,15 @@ Public Class lfrInicio
 
     Private Sub lfrInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CXP_EmpresasTableAdapter.Fill(Me.DsProduction.CXP_Empresas)
+
+        Dim rkCurrentUser As RegistryKey = Registry.CurrentUser
+
+        Dim rkTest As RegistryKey = rkCurrentUser.OpenSubKey("Software\INFO100\TESORERIAFINAGIL")
+        rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\TESORERIAFINAGIL", True)
+        strConnectionSecurity = My.Settings.SeguridadNvaConnectionString
+
+        UsernameTextBox.Text = rkTest.GetValue("Usuario").ToString
+
+        taUsuarios.ObtEmpresas_FillBy(t, UsernameTextBox.Text)
     End Sub
 End Class

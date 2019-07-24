@@ -154,6 +154,12 @@
     <Compile Include="catalogos\frmSATTipoDocumento.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="catalogos\frmTipoCuentaContable.Designer.vb">
+      <DependentUpon>frmTipoCuentaContable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmTipoCuentaContable.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="catalogos\frmTipoGasto.Designer.vb">
       <DependentUpon>frmTipoGasto.vb</DependentUpon>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmSATTipoDocumento.resx">
       <DependentUpon>frmSATTipoDocumento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmTipoCuentaContable.resx">
+      <DependentUpon>frmTipoCuentaContable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmTipoGasto.resx">
       <DependentUpon>frmTipoGasto.vb</DependentUpon>

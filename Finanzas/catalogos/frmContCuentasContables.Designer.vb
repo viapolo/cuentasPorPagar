@@ -50,6 +50,8 @@ Partial Class frmContCuentasContables
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.CXPtipoCuentaContableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_tipoCuentaContableTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoCuentaContableTableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         CuentaLabel = New System.Windows.Forms.Label()
         TipoLabel = New System.Windows.Forms.Label()
@@ -58,6 +60,7 @@ Partial Class frmContCuentasContables
         CType(Me.CXP_CuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_CuentasContablesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_CuentasContablesBindingNavigator.SuspendLayout()
+        CType(Me.CXPtipoCuentaContableBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -81,7 +84,7 @@ Partial Class frmContCuentasContables
         'TipoLabel
         '
         TipoLabel.AutoSize = True
-        TipoLabel.Location = New System.Drawing.Point(235, 57)
+        TipoLabel.Location = New System.Drawing.Point(293, 57)
         TipoLabel.Name = "TipoLabel"
         TipoLabel.Size = New System.Drawing.Size(31, 13)
         TipoLabel.TabIndex = 5
@@ -91,7 +94,7 @@ Partial Class frmContCuentasContables
         'ActivoLabel
         '
         ActivoLabel.AutoSize = True
-        ActivoLabel.Location = New System.Drawing.Point(410, 58)
+        ActivoLabel.Location = New System.Drawing.Point(468, 58)
         ActivoLabel.Name = "ActivoLabel"
         ActivoLabel.Size = New System.Drawing.Size(40, 13)
         ActivoLabel.TabIndex = 7
@@ -133,6 +136,7 @@ Partial Class frmContCuentasContables
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
@@ -262,32 +266,34 @@ Partial Class frmContCuentasContables
         '
         'ActivoCheckBox
         '
-        Me.ActivoCheckBox.Checked = True
-        Me.ActivoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ActivoCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_CuentasContablesBindingSource, "activo", True))
-        Me.ActivoCheckBox.Location = New System.Drawing.Point(455, 53)
+        Me.ActivoCheckBox.Location = New System.Drawing.Point(513, 53)
         Me.ActivoCheckBox.Name = "ActivoCheckBox"
-        Me.ActivoCheckBox.Size = New System.Drawing.Size(104, 24)
+        Me.ActivoCheckBox.Size = New System.Drawing.Size(36, 24)
         Me.ActivoCheckBox.TabIndex = 4
         Me.ActivoCheckBox.UseVisualStyleBackColor = True
         '
         'ComboBox1
         '
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasContablesBindingSource, "tipo", True))
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_CuentasContablesBindingSource, "tipo", True))
+        Me.ComboBox1.DataSource = Me.CXPtipoCuentaContableBindingSource
+        Me.ComboBox1.DisplayMember = "descripcion"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Ingreso", "Gasto"})
-        Me.ComboBox1.Location = New System.Drawing.Point(272, 53)
+        Me.ComboBox1.Location = New System.Drawing.Point(330, 53)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 3
+        Me.ComboBox1.ValueMember = "idTipoCuenta"
         '
         'MaskedTextBox1
         '
         Me.MaskedTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasContablesBindingSource, "cuenta", True))
         Me.MaskedTextBox1.Location = New System.Drawing.Point(103, 54)
-        Me.MaskedTextBox1.Mask = "0000-00-00-0000"
+        Me.MaskedTextBox1.Mask = "0000-00-00-0000-0000"
         Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(121, 20)
+        Me.MaskedTextBox1.Size = New System.Drawing.Size(144, 20)
         Me.MaskedTextBox1.TabIndex = 2
         '
         'btnSalir
@@ -298,6 +304,15 @@ Partial Class frmContCuentasContables
         Me.btnSalir.TabIndex = 5
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'CXPtipoCuentaContableBindingSource
+        '
+        Me.CXPtipoCuentaContableBindingSource.DataMember = "CXP_tipoCuentaContable"
+        Me.CXPtipoCuentaContableBindingSource.DataSource = Me.DsProduction
+        '
+        'CXP_tipoCuentaContableTableAdapter
+        '
+        Me.CXP_tipoCuentaContableTableAdapter.ClearBeforeFill = True
         '
         'frmContCuentasContables
         '
@@ -322,6 +337,7 @@ Partial Class frmContCuentasContables
         CType(Me.CXP_CuentasContablesBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CXP_CuentasContablesBindingNavigator.ResumeLayout(False)
         Me.CXP_CuentasContablesBindingNavigator.PerformLayout()
+        CType(Me.CXPtipoCuentaContableBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -349,4 +365,6 @@ Partial Class frmContCuentasContables
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents MaskedTextBox1 As MaskedTextBox
     Friend WithEvents btnSalir As Button
+    Friend WithEvents CXPtipoCuentaContableBindingSource As BindingSource
+    Friend WithEvents CXP_tipoCuentaContableTableAdapter As dsProductionTableAdapters.CXP_tipoCuentaContableTableAdapter
 End Class
