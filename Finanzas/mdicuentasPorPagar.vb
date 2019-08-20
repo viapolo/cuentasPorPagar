@@ -20,7 +20,7 @@ Public Class mdicuentasPorPagar
     Dim USUARIOX As String
 
 
-    Private Sub PerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PerfilesToolStripMenuItem.Click
+    Private Sub PerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmPerfiles.MdiParent = Me

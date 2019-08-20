@@ -8,7 +8,10 @@ Public Class frmSolicitudesDePagoCFDI
     Public totalRet As Decimal = 0
     Public var_rfcProveedor As String
     Private Sub frmSolicitudesDePagoCFDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Vw_CXP_XmlCfdi2_grpUuidTableAdapter.ObtCfdi_FillBy(DsProduction.vw_CXP_XmlCfdi2_grpUuid, var_rfcProveedor)
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.vw_CXP_XmlCfdi2_grpUuid' Puede moverla o quitarla según sea necesario.
+        Me.Vw_CXP_XmlCfdi2_grpUuidTableAdapter.Fill(Me.DsProduction.vw_CXP_XmlCfdi2_grpUuid)
+        Me.CXP_ConceptosTableAdapter.Fill(DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        Vw_CXP_XmlCfdi2_grpUuidTableAdapter.ObtCFDiXRfc_FillBy(DsProduction.vw_CXP_XmlCfdi2_grpUuid, var_rfcProveedor, varGlobal_rfcEmpresa)
     End Sub
 
     Private Sub CXP_XmlCfdiDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CXP_XmlCfdiDataGridView.CellContentClick
@@ -26,36 +29,32 @@ Public Class frmSolicitudesDePagoCFDI
     End Sub
 
     Private Sub frmSolicitudesDePagoCFDI_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Dim dtProveedores As New dsProductionTableAdapters.CXP_ProveedoresTableAdapter
-        Dim dtCuentas As New dsProductionTableAdapters.CXP_CuentasContablesTableAdapter
-        Dim dtConceptos As New dsProductionTableAdapters.CXP_ConceptosTableAdapter
-        Dim dtConceptosImpuestos As New dsProductionTableAdapters.vw_CXP_XmlCfdi2_grpUuidTableAdapter
-        Dim dtimpuesto As New dsProductionTableAdapters.CXP_ImpuestoTableAdapter
+        Dim taProveedores As New dsProductionTableAdapters.CXP_ProveedoresTableAdapter
+        Dim taCuentas As New dsProductionTableAdapters.CXP_CuentasContablesTableAdapter
+        Dim taConceptos As New dsProductionTableAdapters.CXP_ConceptosTableAdapter
+        Dim taConceptosImpuestos As New dsProductionTableAdapters.vw_CXP_XmlCfdi2_grpUuidTableAdapter
+        Dim taimpuesto As New dsProductionTableAdapters.CXP_ImpuestoTableAdapter
+        Dim taCXPPagos As New dsProductionTableAdapters.CXP_PagosTableAdapter
+        Dim taEmpresas As New dsProductionTableAdapters.CXP_EmpresasTableAdapter
+        Dim folSolPagoFinagil As Integer = 0
+        Dim taCFDI2 As New dsProductionTableAdapters.CXP_XmlCfdi2TableAdapter
+        Dim tableCFDI2 As New dsProduction.CXP_XmlCfdi2DataTable
 
         Dim cont As Integer = 0
         Dim cont2 As Integer = 1
         For Each rows As DataGridViewRow In CXP_XmlCfdiDataGridView.Rows
-            'MsgBox(CXP_XmlCfdiDataGridView.Item(8, cont).Value.ToString)
+            folSolPagoFinagil = taEmpresas.ConsultaFolio(varGlobal_IdEmpresa)
+
             If CXP_XmlCfdiDataGridView.Item("seleccionar", cont).Value = True Then
-
-                total += Val(CXP_XmlCfdiDataGridView.Item("impIva", cont).Value)
-
-                subTotal += Val(CXP_XmlCfdiDataGridView.Item("Column2", cont).Value)
-                frmSolicitudesDePago.dgvDispercion.Rows.Add(cont2, dtCuentas.ObtCuenta_ScalarQuery(dtProveedores.ObtCuentCont_ScalarQuery(frmSolicitudesDePago.cmbProveedores.SelectedValue)), dtCuentas.ObtNombreCta_ScalarQuery(dtProveedores.ObtCuentCont_ScalarQuery(frmSolicitudesDePago.cmbProveedores.SelectedValue)), subTotal, "0", "Referencia")
-                cont2 += 1
-
-                dtConceptosImpuestos.SumImp_FillBy(DsProduction.vw_CXP_XmlCfdi2_grpUuid, CXP_XmlCfdiDataGridView.Item("UuidDataGridViewTextBoxColumn", cont).Value)
-
-                For Each rowsDetalleCfdi As dsProduction.vw_CXP_XmlCfdi2_grpUuidRow In DsProduction.vw_CXP_XmlCfdi2_grpUuid.Rows
-                    frmSolicitudesDePago.dgvDispercion.Rows.Add(cont2, dtimpuesto.ObtCuentaComp_ScalarQuery(rowsDetalleCfdi.impueto), dtimpuesto.ObtNombreCta_ScalarQuery(rowsDetalleCfdi.impueto), rowsDetalleCfdi.montoImpuesto, "0", "Referencia")
-                    cont2 += 1
+                taCFDI2.SumaImp_FillBy(tableCFDI2, CXP_XmlCfdiDataGridView.Rows("uuid").Cells(7).Value)
+                For Each rows2 As dsProduction.CXP_XmlCfdi2Row In tableCFDI2
+                    'taCXPPagos.Insert(, 0, folSolPagoFinagil, Date.Now.ToLongDateString, rows2.fechaEmision, rows2.serie, rows2.folio, rows2.uuid, CXP_XmlCfdiDataGridView.Rows(cont).Cells("subTotal").Value, CXP_XmlCfdiDataGridView.Rows(cont).Cells("TotalDataGridViewTextBoxColumn").Value, CDec(CXP_XmlCfdiDataGridView.Rows(cont).Cells("MontoImpuestoDataGridViewTextBoxColumn").Value), CDec(CXP_XmlCfdiDataGridView.Rows(cont).Cells("MontoImpuestoRDataGridViewTextBoxColumn").Value), CXP_XmlCfdiDataGridView.Rows(cont).Cells("descripcion").Value, CXP_XmlCfdiDataGridView.Rows(cont).Cells("concepto").Value, 1, varGlobal_IdUsuario, varGlobal_IdEmpresa, "No Pagada", "#" & Session.Item("mailJefe"), mail, Nothing, Nothing, rows2.moneda, CDate(txtFechaPago.Text), True, Nothing)
                 Next
-
-                frmSolicitudesDePago.dgvDispercion.Rows.Add(cont2, dtCuentas.ObtCuenta_ScalarQuery(dtConceptos.ObtCuentaEgreso_ScalarQuery(frmSolicitudesDePago.ComboBox2.SelectedValue)), dtCuentas.ObtNombreCta_ScalarQuery(dtConceptos.ObtCuentaEgreso_ScalarQuery(frmSolicitudesDePago.ComboBox2.SelectedValue)), "0", total, "Referencia")
-                cont2 += 1
 
             End If
             cont += 1
         Next
     End Sub
+
+
 End Class

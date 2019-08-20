@@ -26,8 +26,11 @@
     End Sub
 
     Private Sub CXP_UsuariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_UsuariosBindingNavigatorSaveItem.Click
+        cmbUsuarioActual.Enabled = False
+        btnAgregarUsuario.Enabled = False
+
         Me.Validate()
-        Me.CXP_UsuariosBindingSource.Current("activo") = True
+        'Me.CXP_UsuariosBindingSource.Current("activo") = True
         Me.CXP_UsuariosBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DsProduction)
 
@@ -41,21 +44,21 @@
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUsuarioActual.SelectedIndexChanged
 
-        If Not cmbUsuarioActual.SelectedValue Is Nothing Then
-            taDatosUsuarios.ObtDatos_FillBy(DsSeguridad.USUARIO, cmbUsuarioActual.SelectedValue)
-            If DsSeguridad.USUARIO.Rows.Count > 0 Then
-                For Each rows As dsSeguridad.USUARIORow In DsSeguridad.USUARIO.Rows
-                    NombreTextBox.Text = rows.nombrecompleto
-                    UsuarioTextBox.Text = rows.id_usuario
-                    MailTextBox.Text = rows.correo
-                    DepartamentoTextBox.Text = rows.id_depto
-                    SucursalTextBox.Text = rows.id_sucursal
-                    PwTextBox.Text = rows.password
-                    ActivoCheckBox.Checked = True
-                    'ActivoCheckBox.CheckState = CheckState.Checked
-                Next
-            End If
-        End If
+        'If Not cmbUsuarioActual.SelectedValue Is Nothing Then
+        '    taDatosUsuarios.ObtDatos_FillBy(DsSeguridad.USUARIO, cmbUsuarioActual.SelectedValue)
+        '    If DsSeguridad.USUARIO.Rows.Count > 0 Then
+        '        For Each rows As dsSeguridad.USUARIORow In DsSeguridad.USUARIO.Rows
+        '            NombreTextBox.Text = rows.nombrecompleto
+        '            UsuarioTextBox.Text = rows.id_usuario
+        '            MailTextBox.Text = rows.correo
+        '            DepartamentoTextBox.Text = rows.id_depto
+        '            SucursalTextBox.Text = rows.id_sucursal
+
+        '            ActivoCheckBox.Checked = True
+        '            'ActivoCheckBox.CheckState = CheckState.Checked
+        '        Next
+        '    End If
+        'End If
 
     End Sub
 
@@ -63,15 +66,7 @@
         Me.Close()
     End Sub
 
-    Private Sub btnCambiarPw_Click(sender As Object, e As EventArgs) Handles btnCambiarPw.Click
-        Dim NewPWD As String = utilerias.Genera_Pass(8, "", False, True, True, False, False, False)
-        NewPWD = InputBox("Dame la nueva Contraseña", "Cambio de Contraseña", NewPWD)
-        If NewPWD <> "" Then
-            NewPWD = getMd5Hash(NewPWD)
-            taUsuarios.PW_UpdateQuery(NewPWD, cmbUsuarioActual.SelectedValue)
-            MessageBox.Show("Cambio de contraseña exitoso", "Cambio de Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-    End Sub
+
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Dim valor As Integer = cmbEmpresas.SelectedValue
@@ -116,5 +111,37 @@
                 End If
             Next
         End If
+    End Sub
+
+    Private Sub BindingNavigatorAddNewItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorAddNewItem.Click
+        cmbUsuarioActual.Enabled = True
+        btnAgregarUsuario.Enabled = True
+        dgvEmpresas.Rows.Clear()
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        cmbUsuarioActual.Enabled = False
+        btnAgregarUsuario.Enabled = False
+    End Sub
+
+    Private Sub btnAgregarUsuario_Click(sender As Object, e As EventArgs) Handles btnAgregarUsuario.Click
+        Dim dtabla As DataTable
+        dtabla = New dsProduction.CXP_UsuariosDataTable
+
+        taUsuarios.Fill(dtabla)
+
+        For Each rows As dsProduction.CXP_UsuariosRow In dtabla.Rows
+            If rows.idUsuarioProd = USUARIOBindingSource.Current("cve_empleado") Then
+                MsgBox("Ya se encuentra el usuario actual...", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+        Next
+
+        NombreTextBox.Text = USUARIOBindingSource.Current("nombrecompleto")
+        UsuarioTextBox.Text = USUARIOBindingSource.Current("id_usuario")
+        MailTextBox.Text = USUARIOBindingSource.Current("correo")
+        DepartamentoTextBox.Text = USUARIOBindingSource.Current("id_depto")
+        SucursalTextBox.Text = USUARIOBindingSource.Current("id_sucursal")
+        CXP_UsuariosBindingSource.Current("idUsuarioProd") = USUARIOBindingSource.Current("cve_empleado")
     End Sub
 End Class

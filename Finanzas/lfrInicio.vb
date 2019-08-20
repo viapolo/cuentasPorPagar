@@ -19,8 +19,8 @@ Public Class lfrInicio
 
         Dim f As New mdicuentasPorPagar
 
-
-
+        Dim taUsuario As New dsSeguridadTableAdapters.USUARIO2TableAdapter
+        Dim dtUsuario As New dsSeguridad.USUARIO2DataTable
 
         If t.Rows.Count > 0 Then
             rowUsuarios = t.Rows(0)
@@ -28,6 +28,13 @@ Public Class lfrInicio
                 If (UsernameTextBox.Text = rowUsuarios.Item("usuario")) Then
                     Me.Hide()
 
+                    taUsuario.Fill(dtUsuario, rowUsuarios("usuario"))
+                    If dtUsuario.Rows.Count Then
+
+                    End If
+                    For Each rows As dsSeguridad.USUARIO2Row In dtUsuario
+
+                    Next
 
                     f.varGlUser = rowUsuarios.Item("usuario")
                     varGlobal_NombreUsuario = rowUsuarios.Item("usuario")
@@ -38,42 +45,10 @@ Public Class lfrInicio
                     varGlobal_IdEmpresa = cmbEmpresa.SelectedValue
                     f.varGlEmpresaD = cmbEmpresa.Text
                     varGlobal_Empresa = cmbEmpresa.Text
+                    varGlobal_rfcEmpresa = taEmpresas.ObtRfc_ScalarQuery(cmbEmpresa.SelectedValue)
                     f.ShowDialog()
                 Else
-                    MsgBox("La contraseña son incorrecta...", MsgBoxStyle.Critical)
-
-                End If
-
-                If (UsernameTextBox.Text = rowUsuarios.Item("usuario")) Then
-                    Me.Hide()
-                    'Dim Args() As String
-                    'Try
-                    '    Args = AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData
-                    'Catch ex As Exception
-                    '    ReDim Args(1)
-                    '    Args(0) = "1"
-                    'End Try
-
-                    'Dim rkCurrentUser As RegistryKey = Registry.CurrentUser
-                    'Dim f As New mdicuentasPorPagar
-                    'Dim rkTest As RegistryKey = rkCurrentUser.OpenSubKey("Software\INFO100\TESORERIAFINAGIL")
-                    'rkTest = Registry.CurrentUser.OpenSubKey("Software\INFO100\TESORERIAFINAGIL", True)
-                    'strConnectionSecurity = My.Settings.SeguridadNvaConnectionString
-
-                    'UsernameTextBox.Text = rkTest.GetValue("Usuario").ToString
-
-                    f.varGlUser = rowUsuarios.Item("usuario")
-                    varGlobal_NombreUsuario = rowUsuarios.Item("usuario")
-                    f.varGlIdUser = rowUsuarios.Item("idUsuario")
-                    varGlobal_IdUsuario = rowUsuarios.Item("idUsuario")
-                    f.varGlPerfil = rowUsuarios.Item("perfil")
-                    f.varGlEmpresa = cmbEmpresa.SelectedValue
-                    varGlobal_IdEmpresa = cmbEmpresa.SelectedValue
-                    f.varGlEmpresaD = cmbEmpresa.Text
-                    varGlobal_Empresa = cmbEmpresa.Text
-                    f.ShowDialog()
-                Else
-                    MsgBox("La contraseña son incorrecta...", MsgBoxStyle.Critical)
+                    MsgBox("El usuario es incorrecto...", MsgBoxStyle.Critical)
                 End If
             End If
         End If

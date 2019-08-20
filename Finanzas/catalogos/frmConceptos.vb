@@ -135,4 +135,12 @@
             btnAgregar.Enabled = True
         End If
     End Sub
+
+    Private Sub frmConceptos_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
+
+    End Sub
+
+    Private Sub frmConceptos_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
+        actualiza()
+    End Sub
 End Class

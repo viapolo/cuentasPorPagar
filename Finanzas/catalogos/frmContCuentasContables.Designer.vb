@@ -48,9 +48,9 @@ Partial Class frmContCuentasContables
         Me.NombreTextBox = New System.Windows.Forms.TextBox()
         Me.ActivoCheckBox = New System.Windows.Forms.CheckBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CXPtipoCuentaContableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.CXPtipoCuentaContableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_tipoCuentaContableTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoCuentaContableTableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         CuentaLabel = New System.Windows.Forms.Label()
@@ -117,6 +117,7 @@ Partial Class frmContCuentasContables
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
@@ -132,6 +133,7 @@ Partial Class frmContCuentasContables
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
@@ -141,6 +143,7 @@ Partial Class frmContCuentasContables
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -287,6 +290,11 @@ Partial Class frmContCuentasContables
         Me.ComboBox1.TabIndex = 3
         Me.ComboBox1.ValueMember = "idTipoCuenta"
         '
+        'CXPtipoCuentaContableBindingSource
+        '
+        Me.CXPtipoCuentaContableBindingSource.DataMember = "CXP_tipoCuentaContable"
+        Me.CXPtipoCuentaContableBindingSource.DataSource = Me.DsProduction
+        '
         'MaskedTextBox1
         '
         Me.MaskedTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasContablesBindingSource, "cuenta", True))
@@ -304,11 +312,6 @@ Partial Class frmContCuentasContables
         Me.btnSalir.TabIndex = 5
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'CXPtipoCuentaContableBindingSource
-        '
-        Me.CXPtipoCuentaContableBindingSource.DataMember = "CXP_tipoCuentaContable"
-        Me.CXPtipoCuentaContableBindingSource.DataSource = Me.DsProduction
         '
         'CXP_tipoCuentaContableTableAdapter
         '

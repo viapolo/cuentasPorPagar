@@ -28,7 +28,6 @@ Partial Class frmUsuario
         Dim MailLabel As System.Windows.Forms.Label
         Dim DepartamentoLabel As System.Windows.Forms.Label
         Dim SucursalLabel As System.Windows.Forms.Label
-        Dim PwLabel As System.Windows.Forms.Label
         Dim ActivoLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUsuario))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
@@ -58,9 +57,7 @@ Partial Class frmUsuario
         Me.MailTextBox = New System.Windows.Forms.TextBox()
         Me.DepartamentoTextBox = New System.Windows.Forms.TextBox()
         Me.SucursalTextBox = New System.Windows.Forms.TextBox()
-        Me.PwTextBox = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.btnCambiarPw = New System.Windows.Forms.Button()
         Me.cmbEmpresas = New System.Windows.Forms.ComboBox()
         Me.CXPEmpresasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
@@ -79,12 +76,13 @@ Partial Class frmUsuario
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.CXP_PerfilesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesTableAdapter()
         Me.ActivoCheckBox = New System.Windows.Forms.CheckBox()
+        Me.btnAgregarUsuario = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
         MailLabel = New System.Windows.Forms.Label()
         DepartamentoLabel = New System.Windows.Forms.Label()
         SucursalLabel = New System.Windows.Forms.Label()
-        PwLabel = New System.Windows.Forms.Label()
         ActivoLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_UsuariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -145,15 +143,6 @@ Partial Class frmUsuario
         SucursalLabel.TabIndex = 11
         SucursalLabel.Text = "Sucursal:"
         '
-        'PwLabel
-        '
-        PwLabel.AutoSize = True
-        PwLabel.Location = New System.Drawing.Point(42, 200)
-        PwLabel.Name = "PwLabel"
-        PwLabel.Size = New System.Drawing.Size(64, 13)
-        PwLabel.TabIndex = 13
-        PwLabel.Text = "Contraseña:"
-        '
         'ActivoLabel
         '
         ActivoLabel.AutoSize = True
@@ -180,6 +169,7 @@ Partial Class frmUsuario
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
@@ -192,11 +182,13 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
@@ -327,13 +319,13 @@ Partial Class frmUsuario
         '
         'cmbUsuarioActual
         '
-        Me.cmbUsuarioActual.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "idUsuarioProd", True))
         Me.cmbUsuarioActual.DataSource = Me.USUARIOBindingSource
         Me.cmbUsuarioActual.DisplayMember = "nombrecompleto"
+        Me.cmbUsuarioActual.Enabled = False
         Me.cmbUsuarioActual.FormattingEnabled = True
         Me.cmbUsuarioActual.Location = New System.Drawing.Point(112, 46)
         Me.cmbUsuarioActual.Name = "cmbUsuarioActual"
-        Me.cmbUsuarioActual.Size = New System.Drawing.Size(384, 21)
+        Me.cmbUsuarioActual.Size = New System.Drawing.Size(304, 21)
         Me.cmbUsuarioActual.TabIndex = 3
         Me.cmbUsuarioActual.ValueMember = "cve_empleado"
         '
@@ -396,39 +388,22 @@ Partial Class frmUsuario
         Me.SucursalTextBox.Size = New System.Drawing.Size(145, 20)
         Me.SucursalTextBox.TabIndex = 12
         '
-        'PwTextBox
-        '
-        Me.PwTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_UsuariosBindingSource, "pw", True))
-        Me.PwTextBox.Location = New System.Drawing.Point(112, 197)
-        Me.PwTextBox.Name = "PwTextBox"
-        Me.PwTextBox.ReadOnly = True
-        Me.PwTextBox.Size = New System.Drawing.Size(235, 20)
-        Me.PwTextBox.TabIndex = 14
-        '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(421, 441)
+        Me.btnSalir.Location = New System.Drawing.Point(421, 362)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 15
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'btnCambiarPw
-        '
-        Me.btnCambiarPw.Location = New System.Drawing.Point(353, 194)
-        Me.btnCambiarPw.Name = "btnCambiarPw"
-        Me.btnCambiarPw.Size = New System.Drawing.Size(75, 23)
-        Me.btnCambiarPw.TabIndex = 16
-        Me.btnCambiarPw.Text = "Cambiar PW"
-        Me.btnCambiarPw.UseVisualStyleBackColor = True
-        '
         'cmbEmpresas
         '
         Me.cmbEmpresas.DataSource = Me.CXPEmpresasBindingSource
         Me.cmbEmpresas.DisplayMember = "razonSocial"
+        Me.cmbEmpresas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbEmpresas.FormattingEnabled = True
-        Me.cmbEmpresas.Location = New System.Drawing.Point(112, 224)
+        Me.cmbEmpresas.Location = New System.Drawing.Point(112, 197)
         Me.cmbEmpresas.Name = "cmbEmpresas"
         Me.cmbEmpresas.Size = New System.Drawing.Size(236, 21)
         Me.cmbEmpresas.TabIndex = 17
@@ -442,7 +417,7 @@ Partial Class frmUsuario
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(50, 227)
+        Me.Label2.Location = New System.Drawing.Point(50, 200)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 13)
         Me.Label2.TabIndex = 18
@@ -458,10 +433,10 @@ Partial Class frmUsuario
         Me.dgvEmpresas.AllowUserToDeleteRows = False
         Me.dgvEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvEmpresas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idEmpresa, Me.empresa, Me.eliminar})
-        Me.dgvEmpresas.Location = New System.Drawing.Point(34, 282)
+        Me.dgvEmpresas.Location = New System.Drawing.Point(35, 251)
         Me.dgvEmpresas.Name = "dgvEmpresas"
         Me.dgvEmpresas.ReadOnly = True
-        Me.dgvEmpresas.Size = New System.Drawing.Size(462, 153)
+        Me.dgvEmpresas.Size = New System.Drawing.Size(462, 105)
         Me.dgvEmpresas.TabIndex = 19
         '
         'idEmpresa
@@ -488,7 +463,7 @@ Partial Class frmUsuario
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(354, 222)
+        Me.btnAgregar.Location = New System.Drawing.Point(354, 195)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregar.TabIndex = 20
@@ -497,15 +472,14 @@ Partial Class frmUsuario
         '
         'ComboBox1
         '
-        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "perfil", True))
-        Me.ComboBox1.DataSource = Me.CXPPerfilesBindingSource
-        Me.ComboBox1.DisplayMember = "nombrePerfil"
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_UsuariosBindingSource, "perfil", True))
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(112, 251)
+        Me.ComboBox1.Items.AddRange(New Object() {"Si", "No"})
+        Me.ComboBox1.Location = New System.Drawing.Point(112, 224)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(235, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 21
-        Me.ComboBox1.ValueMember = "idPerf"
         '
         'CXPPerfilesBindingSource
         '
@@ -525,11 +499,11 @@ Partial Class frmUsuario
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(73, 254)
+        Me.Label3.Location = New System.Drawing.Point(27, 227)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(33, 13)
+        Me.Label3.Size = New System.Drawing.Size(81, 13)
         Me.Label3.TabIndex = 22
-        Me.Label3.Text = "Perfil:"
+        Me.Label3.Text = "¿Acceso Web?"
         '
         'CXP_PerfilesUsuarioTableAdapter
         '
@@ -549,18 +523,38 @@ Partial Class frmUsuario
         Me.ActivoCheckBox.Checked = True
         Me.ActivoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ActivoCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.CXP_UsuariosBindingSource, "activo", True))
-        Me.ActivoCheckBox.Enabled = False
         Me.ActivoCheckBox.Location = New System.Drawing.Point(266, 117)
         Me.ActivoCheckBox.Name = "ActivoCheckBox"
         Me.ActivoCheckBox.Size = New System.Drawing.Size(104, 24)
         Me.ActivoCheckBox.TabIndex = 24
         Me.ActivoCheckBox.UseVisualStyleBackColor = True
         '
+        'btnAgregarUsuario
+        '
+        Me.btnAgregarUsuario.Enabled = False
+        Me.btnAgregarUsuario.Location = New System.Drawing.Point(422, 46)
+        Me.btnAgregarUsuario.Name = "btnAgregarUsuario"
+        Me.btnAgregarUsuario.Size = New System.Drawing.Size(75, 23)
+        Me.btnAgregarUsuario.TabIndex = 25
+        Me.btnAgregarUsuario.Text = "Agregar"
+        Me.btnAgregarUsuario.UseVisualStyleBackColor = True
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.Location = New System.Drawing.Point(340, 362)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelar.TabIndex = 26
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = True
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(516, 484)
+        Me.ClientSize = New System.Drawing.Size(516, 399)
+        Me.Controls.Add(Me.btnCancelar)
+        Me.Controls.Add(Me.btnAgregarUsuario)
         Me.Controls.Add(ActivoLabel)
         Me.Controls.Add(Me.ActivoCheckBox)
         Me.Controls.Add(Me.Label3)
@@ -569,10 +563,7 @@ Partial Class frmUsuario
         Me.Controls.Add(Me.dgvEmpresas)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmbEmpresas)
-        Me.Controls.Add(Me.btnCambiarPw)
         Me.Controls.Add(Me.btnSalir)
-        Me.Controls.Add(PwLabel)
-        Me.Controls.Add(Me.PwTextBox)
         Me.Controls.Add(SucursalLabel)
         Me.Controls.Add(Me.SucursalTextBox)
         Me.Controls.Add(DepartamentoLabel)
@@ -634,9 +625,7 @@ Partial Class frmUsuario
     Friend WithEvents MailTextBox As TextBox
     Friend WithEvents DepartamentoTextBox As TextBox
     Friend WithEvents SucursalTextBox As TextBox
-    Friend WithEvents PwTextBox As TextBox
     Friend WithEvents btnSalir As Button
-    Friend WithEvents btnCambiarPw As Button
     Friend WithEvents cmbEmpresas As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents CXPEmpresasBindingSource As BindingSource
@@ -655,4 +644,6 @@ Partial Class frmUsuario
     Friend WithEvents CXPPerfilesBindingSource As BindingSource
     Friend WithEvents CXP_PerfilesTableAdapter As dsProductionTableAdapters.CXP_PerfilesTableAdapter
     Friend WithEvents ActivoCheckBox As CheckBox
+    Friend WithEvents btnAgregarUsuario As Button
+    Friend WithEvents btnCancelar As Button
 End Class

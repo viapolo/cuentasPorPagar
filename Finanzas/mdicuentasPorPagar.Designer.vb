@@ -28,7 +28,6 @@ Partial Class mdicuentasPorPagar
         Me.ConfiguraciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NombrePerfilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PerfilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmpresasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CatálogosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SATToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,6 +43,7 @@ Partial Class mdicuentasPorPagar
         Me.ProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDeDocumentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDeGastoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TipoDeCuentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConceptosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SucursalesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizadoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -56,7 +56,6 @@ Partial Class mdicuentasPorPagar
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssEmpresa = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TipoDeCuentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -72,7 +71,7 @@ Partial Class mdicuentasPorPagar
         '
         'ConfiguraciónToolStripMenuItem
         '
-        Me.ConfiguraciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.NombrePerfilesToolStripMenuItem, Me.PerfilesToolStripMenuItem, Me.EmpresasToolStripMenuItem})
+        Me.ConfiguraciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.NombrePerfilesToolStripMenuItem, Me.EmpresasToolStripMenuItem})
         Me.ConfiguraciónToolStripMenuItem.Enabled = False
         Me.ConfiguraciónToolStripMenuItem.Name = "ConfiguraciónToolStripMenuItem"
         Me.ConfiguraciónToolStripMenuItem.Size = New System.Drawing.Size(95, 20)
@@ -91,13 +90,6 @@ Partial Class mdicuentasPorPagar
         Me.NombrePerfilesToolStripMenuItem.Name = "NombrePerfilesToolStripMenuItem"
         Me.NombrePerfilesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NombrePerfilesToolStripMenuItem.Text = "Nombre Perfiles"
-        '
-        'PerfilesToolStripMenuItem
-        '
-        Me.PerfilesToolStripMenuItem.Enabled = False
-        Me.PerfilesToolStripMenuItem.Name = "PerfilesToolStripMenuItem"
-        Me.PerfilesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PerfilesToolStripMenuItem.Text = "Perfiles"
         '
         'EmpresasToolStripMenuItem
         '
@@ -207,6 +199,13 @@ Partial Class mdicuentasPorPagar
         Me.TipoDeGastoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TipoDeGastoToolStripMenuItem.Text = "Tipo de Gasto"
         '
+        'TipoDeCuentaToolStripMenuItem
+        '
+        Me.TipoDeCuentaToolStripMenuItem.Enabled = False
+        Me.TipoDeCuentaToolStripMenuItem.Name = "TipoDeCuentaToolStripMenuItem"
+        Me.TipoDeCuentaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TipoDeCuentaToolStripMenuItem.Text = "Tipo de Cuenta"
+        '
         'ConceptosToolStripMenuItem
         '
         Me.ConceptosToolStripMenuItem.Enabled = False
@@ -284,13 +283,6 @@ Partial Class mdicuentasPorPagar
         Me.tssEmpresa.Size = New System.Drawing.Size(52, 17)
         Me.tssEmpresa.Text = "Empresa"
         '
-        'TipoDeCuentaToolStripMenuItem
-        '
-        Me.TipoDeCuentaToolStripMenuItem.Enabled = False
-        Me.TipoDeCuentaToolStripMenuItem.Name = "TipoDeCuentaToolStripMenuItem"
-        Me.TipoDeCuentaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.TipoDeCuentaToolStripMenuItem.Text = "Tipo de Cuenta"
-        '
         'mdicuentasPorPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -322,7 +314,6 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents RegistroDeDiarioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SugerenciaDePagoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PerfilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EmpresasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SATToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BancosToolStripMenuItem As ToolStripMenuItem
