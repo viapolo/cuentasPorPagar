@@ -14,6 +14,15 @@
     End Sub
 
     Private Sub frmConceptos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If varGlobal_IdEmpresa = "24" Then
+            CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
+        Else
+            CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
+        End If
+        'TODO: esta línea de código carga datos en la tabla 'Contpaq.Cuentas' Puede moverla o quitarla según sea necesario.
+        Me.CuentasTableAdapter.Fill(Me.Contpaq.Cuentas)
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction3.CXP_tipoConcepto' Puede moverla o quitarla según sea necesario.
+        Me.CXP_tipoConceptoTableAdapter.Fill(Me.DsProduction3.CXP_tipoConcepto)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_tipoDeDocumento' Puede moverla o quitarla según sea necesario.
         Me.CXP_tipoDeDocumentoTableAdapter.Fill(Me.DsProduction.CXP_tipoDeDocumento, varGlobal_IdEmpresa)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction2.Vw_CXP_ImpCon' Puede moverla o quitarla según sea necesario.
@@ -21,7 +30,7 @@
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ImpConc' Puede moverla o quitarla según sea necesario.
 
         'TODO: esta línea de código carga datos en la tabla 'DsProduction1.CXP_CuentasContables' Puede moverla o quitarla según sea necesario.
-        Me.CXP_CuentasContablesTableAdapter.Fill(Me.DsProduction1.CXP_CuentasContables, varGlobal_IdEmpresa)
+        'Me.CXP_CuentasContablesTableAdapter.Fill(Me.DsProduction1.CXP_CuentasContables, varGlobal_IdEmpresa)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_TipoGasto' Puede moverla o quitarla según sea necesario.
         Me.CXP_TipoGastoTableAdapter.Fill(Me.DsProduction.CXP_TipoGasto, varGlobal_IdEmpresa)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction1.CXP_TipoGasto' Puede moverla o quitarla según sea necesario.
@@ -29,7 +38,7 @@
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Impuesto' Puede moverla o quitarla según sea necesario.
         Me.CXP_ImpuestoTableAdapter.Fill(Me.DsProduction.CXP_Impuesto, varGlobal_IdEmpresa)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_CuentasContables' Puede moverla o quitarla según sea necesario.
-        Me.CXP_CuentasContablesTableAdapter.Fill(Me.DsProduction.CXP_CuentasContables, varGlobal_IdEmpresa)
+        'Me.CXP_CuentasContablesTableAdapter.Fill(Me.DsProduction.CXP_CuentasContables, varGlobal_IdEmpresa)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Conceptos' Puede moverla o quitarla según sea necesario.
         Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
 
@@ -60,20 +69,17 @@
 
         taImpuestoConcepto.Insert(cmbImpuesto.SelectedValue, IdConceptoTextBox.Text)
         actualiza()
-        'dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar", im)
+        dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
     End Sub
 
     Private Sub actualiza()
-        'VwCXPImpConBindingSource.Filter = "idConcepto = " & CXP_ConceptosBindingSource.Current("idConcepto")
         Dim dt As New dsProduction.Vw_CXP_ImpConDataTable
-
 
         If NombreTextBox.Text <> "" And IdConceptoTextBox.Text <> "-1" Then
             dgvImpuestos.Rows.Clear()
-            taImpCon.ObtImpuestos_FillBy(dt, IdConceptoTextBox.Text.Trim) 'ImpuestoTextBox.Text.Split(",") 'taConceptos.ObtImpuesto_ScalarQuery(CXP_ConceptosBindingSource.Current("idConcepto")).ToString.Split(",")
-            'For i As Integer = 0 To arrayImpuestos.Length - 1
+            taImpCon.ObtImpuestos_FillBy(dt, IdConceptoTextBox.Text.Trim)
             Dim cont As Integer = 0
-            For Each row As dsProduction.Vw_CXP_ImpConRow In dt 'DsProduction.Vw_CXP_ImpCon.Rows
+            For Each row As dsProduction.Vw_CXP_ImpConRow In dt
                 dgvImpuestos.Rows.Add()
                 dgvImpuestos.Item(0, cont).Value = row.idImpCon
                 dgvImpuestos.Item(1, cont).Value = row.descripcionLarga
@@ -91,7 +97,7 @@
         If e.ColumnIndex = 3 Then
             taImpuestoConcepto.DeleteQuery(dgvImpuestos.Item(0, e.RowIndex).Value)
         End If
-        actualiza()
+        'actualiza()
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -102,9 +108,9 @@
         dgvImpuestos.Rows.Clear()
     End Sub
 
-    Private Sub dgvImpuestos_Click(sender As Object, e As EventArgs) Handles dgvImpuestos.Click
-        actualiza()
-    End Sub
+    'Private Sub dgvImpuestos_Click(sender As Object, e As EventArgs) Handles dgvImpuestos.Click
+    '    actualiza()
+    'End Sub
 
     Private Sub BindingNavigatorMovePreviousItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorMovePreviousItem.Click
         dgvImpuestos.Rows.Clear()
@@ -136,11 +142,48 @@
         End If
     End Sub
 
-    Private Sub frmConceptos_LostFocus(sender As Object, e As EventArgs) Handles Me.LostFocus
+
+
+    Private Sub lnkEliminar3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkEliminar3.LinkClicked
+        Dim id As String = IdConceptoTextBox.Text
+        taConceptos.CtaCargoSol_UpdateQuery(CDec(IdConceptoTextBox.Text))
+        cmbCtaCargoSol.SelectedValue = 0
+        Me.Update()
+    End Sub
+
+    Private Sub lnkEliminar4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkEliminar4.LinkClicked
+        Dim id As String = IdConceptoTextBox.Text
+        taConceptos.CtaAbonoSol_UpdateQuery(CDec(IdConceptoTextBox.Text))
+        cmbCtaAbonoSol.SelectedValue = 0
+        Me.Update()
+    End Sub
+
+    Private Sub lnkElimina1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkElimina1.LinkClicked
+        Dim id As String = IdConceptoTextBox.Text
+        taConceptos.CtaCargoPago_UpdateQuery(CDec(IdConceptoTextBox.Text))
+        cmbCtaCargoPago.SelectedValue = 0
+        Me.Update()
+    End Sub
+
+    Private Sub lnkElimina2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkElimina2.LinkClicked
+        Dim id As String = IdConceptoTextBox.Text
+        taConceptos.CtaAbonoPago_UpdateQuery(CDec(IdConceptoTextBox.Text))
+        cmbCtaAbonoPago.SelectedValue = 0
+        Me.Update()
+    End Sub
+
+    Private Sub dgvImpuestos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvImpuestos.CellClick
+        If e.ColumnIndex = 3 Then
+            taImpuestoConcepto.DeleteQuery(dgvImpuestos.Item(0, e.RowIndex).Value)
+        End If
+        'actualiza()
+    End Sub
+
+    Private Sub frmConceptos_Move(sender As Object, e As EventArgs) Handles Me.Move
 
     End Sub
 
-    Private Sub frmConceptos_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
-        actualiza()
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        CXP_ConceptosBindingSource.Filter = "nombre like '%" & txtBuscar.Text & "%'"
     End Sub
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmPolizasDiario
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,16 +20,13 @@ Partial Class frmPolizasDiario
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.VwCXPRegContableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.Vw_CXP_RegContableTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_RegContableTableAdapter()
         Me.fila = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.claveTipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.folioTipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -40,15 +37,23 @@ Partial Class frmPolizasDiario
         Me.AbonoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReferenciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.VwCXPRegContableBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.Vw_CXP_RegContableTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_RegContableTableAdapter()
+        Me.cmbTipoDeDocumento = New System.Windows.Forms.ComboBox()
+        Me.CXPtipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCXPRegContableBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPtipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -66,20 +71,6 @@ Partial Class frmPolizasDiario
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(1198, 358)
         Me.DataGridView1.TabIndex = 0
-        '
-        'VwCXPRegContableBindingSource
-        '
-        Me.VwCXPRegContableBindingSource.DataMember = "Vw_CXP_RegContable"
-        Me.VwCXPRegContableBindingSource.DataSource = Me.DsProduction
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Vw_CXP_RegContableTableAdapter
-        '
-        Me.Vw_CXP_RegContableTableAdapter.ClearBeforeFill = True
         '
         'fila
         '
@@ -171,13 +162,42 @@ Partial Class frmPolizasDiario
         Me.ConceptoDataGridViewTextBoxColumn.ReadOnly = True
         Me.ConceptoDataGridViewTextBoxColumn.Width = 400
         '
-        'ComboBox1
+        'VwCXPRegContableBindingSource
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(56, 10)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(86, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.VwCXPRegContableBindingSource.DataMember = "Vw_CXP_RegContable"
+        Me.VwCXPRegContableBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_CXP_RegContableTableAdapter
+        '
+        Me.Vw_CXP_RegContableTableAdapter.ClearBeforeFill = True
+        '
+        'cmbTipoDeDocumento
+        '
+        Me.cmbTipoDeDocumento.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXPtipoDeDocumentoBindingSource, "idTipoDeDocumento", True))
+        Me.cmbTipoDeDocumento.DataSource = Me.CXPtipoDeDocumentoBindingSource
+        Me.cmbTipoDeDocumento.DisplayMember = "nombre"
+        Me.cmbTipoDeDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTipoDeDocumento.FormattingEnabled = True
+        Me.cmbTipoDeDocumento.Location = New System.Drawing.Point(56, 10)
+        Me.cmbTipoDeDocumento.Name = "cmbTipoDeDocumento"
+        Me.cmbTipoDeDocumento.Size = New System.Drawing.Size(227, 21)
+        Me.cmbTipoDeDocumento.TabIndex = 1
+        Me.cmbTipoDeDocumento.ValueMember = "idTipoDeDocumento"
+        '
+        'CXPtipoDeDocumentoBindingSource
+        '
+        Me.CXPtipoDeDocumentoBindingSource.DataMember = "CXP_tipoDeDocumento"
+        Me.CXPtipoDeDocumentoBindingSource.DataSource = Me.DsProduction1
+        '
+        'DsProduction1
+        '
+        Me.DsProduction1.DataSetName = "dsProduction"
+        Me.DsProduction1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label1
         '
@@ -190,14 +210,14 @@ Partial Class frmPolizasDiario
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(148, 10)
+        Me.TextBox1.Location = New System.Drawing.Point(313, 10)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
         Me.TextBox1.TabIndex = 3
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(304, 10)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(469, 10)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 4
@@ -205,7 +225,7 @@ Partial Class frmPolizasDiario
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(254, 13)
+        Me.Label2.Location = New System.Drawing.Point(419, 13)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 5
@@ -213,10 +233,14 @@ Partial Class frmPolizasDiario
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(510, 10)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(675, 10)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker2.TabIndex = 6
+        '
+        'CXP_tipoDeDocumentoTableAdapter
+        '
+        Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
         '
         'frmPolizasDiario
         '
@@ -228,7 +252,7 @@ Partial Class frmPolizasDiario
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.cmbTipoDeDocumento)
         Me.Controls.Add(Me.DataGridView1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmPolizasDiario"
@@ -236,6 +260,8 @@ Partial Class frmPolizasDiario
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCXPRegContableBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPtipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -255,10 +281,13 @@ Partial Class frmPolizasDiario
     Friend WithEvents AbonoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ReferenciaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ConceptoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cmbTipoDeDocumento As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents CXPtipoDeDocumentoBindingSource As BindingSource
+    Friend WithEvents CXP_tipoDeDocumentoTableAdapter As dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter
+    Friend WithEvents DsProduction1 As dsProduction
 End Class

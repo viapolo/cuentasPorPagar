@@ -41,14 +41,14 @@
     End Sub
 
     Private Sub RfcTextBox_LostFocus(sender As Object, e As EventArgs) Handles RfcTextBox.LostFocus
-        utilerias.validaRfc(RfcTextBox.Text.Trim)
-        If utilerias.esFisicaOMoral(RfcTextBox.Text.Trim) = "F" Then
-            CurpTextBox.Enabled = True
-        ElseIf utilerias.esFisicaOMoral(RfcTextBox.Text.Trim) = "M" Then
-            CurpTextBox.Enabled = False
-        Else
-            CurpTextBox.Enabled = False
-        End If
+        'utilerias.validaRfc(RfcTextBox.Text.Trim)
+        'If utilerias.esFisicaOMoral(RfcTextBox.Text.Trim) = "F" Then
+        '    CurpTextBox.Enabled = True
+        'ElseIf utilerias.esFisicaOMoral(RfcTextBox.Text.Trim) = "M" Then
+        '    CurpTextBox.Enabled = False
+        'Else
+        '    CurpTextBox.Enabled = False
+        'End If
     End Sub
 
     Private Sub ExtranjeroCheckBox_Click(sender As Object, e As EventArgs) Handles ExtranjeroCheckBox.Click
@@ -62,14 +62,11 @@
             RfcTextBox.Text = CXP_ProveedoresBindingSource.Current("rfc")
             NitTextBox.Enabled = False
             CXPcPaisBindingSource.Filter = "c_Pais = 'MEX'"
-            cmbNacionalida.Text = CXPcPaisBindingSource.Current("nacionalidad")
+            cmbNacionalida.Text = CXPcPaisBindingSource.Current("Descripcion")
             cmbNacionalida.Enabled = False
         End If
     End Sub
 
-    Private Sub MailTextBox_TextChanged(sender As Object, e As EventArgs) Handles MailTextBox.TextChanged
-
-    End Sub
 
     Private Sub MailTextBox_LostFocus(sender As Object, e As EventArgs) Handles MailTextBox.LostFocus
         If MailTextBox.TextLength > 0 Then

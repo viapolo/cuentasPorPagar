@@ -197,10 +197,27 @@
     <Compile Include="configuracion\frmSucursales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="configuracion\frmTipoConcepto.Designer.vb">
+      <DependentUpon>frmTipoConcepto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion\frmTipoConcepto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="configuracion\frmUsuario.Designer.vb">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </Compile>
     <Compile Include="configuracion\frmUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contpaq.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>contpaq.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="diarios\fmrPolizasDiarioSCuenta.Designer.vb">
+      <DependentUpon>fmrPolizasDiarioSCuenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="diarios\fmrPolizasDiarioSCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="diarios\frmPolizasDiario.Designer.vb">
@@ -233,6 +250,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSeguridad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmCCPDF.Designer.vb">
+      <DependentUpon>frmCCPDF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCCPDF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompGstPDF.Designer.vb">
+      <DependentUpon>frmCompGstPDF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompGstPDF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSCPDF.Designer.vb">
+      <DependentUpon>frmSCPDF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSCPDF.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="lfrInicio.Designer.vb">
       <DependentUpon>lfrInicio.vb</DependentUpon>
@@ -318,8 +353,14 @@
     <EmbeddedResource Include="configuracion\frmSucursales.resx">
       <DependentUpon>frmSucursales.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="configuracion\frmTipoConcepto.resx">
+      <DependentUpon>frmTipoConcepto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="diarios\fmrPolizasDiarioSCuenta.resx">
+      <DependentUpon>fmrPolizasDiarioSCuenta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="diarios\frmPolizasDiario.resx">
       <DependentUpon>frmPolizasDiario.vb</DependentUpon>
@@ -329,6 +370,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="diarios\frmSolicitudesDePagoCFDI.resx">
       <DependentUpon>frmSolicitudesDePagoCFDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCCPDF.resx">
+      <DependentUpon>frmCCPDF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCompGstPDF.resx">
+      <DependentUpon>frmCompGstPDF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSCPDF.resx">
+      <DependentUpon>frmSCPDF.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lfrInicio.resx">
       <DependentUpon>lfrInicio.vb</DependentUpon>
@@ -344,6 +394,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="contpaq.xsc">
+      <DependentUpon>contpaq.xsd</DependentUpon>
+    </None>
+    <None Include="contpaq.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>contpaq.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="contpaq.xss">
+      <DependentUpon>contpaq.xsd</DependentUpon>
+    </None>
     <None Include="dsProduction.xsc">
       <DependentUpon>dsProduction.xsd</DependentUpon>
     </None>

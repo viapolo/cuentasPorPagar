@@ -32,9 +32,6 @@ Public Class lfrInicio
                     If dtUsuario.Rows.Count Then
 
                     End If
-                    For Each rows As dsSeguridad.USUARIO2Row In dtUsuario
-
-                    Next
 
                     f.varGlUser = rowUsuarios.Item("usuario")
                     varGlobal_NombreUsuario = rowUsuarios.Item("usuario")

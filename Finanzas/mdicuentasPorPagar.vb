@@ -137,6 +137,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub mdicuentasPorPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = "Cuentas por Pagar   ** " + varGlEmpresaD
         Dim cn As New SqlConnection()
         Dim strSelect As String
         Dim Usuario As String
@@ -250,8 +251,8 @@ Public Class mdicuentasPorPagar
 
         Next
 
-        'tssUsuario.Text = "Usuario: " & varGlUser
-        'tssEmpresa.Text = "Empresa: " & varGlEmpresaD
+        tssUsuario.Text = "Usuario: " & varGlUser
+        tssEmpresa.Text = "Empresa: " & varGlEmpresaD
 
         'If varGlUser = "viapolo" Then
         '    For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
@@ -374,6 +375,57 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmTipoCuentaContable.MdiParent = Me
         frmTipoCuentaContable.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub TipoDeSolcitudPorConceptoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeSolcitudPorConceptoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmTipoConcepto.MdiParent = Me
+        frmTipoConcepto.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub CambiarDeEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CambiarDeEmpresaToolStripMenuItem.Click
+        lfrInicio.Show()
+    End Sub
+
+    Private Sub GastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GastosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        fmrPolizasDiarioSCuenta.MdiParent = Me
+        fmrPolizasDiarioSCuenta.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+
+
+    Private Sub ComprobaciónDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprobaciónDeGastosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCompGstPDF.MdiParent = Me
+        frmCompGstPDF.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ConComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConComprobanteToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCCPDF.MdiParent = Me
+        frmCCPDF.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SinComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SinComprobanteToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSCPDF.MdiParent = Me
+        frmSCPDF.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
