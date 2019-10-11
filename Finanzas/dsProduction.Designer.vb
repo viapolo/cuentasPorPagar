@@ -7921,7 +7921,7 @@ Partial Public Class dsProduction
             Me.columnnombre.MaxLength = 250
             Me.columnimpuesto.MaxLength = 5
             Me.columntipoProducto.MaxLength = 30
-            Me.columncuentaEgreso.MaxLength = 5
+            Me.columncuentaEgreso.MaxLength = 10
             Me.columncuentaProv.MaxLength = 5
         End Sub
         

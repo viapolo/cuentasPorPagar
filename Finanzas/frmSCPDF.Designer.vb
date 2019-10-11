@@ -23,15 +23,16 @@ Partial Class frmSCPDF
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.VwCXPMisSolicitudesSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.Vw_CXP_MisSolicitudesSCTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisSolicitudesSCTableAdapter()
         Me.FolioSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.FechaSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalPagadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RazonSocialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VwCXPMisSolicitudesSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.Vw_CXP_MisSolicitudesSCTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisSolicitudesSCTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCXPMisSolicitudesSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,6 +51,20 @@ Partial Class frmSCPDF
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(631, 306)
         Me.DataGridView1.TabIndex = 0
+        '
+        'VwCXPMisSolicitudesSCBindingSource
+        '
+        Me.VwCXPMisSolicitudesSCBindingSource.DataMember = "Vw_CXP_MisSolicitudesSC"
+        Me.VwCXPMisSolicitudesSCBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_CXP_MisSolicitudesSCTableAdapter
+        '
+        Me.Vw_CXP_MisSolicitudesSCTableAdapter.ClearBeforeFill = True
         '
         'FolioSolicitudDataGridViewTextBoxColumn
         '
@@ -70,6 +85,10 @@ Partial Class frmSCPDF
         'TotalPagadoDataGridViewTextBoxColumn
         '
         Me.TotalPagadoDataGridViewTextBoxColumn.DataPropertyName = "totalPagado"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.TotalPagadoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.TotalPagadoDataGridViewTextBoxColumn.HeaderText = "Total Pagado"
         Me.TotalPagadoDataGridViewTextBoxColumn.Name = "TotalPagadoDataGridViewTextBoxColumn"
         Me.TotalPagadoDataGridViewTextBoxColumn.ReadOnly = True
@@ -88,20 +107,6 @@ Partial Class frmSCPDF
         Me.UsuarioDataGridViewTextBoxColumn.HeaderText = "Usuario"
         Me.UsuarioDataGridViewTextBoxColumn.Name = "UsuarioDataGridViewTextBoxColumn"
         Me.UsuarioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'VwCXPMisSolicitudesSCBindingSource
-        '
-        Me.VwCXPMisSolicitudesSCBindingSource.DataMember = "Vw_CXP_MisSolicitudesSC"
-        Me.VwCXPMisSolicitudesSCBindingSource.DataSource = Me.DsProduction
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Vw_CXP_MisSolicitudesSCTableAdapter
-        '
-        Me.Vw_CXP_MisSolicitudesSCTableAdapter.ClearBeforeFill = True
         '
         'frmSCPDF
         '
