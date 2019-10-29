@@ -173,6 +173,12 @@
     <Compile Include="configuracion\frmAutorizaciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="configuracion\frmDepartamentos.Designer.vb">
+      <DependentUpon>frmDepartamentos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion\frmDepartamentos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="configuracion\frmEmpresas.Designer.vb">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
     </Compile>
@@ -269,6 +275,18 @@
     <Compile Include="frmSCPDF.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Gastos\frmSaldosGastos.Designer.vb">
+      <DependentUpon>frmSaldosGastos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gastos\frmSaldosGastos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gastos\frmSaldosGastosDetalle.Designer.vb">
+      <DependentUpon>frmSaldosGastosDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gastos\frmSaldosGastosDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="lfrInicio.Designer.vb">
       <DependentUpon>lfrInicio.vb</DependentUpon>
     </Compile>
@@ -341,6 +359,9 @@
     <EmbeddedResource Include="configuracion\frmAutorizaciones.resx">
       <DependentUpon>frmAutorizaciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="configuracion\frmDepartamentos.resx">
+      <DependentUpon>frmDepartamentos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmEmpresas.resx">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +400,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSCPDF.resx">
       <DependentUpon>frmSCPDF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gastos\frmSaldosGastos.resx">
+      <DependentUpon>frmSaldosGastos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gastos\frmSaldosGastosDetalle.resx">
+      <DependentUpon>frmSaldosGastosDetalle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lfrInicio.resx">
       <DependentUpon>lfrInicio.vb</DependentUpon>

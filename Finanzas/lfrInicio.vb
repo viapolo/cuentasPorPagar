@@ -43,6 +43,7 @@ Public Class lfrInicio
                     f.varGlEmpresaD = cmbEmpresa.Text
                     varGlobal_Empresa = cmbEmpresa.Text
                     varGlobal_rfcEmpresa = taEmpresas.ObtRfc_ScalarQuery(cmbEmpresa.SelectedValue)
+
                     f.ShowDialog()
                 Else
                     MsgBox("El usuario es incorrecto...", MsgBoxStyle.Critical)

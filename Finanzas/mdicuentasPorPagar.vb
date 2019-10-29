@@ -60,9 +60,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub SucursalesToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
-    End Sub
 
     Private Sub ImpuestosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImpuestosToolStripMenuItem.Click
         Me.Cursor = Cursors.WaitCursor
@@ -352,7 +350,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub SucursalesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SucursalesToolStripMenuItem1.Click
+    Private Sub SucursalesToolStripMenuItem1_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSucursales.MdiParent = Me
@@ -426,6 +424,33 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmSCPDF.MdiParent = Me
         frmSCPDF.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldosPorUsuarioToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSaldosGastos.MdiParent = Me
+        frmSaldosGastos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SucursalesToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles SucursalesToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSucursales.MdiParent = Me
+        frmSucursales.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub DepartamentosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepartamentosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmDepartamentos.MdiParent = Me
+        frmDepartamentos.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

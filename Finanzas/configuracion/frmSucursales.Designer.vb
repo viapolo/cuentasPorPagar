@@ -24,9 +24,8 @@ Partial Class frmSucursales
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim NombreSucursalLabel As System.Windows.Forms.Label
-        Dim Id_SucursalLabel As System.Windows.Forms.Label
-        Dim IdSucLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSucursales))
+        Dim Id_SucursalLabel As System.Windows.Forms.Label
         Me.CXP_SucursalesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -42,21 +41,24 @@ Partial Class frmSucursales
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.CXP_SucursalesBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.Id_SucursalTextBox = New System.Windows.Forms.TextBox()
-        Me.IdSucTextBox = New System.Windows.Forms.TextBox()
         Me.CXP_SucursalesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_SucursalesTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SucursalesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.SucursalesTableAdapter()
+        Me.DsSeguridad = New cuentasPorPagar.dsSeguridad()
+        Me.NombreSucursalTextBox = New System.Windows.Forms.TextBox()
+        Me.DsSeguridad1 = New cuentasPorPagar.dsSeguridad()
+        Me.SUCURSALBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SUCURSALTableAdapter = New cuentasPorPagar.dsSeguridadTableAdapters.SUCURSALTableAdapter()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.Id_SucursalTextBox = New System.Windows.Forms.TextBox()
         NombreSucursalLabel = New System.Windows.Forms.Label()
         Id_SucursalLabel = New System.Windows.Forms.Label()
-        IdSucLabel = New System.Windows.Forms.Label()
         CType(Me.CXP_SucursalesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_SucursalesBindingNavigator.SuspendLayout()
         CType(Me.CXP_SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsSeguridad1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SUCURSALBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreSucursalLabel
@@ -67,24 +69,6 @@ Partial Class frmSucursales
         NombreSucursalLabel.Size = New System.Drawing.Size(117, 13)
         NombreSucursalLabel.TabIndex = 1
         NombreSucursalLabel.Text = "Nombre de la Sucursal:"
-        '
-        'Id_SucursalLabel
-        '
-        Id_SucursalLabel.AutoSize = True
-        Id_SucursalLabel.Location = New System.Drawing.Point(55, 74)
-        Id_SucursalLabel.Name = "Id_SucursalLabel"
-        Id_SucursalLabel.Size = New System.Drawing.Size(68, 13)
-        Id_SucursalLabel.TabIndex = 3
-        Id_SucursalLabel.Text = "Id alfebetico:"
-        '
-        'IdSucLabel
-        '
-        IdSucLabel.AutoSize = True
-        IdSucLabel.Location = New System.Drawing.Point(58, 100)
-        IdSucLabel.Name = "IdSucLabel"
-        IdSucLabel.Size = New System.Drawing.Size(65, 13)
-        IdSucLabel.TabIndex = 5
-        IdSucLabel.Text = "Id numerico:"
         '
         'CXP_SucursalesBindingNavigator
         '
@@ -100,7 +84,7 @@ Partial Class frmSucursales
         Me.CXP_SucursalesBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_SucursalesBindingNavigator.Name = "CXP_SucursalesBindingNavigator"
         Me.CXP_SucursalesBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_SucursalesBindingNavigator.Size = New System.Drawing.Size(467, 25)
+        Me.CXP_SucursalesBindingNavigator.Size = New System.Drawing.Size(431, 25)
         Me.CXP_SucursalesBindingNavigator.TabIndex = 0
         Me.CXP_SucursalesBindingNavigator.Text = "BindingNavigator1"
         '
@@ -207,22 +191,6 @@ Partial Class frmSucursales
         Me.CXP_SucursalesBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
         Me.CXP_SucursalesBindingNavigatorSaveItem.Text = "Guardar datos"
         '
-        'Id_SucursalTextBox
-        '
-        Me.Id_SucursalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_SucursalesBindingSource, "id_Sucursal", True))
-        Me.Id_SucursalTextBox.Location = New System.Drawing.Point(129, 71)
-        Me.Id_SucursalTextBox.Name = "Id_SucursalTextBox"
-        Me.Id_SucursalTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.Id_SucursalTextBox.TabIndex = 4
-        '
-        'IdSucTextBox
-        '
-        Me.IdSucTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_SucursalesBindingSource, "idSuc", True))
-        Me.IdSucTextBox.Location = New System.Drawing.Point(129, 97)
-        Me.IdSucTextBox.Name = "IdSucTextBox"
-        Me.IdSucTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.IdSucTextBox.TabIndex = 6
-        '
         'CXP_SucursalesTableAdapter
         '
         Me.CXP_SucursalesTableAdapter.ClearBeforeFill = True
@@ -230,6 +198,8 @@ Partial Class frmSucursales
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
@@ -240,52 +210,90 @@ Partial Class frmSucursales
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Me.CXP_SucursalesTableAdapter
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'ComboBox1
+        'DsSeguridad
         '
-        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_SucursalesBindingSource, "nombreSucursal", True))
-        Me.ComboBox1.DataSource = Me.SucursalesBindingSource
-        Me.ComboBox1.DisplayMember = "Nombre_Sucursal"
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(129, 45)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(304, 21)
-        Me.ComboBox1.TabIndex = 7
-        Me.ComboBox1.ValueMember = "Nombre_Sucursal"
+        Me.DsSeguridad.DataSetName = "dsSeguridad"
+        Me.DsSeguridad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'SucursalesBindingSource
+        'NombreSucursalTextBox
         '
-        Me.SucursalesBindingSource.DataMember = "Sucursales"
-        Me.SucursalesBindingSource.DataSource = Me.DsProduction
+        Me.NombreSucursalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_SucursalesBindingSource, "nombreSucursal", True))
+        Me.NombreSucursalTextBox.Location = New System.Drawing.Point(129, 45)
+        Me.NombreSucursalTextBox.Name = "NombreSucursalTextBox"
+        Me.NombreSucursalTextBox.Size = New System.Drawing.Size(280, 20)
+        Me.NombreSucursalTextBox.TabIndex = 9
         '
-        'SucursalesTableAdapter
+        'DsSeguridad1
         '
-        Me.SucursalesTableAdapter.ClearBeforeFill = True
+        Me.DsSeguridad1.DataSetName = "dsSeguridad"
+        Me.DsSeguridad1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SUCURSALBindingSource
+        '
+        Me.SUCURSALBindingSource.DataMember = "SUCURSAL"
+        Me.SUCURSALBindingSource.DataSource = Me.DsSeguridad1
+        '
+        'SUCURSALTableAdapter
+        '
+        Me.SUCURSALTableAdapter.ClearBeforeFill = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(334, 96)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 10
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'Id_SucursalLabel
+        '
+        Id_SucursalLabel.AutoSize = True
+        Id_SucursalLabel.Location = New System.Drawing.Point(61, 74)
+        Id_SucursalLabel.Name = "Id_SucursalLabel"
+        Id_SucursalLabel.Size = New System.Drawing.Size(63, 13)
+        Id_SucursalLabel.TabIndex = 10
+        Id_SucursalLabel.Text = "Id Sucursal:"
+        '
+        'Id_SucursalTextBox
+        '
+        Me.Id_SucursalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_SucursalesBindingSource, "id_Sucursal", True))
+        Me.Id_SucursalTextBox.Location = New System.Drawing.Point(129, 71)
+        Me.Id_SucursalTextBox.Name = "Id_SucursalTextBox"
+        Me.Id_SucursalTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Id_SucursalTextBox.TabIndex = 11
         '
         'frmSucursales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(467, 142)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(IdSucLabel)
-        Me.Controls.Add(Me.IdSucTextBox)
+        Me.ClientSize = New System.Drawing.Size(431, 139)
         Me.Controls.Add(Id_SucursalLabel)
         Me.Controls.Add(Me.Id_SucursalTextBox)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.NombreSucursalTextBox)
         Me.Controls.Add(NombreSucursalLabel)
         Me.Controls.Add(Me.CXP_SucursalesBindingNavigator)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -296,7 +304,9 @@ Partial Class frmSucursales
         Me.CXP_SucursalesBindingNavigator.PerformLayout()
         CType(Me.CXP_SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsSeguridad1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SUCURSALBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -319,9 +329,11 @@ Partial Class frmSucursales
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
     Friend WithEvents CXP_SucursalesBindingNavigatorSaveItem As ToolStripButton
+    Friend WithEvents DsSeguridad As dsSeguridad
+    Friend WithEvents NombreSucursalTextBox As TextBox
+    Friend WithEvents DsSeguridad1 As dsSeguridad
+    Friend WithEvents SUCURSALBindingSource As BindingSource
+    Friend WithEvents SUCURSALTableAdapter As dsSeguridadTableAdapters.SUCURSALTableAdapter
+    Friend WithEvents btnSalir As Button
     Friend WithEvents Id_SucursalTextBox As TextBox
-    Friend WithEvents IdSucTextBox As TextBox
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents SucursalesBindingSource As BindingSource
-    Friend WithEvents SucursalesTableAdapter As dsProductionTableAdapters.SucursalesTableAdapter
 End Class

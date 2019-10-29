@@ -55,8 +55,6 @@ Partial Class frmUsuario
         Me.Label1 = New System.Windows.Forms.Label()
         Me.UsuarioTextBox = New System.Windows.Forms.TextBox()
         Me.MailTextBox = New System.Windows.Forms.TextBox()
-        Me.DepartamentoTextBox = New System.Windows.Forms.TextBox()
-        Me.SucursalTextBox = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.cmbEmpresas = New System.Windows.Forms.ComboBox()
         Me.CXPEmpresasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -85,6 +83,9 @@ Partial Class frmUsuario
         Me.CXPConceptosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXPtipoConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CXPSucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ActivoCheckBox = New System.Windows.Forms.CheckBox()
         Me.PwTextBox = New System.Windows.Forms.TextBox()
         Me.RfcTextBox = New System.Windows.Forms.TextBox()
@@ -96,6 +97,9 @@ Partial Class frmUsuario
         Me.CXP_ConceptosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ConceptosTableAdapter()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.CXP_SucursalesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_SucursalesTableAdapter()
+        Me.CXPDepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_DepartamentosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_DepartamentosTableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
         MailLabel = New System.Windows.Forms.Label()
@@ -118,8 +122,10 @@ Partial Class frmUsuario
         CType(Me.CXPConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPtipoConceptoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.CXPSucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.CXPDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -161,7 +167,7 @@ Partial Class frmUsuario
         'SucursalLabel
         '
         SucursalLabel.AutoSize = True
-        SucursalLabel.Location = New System.Drawing.Point(277, 100)
+        SucursalLabel.Location = New System.Drawing.Point(253, 100)
         SucursalLabel.Name = "SucursalLabel"
         SucursalLabel.Size = New System.Drawing.Size(51, 13)
         SucursalLabel.TabIndex = 11
@@ -205,6 +211,7 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
@@ -395,27 +402,8 @@ Partial Class frmUsuario
         Me.MailTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_UsuariosBindingSource, "mail", True))
         Me.MailTextBox.Location = New System.Drawing.Point(93, 71)
         Me.MailTextBox.Name = "MailTextBox"
-        Me.MailTextBox.ReadOnly = True
         Me.MailTextBox.Size = New System.Drawing.Size(384, 20)
         Me.MailTextBox.TabIndex = 8
-        '
-        'DepartamentoTextBox
-        '
-        Me.DepartamentoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_UsuariosBindingSource, "departamento", True))
-        Me.DepartamentoTextBox.Location = New System.Drawing.Point(93, 97)
-        Me.DepartamentoTextBox.Name = "DepartamentoTextBox"
-        Me.DepartamentoTextBox.ReadOnly = True
-        Me.DepartamentoTextBox.Size = New System.Drawing.Size(148, 20)
-        Me.DepartamentoTextBox.TabIndex = 10
-        '
-        'SucursalTextBox
-        '
-        Me.SucursalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_UsuariosBindingSource, "sucursal", True))
-        Me.SucursalTextBox.Location = New System.Drawing.Point(332, 97)
-        Me.SucursalTextBox.Name = "SucursalTextBox"
-        Me.SucursalTextBox.ReadOnly = True
-        Me.SucursalTextBox.Size = New System.Drawing.Size(145, 20)
-        Me.SucursalTextBox.TabIndex = 12
         '
         'btnSalir
         '
@@ -625,6 +613,8 @@ Partial Class frmUsuario
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.ComboBox2)
+        Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.ActivoCheckBox)
         Me.GroupBox1.Controls.Add(Me.PwTextBox)
         Me.GroupBox1.Controls.Add(RfcLabel)
@@ -635,9 +625,7 @@ Partial Class frmUsuario
         Me.GroupBox1.Controls.Add(UsuarioLabel)
         Me.GroupBox1.Controls.Add(Me.MailTextBox)
         Me.GroupBox1.Controls.Add(MailLabel)
-        Me.GroupBox1.Controls.Add(Me.DepartamentoTextBox)
         Me.GroupBox1.Controls.Add(DepartamentoLabel)
-        Me.GroupBox1.Controls.Add(Me.SucursalTextBox)
         Me.GroupBox1.Controls.Add(SucursalLabel)
         Me.GroupBox1.Location = New System.Drawing.Point(15, 80)
         Me.GroupBox1.Name = "GroupBox1"
@@ -645,6 +633,35 @@ Partial Class frmUsuario
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Usuario:"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "departamento", True))
+        Me.ComboBox2.DataSource = Me.CXPDepartamentosBindingSource
+        Me.ComboBox2.DisplayMember = "departamento"
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(93, 97)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox2.TabIndex = 35
+        Me.ComboBox2.ValueMember = "departamento"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "sucursal", True))
+        Me.ComboBox1.DataSource = Me.CXPSucursalesBindingSource
+        Me.ComboBox1.DisplayMember = "nombreSucursal"
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(310, 96)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(167, 21)
+        Me.ComboBox1.TabIndex = 34
+        Me.ComboBox1.ValueMember = "id_Sucursal"
+        '
+        'CXPSucursalesBindingSource
+        '
+        Me.CXPSucursalesBindingSource.DataMember = "CXP_Sucursales"
+        Me.CXPSucursalesBindingSource.DataSource = Me.DsProduction
         '
         'ActivoCheckBox
         '
@@ -746,6 +763,19 @@ Partial Class frmUsuario
         Me.txtBuscar.Size = New System.Drawing.Size(207, 20)
         Me.txtBuscar.TabIndex = 33
         '
+        'CXP_SucursalesTableAdapter
+        '
+        Me.CXP_SucursalesTableAdapter.ClearBeforeFill = True
+        '
+        'CXPDepartamentosBindingSource
+        '
+        Me.CXPDepartamentosBindingSource.DataMember = "CXP_Departamentos"
+        Me.CXPDepartamentosBindingSource.DataSource = Me.DsProduction
+        '
+        'CXP_DepartamentosTableAdapter
+        '
+        Me.CXP_DepartamentosTableAdapter.ClearBeforeFill = True
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -783,10 +813,12 @@ Partial Class frmUsuario
         CType(Me.CXPtipoConceptoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.CXPSucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.CXPDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -817,8 +849,6 @@ Partial Class frmUsuario
     Friend WithEvents Label1 As Label
     Friend WithEvents UsuarioTextBox As TextBox
     Friend WithEvents MailTextBox As TextBox
-    Friend WithEvents DepartamentoTextBox As TextBox
-    Friend WithEvents SucursalTextBox As TextBox
     Friend WithEvents btnSalir As Button
     Friend WithEvents cmbEmpresas As ComboBox
     Friend WithEvents Label2 As Label
@@ -858,4 +888,10 @@ Partial Class frmUsuario
     Friend WithEvents CXP_ConceptosTableAdapter As dsProductionTableAdapters.CXP_ConceptosTableAdapter
     Friend WithEvents btnBuscar As Button
     Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CXPSucursalesBindingSource As BindingSource
+    Friend WithEvents CXP_SucursalesTableAdapter As dsProductionTableAdapters.CXP_SucursalesTableAdapter
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents CXPDepartamentosBindingSource As BindingSource
+    Friend WithEvents CXP_DepartamentosTableAdapter As dsProductionTableAdapters.CXP_DepartamentosTableAdapter
 End Class

@@ -11,6 +11,10 @@
     Dim concatEmpresas As String = ""
     Dim concatConceptos As String = ""
     Private Sub frmUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Departamentos' Puede moverla o quitarla según sea necesario.
+        Me.CXP_DepartamentosTableAdapter.Fill(Me.DsProduction.CXP_Departamentos)
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Sucursales' Puede moverla o quitarla según sea necesario.
+        Me.CXP_SucursalesTableAdapter.Fill(Me.DsProduction.CXP_Sucursales)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_tipoConcepto' Puede moverla o quitarla según sea necesario.
         'Me.CXP_tipoConceptoTableAdapter.Fill(Me.DsProduction.CXP_tipoConcepto)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction2.CXP_Perfiles' Puede moverla o quitarla según sea necesario.
@@ -26,19 +30,19 @@
         'TODO: esta línea de código carga datos en la tabla 'DsSeguridad.USUARIO' Puede moverla o quitarla según sea necesario.
         Me.USUARIOTableAdapter.Fill(Me.DsSeguridad.USUARIO)
 
-        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        Me.CXP_ConceptosTableAdapter.ConcptoesNombreEmpresa_FillBy(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
 
         ActivoCheckBox.Checked = True
         actualiza()
     End Sub
 
     Private Sub CXP_UsuariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_UsuariosBindingNavigatorSaveItem.Click
-        If RfcTextBox.Text.Length < 12 Then
-            MsgBox("El RFC no es correcto, el usuario no quedará regustrado, favor de pedir la corrección del RFC en sl sistema de Finagil y posteriormente continue", MsgBoxStyle.Information, "Datos incompletos")
-            Exit Sub
-            Me.Close()
-            CXP_UsuariosTableAdapter.Dispose()
-        End If
+        'If RfcTextBox.Text.Length < 12 Then
+        '    MsgBox("El RFC no es correcto, el usuario no quedará regustrado, favor de pedir la corrección del RFC en sl sistema de Finagil y posteriormente continue", MsgBoxStyle.Information, "Datos incompletos")
+        '    Exit Sub
+        '    Me.Close()
+        '    CXP_UsuariosTableAdapter.Dispose()
+        'End If
         cmbUsuarioActual.Enabled = False
             btnAgregarUsuario.Enabled = False
 
@@ -154,8 +158,8 @@
         NombreTextBox.Text = USUARIOBindingSource.Current("nombrecompleto")
         UsuarioTextBox.Text = USUARIOBindingSource.Current("id_usuario")
         MailTextBox.Text = USUARIOBindingSource.Current("correo")
-        DepartamentoTextBox.Text = USUARIOBindingSource.Current("id_depto")
-        SucursalTextBox.Text = USUARIOBindingSource.Current("id_sucursal")
+        'DepartamentoTextBox.Text = USUARIOBindingSource.Current("id_depto")
+        'SucursalTextBox.Text = USUARIOBindingSource.Current("id_sucursal")
         CXP_UsuariosBindingSource.Current("idUsuarioProd") = USUARIOBindingSource.Current("cve_empleado")
         RfcTextBox.Text = USUARIOBindingSource.Current("rfc").ToString.Trim
         PwTextBox.Text = USUARIOBindingSource.Current("password")

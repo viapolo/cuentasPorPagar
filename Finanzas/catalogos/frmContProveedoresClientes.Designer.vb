@@ -293,7 +293,9 @@ Partial Class frmContProveedoresClientes
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Me.CXP_ProveedoresTableAdapter
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Me.CXP_SucursalesTableAdapter
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
@@ -326,7 +328,7 @@ Partial Class frmContProveedoresClientes
         Me.CXP_ProveedoresBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_ProveedoresBindingNavigator.Name = "CXP_ProveedoresBindingNavigator"
         Me.CXP_ProveedoresBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_ProveedoresBindingNavigator.Size = New System.Drawing.Size(506, 25)
+        Me.CXP_ProveedoresBindingNavigator.Size = New System.Drawing.Size(514, 25)
         Me.CXP_ProveedoresBindingNavigator.TabIndex = 0
         Me.CXP_ProveedoresBindingNavigator.Text = "BindingNavigator1"
         '
@@ -623,7 +625,7 @@ Partial Class frmContProveedoresClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(506, 325)
+        Me.ClientSize = New System.Drawing.Size(514, 327)
         Me.Controls.Add(ClabeLabel)
         Me.Controls.Add(Me.ClabeTextBox)
         Me.Controls.Add(CuentaBancariaLabel)

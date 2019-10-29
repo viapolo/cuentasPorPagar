@@ -69,7 +69,7 @@
 
         taImpuestoConcepto.Insert(cmbImpuesto.SelectedValue, IdConceptoTextBox.Text)
         actualiza()
-        dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
+        'dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
     End Sub
 
     Private Sub actualiza()
@@ -97,7 +97,7 @@
         If e.ColumnIndex = 3 Then
             taImpuestoConcepto.DeleteQuery(dgvImpuestos.Item(0, e.RowIndex).Value)
         End If
-        'actualiza()
+        actualiza()
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -185,5 +185,9 @@
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         CXP_ConceptosBindingSource.Filter = "nombre like '%" & txtBuscar.Text & "%'"
+    End Sub
+
+    Private Sub NombreTextBox_TextChanged(sender As Object, e As EventArgs) Handles NombreTextBox.TextChanged
+        actualiza()
     End Sub
 End Class

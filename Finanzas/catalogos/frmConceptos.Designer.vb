@@ -489,9 +489,11 @@ Partial Class frmConceptos
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Me.CXP_ConceptosTableAdapter
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
