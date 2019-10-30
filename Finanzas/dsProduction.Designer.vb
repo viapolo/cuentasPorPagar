@@ -16163,23 +16163,39 @@ Partial Public Class dsProduction
         
         Private columnsaldoSolicitud As Global.System.Data.DataColumn
         
-        Private columntotalPagado As Global.System.Data.DataColumn
-        
         Private columndecripcion As Global.System.Data.DataColumn
         
         Private columnrazonSocial As Global.System.Data.DataColumn
         
         Private columnusuario As Global.System.Data.DataColumn
         
-        Private columnidFolioSolicitud As Global.System.Data.DataColumn
+        Private columnnombre As Global.System.Data.DataColumn
         
-        Private columnidEmpresa As Global.System.Data.DataColumn
+        Private columnfolioSolicitud As Global.System.Data.DataColumn
+        
+        Private columnidEmpresas As Global.System.Data.DataColumn
+        
+        Private columnfechaSolicitud As Global.System.Data.DataColumn
+        
+        Private columncCostos As Global.System.Data.DataColumn
+        
+        Private columnfPago As Global.System.Data.DataColumn
+        
+        Private columnidAutoriza2 As Global.System.Data.DataColumn
+        
+        Private columnnaAutoriza2 As Global.System.Data.DataColumn
+        
+        Private columnnaAutoriza1 As Global.System.Data.DataColumn
+        
+        Private columnidConcepto As Global.System.Data.DataColumn
+        
+        Private columnestatus As Global.System.Data.DataColumn
         
         Private columnfolioComprobacion As Global.System.Data.DataColumn
         
-        Private columnimpDepositado As Global.System.Data.DataColumn
+        Private columntotalPagado As Global.System.Data.DataColumn
         
-        Private columnnombre As Global.System.Data.DataColumn
+        Private columnimpDepositado As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -16226,14 +16242,6 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property totalPagadoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntotalPagado
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property decripcionColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columndecripcion
@@ -16258,17 +16266,89 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property idFolioSolicitudColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property nombreColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnidFolioSolicitud
+                Return Me.columnnombre
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property idEmpresaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property folioSolicitudColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnidEmpresa
+                Return Me.columnfolioSolicitud
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idEmpresasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidEmpresas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property fechaSolicitudColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfechaSolicitud
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property cCostosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncCostos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property fPagoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfPago
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idAutoriza2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidAutoriza2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property naAutoriza2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnaAutoriza2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property naAutoriza1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnaAutoriza1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idConceptoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidConcepto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property estatusColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnestatus
             End Get
         End Property
         
@@ -16282,17 +16362,17 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property impDepositadoColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property totalPagadoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnimpDepositado
+                Return Me.columntotalPagado
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property nombreColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property impDepositadoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnnombre
+                Return Me.columnimpDepositado
             End Get
         End Property
         
@@ -16333,9 +16413,27 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddVw_CXP_SaldoComprobacionGastosRow(ByVal saldoSolicitud As Decimal, ByVal totalPagado As Decimal, ByVal decripcion As String, ByVal razonSocial As String, ByVal usuario As String, ByVal idFolioSolicitud As Decimal, ByVal idEmpresa As Decimal, ByVal folioComprobacion As Decimal, ByVal impDepositado As Decimal, ByVal nombre As String) As Vw_CXP_SaldoComprobacionGastosRow
+        Public Overloads Function AddVw_CXP_SaldoComprobacionGastosRow( _
+                    ByVal saldoSolicitud As Decimal,  _
+                    ByVal decripcion As String,  _
+                    ByVal razonSocial As String,  _
+                    ByVal usuario As String,  _
+                    ByVal nombre As String,  _
+                    ByVal folioSolicitud As Decimal,  _
+                    ByVal idEmpresas As Decimal,  _
+                    ByVal fechaSolicitud As Date,  _
+                    ByVal cCostos As Decimal,  _
+                    ByVal fPago As Decimal,  _
+                    ByVal idAutoriza2 As Decimal,  _
+                    ByVal naAutoriza2 As String,  _
+                    ByVal naAutoriza1 As String,  _
+                    ByVal idConcepto As Decimal,  _
+                    ByVal estatus As String,  _
+                    ByVal folioComprobacion As Decimal,  _
+                    ByVal totalPagado As Decimal,  _
+                    ByVal impDepositado As String) As Vw_CXP_SaldoComprobacionGastosRow
             Dim rowVw_CXP_SaldoComprobacionGastosRow As Vw_CXP_SaldoComprobacionGastosRow = CType(Me.NewRow,Vw_CXP_SaldoComprobacionGastosRow)
-            Dim columnValuesArray() As Object = New Object() {saldoSolicitud, totalPagado, decripcion, razonSocial, usuario, idFolioSolicitud, idEmpresa, folioComprobacion, impDepositado, nombre}
+            Dim columnValuesArray() As Object = New Object() {saldoSolicitud, decripcion, razonSocial, usuario, nombre, folioSolicitud, idEmpresas, fechaSolicitud, cCostos, fPago, idAutoriza2, naAutoriza2, naAutoriza1, idConcepto, estatus, folioComprobacion, totalPagado, impDepositado}
             rowVw_CXP_SaldoComprobacionGastosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_CXP_SaldoComprobacionGastosRow)
             Return rowVw_CXP_SaldoComprobacionGastosRow
@@ -16359,15 +16457,23 @@ Partial Public Class dsProduction
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnsaldoSolicitud = MyBase.Columns("saldoSolicitud")
-            Me.columntotalPagado = MyBase.Columns("totalPagado")
             Me.columndecripcion = MyBase.Columns("decripcion")
             Me.columnrazonSocial = MyBase.Columns("razonSocial")
             Me.columnusuario = MyBase.Columns("usuario")
-            Me.columnidFolioSolicitud = MyBase.Columns("idFolioSolicitud")
-            Me.columnidEmpresa = MyBase.Columns("idEmpresa")
-            Me.columnfolioComprobacion = MyBase.Columns("folioComprobacion")
-            Me.columnimpDepositado = MyBase.Columns("impDepositado")
             Me.columnnombre = MyBase.Columns("nombre")
+            Me.columnfolioSolicitud = MyBase.Columns("folioSolicitud")
+            Me.columnidEmpresas = MyBase.Columns("idEmpresas")
+            Me.columnfechaSolicitud = MyBase.Columns("fechaSolicitud")
+            Me.columncCostos = MyBase.Columns("cCostos")
+            Me.columnfPago = MyBase.Columns("fPago")
+            Me.columnidAutoriza2 = MyBase.Columns("idAutoriza2")
+            Me.columnnaAutoriza2 = MyBase.Columns("naAutoriza2")
+            Me.columnnaAutoriza1 = MyBase.Columns("naAutoriza1")
+            Me.columnidConcepto = MyBase.Columns("idConcepto")
+            Me.columnestatus = MyBase.Columns("estatus")
+            Me.columnfolioComprobacion = MyBase.Columns("folioComprobacion")
+            Me.columntotalPagado = MyBase.Columns("totalPagado")
+            Me.columnimpDepositado = MyBase.Columns("impDepositado")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16375,29 +16481,49 @@ Partial Public Class dsProduction
         Private Sub InitClass()
             Me.columnsaldoSolicitud = New Global.System.Data.DataColumn("saldoSolicitud", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsaldoSolicitud)
-            Me.columntotalPagado = New Global.System.Data.DataColumn("totalPagado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntotalPagado)
             Me.columndecripcion = New Global.System.Data.DataColumn("decripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndecripcion)
             Me.columnrazonSocial = New Global.System.Data.DataColumn("razonSocial", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrazonSocial)
             Me.columnusuario = New Global.System.Data.DataColumn("usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnusuario)
-            Me.columnidFolioSolicitud = New Global.System.Data.DataColumn("idFolioSolicitud", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidFolioSolicitud)
-            Me.columnidEmpresa = New Global.System.Data.DataColumn("idEmpresa", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidEmpresa)
-            Me.columnfolioComprobacion = New Global.System.Data.DataColumn("folioComprobacion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfolioComprobacion)
-            Me.columnimpDepositado = New Global.System.Data.DataColumn("impDepositado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnimpDepositado)
             Me.columnnombre = New Global.System.Data.DataColumn("nombre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnombre)
+            Me.columnfolioSolicitud = New Global.System.Data.DataColumn("folioSolicitud", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfolioSolicitud)
+            Me.columnidEmpresas = New Global.System.Data.DataColumn("idEmpresas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidEmpresas)
+            Me.columnfechaSolicitud = New Global.System.Data.DataColumn("fechaSolicitud", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfechaSolicitud)
+            Me.columncCostos = New Global.System.Data.DataColumn("cCostos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncCostos)
+            Me.columnfPago = New Global.System.Data.DataColumn("fPago", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfPago)
+            Me.columnidAutoriza2 = New Global.System.Data.DataColumn("idAutoriza2", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidAutoriza2)
+            Me.columnnaAutoriza2 = New Global.System.Data.DataColumn("naAutoriza2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnaAutoriza2)
+            Me.columnnaAutoriza1 = New Global.System.Data.DataColumn("naAutoriza1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnaAutoriza1)
+            Me.columnidConcepto = New Global.System.Data.DataColumn("idConcepto", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidConcepto)
+            Me.columnestatus = New Global.System.Data.DataColumn("estatus", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnestatus)
+            Me.columnfolioComprobacion = New Global.System.Data.DataColumn("folioComprobacion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfolioComprobacion)
+            Me.columntotalPagado = New Global.System.Data.DataColumn("totalPagado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntotalPagado)
+            Me.columnimpDepositado = New Global.System.Data.DataColumn("impDepositado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnimpDepositado)
             Me.columnsaldoSolicitud.ReadOnly = true
             Me.columndecripcion.MaxLength = 200
             Me.columnrazonSocial.MaxLength = 200
             Me.columnusuario.MaxLength = 50
             Me.columnnombre.MaxLength = 250
+            Me.columnnaAutoriza2.MaxLength = 100
+            Me.columnnaAutoriza1.MaxLength = 100
+            Me.columnestatus.MaxLength = 50
+            Me.columnimpDepositado.DefaultValue = CType("0",String)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -27144,22 +27270,6 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property totalPagado() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'totalPagado' de la tabla 'Vw_CXP_SaldoComprobacionGastos'"& _ 
-                            " es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property decripcion() As String
             Get
                 Try 
@@ -27208,33 +27318,177 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property idFolioSolicitud() As Decimal
+        Public Property nombre() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.idFolioSolicitudColumn),Decimal)
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idFolioSolicitud' de la tabla 'Vw_CXP_SaldoComprobacionGa"& _ 
-                            "stos' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre' de la tabla 'Vw_CXP_SaldoComprobacionGastos' es D"& _ 
+                            "BNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableVw_CXP_SaldoComprobacionGastos.idFolioSolicitudColumn) = value
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property idEmpresa() As Decimal
+        Public Property folioSolicitud() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresaColumn),Decimal)
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.folioSolicitudColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idEmpresa' de la tabla 'Vw_CXP_SaldoComprobacionGastos' e"& _ 
-                            "s DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'folioSolicitud' de la tabla 'Vw_CXP_SaldoComprobacionGast"& _ 
+                            "os' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresaColumn) = value
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.folioSolicitudColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idEmpresas() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresasColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idEmpresas' de la tabla 'Vw_CXP_SaldoComprobacionGastos' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property fechaSolicitud() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.fechaSolicitudColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fechaSolicitud' de la tabla 'Vw_CXP_SaldoComprobacionGast"& _ 
+                            "os' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.fechaSolicitudColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property cCostos() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.cCostosColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cCostos' de la tabla 'Vw_CXP_SaldoComprobacionGastos' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.cCostosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property fPago() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.fPagoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fPago' de la tabla 'Vw_CXP_SaldoComprobacionGastos' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.fPagoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idAutoriza2() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.idAutoriza2Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idAutoriza2' de la tabla 'Vw_CXP_SaldoComprobacionGastos'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.idAutoriza2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property naAutoriza2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'naAutoriza2' de la tabla 'Vw_CXP_SaldoComprobacionGastos'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property naAutoriza1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'naAutoriza1' de la tabla 'Vw_CXP_SaldoComprobacionGastos'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idConcepto() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.idConceptoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idConcepto' de la tabla 'Vw_CXP_SaldoComprobacionGastos' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.idConceptoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property estatus() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.estatusColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'estatus' de la tabla 'Vw_CXP_SaldoComprobacionGastos' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.estatusColumn) = value
             End Set
         End Property
         
@@ -27256,33 +27510,32 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property impDepositado() As Decimal
+        Public Property totalPagado() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.impDepositadoColumn),Decimal)
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'impDepositado' de la tabla 'Vw_CXP_SaldoComprobacionGasto"& _ 
-                            "s' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'totalPagado' de la tabla 'Vw_CXP_SaldoComprobacionGastos'"& _ 
+                            " es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableVw_CXP_SaldoComprobacionGastos.impDepositadoColumn) = value
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property nombre() As String
+        Public Property impDepositado() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre' de la tabla 'Vw_CXP_SaldoComprobacionGastos' es D"& _ 
-                            "BNull.", e)
-                End Try
+                If Me.IsimpDepositadoNull Then
+                    Return Nothing
+                Else
+                    Return CType(Me(Me.tableVw_CXP_SaldoComprobacionGastos.impDepositadoColumn),String)
+                End If
             End Get
             Set
-                Me(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn) = value
+                Me(Me.tableVw_CXP_SaldoComprobacionGastos.impDepositadoColumn) = value
             End Set
         End Property
         
@@ -27296,18 +27549,6 @@ Partial Public Class dsProduction
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetsaldoSolicitudNull()
             Me(Me.tableVw_CXP_SaldoComprobacionGastos.saldoSolicitudColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IstotalPagadoNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SettotalPagadoNull()
-            Me(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -27348,26 +27589,134 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsidFolioSolicitudNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.idFolioSolicitudColumn)
+        Public Function IsnombreNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetidFolioSolicitudNull()
-            Me(Me.tableVw_CXP_SaldoComprobacionGastos.idFolioSolicitudColumn) = Global.System.Convert.DBNull
+        Public Sub SetnombreNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsidEmpresaNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresaColumn)
+        Public Function IsfolioSolicitudNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.folioSolicitudColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetidEmpresaNull()
-            Me(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresaColumn) = Global.System.Convert.DBNull
+        Public Sub SetfolioSolicitudNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.folioSolicitudColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidEmpresasNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresasColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidEmpresasNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.idEmpresasColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsfechaSolicitudNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.fechaSolicitudColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetfechaSolicitudNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.fechaSolicitudColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IscCostosNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.cCostosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetcCostosNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.cCostosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsfPagoNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.fPagoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetfPagoNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.fPagoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidAutoriza2Null() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.idAutoriza2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidAutoriza2Null()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.idAutoriza2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsnaAutoriza2Null() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetnaAutoriza2Null()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsnaAutoriza1Null() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetnaAutoriza1Null()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.naAutoriza1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidConceptoNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.idConceptoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidConceptoNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.idConceptoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsestatusNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.estatusColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetestatusNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.estatusColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -27384,6 +27733,18 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IstotalPagadoNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SettotalPagadoNull()
+            Me(Me.tableVw_CXP_SaldoComprobacionGastos.totalPagadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsimpDepositadoNull() As Boolean
             Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.impDepositadoColumn)
         End Function
@@ -27392,18 +27753,6 @@ Partial Public Class dsProduction
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetimpDepositadoNull()
             Me(Me.tableVw_CXP_SaldoComprobacionGastos.impDepositadoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsnombreNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetnombreNull()
-            Me(Me.tableVw_CXP_SaldoComprobacionGastos.nombreColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -51281,15 +51630,23 @@ Namespace dsProductionTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Vw_CXP_SaldoComprobacionGastos"
             tableMapping.ColumnMappings.Add("saldoSolicitud", "saldoSolicitud")
-            tableMapping.ColumnMappings.Add("totalPagado", "totalPagado")
             tableMapping.ColumnMappings.Add("decripcion", "decripcion")
             tableMapping.ColumnMappings.Add("razonSocial", "razonSocial")
             tableMapping.ColumnMappings.Add("usuario", "usuario")
-            tableMapping.ColumnMappings.Add("idFolioSolicitud", "idFolioSolicitud")
-            tableMapping.ColumnMappings.Add("idEmpresa", "idEmpresa")
-            tableMapping.ColumnMappings.Add("folioComprobacion", "folioComprobacion")
-            tableMapping.ColumnMappings.Add("impDepositado", "impDepositado")
             tableMapping.ColumnMappings.Add("nombre", "nombre")
+            tableMapping.ColumnMappings.Add("folioSolicitud", "folioSolicitud")
+            tableMapping.ColumnMappings.Add("idEmpresas", "idEmpresas")
+            tableMapping.ColumnMappings.Add("fechaSolicitud", "fechaSolicitud")
+            tableMapping.ColumnMappings.Add("cCostos", "cCostos")
+            tableMapping.ColumnMappings.Add("fPago", "fPago")
+            tableMapping.ColumnMappings.Add("idAutoriza2", "idAutoriza2")
+            tableMapping.ColumnMappings.Add("naAutoriza2", "naAutoriza2")
+            tableMapping.ColumnMappings.Add("naAutoriza1", "naAutoriza1")
+            tableMapping.ColumnMappings.Add("idConcepto", "idConcepto")
+            tableMapping.ColumnMappings.Add("estatus", "estatus")
+            tableMapping.ColumnMappings.Add("folioComprobacion", "folioComprobacion")
+            tableMapping.ColumnMappings.Add("totalPagado", "totalPagado")
+            tableMapping.ColumnMappings.Add("impDepositado", "impDepositado")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -51306,17 +51663,26 @@ Namespace dsProductionTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Vw_CXP_MisComprobaciones.idFolioSolicitud, Vw_CXP_MisComprobaciones"& _ 
-                ".idEmpresa, Vw_CXP_MisComprobaciones.saldoSolicitud, Vw_CXP_MisComprobaciones.to"& _ 
-                "talPagado, Vw_CXP_MisComprobaciones.decripcion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CX"& _ 
-                "P_MisComprobaciones.razonSocial, Vw_CXP_MisComprobaciones.folioComprobacion, Vw_"& _ 
-                "CXP_MisComprobaciones.usuario, Vw_CXP_MisComprobaciones.impDepositado, CXP_Usuar"& _ 
-                "ios.nombre"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_MisComprobaciones INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "          CXP_Usuarios ON Vw_CXP_MisComprobaciones.usuario = CXP_Usuarios.usuari"& _ 
-                "o"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_MisComprobaciones.idEmpresa = @idEmpresa)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_C"& _ 
-                "XP_MisComprobaciones.folioComprobacion DESC"
+            Me._commandCollection(0).CommandText = "SELECT        Vw_CXP_SaldoComprobacionGastos.folioSolicitud, Vw_CXP_SaldoComproba"& _ 
+                "cionGastos.saldoSolicitud, Vw_CXP_SaldoComprobacionGastos.idEmpresas, Vw_CXP_Sal"& _ 
+                "doComprobacionGastos.totalPagado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SaldoComprob"& _ 
+                "acionGastos.fechaSolicitud, Vw_CXP_SaldoComprobacionGastos.decripcion, Vw_CXP_Sa"& _ 
+                "ldoComprobacionGastos.razonSocial, Vw_CXP_SaldoComprobacionGastos.nombre, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "                     Vw_CXP_SaldoComprobacionGastos.cCostos, Vw_CXP_SaldoComprob"& _ 
+                "acionGastos.fPago, Vw_CXP_SaldoComprobacionGastos.idAutoriza2, Vw_CXP_SaldoCompr"& _ 
+                "obacionGastos.usuario, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SaldoComprobacionGastos"& _ 
+                ".naAutoriza2, Vw_CXP_SaldoComprobacionGastos.naAutoriza1, Vw_CXP_SaldoComprobaci"& _ 
+                "onGastos.idConcepto, Vw_CXP_SaldoComprobacionGastos.estatus, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
+                "        Vw_CXP_MisComprobaciones.folioComprobacion, Vw_CXP_MisComprobaciones.imp"& _ 
+                "Depositado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_SaldoComprobacionGastos LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "                     Vw_CXP_MisComprobaciones ON Vw_CXP_SaldoComprobacionGastos."& _ 
+                "folioSolicitud = Vw_CXP_MisComprobaciones.idFolioSolicitud AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          Vw_CXP_SaldoComprobacionGastos.idEmpresas = Vw_CXP_MisComprobaciones.i"& _ 
+                "dEmpresa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_SaldoComprobacionGastos.idEmpresas = @idEmpresa) "& _ 
+                "AND (Vw_CXP_SaldoComprobacionGastos.idConcepto = @idConcepto)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConcepto", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idConcepto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        cCostos, decripcion, estatus, fPago, fechaSolicitud, folioSolicitud"& _ 
@@ -51333,12 +51699,17 @@ Namespace dsProductionTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsProduction.Vw_CXP_SaldoComprobacionGastosDataTable, ByVal idEmpresa As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsProduction.Vw_CXP_SaldoComprobacionGastosDataTable, ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal idConcepto As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (idEmpresa.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (idConcepto.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idConcepto.Value,Decimal)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -51351,12 +51722,17 @@ Namespace dsProductionTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal idEmpresa As Global.System.Nullable(Of Decimal)) As dsProduction.Vw_CXP_SaldoComprobacionGastosDataTable
+        Public Overloads Overridable Function GetData(ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal idConcepto As Global.System.Nullable(Of Decimal)) As dsProduction.Vw_CXP_SaldoComprobacionGastosDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (idEmpresa.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (idConcepto.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idConcepto.Value,Decimal)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsProduction.Vw_CXP_SaldoComprobacionGastosDataTable = New dsProduction.Vw_CXP_SaldoComprobacionGastosDataTable()
             Me.Adapter.Fill(dataTable)

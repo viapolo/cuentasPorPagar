@@ -55,11 +55,6 @@ Partial Class frmConceptos
         Me.CXPTipoGastoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.dgvImpuestos = New System.Windows.Forms.DataGridView()
-        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.impuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.idImpuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.cmbCtaAbonoSol = New System.Windows.Forms.ComboBox()
         Me.CuentasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
@@ -94,6 +89,11 @@ Partial Class frmConceptos
         Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.impuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.idImpuesto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         NombreLabel = New System.Windows.Forms.Label()
         ImpuestoLabel = New System.Windows.Forms.Label()
         CuentaProvLabel = New System.Windows.Forms.Label()
@@ -386,41 +386,6 @@ Partial Class frmConceptos
         Me.dgvImpuestos.Size = New System.Drawing.Size(460, 164)
         Me.dgvImpuestos.TabIndex = 6
         '
-        'id
-        '
-        Me.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.id.HeaderText = "Id"
-        Me.id.Name = "id"
-        Me.id.ReadOnly = True
-        Me.id.Width = 41
-        '
-        'impuesto
-        '
-        Me.impuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.impuesto.HeaderText = "Impuesto"
-        Me.impuesto.Name = "impuesto"
-        Me.impuesto.ReadOnly = True
-        Me.impuesto.Width = 75
-        '
-        'cuenta
-        '
-        Me.cuenta.HeaderText = "Cuenta"
-        Me.cuenta.Name = "cuenta"
-        Me.cuenta.ReadOnly = True
-        '
-        'eliminar
-        '
-        Me.eliminar.HeaderText = "Eliminar"
-        Me.eliminar.Name = "eliminar"
-        Me.eliminar.ReadOnly = True
-        '
-        'idImpuesto
-        '
-        Me.idImpuesto.HeaderText = "IdImpuesto"
-        Me.idImpuesto.Name = "idImpuesto"
-        Me.idImpuesto.ReadOnly = True
-        Me.idImpuesto.Visible = False
-        '
         'btnAgregar
         '
         Me.btnAgregar.Location = New System.Drawing.Point(410, 22)
@@ -711,6 +676,43 @@ Partial Class frmConceptos
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
+        'id
+        '
+        Me.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.id.HeaderText = "Id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Width = 41
+        '
+        'impuesto
+        '
+        Me.impuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.impuesto.HeaderText = "Impuesto"
+        Me.impuesto.Name = "impuesto"
+        Me.impuesto.ReadOnly = True
+        Me.impuesto.Width = 75
+        '
+        'cuenta
+        '
+        Me.cuenta.HeaderText = "Cuenta"
+        Me.cuenta.Name = "cuenta"
+        Me.cuenta.ReadOnly = True
+        Me.cuenta.Width = 200
+        '
+        'eliminar
+        '
+        Me.eliminar.HeaderText = "Eliminar"
+        Me.eliminar.Name = "eliminar"
+        Me.eliminar.ReadOnly = True
+        Me.eliminar.Width = 50
+        '
+        'idImpuesto
+        '
+        Me.idImpuesto.HeaderText = "IdImpuesto"
+        Me.idImpuesto.Name = "idImpuesto"
+        Me.idImpuesto.ReadOnly = True
+        Me.idImpuesto.Visible = False
+        '
         'frmConceptos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -796,11 +798,6 @@ Partial Class frmConceptos
     Friend WithEvents DsProduction2 As dsProduction
     Friend WithEvents VwCXPImpConBindingSource As BindingSource
     Friend WithEvents Vw_CXP_ImpConTableAdapter As dsProductionTableAdapters.Vw_CXP_ImpConTableAdapter
-    Friend WithEvents id As DataGridViewTextBoxColumn
-    Friend WithEvents impuesto As DataGridViewTextBoxColumn
-    Friend WithEvents cuenta As DataGridViewTextBoxColumn
-    Friend WithEvents eliminar As DataGridViewLinkColumn
-    Friend WithEvents idImpuesto As DataGridViewTextBoxColumn
     Friend WithEvents CXPtipoDeDocumentoBindingSource1 As BindingSource
     Friend WithEvents CXP_tipoDeDocumentoTableAdapter As dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter
     Friend WithEvents DsProduction3 As dsProduction
@@ -825,4 +822,9 @@ Partial Class frmConceptos
     Friend WithEvents CuentasBindingSource3 As BindingSource
     Friend WithEvents txtBuscar As TextBox
     Friend WithEvents btnBuscar As Button
+    Friend WithEvents id As DataGridViewTextBoxColumn
+    Friend WithEvents impuesto As DataGridViewTextBoxColumn
+    Friend WithEvents cuenta As DataGridViewTextBoxColumn
+    Friend WithEvents eliminar As DataGridViewLinkColumn
+    Friend WithEvents idImpuesto As DataGridViewTextBoxColumn
 End Class
