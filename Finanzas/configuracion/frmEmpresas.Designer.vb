@@ -40,6 +40,8 @@ Partial Class frmEmpresas
         Dim Label3 As System.Windows.Forms.Label
         Dim Label5 As System.Windows.Forms.Label
         Dim Label6 As System.Windows.Forms.Label
+        Dim MesesFacturasLabel As System.Windows.Forms.Label
+        Dim MontoOIngresosLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEmpresas))
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.gbxInformaciongeneral = New System.Windows.Forms.GroupBox()
@@ -99,6 +101,11 @@ Partial Class frmEmpresas
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.cmbConceptoPagoContratos = New System.Windows.Forms.ComboBox()
         Me.CXPConceptosBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MesesFacturasTextBox = New System.Windows.Forms.TextBox()
+        Me.MontoOIngresosTextBox = New System.Windows.Forms.TextBox()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.CXPConceptosBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
         IdRegimenFiscalLabel = New System.Windows.Forms.Label()
         CondicionesDePagoLabel = New System.Windows.Forms.Label()
         IdMonedaLabel = New System.Windows.Forms.Label()
@@ -116,6 +123,8 @@ Partial Class frmEmpresas
         Label3 = New System.Windows.Forms.Label()
         Label5 = New System.Windows.Forms.Label()
         Label6 = New System.Windows.Forms.Label()
+        MesesFacturasLabel = New System.Windows.Forms.Label()
+        MontoOIngresosLabel = New System.Windows.Forms.Label()
         Me.gbxInformaciongeneral.SuspendLayout()
         CType(Me.CXP_EmpresasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,6 +141,7 @@ Partial Class frmEmpresas
         CType(Me.CXPConceptosBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPConceptosBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPConceptosBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IdRegimenFiscalLabel
@@ -287,6 +297,24 @@ Partial Class frmEmpresas
         Label6.Size = New System.Drawing.Size(108, 13)
         Label6.TabIndex = 45
         Label6.Text = "Concepto Pago Ctos:"
+        '
+        'MesesFacturasLabel
+        '
+        MesesFacturasLabel.AutoSize = True
+        MesesFacturasLabel.Location = New System.Drawing.Point(66, 347)
+        MesesFacturasLabel.Name = "MesesFacturasLabel"
+        MesesFacturasLabel.Size = New System.Drawing.Size(85, 13)
+        MesesFacturasLabel.TabIndex = 45
+        MesesFacturasLabel.Text = "Meses Facturas:"
+        '
+        'MontoOIngresosLabel
+        '
+        MontoOIngresosLabel.AutoSize = True
+        MontoOIngresosLabel.Location = New System.Drawing.Point(282, 347)
+        MontoOIngresosLabel.Name = "MontoOIngresosLabel"
+        MontoOIngresosLabel.Size = New System.Drawing.Size(111, 13)
+        MontoOIngresosLabel.TabIndex = 46
+        MontoOIngresosLabel.Text = "Monto Otros Ingresos:"
         '
         'btnSalir
         '
@@ -538,9 +566,11 @@ Partial Class frmEmpresas
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Me.CXP_EmpresasTableAdapter
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
@@ -549,7 +579,9 @@ Partial Class frmEmpresas
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Me.CXP_tipoDeDocumentoTableAdapter
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
@@ -793,13 +825,66 @@ Partial Class frmEmpresas
         Me.CXPConceptosBindingSource2.DataMember = "CXP_Conceptos"
         Me.CXPConceptosBindingSource2.DataSource = Me.DsProduction
         '
+        'MesesFacturasTextBox
+        '
+        Me.MesesFacturasTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_EmpresasBindingSource, "mesesFacturas", True))
+        Me.MesesFacturasTextBox.Location = New System.Drawing.Point(156, 344)
+        Me.MesesFacturasTextBox.Name = "MesesFacturasTextBox"
+        Me.MesesFacturasTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.MesesFacturasTextBox.TabIndex = 46
+        Me.MesesFacturasTextBox.Text = "0"
+        '
+        'MontoOIngresosTextBox
+        '
+        Me.MontoOIngresosTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_EmpresasBindingSource, "montoOIngresos", True))
+        Me.MontoOIngresosTextBox.Location = New System.Drawing.Point(394, 344)
+        Me.MontoOIngresosTextBox.Name = "MontoOIngresosTextBox"
+        Me.MontoOIngresosTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.MontoOIngresosTextBox.TabIndex = 47
+        Me.MontoOIngresosTextBox.Text = "0"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.ComboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.ComboBox2.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_EmpresasBindingSource, "idConceptoOIngresos", True))
+        Me.ComboBox2.DataSource = Me.CXPConceptosBindingSource3
+        Me.ComboBox2.DisplayMember = "nombre"
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(156, 318)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(211, 21)
+        Me.ComboBox2.TabIndex = 48
+        Me.ComboBox2.ValueMember = "idConcepto"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(26, 321)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(127, 13)
+        Me.Label7.TabIndex = 49
+        Me.Label7.Text = "Concepto Otros Ingresos:"
+        '
+        'CXPConceptosBindingSource3
+        '
+        Me.CXPConceptosBindingSource3.DataMember = "CXP_Conceptos"
+        Me.CXPConceptosBindingSource3.DataSource = Me.DsProduction
+        '
         'frmEmpresas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(720, 366)
+        Me.ClientSize = New System.Drawing.Size(720, 385)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.ComboBox2)
+        Me.Controls.Add(MontoOIngresosLabel)
+        Me.Controls.Add(Me.MontoOIngresosTextBox)
+        Me.Controls.Add(MesesFacturasLabel)
+        Me.Controls.Add(Me.MesesFacturasTextBox)
         Me.Controls.Add(Label6)
         Me.Controls.Add(Label5)
         Me.Controls.Add(Me.cmbConceptoPagoContratos)
@@ -839,6 +924,7 @@ Partial Class frmEmpresas
         CType(Me.CXPConceptosBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPConceptosBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPConceptosBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -902,4 +988,9 @@ Partial Class frmEmpresas
     Friend WithEvents CXPConceptosBindingSource1 As BindingSource
     Friend WithEvents DsProduction1 As dsProduction
     Friend WithEvents CXPConceptosBindingSource2 As BindingSource
+    Friend WithEvents MesesFacturasTextBox As TextBox
+    Friend WithEvents MontoOIngresosTextBox As TextBox
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents CXPConceptosBindingSource3 As BindingSource
+    Friend WithEvents Label7 As Label
 End Class

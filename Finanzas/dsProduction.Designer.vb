@@ -3217,6 +3217,12 @@ Partial Public Class dsProduction
         
         Private columnidConceptoReembolos As Global.System.Data.DataColumn
         
+        Private columnmesesFacturas As Global.System.Data.DataColumn
+        
+        Private columnmontoOIngresos As Global.System.Data.DataColumn
+        
+        Private columnidConceptoOIngresos As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -3413,6 +3419,30 @@ Partial Public Class dsProduction
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property mesesFacturasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmesesFacturas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property montoOIngresosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmontoOIngresos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idConceptoOIngresosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidConceptoOIngresos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3468,9 +3498,12 @@ Partial Public Class dsProduction
                     ByVal idPolizaD As Decimal,  _
                     ByVal idConceptoGastos As Decimal,  _
                     ByVal idConceptoPagoCtos As Decimal,  _
-                    ByVal idConceptoReembolos As Decimal) As CXP_EmpresasRow
+                    ByVal idConceptoReembolos As Decimal,  _
+                    ByVal mesesFacturas As Decimal,  _
+                    ByVal montoOIngresos As Decimal,  _
+                    ByVal idConceptoOIngresos As Decimal) As CXP_EmpresasRow
             Dim rowCXP_EmpresasRow As CXP_EmpresasRow = CType(Me.NewRow,CXP_EmpresasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, razonSocial, rfc, calle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais, codigoPostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom, idPolizaD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos}
+            Dim columnValuesArray() As Object = New Object() {Nothing, razonSocial, rfc, calle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais, codigoPostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom, idPolizaD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos, mesesFacturas, montoOIngresos, idConceptoOIngresos}
             rowCXP_EmpresasRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCXP_EmpresasRow)
             Return rowCXP_EmpresasRow
@@ -3519,6 +3552,9 @@ Partial Public Class dsProduction
             Me.columnidConceptoGastos = MyBase.Columns("idConceptoGastos")
             Me.columnidConceptoPagoCtos = MyBase.Columns("idConceptoPagoCtos")
             Me.columnidConceptoReembolos = MyBase.Columns("idConceptoReembolos")
+            Me.columnmesesFacturas = MyBase.Columns("mesesFacturas")
+            Me.columnmontoOIngresos = MyBase.Columns("montoOIngresos")
+            Me.columnidConceptoOIngresos = MyBase.Columns("idConceptoOIngresos")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3564,6 +3600,12 @@ Partial Public Class dsProduction
             MyBase.Columns.Add(Me.columnidConceptoPagoCtos)
             Me.columnidConceptoReembolos = New Global.System.Data.DataColumn("idConceptoReembolos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnidConceptoReembolos)
+            Me.columnmesesFacturas = New Global.System.Data.DataColumn("mesesFacturas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmesesFacturas)
+            Me.columnmontoOIngresos = New Global.System.Data.DataColumn("montoOIngresos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmontoOIngresos)
+            Me.columnidConceptoOIngresos = New Global.System.Data.DataColumn("idConceptoOIngresos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidConceptoOIngresos)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnidEmpresas}, true))
             Me.columnidEmpresas.AutoIncrement = true
             Me.columnidEmpresas.AutoIncrementSeed = -1
@@ -18325,6 +18367,52 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property mesesFacturas() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableCXP_Empresas.mesesFacturasColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'mesesFacturas' de la tabla 'CXP_Empresas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCXP_Empresas.mesesFacturasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property montoOIngresos() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableCXP_Empresas.montoOIngresosColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'montoOIngresos' de la tabla 'CXP_Empresas' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCXP_Empresas.montoOIngresosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idConceptoOIngresos() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableCXP_Empresas.idConceptoOIngresosColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idConceptoOIngresos' de la tabla 'CXP_Empresas' es DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCXP_Empresas.idConceptoOIngresosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsrazonSocialNull() As Boolean
             Return Me.IsNull(Me.tableCXP_Empresas.razonSocialColumn)
         End Function
@@ -18549,6 +18637,42 @@ Partial Public Class dsProduction
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetidConceptoReembolosNull()
             Me(Me.tableCXP_Empresas.idConceptoReembolosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsmesesFacturasNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_Empresas.mesesFacturasColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetmesesFacturasNull()
+            Me(Me.tableCXP_Empresas.mesesFacturasColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsmontoOIngresosNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_Empresas.montoOIngresosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetmontoOIngresosNull()
+            Me(Me.tableCXP_Empresas.montoOIngresosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidConceptoOIngresosNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_Empresas.idConceptoOIngresosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidConceptoOIngresosNull()
+            Me(Me.tableCXP_Empresas.idConceptoOIngresosColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -32106,6 +32230,9 @@ Namespace dsProductionTableAdapters
             tableMapping.ColumnMappings.Add("idConceptoGastos", "idConceptoGastos")
             tableMapping.ColumnMappings.Add("idConceptoPagoCtos", "idConceptoPagoCtos")
             tableMapping.ColumnMappings.Add("idConceptoReembolos", "idConceptoReembolos")
+            tableMapping.ColumnMappings.Add("mesesFacturas", "mesesFacturas")
+            tableMapping.ColumnMappings.Add("montoOIngresos", "montoOIngresos")
+            tableMapping.ColumnMappings.Add("idConceptoOIngresos", "idConceptoOIngresos")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -32133,7 +32260,12 @@ Namespace dsProductionTableAdapters
                 "Original_idConceptoGastos)) AND ((@IsNull_idConceptoPagoCtos = 1 AND [idConcepto"& _ 
                 "PagoCtos] IS NULL) OR ([idConceptoPagoCtos] = @Original_idConceptoPagoCtos)) AND"& _ 
                 " ((@IsNull_idConceptoReembolos = 1 AND [idConceptoReembolos] IS NULL) OR ([idCon"& _ 
-                "ceptoReembolos] = @Original_idConceptoReembolos)))"
+                "ceptoReembolos] = @Original_idConceptoReembolos)) AND ((@IsNull_mesesFacturas = "& _ 
+                "1 AND [mesesFacturas] IS NULL) OR ([mesesFacturas] = @Original_mesesFacturas)) A"& _ 
+                "ND ((@IsNull_montoOIngresos = 1 AND [montoOIngresos] IS NULL) OR ([montoOIngreso"& _ 
+                "s] = @Original_montoOIngresos)) AND ((@IsNull_idConceptoOIngresos = 1 AND [idCon"& _ 
+                "ceptoOIngresos] IS NULL) OR ([idConceptoOIngresos] = @Original_idConceptoOIngres"& _ 
+                "os)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idEmpresas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_razonSocial", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "razonSocial", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -32174,20 +32306,28 @@ Namespace dsProductionTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConceptoPagoCtos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoPagoCtos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idConceptoReembolos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idConceptoReembolos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConceptoReembolos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoReembolos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_mesesFacturas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "mesesFacturas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_mesesFacturas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "mesesFacturas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_montoOIngresos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "montoOIngresos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_montoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "montoOIngresos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idConceptoOIngresos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idConceptoOIngresos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConceptoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoOIngresos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [CXP_Empresas] ([razonSocial], [rfc], [calle], [numeroInterior], [num"& _ 
                 "eroExterior], [colonia], [delegacion], [estado], [pais], [codigoPostal], [condic"& _ 
                 "ionesDePago], [idMoneda], [idRegimenFiscal], [folioSol], [folioCom], [idPolizaD]"& _ 
-                ", [idConceptoGastos], [idConceptoPagoCtos], [idConceptoReembolos]) VALUES (@razo"& _ 
-                "nSocial, @rfc, @calle, @numeroInterior, @numeroExterior, @colonia, @delegacion, "& _ 
-                "@estado, @pais, @codigoPostal, @condicionesDePago, @idMoneda, @idRegimenFiscal, "& _ 
-                "@folioSol, @folioCom, @idPolizaD, @idConceptoGastos, @idConceptoPagoCtos, @idCon"& _ 
-                "ceptoReembolos);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idEmpresas, razonSocial, rfc, calle, numeroInterior, nu"& _ 
-                "meroExterior, colonia, delegacion, estado, pais, codigoPostal, condicionesDePago"& _ 
-                ", idMoneda, idRegimenFiscal, folioSol, folioCom, idPolizaD, idConceptoGastos, id"& _ 
-                "ConceptoPagoCtos, idConceptoReembolos FROM CXP_Empresas WHERE (idEmpresas = SCOP"& _ 
-                "E_IDENTITY())"
+                ", [idConceptoGastos], [idConceptoPagoCtos], [idConceptoReembolos], [mesesFactura"& _ 
+                "s], [montoOIngresos], [idConceptoOIngresos]) VALUES (@razonSocial, @rfc, @calle,"& _ 
+                " @numeroInterior, @numeroExterior, @colonia, @delegacion, @estado, @pais, @codig"& _ 
+                "oPostal, @condicionesDePago, @idMoneda, @idRegimenFiscal, @folioSol, @folioCom, "& _ 
+                "@idPolizaD, @idConceptoGastos, @idConceptoPagoCtos, @idConceptoReembolos, @meses"& _ 
+                "Facturas, @montoOIngresos, @idConceptoOIngresos);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idEmpresas, razonSocia"& _ 
+                "l, rfc, calle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais"& _ 
+                ", codigoPostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom"& _ 
+                ", idPolizaD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos, mesesFac"& _ 
+                "turas, montoOIngresos, idConceptoOIngresos FROM CXP_Empresas WHERE (idEmpresas ="& _ 
+                " SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@razonSocial", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "razonSocial", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@rfc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "rfc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32208,6 +32348,9 @@ Namespace dsProductionTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoGastos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoGastos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoPagoCtos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoPagoCtos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoReembolos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoReembolos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@mesesFacturas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "mesesFacturas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@montoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "montoOIngresos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoOIngresos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [CXP_Empresas] SET [razonSocial] = @razonSocial, [rfc] = @rfc, [calle] = @"& _ 
@@ -32217,35 +32360,42 @@ Namespace dsProductionTableAdapters
                 "idMoneda] = @idMoneda, [idRegimenFiscal] = @idRegimenFiscal, [folioSol] = @folio"& _ 
                 "Sol, [folioCom] = @folioCom, [idPolizaD] = @idPolizaD, [idConceptoGastos] = @idC"& _ 
                 "onceptoGastos, [idConceptoPagoCtos] = @idConceptoPagoCtos, [idConceptoReembolos]"& _ 
-                " = @idConceptoReembolos WHERE (([idEmpresas] = @Original_idEmpresas) AND ((@IsNu"& _ 
-                "ll_razonSocial = 1 AND [razonSocial] IS NULL) OR ([razonSocial] = @Original_razo"& _ 
-                "nSocial)) AND ((@IsNull_rfc = 1 AND [rfc] IS NULL) OR ([rfc] = @Original_rfc)) A"& _ 
-                "ND ((@IsNull_calle = 1 AND [calle] IS NULL) OR ([calle] = @Original_calle)) AND "& _ 
-                "((@IsNull_numeroInterior = 1 AND [numeroInterior] IS NULL) OR ([numeroInterior] "& _ 
-                "= @Original_numeroInterior)) AND ((@IsNull_numeroExterior = 1 AND [numeroExterio"& _ 
-                "r] IS NULL) OR ([numeroExterior] = @Original_numeroExterior)) AND ((@IsNull_colo"& _ 
-                "nia = 1 AND [colonia] IS NULL) OR ([colonia] = @Original_colonia)) AND ((@IsNull"& _ 
-                "_delegacion = 1 AND [delegacion] IS NULL) OR ([delegacion] = @Original_delegacio"& _ 
-                "n)) AND ((@IsNull_estado = 1 AND [estado] IS NULL) OR ([estado] = @Original_esta"& _ 
-                "do)) AND ((@IsNull_pais = 1 AND [pais] IS NULL) OR ([pais] = @Original_pais)) AN"& _ 
-                "D ((@IsNull_codigoPostal = 1 AND [codigoPostal] IS NULL) OR ([codigoPostal] = @O"& _ 
-                "riginal_codigoPostal)) AND ((@IsNull_condicionesDePago = 1 AND [condicionesDePag"& _ 
-                "o] IS NULL) OR ([condicionesDePago] = @Original_condicionesDePago)) AND ((@IsNul"& _ 
-                "l_idMoneda = 1 AND [idMoneda] IS NULL) OR ([idMoneda] = @Original_idMoneda)) AND"& _ 
-                " ((@IsNull_idRegimenFiscal = 1 AND [idRegimenFiscal] IS NULL) OR ([idRegimenFisc"& _ 
-                "al] = @Original_idRegimenFiscal)) AND ((@IsNull_folioSol = 1 AND [folioSol] IS N"& _ 
-                "ULL) OR ([folioSol] = @Original_folioSol)) AND ((@IsNull_folioCom = 1 AND [folio"& _ 
-                "Com] IS NULL) OR ([folioCom] = @Original_folioCom)) AND ((@IsNull_idPolizaD = 1 "& _ 
-                "AND [idPolizaD] IS NULL) OR ([idPolizaD] = @Original_idPolizaD)) AND ((@IsNull_i"& _ 
-                "dConceptoGastos = 1 AND [idConceptoGastos] IS NULL) OR ([idConceptoGastos] = @Or"& _ 
-                "iginal_idConceptoGastos)) AND ((@IsNull_idConceptoPagoCtos = 1 AND [idConceptoPa"& _ 
-                "goCtos] IS NULL) OR ([idConceptoPagoCtos] = @Original_idConceptoPagoCtos)) AND ("& _ 
-                "(@IsNull_idConceptoReembolos = 1 AND [idConceptoReembolos] IS NULL) OR ([idConce"& _ 
-                "ptoReembolos] = @Original_idConceptoReembolos)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idEmpresas, razonSocia"& _ 
-                "l, rfc, calle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais"& _ 
-                ", codigoPostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom"& _ 
-                ", idPolizaD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos FROM CXP_"& _ 
-                "Empresas WHERE (idEmpresas = @idEmpresas)"
+                " = @idConceptoReembolos, [mesesFacturas] = @mesesFacturas, [montoOIngresos] = @m"& _ 
+                "ontoOIngresos, [idConceptoOIngresos] = @idConceptoOIngresos WHERE (([idEmpresas]"& _ 
+                " = @Original_idEmpresas) AND ((@IsNull_razonSocial = 1 AND [razonSocial] IS NULL"& _ 
+                ") OR ([razonSocial] = @Original_razonSocial)) AND ((@IsNull_rfc = 1 AND [rfc] IS"& _ 
+                " NULL) OR ([rfc] = @Original_rfc)) AND ((@IsNull_calle = 1 AND [calle] IS NULL) "& _ 
+                "OR ([calle] = @Original_calle)) AND ((@IsNull_numeroInterior = 1 AND [numeroInte"& _ 
+                "rior] IS NULL) OR ([numeroInterior] = @Original_numeroInterior)) AND ((@IsNull_n"& _ 
+                "umeroExterior = 1 AND [numeroExterior] IS NULL) OR ([numeroExterior] = @Original"& _ 
+                "_numeroExterior)) AND ((@IsNull_colonia = 1 AND [colonia] IS NULL) OR ([colonia]"& _ 
+                " = @Original_colonia)) AND ((@IsNull_delegacion = 1 AND [delegacion] IS NULL) OR"& _ 
+                " ([delegacion] = @Original_delegacion)) AND ((@IsNull_estado = 1 AND [estado] IS"& _ 
+                " NULL) OR ([estado] = @Original_estado)) AND ((@IsNull_pais = 1 AND [pais] IS NU"& _ 
+                "LL) OR ([pais] = @Original_pais)) AND ((@IsNull_codigoPostal = 1 AND [codigoPost"& _ 
+                "al] IS NULL) OR ([codigoPostal] = @Original_codigoPostal)) AND ((@IsNull_condici"& _ 
+                "onesDePago = 1 AND [condicionesDePago] IS NULL) OR ([condicionesDePago] = @Origi"& _ 
+                "nal_condicionesDePago)) AND ((@IsNull_idMoneda = 1 AND [idMoneda] IS NULL) OR (["& _ 
+                "idMoneda] = @Original_idMoneda)) AND ((@IsNull_idRegimenFiscal = 1 AND [idRegime"& _ 
+                "nFiscal] IS NULL) OR ([idRegimenFiscal] = @Original_idRegimenFiscal)) AND ((@IsN"& _ 
+                "ull_folioSol = 1 AND [folioSol] IS NULL) OR ([folioSol] = @Original_folioSol)) A"& _ 
+                "ND ((@IsNull_folioCom = 1 AND [folioCom] IS NULL) OR ([folioCom] = @Original_fol"& _ 
+                "ioCom)) AND ((@IsNull_idPolizaD = 1 AND [idPolizaD] IS NULL) OR ([idPolizaD] = @"& _ 
+                "Original_idPolizaD)) AND ((@IsNull_idConceptoGastos = 1 AND [idConceptoGastos] I"& _ 
+                "S NULL) OR ([idConceptoGastos] = @Original_idConceptoGastos)) AND ((@IsNull_idCo"& _ 
+                "nceptoPagoCtos = 1 AND [idConceptoPagoCtos] IS NULL) OR ([idConceptoPagoCtos] = "& _ 
+                "@Original_idConceptoPagoCtos)) AND ((@IsNull_idConceptoReembolos = 1 AND [idConc"& _ 
+                "eptoReembolos] IS NULL) OR ([idConceptoReembolos] = @Original_idConceptoReembolo"& _ 
+                "s)) AND ((@IsNull_mesesFacturas = 1 AND [mesesFacturas] IS NULL) OR ([mesesFactu"& _ 
+                "ras] = @Original_mesesFacturas)) AND ((@IsNull_montoOIngresos = 1 AND [montoOIng"& _ 
+                "resos] IS NULL) OR ([montoOIngresos] = @Original_montoOIngresos)) AND ((@IsNull_"& _ 
+                "idConceptoOIngresos = 1 AND [idConceptoOIngresos] IS NULL) OR ([idConceptoOIngre"& _ 
+                "sos] = @Original_idConceptoOIngresos)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idEmpresas, razonSocial, rfc, c"& _ 
+                "alle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais, codigoP"& _ 
+                "ostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom, idPoliz"& _ 
+                "aD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos, mesesFacturas, mo"& _ 
+                "ntoOIngresos, idConceptoOIngresos FROM CXP_Empresas WHERE (idEmpresas = @idEmpre"& _ 
+                "sas)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@razonSocial", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "razonSocial", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@rfc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "rfc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32266,6 +32416,9 @@ Namespace dsProductionTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoGastos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoGastos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoPagoCtos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoPagoCtos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoReembolos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoReembolos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@mesesFacturas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "mesesFacturas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@montoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "montoOIngresos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConceptoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoOIngresos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idEmpresas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_razonSocial", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "razonSocial", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_razonSocial", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "razonSocial", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -32305,6 +32458,12 @@ Namespace dsProductionTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConceptoPagoCtos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoPagoCtos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idConceptoReembolos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idConceptoReembolos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConceptoReembolos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoReembolos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_mesesFacturas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "mesesFacturas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_mesesFacturas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "mesesFacturas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_montoOIngresos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "montoOIngresos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_montoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "montoOIngresos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idConceptoOIngresos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idConceptoOIngresos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConceptoOIngresos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConceptoOIngresos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresas", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -32324,8 +32483,8 @@ Namespace dsProductionTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        idEmpresas, razonSocial, rfc, calle, numeroInterior, numeroExterior"& _ 
                 ", colonia, delegacion, estado, pais, codigoPostal, condicionesDePago, idMoneda, "& _ 
                 "idRegimenFiscal, folioSol, folioCom, idPolizaD, idConceptoGastos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                "             idConceptoPagoCtos, idConceptoReembolos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_Empres"& _ 
-                "as"
+                "             idConceptoPagoCtos, idConceptoReembolos, mesesFacturas, montoOIngre"& _ 
+                "sos, idConceptoOIngresos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_Empresas"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -32435,7 +32594,10 @@ Namespace dsProductionTableAdapters
                     ByVal Original_idPolizaD As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idConceptoGastos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idConceptoPagoCtos As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_idConceptoReembolos As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal Original_idConceptoReembolos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_mesesFacturas As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_montoOIngresos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_idConceptoOIngresos As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_idEmpresas,Decimal)
             If (Original_razonSocial Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -32570,6 +32732,27 @@ Namespace dsProductionTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
             End If
+            If (Original_mesesFacturas.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_mesesFacturas.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
+            End If
+            If (Original_montoOIngresos.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_montoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Original_idConceptoOIngresos.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_idConceptoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(44).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -32608,7 +32791,10 @@ Namespace dsProductionTableAdapters
                     ByVal idPolizaD As Global.System.Nullable(Of Decimal),  _
                     ByVal idConceptoGastos As Global.System.Nullable(Of Decimal),  _
                     ByVal idConceptoPagoCtos As Global.System.Nullable(Of Decimal),  _
-                    ByVal idConceptoReembolos As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal idConceptoReembolos As Global.System.Nullable(Of Decimal),  _
+                    ByVal mesesFacturas As Global.System.Nullable(Of Decimal),  _
+                    ByVal montoOIngresos As Global.System.Nullable(Of Decimal),  _
+                    ByVal idConceptoOIngresos As Global.System.Nullable(Of Decimal)) As Integer
             If (razonSocial Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32704,6 +32890,21 @@ Namespace dsProductionTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
+            If (mesesFacturas.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(mesesFacturas.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (montoOIngresos.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(montoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (idConceptoOIngresos.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(idConceptoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -32743,6 +32944,9 @@ Namespace dsProductionTableAdapters
                     ByVal idConceptoGastos As Global.System.Nullable(Of Decimal),  _
                     ByVal idConceptoPagoCtos As Global.System.Nullable(Of Decimal),  _
                     ByVal idConceptoReembolos As Global.System.Nullable(Of Decimal),  _
+                    ByVal mesesFacturas As Global.System.Nullable(Of Decimal),  _
+                    ByVal montoOIngresos As Global.System.Nullable(Of Decimal),  _
+                    ByVal idConceptoOIngresos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idEmpresas As Decimal,  _
                     ByVal Original_razonSocial As String,  _
                     ByVal Original_rfc As String,  _
@@ -32763,6 +32967,9 @@ Namespace dsProductionTableAdapters
                     ByVal Original_idConceptoGastos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idConceptoPagoCtos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idConceptoReembolos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_mesesFacturas As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_montoOIngresos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_idConceptoOIngresos As Global.System.Nullable(Of Decimal),  _
                     ByVal idEmpresas As Decimal) As Integer
             If (razonSocial Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -32859,141 +33066,177 @@ Namespace dsProductionTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_idEmpresas,Decimal)
-            If (Original_razonSocial Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            If (mesesFacturas.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(mesesFacturas.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_razonSocial,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (montoOIngresos.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(montoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (idConceptoOIngresos.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(idConceptoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_idEmpresas,Decimal)
+            If (Original_razonSocial Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_razonSocial,String)
             End If
             If (Original_rfc Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_rfc,String)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_rfc,String)
             End If
             If (Original_calle Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_calle,String)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_calle,String)
             End If
             If (Original_numeroInterior Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_numeroInterior,String)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_numeroInterior,String)
             End If
             If (Original_numeroExterior Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_numeroExterior,String)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_numeroExterior,String)
             End If
             If (Original_colonia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_colonia,String)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_colonia,String)
             End If
             If (Original_delegacion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_delegacion,String)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_delegacion,String)
             End If
             If (Original_estado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_estado,String)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_estado,String)
             End If
             If (Original_pais Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_pais,String)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_pais,String)
             End If
             If (Original_codigoPostal Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_codigoPostal,String)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_codigoPostal,String)
             End If
             If (Original_condicionesDePago Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_condicionesDePago,String)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_condicionesDePago,String)
             End If
             If (Original_idMoneda Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_idMoneda,String)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_idMoneda,String)
             End If
             If (Original_idRegimenFiscal Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_idRegimenFiscal,String)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_idRegimenFiscal,String)
             End If
             If (Original_folioSol.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_folioSol.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_folioSol.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
             End If
             If (Original_folioCom.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_folioCom.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_folioCom.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             End If
             If (Original_idPolizaD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_idPolizaD.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_idPolizaD.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
             End If
             If (Original_idConceptoGastos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_idConceptoGastos.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_idConceptoGastos.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
             End If
             If (Original_idConceptoPagoCtos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_idConceptoPagoCtos.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_idConceptoPagoCtos.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             End If
             If (Original_idConceptoReembolos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_idConceptoReembolos.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_idConceptoReembolos.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(58).Value = CType(idEmpresas,Decimal)
+            If (Original_mesesFacturas.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_mesesFacturas.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
+            If (Original_montoOIngresos.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_montoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+            End If
+            If (Original_idConceptoOIngresos.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_idConceptoOIngresos.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(67).Value = CType(idEmpresas,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -33033,6 +33276,9 @@ Namespace dsProductionTableAdapters
                     ByVal idConceptoGastos As Global.System.Nullable(Of Decimal),  _
                     ByVal idConceptoPagoCtos As Global.System.Nullable(Of Decimal),  _
                     ByVal idConceptoReembolos As Global.System.Nullable(Of Decimal),  _
+                    ByVal mesesFacturas As Global.System.Nullable(Of Decimal),  _
+                    ByVal montoOIngresos As Global.System.Nullable(Of Decimal),  _
+                    ByVal idConceptoOIngresos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idEmpresas As Decimal,  _
                     ByVal Original_razonSocial As String,  _
                     ByVal Original_rfc As String,  _
@@ -33052,8 +33298,11 @@ Namespace dsProductionTableAdapters
                     ByVal Original_idPolizaD As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idConceptoGastos As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_idConceptoPagoCtos As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_idConceptoReembolos As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(razonSocial, rfc, calle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais, codigoPostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom, idPolizaD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos, Original_idEmpresas, Original_razonSocial, Original_rfc, Original_calle, Original_numeroInterior, Original_numeroExterior, Original_colonia, Original_delegacion, Original_estado, Original_pais, Original_codigoPostal, Original_condicionesDePago, Original_idMoneda, Original_idRegimenFiscal, Original_folioSol, Original_folioCom, Original_idPolizaD, Original_idConceptoGastos, Original_idConceptoPagoCtos, Original_idConceptoReembolos, Original_idEmpresas)
+                    ByVal Original_idConceptoReembolos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_mesesFacturas As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_montoOIngresos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_idConceptoOIngresos As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(razonSocial, rfc, calle, numeroInterior, numeroExterior, colonia, delegacion, estado, pais, codigoPostal, condicionesDePago, idMoneda, idRegimenFiscal, folioSol, folioCom, idPolizaD, idConceptoGastos, idConceptoPagoCtos, idConceptoReembolos, mesesFacturas, montoOIngresos, idConceptoOIngresos, Original_idEmpresas, Original_razonSocial, Original_rfc, Original_calle, Original_numeroInterior, Original_numeroExterior, Original_colonia, Original_delegacion, Original_estado, Original_pais, Original_codigoPostal, Original_condicionesDePago, Original_idMoneda, Original_idRegimenFiscal, Original_folioSol, Original_folioCom, Original_idPolizaD, Original_idConceptoGastos, Original_idConceptoPagoCtos, Original_idConceptoReembolos, Original_mesesFacturas, Original_montoOIngresos, Original_idConceptoOIngresos, Original_idEmpresas)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
