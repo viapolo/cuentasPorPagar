@@ -148,28 +148,33 @@
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaCargoSol_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaCargoSol.SelectedValue = 0
-        Me.Update()
+        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
     End Sub
 
     Private Sub lnkEliminar4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkEliminar4.LinkClicked
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaAbonoSol_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaAbonoSol.SelectedValue = 0
-        Me.Update()
+        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
     End Sub
 
     Private Sub lnkElimina1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkElimina1.LinkClicked
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaCargoPago_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaCargoPago.SelectedValue = 0
-        Me.Update()
+        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
     End Sub
 
     Private Sub lnkElimina2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkElimina2.LinkClicked
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaAbonoPago_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaAbonoPago.SelectedValue = 0
-        Me.Update()
+        'Me.Update()
+        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
     End Sub
 
     Private Sub dgvImpuestos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvImpuestos.CellClick

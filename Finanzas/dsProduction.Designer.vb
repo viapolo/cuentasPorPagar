@@ -7842,6 +7842,8 @@ Partial Public Class dsProduction
         
         Private columnctaAbonoPago As Global.System.Data.DataColumn
         
+        Private columnomisionEC As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -7966,6 +7968,14 @@ Partial Public Class dsProduction
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property omisionECColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnomisionEC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8002,9 +8012,9 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCXP_ConceptosRow(ByVal nombre As String, ByVal impuesto As String, ByVal tipoProducto As String, ByVal cuentaEgreso As String, ByVal cuentaProv As String, ByVal idEmpresa As Decimal, ByVal tipoConcepto As Decimal, ByVal eventoContable As Boolean, ByVal ctaCargoPago As Decimal, ByVal ctaAbonoPago As Decimal) As CXP_ConceptosRow
+        Public Overloads Function AddCXP_ConceptosRow(ByVal nombre As String, ByVal impuesto As String, ByVal tipoProducto As String, ByVal cuentaEgreso As String, ByVal cuentaProv As String, ByVal idEmpresa As Decimal, ByVal tipoConcepto As Decimal, ByVal eventoContable As Boolean, ByVal ctaCargoPago As Decimal, ByVal ctaAbonoPago As Decimal, ByVal omisionEC As Boolean) As CXP_ConceptosRow
             Dim rowCXP_ConceptosRow As CXP_ConceptosRow = CType(Me.NewRow,CXP_ConceptosRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, nombre, impuesto, tipoProducto, cuentaEgreso, cuentaProv, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago}
+            Dim columnValuesArray() As Object = New Object() {Nothing, nombre, impuesto, tipoProducto, cuentaEgreso, cuentaProv, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago, omisionEC}
             rowCXP_ConceptosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCXP_ConceptosRow)
             Return rowCXP_ConceptosRow
@@ -8044,6 +8054,7 @@ Partial Public Class dsProduction
             Me.columneventoContable = MyBase.Columns("eventoContable")
             Me.columnctaCargoPago = MyBase.Columns("ctaCargoPago")
             Me.columnctaAbonoPago = MyBase.Columns("ctaAbonoPago")
+            Me.columnomisionEC = MyBase.Columns("omisionEC")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8071,6 +8082,8 @@ Partial Public Class dsProduction
             MyBase.Columns.Add(Me.columnctaCargoPago)
             Me.columnctaAbonoPago = New Global.System.Data.DataColumn("ctaAbonoPago", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnctaAbonoPago)
+            Me.columnomisionEC = New Global.System.Data.DataColumn("omisionEC", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnomisionEC)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnidConcepto}, true))
             Me.columnidConcepto.AutoIncrement = true
             Me.columnidConcepto.AutoIncrementSeed = -1
@@ -21387,6 +21400,21 @@ Partial Public Class dsProduction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property omisionEC() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCXP_Conceptos.omisionECColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'omisionEC' de la tabla 'CXP_Conceptos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCXP_Conceptos.omisionECColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsnombreNull() As Boolean
             Return Me.IsNull(Me.tableCXP_Conceptos.nombreColumn)
         End Function
@@ -21503,6 +21531,18 @@ Partial Public Class dsProduction
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetctaAbonoPagoNull()
             Me(Me.tableCXP_Conceptos.ctaAbonoPagoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsomisionECNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_Conceptos.omisionECColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetomisionECNull()
+            Me(Me.tableCXP_Conceptos.omisionECColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -40606,6 +40646,7 @@ Namespace dsProductionTableAdapters
             tableMapping.ColumnMappings.Add("eventoContable", "eventoContable")
             tableMapping.ColumnMappings.Add("ctaCargoPago", "ctaCargoPago")
             tableMapping.ColumnMappings.Add("ctaAbonoPago", "ctaAbonoPago")
+            tableMapping.ColumnMappings.Add("omisionEC", "omisionEC")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -40622,7 +40663,8 @@ Namespace dsProductionTableAdapters
                 " IS NULL) OR ([eventoContable] = @Original_eventoContable)) AND ((@IsNull_ctaCar"& _ 
                 "goPago = 1 AND [ctaCargoPago] IS NULL) OR ([ctaCargoPago] = @Original_ctaCargoPa"& _ 
                 "go)) AND ((@IsNull_ctaAbonoPago = 1 AND [ctaAbonoPago] IS NULL) OR ([ctaAbonoPag"& _ 
-                "o] = @Original_ctaAbonoPago)))"
+                "o] = @Original_ctaAbonoPago)) AND ((@IsNull_omisionEC = 1 AND [omisionEC] IS NUL"& _ 
+                "L) OR ([omisionEC] = @Original_omisionEC)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConcepto", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConcepto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_nombre", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nombre", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -40645,15 +40687,17 @@ Namespace dsProductionTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ctaCargoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaCargoPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ctaAbonoPago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ctaAbonoPago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ctaAbonoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaAbonoPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_omisionEC", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "omisionEC", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_omisionEC", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "omisionEC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [CXP_Conceptos] ([nombre], [impuesto], [tipoProducto], [cuentaEgreso]"& _ 
                 ", [cuentaProv], [idEmpresa], [tipoConcepto], [eventoContable], [ctaCargoPago], ["& _ 
-                "ctaAbonoPago]) VALUES (@nombre, @impuesto, @tipoProducto, @cuentaEgreso, @cuenta"& _ 
-                "Prov, @idEmpresa, @tipoConcepto, @eventoContable, @ctaCargoPago, @ctaAbonoPago);"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idConcepto, nombre, impuesto, tipoProducto, cuentaEgreso, cuentaProv, i"& _ 
-                "dEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago FROM CXP_Conc"& _ 
-                "eptos WHERE (idConcepto = SCOPE_IDENTITY())"
+                "ctaAbonoPago], [omisionEC]) VALUES (@nombre, @impuesto, @tipoProducto, @cuentaEg"& _ 
+                "reso, @cuentaProv, @idEmpresa, @tipoConcepto, @eventoContable, @ctaCargoPago, @c"& _ 
+                "taAbonoPago, @omisionEC);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idConcepto, nombre, impuesto, tipoProducto, cu"& _ 
+                "entaEgreso, cuentaProv, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, c"& _ 
+                "taAbonoPago, omisionEC FROM CXP_Conceptos WHERE (idConcepto = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@nombre", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nombre", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@impuesto", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "impuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -40665,28 +40709,31 @@ Namespace dsProductionTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eventoContable", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eventoContable", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ctaCargoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaCargoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ctaAbonoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaAbonoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@omisionEC", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "omisionEC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [CXP_Conceptos] SET [nombre] = @nombre, [impuesto] = @impuesto, [tipoProdu"& _ 
                 "cto] = @tipoProducto, [cuentaEgreso] = @cuentaEgreso, [cuentaProv] = @cuentaProv"& _ 
                 ", [idEmpresa] = @idEmpresa, [tipoConcepto] = @tipoConcepto, [eventoContable] = @"& _ 
-                "eventoContable, [ctaCargoPago] = @ctaCargoPago, [ctaAbonoPago] = @ctaAbonoPago W"& _ 
-                "HERE (([idConcepto] = @Original_idConcepto) AND ((@IsNull_nombre = 1 AND [nombre"& _ 
-                "] IS NULL) OR ([nombre] = @Original_nombre)) AND ((@IsNull_impuesto = 1 AND [imp"& _ 
-                "uesto] IS NULL) OR ([impuesto] = @Original_impuesto)) AND ((@IsNull_tipoProducto"& _ 
-                " = 1 AND [tipoProducto] IS NULL) OR ([tipoProducto] = @Original_tipoProducto)) A"& _ 
-                "ND ((@IsNull_cuentaEgreso = 1 AND [cuentaEgreso] IS NULL) OR ([cuentaEgreso] = @"& _ 
-                "Original_cuentaEgreso)) AND ((@IsNull_cuentaProv = 1 AND [cuentaProv] IS NULL) O"& _ 
-                "R ([cuentaProv] = @Original_cuentaProv)) AND ((@IsNull_idEmpresa = 1 AND [idEmpr"& _ 
-                "esa] IS NULL) OR ([idEmpresa] = @Original_idEmpresa)) AND ((@IsNull_tipoConcepto"& _ 
-                " = 1 AND [tipoConcepto] IS NULL) OR ([tipoConcepto] = @Original_tipoConcepto)) A"& _ 
-                "ND ((@IsNull_eventoContable = 1 AND [eventoContable] IS NULL) OR ([eventoContabl"& _ 
-                "e] = @Original_eventoContable)) AND ((@IsNull_ctaCargoPago = 1 AND [ctaCargoPago"& _ 
-                "] IS NULL) OR ([ctaCargoPago] = @Original_ctaCargoPago)) AND ((@IsNull_ctaAbonoP"& _ 
-                "ago = 1 AND [ctaAbonoPago] IS NULL) OR ([ctaAbonoPago] = @Original_ctaAbonoPago)"& _ 
-                "));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idConcepto, nombre, impuesto, tipoProducto, cuentaEgreso, cuentaProv"& _ 
-                ", idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago FROM CXP_C"& _ 
-                "onceptos WHERE (idConcepto = @idConcepto)"
+                "eventoContable, [ctaCargoPago] = @ctaCargoPago, [ctaAbonoPago] = @ctaAbonoPago, "& _ 
+                "[omisionEC] = @omisionEC WHERE (([idConcepto] = @Original_idConcepto) AND ((@IsN"& _ 
+                "ull_nombre = 1 AND [nombre] IS NULL) OR ([nombre] = @Original_nombre)) AND ((@Is"& _ 
+                "Null_impuesto = 1 AND [impuesto] IS NULL) OR ([impuesto] = @Original_impuesto)) "& _ 
+                "AND ((@IsNull_tipoProducto = 1 AND [tipoProducto] IS NULL) OR ([tipoProducto] = "& _ 
+                "@Original_tipoProducto)) AND ((@IsNull_cuentaEgreso = 1 AND [cuentaEgreso] IS NU"& _ 
+                "LL) OR ([cuentaEgreso] = @Original_cuentaEgreso)) AND ((@IsNull_cuentaProv = 1 A"& _ 
+                "ND [cuentaProv] IS NULL) OR ([cuentaProv] = @Original_cuentaProv)) AND ((@IsNull"& _ 
+                "_idEmpresa = 1 AND [idEmpresa] IS NULL) OR ([idEmpresa] = @Original_idEmpresa)) "& _ 
+                "AND ((@IsNull_tipoConcepto = 1 AND [tipoConcepto] IS NULL) OR ([tipoConcepto] = "& _ 
+                "@Original_tipoConcepto)) AND ((@IsNull_eventoContable = 1 AND [eventoContable] I"& _ 
+                "S NULL) OR ([eventoContable] = @Original_eventoContable)) AND ((@IsNull_ctaCargo"& _ 
+                "Pago = 1 AND [ctaCargoPago] IS NULL) OR ([ctaCargoPago] = @Original_ctaCargoPago"& _ 
+                ")) AND ((@IsNull_ctaAbonoPago = 1 AND [ctaAbonoPago] IS NULL) OR ([ctaAbonoPago]"& _ 
+                " = @Original_ctaAbonoPago)) AND ((@IsNull_omisionEC = 1 AND [omisionEC] IS NULL)"& _ 
+                " OR ([omisionEC] = @Original_omisionEC)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idConcepto, nombre, impuesto,"& _ 
+                " tipoProducto, cuentaEgreso, cuentaProv, idEmpresa, tipoConcepto, eventoContable"& _ 
+                ", ctaCargoPago, ctaAbonoPago, omisionEC FROM CXP_Conceptos WHERE (idConcepto = @"& _ 
+                "idConcepto)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@nombre", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nombre", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@impuesto", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "impuesto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -40698,6 +40745,7 @@ Namespace dsProductionTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eventoContable", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eventoContable", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ctaCargoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaCargoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ctaAbonoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaAbonoPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@omisionEC", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "omisionEC", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idConcepto", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idConcepto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_nombre", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nombre", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_nombre", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "nombre", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -40719,6 +40767,8 @@ Namespace dsProductionTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ctaCargoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaCargoPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ctaAbonoPago", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ctaAbonoPago", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ctaAbonoPago", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "ctaAbonoPago", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_omisionEC", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "omisionEC", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_omisionEC", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "omisionEC", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConcepto", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idConcepto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -40736,8 +40786,8 @@ Namespace dsProductionTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        idConcepto, nombre, impuesto, tipoProducto, cuentaEgreso, cuentaPro"& _ 
-                "v, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
-                "        CXP_Conceptos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (idEmpresa = @idEmpresa)"
+                "v, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago, omisionE"& _ 
+                "C"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_Conceptos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (idEmpresa = @idEmpresa)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -40749,14 +40799,12 @@ Namespace dsProductionTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConcepto", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idConcepto", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        CXP_Conceptos.idConcepto, CXP_Conceptos.nombre + '  (' + CXP_Empres"& _ 
-                "as.NombreCorto + ')' AS nombre, CXP_Conceptos.impuesto, CXP_Conceptos.tipoProduc"& _ 
-                "to, CXP_Conceptos.cuentaEgreso, CXP_Conceptos.cuentaProv, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     CXP_Conceptos.idEmpresa, CXP_Conceptos.tipoConcepto, CXP_Conceptos.eventoCo"& _ 
-                "ntable, CXP_Conceptos.ctaCargoPago, CXP_Conceptos.ctaAbonoPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            "& _ 
-                "CXP_Conceptos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Empresas ON CXP_Conceptos"& _ 
-                ".idEmpresa = CXP_Empresas.idEmpresas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CXP_Conceptos.idEmpresa = @i"& _ 
-                "dEmpresa)"
+            Me._commandCollection(2).CommandText = "SELECT CXP_Conceptos.ctaAbonoPago, CXP_Conceptos.ctaCargoPago, CXP_Conceptos.cuen"& _ 
+                "taEgreso, CXP_Conceptos.cuentaProv, CXP_Conceptos.eventoContable, CXP_Conceptos."& _ 
+                "idConcepto, CXP_Conceptos.idEmpresa, CXP_Conceptos.impuesto, CXP_Conceptos.nombr"& _ 
+                "e, CXP_Conceptos.omisionEC, CXP_Conceptos.tipoConcepto, CXP_Conceptos.tipoProduc"& _ 
+                "to FROM CXP_Conceptos INNER JOIN CXP_Empresas ON CXP_Conceptos.idEmpresa = CXP_E"& _ 
+                "mpresas.idEmpresas WHERE (CXP_Conceptos.idEmpresa = @idEmpresa)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
@@ -40908,7 +40956,7 @@ Namespace dsProductionTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_idConcepto As Decimal, ByVal Original_nombre As String, ByVal Original_impuesto As String, ByVal Original_tipoProducto As String, ByVal Original_cuentaEgreso As String, ByVal Original_cuentaProv As String, ByVal Original_idEmpresa As Global.System.Nullable(Of Decimal), ByVal Original_tipoConcepto As Global.System.Nullable(Of Decimal), ByVal Original_eventoContable As Global.System.Nullable(Of Boolean), ByVal Original_ctaCargoPago As Global.System.Nullable(Of Decimal), ByVal Original_ctaAbonoPago As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_idConcepto As Decimal, ByVal Original_nombre As String, ByVal Original_impuesto As String, ByVal Original_tipoProducto As String, ByVal Original_cuentaEgreso As String, ByVal Original_cuentaProv As String, ByVal Original_idEmpresa As Global.System.Nullable(Of Decimal), ByVal Original_tipoConcepto As Global.System.Nullable(Of Decimal), ByVal Original_eventoContable As Global.System.Nullable(Of Boolean), ByVal Original_ctaCargoPago As Global.System.Nullable(Of Decimal), ByVal Original_ctaAbonoPago As Global.System.Nullable(Of Decimal), ByVal Original_omisionEC As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_idConcepto,Decimal)
             If (Original_nombre Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -40980,6 +41028,13 @@ Namespace dsProductionTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
+            If (Original_omisionEC.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_omisionEC.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -40999,7 +41054,7 @@ Namespace dsProductionTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal nombre As String, ByVal impuesto As String, ByVal tipoProducto As String, ByVal cuentaEgreso As String, ByVal cuentaProv As String, ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal tipoConcepto As Global.System.Nullable(Of Decimal), ByVal eventoContable As Global.System.Nullable(Of Boolean), ByVal ctaCargoPago As Global.System.Nullable(Of Decimal), ByVal ctaAbonoPago As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Insert(ByVal nombre As String, ByVal impuesto As String, ByVal tipoProducto As String, ByVal cuentaEgreso As String, ByVal cuentaProv As String, ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal tipoConcepto As Global.System.Nullable(Of Decimal), ByVal eventoContable As Global.System.Nullable(Of Boolean), ByVal ctaCargoPago As Global.System.Nullable(Of Decimal), ByVal ctaAbonoPago As Global.System.Nullable(Of Decimal), ByVal omisionEC As Global.System.Nullable(Of Boolean)) As Integer
             If (nombre Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -41050,6 +41105,11 @@ Namespace dsProductionTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
+            If (omisionEC.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(omisionEC.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -41080,6 +41140,7 @@ Namespace dsProductionTableAdapters
                     ByVal eventoContable As Global.System.Nullable(Of Boolean),  _
                     ByVal ctaCargoPago As Global.System.Nullable(Of Decimal),  _
                     ByVal ctaAbonoPago As Global.System.Nullable(Of Decimal),  _
+                    ByVal omisionEC As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_idConcepto As Decimal,  _
                     ByVal Original_nombre As String,  _
                     ByVal Original_impuesto As String,  _
@@ -41091,6 +41152,7 @@ Namespace dsProductionTableAdapters
                     ByVal Original_eventoContable As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_ctaCargoPago As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_ctaAbonoPago As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_omisionEC As Global.System.Nullable(Of Boolean),  _
                     ByVal idConcepto As Decimal) As Integer
             If (nombre Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -41142,78 +41204,90 @@ Namespace dsProductionTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_idConcepto,Decimal)
-            If (Original_nombre Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            If (omisionEC.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(omisionEC.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_nombre,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_idConcepto,Decimal)
+            If (Original_nombre Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_nombre,String)
             End If
             If (Original_impuesto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_impuesto,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_impuesto,String)
             End If
             If (Original_tipoProducto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_tipoProducto,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_tipoProducto,String)
             End If
             If (Original_cuentaEgreso Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_cuentaEgreso,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_cuentaEgreso,String)
             End If
             If (Original_cuentaProv Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_cuentaProv,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_cuentaProv,String)
             End If
             If (Original_idEmpresa.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_idEmpresa.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_idEmpresa.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (Original_tipoConcepto.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_tipoConcepto.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_tipoConcepto.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
             If (Original_eventoContable.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_eventoContable.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_eventoContable.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
             If (Original_ctaCargoPago.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_ctaCargoPago.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_ctaCargoPago.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
             If (Original_ctaAbonoPago.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_ctaAbonoPago.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_ctaAbonoPago.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(31).Value = CType(idConcepto,Decimal)
+            If (Original_omisionEC.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_omisionEC.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(34).Value = CType(idConcepto,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -41244,6 +41318,7 @@ Namespace dsProductionTableAdapters
                     ByVal eventoContable As Global.System.Nullable(Of Boolean),  _
                     ByVal ctaCargoPago As Global.System.Nullable(Of Decimal),  _
                     ByVal ctaAbonoPago As Global.System.Nullable(Of Decimal),  _
+                    ByVal omisionEC As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_idConcepto As Decimal,  _
                     ByVal Original_nombre As String,  _
                     ByVal Original_impuesto As String,  _
@@ -41254,8 +41329,9 @@ Namespace dsProductionTableAdapters
                     ByVal Original_tipoConcepto As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_eventoContable As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_ctaCargoPago As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_ctaAbonoPago As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(nombre, impuesto, tipoProducto, cuentaEgreso, cuentaProv, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago, Original_idConcepto, Original_nombre, Original_impuesto, Original_tipoProducto, Original_cuentaEgreso, Original_cuentaProv, Original_idEmpresa, Original_tipoConcepto, Original_eventoContable, Original_ctaCargoPago, Original_ctaAbonoPago, Original_idConcepto)
+                    ByVal Original_ctaAbonoPago As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_omisionEC As Global.System.Nullable(Of Boolean)) As Integer
+            Return Me.Update(nombre, impuesto, tipoProducto, cuentaEgreso, cuentaProv, idEmpresa, tipoConcepto, eventoContable, ctaCargoPago, ctaAbonoPago, omisionEC, Original_idConcepto, Original_nombre, Original_impuesto, Original_tipoProducto, Original_cuentaEgreso, Original_cuentaProv, Original_idEmpresa, Original_tipoConcepto, Original_eventoContable, Original_ctaCargoPago, Original_ctaAbonoPago, Original_omisionEC, Original_idConcepto)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

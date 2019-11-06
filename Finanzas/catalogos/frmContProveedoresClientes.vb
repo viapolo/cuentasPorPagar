@@ -84,4 +84,8 @@
         BindingNavigatorAddNewItem.Enabled = False
         CXP_ProveedoresBindingNavigatorSaveItem.Enabled = True
     End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        'CXP_ProveedoresBindingSource.Filter = "razonSocial like '%" & 
+    End Sub
 End Class
