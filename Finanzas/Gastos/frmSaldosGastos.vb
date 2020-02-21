@@ -19,9 +19,9 @@ Public Class frmSaldosGastos
         ElseIf e.ColumnIndex <> 0 Then
             Dim frmDet As New frmSaldosGastosDetalle
             frmDet.varFolioSol = Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(0).Value
-            frmDet.varImpDepsotitado = Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(4).Value
-            frmDet.varImpComprobado = CDec(Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(4).Value) - CDec(Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(6).Value)
-            frmDet.varImpPorComprobar = Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(6).Value
+            frmDet.varImpDepsotitado = Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(5).Value
+            frmDet.varImpComprobado = CDec(Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(5).Value) - CDec(Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(7).Value)
+            frmDet.varImpPorComprobar = Vw_CXP_SaldoComprobacionGastosDataGridView.Rows(e.RowIndex).Cells(7).Value
             frmDet.Show()
         End If
     End Sub

@@ -12,7 +12,7 @@
 
     Private Sub frmSaldosGastosDetalle_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ComprobGtos' Puede moverla o quitarla según sea necesario.
-        Me.CXP_ComprobGtosTableAdapter.DetalleComprobacion_FillBy(Me.DsProduction.CXP_ComprobGtos, varFolioSol, varGlobal_IdEmpresa)
+        Me.CXP_ComprobGtosTableAdapter.DetalleComprobacion_FillBy(Me.DsProduction.CXP_ComprobGtos, varFolioSol, CDec(varGlobal_IdEmpresa))
         lblImpDepositado.Text = varImpDepsotitado.ToString("c")
         lblImpComprobado.Text = varImpComprobado.ToString("c")
         lblPorComprobar.Text = varImpPorComprobar.ToString("c")
