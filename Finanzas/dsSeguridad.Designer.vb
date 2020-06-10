@@ -3198,7 +3198,7 @@ Namespace dsSeguridadTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        cve_empleado, nombre + ' ' + ape_pat + ' ' + ape_mat AS nombrecompl"& _ 
@@ -3215,13 +3215,19 @@ Namespace dsSeguridadTableAdapters
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT Autorizar, Bloqueo, CveEmpresa, FechaCaducidad, Huella1, Huella2, Huella3,"& _ 
+            Me._commandCollection(2).CommandText = "SELECT        ISNULL(MAX(rfc), 'NE') AS rfc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            USUARIO"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
+                "  (rfc = @rfc)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@rfc", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "rfc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT Autorizar, Bloqueo, CveEmpresa, FechaCaducidad, Huella1, Huella2, Huella3,"& _ 
                 " correo, cve_empleado, direccion, estado, fecha_ingreso, id_depto, id_puesto, id"& _ 
                 "_sucursal, id_usuario, jefe, nombre + ' ' + ape_pat + ' ' + ape_mat AS nombrecom"& _ 
                 "pleto, password, rfc, tel_oficina, tel_particular FROM USUARIO WHERE (cve_emplea"& _ 
                 "do = @cve_empleado)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cve_empleado", Global.System.Data.SqlDbType.VarChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "cve_empleado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cve_empleado", Global.System.Data.SqlDbType.VarChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "cve_empleado", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3277,7 +3283,7 @@ Namespace dsSeguridadTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function ObtDatos_FillBy(ByVal dataTable As dsSeguridad.USUARIODataTable, ByVal cve_empleado As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (cve_empleado Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("cve_empleado")
             Else
@@ -3295,7 +3301,7 @@ Namespace dsSeguridadTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function ObtDatos_GetDataBy(ByVal cve_empleado As String) As dsSeguridad.USUARIODataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (cve_empleado Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("cve_empleado")
             Else
@@ -3974,6 +3980,37 @@ Namespace dsSeguridadTableAdapters
                     ByVal Original_FechaCaducidad As Global.System.Nullable(Of Date),  _
                     ByVal Original_Autorizar As Global.System.Nullable(Of Boolean)) As Integer
             Return Me.Update(Original_cve_empleado, correo, tel_particular, jefe, id_usuario, password, fecha_ingreso, estado, rfc, tel_oficina, direccion, CveEmpresa, id_puesto, id_depto, id_sucursal, Huella1, Huella2, Huella3, Bloqueo, FechaCaducidad, Autorizar, Original_cve_empleado, Original_correo, Original_tel_particular, Original_jefe, Original_id_usuario, Original_password, Original_fecha_ingreso, Original_estado, Original_rfc, Original_tel_oficina, Original_direccion, Original_CveEmpresa, Original_id_puesto, Original_id_depto, Original_id_sucursal, Original_Bloqueo, Original_FechaCaducidad, Original_Autorizar)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function ExisteRfc_ScalarQuery(ByVal rfc As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (rfc Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(rfc,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
         End Function
     End Class
     

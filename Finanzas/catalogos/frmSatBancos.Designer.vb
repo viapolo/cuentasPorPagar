@@ -26,8 +26,8 @@ Partial Class Bancos
         Dim ClaveBancoLabel As System.Windows.Forms.Label
         Dim NombreCotroLabel As System.Windows.Forms.Label
         Dim RazonSocialLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Bancos))
         Dim RfcLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Bancos))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_BancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_BancosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_BancosTableAdapter()
@@ -87,6 +87,15 @@ Partial Class Bancos
         RazonSocialLabel.TabIndex = 5
         RazonSocialLabel.Text = "Razón Social:"
         '
+        'RfcLabel
+        '
+        RfcLabel.AutoSize = True
+        RfcLabel.Location = New System.Drawing.Point(241, 31)
+        RfcLabel.Name = "RfcLabel"
+        RfcLabel.Size = New System.Drawing.Size(31, 13)
+        RfcLabel.TabIndex = 8
+        RfcLabel.Text = "RFC:"
+        '
         'DsProduction
         '
         Me.DsProduction.DataSetName = "dsProduction"
@@ -104,6 +113,8 @@ Partial Class Bancos
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Me.CXP_BancosTableAdapter
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
@@ -111,12 +122,32 @@ Partial Class Bancos
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CXP_BancosBindingNavigator
@@ -149,8 +180,8 @@ Partial Class Bancos
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorDeleteItem
@@ -232,7 +263,7 @@ Partial Class Bancos
         '
         'ClaveBancoTextBox
         '
-        Me.ClaveBancoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_BancosBindingSource, "claveBanco", True))
+        Me.ClaveBancoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_BancosBindingSource, "claveBancos", True))
         Me.ClaveBancoTextBox.Location = New System.Drawing.Point(95, 28)
         Me.ClaveBancoTextBox.Name = "ClaveBancoTextBox"
         Me.ClaveBancoTextBox.Size = New System.Drawing.Size(100, 20)
@@ -240,7 +271,7 @@ Partial Class Bancos
         '
         'NombreCotroTextBox
         '
-        Me.NombreCotroTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_BancosBindingSource, "nombreCotro", True))
+        Me.NombreCotroTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_BancosBindingSource, "nombreCorto", True))
         Me.NombreCotroTextBox.Location = New System.Drawing.Point(95, 54)
         Me.NombreCotroTextBox.Name = "NombreCotroTextBox"
         Me.NombreCotroTextBox.Size = New System.Drawing.Size(100, 20)
@@ -262,15 +293,6 @@ Partial Class Bancos
         Me.btnSalir.TabIndex = 7
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'RfcLabel
-        '
-        RfcLabel.AutoSize = True
-        RfcLabel.Location = New System.Drawing.Point(241, 31)
-        RfcLabel.Name = "RfcLabel"
-        RfcLabel.Size = New System.Drawing.Size(31, 13)
-        RfcLabel.TabIndex = 8
-        RfcLabel.Text = "RFC:"
         '
         'RfcTextBox
         '

@@ -35,11 +35,6 @@ Partial Class frmContCuentasBancarias
         Dim SaldoInicialLabel As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContCuentasBancarias))
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.CXP_CuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_CuentasBancariasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter()
-        Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
-        Me.CXP_c_MonedaTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_c_MonedaTableAdapter()
         Me.CXP_CuentasBancariasBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -55,20 +50,25 @@ Partial Class frmContCuentasBancarias
         Me.CXP_CuentasBancariasBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.NumeroDeCuentaTextBox = New System.Windows.Forms.TextBox()
         Me.cmbNombre = New System.Windows.Forms.ComboBox()
-        Me.CXPBancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtRFC = New System.Windows.Forms.TextBox()
         Me.cmbMoneda = New System.Windows.Forms.ComboBox()
-        Me.CXPcMonedaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FolioChequeInicialTextBox = New System.Windows.Forms.TextBox()
         Me.FolioChequeFinalTextBox = New System.Windows.Forms.TextBox()
         Me.FolioChequeActualTextBox = New System.Windows.Forms.TextBox()
         Me.FechaInicialDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.SaldoInicialTextBox = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.CXP_BancosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_BancosTableAdapter()
         Me.NombreTextBox = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CXP_CuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXPCuentasContablesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXPcMonedaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXPBancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_CuentasBancariasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter()
+        Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Me.CXP_c_MonedaTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_c_MonedaTableAdapter()
+        Me.CXP_BancosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_BancosTableAdapter()
         Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
         Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
@@ -83,13 +83,13 @@ Partial Class frmContCuentasBancarias
         FechaInicialLabel = New System.Windows.Forms.Label()
         SaldoInicialLabel = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXP_CuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_CuentasBancariasBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_CuentasBancariasBindingNavigator.SuspendLayout()
-        CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXP_CuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -192,49 +192,6 @@ Partial Class frmContCuentasBancarias
         Label4.TabIndex = 24
         Label4.Text = "Cuenta Contable:"
         '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXP_CuentasBancariasBindingSource
-        '
-        Me.CXP_CuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
-        Me.CXP_CuentasBancariasBindingSource.DataSource = Me.DsProduction
-        '
-        'CXP_CuentasBancariasTableAdapter
-        '
-        Me.CXP_CuentasBancariasTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Me.CXP_c_MonedaTableAdapter
-        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Me.CXP_CuentasBancariasTableAdapter
-        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'CXP_c_MonedaTableAdapter
-        '
-        Me.CXP_c_MonedaTableAdapter.ClearBeforeFill = True
-        '
         'CXP_CuentasBancariasBindingNavigator
         '
         Me.CXP_CuentasBancariasBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
@@ -265,8 +222,8 @@ Partial Class frmContCuentasBancarias
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
         'BindingNavigatorDeleteItem
@@ -366,11 +323,6 @@ Partial Class frmContCuentasBancarias
         Me.cmbNombre.TabIndex = 4
         Me.cmbNombre.ValueMember = "claveBanco"
         '
-        'CXPBancosBindingSource
-        '
-        Me.CXPBancosBindingSource.DataMember = "CXP_Bancos"
-        Me.CXPBancosBindingSource.DataSource = Me.DsProduction
-        '
         'txtRFC
         '
         Me.txtRFC.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXPBancosBindingSource, "rfc", True))
@@ -391,11 +343,6 @@ Partial Class frmContCuentasBancarias
         Me.cmbMoneda.Size = New System.Drawing.Size(233, 21)
         Me.cmbMoneda.TabIndex = 9
         Me.cmbMoneda.ValueMember = "c_Moneda"
-        '
-        'CXPcMonedaBindingSource
-        '
-        Me.CXPcMonedaBindingSource.DataMember = "CXP_c_Moneda"
-        Me.CXPcMonedaBindingSource.DataSource = Me.DsProduction
         '
         'FolioChequeInicialTextBox
         '
@@ -447,10 +394,6 @@ Partial Class frmContCuentasBancarias
         Me.Button1.Text = "Salir"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'CXP_BancosTableAdapter
-        '
-        Me.CXP_BancosTableAdapter.ClearBeforeFill = True
-        '
         'NombreTextBox
         '
         Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "nombre", True))
@@ -471,10 +414,87 @@ Partial Class frmContCuentasBancarias
         Me.ComboBox1.TabIndex = 23
         Me.ComboBox1.ValueMember = "idCuentaContable"
         '
+        'CXP_CuentasBancariasBindingSource
+        '
+        Me.CXP_CuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
+        Me.CXP_CuentasBancariasBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'CXPCuentasContablesBindingSource
         '
         Me.CXPCuentasContablesBindingSource.DataMember = "CXP_CuentasContables"
         Me.CXPCuentasContablesBindingSource.DataSource = Me.DsProduction
+        '
+        'CXPcMonedaBindingSource
+        '
+        Me.CXPcMonedaBindingSource.DataMember = "CXP_c_Moneda"
+        Me.CXPcMonedaBindingSource.DataSource = Me.DsProduction
+        '
+        'CXPBancosBindingSource
+        '
+        Me.CXPBancosBindingSource.DataMember = "CXP_Bancos"
+        Me.CXPBancosBindingSource.DataSource = Me.DsProduction
+        '
+        'CXP_CuentasBancariasTableAdapter
+        '
+        Me.CXP_CuentasBancariasTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Me.CXP_c_MonedaTableAdapter
+        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Me.CXP_CuentasBancariasTableAdapter
+        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresArchTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'CXP_c_MonedaTableAdapter
+        '
+        Me.CXP_c_MonedaTableAdapter.ClearBeforeFill = True
+        '
+        'CXP_BancosTableAdapter
+        '
+        Me.CXP_BancosTableAdapter.ClearBeforeFill = True
         '
         'CXP_CuentasContablesTableAdapter
         '
@@ -521,14 +541,14 @@ Partial Class frmContCuentasBancarias
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmContCuentasBancarias"
         Me.Text = "Cuentas Bancarias"
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXP_CuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_CuentasBancariasBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CXP_CuentasBancariasBindingNavigator.ResumeLayout(False)
         Me.CXP_CuentasBancariasBindingNavigator.PerformLayout()
-        CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXP_CuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

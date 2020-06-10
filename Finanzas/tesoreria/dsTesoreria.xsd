@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTesoreria" targetNamespace="http://tempuri.org/dsTesoreria.xsd" xmlns:mstns="http://tempuri.org/dsTesoreria.xsd" xmlns="http://tempuri.org/dsTesoreria.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="csProduction" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="csProduction (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.cuentasPorPagar.My.MySettings.GlobalReference.Default.csProduction" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vw_CXP_SugerenciasPagoTableAdapter" GeneratorDataComponentClassName="Vw_CXP_SugerenciasPagoTableAdapter" Name="Vw_CXP_SugerenciasPago" UserDataComponentName="Vw_CXP_SugerenciasPagoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectName="Production.dbo.Vw_CXP_SugerenciasPago" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        folioSolicitud, totalPagado, moneda, idEmpresas, nombreCorto, cuenta, clabe, c_Moneda, c_NombreMoneda, descripcion, nombreSucursal, ok1, fechaSolicitud, usuario, ok2, fechaPago
+FROM            Vw_CXP_SugerenciasPago</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="folioSolicitud" DataSetColumn="folioSolicitud" />
+              <Mapping SourceColumn="totalPagado" DataSetColumn="totalPagado" />
+              <Mapping SourceColumn="moneda" DataSetColumn="moneda" />
+              <Mapping SourceColumn="idEmpresas" DataSetColumn="idEmpresas" />
+              <Mapping SourceColumn="nombreCorto" DataSetColumn="nombreCorto" />
+              <Mapping SourceColumn="cuenta" DataSetColumn="cuenta" />
+              <Mapping SourceColumn="clabe" DataSetColumn="clabe" />
+              <Mapping SourceColumn="c_Moneda" DataSetColumn="c_Moneda" />
+              <Mapping SourceColumn="c_NombreMoneda" DataSetColumn="c_NombreMoneda" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="nombreSucursal" DataSetColumn="nombreSucursal" />
+              <Mapping SourceColumn="ok1" DataSetColumn="ok1" />
+              <Mapping SourceColumn="fechaSolicitud" DataSetColumn="fechaSolicitud" />
+              <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
+              <Mapping SourceColumn="ok2" DataSetColumn="ok2" />
+              <Mapping SourceColumn="fechaPago" DataSetColumn="fechaPago" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectName="Production.dbo.Vw_CXP_SugerenciasPago" DbObjectType="View" FillMethodModifier="Public" FillMethodName="SugPagos_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="SugPagos_GetDataBy" GeneratorSourceName="SugPagos_FillBy" GetMethodModifier="Public" GetMethodName="SugPagos_GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SugPagos_GetDataBy" UserSourceName="SugPagos_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        folioSolicitud, totalPagado, moneda, idEmpresas, nombreCorto, cuenta, clabe, c_Moneda, c_NombreMoneda, descripcion, nombreSucursal, ok1, fechaSolicitud, usuario, ok2, fechaPago
+FROM            Vw_CXP_SugerenciasPago
+WHERE        (idEmpresas = @idEmpresas)
+ORDER BY folioSolicitud</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="idEmpresas" ColumnName="idEmpresas" DataSourceName="Production.dbo.Vw_CXP_SugerenciasPago" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@idEmpresas" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idEmpresas" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CXP_CuentasBancariasTableAdapter" GeneratorDataComponentClassName="CXP_CuentasBancariasTableAdapter" Name="CXP_CuentasBancarias" UserDataComponentName="CXP_CuentasBancariasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectName="Production.dbo.CXP_CuentasBancarias" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [CXP_CuentasBancarias] WHERE (([idCuentaBancaria] = @Original_idCuentaBancaria) AND ((@IsNull_numeroDeCuenta = 1 AND [numeroDeCuenta] IS NULL) OR ([numeroDeCuenta] = @Original_numeroDeCuenta)) AND ((@IsNull_nombre = 1 AND [nombre] IS NULL) OR ([nombre] = @Original_nombre)) AND ((@IsNull_cuentaClabe = 1 AND [cuentaClabe] IS NULL) OR ([cuentaClabe] = @Original_cuentaClabe)) AND ((@IsNull_rfcBanco = 1 AND [rfcBanco] IS NULL) OR ([rfcBanco] = @Original_rfcBanco)) AND ((@IsNull_idBancoSat = 1 AND [idBancoSat] IS NULL) OR ([idBancoSat] = @Original_idBancoSat)) AND ((@IsNull_idMoneda = 1 AND [idMoneda] IS NULL) OR ([idMoneda] = @Original_idMoneda)) AND ((@IsNull_folioChequeInicial = 1 AND [folioChequeInicial] IS NULL) OR ([folioChequeInicial] = @Original_folioChequeInicial)) AND ((@IsNull_folioChequeFinal = 1 AND [folioChequeFinal] IS NULL) OR ([folioChequeFinal] = @Original_folioChequeFinal)) AND ((@IsNull_folioChequeActual = 1 AND [folioChequeActual] IS NULL) OR ([folioChequeActual] = @Original_folioChequeActual)) AND ((@IsNull_fechaInicial = 1 AND [fechaInicial] IS NULL) OR ([fechaInicial] = @Original_fechaInicial)) AND ((@IsNull_saldoInicial = 1 AND [saldoInicial] IS NULL) OR ([saldoInicial] = @Original_saldoInicial)) AND ((@IsNull_cuentaCont = 1 AND [cuentaCont] IS NULL) OR ([cuentaCont] = @Original_cuentaCont)) AND ((@IsNull_idEmpresa = 1 AND [idEmpresa] IS NULL) OR ([idEmpresa] = @Original_idEmpresa)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idCuentaBancaria" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idCuentaBancaria" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_numeroDeCuenta" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="numeroDeCuenta" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_numeroDeCuenta" Precision="20" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="numeroDeCuenta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_nombre" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nombre" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_cuentaClabe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="cuentaClabe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_cuentaClabe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaClabe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_rfcBanco" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="rfcBanco" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_rfcBanco" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfcBanco" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idBancoSat" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idBancoSat" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_idBancoSat" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idBancoSat" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idMoneda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMoneda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_idMoneda" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idMoneda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_folioChequeInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="folioChequeInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_folioChequeInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_folioChequeFinal" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="folioChequeFinal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_folioChequeFinal" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeFinal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_folioChequeActual" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="folioChequeActual" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_folioChequeActual" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeActual" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_fechaInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="fechaInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_fechaInicial" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="fechaInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_saldoInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="saldoInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_saldoInicial" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="saldoInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_cuentaCont" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="cuentaCont" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_cuentaCont" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaCont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idEmpresa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idEmpresa" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idEmpresa" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idEmpresa" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [CXP_CuentasBancarias] ([numeroDeCuenta], [nombre], [cuentaClabe], [rfcBanco], [idBancoSat], [idMoneda], [folioChequeInicial], [folioChequeFinal], [folioChequeActual], [fechaInicial], [saldoInicial], [cuentaCont], [idEmpresa]) VALUES (@numeroDeCuenta, @nombre, @cuentaClabe, @rfcBanco, @idBancoSat, @idMoneda, @folioChequeInicial, @folioChequeFinal, @folioChequeActual, @fechaInicial, @saldoInicial, @cuentaCont, @idEmpresa);
+SELECT idCuentaBancaria, numeroDeCuenta, nombre, cuentaClabe, rfcBanco, idBancoSat, idMoneda, folioChequeInicial, folioChequeFinal, folioChequeActual, fechaInicial, saldoInicial, cuentaCont, idEmpresa FROM CXP_CuentasBancarias WHERE (idCuentaBancaria = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@numeroDeCuenta" Precision="20" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="numeroDeCuenta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@cuentaClabe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaClabe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@rfcBanco" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfcBanco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@idBancoSat" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idBancoSat" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@idMoneda" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idMoneda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@folioChequeInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@folioChequeFinal" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeFinal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@folioChequeActual" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeActual" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@fechaInicial" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="fechaInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@saldoInicial" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="saldoInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@cuentaCont" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaCont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@idEmpresa" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idEmpresa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        idCuentaBancaria, numeroDeCuenta, nombre, cuentaClabe, rfcBanco, idBancoSat, idMoneda, folioChequeInicial, folioChequeFinal, folioChequeActual, fechaInicial, saldoInicial, cuentaCont, idEmpresa
+FROM            CXP_CuentasBancarias</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [CXP_CuentasBancarias] SET [numeroDeCuenta] = @numeroDeCuenta, [nombre] = @nombre, [cuentaClabe] = @cuentaClabe, [rfcBanco] = @rfcBanco, [idBancoSat] = @idBancoSat, [idMoneda] = @idMoneda, [folioChequeInicial] = @folioChequeInicial, [folioChequeFinal] = @folioChequeFinal, [folioChequeActual] = @folioChequeActual, [fechaInicial] = @fechaInicial, [saldoInicial] = @saldoInicial, [cuentaCont] = @cuentaCont, [idEmpresa] = @idEmpresa WHERE (([idCuentaBancaria] = @Original_idCuentaBancaria) AND ((@IsNull_numeroDeCuenta = 1 AND [numeroDeCuenta] IS NULL) OR ([numeroDeCuenta] = @Original_numeroDeCuenta)) AND ((@IsNull_nombre = 1 AND [nombre] IS NULL) OR ([nombre] = @Original_nombre)) AND ((@IsNull_cuentaClabe = 1 AND [cuentaClabe] IS NULL) OR ([cuentaClabe] = @Original_cuentaClabe)) AND ((@IsNull_rfcBanco = 1 AND [rfcBanco] IS NULL) OR ([rfcBanco] = @Original_rfcBanco)) AND ((@IsNull_idBancoSat = 1 AND [idBancoSat] IS NULL) OR ([idBancoSat] = @Original_idBancoSat)) AND ((@IsNull_idMoneda = 1 AND [idMoneda] IS NULL) OR ([idMoneda] = @Original_idMoneda)) AND ((@IsNull_folioChequeInicial = 1 AND [folioChequeInicial] IS NULL) OR ([folioChequeInicial] = @Original_folioChequeInicial)) AND ((@IsNull_folioChequeFinal = 1 AND [folioChequeFinal] IS NULL) OR ([folioChequeFinal] = @Original_folioChequeFinal)) AND ((@IsNull_folioChequeActual = 1 AND [folioChequeActual] IS NULL) OR ([folioChequeActual] = @Original_folioChequeActual)) AND ((@IsNull_fechaInicial = 1 AND [fechaInicial] IS NULL) OR ([fechaInicial] = @Original_fechaInicial)) AND ((@IsNull_saldoInicial = 1 AND [saldoInicial] IS NULL) OR ([saldoInicial] = @Original_saldoInicial)) AND ((@IsNull_cuentaCont = 1 AND [cuentaCont] IS NULL) OR ([cuentaCont] = @Original_cuentaCont)) AND ((@IsNull_idEmpresa = 1 AND [idEmpresa] IS NULL) OR ([idEmpresa] = @Original_idEmpresa)));
+SELECT idCuentaBancaria, numeroDeCuenta, nombre, cuentaClabe, rfcBanco, idBancoSat, idMoneda, folioChequeInicial, folioChequeFinal, folioChequeActual, fechaInicial, saldoInicial, cuentaCont, idEmpresa FROM CXP_CuentasBancarias WHERE (idCuentaBancaria = @idCuentaBancaria)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@numeroDeCuenta" Precision="20" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="numeroDeCuenta" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@cuentaClabe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaClabe" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@rfcBanco" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfcBanco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@idBancoSat" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idBancoSat" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@idMoneda" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idMoneda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@folioChequeInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@folioChequeFinal" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeFinal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@folioChequeActual" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeActual" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@fechaInicial" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="fechaInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@saldoInicial" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="saldoInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@cuentaCont" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaCont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@idEmpresa" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idEmpresa" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idCuentaBancaria" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idCuentaBancaria" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_numeroDeCuenta" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="numeroDeCuenta" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_numeroDeCuenta" Precision="20" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="numeroDeCuenta" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_nombre" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="nombre" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_nombre" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nombre" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_cuentaClabe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="cuentaClabe" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_cuentaClabe" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaClabe" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_rfcBanco" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="rfcBanco" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_rfcBanco" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfcBanco" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idBancoSat" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idBancoSat" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_idBancoSat" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idBancoSat" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idMoneda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idMoneda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_idMoneda" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="idMoneda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_folioChequeInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="folioChequeInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_folioChequeInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_folioChequeFinal" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="folioChequeFinal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_folioChequeFinal" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeFinal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_folioChequeActual" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="folioChequeActual" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_folioChequeActual" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="folioChequeActual" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_fechaInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="fechaInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_fechaInicial" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="fechaInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_saldoInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="saldoInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_saldoInicial" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="saldoInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_cuentaCont" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="cuentaCont" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_cuentaCont" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cuentaCont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idEmpresa" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idEmpresa" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idEmpresa" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idEmpresa" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="idCuentaBancaria" ColumnName="idCuentaBancaria" DataSourceName="Production.dbo.CXP_CuentasBancarias" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@idCuentaBancaria" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idCuentaBancaria" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idCuentaBancaria" DataSetColumn="idCuentaBancaria" />
+              <Mapping SourceColumn="numeroDeCuenta" DataSetColumn="numeroDeCuenta" />
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="cuentaClabe" DataSetColumn="cuentaClabe" />
+              <Mapping SourceColumn="rfcBanco" DataSetColumn="rfcBanco" />
+              <Mapping SourceColumn="idBancoSat" DataSetColumn="idBancoSat" />
+              <Mapping SourceColumn="idMoneda" DataSetColumn="idMoneda" />
+              <Mapping SourceColumn="folioChequeInicial" DataSetColumn="folioChequeInicial" />
+              <Mapping SourceColumn="folioChequeFinal" DataSetColumn="folioChequeFinal" />
+              <Mapping SourceColumn="folioChequeActual" DataSetColumn="folioChequeActual" />
+              <Mapping SourceColumn="fechaInicial" DataSetColumn="fechaInicial" />
+              <Mapping SourceColumn="saldoInicial" DataSetColumn="saldoInicial" />
+              <Mapping SourceColumn="cuentaCont" DataSetColumn="cuentaCont" />
+              <Mapping SourceColumn="idEmpresa" DataSetColumn="idEmpresa" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTesoreria" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTesoreria" msprop:Generator_UserDSName="dsTesoreria">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Vw_CXP_SugerenciasPago" msprop:Generator_TableClassName="Vw_CXP_SugerenciasPagoDataTable" msprop:Generator_TableVarName="tableVw_CXP_SugerenciasPago" msprop:Generator_RowChangedName="Vw_CXP_SugerenciasPagoRowChanged" msprop:Generator_TablePropName="Vw_CXP_SugerenciasPago" msprop:Generator_RowDeletingName="Vw_CXP_SugerenciasPagoRowDeleting" msprop:Generator_RowChangingName="Vw_CXP_SugerenciasPagoRowChanging" msprop:Generator_RowEvHandlerName="Vw_CXP_SugerenciasPagoRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_CXP_SugerenciasPagoRowDeleted" msprop:Generator_RowClassName="Vw_CXP_SugerenciasPagoRow" msprop:Generator_UserTableName="Vw_CXP_SugerenciasPago" msprop:Generator_RowEvArgName="Vw_CXP_SugerenciasPagoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="folioSolicitud" msprop:Generator_ColumnVarNameInTable="columnfolioSolicitud" msprop:Generator_ColumnPropNameInRow="folioSolicitud" msprop:Generator_ColumnPropNameInTable="folioSolicitudColumn" msprop:Generator_UserColumnName="folioSolicitud" type="xs:decimal" />
+              <xs:element name="totalPagado" msprop:Generator_ColumnVarNameInTable="columntotalPagado" msprop:Generator_ColumnPropNameInRow="totalPagado" msprop:Generator_ColumnPropNameInTable="totalPagadoColumn" msprop:Generator_UserColumnName="totalPagado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="moneda" msprop:Generator_ColumnVarNameInTable="columnmoneda" msprop:Generator_ColumnPropNameInRow="moneda" msprop:Generator_ColumnPropNameInTable="monedaColumn" msprop:Generator_UserColumnName="moneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idEmpresas" msprop:Generator_ColumnVarNameInTable="columnidEmpresas" msprop:Generator_ColumnPropNameInRow="idEmpresas" msprop:Generator_ColumnPropNameInTable="idEmpresasColumn" msprop:Generator_UserColumnName="idEmpresas" type="xs:decimal" />
+              <xs:element name="nombreCorto" msprop:Generator_ColumnVarNameInTable="columnnombreCorto" msprop:Generator_ColumnPropNameInRow="nombreCorto" msprop:Generator_ColumnPropNameInTable="nombreCortoColumn" msprop:Generator_UserColumnName="nombreCorto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cuenta" msprop:Generator_ColumnVarNameInTable="columncuenta" msprop:Generator_ColumnPropNameInRow="cuenta" msprop:Generator_ColumnPropNameInTable="cuentaColumn" msprop:Generator_UserColumnName="cuenta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="clabe" msprop:Generator_ColumnVarNameInTable="columnclabe" msprop:Generator_ColumnPropNameInRow="clabe" msprop:Generator_ColumnPropNameInTable="clabeColumn" msprop:Generator_UserColumnName="clabe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_Moneda" msprop:Generator_ColumnVarNameInTable="columnc_Moneda" msprop:Generator_ColumnPropNameInRow="c_Moneda" msprop:Generator_ColumnPropNameInTable="c_MonedaColumn" msprop:Generator_UserColumnName="c_Moneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_NombreMoneda" msprop:Generator_ColumnVarNameInTable="columnc_NombreMoneda" msprop:Generator_ColumnPropNameInRow="c_NombreMoneda" msprop:Generator_ColumnPropNameInTable="c_NombreMonedaColumn" msprop:Generator_UserColumnName="c_NombreMoneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombreSucursal" msprop:Generator_ColumnVarNameInTable="columnnombreSucursal" msprop:Generator_ColumnPropNameInRow="nombreSucursal" msprop:Generator_ColumnPropNameInTable="nombreSucursalColumn" msprop:Generator_UserColumnName="nombreSucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ok1" msprop:Generator_ColumnVarNameInTable="columnok1" msprop:Generator_ColumnPropNameInRow="ok1" msprop:Generator_ColumnPropNameInTable="ok1Column" msprop:Generator_UserColumnName="ok1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fechaSolicitud" msprop:Generator_ColumnVarNameInTable="columnfechaSolicitud" msprop:Generator_ColumnPropNameInRow="fechaSolicitud" msprop:Generator_ColumnPropNameInTable="fechaSolicitudColumn" msprop:Generator_UserColumnName="fechaSolicitud" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ok2" msprop:Generator_ColumnVarNameInTable="columnok2" msprop:Generator_ColumnPropNameInRow="ok2" msprop:Generator_ColumnPropNameInTable="ok2Column" msprop:Generator_UserColumnName="ok2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fechaPago" msprop:Generator_ColumnVarNameInTable="columnfechaPago" msprop:Generator_ColumnPropNameInRow="fechaPago" msprop:Generator_ColumnPropNameInTable="fechaPagoColumn" msprop:Generator_UserColumnName="fechaPago" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CXP_CuentasBancarias" msprop:Generator_TableClassName="CXP_CuentasBancariasDataTable" msprop:Generator_TableVarName="tableCXP_CuentasBancarias" msprop:Generator_TablePropName="CXP_CuentasBancarias" msprop:Generator_RowDeletingName="CXP_CuentasBancariasRowDeleting" msprop:Generator_RowChangingName="CXP_CuentasBancariasRowChanging" msprop:Generator_RowEvHandlerName="CXP_CuentasBancariasRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_CuentasBancariasRowDeleted" msprop:Generator_UserTableName="CXP_CuentasBancarias" msprop:Generator_RowChangedName="CXP_CuentasBancariasRowChanged" msprop:Generator_RowEvArgName="CXP_CuentasBancariasRowChangeEvent" msprop:Generator_RowClassName="CXP_CuentasBancariasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCuentaBancaria" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCuentaBancaria" msprop:Generator_ColumnPropNameInRow="idCuentaBancaria" msprop:Generator_ColumnPropNameInTable="idCuentaBancariaColumn" msprop:Generator_UserColumnName="idCuentaBancaria" type="xs:decimal" />
+              <xs:element name="numeroDeCuenta" msprop:Generator_ColumnVarNameInTable="columnnumeroDeCuenta" msprop:Generator_ColumnPropNameInRow="numeroDeCuenta" msprop:Generator_ColumnPropNameInTable="numeroDeCuentaColumn" msprop:Generator_UserColumnName="numeroDeCuenta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cuentaClabe" msprop:Generator_ColumnVarNameInTable="columncuentaClabe" msprop:Generator_ColumnPropNameInRow="cuentaClabe" msprop:Generator_ColumnPropNameInTable="cuentaClabeColumn" msprop:Generator_UserColumnName="cuentaClabe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rfcBanco" msprop:Generator_ColumnVarNameInTable="columnrfcBanco" msprop:Generator_ColumnPropNameInRow="rfcBanco" msprop:Generator_ColumnPropNameInTable="rfcBancoColumn" msprop:Generator_UserColumnName="rfcBanco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idBancoSat" msprop:Generator_ColumnVarNameInTable="columnidBancoSat" msprop:Generator_ColumnPropNameInRow="idBancoSat" msprop:Generator_ColumnPropNameInTable="idBancoSatColumn" msprop:Generator_UserColumnName="idBancoSat" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idMoneda" msprop:Generator_ColumnVarNameInTable="columnidMoneda" msprop:Generator_ColumnPropNameInRow="idMoneda" msprop:Generator_ColumnPropNameInTable="idMonedaColumn" msprop:Generator_UserColumnName="idMoneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="folioChequeInicial" msprop:Generator_ColumnVarNameInTable="columnfolioChequeInicial" msprop:Generator_ColumnPropNameInRow="folioChequeInicial" msprop:Generator_ColumnPropNameInTable="folioChequeInicialColumn" msprop:Generator_UserColumnName="folioChequeInicial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="folioChequeFinal" msprop:Generator_ColumnVarNameInTable="columnfolioChequeFinal" msprop:Generator_ColumnPropNameInRow="folioChequeFinal" msprop:Generator_ColumnPropNameInTable="folioChequeFinalColumn" msprop:Generator_UserColumnName="folioChequeFinal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="folioChequeActual" msprop:Generator_ColumnVarNameInTable="columnfolioChequeActual" msprop:Generator_ColumnPropNameInRow="folioChequeActual" msprop:Generator_ColumnPropNameInTable="folioChequeActualColumn" msprop:Generator_UserColumnName="folioChequeActual" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fechaInicial" msprop:Generator_ColumnVarNameInTable="columnfechaInicial" msprop:Generator_ColumnPropNameInRow="fechaInicial" msprop:Generator_ColumnPropNameInTable="fechaInicialColumn" msprop:Generator_UserColumnName="fechaInicial" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="saldoInicial" msprop:Generator_ColumnVarNameInTable="columnsaldoInicial" msprop:Generator_ColumnPropNameInRow="saldoInicial" msprop:Generator_ColumnPropNameInTable="saldoInicialColumn" msprop:Generator_UserColumnName="saldoInicial" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cuentaCont" msprop:Generator_ColumnVarNameInTable="columncuentaCont" msprop:Generator_ColumnPropNameInRow="cuentaCont" msprop:Generator_ColumnPropNameInTable="cuentaContColumn" msprop:Generator_UserColumnName="cuentaCont" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idEmpresa" msprop:Generator_ColumnVarNameInTable="columnidEmpresa" msprop:Generator_ColumnPropNameInRow="idEmpresa" msprop:Generator_ColumnPropNameInTable="idEmpresaColumn" msprop:Generator_UserColumnName="idEmpresa" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Vw_CXP_SugerenciasPago" />
+      <xs:field xpath="mstns:folioSolicitud" />
+      <xs:field xpath="mstns:idEmpresas" />
+    </xs:unique>
+    <xs:unique name="CXP_CuentasBancarias_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CXP_CuentasBancarias" />
+      <xs:field xpath="mstns:idCuentaBancaria" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

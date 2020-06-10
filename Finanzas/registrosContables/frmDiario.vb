@@ -122,4 +122,5 @@
         frmReportePolizaDiario.fecha2 = dtpFecha2.Value
         frmReportePolizaDiario.Show()
     End Sub
+
 End Class

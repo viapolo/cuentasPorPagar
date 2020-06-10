@@ -31,6 +31,7 @@ Partial Class frmConceptos
         Dim Label3 As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
+        Dim Label5 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConceptos))
         Me.CXP_ConceptosBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
@@ -105,6 +106,12 @@ Partial Class frmConceptos
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbImpuestosP = New System.Windows.Forms.ComboBox()
         Me.btnAgregarP = New System.Windows.Forms.Button()
+        Me.cmbCtaBancaria = New System.Windows.Forms.ComboBox()
+        Me.CXPEstatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_EstatusTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_EstatusTableAdapter()
+        Me.DsProduction4 = New cuentasPorPagar.dsProduction()
+        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_Estatus2TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus2TableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         ImpuestoLabel = New System.Windows.Forms.Label()
         CuentaProvLabel = New System.Windows.Forms.Label()
@@ -113,6 +120,7 @@ Partial Class frmConceptos
         Label3 = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
+        Label5 = New System.Windows.Forms.Label()
         CType(Me.CXP_ConceptosBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_ConceptosBindingNavigator.SuspendLayout()
         CType(Me.CXP_ConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,6 +145,9 @@ Partial Class frmConceptos
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPEstatus2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -210,6 +221,15 @@ Partial Class frmConceptos
         Label2.Size = New System.Drawing.Size(53, 13)
         Label2.TabIndex = 7
         Label2.Text = "Impuesto:"
+        '
+        'Label5
+        '
+        Label5.AutoSize = True
+        Label5.Location = New System.Drawing.Point(29, 460)
+        Label5.Name = "Label5"
+        Label5.Size = New System.Drawing.Size(115, 13)
+        Label5.TabIndex = 38
+        Label5.Text = "Exigir cuenta bancaria:"
         '
         'CXP_ConceptosBindingNavigator
         '
@@ -521,12 +541,16 @@ Partial Class frmConceptos
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresArchTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
@@ -538,6 +562,7 @@ Partial Class frmConceptos
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -710,7 +735,7 @@ Partial Class frmConceptos
         'EventoContableCheckBox
         '
         Me.EventoContableCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_ConceptosBindingSource, "eventoContable", True))
-        Me.EventoContableCheckBox.Location = New System.Drawing.Point(516, 533)
+        Me.EventoContableCheckBox.Location = New System.Drawing.Point(446, 533)
         Me.EventoContableCheckBox.Name = "EventoContableCheckBox"
         Me.EventoContableCheckBox.Size = New System.Drawing.Size(173, 37)
         Me.EventoContableCheckBox.TabIndex = 30
@@ -832,11 +857,50 @@ Partial Class frmConceptos
         Me.btnAgregarP.Text = "Agregar"
         Me.btnAgregarP.UseVisualStyleBackColor = True
         '
+        'cmbCtaBancaria
+        '
+        Me.cmbCtaBancaria.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_ConceptosBindingSource, "tipoConcepto", True))
+        Me.cmbCtaBancaria.DataSource = Me.CXPEstatus2BindingSource
+        Me.cmbCtaBancaria.DisplayMember = "descripcion"
+        Me.cmbCtaBancaria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbCtaBancaria.FormattingEnabled = True
+        Me.cmbCtaBancaria.Location = New System.Drawing.Point(154, 457)
+        Me.cmbCtaBancaria.Name = "cmbCtaBancaria"
+        Me.cmbCtaBancaria.Size = New System.Drawing.Size(121, 21)
+        Me.cmbCtaBancaria.TabIndex = 37
+        Me.cmbCtaBancaria.ValueMember = "idEstatus"
+        '
+        'CXPEstatusBindingSource
+        '
+        Me.CXPEstatusBindingSource.DataMember = "CXP_Estatus"
+        Me.CXPEstatusBindingSource.DataSource = Me.DsProduction
+        '
+        'CXP_EstatusTableAdapter
+        '
+        Me.CXP_EstatusTableAdapter.ClearBeforeFill = True
+        '
+        'DsProduction4
+        '
+        Me.DsProduction4.DataSetName = "dsProduction"
+        Me.DsProduction4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXPEstatus2BindingSource
+        '
+        Me.CXPEstatus2BindingSource.DataMember = "CXP_Estatus2"
+        Me.CXPEstatus2BindingSource.DataSource = Me.DsProduction4
+        Me.CXPEstatus2BindingSource.Filter = "grupoEstatus='CONCEPTOS' and grupoEstatus2='CUENTABANCARIA'"
+        '
+        'CXP_Estatus2TableAdapter
+        '
+        Me.CXP_Estatus2TableAdapter.ClearBeforeFill = True
+        '
         'frmConceptos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(997, 575)
+        Me.Controls.Add(Label5)
+        Me.Controls.Add(Me.cmbCtaBancaria)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.OmisionECCheckBox)
         Me.Controls.Add(Me.btnBuscar)
@@ -883,6 +947,9 @@ Partial Class frmConceptos
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPEstatus2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -961,4 +1028,10 @@ Partial Class frmConceptos
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents cmbImpuestosP As ComboBox
     Friend WithEvents btnAgregarP As Button
+    Friend WithEvents cmbCtaBancaria As ComboBox
+    Friend WithEvents CXPEstatusBindingSource As BindingSource
+    Friend WithEvents CXP_EstatusTableAdapter As dsProductionTableAdapters.CXP_EstatusTableAdapter
+    Friend WithEvents DsProduction4 As dsProduction
+    Friend WithEvents CXPEstatus2BindingSource As BindingSource
+    Friend WithEvents CXP_Estatus2TableAdapter As dsProductionTableAdapters.CXP_Estatus2TableAdapter
 End Class

@@ -25,9 +25,9 @@ Partial Class frmDiario
         Me.components = New System.ComponentModel.Container()
         Dim IdTipoDocumentoLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDiario))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.CXPRegContBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -304,9 +304,9 @@ Partial Class frmDiario
         'fecha
         '
         Me.fecha.DataPropertyName = "fecha"
-        DataGridViewCellStyle4.Format = "d"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.fecha.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.fecha.DefaultCellStyle = DataGridViewCellStyle1
         Me.fecha.HeaderText = "Fecha"
         Me.fecha.Name = "fecha"
         Me.fecha.ReadOnly = True
@@ -345,9 +345,9 @@ Partial Class frmDiario
         'cargo
         '
         Me.cargo.DataPropertyName = "cargo"
-        DataGridViewCellStyle5.Format = "C2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.cargo.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.cargo.DefaultCellStyle = DataGridViewCellStyle2
         Me.cargo.HeaderText = "Cargo"
         Me.cargo.Name = "cargo"
         Me.cargo.ReadOnly = True
@@ -355,9 +355,9 @@ Partial Class frmDiario
         'abono
         '
         Me.abono.DataPropertyName = "abono"
-        DataGridViewCellStyle6.Format = "C2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.abono.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.abono.DefaultCellStyle = DataGridViewCellStyle3
         Me.abono.HeaderText = "Abono"
         Me.abono.Name = "abono"
         Me.abono.ReadOnly = True
@@ -539,12 +539,17 @@ Partial Class frmDiario
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresArchTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_RegContTableAdapter = Me.CXP_RegContTableAdapter
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
@@ -556,6 +561,7 @@ Partial Class frmDiario
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -582,12 +588,17 @@ Partial Class frmDiario
         Me.TableAdapterManager1.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager1.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager1.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager1.CXP_Estatus2TableAdapter = Nothing
+        Me.TableAdapterManager1.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager1.CXP_ProveedoresArchTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_RegContTableAdapter = Me.CxP_RegContTableAdapter1
         Me.TableAdapterManager1.CXP_SucursalesTableAdapter = Nothing
@@ -599,6 +610,7 @@ Partial Class frmDiario
         Me.TableAdapterManager1.CXP_UsuariosTableAdapter = Nothing
         Me.TableAdapterManager1.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager1.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager1.GEN_Correos_SistemaFinagilTableAdapter = Nothing
         Me.TableAdapterManager1.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager1.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '

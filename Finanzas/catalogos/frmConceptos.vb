@@ -14,6 +14,10 @@
     End Sub
 
     Private Sub frmConceptos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction4.CXP_Estatus2' Puede moverla o quitarla según sea necesario.
+        Me.CXP_Estatus2TableAdapter.Fill(Me.DsProduction4.CXP_Estatus2)
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Estatus' Puede moverla o quitarla según sea necesario.
+        Me.CXP_EstatusTableAdapter.ProveedoresAutorizado_Fill(Me.DsProduction.CXP_Estatus)
         If varGlobal_IdEmpresa = "24" Then
             CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
         Else

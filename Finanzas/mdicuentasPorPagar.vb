@@ -14,6 +14,7 @@ Public Class mdicuentasPorPagar
     Public varGlPerfil As String
     Public varGlEmpresa As String
     Public varGlEmpresaD As String
+
     Dim taPerfil As New dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter
     Dim t As New dsProduction.CXP_PerfilesUsuarioDataTable
     Dim dtPerfiles As New DataTable
@@ -475,4 +476,30 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
+    Private Sub DocumentaciónProveedorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DocumentaciónProveedorToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmDocumentosProveedores.MdiParent = Me
+        frmDocumentosProveedores.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub GenerarPólizasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPólizasToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmGenPolizas.MdiParent = Me
+        frmGenPolizas.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SolicitudesDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitudesDePagoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmTesSolicitudesDePago.MdiParent = Me
+        frmTesSolicitudesDePago.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 End Class

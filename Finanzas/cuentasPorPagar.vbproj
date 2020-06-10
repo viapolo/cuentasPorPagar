@@ -94,6 +94,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="catalogos\frmAutorizarCuentasBancarias.Designer.vb">
+      <DependentUpon>frmAutorizarCuentasBancarias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmAutorizarCuentasBancarias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalogos\frmAutorizarDocumentacion.Designer.vb">
+      <DependentUpon>frmAutorizarDocumentacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmAutorizarDocumentacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="catalogos\frmCodigoAgrupador.Designer.vb">
       <DependentUpon>frmCodigoAgrupador.vb</DependentUpon>
     </Compile>
@@ -122,6 +134,18 @@
       <DependentUpon>frmContProveedoresClientes.vb</DependentUpon>
     </Compile>
     <Compile Include="catalogos\frmContProveedoresClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalogos\frmCuentasBancarias.Designer.vb">
+      <DependentUpon>frmCuentasBancarias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmCuentasBancarias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalogos\frmDocumentosProv.Designer.vb">
+      <DependentUpon>frmDocumentosProv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmDocumentosProv.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="catalogos\frmNacionalidades.Designer.vb">
@@ -172,6 +196,12 @@
     <Compile Include="catalogos\frmTipoGasto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="catalogos\frmVerPdf.Designer.vb">
+      <DependentUpon>frmVerPdf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmVerPdf.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ClaseHash.vb" />
     <Compile Include="configuracion\frmAutorizaciones.Designer.vb">
       <DependentUpon>frmAutorizaciones.vb</DependentUpon>
@@ -183,6 +213,12 @@
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
     </Compile>
     <Compile Include="configuracion\frmDepartamentos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="configuracion\frmDocumentosProveedores.Designer.vb">
+      <DependentUpon>frmDocumentosProveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion\frmDocumentosProveedores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="configuracion\frmEmpresas.Designer.vb">
@@ -332,6 +368,12 @@
     <Compile Include="registrosContables\frmDiario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="registrosContables\frmGenPolizas.Designer.vb">
+      <DependentUpon>frmGenPolizas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="registrosContables\frmGenPolizas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="registrosContables\frmReportePolizaDiario.Designer.vb">
       <DependentUpon>frmReportePolizaDiario.vb</DependentUpon>
     </Compile>
@@ -344,9 +386,26 @@
       <DependentUpon>rptPolizaDiario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="tesoreria\dsTesoreria.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTesoreria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmTesSolicitudesDePago.Designer.vb">
+      <DependentUpon>frmTesSolicitudesDePago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmTesSolicitudesDePago.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="utilerias.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="catalogos\frmAutorizarCuentasBancarias.resx">
+      <DependentUpon>frmAutorizarCuentasBancarias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmAutorizarDocumentacion.resx">
+      <DependentUpon>frmAutorizarDocumentacion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmCodigoAgrupador.resx">
       <DependentUpon>frmCodigoAgrupador.vb</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +420,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmContProveedoresClientes.resx">
       <DependentUpon>frmContProveedoresClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmCuentasBancarias.resx">
+      <DependentUpon>frmCuentasBancarias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmDocumentosProv.resx">
+      <DependentUpon>frmDocumentosProv.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmNacionalidades.resx">
       <DependentUpon>frmNacionalidades.vb</DependentUpon>
@@ -386,11 +451,17 @@
     <EmbeddedResource Include="catalogos\frmTipoGasto.resx">
       <DependentUpon>frmTipoGasto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmVerPdf.resx">
+      <DependentUpon>frmVerPdf.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmAutorizaciones.resx">
       <DependentUpon>frmAutorizaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmDepartamentos.resx">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="configuracion\frmDocumentosProveedores.resx">
+      <DependentUpon>frmDocumentosProveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmEmpresas.resx">
       <DependentUpon>frmEmpresas.vb</DependentUpon>
@@ -452,12 +523,18 @@
     <EmbeddedResource Include="registrosContables\frmDiario.resx">
       <DependentUpon>frmDiario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="registrosContables\frmGenPolizas.resx">
+      <DependentUpon>frmGenPolizas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="registrosContables\frmReportePolizaDiario.resx">
       <DependentUpon>frmReportePolizaDiario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="registrosContables\rptPolizaDiario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmTesSolicitudesDePago.resx">
+      <DependentUpon>frmTesSolicitudesDePago.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -503,6 +580,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="tesoreria\dsTesoreria.xsc">
+      <DependentUpon>dsTesoreria.xsd</DependentUpon>
+    </None>
+    <None Include="tesoreria\dsTesoreria.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTesoreria.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="tesoreria\dsTesoreria.xss">
+      <DependentUpon>dsTesoreria.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -530,6 +618,34 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="PDFShellLib">
+      <Guid>{67E94227-7662-4050-9C72-746983CF37A2}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

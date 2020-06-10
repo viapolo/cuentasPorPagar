@@ -89,13 +89,13 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server")>  _
-        Public Property nas() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\TMPFINAGIL\")>  _
+        Public Property fileNas() As String
             Get
-                Return CType(Me("nas"),String)
+                Return CType(Me("fileNas"),String)
             End Get
             Set
-                Me("nas") = value
+                Me("fileNas") = value
             End Set
         End Property
     End Class
