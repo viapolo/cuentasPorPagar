@@ -25,8 +25,11 @@ Partial Class frmTesSolicitudesDePago
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTesSolicitudesDePago))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Vw_CXP_SugerenciasPagoBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.Vw_CXP_SugerenciasPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -43,31 +46,27 @@ Partial Class frmTesSolicitudesDePago
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.Vw_CXP_SugerenciasPagoBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.Vw_CXP_SugerenciasPagoDataGridView = New System.Windows.Forms.DataGridView()
+        Me.CXPCuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.CXP_CuentasBancariasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter()
         Me.Vw_CXP_SugerenciasPagoTableAdapter = New cuentasPorPagar.dsTesoreriaTableAdapters.Vw_CXP_SugerenciasPagoTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsTesoreriaTableAdapters.TableAdapterManager()
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.CXPCuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_CuentasBancariasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter()
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbBancoOrdenante = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Vw_CXP_SugerenciasPagoBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Vw_CXP_SugerenciasPagoBindingNavigator.SuspendLayout()
         CType(Me.Vw_CXP_SugerenciasPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_SugerenciasPagoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Vw_CXP_SugerenciasPagoBindingNavigator
@@ -199,13 +198,51 @@ Partial Class frmTesSolicitudesDePago
         Me.Vw_CXP_SugerenciasPagoDataGridView.AllowUserToAddRows = False
         Me.Vw_CXP_SugerenciasPagoDataGridView.AllowUserToDeleteRows = False
         Me.Vw_CXP_SugerenciasPagoDataGridView.AutoGenerateColumns = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Vw_CXP_SugerenciasPagoDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.Vw_CXP_SugerenciasPagoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_CXP_SugerenciasPagoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.descripcion, Me.DataGridViewTextBoxColumn3, Me.cmbBancoOrdenante, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn16})
+        Me.Vw_CXP_SugerenciasPagoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.cmbBancoOrdenante, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn16})
         Me.Vw_CXP_SugerenciasPagoDataGridView.DataSource = Me.Vw_CXP_SugerenciasPagoBindingSource
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Vw_CXP_SugerenciasPagoDataGridView.DefaultCellStyle = DataGridViewCellStyle5
         Me.Vw_CXP_SugerenciasPagoDataGridView.Location = New System.Drawing.Point(13, 39)
         Me.Vw_CXP_SugerenciasPagoDataGridView.Name = "Vw_CXP_SugerenciasPagoDataGridView"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Vw_CXP_SugerenciasPagoDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.Vw_CXP_SugerenciasPagoDataGridView.Size = New System.Drawing.Size(1177, 423)
         Me.Vw_CXP_SugerenciasPagoDataGridView.TabIndex = 1
+        '
+        'CXPCuentasBancariasBindingSource
+        '
+        Me.CXPCuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
+        Me.CXPCuentasBancariasBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_CuentasBancariasTableAdapter
+        '
+        Me.CXP_CuentasBancariasTableAdapter.ClearBeforeFill = True
         '
         'Vw_CXP_SugerenciasPagoTableAdapter
         '
@@ -216,119 +253,91 @@ Partial Class frmTesSolicitudesDePago
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsTesoreriaTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXPCuentasBancariasBindingSource
-        '
-        Me.CXPCuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
-        Me.CXPCuentasBancariasBindingSource.DataSource = Me.DsProduction
-        '
-        'CXP_CuentasBancariasTableAdapter
-        '
-        Me.CXP_CuentasBancariasTableAdapter.ClearBeforeFill = True
         '
         'DataGridViewTextBoxColumn13
         '
+        Me.DataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn13.DataPropertyName = "fechaSolicitud"
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn13.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Format = "d"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn13.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn13.HeaderText = "Fecha Solicitud"
         Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Width = 70
+        Me.DataGridViewTextBoxColumn13.Width = 96
         '
         'DataGridViewTextBoxColumn1
         '
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "folioSolicitud"
         Me.DataGridViewTextBoxColumn1.HeaderText = "Folio Sol"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 70
+        Me.DataGridViewTextBoxColumn1.Width = 67
         '
         'DataGridViewTextBoxColumn2
         '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "totalPagado"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn2.HeaderText = "Imp Solic"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 80
-        '
-        'descripcion
-        '
-        Me.descripcion.DataPropertyName = "descripcion"
-        Me.descripcion.HeaderText = "Forma de Pago"
-        Me.descripcion.Name = "descripcion"
-        Me.descripcion.Width = 220
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "moneda"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Moneda S"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 45
+        Me.DataGridViewTextBoxColumn2.Width = 69
         '
         'cmbBancoOrdenante
         '
+        Me.cmbBancoOrdenante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.cmbBancoOrdenante.DataSource = Me.CXPCuentasBancariasBindingSource
         Me.cmbBancoOrdenante.DisplayMember = "nombre"
         Me.cmbBancoOrdenante.HeaderText = "Banco Ordenante"
         Me.cmbBancoOrdenante.Name = "cmbBancoOrdenante"
         Me.cmbBancoOrdenante.ValueMember = "idCuentaBancaria"
+        Me.cmbBancoOrdenante.Width = 87
         '
         'DataGridViewTextBoxColumn5
         '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "nombreCorto"
         Me.DataGridViewTextBoxColumn5.HeaderText = "Banco Ben"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 78
         '
         'DataGridViewTextBoxColumn6
         '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "cuenta"
         Me.DataGridViewTextBoxColumn6.HeaderText = "Cuenta Ben"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 81
         '
         'DataGridViewTextBoxColumn7
         '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "clabe"
         Me.DataGridViewTextBoxColumn7.HeaderText = "CLABE Ben"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 81
         '
         'DataGridViewTextBoxColumn8
         '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "c_Moneda"
         Me.DataGridViewTextBoxColumn8.HeaderText = "Moneda Ben"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.Width = 45
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "nombreSucursal"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Sucursal"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.Width = 120
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "usuario"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Solicita"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 90
+        Me.DataGridViewTextBoxColumn8.Width = 86
         '
         'DataGridViewTextBoxColumn16
         '
+        Me.DataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn16.DataPropertyName = "fechaPago"
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Format = "d"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn16.HeaderText = "Fecha Pago"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Width = 70
+        Me.DataGridViewTextBoxColumn16.Width = 83
         '
         'frmTesSolicitudesDePago
         '
@@ -345,8 +354,8 @@ Partial Class frmTesSolicitudesDePago
         CType(Me.Vw_CXP_SugerenciasPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Vw_CXP_SugerenciasPagoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -370,20 +379,16 @@ Partial Class frmTesSolicitudesDePago
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
     Friend WithEvents Vw_CXP_SugerenciasPagoBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents Vw_CXP_SugerenciasPagoDataGridView As DataGridView
+    Friend WithEvents CXPCuentasBancariasBindingSource As BindingSource
+    Friend WithEvents DsProduction As dsProduction
+    Friend WithEvents CXP_CuentasBancariasTableAdapter As dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents descripcion As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents cmbBancoOrdenante As DataGridViewComboBoxColumn
-    Friend WithEvents CXPCuentasBancariasBindingSource As BindingSource
-    Friend WithEvents DsProduction As dsProduction
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
-    Friend WithEvents CXP_CuentasBancariasTableAdapter As dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter
 End Class

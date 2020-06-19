@@ -73,6 +73,7 @@ Partial Class mdicuentasPorPagar
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssEmpresa = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PeriodosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -274,7 +275,7 @@ Partial Class mdicuentasPorPagar
         '
         'ContabilidadToolStripMenuItem1
         '
-        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem})
+        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem})
         Me.ContabilidadToolStripMenuItem1.Enabled = False
         Me.ContabilidadToolStripMenuItem1.Name = "ContabilidadToolStripMenuItem1"
         Me.ContabilidadToolStripMenuItem1.Size = New System.Drawing.Size(87, 20)
@@ -284,7 +285,7 @@ Partial Class mdicuentasPorPagar
         '
         Me.GenerarPólizasToolStripMenuItem.Enabled = False
         Me.GenerarPólizasToolStripMenuItem.Name = "GenerarPólizasToolStripMenuItem"
-        Me.GenerarPólizasToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.GenerarPólizasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.GenerarPólizasToolStripMenuItem.Text = "Generar Pólizas"
         '
         'TesoreríaToolStripMenuItem
@@ -300,21 +301,21 @@ Partial Class mdicuentasPorPagar
         Me.PagosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SolicitudesDePagoToolStripMenuItem, Me.TesoreríaToolStripMenuItem1})
         Me.PagosToolStripMenuItem.Enabled = False
         Me.PagosToolStripMenuItem.Name = "PagosToolStripMenuItem"
-        Me.PagosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PagosToolStripMenuItem.Size = New System.Drawing.Size(106, 22)
         Me.PagosToolStripMenuItem.Text = "Pagos"
         '
         'SolicitudesDePagoToolStripMenuItem
         '
         Me.SolicitudesDePagoToolStripMenuItem.Enabled = False
         Me.SolicitudesDePagoToolStripMenuItem.Name = "SolicitudesDePagoToolStripMenuItem"
-        Me.SolicitudesDePagoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SolicitudesDePagoToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.SolicitudesDePagoToolStripMenuItem.Text = "Solicitudes de pago"
         '
         'TesoreríaToolStripMenuItem1
         '
         Me.TesoreríaToolStripMenuItem1.Enabled = False
         Me.TesoreríaToolStripMenuItem1.Name = "TesoreríaToolStripMenuItem1"
-        Me.TesoreríaToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.TesoreríaToolStripMenuItem1.Size = New System.Drawing.Size(177, 22)
         Me.TesoreríaToolStripMenuItem1.Text = "Tesorería"
         '
         'RegistroDeDiarioToolStripMenuItem
@@ -424,6 +425,13 @@ Partial Class mdicuentasPorPagar
         Me.tssEmpresa.Size = New System.Drawing.Size(52, 17)
         Me.tssEmpresa.Text = "Empresa"
         '
+        'PeriodosToolStripMenuItem
+        '
+        Me.PeriodosToolStripMenuItem.Enabled = False
+        Me.PeriodosToolStripMenuItem.Name = "PeriodosToolStripMenuItem"
+        Me.PeriodosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PeriodosToolStripMenuItem.Text = "Periodos"
+        '
         'mdicuentasPorPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -496,4 +504,5 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents PagosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SolicitudesDePagoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TesoreríaToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents PeriodosToolStripMenuItem As ToolStripMenuItem
 End Class

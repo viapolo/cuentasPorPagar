@@ -502,4 +502,13 @@ Public Class mdicuentasPorPagar
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
+
+    Private Sub PeriodosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PeriodosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmPeridos.MdiParent = Me
+        frmPeridos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 End Class

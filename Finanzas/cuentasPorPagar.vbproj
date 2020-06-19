@@ -202,7 +202,9 @@
     <Compile Include="catalogos\frmVerPdf.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CeldaPersonalizada.vb" />
     <Compile Include="ClaseHash.vb" />
+    <Compile Include="ColumnaPersonalizada.vb" />
     <Compile Include="configuracion\frmAutorizaciones.Designer.vb">
       <DependentUpon>frmAutorizaciones.vb</DependentUpon>
     </Compile>
@@ -257,6 +259,17 @@
     <Compile Include="configuracion\frmUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\dsContabilidad.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsContabilidad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmPeridos.Designer.vb">
+      <DependentUpon>frmPeridos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmPeridos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contpaq.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -298,6 +311,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsSeguridad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EditorValorCelda.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="frmCCPDF.Designer.vb">
       <DependentUpon>frmCCPDF.vb</DependentUpon>
@@ -362,25 +378,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="registrosContables\frmDiario.Designer.vb">
+    <Compile Include="contabilidad\frmDiario.Designer.vb">
       <DependentUpon>frmDiario.vb</DependentUpon>
     </Compile>
-    <Compile Include="registrosContables\frmDiario.vb">
+    <Compile Include="contabilidad\frmDiario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registrosContables\frmGenPolizas.Designer.vb">
+    <Compile Include="contabilidad\frmGenPolizas.Designer.vb">
       <DependentUpon>frmGenPolizas.vb</DependentUpon>
     </Compile>
-    <Compile Include="registrosContables\frmGenPolizas.vb">
+    <Compile Include="contabilidad\frmGenPolizas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registrosContables\frmReportePolizaDiario.Designer.vb">
+    <Compile Include="contabilidad\frmReportePolizaDiario.Designer.vb">
       <DependentUpon>frmReportePolizaDiario.vb</DependentUpon>
     </Compile>
-    <Compile Include="registrosContables\frmReportePolizaDiario.vb">
+    <Compile Include="contabilidad\frmReportePolizaDiario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registrosContables\rptPolizaDiario.vb">
+    <Compile Include="contabilidad\rptPolizaDiario.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptPolizaDiario.rpt</DependentUpon>
@@ -481,6 +497,9 @@
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmPeridos.resx">
+      <DependentUpon>frmPeridos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="diarios\fmrPolizasDiarioSCuenta.resx">
       <DependentUpon>fmrPolizasDiarioSCuenta.vb</DependentUpon>
     </EmbeddedResource>
@@ -520,16 +539,16 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="registrosContables\frmDiario.resx">
+    <EmbeddedResource Include="contabilidad\frmDiario.resx">
       <DependentUpon>frmDiario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="registrosContables\frmGenPolizas.resx">
+    <EmbeddedResource Include="contabilidad\frmGenPolizas.resx">
       <DependentUpon>frmGenPolizas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="registrosContables\frmReportePolizaDiario.resx">
+    <EmbeddedResource Include="contabilidad\frmReportePolizaDiario.resx">
       <DependentUpon>frmReportePolizaDiario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="registrosContables\rptPolizaDiario.rpt">
+    <EmbeddedResource Include="contabilidad\rptPolizaDiario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
     </EmbeddedResource>
@@ -538,6 +557,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="contabilidad\dsContabilidad.xsc">
+      <DependentUpon>dsContabilidad.xsd</DependentUpon>
+    </None>
+    <None Include="contabilidad\dsContabilidad.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsContabilidad.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="contabilidad\dsContabilidad.xss">
+      <DependentUpon>dsContabilidad.xsd</DependentUpon>
+    </None>
     <None Include="contpaq.xsc">
       <DependentUpon>contpaq.xsd</DependentUpon>
     </None>

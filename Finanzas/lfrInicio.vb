@@ -19,6 +19,7 @@ Public Class lfrInicio
     Dim strConnectionSecurity As String
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
 
+
         Dim f As New mdicuentasPorPagar
 
         Dim taUsuario As New dsSeguridadTableAdapters.USUARIO2TableAdapter
@@ -46,6 +47,11 @@ Public Class lfrInicio
                     varGlobal_Empresa = cmbEmpresa.Text
                     varGlobal_rfcEmpresa = taEmpresas.ObtRfc_ScalarQuery(cmbEmpresa.SelectedValue)
 
+                    If varGlobal_IdEmpresa = 23 Then
+                        varGlobal_idDocumento = 1
+                    Else
+                        varGlobal_idDocumento = 2
+                    End If
 
                     f.ShowDialog()
                 Else
@@ -53,6 +59,8 @@ Public Class lfrInicio
                 End If
             End If
         End If
+
+
     End Sub
 
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click

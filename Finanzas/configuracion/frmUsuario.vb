@@ -30,7 +30,7 @@
         'TODO: esta línea de código carga datos en la tabla 'DsSeguridad.USUARIO' Puede moverla o quitarla según sea necesario.
         Me.USUARIOTableAdapter.Fill(Me.DsSeguridad.USUARIO)
 
-        Me.CXP_ConceptosTableAdapter.ConcptoesNombreEmpresa_FillBy(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        Me.CXP_ConceptosTableAdapter.ConcptoesNombreEmpresa_FillBy(Me.DsProduction.CXP_Conceptos)
 
         ActivoCheckBox.Checked = True
         actualiza()
