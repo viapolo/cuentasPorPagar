@@ -351,6 +351,12 @@
     <Compile Include="Gastos\frmSaldosPendientesGts.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="herramientas\frmAccesoDirecto.Designer.vb">
+      <DependentUpon>frmAccesoDirecto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="herramientas\frmAccesoDirecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="lfrInicio.Designer.vb">
       <DependentUpon>lfrInicio.vb</DependentUpon>
     </Compile>
@@ -526,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gastos\frmSaldosGastosDetalle.resx">
       <DependentUpon>frmSaldosGastosDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="herramientas\frmAccesoDirecto.resx">
+      <DependentUpon>frmAccesoDirecto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lfrInicio.resx">
       <DependentUpon>lfrInicio.vb</DependentUpon>

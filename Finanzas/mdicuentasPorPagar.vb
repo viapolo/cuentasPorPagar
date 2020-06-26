@@ -221,45 +221,99 @@ Public Class mdicuentasPorPagar
         'UsuarioGlobalDepto = USER_SEC.ScalarDepto(Usuario)
         'UsuarioGlobalCorreo = USER_SEC.ScalarCorreo(Usuario)
 
-        For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-            For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-                For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
-                    submenu2a.Enabled = False
-                Next
-                submenu1.Enabled = False
-            Next
-            vLocMnuOpciones.Enabled = False
-        Next
+        'For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
+        '    For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+        '        For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
+        '            submenu2a.Enabled = False
+        '        Next
+        '        submenu1.Enabled = False
+        '    Next
+        '    vLocMnuOpciones.Enabled = False
+        'Next
+
+        Dim a As Integer = 0
+        Dim b As Integer = 0
+        Dim c As Integer = 0
+
+
 
         For Each drMenu In dsAgil.Tables("Menus").Rows
-            i = drMenu(0) - 1
-            j = drMenu(1) - 1
-            k = drMenu(2) - 1
-            If drMenu(0) = 5 Then
-                i = i
-            End If
 
-            If i >= 0 Then
-                For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-                    If j >= 0 Then
-                        For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-                            For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
-                                If k >= 0 Then
-                                    submenu2a.Enabled = True
-                                End If
-                            Next
-                            submenu1.Enabled = True
+            If drMenu(0) > 0 Then
+                MenuStrip.Items(drMenu(0)).Enabled = True
+                If drMenu(1) > 0 Then
+                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
+                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems
+                            If a = drMenu(1) Then
+                                menu2.Enabled = True
+                            End If
+                            a += 1
                         Next
-                    Else
-                        vLocMnuOpciones.Enabled = True
-                    End If
+                    Next
+                Else
+                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
+                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems
+                            menu2.Enabled = True
+                        Next
+                    Next
+                End If
+
+                If drMenu(2) > 0 Then
+                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
+                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems.Find(menu1.DropDownItems(drMenu(1)).name, True)
+                            For Each menu3 As ToolStripMenuItem In menu2.DropDownItems '.Find(menu2.DropDownItems(drMenu(2)).name, True)
+                                If b = drMenu(2) Then
+                                    menu3.Enabled = True
+                                End If
+                                b += 1
+                            Next
+                        Next
+                    Next
+                Else
+                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
+                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems.Find(menu1.DropDownItems(drMenu(1)).name, True)
+                            For Each menu3 As ToolStripMenuItem In menu2.DropDownItems '.Find(menu2.DropDownItems(drMenu(2)).name, True)
+                                menu3.Enabled = True
+                            Next
+                        Next
+                    Next
+                End If
+            Else
+                For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items
+                    menu1.Enabled = True
+                    For Each menu2 As ToolStripMenuItem In menu1.DropDownItems
+                        menu2.Enabled = True
+                        For Each menu3 As ToolStripMenuItem In menu2.DropDownItems
+                            MenuStrip.Enabled = True
+                        Next
+                    Next
                 Next
             End If
 
+
+
+
+
+            c += 1
+
+            'For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(i).Name, True)
+            '    vLocMnuOpciones.DropDownItems(j).Enabled = True
+            '    For Each submenu As ToolStripMenuItem In vLocMnuOpciones.DropDownItems.Find(vLocMnuOpciones.DropDownItems(j).Name, True)
+            '        If submenu.DropDownItems.Count > 0 Then
+            '            submenu.DropDownItems(k).Enabled = True
+            '        End If
+            '    Next
+            'Next
         Next
+
 
         tssUsuario.Text = "Usuario: " & varGlUser
         tssEmpresa.Text = "Empresa: " & varGlEmpresaD
+
+
+        'frmAccesoDirecto.MdiParent = Me
+        'frmAccesoDirecto.Show()
+
 
         'If varGlUser = "viapolo" Then
         '    For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items

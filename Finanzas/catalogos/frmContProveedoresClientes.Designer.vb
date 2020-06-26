@@ -134,45 +134,50 @@ Partial Class frmContProveedoresClientes
         'RazonSocialLabel
         '
         RazonSocialLabel.AutoSize = True
-        RazonSocialLabel.Location = New System.Drawing.Point(32, 97)
+        RazonSocialLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        RazonSocialLabel.Location = New System.Drawing.Point(15, 129)
         RazonSocialLabel.Name = "RazonSocialLabel"
-        RazonSocialLabel.Size = New System.Drawing.Size(73, 13)
+        RazonSocialLabel.Size = New System.Drawing.Size(95, 17)
         RazonSocialLabel.TabIndex = 1
         RazonSocialLabel.Text = "Razón Social:"
         '
         'RfcLabel
         '
         RfcLabel.AutoSize = True
-        RfcLabel.Location = New System.Drawing.Point(73, 123)
+        RfcLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        RfcLabel.Location = New System.Drawing.Point(56, 155)
         RfcLabel.Name = "RfcLabel"
-        RfcLabel.Size = New System.Drawing.Size(31, 13)
+        RfcLabel.Size = New System.Drawing.Size(39, 17)
         RfcLabel.TabIndex = 3
         RfcLabel.Text = "RFC:"
         '
         'CurpLabel
         '
         CurpLabel.AutoSize = True
-        CurpLabel.Location = New System.Drawing.Point(228, 123)
+        CurpLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        CurpLabel.Location = New System.Drawing.Point(222, 153)
         CurpLabel.Name = "CurpLabel"
-        CurpLabel.Size = New System.Drawing.Size(40, 13)
+        CurpLabel.Size = New System.Drawing.Size(50, 17)
         CurpLabel.TabIndex = 5
         CurpLabel.Text = "CURP:"
         '
         'NitLabel
         '
         NitLabel.AutoSize = True
-        NitLabel.Location = New System.Drawing.Point(271, 149)
+        NitLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        NitLabel.Location = New System.Drawing.Point(263, 180)
         NitLabel.Name = "NitLabel"
-        NitLabel.Size = New System.Drawing.Size(28, 13)
+        NitLabel.Size = New System.Drawing.Size(34, 17)
         NitLabel.TabIndex = 9
         NitLabel.Text = "NIT:"
         '
         'RelacionadoLabel
         '
         RelacionadoLabel.AutoSize = True
-        RelacionadoLabel.Location = New System.Drawing.Point(524, 123)
+        RelacionadoLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        RelacionadoLabel.Location = New System.Drawing.Point(520, 153)
         RelacionadoLabel.Name = "RelacionadoLabel"
-        RelacionadoLabel.Size = New System.Drawing.Size(70, 13)
+        RelacionadoLabel.Size = New System.Drawing.Size(91, 17)
         RelacionadoLabel.TabIndex = 13
         RelacionadoLabel.Text = "Relacionado:"
         AddHandler RelacionadoLabel.Click, AddressOf Me.RelacionadoLabel_Click
@@ -180,135 +185,150 @@ Partial Class frmContProveedoresClientes
         'MontoMaxTransaccionLabel
         '
         MontoMaxTransaccionLabel.AutoSize = True
-        MontoMaxTransaccionLabel.Location = New System.Drawing.Point(801, 97)
+        MontoMaxTransaccionLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        MontoMaxTransaccionLabel.Location = New System.Drawing.Point(814, 154)
         MontoMaxTransaccionLabel.Name = "MontoMaxTransaccionLabel"
-        MontoMaxTransaccionLabel.Size = New System.Drawing.Size(63, 13)
+        MontoMaxTransaccionLabel.Size = New System.Drawing.Size(80, 17)
         MontoMaxTransaccionLabel.TabIndex = 19
         MontoMaxTransaccionLabel.Text = "Monto Max:"
         '
         'NacionalidadLabel
         '
         NacionalidadLabel.AutoSize = True
-        NacionalidadLabel.Location = New System.Drawing.Point(33, 149)
+        NacionalidadLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        NacionalidadLabel.Location = New System.Drawing.Point(16, 181)
         NacionalidadLabel.Name = "NacionalidadLabel"
-        NacionalidadLabel.Size = New System.Drawing.Size(72, 13)
+        NacionalidadLabel.Size = New System.Drawing.Size(94, 17)
         NacionalidadLabel.TabIndex = 21
         NacionalidadLabel.Text = "Nacionalidad:"
         '
         'FechaRegistroLabel
         '
         FechaRegistroLabel.AutoSize = True
-        FechaRegistroLabel.Location = New System.Drawing.Point(497, 100)
+        FechaRegistroLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        FechaRegistroLabel.Location = New System.Drawing.Point(497, 130)
         FechaRegistroLabel.Name = "FechaRegistroLabel"
-        FechaRegistroLabel.Size = New System.Drawing.Size(97, 13)
+        FechaRegistroLabel.Size = New System.Drawing.Size(128, 17)
         FechaRegistroLabel.TabIndex = 23
         FechaRegistroLabel.Text = "Fecha de Registro:"
         '
         'MailLabel
         '
         MailLabel.AutoSize = True
-        MailLabel.Location = New System.Drawing.Point(74, 174)
+        MailLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        MailLabel.Location = New System.Drawing.Point(57, 206)
         MailLabel.Name = "MailLabel"
-        MailLabel.Size = New System.Drawing.Size(28, 13)
+        MailLabel.Size = New System.Drawing.Size(37, 17)
         MailLabel.TabIndex = 25
         MailLabel.Text = "mail:"
         '
         'Label2
         '
         Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(544, 22)
+        Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label2.Location = New System.Drawing.Point(494, 21)
         Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(117, 13)
+        Label2.Size = New System.Drawing.Size(160, 17)
         Label2.TabIndex = 43
-        Label2.Text = "Estatus deautorización:"
+        Label2.Text = "Estatus de autorización:"
         '
         'CalleLabel
         '
         CalleLabel.AutoSize = True
-        CalleLabel.Location = New System.Drawing.Point(73, 200)
+        CalleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        CalleLabel.Location = New System.Drawing.Point(56, 232)
         CalleLabel.Name = "CalleLabel"
-        CalleLabel.Size = New System.Drawing.Size(32, 13)
+        CalleLabel.Size = New System.Drawing.Size(41, 17)
         CalleLabel.TabIndex = 45
         CalleLabel.Text = "calle:"
         '
         'ColoniaLabel
         '
         ColoniaLabel.AutoSize = True
-        ColoniaLabel.Location = New System.Drawing.Point(61, 226)
+        ColoniaLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ColoniaLabel.Location = New System.Drawing.Point(44, 258)
         ColoniaLabel.Name = "ColoniaLabel"
-        ColoniaLabel.Size = New System.Drawing.Size(44, 13)
+        ColoniaLabel.Size = New System.Drawing.Size(57, 17)
         ColoniaLabel.TabIndex = 46
         ColoniaLabel.Text = "colonia:"
         '
         'LocalidadLabel
         '
         LocalidadLabel.AutoSize = True
-        LocalidadLabel.Location = New System.Drawing.Point(53, 252)
+        LocalidadLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        LocalidadLabel.Location = New System.Drawing.Point(36, 284)
         LocalidadLabel.Name = "LocalidadLabel"
-        LocalidadLabel.Size = New System.Drawing.Size(52, 13)
+        LocalidadLabel.Size = New System.Drawing.Size(68, 17)
         LocalidadLabel.TabIndex = 47
         LocalidadLabel.Text = "localidad:"
         '
         'DelegacionLabel
         '
         DelegacionLabel.AutoSize = True
-        DelegacionLabel.Location = New System.Drawing.Point(529, 149)
+        DelegacionLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DelegacionLabel.Location = New System.Drawing.Point(529, 179)
         DelegacionLabel.Name = "DelegacionLabel"
-        DelegacionLabel.Size = New System.Drawing.Size(62, 13)
+        DelegacionLabel.Size = New System.Drawing.Size(81, 17)
         DelegacionLabel.TabIndex = 48
         DelegacionLabel.Text = "delegacion:"
         '
         'EstadoLabel
         '
         EstadoLabel.AutoSize = True
-        EstadoLabel.Location = New System.Drawing.Point(549, 175)
+        EstadoLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        EstadoLabel.Location = New System.Drawing.Point(549, 205)
         EstadoLabel.Name = "EstadoLabel"
-        EstadoLabel.Size = New System.Drawing.Size(42, 13)
+        EstadoLabel.Size = New System.Drawing.Size(55, 17)
         EstadoLabel.TabIndex = 49
         EstadoLabel.Text = "estado:"
         '
         'PaisLabel
         '
         PaisLabel.AutoSize = True
-        PaisLabel.Location = New System.Drawing.Point(562, 201)
+        PaisLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        PaisLabel.Location = New System.Drawing.Point(562, 231)
         PaisLabel.Name = "PaisLabel"
-        PaisLabel.Size = New System.Drawing.Size(29, 13)
+        PaisLabel.Size = New System.Drawing.Size(38, 17)
         PaisLabel.TabIndex = 50
         PaisLabel.Text = "pais:"
         '
         'CpLabel
         '
         CpLabel.AutoSize = True
-        CpLabel.Location = New System.Drawing.Point(569, 227)
+        CpLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        CpLabel.Location = New System.Drawing.Point(569, 257)
         CpLabel.Name = "CpLabel"
-        CpLabel.Size = New System.Drawing.Size(22, 13)
+        CpLabel.Size = New System.Drawing.Size(27, 17)
         CpLabel.TabIndex = 51
         CpLabel.Text = "cp:"
         '
         'IdProveedorLabel
         '
         IdProveedorLabel.AutoSize = True
-        IdProveedorLabel.Location = New System.Drawing.Point(35, 278)
+        IdProveedorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        IdProveedorLabel.Location = New System.Drawing.Point(18, 310)
         IdProveedorLabel.Name = "IdProveedorLabel"
-        IdProveedorLabel.Size = New System.Drawing.Size(70, 13)
+        IdProveedorLabel.Size = New System.Drawing.Size(93, 17)
         IdProveedorLabel.TabIndex = 58
         IdProveedorLabel.Text = "id Proveedor:"
         '
         'Label3
         '
         Label3.AutoSize = True
-        Label3.Location = New System.Drawing.Point(108, 308)
+        Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label3.Location = New System.Drawing.Point(108, 340)
         Label3.Name = "Label3"
-        Label3.Size = New System.Drawing.Size(40, 13)
+        Label3.Size = New System.Drawing.Size(50, 17)
         Label3.TabIndex = 60
         Label3.Text = "Activo:"
         '
         'Label4
         '
         Label4.AutoSize = True
-        Label4.Location = New System.Drawing.Point(365, 303)
+        Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label4.Location = New System.Drawing.Point(365, 335)
         Label4.Name = "Label4"
-        Label4.Size = New System.Drawing.Size(60, 13)
+        Label4.Size = New System.Drawing.Size(80, 17)
         Label4.TabIndex = 61
         Label4.Text = "Autorizado:"
         '
@@ -374,9 +394,11 @@ Partial Class frmContProveedoresClientes
         'CXP_ProveedoresBindingNavigator
         '
         Me.CXP_ProveedoresBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.CXP_ProveedoresBindingNavigator.AutoSize = False
         Me.CXP_ProveedoresBindingNavigator.BindingSource = Me.CXP_ProveedoresBindingSource
         Me.CXP_ProveedoresBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.CXP_ProveedoresBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.CXP_ProveedoresBindingNavigator.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.CXP_ProveedoresBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.CXP_ProveedoresBindingNavigatorSaveItem})
         Me.CXP_ProveedoresBindingNavigator.Location = New System.Drawing.Point(0, 0)
         Me.CXP_ProveedoresBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
@@ -385,7 +407,7 @@ Partial Class frmContProveedoresClientes
         Me.CXP_ProveedoresBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_ProveedoresBindingNavigator.Name = "CXP_ProveedoresBindingNavigator"
         Me.CXP_ProveedoresBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_ProveedoresBindingNavigator.Size = New System.Drawing.Size(989, 25)
+        Me.CXP_ProveedoresBindingNavigator.Size = New System.Drawing.Size(1033, 49)
         Me.CXP_ProveedoresBindingNavigator.TabIndex = 0
         Me.CXP_ProveedoresBindingNavigator.Text = "BindingNavigator1"
         '
@@ -395,14 +417,15 @@ Partial Class frmContProveedoresClientes
         Me.BindingNavigatorAddNewItem.Enabled = False
         Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
+        Me.BindingNavigatorAddNewItem.Padding = New System.Windows.Forms.Padding(10)
         Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(40, 46)
         Me.BindingNavigatorAddNewItem.Text = "Add new"
         '
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(44, 46)
         Me.BindingNavigatorCountItem.Text = "de {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
         '
@@ -412,8 +435,9 @@ Partial Class frmContProveedoresClientes
         Me.BindingNavigatorDeleteItem.Enabled = False
         Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
+        Me.BindingNavigatorDeleteItem.Padding = New System.Windows.Forms.Padding(10)
         Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(40, 46)
         Me.BindingNavigatorDeleteItem.Text = "Delete"
         '
         'BindingNavigatorMoveFirstItem
@@ -421,8 +445,9 @@ Partial Class frmContProveedoresClientes
         Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
+        Me.BindingNavigatorMoveFirstItem.Padding = New System.Windows.Forms.Padding(10)
         Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(40, 46)
         Me.BindingNavigatorMoveFirstItem.Text = "Move first"
         '
         'BindingNavigatorMovePreviousItem
@@ -430,36 +455,39 @@ Partial Class frmContProveedoresClientes
         Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
+        Me.BindingNavigatorMovePreviousItem.Padding = New System.Windows.Forms.Padding(10)
         Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(40, 46)
         Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
         '
         'BindingNavigatorSeparator
         '
         Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
+        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 49)
         '
         'BindingNavigatorPositionItem
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
+        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 25)
         Me.BindingNavigatorPositionItem.Text = "0"
         Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
         '
         'BindingNavigatorSeparator1
         '
         Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 49)
         '
         'BindingNavigatorMoveNextItem
         '
         Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
+        Me.BindingNavigatorMoveNextItem.Padding = New System.Windows.Forms.Padding(10)
         Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(40, 46)
         Me.BindingNavigatorMoveNextItem.Text = "Move next"
         '
         'BindingNavigatorMoveLastItem
@@ -467,36 +495,39 @@ Partial Class frmContProveedoresClientes
         Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
+        Me.BindingNavigatorMoveLastItem.Padding = New System.Windows.Forms.Padding(10)
         Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(40, 46)
         Me.BindingNavigatorMoveLastItem.Text = "Move last"
         '
         'BindingNavigatorSeparator2
         '
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 49)
         '
         'CXP_ProveedoresBindingNavigatorSaveItem
         '
+        Me.CXP_ProveedoresBindingNavigatorSaveItem.AutoSize = False
         Me.CXP_ProveedoresBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.CXP_ProveedoresBindingNavigatorSaveItem.Image = CType(resources.GetObject("CXP_ProveedoresBindingNavigatorSaveItem.Image"), System.Drawing.Image)
         Me.CXP_ProveedoresBindingNavigatorSaveItem.Name = "CXP_ProveedoresBindingNavigatorSaveItem"
-        Me.CXP_ProveedoresBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.CXP_ProveedoresBindingNavigatorSaveItem.Text = "e"
+        Me.CXP_ProveedoresBindingNavigatorSaveItem.Padding = New System.Windows.Forms.Padding(10)
+        Me.CXP_ProveedoresBindingNavigatorSaveItem.Size = New System.Drawing.Size(40, 46)
         '
         'RazonSocialTextBox
         '
         Me.RazonSocialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "razonSocial", True))
-        Me.RazonSocialTextBox.Location = New System.Drawing.Point(111, 94)
+        Me.RazonSocialTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RazonSocialTextBox.Location = New System.Drawing.Point(111, 126)
         Me.RazonSocialTextBox.Name = "RazonSocialTextBox"
         Me.RazonSocialTextBox.ReadOnly = True
-        Me.RazonSocialTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.RazonSocialTextBox.Size = New System.Drawing.Size(378, 23)
         Me.RazonSocialTextBox.TabIndex = 2
         '
         'RfcTextBox
         '
         Me.RfcTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "rfc", True))
-        Me.RfcTextBox.Location = New System.Drawing.Point(111, 120)
+        Me.RfcTextBox.Location = New System.Drawing.Point(111, 152)
         Me.RfcTextBox.Name = "RfcTextBox"
         Me.RfcTextBox.ReadOnly = True
         Me.RfcTextBox.Size = New System.Drawing.Size(111, 20)
@@ -505,25 +536,27 @@ Partial Class frmContProveedoresClientes
         'CurpTextBox
         '
         Me.CurpTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "curp", True))
-        Me.CurpTextBox.Location = New System.Drawing.Point(274, 120)
+        Me.CurpTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CurpTextBox.Location = New System.Drawing.Point(274, 152)
         Me.CurpTextBox.Name = "CurpTextBox"
         Me.CurpTextBox.ReadOnly = True
-        Me.CurpTextBox.Size = New System.Drawing.Size(215, 20)
+        Me.CurpTextBox.Size = New System.Drawing.Size(215, 23)
         Me.CurpTextBox.TabIndex = 6
         '
         'NitTextBox
         '
         Me.NitTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "nit", True))
-        Me.NitTextBox.Location = New System.Drawing.Point(299, 146)
+        Me.NitTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NitTextBox.Location = New System.Drawing.Point(299, 178)
         Me.NitTextBox.Name = "NitTextBox"
         Me.NitTextBox.ReadOnly = True
-        Me.NitTextBox.Size = New System.Drawing.Size(190, 20)
+        Me.NitTextBox.Size = New System.Drawing.Size(190, 23)
         Me.NitTextBox.TabIndex = 10
         '
         'RelacionadoCheckBox
         '
         Me.RelacionadoCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.CXP_ProveedoresBindingSource, "relacionado", True))
-        Me.RelacionadoCheckBox.Location = New System.Drawing.Point(600, 118)
+        Me.RelacionadoCheckBox.Location = New System.Drawing.Point(634, 150)
         Me.RelacionadoCheckBox.Name = "RelacionadoCheckBox"
         Me.RelacionadoCheckBox.Size = New System.Drawing.Size(44, 24)
         Me.RelacionadoCheckBox.TabIndex = 14
@@ -532,35 +565,39 @@ Partial Class frmContProveedoresClientes
         'MontoMaxTransaccionTextBox
         '
         Me.MontoMaxTransaccionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "montoMaxTransaccion", True))
-        Me.MontoMaxTransaccionTextBox.Location = New System.Drawing.Point(864, 94)
+        Me.MontoMaxTransaccionTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MontoMaxTransaccionTextBox.Location = New System.Drawing.Point(900, 152)
         Me.MontoMaxTransaccionTextBox.Name = "MontoMaxTransaccionTextBox"
         Me.MontoMaxTransaccionTextBox.ReadOnly = True
-        Me.MontoMaxTransaccionTextBox.Size = New System.Drawing.Size(111, 20)
+        Me.MontoMaxTransaccionTextBox.Size = New System.Drawing.Size(112, 23)
         Me.MontoMaxTransaccionTextBox.TabIndex = 20
         '
         'FechaRegistroDateTimePicker
         '
         Me.FechaRegistroDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CXP_ProveedoresBindingSource, "fechaRegistro", True))
         Me.FechaRegistroDateTimePicker.Enabled = False
-        Me.FechaRegistroDateTimePicker.Location = New System.Drawing.Point(597, 94)
+        Me.FechaRegistroDateTimePicker.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FechaRegistroDateTimePicker.Location = New System.Drawing.Point(635, 126)
         Me.FechaRegistroDateTimePicker.Name = "FechaRegistroDateTimePicker"
-        Me.FechaRegistroDateTimePicker.Size = New System.Drawing.Size(200, 20)
+        Me.FechaRegistroDateTimePicker.Size = New System.Drawing.Size(377, 23)
         Me.FechaRegistroDateTimePicker.TabIndex = 24
         '
         'MailTextBox
         '
         Me.MailTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "mail", True))
-        Me.MailTextBox.Location = New System.Drawing.Point(111, 171)
+        Me.MailTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MailTextBox.Location = New System.Drawing.Point(111, 203)
         Me.MailTextBox.Name = "MailTextBox"
         Me.MailTextBox.ReadOnly = True
-        Me.MailTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.MailTextBox.Size = New System.Drawing.Size(378, 23)
         Me.MailTextBox.TabIndex = 26
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(900, 327)
+        Me.btnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSalir.Location = New System.Drawing.Point(900, 352)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.Size = New System.Drawing.Size(75, 30)
         Me.btnSalir.TabIndex = 8
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
@@ -571,7 +608,7 @@ Partial Class frmContProveedoresClientes
         Me.cmbNacionalida.DisplayMember = "c_Pais"
         Me.cmbNacionalida.Enabled = False
         Me.cmbNacionalida.FormattingEnabled = True
-        Me.cmbNacionalida.Location = New System.Drawing.Point(111, 146)
+        Me.cmbNacionalida.Location = New System.Drawing.Point(111, 178)
         Me.cmbNacionalida.Name = "cmbNacionalida"
         Me.cmbNacionalida.Size = New System.Drawing.Size(146, 21)
         Me.cmbNacionalida.TabIndex = 33
@@ -580,16 +617,18 @@ Partial Class frmContProveedoresClientes
         'txtBuscaProveedor
         '
         Me.txtBuscaProveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList
+        Me.txtBuscaProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscaProveedor.Location = New System.Drawing.Point(17, 19)
         Me.txtBuscaProveedor.Name = "txtBuscaProveedor"
-        Me.txtBuscaProveedor.Size = New System.Drawing.Size(228, 20)
+        Me.txtBuscaProveedor.Size = New System.Drawing.Size(228, 23)
         Me.txtBuscaProveedor.TabIndex = 0
         '
         'btnBuscar
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(254, 18)
+        Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscar.Location = New System.Drawing.Point(254, 17)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 26)
         Me.btnBuscar.TabIndex = 1
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
@@ -608,10 +647,11 @@ Partial Class frmContProveedoresClientes
         Me.cmbBuscaAutorizado.DataSource = Me.CXPEstatusBindingSource1
         Me.cmbBuscaAutorizado.DisplayMember = "descripcion"
         Me.cmbBuscaAutorizado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbBuscaAutorizado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBuscaAutorizado.FormattingEnabled = True
         Me.cmbBuscaAutorizado.Location = New System.Drawing.Point(667, 19)
         Me.cmbBuscaAutorizado.Name = "cmbBuscaAutorizado"
-        Me.cmbBuscaAutorizado.Size = New System.Drawing.Size(121, 21)
+        Me.cmbBuscaAutorizado.Size = New System.Drawing.Size(121, 24)
         Me.cmbBuscaAutorizado.TabIndex = 2
         Me.cmbBuscaAutorizado.ValueMember = "descripcion"
         '
@@ -627,7 +667,7 @@ Partial Class frmContProveedoresClientes
         Me.GroupBox1.Controls.Add(Label2)
         Me.GroupBox1.Controls.Add(Me.btnBuscar)
         Me.GroupBox1.Controls.Add(Me.cmbBuscaAutorizado)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 29)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 61)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(963, 59)
         Me.GroupBox1.TabIndex = 44
@@ -636,9 +676,10 @@ Partial Class frmContProveedoresClientes
         '
         'btnBuscarCmbs
         '
+        Me.btnBuscarCmbs.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscarCmbs.Location = New System.Drawing.Point(797, 18)
         Me.btnBuscarCmbs.Name = "btnBuscarCmbs"
-        Me.btnBuscarCmbs.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscarCmbs.Size = New System.Drawing.Size(75, 25)
         Me.btnBuscarCmbs.TabIndex = 3
         Me.btnBuscarCmbs.Text = "Buscar"
         Me.btnBuscarCmbs.UseVisualStyleBackColor = True
@@ -646,80 +687,89 @@ Partial Class frmContProveedoresClientes
         'CalleTextBox
         '
         Me.CalleTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "calle", True))
-        Me.CalleTextBox.Location = New System.Drawing.Point(111, 197)
+        Me.CalleTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CalleTextBox.Location = New System.Drawing.Point(111, 229)
         Me.CalleTextBox.Name = "CalleTextBox"
         Me.CalleTextBox.ReadOnly = True
-        Me.CalleTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.CalleTextBox.Size = New System.Drawing.Size(378, 23)
         Me.CalleTextBox.TabIndex = 46
         '
         'ColoniaTextBox
         '
         Me.ColoniaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "colonia", True))
-        Me.ColoniaTextBox.Location = New System.Drawing.Point(111, 223)
+        Me.ColoniaTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ColoniaTextBox.Location = New System.Drawing.Point(111, 255)
         Me.ColoniaTextBox.Name = "ColoniaTextBox"
         Me.ColoniaTextBox.ReadOnly = True
-        Me.ColoniaTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.ColoniaTextBox.Size = New System.Drawing.Size(378, 23)
         Me.ColoniaTextBox.TabIndex = 47
         '
         'LocalidadTextBox
         '
         Me.LocalidadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "localidad", True))
-        Me.LocalidadTextBox.Location = New System.Drawing.Point(111, 249)
+        Me.LocalidadTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LocalidadTextBox.Location = New System.Drawing.Point(111, 281)
         Me.LocalidadTextBox.Name = "LocalidadTextBox"
         Me.LocalidadTextBox.ReadOnly = True
-        Me.LocalidadTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.LocalidadTextBox.Size = New System.Drawing.Size(378, 23)
         Me.LocalidadTextBox.TabIndex = 48
         '
         'DelegacionTextBox
         '
         Me.DelegacionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "delegacion", True))
-        Me.DelegacionTextBox.Location = New System.Drawing.Point(597, 146)
+        Me.DelegacionTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DelegacionTextBox.Location = New System.Drawing.Point(634, 178)
         Me.DelegacionTextBox.Name = "DelegacionTextBox"
         Me.DelegacionTextBox.ReadOnly = True
-        Me.DelegacionTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.DelegacionTextBox.Size = New System.Drawing.Size(378, 23)
         Me.DelegacionTextBox.TabIndex = 49
         '
         'EstadoTextBox
         '
         Me.EstadoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "estado", True))
-        Me.EstadoTextBox.Location = New System.Drawing.Point(597, 172)
+        Me.EstadoTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EstadoTextBox.Location = New System.Drawing.Point(634, 204)
         Me.EstadoTextBox.Name = "EstadoTextBox"
         Me.EstadoTextBox.ReadOnly = True
-        Me.EstadoTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.EstadoTextBox.Size = New System.Drawing.Size(378, 23)
         Me.EstadoTextBox.TabIndex = 50
         '
         'PaisTextBox
         '
         Me.PaisTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "pais", True))
-        Me.PaisTextBox.Location = New System.Drawing.Point(597, 198)
+        Me.PaisTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PaisTextBox.Location = New System.Drawing.Point(634, 230)
         Me.PaisTextBox.Name = "PaisTextBox"
         Me.PaisTextBox.ReadOnly = True
-        Me.PaisTextBox.Size = New System.Drawing.Size(378, 20)
+        Me.PaisTextBox.Size = New System.Drawing.Size(378, 23)
         Me.PaisTextBox.TabIndex = 51
         '
         'CpTextBox
         '
         Me.CpTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "cp", True))
-        Me.CpTextBox.Location = New System.Drawing.Point(597, 224)
+        Me.CpTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CpTextBox.Location = New System.Drawing.Point(634, 256)
         Me.CpTextBox.Name = "CpTextBox"
         Me.CpTextBox.ReadOnly = True
-        Me.CpTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.CpTextBox.Size = New System.Drawing.Size(100, 23)
         Me.CpTextBox.TabIndex = 52
         '
         'btnCtasBancarias
         '
-        Me.btnCtasBancarias.Location = New System.Drawing.Point(597, 252)
+        Me.btnCtasBancarias.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCtasBancarias.Location = New System.Drawing.Point(597, 284)
         Me.btnCtasBancarias.Name = "btnCtasBancarias"
-        Me.btnCtasBancarias.Size = New System.Drawing.Size(165, 23)
+        Me.btnCtasBancarias.Size = New System.Drawing.Size(165, 39)
         Me.btnCtasBancarias.TabIndex = 6
         Me.btnCtasBancarias.Text = "Cuentas Bancarias"
         Me.btnCtasBancarias.UseVisualStyleBackColor = True
         '
         'btnDocumentacion
         '
-        Me.btnDocumentacion.Location = New System.Drawing.Point(810, 252)
+        Me.btnDocumentacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDocumentacion.Location = New System.Drawing.Point(810, 284)
         Me.btnDocumentacion.Name = "btnDocumentacion"
-        Me.btnDocumentacion.Size = New System.Drawing.Size(165, 23)
+        Me.btnDocumentacion.Size = New System.Drawing.Size(165, 39)
         Me.btnDocumentacion.TabIndex = 7
         Me.btnDocumentacion.Text = "Documentación"
         Me.btnDocumentacion.UseVisualStyleBackColor = True
@@ -731,10 +781,11 @@ Partial Class frmContProveedoresClientes
         Me.cmbActivo.DataSource = Me.CXPEstatus1BindingSource
         Me.cmbActivo.DisplayMember = "descripcion"
         Me.cmbActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbActivo.FormattingEnabled = True
-        Me.cmbActivo.Location = New System.Drawing.Point(111, 329)
+        Me.cmbActivo.Location = New System.Drawing.Point(111, 361)
         Me.cmbActivo.Name = "cmbActivo"
-        Me.cmbActivo.Size = New System.Drawing.Size(121, 21)
+        Me.cmbActivo.Size = New System.Drawing.Size(121, 24)
         Me.cmbActivo.TabIndex = 4
         Me.cmbActivo.ValueMember = "descripcion"
         '
@@ -755,10 +806,11 @@ Partial Class frmContProveedoresClientes
         Me.cmbAutorizado.DataSource = Me.CXPEstatusBindingSource
         Me.cmbAutorizado.DisplayMember = "descripcion"
         Me.cmbAutorizado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbAutorizado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbAutorizado.FormattingEnabled = True
-        Me.cmbAutorizado.Location = New System.Drawing.Point(368, 329)
+        Me.cmbAutorizado.Location = New System.Drawing.Point(368, 361)
         Me.cmbAutorizado.Name = "cmbAutorizado"
-        Me.cmbAutorizado.Size = New System.Drawing.Size(121, 21)
+        Me.cmbAutorizado.Size = New System.Drawing.Size(121, 24)
         Me.cmbAutorizado.TabIndex = 5
         Me.cmbAutorizado.ValueMember = "descripcion"
         '
@@ -771,10 +823,11 @@ Partial Class frmContProveedoresClientes
         '
         Me.IdProveedorTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "idProveedor", True))
         Me.IdProveedorTextBox.Enabled = False
-        Me.IdProveedorTextBox.Location = New System.Drawing.Point(111, 275)
+        Me.IdProveedorTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.IdProveedorTextBox.Location = New System.Drawing.Point(111, 307)
         Me.IdProveedorTextBox.Name = "IdProveedorTextBox"
         Me.IdProveedorTextBox.ReadOnly = True
-        Me.IdProveedorTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.IdProveedorTextBox.Size = New System.Drawing.Size(100, 23)
         Me.IdProveedorTextBox.TabIndex = 59
         '
         'CXP_EstatusTableAdapter
@@ -794,7 +847,7 @@ Partial Class frmContProveedoresClientes
         '
         Me.lblTipoPersona.AutoSize = True
         Me.lblTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTipoPersona.Location = New System.Drawing.Point(599, 332)
+        Me.lblTipoPersona.Location = New System.Drawing.Point(599, 364)
         Me.lblTipoPersona.Name = "lblTipoPersona"
         Me.lblTipoPersona.Size = New System.Drawing.Size(45, 13)
         Me.lblTipoPersona.TabIndex = 62
@@ -804,7 +857,7 @@ Partial Class frmContProveedoresClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(989, 365)
+        Me.ClientSize = New System.Drawing.Size(1033, 399)
         Me.Controls.Add(Me.lblTipoPersona)
         Me.Controls.Add(Label4)
         Me.Controls.Add(Label3)
@@ -850,6 +903,7 @@ Partial Class frmContProveedoresClientes
         Me.Controls.Add(Me.RazonSocialTextBox)
         Me.Controls.Add(Me.CXP_ProveedoresBindingNavigator)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.KeyPreview = True
         Me.Name = "frmContProveedoresClientes"
         Me.Text = "Proveedores"
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
@@ -886,7 +940,6 @@ Partial Class frmContProveedoresClientes
     Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents CXP_ProveedoresBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents RazonSocialTextBox As TextBox
     Friend WithEvents RfcTextBox As TextBox
     Friend WithEvents CurpTextBox As TextBox
@@ -924,4 +977,5 @@ Partial Class frmContProveedoresClientes
     Friend WithEvents CXPEstatus1BindingSource1 As BindingSource
     Friend WithEvents CXPEstatusBindingSource1 As BindingSource
     Friend WithEvents lblTipoPersona As Label
+    Friend WithEvents CXP_ProveedoresBindingNavigatorSaveItem As ToolStripButton
 End Class

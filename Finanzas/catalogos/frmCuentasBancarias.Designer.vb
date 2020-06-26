@@ -24,6 +24,14 @@ Partial Class frmCuentasBancarias
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCuentasBancarias))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_CuentasBancariasProvBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_CuentasBancariasProvTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasProvTableAdapter()
@@ -44,21 +52,21 @@ Partial Class frmCuentasBancarias
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.CXP_CuentasBancariasProvBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_CuentasBancariasProvDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.CXPBancosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXPcMonedaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.CXP_Estatus2TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus2TableAdapter()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.CXPcMonedaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.verPdf = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.estatus = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.autorizar = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.idCuentas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.CXP_Estatus2TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus2TableAdapter()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_CuentasBancariasProvBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_CuentasBancariasProvBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -244,6 +252,7 @@ Partial Class frmCuentasBancarias
         'CXP_CuentasBancariasProvBindingNavigatorSaveItem
         '
         Me.CXP_CuentasBancariasProvBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.CXP_CuentasBancariasProvBindingNavigatorSaveItem.Enabled = False
         Me.CXP_CuentasBancariasProvBindingNavigatorSaveItem.Image = CType(resources.GetObject("CXP_CuentasBancariasProvBindingNavigatorSaveItem.Image"), System.Drawing.Image)
         Me.CXP_CuentasBancariasProvBindingNavigatorSaveItem.Name = "CXP_CuentasBancariasProvBindingNavigatorSaveItem"
         Me.CXP_CuentasBancariasProvBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
@@ -252,6 +261,7 @@ Partial Class frmCuentasBancarias
         'CXP_CuentasBancariasProvDataGridView
         '
         Me.CXP_CuentasBancariasProvDataGridView.AllowUserToAddRows = False
+        Me.CXP_CuentasBancariasProvDataGridView.AllowUserToDeleteRows = False
         Me.CXP_CuentasBancariasProvDataGridView.AutoGenerateColumns = False
         Me.CXP_CuentasBancariasProvDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.CXP_CuentasBancariasProvDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn7, Me.verPdf, Me.estatus, Me.autorizar, Me.idCuentas})
@@ -262,104 +272,21 @@ Partial Class frmCuentasBancarias
         Me.CXP_CuentasBancariasProvDataGridView.Size = New System.Drawing.Size(1222, 335)
         Me.CXP_CuentasBancariasProvDataGridView.TabIndex = 1
         '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "idBanco"
-        Me.DataGridViewTextBoxColumn3.DataSource = Me.CXPBancosBindingSource
-        Me.DataGridViewTextBoxColumn3.DisplayMember = "nombreCorto"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Banco"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn3.ValueMember = "idBancos"
-        Me.DataGridViewTextBoxColumn3.Width = 250
-        '
         'CXPBancosBindingSource
         '
         Me.CXPBancosBindingSource.DataMember = "CXP_Bancos"
         Me.CXPBancosBindingSource.DataSource = Me.DsProduction
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "descripcion"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Descripción"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 220
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "cuenta"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Cuenta"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "clabe"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "CLABE"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 120
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "moneda"
-        Me.DataGridViewTextBoxColumn7.DataSource = Me.CXPcMonedaBindingSource
-        Me.DataGridViewTextBoxColumn7.DisplayMember = "c_NombreMoneda"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Moneda"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn7.ValueMember = "c_Moneda"
         '
         'CXPcMonedaBindingSource
         '
         Me.CXPcMonedaBindingSource.DataMember = "CXP_c_Moneda"
         Me.CXPcMonedaBindingSource.DataSource = Me.DsProduction
         '
-        'verPdf
-        '
-        Me.verPdf.DataPropertyName = "archivo1"
-        Me.verPdf.HeaderText = "Archivo"
-        Me.verPdf.Name = "verPdf"
-        Me.verPdf.ReadOnly = True
-        Me.verPdf.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.verPdf.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.verPdf.Text = "Archivo"
-        '
-        'estatus
-        '
-        Me.estatus.DataPropertyName = "estatus"
-        Me.estatus.DataSource = Me.CXPEstatus2BindingSource
-        Me.estatus.DisplayMember = "descripcion"
-        Me.estatus.HeaderText = "estatus"
-        Me.estatus.Name = "estatus"
-        Me.estatus.ReadOnly = True
-        Me.estatus.ValueMember = "idEstatus"
-        Me.estatus.Width = 180
-        '
         'CXPEstatus2BindingSource
         '
         Me.CXPEstatus2BindingSource.DataMember = "CXP_Estatus2"
         Me.CXPEstatus2BindingSource.DataSource = Me.DsProduction
         Me.CXPEstatus2BindingSource.Filter = "grupoEstatus='CTASBANCARIAS'"
-        '
-        'autorizar
-        '
-        Me.autorizar.HeaderText = "autorizar"
-        Me.autorizar.Name = "autorizar"
-        Me.autorizar.ReadOnly = True
-        '
-        'idCuentas
-        '
-        Me.idCuentas.DataPropertyName = "idCuentas"
-        Me.idCuentas.HeaderText = "idCuentas"
-        Me.idCuentas.Name = "idCuentas"
-        Me.idCuentas.ReadOnly = True
-        Me.idCuentas.Visible = False
         '
         'btnSalir
         '
@@ -377,6 +304,109 @@ Partial Class frmCuentasBancarias
         'CXP_Estatus2TableAdapter
         '
         Me.CXP_Estatus2TableAdapter.ClearBeforeFill = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "idBanco"
+        Me.DataGridViewTextBoxColumn3.DataSource = Me.CXPBancosBindingSource
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewTextBoxColumn3.DisplayMember = "nombreCorto"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Banco"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn3.ValueMember = "idBancos"
+        Me.DataGridViewTextBoxColumn3.Width = 240
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "descripcion"
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Descripción"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 220
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "cuenta"
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Cuenta"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 95
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "clabe"
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewTextBoxColumn5.HeaderText = "CLABE"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 160
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "moneda"
+        Me.DataGridViewTextBoxColumn7.DataSource = Me.CXPcMonedaBindingSource
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewTextBoxColumn7.DisplayMember = "c_NombreMoneda"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Moneda"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn7.ValueMember = "c_Moneda"
+        Me.DataGridViewTextBoxColumn7.Width = 130
+        '
+        'verPdf
+        '
+        Me.verPdf.DataPropertyName = "archivo1"
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.verPdf.DefaultCellStyle = DataGridViewCellStyle6
+        Me.verPdf.HeaderText = "Archivo"
+        Me.verPdf.Name = "verPdf"
+        Me.verPdf.ReadOnly = True
+        Me.verPdf.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.verPdf.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.verPdf.Text = "Archivo"
+        Me.verPdf.Width = 70
+        '
+        'estatus
+        '
+        Me.estatus.DataPropertyName = "estatus"
+        Me.estatus.DataSource = Me.CXPEstatus2BindingSource
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.estatus.DefaultCellStyle = DataGridViewCellStyle7
+        Me.estatus.DisplayMember = "descripcion"
+        Me.estatus.HeaderText = "estatus"
+        Me.estatus.Name = "estatus"
+        Me.estatus.ReadOnly = True
+        Me.estatus.ValueMember = "idEstatus"
+        Me.estatus.Width = 180
+        '
+        'autorizar
+        '
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.autorizar.DefaultCellStyle = DataGridViewCellStyle8
+        Me.autorizar.HeaderText = "autorizar"
+        Me.autorizar.Name = "autorizar"
+        Me.autorizar.ReadOnly = True
+        Me.autorizar.Width = 75
+        '
+        'idCuentas
+        '
+        Me.idCuentas.DataPropertyName = "idCuentas"
+        Me.idCuentas.HeaderText = "idCuentas"
+        Me.idCuentas.Name = "idCuentas"
+        Me.idCuentas.ReadOnly = True
+        Me.idCuentas.Visible = False
         '
         'frmCuentasBancarias
         '

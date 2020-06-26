@@ -14,6 +14,7 @@ Public Class frmContProveedoresClientes
         Me.CXP_ProveedoresTableAdapter.Fill(Me.DsProduction.CXP_Proveedores)
         txtBuscaProveedor.Focus()
         'actualizaCuentas()
+
     End Sub
 
     Private Sub actualizar()
@@ -372,5 +373,20 @@ Public Class frmContProveedoresClientes
 
     Private Sub RfcTextBox_TextChanged(sender As Object, e As EventArgs) Handles RfcTextBox.TextChanged
         actualizar()
+    End Sub
+
+    Private Sub main_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyData = Keys.Control + Keys.D Then
+            Call btnDocumentacion_Click(sender, e)
+        End If
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
+        End If
+        If e.KeyData = Keys.Control + Keys.B Then
+            Call btnCtasBancarias_Click(sender, e)
+        End If
+        If e.KeyData = Keys.Control + Keys.D Then
+            Call btnDocumentacion_Click(sender, e)
+        End If
     End Sub
 End Class

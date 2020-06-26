@@ -25,7 +25,11 @@ Partial Class frmDocumentosProv
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDocumentosProv))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_ProveedoresArchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_ProveedoresArchTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ProveedoresArchTableAdapter()
@@ -45,21 +49,21 @@ Partial Class frmDocumentosProv
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.CXP_ProveedoresArchBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_ProveedoresArchDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.CXPDocumentacionProvBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.CXP_Estatus2TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus2TableAdapter()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.idDocAdjunto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.estatus = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.usuarioSolicita1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.usuarioSolicita2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fechaSolicita1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fechaSolicita2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.autorizar1 = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.autorizar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.CXP_Estatus2TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus2TableAdapter()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_ProveedoresArchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_ProveedoresArchBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,6 +245,7 @@ Partial Class frmDocumentosProv
         'CXP_ProveedoresArchBindingNavigatorSaveItem
         '
         Me.CXP_ProveedoresArchBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.CXP_ProveedoresArchBindingNavigatorSaveItem.Enabled = False
         Me.CXP_ProveedoresArchBindingNavigatorSaveItem.Image = CType(resources.GetObject("CXP_ProveedoresArchBindingNavigatorSaveItem.Image"), System.Drawing.Image)
         Me.CXP_ProveedoresArchBindingNavigatorSaveItem.Name = "CXP_ProveedoresArchBindingNavigatorSaveItem"
         Me.CXP_ProveedoresArchBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
@@ -262,24 +267,54 @@ Partial Class frmDocumentosProv
         Me.CXP_ProveedoresArchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.CXP_ProveedoresArchDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn4, Me.idDocAdjunto, Me.estatus, Me.usuarioSolicita1, Me.usuarioSolicita2, Me.fechaSolicita1, Me.fechaSolicita2, Me.autorizar1, Me.autorizar})
         Me.CXP_ProveedoresArchDataGridView.DataSource = Me.CXP_ProveedoresArchBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CXP_ProveedoresArchDataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.CXP_ProveedoresArchDataGridView.DefaultCellStyle = DataGridViewCellStyle6
         Me.CXP_ProveedoresArchDataGridView.Location = New System.Drawing.Point(12, 28)
         Me.CXP_ProveedoresArchDataGridView.Name = "CXP_ProveedoresArchDataGridView"
         Me.CXP_ProveedoresArchDataGridView.ReadOnly = True
         Me.CXP_ProveedoresArchDataGridView.Size = New System.Drawing.Size(752, 389)
         Me.CXP_ProveedoresArchDataGridView.TabIndex = 1
         '
+        'CXPDocumentacionProvBindingSource
+        '
+        Me.CXPDocumentacionProvBindingSource.DataMember = "CXP_DocumentacionProv"
+        Me.CXPDocumentacionProvBindingSource.DataSource = Me.DsProduction
+        '
+        'CXPEstatus2BindingSource
+        '
+        Me.CXPEstatus2BindingSource.DataMember = "CXP_Estatus2"
+        Me.CXPEstatus2BindingSource.DataSource = Me.DsProduction
+        Me.CXPEstatus2BindingSource.Filter = "grupoEstatus='PROVEEDORESARCH'"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(689, 423)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 2
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'CXP_Estatus2TableAdapter
+        '
+        Me.CXP_Estatus2TableAdapter.ClearBeforeFill = True
+        '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "idDocAdjunto"
         Me.DataGridViewTextBoxColumn5.DataSource = Me.CXPDocumentacionProvBindingSource
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn5.DisplayMember = "descripcion"
         Me.DataGridViewTextBoxColumn5.HeaderText = "Tipo de Documento"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
@@ -289,14 +324,11 @@ Partial Class frmDocumentosProv
         Me.DataGridViewTextBoxColumn5.ValueMember = "idDocAdjunto"
         Me.DataGridViewTextBoxColumn5.Width = 300
         '
-        'CXPDocumentacionProvBindingSource
-        '
-        Me.CXPDocumentacionProvBindingSource.DataMember = "CXP_DocumentacionProv"
-        Me.CXPDocumentacionProvBindingSource.DataSource = Me.DsProduction
-        '
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "uuid"
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn4.HeaderText = "Archivo"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -315,18 +347,14 @@ Partial Class frmDocumentosProv
         '
         Me.estatus.DataPropertyName = "estatus"
         Me.estatus.DataSource = Me.CXPEstatus2BindingSource
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.estatus.DefaultCellStyle = DataGridViewCellStyle4
         Me.estatus.DisplayMember = "descripcion"
         Me.estatus.HeaderText = "Estatus"
         Me.estatus.Name = "estatus"
         Me.estatus.ReadOnly = True
         Me.estatus.ValueMember = "idEstatus"
         Me.estatus.Width = 160
-        '
-        'CXPEstatus2BindingSource
-        '
-        Me.CXPEstatus2BindingSource.DataMember = "CXP_Estatus2"
-        Me.CXPEstatus2BindingSource.DataSource = Me.DsProduction
-        Me.CXPEstatus2BindingSource.Filter = "grupoEstatus='PROVEEDORESARCH'"
         '
         'usuarioSolicita1
         '
@@ -364,6 +392,8 @@ Partial Class frmDocumentosProv
         '
         'autorizar1
         '
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.autorizar1.DefaultCellStyle = DataGridViewCellStyle5
         Me.autorizar1.HeaderText = "Autorizar"
         Me.autorizar1.Name = "autorizar1"
         Me.autorizar1.ReadOnly = True
@@ -378,23 +408,6 @@ Partial Class frmDocumentosProv
         Me.autorizar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.autorizar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.autorizar.Visible = False
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(689, 423)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 2
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'CXP_Estatus2TableAdapter
-        '
-        Me.CXP_Estatus2TableAdapter.ClearBeforeFill = True
         '
         'frmDocumentosProv
         '
