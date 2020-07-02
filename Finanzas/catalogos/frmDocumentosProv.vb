@@ -148,6 +148,8 @@
 
     Private Sub frmDocumentosProv_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         frmContProveedoresClientes.Enabled = True
+        frmContProveedoresClientes.Refresh()
+        frmContProveedoresClientes.Update()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)

@@ -32,6 +32,8 @@ Partial Class frmCuentasBancarias
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_CuentasBancariasProvBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_CuentasBancariasProvTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasProvTableAdapter()
@@ -62,6 +64,8 @@ Partial Class frmCuentasBancarias
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.convenio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.verPdf = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.estatus = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -158,7 +162,7 @@ Partial Class frmCuentasBancarias
         Me.CXP_CuentasBancariasProvBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_CuentasBancariasProvBindingNavigator.Name = "CXP_CuentasBancariasProvBindingNavigator"
         Me.CXP_CuentasBancariasProvBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_CuentasBancariasProvBindingNavigator.Size = New System.Drawing.Size(1242, 25)
+        Me.CXP_CuentasBancariasProvBindingNavigator.Size = New System.Drawing.Size(1316, 25)
         Me.CXP_CuentasBancariasProvBindingNavigator.TabIndex = 0
         Me.CXP_CuentasBancariasProvBindingNavigator.Text = "BindingNavigator1"
         '
@@ -264,12 +268,12 @@ Partial Class frmCuentasBancarias
         Me.CXP_CuentasBancariasProvDataGridView.AllowUserToDeleteRows = False
         Me.CXP_CuentasBancariasProvDataGridView.AutoGenerateColumns = False
         Me.CXP_CuentasBancariasProvDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.CXP_CuentasBancariasProvDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn7, Me.verPdf, Me.estatus, Me.autorizar, Me.idCuentas})
+        Me.CXP_CuentasBancariasProvDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.referencia, Me.convenio, Me.DataGridViewTextBoxColumn7, Me.verPdf, Me.estatus, Me.autorizar, Me.idCuentas})
         Me.CXP_CuentasBancariasProvDataGridView.DataSource = Me.CXP_CuentasBancariasProvBindingSource
         Me.CXP_CuentasBancariasProvDataGridView.Location = New System.Drawing.Point(12, 39)
         Me.CXP_CuentasBancariasProvDataGridView.Name = "CXP_CuentasBancariasProvDataGridView"
         Me.CXP_CuentasBancariasProvDataGridView.ReadOnly = True
-        Me.CXP_CuentasBancariasProvDataGridView.Size = New System.Drawing.Size(1222, 335)
+        Me.CXP_CuentasBancariasProvDataGridView.Size = New System.Drawing.Size(1292, 335)
         Me.CXP_CuentasBancariasProvDataGridView.TabIndex = 1
         '
         'CXPBancosBindingSource
@@ -350,12 +354,30 @@ Partial Class frmCuentasBancarias
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 160
         '
+        'referencia
+        '
+        Me.referencia.DataPropertyName = "referencia"
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.referencia.DefaultCellStyle = DataGridViewCellStyle5
+        Me.referencia.HeaderText = "Referencia"
+        Me.referencia.Name = "referencia"
+        Me.referencia.ReadOnly = True
+        '
+        'convenio
+        '
+        Me.convenio.DataPropertyName = "convenio"
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.convenio.DefaultCellStyle = DataGridViewCellStyle6
+        Me.convenio.HeaderText = "Convenio"
+        Me.convenio.Name = "convenio"
+        Me.convenio.ReadOnly = True
+        '
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "moneda"
         Me.DataGridViewTextBoxColumn7.DataSource = Me.CXPcMonedaBindingSource
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn7.DisplayMember = "c_NombreMoneda"
         Me.DataGridViewTextBoxColumn7.HeaderText = "Moneda"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
@@ -368,8 +390,8 @@ Partial Class frmCuentasBancarias
         'verPdf
         '
         Me.verPdf.DataPropertyName = "archivo1"
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.verPdf.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.verPdf.DefaultCellStyle = DataGridViewCellStyle8
         Me.verPdf.HeaderText = "Archivo"
         Me.verPdf.Name = "verPdf"
         Me.verPdf.ReadOnly = True
@@ -382,8 +404,8 @@ Partial Class frmCuentasBancarias
         '
         Me.estatus.DataPropertyName = "estatus"
         Me.estatus.DataSource = Me.CXPEstatus2BindingSource
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.estatus.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.estatus.DefaultCellStyle = DataGridViewCellStyle9
         Me.estatus.DisplayMember = "descripcion"
         Me.estatus.HeaderText = "estatus"
         Me.estatus.Name = "estatus"
@@ -393,8 +415,8 @@ Partial Class frmCuentasBancarias
         '
         'autorizar
         '
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.autorizar.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.autorizar.DefaultCellStyle = DataGridViewCellStyle10
         Me.autorizar.HeaderText = "autorizar"
         Me.autorizar.Name = "autorizar"
         Me.autorizar.ReadOnly = True
@@ -412,7 +434,7 @@ Partial Class frmCuentasBancarias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1242, 417)
+        Me.ClientSize = New System.Drawing.Size(1316, 417)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.CXP_CuentasBancariasProvDataGridView)
         Me.Controls.Add(Me.CXP_CuentasBancariasProvBindingNavigator)
@@ -465,6 +487,8 @@ Partial Class frmCuentasBancarias
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents referencia As DataGridViewTextBoxColumn
+    Friend WithEvents convenio As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewComboBoxColumn
     Friend WithEvents verPdf As DataGridViewLinkColumn
     Friend WithEvents estatus As DataGridViewComboBoxColumn

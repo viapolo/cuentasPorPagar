@@ -185,13 +185,12 @@ Public Class frmAutorizarCuentasBancarias
 
     End Sub
 
-    Private Sub frmAutorizarCuentasBancarias_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        frmCuentasBancarias.Refresh()
-    End Sub
 
     Private Sub frmAutorizarCuentasBancarias_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If (e.KeyCode = Keys.Escape) Then
             Me.Close()
         End If
     End Sub
+
+
 End Class

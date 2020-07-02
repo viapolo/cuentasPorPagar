@@ -12,6 +12,7 @@ Module utilerias
     Public varGlobal_Empresa As String
     Public varGlobal_rfcEmpresa As String
     Public varGlobal_idDocumento As String
+    Public varGlobal_NombreCompletoUsuario As String
 
 
     Public Function validaRfc(rfc As String)

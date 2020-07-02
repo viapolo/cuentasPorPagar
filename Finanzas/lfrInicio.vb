@@ -46,6 +46,7 @@ Public Class lfrInicio
                     f.varGlEmpresaD = cmbEmpresa.Text
                     varGlobal_Empresa = cmbEmpresa.Text
                     varGlobal_rfcEmpresa = taEmpresas.ObtRfc_ScalarQuery(cmbEmpresa.SelectedValue)
+                    varGlobal_NombreCompletoUsuario = rowUsuarios.Item("nombre")
 
                     If varGlobal_IdEmpresa = 23 Then
                         varGlobal_idDocumento = 1

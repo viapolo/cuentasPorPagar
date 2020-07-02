@@ -111,7 +111,7 @@
     Private Sub CXP_CuentasBancariasProvDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CXP_CuentasBancariasProvDataGridView.CellContentClick
         Try
             Dim filePath As String = ""
-            If e.ColumnIndex = 5 Then
+            If e.ColumnIndex = 7 Then
                 If System.IO.File.Exists(My.Settings.fileNas & "CXP\FilesProv\" & CXP_CuentasBancariasProvBindingSource.Current("archivo1") & ".pdf") = True Then
                     Process.Start(My.Settings.fileNas & "CXP\FilesProv\" & CXP_CuentasBancariasProvBindingSource.Current("archivo1") & ".pdf")
                 Else
@@ -123,15 +123,15 @@
                     End If
                 End If
             End If
-            If e.ColumnIndex = 7 Then
-                If CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells(6).Value = 12 Or CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells(6).Value = 14 Then
+            If e.ColumnIndex = 9 Then
+                If CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells("estatus").Value = 12 Or CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells("estatus").Value = 14 Then
                     Dim frmDocumentacion As New frmAutorizarCuentasBancarias
                     Dim mdiDocumentacion As New mdicuentasPorPagar
                     mdiDocumentacion = MdiParent
                     frmDocumentacion.MdiParent = mdiDocumentacion
                     Me.Cursor = Cursors.WaitCursor
-                    frmDocumentacion.idCuentas = CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells(8).Value
-                    frmDocumentacion.idEstatus = CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells(6).Value
+                    frmDocumentacion.idCuentas = CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells("idCuentas").Value
+                    frmDocumentacion.idEstatus = CXP_CuentasBancariasProvDataGridView.Rows(e.RowIndex).Cells("estatus").Value
                     frmDocumentacion.noProveedor = NoProveedorParaCtasBancarias
                     frmDocumentacion.tipoPersonaCuentasAutoriza = tipoPersonaParaCuentasProv
                     frmDocumentacion.Show()
@@ -146,7 +146,7 @@
     Private Sub actualizaGridView()
         Dim cont As Integer = 0
         For Each row As DataGridViewRow In CXP_CuentasBancariasProvDataGridView.Rows
-            If CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells(6).Value = 12 Or CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells(6).Value = 14 Then
+            If CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells("estatus").Value = 12 Or CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells("estatus").Value = 14 Then
                 CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells(0).Style.BackColor = Color.Orange
                 CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells(1).Style.BackColor = Color.Orange
                 CXP_CuentasBancariasProvDataGridView.Rows(cont).Cells(2).Style.BackColor = Color.Orange
@@ -168,6 +168,8 @@
 
     Private Sub frmCuentasBancarias_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         frmContProveedoresClientes.Enabled = True
+        frmContProveedoresClientes.Refresh()
+        frmContProveedoresClientes.Update()
     End Sub
 
     Private Sub frmCuentasBancarias_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown

@@ -186,7 +186,7 @@ Public Class mdicuentasPorPagar
             Password = rkTest.GetValue("Contrasena").ToString
             rkTest.Close()
 
-            'If varGlUser <> "desarrollo" And varGlUser <> "lgarciacX" Then
+            'If varGlUser <> "desarrollo" And varGlUser <> "viapolo" Then
             '    If (InStr(Args(0), "Agil.application") <= 0 And InStr(Args(0), "Finagil.application") <= 0) And varGlUser <> "desarrollo" Then
             '        MessageBox.Show("Faltan argumentos para iniciar esta aplicación. (Error1) " & Args(0) & " " & varGlUser, "Error de Aplicación", MessageBoxButtons.OK, MessageBoxIcon.Error)
             '        End
@@ -221,21 +221,10 @@ Public Class mdicuentasPorPagar
         'UsuarioGlobalDepto = USER_SEC.ScalarDepto(Usuario)
         'UsuarioGlobalCorreo = USER_SEC.ScalarCorreo(Usuario)
 
-        'For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-        '    For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-        '        For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
-        '            submenu2a.Enabled = False
-        '        Next
-        '        submenu1.Enabled = False
-        '    Next
-        '    vLocMnuOpciones.Enabled = False
-        'Next
 
         Dim a As Integer = 0
         Dim b As Integer = 0
         Dim c As Integer = 0
-
-
 
         For Each drMenu In dsAgil.Tables("Menus").Rows
 
@@ -289,78 +278,21 @@ Public Class mdicuentasPorPagar
                     Next
                 Next
             End If
-
-
-
-
-
-            c += 1
-
-            'For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(i).Name, True)
-            '    vLocMnuOpciones.DropDownItems(j).Enabled = True
-            '    For Each submenu As ToolStripMenuItem In vLocMnuOpciones.DropDownItems.Find(vLocMnuOpciones.DropDownItems(j).Name, True)
-            '        If submenu.DropDownItems.Count > 0 Then
-            '            submenu.DropDownItems(k).Enabled = True
-            '        End If
-            '    Next
-            'Next
         Next
 
-
+        If varGlUser = "viapolo" Then
+            For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
+                For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+                    For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
+                        submenu2a.Enabled = True
+                    Next
+                    submenu1.Enabled = True
+                Next
+                vLocMnuOpciones.Enabled = True
+            Next
+        End If
         tssUsuario.Text = "Usuario: " & varGlUser
         tssEmpresa.Text = "Empresa: " & varGlEmpresaD
-
-
-        'frmAccesoDirecto.MdiParent = Me
-        'frmAccesoDirecto.Show()
-
-
-        'If varGlUser = "viapolo" Then
-        '    For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-        '        vLocMnuOpciones.Enabled = True
-        '        For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-        '            submenu1.Enabled = True
-        '            For Each submenu2 As ToolStripMenuItem In submenu1.DropDownItems
-        '                submenu2.Enabled = True
-        '            Next
-        '        Next
-        '    Next
-        'Else
-        '    taPerfil.ObtDetPerfil_FillBy(t, varGlPerfil)
-        '    If t.Rows.Count > 0 Then
-        '        For Each rows As dsProduction.CXP_PerfilesUsuarioRow In t
-        '            For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
-        '                If rows.Item("menu") = vLocMnuOpciones.Name Then
-        '                    vLocMnuOpciones.Enabled = True
-        '                    For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-        '                        If rows.Item("submenu1") = submenu1.Name Then
-        '                            submenu1.Enabled = True
-        '                            If rows.Item("submenu2") = "" Then
-        '                                For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
-        '                                    submenu2a.Enabled = True
-        '                                Next
-        '                            Else
-        '                                For Each submenu2 As ToolStripMenuItem In submenu1.DropDownItems
-        '                                    If rows.Item("submenu2") = submenu2.Name Then
-        '                                        submenu2.Enabled = True
-        '                                    End If
-        '                                Next
-        '                            End If
-        '                        End If
-        '                    Next
-        '                End If
-        '            Next
-        '        Next
-        '    End If
-        'End If
-
-
-        'If varGlobal_IdEmpresa = "24" Then
-        '    CuentasTableAdapterG.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
-        'Else
-        '    CuentasTableAdapterG.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
-        'End If
-        'CuentasTableAdapterG.Fill(dtCuentasG)
     End Sub
 
 
@@ -562,6 +494,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmPeridos.MdiParent = Me
         frmPeridos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub GenerarPDFDeExpedienteDigitalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPDFDeExpedienteDigitalToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmGeneraPdfExpediente.MdiParent = Me
+        frmGeneraPdfExpediente.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

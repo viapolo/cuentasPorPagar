@@ -264,11 +264,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
     </Compile>
+    <Compile Include="contabilidad\frmGeneraPdfExpediente.Designer.vb">
+      <DependentUpon>frmGeneraPdfExpediente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmGeneraPdfExpediente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmGeneraPdfExpedienteView.Designer.vb">
+      <DependentUpon>frmGeneraPdfExpedienteView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmGeneraPdfExpedienteView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmPeridos.Designer.vb">
       <DependentUpon>frmPeridos.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmPeridos.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\rptPdfDocumentacion.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPdfDocumentacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="contpaq.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -503,8 +521,18 @@
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmGeneraPdfExpediente.resx">
+      <DependentUpon>frmGeneraPdfExpediente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmGeneraPdfExpedienteView.resx">
+      <DependentUpon>frmGeneraPdfExpedienteView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmPeridos.resx">
       <DependentUpon>frmPeridos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\rptPdfDocumentacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPdfDocumentacion.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="diarios\fmrPolizasDiarioSCuenta.resx">
       <DependentUpon>fmrPolizasDiarioSCuenta.vb</DependentUpon>

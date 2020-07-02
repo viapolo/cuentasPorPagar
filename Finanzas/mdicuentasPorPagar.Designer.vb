@@ -53,6 +53,7 @@ Partial Class mdicuentasPorPagar
         Me.AutorizadoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContabilidadToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarPólizasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PeriodosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TesoreríaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PagosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SolicitudesDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,7 +74,8 @@ Partial Class mdicuentasPorPagar
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssEmpresa = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PeriodosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarPDFExpedienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -275,7 +277,7 @@ Partial Class mdicuentasPorPagar
         '
         'ContabilidadToolStripMenuItem1
         '
-        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem})
+        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem, Me.GenerarPDFExpedienteToolStripMenuItem})
         Me.ContabilidadToolStripMenuItem1.Enabled = False
         Me.ContabilidadToolStripMenuItem1.Name = "ContabilidadToolStripMenuItem1"
         Me.ContabilidadToolStripMenuItem1.Size = New System.Drawing.Size(87, 20)
@@ -287,6 +289,13 @@ Partial Class mdicuentasPorPagar
         Me.GenerarPólizasToolStripMenuItem.Name = "GenerarPólizasToolStripMenuItem"
         Me.GenerarPólizasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.GenerarPólizasToolStripMenuItem.Text = "Generar Pólizas"
+        '
+        'PeriodosToolStripMenuItem
+        '
+        Me.PeriodosToolStripMenuItem.Enabled = False
+        Me.PeriodosToolStripMenuItem.Name = "PeriodosToolStripMenuItem"
+        Me.PeriodosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PeriodosToolStripMenuItem.Text = "Periodos"
         '
         'TesoreríaToolStripMenuItem
         '
@@ -425,12 +434,20 @@ Partial Class mdicuentasPorPagar
         Me.tssEmpresa.Size = New System.Drawing.Size(52, 17)
         Me.tssEmpresa.Text = "Empresa"
         '
-        'PeriodosToolStripMenuItem
+        'GenerarPDFExpedienteToolStripMenuItem
         '
-        Me.PeriodosToolStripMenuItem.Enabled = False
-        Me.PeriodosToolStripMenuItem.Name = "PeriodosToolStripMenuItem"
-        Me.PeriodosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PeriodosToolStripMenuItem.Text = "Periodos"
+        Me.GenerarPDFExpedienteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem})
+        Me.GenerarPDFExpedienteToolStripMenuItem.Enabled = False
+        Me.GenerarPDFExpedienteToolStripMenuItem.Name = "GenerarPDFExpedienteToolStripMenuItem"
+        Me.GenerarPDFExpedienteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GenerarPDFExpedienteToolStripMenuItem.Text = "Herramientas"
+        '
+        'GenerarPDFDeExpedienteDigitalToolStripMenuItem
+        '
+        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Enabled = False
+        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Name = "GenerarPDFDeExpedienteDigitalToolStripMenuItem"
+        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Size = New System.Drawing.Size(253, 22)
+        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Text = "Generar PDF de Expediente Digital"
         '
         'mdicuentasPorPagar
         '
@@ -505,4 +522,6 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents SolicitudesDePagoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TesoreríaToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents PeriodosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenerarPDFExpedienteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenerarPDFDeExpedienteDigitalToolStripMenuItem As ToolStripMenuItem
 End Class
