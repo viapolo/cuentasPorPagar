@@ -43,6 +43,7 @@ Partial Class frmContProveedoresClientes
         Dim IdProveedorLabel As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
+        Dim UsuarioSolicitaLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContProveedoresClientes))
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_ProveedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -98,6 +99,7 @@ Partial Class frmContProveedoresClientes
         Me.CXP_Estatus1TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus1TableAdapter()
         Me.CXPEstatus1BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblTipoPersona = New System.Windows.Forms.Label()
+        Me.UsuarioSolicitaTextBox = New System.Windows.Forms.TextBox()
         RazonSocialLabel = New System.Windows.Forms.Label()
         RfcLabel = New System.Windows.Forms.Label()
         CurpLabel = New System.Windows.Forms.Label()
@@ -118,6 +120,7 @@ Partial Class frmContProveedoresClientes
         IdProveedorLabel = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
+        UsuarioSolicitaLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_ProveedoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_ProveedoresBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -332,6 +335,16 @@ Partial Class frmContProveedoresClientes
         Label4.TabIndex = 61
         Label4.Text = "Autorizado:"
         '
+        'UsuarioSolicitaLabel
+        '
+        UsuarioSolicitaLabel.AutoSize = True
+        UsuarioSolicitaLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        UsuarioSolicitaLabel.Location = New System.Drawing.Point(18, 392)
+        UsuarioSolicitaLabel.Name = "UsuarioSolicitaLabel"
+        UsuarioSolicitaLabel.Size = New System.Drawing.Size(83, 17)
+        UsuarioSolicitaLabel.TabIndex = 62
+        UsuarioSolicitaLabel.Text = "Usuario sol:"
+        '
         'DsProduction
         '
         Me.DsProduction.DataSetName = "dsProduction"
@@ -341,6 +354,7 @@ Partial Class frmContProveedoresClientes
         '
         Me.CXP_ProveedoresBindingSource.DataMember = "CXP_Proveedores"
         Me.CXP_ProveedoresBindingSource.DataSource = Me.DsProduction
+        Me.CXP_ProveedoresBindingSource.Filter = "autorizadoS='EN PROCESO' OR autorizadoS='PENDIENTE'"
         '
         'CXP_ProveedoresTableAdapter
         '
@@ -527,10 +541,11 @@ Partial Class frmContProveedoresClientes
         'RfcTextBox
         '
         Me.RfcTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "rfc", True))
+        Me.RfcTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.RfcTextBox.Location = New System.Drawing.Point(111, 152)
         Me.RfcTextBox.Name = "RfcTextBox"
         Me.RfcTextBox.ReadOnly = True
-        Me.RfcTextBox.Size = New System.Drawing.Size(111, 20)
+        Me.RfcTextBox.Size = New System.Drawing.Size(111, 23)
         Me.RfcTextBox.TabIndex = 4
         '
         'CurpTextBox
@@ -853,11 +868,23 @@ Partial Class frmContProveedoresClientes
         Me.lblTipoPersona.TabIndex = 62
         Me.lblTipoPersona.Text = "Label1"
         '
+        'UsuarioSolicitaTextBox
+        '
+        Me.UsuarioSolicitaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "usuarioSolicita", True))
+        Me.UsuarioSolicitaTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.UsuarioSolicitaTextBox.Location = New System.Drawing.Point(111, 391)
+        Me.UsuarioSolicitaTextBox.Name = "UsuarioSolicitaTextBox"
+        Me.UsuarioSolicitaTextBox.ReadOnly = True
+        Me.UsuarioSolicitaTextBox.Size = New System.Drawing.Size(378, 23)
+        Me.UsuarioSolicitaTextBox.TabIndex = 63
+        '
         'frmContProveedoresClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1033, 399)
+        Me.ClientSize = New System.Drawing.Size(1033, 441)
+        Me.Controls.Add(UsuarioSolicitaLabel)
+        Me.Controls.Add(Me.UsuarioSolicitaTextBox)
         Me.Controls.Add(Me.lblTipoPersona)
         Me.Controls.Add(Label4)
         Me.Controls.Add(Label3)
@@ -978,4 +1005,5 @@ Partial Class frmContProveedoresClientes
     Friend WithEvents CXPEstatusBindingSource1 As BindingSource
     Friend WithEvents lblTipoPersona As Label
     Friend WithEvents CXP_ProveedoresBindingNavigatorSaveItem As ToolStripButton
+    Friend WithEvents UsuarioSolicitaTextBox As TextBox
 End Class

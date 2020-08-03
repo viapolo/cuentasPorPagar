@@ -342,7 +342,6 @@ Partial Class frmCuentasBancarias
         Me.DataGridViewTextBoxColumn4.HeaderText = "Cuenta"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 95
         '
         'DataGridViewTextBoxColumn5
         '

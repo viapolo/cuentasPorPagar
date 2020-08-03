@@ -107,10 +107,10 @@ Partial Class frmConceptos
         Me.cmbImpuestosP = New System.Windows.Forms.ComboBox()
         Me.btnAgregarP = New System.Windows.Forms.Button()
         Me.cmbCtaBancaria = New System.Windows.Forms.ComboBox()
+        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction4 = New cuentasPorPagar.dsProduction()
         Me.CXPEstatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_EstatusTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_EstatusTableAdapter()
-        Me.DsProduction4 = New cuentasPorPagar.dsProduction()
-        Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_Estatus2TableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_Estatus2TableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         ImpuestoLabel = New System.Windows.Forms.Label()
@@ -145,15 +145,15 @@ Partial Class frmConceptos
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEstatus2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
         '
         NombreLabel.AutoSize = True
-        NombreLabel.Location = New System.Drawing.Point(8, 34)
+        NombreLabel.Location = New System.Drawing.Point(473, 41)
         NombreLabel.Name = "NombreLabel"
         NombreLabel.Size = New System.Drawing.Size(56, 13)
         NombreLabel.TabIndex = 1
@@ -355,10 +355,10 @@ Partial Class frmConceptos
         'NombreTextBox
         '
         Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ConceptosBindingSource, "nombre", True))
-        Me.NombreTextBox.Location = New System.Drawing.Point(88, 34)
+        Me.NombreTextBox.Location = New System.Drawing.Point(558, 39)
         Me.NombreTextBox.Name = "NombreTextBox"
         Me.NombreTextBox.Size = New System.Drawing.Size(412, 20)
-        Me.NombreTextBox.TabIndex = 0
+        Me.NombreTextBox.TabIndex = 2
         '
         'cmbCtaCargoSol
         '
@@ -544,6 +544,7 @@ Partial Class frmConceptos
         Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
@@ -748,17 +749,17 @@ Partial Class frmConceptos
         '
         'txtBuscar
         '
-        Me.txtBuscar.Location = New System.Drawing.Point(551, 34)
+        Me.txtBuscar.Location = New System.Drawing.Point(26, 38)
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(207, 20)
-        Me.txtBuscar.TabIndex = 34
+        Me.txtBuscar.TabIndex = 0
         '
         'btnBuscar
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(764, 32)
+        Me.btnBuscar.Location = New System.Drawing.Point(239, 36)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
-        Me.btnBuscar.TabIndex = 35
+        Me.btnBuscar.TabIndex = 1
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
@@ -870,6 +871,17 @@ Partial Class frmConceptos
         Me.cmbCtaBancaria.TabIndex = 37
         Me.cmbCtaBancaria.ValueMember = "idEstatus"
         '
+        'CXPEstatus2BindingSource
+        '
+        Me.CXPEstatus2BindingSource.DataMember = "CXP_Estatus2"
+        Me.CXPEstatus2BindingSource.DataSource = Me.DsProduction4
+        Me.CXPEstatus2BindingSource.Filter = "grupoEstatus='CONCEPTOS' and grupoEstatus2='CUENTABANCARIA'"
+        '
+        'DsProduction4
+        '
+        Me.DsProduction4.DataSetName = "dsProduction"
+        Me.DsProduction4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'CXPEstatusBindingSource
         '
         Me.CXPEstatusBindingSource.DataMember = "CXP_Estatus"
@@ -878,17 +890,6 @@ Partial Class frmConceptos
         'CXP_EstatusTableAdapter
         '
         Me.CXP_EstatusTableAdapter.ClearBeforeFill = True
-        '
-        'DsProduction4
-        '
-        Me.DsProduction4.DataSetName = "dsProduction"
-        Me.DsProduction4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXPEstatus2BindingSource
-        '
-        Me.CXPEstatus2BindingSource.DataMember = "CXP_Estatus2"
-        Me.CXPEstatus2BindingSource.DataSource = Me.DsProduction4
-        Me.CXPEstatus2BindingSource.Filter = "grupoEstatus='CONCEPTOS' and grupoEstatus2='CUENTABANCARIA'"
         '
         'CXP_Estatus2TableAdapter
         '
@@ -947,9 +948,9 @@ Partial Class frmConceptos
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPEstatus2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

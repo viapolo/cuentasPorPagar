@@ -31,6 +31,8 @@ Partial Class frmAutorizarCuentasBancarias
         Dim DescEstatusLabel As System.Windows.Forms.Label
         Dim Sn1Label As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAutorizarCuentasBancarias))
+        Dim ReferenciaLabel As System.Windows.Forms.Label
+        Dim ConvenioLabel As System.Windows.Forms.Label
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.Vw_CXP_CuentasBancariasProvBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_CXP_CuentasBancariasProvTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_CuentasBancariasProvTableAdapter()
@@ -58,6 +60,8 @@ Partial Class frmAutorizarCuentasBancarias
         Me.btnRechazar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.lnkCuenta = New System.Windows.Forms.LinkLabel()
+        Me.ReferenciaTextBox = New System.Windows.Forms.TextBox()
+        Me.ConvenioTextBox = New System.Windows.Forms.TextBox()
         NombreCortoLabel = New System.Windows.Forms.Label()
         DescripcionLabel = New System.Windows.Forms.Label()
         C_NombreMonedaLabel = New System.Windows.Forms.Label()
@@ -65,6 +69,8 @@ Partial Class frmAutorizarCuentasBancarias
         ClabeLabel = New System.Windows.Forms.Label()
         DescEstatusLabel = New System.Windows.Forms.Label()
         Sn1Label = New System.Windows.Forms.Label()
+        ReferenciaLabel = New System.Windows.Forms.Label()
+        ConvenioLabel = New System.Windows.Forms.Label()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_CuentasBancariasProvBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_CuentasBancariasProvBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -363,7 +369,7 @@ Partial Class frmAutorizarCuentasBancarias
         '
         'btnAutorizar
         '
-        Me.btnAutorizar.Location = New System.Drawing.Point(117, 220)
+        Me.btnAutorizar.Location = New System.Drawing.Point(117, 275)
         Me.btnAutorizar.Name = "btnAutorizar"
         Me.btnAutorizar.Size = New System.Drawing.Size(147, 23)
         Me.btnAutorizar.TabIndex = 16
@@ -372,7 +378,7 @@ Partial Class frmAutorizarCuentasBancarias
         '
         'btnRechazar
         '
-        Me.btnRechazar.Location = New System.Drawing.Point(335, 220)
+        Me.btnRechazar.Location = New System.Drawing.Point(335, 275)
         Me.btnRechazar.Name = "btnRechazar"
         Me.btnRechazar.Size = New System.Drawing.Size(147, 23)
         Me.btnRechazar.TabIndex = 17
@@ -381,7 +387,7 @@ Partial Class frmAutorizarCuentasBancarias
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(407, 264)
+        Me.btnSalir.Location = New System.Drawing.Point(407, 318)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 18
@@ -399,11 +405,51 @@ Partial Class frmAutorizarCuentasBancarias
         Me.lnkCuenta.TabStop = True
         Me.lnkCuenta.Text = "LinkLabel1"
         '
+        'ReferenciaLabel
+        '
+        ReferenciaLabel.AutoSize = True
+        ReferenciaLabel.Location = New System.Drawing.Point(54, 212)
+        ReferenciaLabel.Name = "ReferenciaLabel"
+        ReferenciaLabel.Size = New System.Drawing.Size(62, 13)
+        ReferenciaLabel.TabIndex = 19
+        ReferenciaLabel.Text = "Referencia:"
+        '
+        'ReferenciaTextBox
+        '
+        Me.ReferenciaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_CXP_CuentasBancariasProvBindingSource, "referencia", True))
+        Me.ReferenciaTextBox.Location = New System.Drawing.Point(117, 209)
+        Me.ReferenciaTextBox.Name = "ReferenciaTextBox"
+        Me.ReferenciaTextBox.ReadOnly = True
+        Me.ReferenciaTextBox.Size = New System.Drawing.Size(365, 20)
+        Me.ReferenciaTextBox.TabIndex = 20
+        '
+        'ConvenioLabel
+        '
+        ConvenioLabel.AutoSize = True
+        ConvenioLabel.Location = New System.Drawing.Point(57, 237)
+        ConvenioLabel.Name = "ConvenioLabel"
+        ConvenioLabel.Size = New System.Drawing.Size(55, 13)
+        ConvenioLabel.TabIndex = 20
+        ConvenioLabel.Text = "Convenio:"
+        '
+        'ConvenioTextBox
+        '
+        Me.ConvenioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.Vw_CXP_CuentasBancariasProvBindingSource, "convenio", True))
+        Me.ConvenioTextBox.Location = New System.Drawing.Point(117, 234)
+        Me.ConvenioTextBox.Name = "ConvenioTextBox"
+        Me.ConvenioTextBox.ReadOnly = True
+        Me.ConvenioTextBox.Size = New System.Drawing.Size(365, 20)
+        Me.ConvenioTextBox.TabIndex = 21
+        '
         'frmAutorizarCuentasBancarias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(537, 299)
+        Me.ClientSize = New System.Drawing.Size(537, 343)
+        Me.Controls.Add(ConvenioLabel)
+        Me.Controls.Add(Me.ConvenioTextBox)
+        Me.Controls.Add(ReferenciaLabel)
+        Me.Controls.Add(Me.ReferenciaTextBox)
         Me.Controls.Add(Me.lnkCuenta)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnRechazar)
@@ -464,4 +510,6 @@ Partial Class frmAutorizarCuentasBancarias
     Friend WithEvents btnRechazar As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents lnkCuenta As LinkLabel
+    Friend WithEvents ReferenciaTextBox As TextBox
+    Friend WithEvents ConvenioTextBox As TextBox
 End Class

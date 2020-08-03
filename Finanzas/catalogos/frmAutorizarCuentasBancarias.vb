@@ -15,13 +15,13 @@ Public Class frmAutorizarCuentasBancarias
         Try
             Me.Vw_CXP_CuentasBancariasProvTableAdapter.Fill(Me.DsProduction.Vw_CXP_CuentasBancariasProv, New System.Nullable(Of Decimal)(CType(noProveedor, Decimal)))
             Vw_CXP_CuentasBancariasProvBindingSource.Filter = "idCuentas = '" & idCuentas & "'"
-            'If Vw_CXP_CuentasBancariasProvBindingSource.Current("estatus") = 14 Then
-            '    btnAutorizar.Text = "Preautorizar Bloqueo"
-            '    btnRechazar.Text = "Rechazar Bloqueo"
-            'ElseIf Vw_CXP_CuentasBancariasProvBindingSource.Current("estatus") = 12 Then
-            '    btnAutorizar.Text = "Preautorizar Activación"
-            '    btnRechazar.Text = "Rechazar Activación"
-            'End If
+            If Vw_CXP_CuentasBancariasProvBindingSource.Current("estatus") = 14 Then
+                btnAutorizar.Text = "Autorizar Bloqueo"
+                btnRechazar.Text = "Rechazar Bloqueo"
+            ElseIf Vw_CXP_CuentasBancariasProvBindingSource.Current("estatus") = 12 Then
+                btnAutorizar.Text = "Autorizar Activación"
+                btnRechazar.Text = "Rechazar Activación"
+            End If
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -37,14 +37,14 @@ Public Class frmAutorizarCuentasBancarias
             If Vw_CXP_CuentasBancariasProvBindingSource.Current("estatus") = 14 Then
                 tableAdapterCuentAsProv.CambiaEstatus_UpdateQuery(13, varGlobal_NombreUsuario, Date.Now, idCuentas)
                 MsgBox("Autorización de bloqueo de documento enviada correctamente", MsgBoxStyle.Information, "")
-                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "autorizada la solicitud de bloqueo ", "Autorización de activación", "", varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"))
+                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "autorizada la solicitud de bloqueo ", "Autorización de activación", "", varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"), Vw_CXP_CuentasBancariasProvBindingSource.Current("archivo1"))
                 'enviaCorreoDocumentosA2(Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "enviado una solicitud de BLOQUEO de cuenta ", "Solicitud de bloqueo de cuenta bancaria", Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), idCuentas, autoriza2, Vw_CXP_CuentasBancariasProvBindingSource.Current("archivo1"))
                 validaYCambiaEstatus(noProveedor, Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"))
                 Me.Close()
             ElseIf Vw_CXP_CuentasBancariasProvBindingSource.Current("estatus") = 12 Then
                 tableAdapterCuentAsProv.CambiaEstatus_UpdateQuery(11, varGlobal_NombreUsuario, Date.Now, idCuentas)
                 MsgBox("Autorización de activación de documento enviada correctamente", MsgBoxStyle.Information, "")
-                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "autorizado la solicitud de activación ", "Autorización de activación", "", varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"))
+                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "autorizado la solicitud de activación ", "Autorización de activación", "", varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"), Vw_CXP_CuentasBancariasProvBindingSource.Current("archivo1"))
                 'enviaCorreoDocumentosA2(Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "enviado una solicitud de ACTIVACIÖN de cuenta ", "Solicitud de activación de cuenta bancaria", Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), idCuentas, autoriza2, Vw_CXP_CuentasBancariasProvBindingSource.Current("archivo1"))
                 validaYCambiaEstatus(noProveedor, Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"))
                 Me.Close()
@@ -55,7 +55,7 @@ Public Class frmAutorizarCuentasBancarias
 
     End Sub
 
-    Protected Sub enviaCorreoDocumentos(banco As String, moneda As String, cuenta As String, clabe As String, razonSocial As String, rfc As String, solicitante As String, textoEncabezado As String, asuntoMensaje As String, comentarios As String, preautorizante As String, mailDestinatario As String)
+    Protected Sub enviaCorreoDocumentos(banco As String, moneda As String, cuenta As String, clabe As String, razonSocial As String, rfc As String, solicitante As String, textoEncabezado As String, asuntoMensaje As String, comentarios As String, preautorizante As String, mailDestinatario As String, attachCta As String)
         Dim tableAdapterGenCorreos As New dsProductionTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
 
         Dim mensaje As String = "<html><body><font size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" &
@@ -93,6 +93,14 @@ Public Class frmAutorizarCuentasBancarias
                     "<tfoot><tr><font align=" & Chr(34) & "center" & Chr(34) & "size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" & "Solicitante: " & solicitante & vbNewLine & "</font></tr></tfoot>" &
                      "</body></html>"
         tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", mailDestinatario, asuntoMensaje, mensaje, False, Date.Now.ToLongDateString, "")
+        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", asuntoMensaje, mensaje, False, Date.Now.ToLongDateString, "")
+
+        If mailDestinatario.Trim = "atorres@finagil.com.mx" Or mailDestinatario.Trim = "gisvazquez@finagil.com.mx" Then
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "epineda@finagil.com.mx", asuntoMensaje & " (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "CXP\FilesProv\" & attachCta & ".pdf")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "vcruz@finagil.com.mx", asuntoMensaje & " (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "CXP\FilesProv\" & attachCta & ".pdf")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "lgarcia@finagil.com.mx", asuntoMensaje & " (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "CXP\FilesProv\" & attachCta & ".pdf")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", asuntoMensaje & " (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "CXP\FilesProv\" & attachCta & ".pdf")
+        End If
     End Sub
 
 
@@ -144,7 +152,7 @@ Public Class frmAutorizarCuentasBancarias
                 tableAdapterCuentas.CambiaEstatus_UpdateQuery(11, varGlobal_NombreUsuario, Date.Now, idCuentas)
                 Dim comentarios As String = InputBox("Motivo de rechazo", "", "")
                 'enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("descripcion"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "rechazado la solicitud de bloqueo ", "Rechazo de bloqueo", comentarios, varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"))
-                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "rechazada la solicitud de bloqueo ", "Rechazo de bloqueo", comentarios, varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"))
+                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "rechazada la solicitud de bloqueo ", "Rechazo de bloqueo", comentarios, varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"), Vw_CXP_CuentasBancariasProvBindingSource.Current("archivo1"))
                 MsgBox("Autorización de bloqueo rechazada correctamente", MsgBoxStyle.Information, "")
                 validaYCambiaEstatus(noProveedor, Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"))
                 Me.Close()
@@ -153,7 +161,7 @@ Public Class frmAutorizarCuentasBancarias
                 tableAdapterCuentas.CambiaEstatus_UpdateQuery(15, varGlobal_NombreUsuario, Date.Now, idCuentas)
                 Dim comentarios As String = InputBox("Motivo de rechazo", "", "")
                 'enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("descripcion"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "rechazado la solicitud de activación ", "Rechazo de activación", comentarios, varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"))
-                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "rechazada la solicitud de activación ", "Rechazo de activación", comentarios, varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"))
+                enviaCorreoDocumentos(Vw_CXP_CuentasBancariasProvBindingSource.Current("nombreCorto"), Vw_CXP_CuentasBancariasProvBindingSource.Current("c_NombreMoneda"), Vw_CXP_CuentasBancariasProvBindingSource.Current("cuenta"), Vw_CXP_CuentasBancariasProvBindingSource.Current("clabe"), Vw_CXP_CuentasBancariasProvBindingSource.Current("razonSocial"), Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"), Vw_CXP_CuentasBancariasProvBindingSource.Current("sn1"), "rechazada la solicitud de activación ", "Rechazo de activación", comentarios, varGlobal_NombreUsuario, Vw_CXP_CuentasBancariasProvBindingSource.Current("sm1"), Vw_CXP_CuentasBancariasProvBindingSource.Current("archivo1"))
                 MsgBox("Autorización de activación rechazada correctamente", MsgBoxStyle.Information, "")
                 validaYCambiaEstatus(noProveedor, Vw_CXP_CuentasBancariasProvBindingSource.Current("rfc"))
                 Me.Close()

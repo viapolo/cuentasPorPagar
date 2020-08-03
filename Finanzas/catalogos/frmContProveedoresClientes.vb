@@ -4,6 +4,7 @@ Public Class frmContProveedoresClientes
 
     Dim noProveedor As Integer
     Dim autoriza2 As String = "viapolo@finagil.com.mx"
+    Dim usuarioSolicita As String = ""
     Private Sub frmContProveedoresClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'DsProduction1.CXP_Estatus1' Puede moverla o quitarla según sea necesario.
         Me.CXP_Estatus1TableAdapter.ProveedoresActivo_Fill(Me.DsProduction1.CXP_Estatus1)
@@ -130,77 +131,43 @@ Public Class frmContProveedoresClientes
         Dim tipoPersona As String = ""
         Dim mensaje As String = ""
 
-        If taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim) = "NE" Or IsNothing(taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim)) Then
-            If taProveedores.ObtClientProv_ScalarQuery(RfcTextBox.Text.Trim) = False Then
-                If RfcTextBox.Text.Trim.Length = 12 Then
-                    tipoPersona = "M"
-                ElseIf RfcTextBox.Text.Trim.Length = 13 Then
-                    tipoPersona = "F"
-                End If
-            Else
-                tipoPersona = "C"
-            End If
-        Else
-                tipoPersona = "E"
-        End If
+        Try
 
-        Dim validacion As String = "SI"
-        'valida RFC
-        If RfcTextBox.Text <> String.Empty Then
-            If Regex.IsMatch(RfcTextBox.Text.Trim, "^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$") = False Then
-                MsgBox("Estructura del RFC cincorrecta.", MsgBoxStyle.Information, "")
-                validacion = "NO"
-                Exit Sub
-            End If
-        End If
-
-        'valida CURP
-        If CurpTextBox.Text <> String.Empty Then
-            If Regex.IsMatch(CurpTextBox.Text.Trim, "^([a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2})$") = False Then
-                MsgBox("Estructura de la clave CURP incorrecta.", MsgBoxStyle.Information, "")
-                validacion = "NO"
-                Exit Sub
-            End If
-        End If
-
-        If validacion = "SI" Then
-            If CDec(CXP_ProveedoresTableAdapter.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim)) = 0 Then
-                If cmbAutorizado.SelectedValue = "AUTORIZADO" Then
-                    If tableAdapterDocumentacionProv.NoDoctosOblig_ScalarQuery(tipoPersona) <= tableAdapterProveedorArch.noDocOblig_ScalarQuery(IdProveedorTextBox.Text.Trim) Then
-                        tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(16, CXP_ProveedoresBindingSource.Current("idProveedor"))
-                        tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(11, CXP_ProveedoresBindingSource.Current("idProveedor"))
-                        CXP_ProveedoresBindingSource.Current("autorizaP1") = varGlobal_NombreUsuario
-                        CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
-
-                        notificaAutorizacion()
-
-                        Me.Validate()
-                        Me.CXP_ProveedoresBindingSource.EndEdit()
-                        Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-                        noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
-
-                    Else
-                        MsgBox("El proveedor no cuenta con la documentación necesaria para ser autorizado.", MsgBoxStyle.Information, "")
+            If taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim) = "NE" Or IsNothing(taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim)) Then
+                If taProveedores.ObtClientProv_ScalarQuery(RfcTextBox.Text.Trim) = False Then
+                    If RfcTextBox.Text.Trim.Length = 12 Then
+                        tipoPersona = "M"
+                    ElseIf RfcTextBox.Text.Trim.Length = 13 Then
+                        tipoPersona = "F"
                     End If
-                ElseIf cmbAutorizado.SelectedValue = "RECHAZADO" Then
-                    CXP_ProveedoresBindingSource.Current("motivoRechazo") = InputBox("Motivo de rechazo: ")
-                    notificaRechazo(CXP_ProveedoresBindingSource.Current("motivoRechazo"))
-                    tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(20, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
-                    tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(15, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
-                    Me.Validate()
-                    Me.CXP_ProveedoresBindingSource.EndEdit()
-                    Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-                    noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
-
-
                 Else
-                    Me.Validate()
-                    Me.CXP_ProveedoresBindingSource.EndEdit()
-                    Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-                    noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
+                    tipoPersona = "C"
                 End If
             Else
-                If RfcTextBox.Text.Trim = "XAXX010101000" Or RfcTextBox.Text.Trim = "XAXX010101000" Then
+                tipoPersona = "E"
+            End If
+
+            Dim validacion As String = "SI"
+            'valida RFC
+            If RfcTextBox.Text <> String.Empty Then
+                If Regex.IsMatch(RfcTextBox.Text.Trim, "^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$") = False Then
+                    MsgBox("Estructura del RFC cincorrecta.", MsgBoxStyle.Information, "")
+                    validacion = "NO"
+                    Exit Sub
+                End If
+            End If
+
+            'valida CURP
+            If CurpTextBox.Text.Trim <> String.Empty Then
+                If Regex.IsMatch(CurpTextBox.Text.Trim, "^([a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2})$") = False Then
+                    MsgBox("Estructura de la clave CURP incorrecta.", MsgBoxStyle.Information, "")
+                    validacion = "NO"
+                    Exit Sub
+                End If
+            End If
+
+            If validacion = "SI" Then
+                If CDec(CXP_ProveedoresTableAdapter.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim)) = 0 Then
                     If cmbAutorizado.SelectedValue = "AUTORIZADO" Then
                         If tableAdapterDocumentacionProv.NoDoctosOblig_ScalarQuery(tipoPersona) <= tableAdapterProveedorArch.noDocOblig_ScalarQuery(IdProveedorTextBox.Text.Trim) Then
                             tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(16, CXP_ProveedoresBindingSource.Current("idProveedor"))
@@ -209,41 +176,39 @@ Public Class frmContProveedoresClientes
                             CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
 
                             notificaAutorizacion()
-                            Me.Validate()
-                            Me.CXP_ProveedoresBindingSource.EndEdit()
-                            Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-                            noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
 
+                            taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+
+                            'Me.Validate()
+                            'Me.CXP_ProveedoresBindingSource.EndEdit()
+                            'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                            noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
 
                         Else
                             MsgBox("El proveedor no cuenta con la documentación necesaria para ser autorizado.", MsgBoxStyle.Information, "")
-                            cmbAutorizado.SelectedValue = "EN PROCESO"
                         End If
                     ElseIf cmbAutorizado.SelectedValue = "RECHAZADO" Then
                         CXP_ProveedoresBindingSource.Current("motivoRechazo") = InputBox("Motivo de rechazo: ")
                         notificaRechazo(CXP_ProveedoresBindingSource.Current("motivoRechazo"))
                         tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(20, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
                         tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(15, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
-                        Me.Validate()
-                        Me.CXP_ProveedoresBindingSource.EndEdit()
-                        Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+
+                        taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+                        'Me.Validate()
+                        'Me.CXP_ProveedoresBindingSource.EndEdit()
+                        'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
                         noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
 
 
                     Else
-                        Me.Validate()
-                        Me.CXP_ProveedoresBindingSource.EndEdit()
-                        Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                        taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+                        'Me.Validate()
+                        'Me.CXP_ProveedoresBindingSource.EndEdit()
+                        'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
                         noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
                     End If
                 Else
-                    If IdProveedorTextBox.Text.Trim = "-1" Then
-                        MsgBox("El proveedor: " & RazonSocialTextBox.Text.Trim & " ya existe.")
-                        Dim index As Integer = CXP_ProveedoresBindingSource.Find("rfc", RfcTextBox.Text.Trim)
-                        CXP_ProveedoresBindingSource.CancelEdit()
-                        CXP_ProveedoresBindingSource.Position = index
-                        CXP_ProveedoresBindingSource.EndEdit()
-                    Else
+                    If RfcTextBox.Text.Trim = "XAXX010101000" Or RfcTextBox.Text.Trim = "XAXX010101000" Then
                         If cmbAutorizado.SelectedValue = "AUTORIZADO" Then
                             If tableAdapterDocumentacionProv.NoDoctosOblig_ScalarQuery(tipoPersona) <= tableAdapterProveedorArch.noDocOblig_ScalarQuery(IdProveedorTextBox.Text.Trim) Then
                                 tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(16, CXP_ProveedoresBindingSource.Current("idProveedor"))
@@ -252,13 +217,12 @@ Public Class frmContProveedoresClientes
                                 CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
 
                                 notificaAutorizacion()
-                                Me.Validate()
-                                Me.CXP_ProveedoresBindingSource.EndEdit()
-                                Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-                                Try
-                                    noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
-                                Catch
-                                End Try
+                                taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+                                'Me.Validate()
+                                'Me.CXP_ProveedoresBindingSource.EndEdit()
+                                'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                                noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
+
 
                             Else
                                 MsgBox("El proveedor no cuenta con la documentación necesaria para ser autorizado.", MsgBoxStyle.Information, "")
@@ -269,28 +233,83 @@ Public Class frmContProveedoresClientes
                             notificaRechazo(CXP_ProveedoresBindingSource.Current("motivoRechazo"))
                             tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(20, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
                             tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(15, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
-                            Me.Validate()
-                            Me.CXP_ProveedoresBindingSource.EndEdit()
-                            Me.TableAdapterManager.UpdateAll(Me.DsProduction)
-                            Try
-                                noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
-                            Catch
-                            End Try
-
-                        Else
-
-                            Me.Validate()
-                            Me.CXP_ProveedoresBindingSource.EndEdit()
-                            Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                            'Me.Validate()
+                            'Me.CXP_ProveedoresBindingSource.EndEdit()
+                            'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                            taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
                             noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
 
+
+                        Else
+                            'Me.Validate()
+                            'Me.CXP_ProveedoresBindingSource.EndEdit()
+                            'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                            taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+                            noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
+                        End If
+                    Else
+                        If IdProveedorTextBox.Text.Trim = "-1" Then
+                            MsgBox("El proveedor: " & RazonSocialTextBox.Text.Trim & " ya existe.")
+                            Dim index As Integer = CXP_ProveedoresBindingSource.Find("rfc", RfcTextBox.Text.Trim)
+                            CXP_ProveedoresBindingSource.CancelEdit()
+                            CXP_ProveedoresBindingSource.Position = index
+                            CXP_ProveedoresBindingSource.EndEdit()
+                        Else
+                            If cmbAutorizado.SelectedValue = "AUTORIZADO" Then
+                                If tableAdapterDocumentacionProv.NoDoctosOblig_ScalarQuery(tipoPersona) <= tableAdapterProveedorArch.noDocOblig_ScalarQuery(IdProveedorTextBox.Text.Trim) Then
+                                    tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(16, CXP_ProveedoresBindingSource.Current("idProveedor"))
+                                    tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(11, CXP_ProveedoresBindingSource.Current("idProveedor"))
+                                    CXP_ProveedoresBindingSource.Current("autorizaP1") = varGlobal_NombreUsuario
+                                    CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
+
+                                    notificaAutorizacion()
+                                    'Me.Validate()
+                                    'Me.CXP_ProveedoresBindingSource.EndEdit()
+                                    'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                                    taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+                                    Try
+                                        noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
+                                    Catch
+                                    End Try
+
+                                Else
+                                    MsgBox("El proveedor no cuenta con la documentación necesaria para ser autorizado.", MsgBoxStyle.Information, "")
+                                    cmbAutorizado.SelectedValue = "EN PROCESO"
+                                End If
+                            ElseIf cmbAutorizado.SelectedValue = "RECHAZADO" Then
+                                CXP_ProveedoresBindingSource.Current("motivoRechazo") = InputBox("Motivo de rechazo: ")
+                                notificaRechazo(CXP_ProveedoresBindingSource.Current("motivoRechazo"))
+                                tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(20, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
+                                tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(15, CDec(CXP_ProveedoresBindingSource.Current("idProveedor")))
+                                'Me.Validate()
+                                'Me.CXP_ProveedoresBindingSource.EndEdit()
+                                'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                                taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+                                Try
+                                    noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
+                                Catch
+                                End Try
+
+                            Else
+
+                                'Me.Validate()
+                                'Me.CXP_ProveedoresBindingSource.EndEdit()
+                                'Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+                                taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
+
+                                noProveedor = CDec(CXP_ProveedoresBindingSource.Current("idProveedor"))
+
+                            End If
                         End If
                     End If
                 End If
             End If
-        End If
+            Me.CXP_ProveedoresTableAdapter.Fill(Me.DsProduction.CXP_Proveedores)
+            actualizar()
 
-        actualizar()
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
     End Sub
 
     Private Sub btnDocumentacion_Click(sender As Object, e As EventArgs) Handles btnDocumentacion.Click
@@ -326,8 +345,9 @@ Public Class frmContProveedoresClientes
     End Sub
 
     Private Sub notificaAutorizacion()
-        Dim tableAdapterGenCorreos As New dsProductionTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
-        Dim mensaje As String = "<html><body><font size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" &
+        Try
+            Dim tableAdapterGenCorreos As New dsProductionTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
+            Dim mensaje As String = "<html><body><font size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" &
                        "<h1><font size=3 align" & Chr(34) & "center" & Chr(34) & ">" & "Estimado (a), le notificamos que se ha AUTORIZADO la solicitud de alta del proveedor con los siguientes datos: </font></h1>" &
                         "<table  align=" & Chr(34) & "center" & Chr(34) & " border=1 cellspacing=0 cellpadding=2>" &
                        "<tr>" &
@@ -340,14 +360,26 @@ Public Class frmContProveedoresClientes
                            "</tr></table><HR width=20%>" &
                       "<tfoot><tr><font align=" & Chr(34) & "center" & Chr(34) & "size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" & "</font></tr></tfoot>" &
                         "</body></html>"
-        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", CXP_ProveedoresBindingSource.Current("usuarioSolicita"), "Autorización de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
-        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", "Autorización de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
-        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "lgarcia@finagil.com.mx", "Autorización de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", UsuarioSolicitaTextBox.Text.Trim, "Autorización de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", "Autorización de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "lgarcia@finagil.com.mx", "Autorización de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+
+            If UsuarioSolicitaTextBox.Text.Trim = "atorres@finagil.com.mx" Or UsuarioSolicitaTextBox.Text.Trim = "gisvazquez@finagil.com.mx" Then
+                tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "lgarcia@finagil.com.mx", "Autorización de alta de proveedor (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "")
+                tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "vcruz@finagil.com.mx", "Autorización de alta de proveedor (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "")
+                tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "epineda@finagil.com.mx", "Autorización de alta de proveedor (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "")
+                tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", "Autorización de alta de proveedor (Tesorería)", mensaje, False, Date.Now.ToLongDateString, "")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al enviar correo de autorización" & ex.ToString)
+        End Try
     End Sub
 
     Private Sub notificaRechazo(motivoRechazo As String)
-        Dim tableAdapterGenCorreos As New dsProductionTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
-        Dim mensaje As String = "<html><body><font size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" &
+        Try
+            Dim tableAdapterGenCorreos As New dsProductionTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
+            Dim mensaje As String = "<html><body><font size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" &
                     "<h1><font size=3 align" & Chr(34) & "center" & Chr(34) & ">" & "Estimado (a), le notificamos que se ha RECHAZADO la solicitud de alta del proveedor con los siguientes datos: </font></h1>" &
                      "<table  align=" & Chr(34) & "center" & Chr(34) & " border=1 cellspacing=0 cellpadding=2>" &
                     "<tr>" &
@@ -362,9 +394,12 @@ Public Class frmContProveedoresClientes
                         "</tr></table><HR width=20%>" &
                    "<tfoot><tr><font align=" & Chr(34) & "center" & Chr(34) & "size=3 face=" & Chr(34) & "Arial" & Chr(34) & ">" & "</font></tr></tfoot>" &
                      "</body></html>"
-        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", CXP_ProveedoresBindingSource.Current("usuarioSolicita"), "Rechazo de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
-        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", "Rechazo de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
-        tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "lgarcia@finagil.com.mx", "Rechazo de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", UsuarioSolicitaTextBox.Text.Trim, "Rechazo de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "viapolo@finagil.com.mx", "Rechazo de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+            tableAdapterGenCorreos.Insert("AltaProveedores@finagil.com.mx", "lgarcia@finagil.com.mx", "Rechazo de alta de proveedor", mensaje, False, Date.Now.ToLongDateString, "")
+        Catch ex As Exception
+            MsgBox("Error al enviar correo de rechaco" & ex.ToString)
+        End Try
     End Sub
 
     Private Sub btnBuscarCmbs_Click(sender As Object, e As EventArgs) Handles btnBuscarCmbs.Click
