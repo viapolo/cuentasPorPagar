@@ -431,10 +431,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTesoreria.xsd</DependentUpon>
     </Compile>
+    <Compile Include="tesoreria\frmInversiones.Designer.vb">
+      <DependentUpon>frmInversiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmInversiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tesoreria\frmPagoFondeos.Designer.vb">
+      <DependentUpon>frmPagoFondeos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmPagoFondeos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tesoreria\frmTesSolicitudesDePagoCheque.Designer.vb">
+      <DependentUpon>frmTesSolicitudesDePagoCheque.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmTesSolicitudesDePagoCheque.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="tesoreria\frmTesSolicitudesDePago.Designer.vb">
       <DependentUpon>frmTesSolicitudesDePago.vb</DependentUpon>
     </Compile>
     <Compile Include="tesoreria\frmTesSolicitudesDePago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tesoreria\frmTraspasos.Designer.vb">
+      <DependentUpon>frmTraspasos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmTraspasos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="utilerias.vb" />
@@ -588,6 +612,9 @@
     <EmbeddedResource Include="contabilidad\rptPolizaDiario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmTesSolicitudesDePagoCheque.resx">
+      <DependentUpon>frmTesSolicitudesDePagoCheque.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="tesoreria\frmTesSolicitudesDePago.resx">
       <DependentUpon>frmTesSolicitudesDePago.vb</DependentUpon>

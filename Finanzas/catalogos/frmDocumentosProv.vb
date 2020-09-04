@@ -3,24 +3,28 @@
     Public tipoPersonaParaDocumentosProv As String
     Dim conFormDoc As Integer
     Private Sub frmDocumentosProv_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Estatus2' Puede moverla o quitarla según sea necesario.
-        Me.CXP_Estatus2TableAdapter.Fill(Me.DsProduction.CXP_Estatus2)
-        If tipoPersonaParaDocumentosProv = "M" Then
-            Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "M")
-        ElseIf tipoPersonaParaDocumentosProv = "F" Then
-            Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
-        ElseIf tipoPersonaParaDocumentosProv = "E" Then
-            Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "E")
-        ElseIf tipoPersonaParaDocumentosProv = "C" Then
-            Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
-        End If
-        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ProveedoresArch' Puede moverla o quitarla según sea necesario.
-        Me.CXP_ProveedoresArchTableAdapter.Fill(Me.DsProduction.CXP_ProveedoresArch)
-        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ProveedoresArch1' Puede moverla o quitarla según sea necesario.
+        Try
+            'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Estatus2' Puede moverla o quitarla según sea necesario.
+            Me.CXP_Estatus2TableAdapter.Fill(Me.DsProduction.CXP_Estatus2)
+            If tipoPersonaParaDocumentosProv = "M" Then
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "M")
+            ElseIf tipoPersonaParaDocumentosProv = "F" Then
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
+            ElseIf tipoPersonaParaDocumentosProv = "E" Then
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "E")
+            ElseIf tipoPersonaParaDocumentosProv = "C" Then
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
+            End If
+            'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ProveedoresArch' Puede moverla o quitarla según sea necesario.
+            Me.CXP_ProveedoresArchTableAdapter.Fill(Me.DsProduction.CXP_ProveedoresArch)
+            'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_ProveedoresArch1' Puede moverla o quitarla según sea necesario.
 
-        CXP_ProveedoresArchBindingSource.Filter = "idProveedor = '" & noProveedorParaDocumentosProv & "'"
+            CXP_ProveedoresArchBindingSource.Filter = "idProveedor = '" & noProveedorParaDocumentosProv & "'"
 
-        actualizaGridView()
+            actualizaGridView()
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Information, "")
+        End Try
     End Sub
 
 

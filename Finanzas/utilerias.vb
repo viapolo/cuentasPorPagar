@@ -124,4 +124,56 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         Next i
         Return sBuilder.ToString()
     End Function
+
+    Public Function Stuff(ByVal Cadena As String, ByVal Lado As String, ByVal Llenarcon As String, ByVal Longitud As Integer) As String
+
+        Dim cCadenaAuxiliar As String
+        Dim nVeces As Integer
+        Dim i As Integer
+        nVeces = Longitud - Val(Len(Cadena))
+        cCadenaAuxiliar = ""
+        For i = 1 To nVeces
+            cCadenaAuxiliar = cCadenaAuxiliar & Llenarcon
+        Next
+        If Lado = "D" Then
+            Stuff = Cadena & cCadenaAuxiliar
+        Else
+            Stuff = cCadenaAuxiliar & Cadena
+        End If
+    End Function
+
+    Public Function tokenReferencia(ByVal cadena As String, ByVal lado As String, ByVal longitud As Integer, ByVal longitudMaxima As Integer) As String
+        Dim aCadenaAuxiliar() As String
+        Dim cCadenaAuxiliar As String = ""
+        aCadenaAuxiliar = cadena.Trim.Split(" ")
+
+        If cadena.Trim.Length >= longitudMaxima Then
+
+            For i As Integer = 0 To aCadenaAuxiliar.Length - 1
+
+                If aCadenaAuxiliar(i).Length > longitud Then
+                    If lado = "D" Then
+                        cCadenaAuxiliar += aCadenaAuxiliar(i).Substring(0, longitud) & " "
+                    Else
+                        cCadenaAuxiliar += aCadenaAuxiliar(i).Substring(aCadenaAuxiliar(i).Length - longitud, longitud) & " "
+                    End If
+                Else
+                    If lado = "D" Then
+                        cCadenaAuxiliar += aCadenaAuxiliar(i) & " "
+                    Else
+                        cCadenaAuxiliar += aCadenaAuxiliar(i) & " "
+                    End If
+                End If
+
+            Next
+            If cCadenaAuxiliar.Length <= longitudMaxima Then
+                tokenReferencia = cCadenaAuxiliar.Trim
+            Else
+                tokenReferencia = cCadenaAuxiliar.Substring(0, longitudMaxima).Trim
+            End If
+        Else
+            tokenReferencia = cadena.Trim
+        End If
+    End Function
+
 End Module

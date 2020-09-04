@@ -330,13 +330,8 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiariosToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmDiario.MdiParent = Me
-        frmDiario.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+
     End Sub
 
     Private Sub TipoDeDocumentoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TipoDeDocumentoToolStripMenuItem1.Click
@@ -348,13 +343,8 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub FacturasElectrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasElectrónicasToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmSolicitudesDePago.MdiParent = Me
-        frmSolicitudesDePago.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub FacturasElectrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+
     End Sub
 
     Private Sub SucursalesToolStripMenuItem1_Click(sender As Object, e As EventArgs)
@@ -397,42 +387,22 @@ Public Class mdicuentasPorPagar
         lfrInicio.Show()
     End Sub
 
-    Private Sub GastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GastosToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        fmrPolizasDiarioSCuenta.MdiParent = Me
-        fmrPolizasDiarioSCuenta.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub GastosToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+
     End Sub
 
 
 
-    Private Sub ComprobaciónDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprobaciónDeGastosToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmCompGstPDF.MdiParent = Me
-        frmCompGstPDF.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub ComprobaciónDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+
     End Sub
 
-    Private Sub ConComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConComprobanteToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmCCPDF.MdiParent = Me
-        frmCCPDF.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub ConComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+
     End Sub
 
-    Private Sub SinComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SinComprobanteToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmSCPDF.MdiParent = Me
-        frmSCPDF.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub SinComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+
     End Sub
 
     Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldosPorUsuarioToolStripMenuItem.Click
@@ -503,6 +473,98 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmGeneraPdfExpediente.MdiParent = Me
         frmGeneraPdfExpediente.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+
+    Private Sub TraspasosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraspasosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmTraspasos.MdiParent = Me
+        frmTraspasos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub PagoDeFondeosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagoDeFondeosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmPagoFondeos.MdiParent = Me
+        frmPagoFondeos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub InversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmInversiones.MdiParent = Me
+        frmInversiones.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub FacturasElctrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasElctrónicasToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSolicitudesDePago.MdiParent = Me
+        frmSolicitudesDePago.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub DiariosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DiariosToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmDiario.MdiParent = Me
+        frmDiario.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub GastosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GastosToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        fmrPolizasDiarioSCuenta.MdiParent = Me
+        fmrPolizasDiarioSCuenta.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ComprobaciónDeGastosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ComprobaciónDeGastosToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCompGstPDF.MdiParent = Me
+        frmCompGstPDF.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SolicitudesConComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitudesConComprobanteToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCCPDF.MdiParent = Me
+        frmCCPDF.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SolicitudesSinComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitudesSinComprobanteToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmSCPDF.MdiParent = Me
+        frmSCPDF.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+
+    Private Sub PagosConChequeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagosConChequeToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmTesSolicitudesDePagoChe.MdiParent = Me
+        frmTesSolicitudesDePagoChe.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

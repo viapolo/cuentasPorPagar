@@ -313,35 +313,40 @@ Public Class frmContProveedoresClientes
     End Sub
 
     Private Sub btnDocumentacion_Click(sender As Object, e As EventArgs) Handles btnDocumentacion.Click
-        Dim taUsuarios As New dsSeguridadTableAdapters.USUARIOTableAdapter
-        Dim taProveedores As New dsProductionTableAdapters.CXP_ProveedoresTableAdapter
-        Dim tipoPersona As String
+        Try
+            Dim taUsuarios As New dsSeguridadTableAdapters.USUARIOTableAdapter
+            Dim taProveedores As New dsProductionTableAdapters.CXP_ProveedoresTableAdapter
+            Dim tipoPersona As String
 
-        If taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim) = "NE" Or IsNothing(taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim)) Then
-            If taProveedores.ObtClientProv_ScalarQuery(RfcTextBox.Text.Trim) = False Then
-                If RfcTextBox.Text.Trim.Length = 12 Then
-                    tipoPersona = "M"
-                ElseIf RfcTextBox.Text.Trim.Length = 13 Then
-                    tipoPersona = "F"
+
+            If taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim) = "NE" Or IsNothing(taUsuarios.ExisteRfc_ScalarQuery(RfcTextBox.Text.Trim)) Then
+                If taProveedores.ObtClientProv_ScalarQuery(RfcTextBox.Text.Trim) = False Then
+                    If RfcTextBox.Text.Trim.Length = 12 Then
+                        tipoPersona = "M"
+                    ElseIf RfcTextBox.Text.Trim.Length = 13 Then
+                        tipoPersona = "F"
+                    End If
+                Else
+                    tipoPersona = "C"
                 End If
             Else
-                tipoPersona = "C"
-            End If
-        Else
                 tipoPersona = "E"
-        End If
+            End If
 
-        Dim frmDocumentacion As New frmDocumentosProv
-        Dim mdiDocumentacion As New mdicuentasPorPagar
-        mdiDocumentacion = MdiParent
-        Me.Cursor = Cursors.WaitCursor
-        Me.Enabled = False
-        frmDocumentacion.MdiParent = mdiDocumentacion
-        noProveedor = CXP_ProveedoresBindingSource.Current("idProveedor")
-        frmDocumentacion.noProveedorParaDocumentosProv = noProveedor
-        frmDocumentacion.tipoPersonaParaDocumentosProv = tipoPersona 'RfcTextBox.Text.Length
-        frmDocumentacion.Show()
-        Me.Cursor = Cursors.Default
+            Dim frmDocumentacion As New frmDocumentosProv
+            Dim mdiDocumentacion As New mdicuentasPorPagar
+            mdiDocumentacion = MdiParent
+            Me.Cursor = Cursors.WaitCursor
+            Me.Enabled = False
+            frmDocumentacion.MdiParent = mdiDocumentacion
+            noProveedor = CXP_ProveedoresBindingSource.Current("idProveedor")
+            frmDocumentacion.noProveedorParaDocumentosProv = noProveedor
+            frmDocumentacion.tipoPersonaParaDocumentosProv = tipoPersona 'RfcTextBox.Text.Length
+            frmDocumentacion.Show()
+            Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
     End Sub
 
     Private Sub notificaAutorizacion()

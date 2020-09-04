@@ -101,25 +101,5 @@ Public Class frmGenPolizas
         End Try
     End Sub
 
-    Public Function Stuff(ByVal Cadena As String, ByVal Lado As String, ByVal Llenarcon As String, ByVal Longitud As Integer) As String
 
-        ' Declaración de variables de datos
-
-        Dim cCadenaAuxiliar As String
-        Dim nVeces As Integer
-        Dim i As Integer
-
-        nVeces = Longitud - Val(Len(Cadena))
-
-        cCadenaAuxiliar = ""
-        For i = 1 To nVeces
-            cCadenaAuxiliar = cCadenaAuxiliar & Llenarcon
-        Next
-        If Lado = "D" Then
-            Stuff = Cadena & cCadenaAuxiliar
-        Else
-            Stuff = cCadenaAuxiliar & Cadena
-        End If
-
-    End Function
 End Class
