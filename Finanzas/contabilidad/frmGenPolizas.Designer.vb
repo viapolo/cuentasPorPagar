@@ -24,41 +24,51 @@ Partial Class frmGenPolizas
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.btnProcesar = New System.Windows.Forms.Button()
-        Me.dtpFechaProceso = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaInicial = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Contpaq = New cuentasPorPagar.contpaq()
         Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.Vw_CXP_PolizasEncBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Vw_CXP_PolizasEncTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_PolizasEncTableAdapter()
+        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Me.Vw_CXP_PolizasEncTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_PolizasEncTableAdapter()
+        Me.dtpFechaFinal = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tsBarProceso = New System.Windows.Forms.ToolStripProgressBar()
+        Me.sfdPolizas = New System.Windows.Forms.SaveFileDialog()
+        Me.btnSalir = New System.Windows.Forms.Button()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnProcesar
         '
-        Me.btnProcesar.Location = New System.Drawing.Point(229, 16)
+        Me.btnProcesar.Location = New System.Drawing.Point(299, 19)
         Me.btnProcesar.Name = "btnProcesar"
         Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
         Me.btnProcesar.TabIndex = 0
         Me.btnProcesar.Text = "Procesar"
         Me.btnProcesar.UseVisualStyleBackColor = True
         '
-        'dtpFechaProceso
+        'dtpFechaInicial
         '
-        Me.dtpFechaProceso.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
-        Me.dtpFechaProceso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaProceso.Location = New System.Drawing.Point(58, 15)
-        Me.dtpFechaProceso.Name = "dtpFechaProceso"
-        Me.dtpFechaProceso.Size = New System.Drawing.Size(105, 20)
-        Me.dtpFechaProceso.TabIndex = 1
+        Me.dtpFechaInicial.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.dtpFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaInicial.Location = New System.Drawing.Point(52, 20)
+        Me.dtpFechaInicial.Name = "dtpFechaInicial"
+        Me.dtpFechaInicial.Size = New System.Drawing.Size(105, 20)
+        Me.dtpFechaInicial.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 21)
+        Me.Label1.Location = New System.Drawing.Point(6, 26)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(40, 13)
         Me.Label1.TabIndex = 2
@@ -81,11 +91,12 @@ Partial Class frmGenPolizas
         'Vw_CXP_PolizasEncBindingSource
         '
         Me.Vw_CXP_PolizasEncBindingSource.DataMember = "Vw_CXP_PolizasEnc"
-        Me.Vw_CXP_PolizasEncBindingSource.DataSource = Me.DsProduction
+        Me.Vw_CXP_PolizasEncBindingSource.DataSource = Me.DsContabilidad
         '
-        'Vw_CXP_PolizasEncTableAdapter
+        'DsContabilidad
         '
-        Me.Vw_CXP_PolizasEncTableAdapter.ClearBeforeFill = True
+        Me.DsContabilidad.DataSetName = "dsContabilidad"
+        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TableAdapterManager
         '
@@ -133,32 +144,93 @@ Partial Class frmGenPolizas
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'Vw_CXP_PolizasEncTableAdapter
+        '
+        Me.Vw_CXP_PolizasEncTableAdapter.ClearBeforeFill = True
+        '
+        'dtpFechaFinal
+        '
+        Me.dtpFechaFinal.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaFinal.Location = New System.Drawing.Point(172, 20)
+        Me.dtpFechaFinal.Name = "dtpFechaFinal"
+        Me.dtpFechaFinal.Size = New System.Drawing.Size(105, 20)
+        Me.dtpFechaFinal.TabIndex = 3
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.dtpFechaInicial)
+        Me.GroupBox1.Controls.Add(Me.dtpFechaFinal)
+        Me.GroupBox1.Controls.Add(Me.btnProcesar)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(392, 55)
+        Me.GroupBox1.TabIndex = 4
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Pólizas de diario:"
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsBarProceso})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 176)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(418, 22)
+        Me.StatusStrip1.TabIndex = 5
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'tsBarProceso
+        '
+        Me.tsBarProceso.Name = "tsBarProceso"
+        Me.tsBarProceso.Size = New System.Drawing.Size(100, 16)
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(329, 150)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 6
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'frmGenPolizas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(579, 198)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.dtpFechaProceso)
-        Me.Controls.Add(Me.btnProcesar)
+        Me.ClientSize = New System.Drawing.Size(418, 198)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmGenPolizas"
         Me.Text = "Generar Pólizas Contables"
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents btnProcesar As Button
-    Friend WithEvents dtpFechaProceso As DateTimePicker
+    Friend WithEvents dtpFechaInicial As DateTimePicker
     Friend WithEvents Label1 As Label
     Friend WithEvents DsProduction As dsProduction
     Friend WithEvents Vw_CXP_PolizasEncBindingSource As BindingSource
-    Friend WithEvents Vw_CXP_PolizasEncTableAdapter As dsProductionTableAdapters.Vw_CXP_PolizasEncTableAdapter
     Friend WithEvents TableAdapterManager As dsProductionTableAdapters.TableAdapterManager
     Friend WithEvents Contpaq As contpaq
     Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
+    Friend WithEvents DsContabilidad As dsContabilidad
+    Friend WithEvents Vw_CXP_PolizasEncTableAdapter As dsContabilidadTableAdapters.Vw_CXP_PolizasEncTableAdapter
+    Friend WithEvents dtpFechaFinal As DateTimePicker
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents tsBarProceso As ToolStripProgressBar
+    Friend WithEvents sfdPolizas As SaveFileDialog
+    Friend WithEvents btnSalir As Button
 End Class

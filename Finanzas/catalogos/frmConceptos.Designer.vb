@@ -105,6 +105,7 @@ Partial Class frmConceptos
         Me.DataGridViewLinkColumn1 = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbImpuestosP = New System.Windows.Forms.ComboBox()
+        Me.CXPImpuestoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnAgregarP = New System.Windows.Forms.Button()
         Me.cmbCtaBancaria = New System.Windows.Forms.ComboBox()
         Me.CXPEstatus2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -145,6 +146,7 @@ Partial Class frmConceptos
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPImpuestoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEstatus2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -839,7 +841,7 @@ Partial Class frmConceptos
         '
         'cmbImpuestosP
         '
-        Me.cmbImpuestosP.DataSource = Me.CXPImpuestoBindingSource
+        Me.cmbImpuestosP.DataSource = Me.CXPImpuestoBindingSource1
         Me.cmbImpuestosP.DisplayMember = "descripcionLarga"
         Me.cmbImpuestosP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbImpuestosP.FormattingEnabled = True
@@ -848,6 +850,11 @@ Partial Class frmConceptos
         Me.cmbImpuestosP.Size = New System.Drawing.Size(327, 21)
         Me.cmbImpuestosP.TabIndex = 4
         Me.cmbImpuestosP.ValueMember = "idImpuesto"
+        '
+        'CXPImpuestoBindingSource1
+        '
+        Me.CXPImpuestoBindingSource1.DataMember = "CXP_Impuesto"
+        Me.CXPImpuestoBindingSource1.DataSource = Me.DsProduction
         '
         'btnAgregarP
         '
@@ -948,6 +955,7 @@ Partial Class frmConceptos
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.dgvImpuestosP, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPImpuestoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPEstatus2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1035,4 +1043,5 @@ Partial Class frmConceptos
     Friend WithEvents DsProduction4 As dsProduction
     Friend WithEvents CXPEstatus2BindingSource As BindingSource
     Friend WithEvents CXP_Estatus2TableAdapter As dsProductionTableAdapters.CXP_Estatus2TableAdapter
+    Friend WithEvents CXPImpuestoBindingSource1 As BindingSource
 End Class

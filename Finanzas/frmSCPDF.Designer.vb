@@ -23,16 +23,19 @@ Partial Class frmSCPDF
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.VwCXPMisSolicitudesSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.Vw_CXP_MisSolicitudesSCTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisSolicitudesSCTableAdapter()
         Me.FolioSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.FechaSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalPagadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RazonSocialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VwCXPMisSolicitudesSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.Vw_CXP_MisSolicitudesSCTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisSolicitudesSCTableAdapter()
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCXPMisSolicitudesSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,25 +49,11 @@ Partial Class frmSCPDF
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FolioSolicitudDataGridViewTextBoxColumn, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.TotalPagadoDataGridViewTextBoxColumn, Me.RazonSocialDataGridViewTextBoxColumn, Me.UsuarioDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.VwCXPMisSolicitudesSCBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 23)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 37)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(631, 306)
+        Me.DataGridView1.Size = New System.Drawing.Size(631, 272)
         Me.DataGridView1.TabIndex = 0
-        '
-        'VwCXPMisSolicitudesSCBindingSource
-        '
-        Me.VwCXPMisSolicitudesSCBindingSource.DataMember = "Vw_CXP_MisSolicitudesSC"
-        Me.VwCXPMisSolicitudesSCBindingSource.DataSource = Me.DsProduction
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Vw_CXP_MisSolicitudesSCTableAdapter
-        '
-        Me.Vw_CXP_MisSolicitudesSCTableAdapter.ClearBeforeFill = True
         '
         'FolioSolicitudDataGridViewTextBoxColumn
         '
@@ -85,10 +74,10 @@ Partial Class frmSCPDF
         'TotalPagadoDataGridViewTextBoxColumn
         '
         Me.TotalPagadoDataGridViewTextBoxColumn.DataPropertyName = "totalPagado"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.TotalPagadoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.TotalPagadoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.TotalPagadoDataGridViewTextBoxColumn.HeaderText = "Total Pagado"
         Me.TotalPagadoDataGridViewTextBoxColumn.Name = "TotalPagadoDataGridViewTextBoxColumn"
         Me.TotalPagadoDataGridViewTextBoxColumn.ReadOnly = True
@@ -108,11 +97,54 @@ Partial Class frmSCPDF
         Me.UsuarioDataGridViewTextBoxColumn.Name = "UsuarioDataGridViewTextBoxColumn"
         Me.UsuarioDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'VwCXPMisSolicitudesSCBindingSource
+        '
+        Me.VwCXPMisSolicitudesSCBindingSource.DataMember = "Vw_CXP_MisSolicitudesSC"
+        Me.VwCXPMisSolicitudesSCBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_CXP_MisSolicitudesSCTableAdapter
+        '
+        Me.Vw_CXP_MisSolicitudesSCTableAdapter.ClearBeforeFill = True
+        '
+        'txtBuscar
+        '
+        Me.txtBuscar.Location = New System.Drawing.Point(12, 11)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(199, 20)
+        Me.txtBuscar.TabIndex = 1
+        Me.txtBuscar.Text = "Buscar"
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(226, 8)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.TabIndex = 2
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(568, 315)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 3
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'frmSCPDF
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(664, 345)
+        Me.ClientSize = New System.Drawing.Size(653, 345)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.DataGridView1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmSCPDF"
@@ -121,6 +153,7 @@ Partial Class frmSCPDF
         CType(Me.VwCXPMisSolicitudesSCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -133,4 +166,7 @@ Partial Class frmSCPDF
     Friend WithEvents TotalPagadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RazonSocialDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents UsuarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnSalir As Button
 End Class

@@ -29,5 +29,11 @@
     <Setting Name="fileNas" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\server-nas\TMPFINAGIL\</Value>
     </Setting>
+    <Setting Name="addArfin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\ARFIN\Todos\Procesados\</Value>
+    </Setting>
+    <Setting Name="addFinagil" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\Todos\Procesados\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

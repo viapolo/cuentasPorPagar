@@ -30,10 +30,10 @@ Partial Class frmVerPdf
         'AxAcroPDF1
         '
         Me.AxAcroPDF1.Enabled = True
-        Me.AxAcroPDF1.Location = New System.Drawing.Point(36, 12)
+        Me.AxAcroPDF1.Location = New System.Drawing.Point(12, 12)
         Me.AxAcroPDF1.Name = "AxAcroPDF1"
         Me.AxAcroPDF1.OcxState = CType(resources.GetObject("AxAcroPDF1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxAcroPDF1.Size = New System.Drawing.Size(713, 389)
+        Me.AxAcroPDF1.Size = New System.Drawing.Size(653, 352)
         Me.AxAcroPDF1.TabIndex = 0
         '
         'frmVerPdf

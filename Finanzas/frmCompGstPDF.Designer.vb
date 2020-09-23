@@ -23,11 +23,8 @@ Partial Class frmCompGstPDF
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.VwCXPMisComprobacionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Vw_CXP_MisComprobacionesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisComprobacionesTableAdapter()
         Me.IdFolioSolicitudDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.RazonSocialDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DecripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,9 +33,15 @@ Partial Class frmCompGstPDF
         Me.TotalPagadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FolioComprobacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VwCXPMisComprobacionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.Vw_CXP_MisComprobacionesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisComprobacionesTableAdapter()
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCXPMisComprobacionesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -49,22 +52,8 @@ Partial Class frmCompGstPDF
         Me.DataGridView1.DataSource = Me.VwCXPMisComprobacionesBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 33)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(921, 310)
+        Me.DataGridView1.Size = New System.Drawing.Size(921, 293)
         Me.DataGridView1.TabIndex = 0
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VwCXPMisComprobacionesBindingSource
-        '
-        Me.VwCXPMisComprobacionesBindingSource.DataMember = "Vw_CXP_MisComprobaciones"
-        Me.VwCXPMisComprobacionesBindingSource.DataSource = Me.DsProduction
-        '
-        'Vw_CXP_MisComprobacionesTableAdapter
-        '
-        Me.Vw_CXP_MisComprobacionesTableAdapter.ClearBeforeFill = True
         '
         'IdFolioSolicitudDataGridViewTextBoxColumn
         '
@@ -91,9 +80,9 @@ Partial Class frmCompGstPDF
         'ImpDepositadoDataGridViewTextBoxColumn
         '
         Me.ImpDepositadoDataGridViewTextBoxColumn.DataPropertyName = "impDepositado"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.ImpDepositadoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.ImpDepositadoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.ImpDepositadoDataGridViewTextBoxColumn.HeaderText = "Importe Depositado"
         Me.ImpDepositadoDataGridViewTextBoxColumn.Name = "ImpDepositadoDataGridViewTextBoxColumn"
         '
@@ -124,19 +113,63 @@ Partial Class frmCompGstPDF
         Me.UsuarioDataGridViewTextBoxColumn.HeaderText = "Usuario Emisor"
         Me.UsuarioDataGridViewTextBoxColumn.Name = "UsuarioDataGridViewTextBoxColumn"
         '
+        'VwCXPMisComprobacionesBindingSource
+        '
+        Me.VwCXPMisComprobacionesBindingSource.DataMember = "Vw_CXP_MisComprobaciones"
+        Me.VwCXPMisComprobacionesBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_CXP_MisComprobacionesTableAdapter
+        '
+        Me.Vw_CXP_MisComprobacionesTableAdapter.ClearBeforeFill = True
+        '
+        'txtBuscar
+        '
+        Me.txtBuscar.Location = New System.Drawing.Point(13, 7)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(230, 20)
+        Me.txtBuscar.TabIndex = 1
+        Me.txtBuscar.Text = "Buscar"
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(249, 5)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.TabIndex = 2
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(858, 332)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 3
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'frmCompGstPDF
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(945, 355)
+        Me.ClientSize = New System.Drawing.Size(945, 363)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.DataGridView1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmCompGstPDF"
         Me.Text = "Comprobación de Gastos"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCXPMisComprobacionesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -152,4 +185,7 @@ Partial Class frmCompGstPDF
     Friend WithEvents TotalPagadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FolioComprobacionDataGridViewTextBoxColumn As DataGridViewLinkColumn
     Friend WithEvents UsuarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnSalir As Button
 End Class

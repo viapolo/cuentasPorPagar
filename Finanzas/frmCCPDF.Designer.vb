@@ -33,6 +33,9 @@ Partial Class frmCCPDF
         Me.VwCXPMisSolicitudesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.Vw_CXP_MisSolicitudesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.Vw_CXP_MisSolicitudesTableAdapter()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCXPMisSolicitudesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,10 +49,10 @@ Partial Class frmCCPDF
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FolioSolicitudDataGridViewTextBoxColumn, Me.RazonSocialDataGridViewTextBoxColumn, Me.FechaSolicitudDataGridViewTextBoxColumn, Me.TotalPagadoDataGridViewTextBoxColumn, Me.usuario})
         Me.DataGridView1.DataSource = Me.VwCXPMisSolicitudesBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 31)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 40)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(728, 372)
+        Me.DataGridView1.Size = New System.Drawing.Size(728, 347)
         Me.DataGridView1.TabIndex = 0
         '
         'FolioSolicitudDataGridViewTextBoxColumn
@@ -107,11 +110,40 @@ Partial Class frmCCPDF
         '
         Me.Vw_CXP_MisSolicitudesTableAdapter.ClearBeforeFill = True
         '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(672, 393)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 1
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'txtBuscar
+        '
+        Me.txtBuscar.Location = New System.Drawing.Point(12, 12)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(219, 20)
+        Me.txtBuscar.TabIndex = 2
+        Me.txtBuscar.Text = "Buscar"
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(237, 10)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.TabIndex = 3
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
         'frmCCPDF
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(759, 425)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.txtBuscar)
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.DataGridView1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmCCPDF"
@@ -120,6 +152,7 @@ Partial Class frmCCPDF
         CType(Me.VwCXPMisSolicitudesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -132,4 +165,7 @@ Partial Class frmCCPDF
     Friend WithEvents FechaSolicitudDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TotalPagadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents usuario As DataGridViewTextBoxColumn
+    Friend WithEvents btnSalir As Button
+    Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents btnBuscar As Button
 End Class

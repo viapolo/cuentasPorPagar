@@ -98,6 +98,32 @@ Namespace My
                 Me("fileNas") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\ARFIN\Todos\Proces"& _ 
+            "ados\")>  _
+        Public Property addArfin() As String
+            Get
+                Return CType(Me("addArfin"),String)
+            End Get
+            Set
+                Me("addArfin") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\Todos\Proc"& _ 
+            "esados\")>  _
+        Public Property addFinagil() As String
+            Get
+                Return CType(Me("addFinagil"),String)
+            End Get
+            Set
+                Me("addFinagil") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

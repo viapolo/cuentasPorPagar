@@ -67,6 +67,12 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="itextsharp">
+      <HintPath>..\WindowsApp1\WindowsApp1\WindowsApp1\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>C:\Users\vicente-apolonio\Downloads\PdfSharp\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -205,6 +211,11 @@
     <Compile Include="CeldaPersonalizada.vb" />
     <Compile Include="ClaseHash.vb" />
     <Compile Include="ColumnaPersonalizada.vb" />
+    <Compile Include="configuracion\dsConfiguracion.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsConfiguracion.xsd</DependentUpon>
+    </Compile>
     <Compile Include="configuracion\frmAutorizaciones.Designer.vb">
       <DependentUpon>frmAutorizaciones.vb</DependentUpon>
     </Compile>
@@ -253,6 +264,12 @@
     <Compile Include="configuracion\frmTipoConcepto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="configuracion\frmTipoSolicitudes.Designer.vb">
+      <DependentUpon>frmTipoSolicitudes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuracion\frmTipoSolicitudes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="configuracion\frmUsuario.Designer.vb">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </Compile>
@@ -262,6 +279,9 @@
     <Compile Include="contabilidad\dsContabilidad.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>dsContabilidad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\dsContabilidad.vb">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmGeneraPdfExpediente.Designer.vb">
@@ -280,6 +300,12 @@
       <DependentUpon>frmPeridos.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmPeridos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmPolizasMvtos.Designer.vb">
+      <DependentUpon>frmPolizasMvtos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmPolizasMvtos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\rptPdfDocumentacion.vb">
@@ -431,6 +457,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTesoreria.xsd</DependentUpon>
     </Compile>
+    <Compile Include="tesoreria\frmDocumentosAdjuntos.Designer.vb">
+      <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmDocumentosAdjuntos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="tesoreria\frmInversiones.Designer.vb">
       <DependentUpon>frmInversiones.vb</DependentUpon>
     </Compile>
@@ -542,6 +574,9 @@
     <EmbeddedResource Include="configuracion\frmTipoConcepto.resx">
       <DependentUpon>frmTipoConcepto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="configuracion\frmTipoSolicitudes.resx">
+      <DependentUpon>frmTipoSolicitudes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
@@ -553,6 +588,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmPeridos.resx">
       <DependentUpon>frmPeridos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmPolizasMvtos.resx">
+      <DependentUpon>frmPolizasMvtos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\rptPdfDocumentacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -585,6 +623,9 @@
     <EmbeddedResource Include="Gastos\frmSaldosGastosDetalle.resx">
       <DependentUpon>frmSaldosGastosDetalle.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gastos\frmSaldosPendientesGts.resx">
+      <DependentUpon>frmSaldosPendientesGts.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="herramientas\frmAccesoDirecto.resx">
       <DependentUpon>frmAccesoDirecto.vb</DependentUpon>
     </EmbeddedResource>
@@ -613,6 +654,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmDocumentosAdjuntos.resx">
+      <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="tesoreria\frmTesSolicitudesDePagoCheque.resx">
       <DependentUpon>frmTesSolicitudesDePagoCheque.vb</DependentUpon>
     </EmbeddedResource>
@@ -621,6 +665,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="configuracion\dsConfiguracion.xsc">
+      <DependentUpon>dsConfiguracion.xsd</DependentUpon>
+    </None>
+    <None Include="configuracion\dsConfiguracion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsConfiguracion.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="configuracion\dsConfiguracion.xss">
+      <DependentUpon>dsConfiguracion.xsd</DependentUpon>
+    </None>
     <None Include="contabilidad\dsContabilidad.xsc">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
     </None>
@@ -714,6 +769,15 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="Acrobat">
+      <Guid>{E64169B3-3592-47D2-816E-602C5C13F328}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="AcroPDFLib">
       <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -721,7 +785,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="AxAcroPDFLib">
       <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
@@ -730,6 +794,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="PDFShellLib">
       <Guid>{67E94227-7662-4050-9C72-746983CF37A2}</Guid>
@@ -740,6 +805,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tenor.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

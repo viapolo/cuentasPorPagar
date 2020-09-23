@@ -4,6 +4,23 @@ Imports System.Runtime.InteropServices
 Imports System.Text
 Imports System.IO
 
+Imports PdfSharp
+Imports PdfSharp.Pdf
+Imports PdfSharp.Pdf.IO
+Imports PdfSharp.Pdf.PdfDocumentOptions
+Imports PdfSharp.Pdf.PdfDocument
+Imports PdfSharp.Pdf.PdfDocumentInformation
+Imports PdfSharp.Pdf.PdfCustomValueCompressionMode
+
+Imports PdfSharp.PdfSharpException
+Imports PdfSharp.PageSize
+Imports PdfSharp.PageSizeConverter
+Imports PdfSharp.PageOrientation
+Imports PdfSharp.ProductVersionInfo
+
+'Imports iTextSharp.text.pdf
+'Imports iTextSharp.text.pdf.parser
+
 Module utilerias
 
     Public varGlobal_IdUsuario As String
@@ -176,4 +193,211 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         End If
     End Function
 
+    Public Function Eliminar_Acentos(ByVal accentedStr As String) As String
+        Dim tempBytes As Byte()
+        tempBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accentedStr)
+        Return System.Text.Encoding.UTF8.GetString(tempBytes)
+    End Function
+
+    Sub GuardarOtroFormato(PDFPath As String, FileExtension As String)
+
+        'Saves a PDF file as another format using Adobe Professional.
+
+        'By Christos Samaras
+        'http://www.myengineeringworld.net
+
+        'In order to use the macro you must enable the Acrobat library from VBA editor:
+        'Go to Tools -> References -> Adobe Acrobat xx.0 Type Library, where xx depends
+        'on your Acrobat Professional version (i.e. 9.0 or 10.0) you have installed to your PC.
+
+        'Alternatively you can find it Tools -> References -> Browse and check for the path
+        'C:\Program Files\Adobe\Acrobat xx.0\Acrobat\acrobat.tlb
+        'where xx is your Acrobat version (i.e. 9.0 or 10.0 etc.).
+
+        Dim objAcroApp As Acrobat.AcroApp
+        Dim objAcroAVDoc As Acrobat.AcroAVDoc
+        Dim objAcroPDDoc As Acrobat.AcroPDDoc
+        Dim objJSO As Object
+        Dim boResult As Boolean
+        Dim ExportFormat As String
+        Dim NewFilePath As String
+
+
+        'Check if the file exists.
+        If Dir(PDFPath) = "" Then
+            MsgBox("Cannot find the PDF file!" & vbCrLf & "Check the PDF path and retry.",
+                    vbCritical, "File Path Error")
+            Exit Sub
+        End If
+
+        'Check if the input file is a PDF file.
+        If System.IO.Path.GetExtension(PDFPath) <> ".pdf" Then
+            MsgBox("The input file is not a PDF file!", vbCritical, "File Type Error")
+            Exit Sub
+        End If
+
+        'Initialize Acrobat by creating App object.
+        objAcroApp = CreateObject("AcroExch.App")
+
+        'Set AVDoc object.
+        objAcroAVDoc = CreateObject("AcroExch.AVDoc")
+
+        'Open the PDF file.
+        boResult = objAcroAVDoc.Open(PDFPath, "")
+
+        'Set the PDDoc object.
+        objAcroPDDoc = objAcroAVDoc.GetPDDoc
+
+        'Set the JS Object - Java Script Object.
+        objJSO = objAcroPDDoc.GetJSObject
+
+        'Check the type of conversion.
+        Select Case LCase(FileExtension)
+            Case "eps" : ExportFormat = "com.adobe.acrobat.eps"
+            Case "html", "htm" : ExportFormat = "com.adobe.acrobat.html"
+            Case "jpeg", "jpg", "jpe" : ExportFormat = "com.adobe.acrobat.jpeg"
+            Case "jpf", "jpx", "jp2", "j2k", "j2c", "jpc" : ExportFormat = "com.adobe.acrobat.jp2k"
+            Case "docx" : ExportFormat = "com.adobe.acrobat.docx"
+            Case "doc" : ExportFormat = "com.adobe.acrobat.doc"
+            Case "png" : ExportFormat = "com.adobe.acrobat.png"
+            Case "ps" : ExportFormat = "com.adobe.acrobat.ps"
+            Case "rft" : ExportFormat = "com.adobe.acrobat.rft"
+            Case "xlsx" : ExportFormat = "com.adobe.acrobat.xlsx"
+            Case "xls" : ExportFormat = "com.adobe.acrobat.spreadsheet"
+            Case "txt" : ExportFormat = "com.adobe.acrobat.accesstext"
+            Case "tiff", "tif" : ExportFormat = "com.adobe.acrobat.tiff"
+            Case "xml" : ExportFormat = "com.adobe.acrobat.xml-1-00"
+            Case Else : ExportFormat = "Wrong Input"
+        End Select
+
+        'Check if the format is correct and there are no errors.
+        If ExportFormat <> "Wrong Input" And Err.Number = 0 Then
+
+            'Format is correct and no errors.
+
+            'Set the path of the new file. Note that Adobe instead of xls uses xml files.
+            'That's why here the xls extension changes to xml.
+            If LCase(FileExtension) <> "xls" Then
+                NewFilePath = Regex.Replace(PDFPath, ".pdf", "." & LCase(FileExtension))
+            Else
+                NewFilePath = Regex.Replace(PDFPath, ".pdf", ".xml")
+            End If
+
+            'Save PDF file to the new format.
+            boResult = objJSO.SaveAs(NewFilePath, ExportFormat)
+            'objJSO.saveas
+            'Close the PDF file without saving the changes.
+            boResult = objAcroAVDoc.Close(True)
+
+            'Close the Acrobat application.
+            boResult = objAcroApp.Exit
+
+            'Inform the user that conversion was successfully.
+            MsgBox("The PDf file:" & vbNewLine & PDFPath & vbNewLine & vbNewLine &
+            "Was saved as: " & vbNewLine & NewFilePath, vbInformation, "Conversion finished successfully")
+
+        Else
+
+            'Something went wrong, so close the PDF file and the application.
+
+            'Close the PDF file without saving the changes.
+            boResult = objAcroAVDoc.Close(True)
+
+            'Close the Acrobat application.
+            boResult = objAcroApp.Exit
+
+            'Inform the user that something went wrong.
+            MsgBox("Something went wrong!" & vbNewLine & "The conversion of the following PDF file FAILED:" &
+            vbNewLine & PDFPath, vbInformation, "Conversion failed")
+
+        End If
+
+        'Release the objects.
+        objAcroPDDoc = Nothing
+        objAcroAVDoc = Nothing
+        objAcroApp = Nothing
+
+    End Sub
+
+    Sub extraePaginaSharp(ByVal origen As String, ByVal destino As String, ByVal guuid As String)
+        Dim ficheroPDFOrigenDividir As PdfDocument = utilerias.Open(origen)
+        Dim nombreFicheroDestinoPaginasPDF As String = Path.GetFileNameWithoutExtension(destino)
+        For paginaPDFActual As Integer = 0 To ficheroPDFOrigenDividir.PageCount - 1
+            ' Crear el documento PDF destino de la página extraida
+            Dim ficheroPDFPaginaDestino As PdfDocument = New PdfDocument()
+
+            ficheroPDFPaginaDestino.Info.Creator = Application.ProductName
+            ficheroPDFPaginaDestino.Info.ModificationDate = DateTime.Now
+
+            ficheroPDFPaginaDestino.Info.Title = String.Format("Página {0} de {1}", paginaPDFActual + 1, ficheroPDFOrigenDividir.PageCount)
+
+            ' Añadir la página y guardar el fichero PDF creado
+            ficheroPDFPaginaDestino.AddPage(ficheroPDFOrigenDividir.Pages(paginaPDFActual))
+
+            Dim Pagina As Integer = paginaPDFActual + 1
+
+            Dim nombreFicheroPDFDestino As String = Path.Combine(destino, nombreFicheroDestinoPaginasPDF & guuid & "-" + Pagina.ToString & ".pdf")
+
+            ficheroPDFPaginaDestino.Save(nombreFicheroPDFDestino)
+
+            leePDF(destino & guuid & "-" + Pagina.ToString & ".pdf", destino & guuid & "-" + Pagina.ToString & ".txt", guuid)
+
+        Next
+    End Sub
+
+    Public Function Open(ByVal sFilename As String) As PdfDocument
+
+        Dim reader As New PdfDocument()
+
+        Try
+            reader = PdfReader.Open(sFilename, PdfDocumentOpenMode.Import)
+        Catch generatedExceptionName As PdfSharp.Pdf.IO.PdfReaderException
+            MsgBox(generatedExceptionName.ToString)
+            'caso de que pdfsharp no admita el archivo pdf
+            'Dim newName As MemoryStream = ReturnCompatiblePdf(sFilename)
+            'reader = PdfReader.Open(newName, PdfDocumentOpenMode.Import)
+        End Try
+
+        Return reader
+    End Function
+
+    Public Sub leePDF(ByVal origen As String, ByVal destino As String, ByVal guuid As String)
+        Dim taPagos As New dsTesoreriaTableAdapters.CXP_PagosTableAdapter
+        Dim taPagosTesoreria As New dsTesoreriaTableAdapters.CXP_PagosTesoreriaTableAdapter
+        Dim taCuentasProv As New dsTesoreriaTableAdapters.CXP_CuentasBancariasProvTableAdapter
+        Dim taCuentasBanc As New dsTesoreriaTableAdapters.CXP_CuentasBancariasTableAdapter
+
+        Dim arreglo(5) As String
+        Dim escritor As StreamWriter
+        Dim text As String = ""
+
+        If System.IO.File.Exists(origen) Then
+            Dim PdfReader As iTextSharp.text.pdf.PdfReader = New iTextSharp.text.pdf.PdfReader(origen)
+            For i = 1 To PdfReader.NumberOfPages
+                text += i.ToString & " -- " & Trim(iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(PdfReader, i) & vbNewLine & "/#/#/")
+                If text.IndexOf("Tipo de operación:") >= 0 Then
+
+                    arreglo(0) = Trim(text.Substring(text.IndexOf("Tipo de operación:") + 18, text.IndexOf("Descripción:") - (text.IndexOf("Tipo de operación:") + 18))).Replace(vbLf, "")
+                    arreglo(1) = Trim(text.Substring(text.IndexOf("Cuenta de retiro:") + 17, text.IndexOf("Cuenta de depósito:") - (text.IndexOf("Cuenta de retiro:") + 17))).Replace(vbLf, "")
+                    arreglo(2) = Trim(text.Substring(text.IndexOf("Cuenta de depósito:") + 19, text.IndexOf("Divisa de la cuenta:") - (text.IndexOf("Cuenta de depósito:") + 19))).Replace(vbLf, "")
+                    arreglo(3) = Trim(text.Substring(text.IndexOf("Importe:") + 8, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe:") + 8))).Replace(vbLf, "").Replace(",", "")
+                    arreglo(5) = Trim(text.Substring(text.IndexOf("Fecha de aplicación:") + 20, 12)).Replace(vbLf, "")
+                    If arreglo(0) = "Grupo Pago Mismo Banco" Then
+                        arreglo(4) = Trim(text.Substring(text.IndexOf("Motivo de pago:") + 15, text.IndexOf("Datos de confirmación de la transferencia") - (text.IndexOf("Motivo de pago:") + 15))).Replace(vbLf, "")
+                    Else
+                        arreglo(4) = Trim(text.Substring(text.IndexOf("Concepto de pago:") + 17, text.IndexOf("Referencia:") - (text.IndexOf("Concepto de pago:") + 17))).Replace(vbLf, "")
+                    End If
+                End If
+            Next
+            PdfReader.Close()
+        End If
+
+        taPagosTesoreria.CambiaEstatusPago_UpdateQuery(34, CDate(arreglo(5)), guuid, taCuentasProv.ObtClabe_ScalarQuery(arreglo(2).Trim), arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim))
+        taPagos.CambiaEstatus_UpdateQuery("Pagada", taPagosTesoreria.ObtFolioSolicitud_ScalarQuery(taCuentasProv.ObtClabe_ScalarQuery(arreglo(2).Trim), arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim)), "En Proceso de Pago", varGlobal_IdEmpresa)
+
+        escritor = File.AppendText(destino)
+        escritor.Write(arreglo(0) & vbNewLine & arreglo(1) & vbNewLine & arreglo(2) & vbNewLine & arreglo(3) & vbNewLine & arreglo(4))
+        escritor.Flush()
+        escritor.Close()
+    End Sub
 End Module

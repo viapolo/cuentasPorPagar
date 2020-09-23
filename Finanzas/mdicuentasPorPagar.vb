@@ -7,6 +7,10 @@ Imports System.Collections.Specialized
 Imports System.Web
 Imports System.Deployment.Application
 Imports System.ComponentModel
+Imports iTextSharp.text.pdf
+Imports iTextSharp.text.pdf.parser
+
+
 
 Public Class mdicuentasPorPagar
     Public varGlUser As String
@@ -280,7 +284,7 @@ Public Class mdicuentasPorPagar
             End If
         Next
 
-        If varGlUser = "viapolo" Then
+        If varGlUser = "desarrollo" Or varGlIdUser = "ecacerest" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
@@ -565,6 +569,65 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmTesSolicitudesDePagoChe.MdiParent = Me
         frmTesSolicitudesDePagoChe.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub SugerenciaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SugerenciaDePagoToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub PruebasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebasToolStripMenuItem.Click
+        Dim filePath As String = ""
+        ofdPrueba.Filter = "pdf|*.pdf|PDF|*.PDF"
+        Dim guuid As String = Guid.NewGuid.ToString
+        If ofdPrueba.ShowDialog() = DialogResult.OK Then
+            filePath = ofdPrueba.FileName
+            'extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid)
+            'leePDF(filePath)
+        Else
+            MsgBox("Proceso cancelado")
+        End If
+
+    End Sub
+
+
+    Sub metadatos(ByVal ficheroPDFIndexar As String)
+
+        'Public string obtenerMetaDatosFicheroPDF(String ficheroPDFIndexar)
+        '{
+        '    String mMetadatos = "";            
+        '    Try
+        '    {
+        '        PdfReader ficheroPDF = New PdfReader(ficheroPDFIndexar);
+        '        Dictionary metadatosPDF = ficheroPDF.Info;
+        '        foreach(KeyValuePair clavesMetadatosPDF In metadatosPDF)
+        '        {
+        '            If (mMetadatos!= "") Then
+        '                            {
+        '                mMetadatos = mMetadatos + Environment.NewLine +
+        '                    (clavesMetadatosPDF.Key + " ===> " + clavesMetadatosPDF.Value);
+        '            }
+        '            Else
+        '            {
+        '                mMetadatos = (clavesMetadatosPDF.Key + " ===> " +
+        '                    clavesMetadatosPDF.Value);
+        '            }
+        '        }
+        '        Return mMetadatos;
+        '    }
+        '    Catch
+        '    {
+        '        Return null;
+        '    }
+        '}
+    End Sub
+
+    Private Sub PólizaMovimientosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PólizaMovimientosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmPolizasMvtos.MdiParent = Me
+        frmPolizasMvtos.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

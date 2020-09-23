@@ -11,6 +11,7 @@
         Me.Validate()
         Me.CXP_ConceptosBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DsProduction)
+        'Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
     End Sub
 
     Private Sub frmConceptos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -200,24 +201,28 @@
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaCargoSol_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaCargoSol.SelectedValue = 0
-        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
-        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
+        ' Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Position = CXP_ConceptosBindingSource.Find("idConcepto", IdConceptoTextBox.Text.Trim)
+        'CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
     End Sub
 
     Private Sub lnkEliminar4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkEliminar4.LinkClicked
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaAbonoSol_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaAbonoSol.SelectedValue = 0
-        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
-        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
+        'Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Position = CXP_ConceptosBindingSource.Find("idConcepto", IdConceptoTextBox.Text.Trim)
     End Sub
 
     Private Sub lnkElimina1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkElimina1.LinkClicked
         Dim id As String = IdConceptoTextBox.Text
         taConceptos.CtaCargoPago_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaCargoPago.SelectedValue = 0
-        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
-        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
+        'Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        'm_Pos = CXP_ConceptosBindingSource.Find("idConcepto", m_ArticuloID)
+        CXP_ConceptosBindingSource.Position = CXP_ConceptosBindingSource.Find("idConcepto", IdConceptoTextBox.Text.Trim)
+
+        'CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
     End Sub
 
     Private Sub lnkElimina2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkElimina2.LinkClicked
@@ -225,8 +230,8 @@
         taConceptos.CtaAbonoPago_UpdateQuery(CDec(IdConceptoTextBox.Text))
         cmbCtaAbonoPago.SelectedValue = 0
         'Me.Update()
-        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
-        CXP_ConceptosBindingSource.Filter = "idConcepto = '" & IdConceptoTextBox.Text.Trim & "'"
+        'Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+        CXP_ConceptosBindingSource.Position = CXP_ConceptosBindingSource.Find("idConcepto", IdConceptoTextBox.Text.Trim)
     End Sub
 
     Private Sub dgvImpuestos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvImpuestos.CellClick
@@ -246,6 +251,7 @@
 
     Private Sub NombreTextBox_TextChanged(sender As Object, e As EventArgs) Handles NombreTextBox.TextChanged
         actualiza()
+        actualizaP()
     End Sub
 
     Private Sub btnAgregarP_Click(sender As Object, e As EventArgs) Handles btnAgregarP.Click
@@ -263,5 +269,13 @@
         taImpuestoConcepto.Insert(cmbImpuestosP.SelectedValue, IdConceptoTextBox.Text, "P")
         actualizaP()
         'dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
+    End Sub
+
+    Private Sub cmbImpuestosP_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbImpuestosP.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
+
     End Sub
 End Class
