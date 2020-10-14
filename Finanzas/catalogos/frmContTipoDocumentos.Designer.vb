@@ -30,10 +30,7 @@ Partial Class frmContTipoDocumentos
         Dim FolioInicialLabel As System.Windows.Forms.Label
         Dim FolioActualLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContTipoDocumentos))
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
-        Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Dim IdConpaqLabel As System.Windows.Forms.Label
         Me.CXP_tipoDeDocumentoBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -54,16 +51,22 @@ Partial Class frmContTipoDocumentos
         Me.FolioActualTextBox = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
+        Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
+        Me.IdConpaqTextBox = New System.Windows.Forms.TextBox()
         ClaveTipoDocumentoLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
         FechaRegistroLabel = New System.Windows.Forms.Label()
         DocumentoDeLabel = New System.Windows.Forms.Label()
         FolioInicialLabel = New System.Windows.Forms.Label()
         FolioActualLabel = New System.Windows.Forms.Label()
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        IdConpaqLabel = New System.Windows.Forms.Label()
         CType(Me.CXP_tipoDeDocumentoBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_tipoDeDocumentoBindingNavigator.SuspendLayout()
+        CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ClaveTipoDocumentoLabel
@@ -120,59 +123,6 @@ Partial Class frmContTipoDocumentos
         FolioActualLabel.TabIndex = 19
         FolioActualLabel.Text = "Folio Actual:"
         '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CXP_tipoDeDocumentoBindingSource
-        '
-        Me.CXP_tipoDeDocumentoBindingSource.DataMember = "CXP_tipoDeDocumento"
-        Me.CXP_tipoDeDocumentoBindingSource.DataSource = Me.DsProduction
-        '
-        'CXP_tipoDeDocumentoTableAdapter
-        '
-        Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Me.CXP_tipoDeDocumentoTableAdapter
-        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
-        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
-        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'CXP_tipoDeDocumentoBindingNavigator
         '
         Me.CXP_tipoDeDocumentoBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
@@ -187,7 +137,7 @@ Partial Class frmContTipoDocumentos
         Me.CXP_tipoDeDocumentoBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.CXP_tipoDeDocumentoBindingNavigator.Name = "CXP_tipoDeDocumentoBindingNavigator"
         Me.CXP_tipoDeDocumentoBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.CXP_tipoDeDocumentoBindingNavigator.Size = New System.Drawing.Size(527, 25)
+        Me.CXP_tipoDeDocumentoBindingNavigator.Size = New System.Drawing.Size(537, 25)
         Me.CXP_tipoDeDocumentoBindingNavigator.TabIndex = 0
         Me.CXP_tipoDeDocumentoBindingNavigator.Text = "BindingNavigator1"
         '
@@ -312,7 +262,7 @@ Partial Class frmContTipoDocumentos
         '
         'FolioInicialTextBox
         '
-        Me.FolioInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioInicial", True))
+        Me.FolioInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "folioActual", True))
         Me.FolioInicialTextBox.Location = New System.Drawing.Point(115, 82)
         Me.FolioInicialTextBox.Name = "FolioInicialTextBox"
         Me.FolioInicialTextBox.Size = New System.Drawing.Size(100, 20)
@@ -329,7 +279,7 @@ Partial Class frmContTipoDocumentos
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(442, 131)
+        Me.btnSalir.Location = New System.Drawing.Point(442, 143)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 21
@@ -347,11 +297,89 @@ Partial Class frmContTipoDocumentos
         Me.ComboBox1.Size = New System.Drawing.Size(100, 21)
         Me.ComboBox1.TabIndex = 22
         '
+        'CXP_tipoDeDocumentoBindingSource
+        '
+        Me.CXP_tipoDeDocumentoBindingSource.DataMember = "CXP_tipoDeDocumento"
+        Me.CXP_tipoDeDocumentoBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_tipoDeDocumentoTableAdapter
+        '
+        Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresArchTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Me.CXP_tipoDeDocumentoTableAdapter
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'IdConpaqLabel
+        '
+        IdConpaqLabel.AutoSize = True
+        IdConpaqLabel.Location = New System.Drawing.Point(353, 111)
+        IdConpaqLabel.Name = "IdConpaqLabel"
+        IdConpaqLabel.Size = New System.Drawing.Size(59, 13)
+        IdConpaqLabel.TabIndex = 22
+        IdConpaqLabel.Text = "Id Conpaq:"
+        '
+        'IdConpaqTextBox
+        '
+        Me.IdConpaqTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "idConpaq", True))
+        Me.IdConpaqTextBox.Location = New System.Drawing.Point(417, 108)
+        Me.IdConpaqTextBox.Name = "IdConpaqTextBox"
+        Me.IdConpaqTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.IdConpaqTextBox.TabIndex = 23
+        '
         'frmContTipoDocumentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(527, 164)
+        Me.ClientSize = New System.Drawing.Size(537, 184)
+        Me.Controls.Add(IdConpaqLabel)
+        Me.Controls.Add(Me.IdConpaqTextBox)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(FolioActualLabel)
@@ -369,11 +397,11 @@ Partial Class frmContTipoDocumentos
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmContTipoDocumentos"
         Me.Text = "Tipo de Poliza"
-        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_tipoDeDocumentoBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CXP_tipoDeDocumentoBindingNavigator.ResumeLayout(False)
         Me.CXP_tipoDeDocumentoBindingNavigator.PerformLayout()
+        CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -403,4 +431,5 @@ Partial Class frmContTipoDocumentos
     Friend WithEvents FolioActualTextBox As TextBox
     Friend WithEvents btnSalir As Button
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents IdConpaqTextBox As TextBox
 End Class

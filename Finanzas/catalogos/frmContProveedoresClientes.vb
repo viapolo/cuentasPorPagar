@@ -324,9 +324,13 @@ Public Class frmContProveedoresClientes
                     If RfcTextBox.Text.Trim.Length = 12 Then
                         tipoPersona = "M"
                     ElseIf RfcTextBox.Text.Trim.Length = 13 Then
-                        tipoPersona = "F"
+                        If RfcTextBox.Text.Trim = "XAXX010101000" Then
+                            tipoPersona = "C"
+                        Else
+                            tipoPersona = "F"
+                        End If
                     End If
-                Else
+                    Else
                     tipoPersona = "C"
                 End If
             Else

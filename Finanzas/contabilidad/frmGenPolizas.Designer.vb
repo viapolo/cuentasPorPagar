@@ -28,6 +28,8 @@ Partial Class frmGenPolizas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Contpaq = New cuentasPorPagar.contpaq()
         Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
+        Me.ProveedoresContpaqTableAdapter = New cuentasPorPagar.contpaqTableAdapters.ProveedoresTableAdapter()
+        Me.BancosContpaqTableAdapter = New cuentasPorPagar.contpaqTableAdapters.BancosTableAdapter()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.Vw_CXP_PolizasEncBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
@@ -39,12 +41,20 @@ Partial Class frmGenPolizas
         Me.tsBarProceso = New System.Windows.Forms.ToolStripProgressBar()
         Me.sfdPolizas = New System.Windows.Forms.SaveFileDialog()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.dtpFechaInicio = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaFin = New System.Windows.Forms.DateTimePicker()
+        Me.btnProcesarP = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.fbdPolizas = New System.Windows.Forms.FolderBrowserDialog()
+        Me.TableAdapterManager1 = New cuentasPorPagar.contpaqTableAdapters.TableAdapterManager()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnProcesar
@@ -82,6 +92,14 @@ Partial Class frmGenPolizas
         'CuentasTableAdapter
         '
         Me.CuentasTableAdapter.ClearBeforeFill = True
+        '
+        'ProveedoresContpaqTableAdapter
+        '
+        Me.ProveedoresContpaqTableAdapter.ClearBeforeFill = True
+        '
+        'BancosContpaqTableAdapter
+        '
+        Me.BancosContpaqTableAdapter.ClearBeforeFill = True
         '
         'DsProduction
         '
@@ -173,9 +191,9 @@ Partial Class frmGenPolizas
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsBarProceso})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 176)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 193)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(418, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(426, 22)
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -193,11 +211,67 @@ Partial Class frmGenPolizas
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.dtpFechaInicio)
+        Me.GroupBox2.Controls.Add(Me.dtpFechaFin)
+        Me.GroupBox2.Controls.Add(Me.btnProcesarP)
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Location = New System.Drawing.Point(14, 73)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(392, 55)
+        Me.GroupBox2.TabIndex = 5
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Pólizas de egreso:"
+        '
+        'dtpFechaInicio
+        '
+        Me.dtpFechaInicio.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaInicio.Location = New System.Drawing.Point(52, 20)
+        Me.dtpFechaInicio.Name = "dtpFechaInicio"
+        Me.dtpFechaInicio.Size = New System.Drawing.Size(105, 20)
+        Me.dtpFechaInicio.TabIndex = 1
+        '
+        'dtpFechaFin
+        '
+        Me.dtpFechaFin.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
+        Me.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaFin.Location = New System.Drawing.Point(172, 20)
+        Me.dtpFechaFin.Name = "dtpFechaFin"
+        Me.dtpFechaFin.Size = New System.Drawing.Size(105, 20)
+        Me.dtpFechaFin.TabIndex = 3
+        '
+        'btnProcesarP
+        '
+        Me.btnProcesarP.Location = New System.Drawing.Point(299, 19)
+        Me.btnProcesarP.Name = "btnProcesarP"
+        Me.btnProcesarP.Size = New System.Drawing.Size(75, 23)
+        Me.btnProcesarP.TabIndex = 0
+        Me.btnProcesarP.Text = "Procesar"
+        Me.btnProcesarP.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 26)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(40, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Fecha:"
+        '
+        'TableAdapterManager1
+        '
+        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager1.Connection = Nothing
+        Me.TableAdapterManager1.UpdateOrder = cuentasPorPagar.contpaqTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
         'frmGenPolizas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(418, 198)
+        Me.ClientSize = New System.Drawing.Size(426, 215)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.GroupBox1)
@@ -212,6 +286,8 @@ Partial Class frmGenPolizas
         Me.GroupBox1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,6 +301,8 @@ Partial Class frmGenPolizas
     Friend WithEvents TableAdapterManager As dsProductionTableAdapters.TableAdapterManager
     Friend WithEvents Contpaq As contpaq
     Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
+    Friend WithEvents ProveedoresContpaqTableAdapter As contpaqTableAdapters.ProveedoresTableAdapter
+    Friend WithEvents BancosContpaqTableAdapter As contpaqTableAdapters.BancosTableAdapter
     Friend WithEvents DsContabilidad As dsContabilidad
     Friend WithEvents Vw_CXP_PolizasEncTableAdapter As dsContabilidadTableAdapters.Vw_CXP_PolizasEncTableAdapter
     Friend WithEvents dtpFechaFinal As DateTimePicker
@@ -233,4 +311,11 @@ Partial Class frmGenPolizas
     Friend WithEvents tsBarProceso As ToolStripProgressBar
     Friend WithEvents sfdPolizas As SaveFileDialog
     Friend WithEvents btnSalir As Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents dtpFechaInicio As DateTimePicker
+    Friend WithEvents dtpFechaFin As DateTimePicker
+    Friend WithEvents btnProcesarP As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents fbdPolizas As FolderBrowserDialog
+    Friend WithEvents TableAdapterManager1 As contpaqTableAdapters.TableAdapterManager
 End Class

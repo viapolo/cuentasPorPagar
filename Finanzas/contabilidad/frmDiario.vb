@@ -99,7 +99,7 @@
     End Sub
 
     Private Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
-        CXP_RegContTableAdapter.DiariosEstatus0_FillBy(DsProduction.CXP_RegCont, varGlobal_IdEmpresa, taRegCont.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa), dtpFecha1.Value.AddDays(-1), dtpFecha2.Value)
+        CXP_RegContTableAdapter.DiariosEstatus0_FillBy(DsProduction.CXP_RegCont, varGlobal_IdEmpresa, 3, dtpFecha1.Value.AddDays(-1), dtpFecha2.Value)
         actualiza()
     End Sub
 

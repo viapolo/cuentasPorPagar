@@ -13,11 +13,16 @@ Imports iTextSharp.text.pdf.parser
 
 
 Public Class mdicuentasPorPagar
+
+
+
     Public varGlUser As String
     Public varGlIdUser As String
     Public varGlPerfil As String
     Public varGlEmpresa As String
     Public varGlEmpresaD As String
+
+
 
     Dim taPerfil As New dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter
     Dim t As New dsProduction.CXP_PerfilesUsuarioDataTable
@@ -27,6 +32,28 @@ Public Class mdicuentasPorPagar
     Public CuentasTableAdapterG As New contpaqTableAdapters.CuentasTableAdapter
     Public dtCuentasG As New contpaq.CuentasDataTable
 
+    Private Sub mdicuentasPorPagar_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseMove
+        contadorActividad = 0
+    End Sub
+
+    Private Sub timActividad_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timActividad.Tick
+        contadorActividad = contadorActividad + 1
+        frmAccesoDirecto.Label1.Text = contadorActividad.ToString
+        'If contadorActividad > 1000 Then
+        '    timActividad.Enabled = False
+        '    Me.Enabled = False
+        '    Dim Response
+        '    Response = MsgBox("Se ha superado el tiempo de inactividad, ¿Desea continuar?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Tiempo de inactividad")
+
+        '    If Response = vbYes Then
+        '        Me.Enabled = True
+        '        timActividad.Enabled = True
+        '        contadorActividad = 0
+        '    Else
+        '        Me.Close()
+        '    End If
+        'End If
+    End Sub
 
     Private Sub PerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
@@ -148,6 +175,20 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub mdicuentasPorPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If IsMdiContainer Then
+            For Each cin As Control In Controls
+                If cin.GetType().Equals(GetType(MdiClient)) Then
+                    AddHandler cin.MouseMove, AddressOf MDI_MouseMove
+                End If
+            Next
+        End If
+
+        contadorActividad = 0
+
+        'frmAccesoDirecto.MdiParent = Me
+        'frmAccesoDirecto.Show()
+
         Me.Text = "Cuentas por Pagar   ** " + varGlEmpresaD
         Dim cn As New SqlConnection()
         Dim strSelect As String
@@ -161,6 +202,7 @@ Public Class mdicuentasPorPagar
         Dim i As Integer
         Dim j As Integer
         Dim k As Integer
+
 
         Dim Args() As String
         Try
@@ -284,7 +326,7 @@ Public Class mdicuentasPorPagar
             End If
         Next
 
-        If varGlUser = "desarrollo" Or varGlIdUser = "ecacerest" Then
+        If varGlUser = "viapolo" Or varGlUser = "desarrollo" Or varGlIdUser = "ecacerest" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
@@ -334,7 +376,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+    Private Sub DiariosToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -347,7 +389,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub FacturasElectrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+    Private Sub FacturasElectrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -389,24 +431,6 @@ Public Class mdicuentasPorPagar
 
     Private Sub CambiarDeEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CambiarDeEmpresaToolStripMenuItem.Click
         lfrInicio.Show()
-    End Sub
-
-    Private Sub GastosToolStripMenuItem_Click(sender As Object, e As EventArgs) 
-
-    End Sub
-
-
-
-    Private Sub ComprobaciónDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) 
-
-    End Sub
-
-    Private Sub ConComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) 
-
-    End Sub
-
-    Private Sub SinComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) 
-
     End Sub
 
     Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldosPorUsuarioToolStripMenuItem.Click
@@ -574,21 +598,16 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub SugerenciaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SugerenciaDePagoToolStripMenuItem.Click
-
+        contadorActividad = 0
     End Sub
 
     Private Sub PruebasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebasToolStripMenuItem.Click
-        Dim filePath As String = ""
-        ofdPrueba.Filter = "pdf|*.pdf|PDF|*.PDF"
-        Dim guuid As String = Guid.NewGuid.ToString
-        If ofdPrueba.ShowDialog() = DialogResult.OK Then
-            filePath = ofdPrueba.FileName
-            'extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid)
-            'leePDF(filePath)
-        Else
-            MsgBox("Proceso cancelado")
-        End If
-
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        Form1.MdiParent = Me
+        Form1.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
     End Sub
 
 
@@ -628,6 +647,48 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmPolizasMvtos.MdiParent = Me
         frmPolizasMvtos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ComprobaciónDeGastosToolStripMenuItem1_MouseMove(sender As Object, e As MouseEventArgs) Handles ComprobaciónDeGastosToolStripMenuItem1.MouseMove
+
+    End Sub
+
+    Private Sub ConfiguraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfiguraciónToolStripMenuItem.Click
+        contadorActividad = 0
+    End Sub
+
+    Private Sub CatálogosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CatálogosToolStripMenuItem.Click
+        contadorActividad = 0
+    End Sub
+
+    Private Sub ContabilidadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ContabilidadToolStripMenuItem1.Click
+        contadorActividad = 0
+    End Sub
+
+    Private Sub TesoreríaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesoreríaToolStripMenuItem.Click
+        contadorActividad = 0
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        contadorActividad = 0
+    End Sub
+
+    Private Sub MDI_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs)
+        'Text = String.Format("MouseMoved to {0},{1}", e.X, e.Y)
+        contadorActividad = 0
+    End Sub
+
+    Private Sub ValidadorCFDIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidadorCFDIToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub FacturasPendientesDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasPendientesDePagoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmFacturasPendientes.MdiParent = Me
+        frmFacturasPendientes.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

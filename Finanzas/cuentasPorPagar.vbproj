@@ -284,6 +284,18 @@
     <Compile Include="contabilidad\dsContabilidad.vb">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
     </Compile>
+    <Compile Include="contabilidad\frmFacturasPendientes.Designer.vb">
+      <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmFacturasPendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmFacturasPendientesDet.Designer.vb">
+      <DependentUpon>frmFacturasPendientesDet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmFacturasPendientesDet.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmGeneraPdfExpediente.Designer.vb">
       <DependentUpon>frmGeneraPdfExpediente.vb</DependentUpon>
     </Compile>
@@ -359,6 +371,7 @@
     <Compile Include="EditorValorCelda.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enumerations.vb" />
     <Compile Include="frmCCPDF.Designer.vb">
       <DependentUpon>frmCCPDF.vb</DependentUpon>
     </Compile>
@@ -452,10 +465,23 @@
       <DependentUpon>rptPolizaDiario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ShowMessage.vb" />
+    <Compile Include="ShowMsgForm.Designer.vb">
+      <DependentUpon>ShowMsgForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowMsgForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="tesoreria\dsTesoreria.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTesoreria.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\Form1.designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\Form1.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="tesoreria\frmDocumentosAdjuntos.Designer.vb">
       <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>
@@ -494,6 +520,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="utilerias.vb" />
+    <Compile Include="Win32.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="catalogos\frmAutorizarCuentasBancarias.resx">
@@ -580,6 +607,12 @@
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmFacturasPendientes.resx">
+      <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmFacturasPendientesDet.resx">
+      <DependentUpon>frmFacturasPendientesDet.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmGeneraPdfExpediente.resx">
       <DependentUpon>frmGeneraPdfExpediente.vb</DependentUpon>
     </EmbeddedResource>
@@ -653,6 +686,12 @@
     <EmbeddedResource Include="contabilidad\rptPolizaDiario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowMsgForm.resx">
+      <DependentUpon>ShowMsgForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="tesoreria\frmDocumentosAdjuntos.resx">
       <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>
@@ -811,6 +850,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tenor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Confirm.PNG" />
+    <Content Include="Resources\Info.PNG" />
+    <Content Include="Resources\Lock.PNG" />
+    <Content Include="Resources\monitor.ico" />
+    <Content Include="Resources\NotAllowed.PNG" />
+    <Content Include="Resources\UnderConstruction.PNG" />
+    <Content Include="Resources\Warning.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

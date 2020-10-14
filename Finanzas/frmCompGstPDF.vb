@@ -18,7 +18,7 @@
             Me.Cursor = Cursors.Default
         End If
         If e.ColumnIndex = 6 Then
-            System.Diagnostics.Process.Start("\\server-raid2\TmpFinagil\GTS\" & varGlobal_IdEmpresa & "-" & DataGridView1.Rows(e.RowIndex).Cells(6).Value & ".pdf")
+            System.Diagnostics.Process.Start(My.Settings.fileNas & "GTS\" & varGlobal_IdEmpresa & "-" & DataGridView1.Rows(e.RowIndex).Cells(6).Value & ".pdf")
         End If
     End Sub
 

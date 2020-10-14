@@ -1,7 +1,9 @@
-﻿Imports System.IO
+﻿
+
+Imports System.IO
 Imports System.Windows.Forms
-Imports AcroPDFLib
-Imports AxAcroPDFLib
+
+
 Public Class frmTesSolicitudesDePago
 
     Dim taPagos As New dsTesoreriaTableAdapters.CXP_PagosTableAdapter
@@ -9,14 +11,22 @@ Public Class frmTesSolicitudesDePago
 
     Private Sub frmTesSolicitudesDePago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFechaPagoInicial.Value = Date.Now.AddDays(-Now.Day + 1)
-        'TODO: esta línea de código carga datos en la tabla 'DsTesoreria.CXP_CuentasBancarias' Puede moverla o quitarla según sea necesario.
+
         Me.CXP_CuentasBancariasTableAdapter.Fill(Me.DsTesoreria.CXP_CuentasBancarias, varGlobal_IdEmpresa)
 
         Vw_CXP_SugPagoTesoreriaDataGridView.Visible = False
+        Dim taTipoSolicitud As New dsTesoreriaTableAdapters.CXP_TipoDeSolicitudTableAdapter
+        Dim dtTipoSolicitud As New dsTesoreria.CXP_TipoDeSolicitudDataTable
 
-    End Sub
+        taTipoSolicitud.Fill(dtTipoSolicitud)
 
-    Private Sub FillToolStripButton_Click(sender As Object, e As EventArgs)
+        For Each rwTipoSol As dsTesoreria.CXP_TipoDeSolicitudRow In dtTipoSolicitud
+            If rwTipoSol.tipoSolicitud = "CXP" Then
+                cblTipoSolicitud.Items.Add(rwTipoSol.tipoSolicitud, True)
+            Else
+                cblTipoSolicitud.Items.Add(rwTipoSol.tipoSolicitud, False)
+            End If
+        Next
 
 
     End Sub
@@ -34,16 +44,16 @@ Public Class frmTesSolicitudesDePago
 
     End Sub
 
-
     Private Sub actualizaGrid()
-        'Dim dgvColumna As DataGridViewComboBoxCell = New DataGridViewComboBoxCell
-        'gbxSeleccionar.Enabled = False
-        'gbxLayout.Enabled = False
         Dim dataRow As DataRowView
 
         Dim taDatosPagos As New dsTesoreriaTableAdapters.DatosPagosTableAdapter
+        Dim taDatosPagosAvi As New dsTesoreriaTableAdapters.DatosPagosAviTableAdapter
         Dim dtDatosPagos As New dsTesoreria.DatosPagosDataTable
+        Dim dtDatosPagosAvi As New dsTesoreria.DatosPagosAviDataTable
         Dim drDatosPagos As dsTesoreria.DatosPagosRow
+        Dim drDatosPagosAvi As dsTesoreria.DatosPagosAviRow
+
         Dim contRows As Integer = 0
 
         Dim d As DataGridViewComboBoxColumn = New DataGridViewComboBoxColumn
@@ -74,45 +84,76 @@ Public Class frmTesSolicitudesDePago
         For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
             Application.DoEvents()
             taDatosPagos.Fill(dtDatosPagos, varGlobal_IdEmpresa, Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", contRows).Value)
+            taDatosPagosAvi.DatosPago_FillBy(dtDatosPagosAvi, Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", contRows).Value, Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", contRows).Value, Vw_CXP_SugPagoTesoreriaDataGridView.Item("idBancoBen", contRows).Value, varGlobal_IdEmpresa)
 
             dc = CType(Vw_CXP_SugPagoTesoreriaDataGridView.Rows(contRows).Cells("bancoOrdenante"), DataGridViewComboBoxCell)
             dataRow = dc.Items(0)
             dc.Value = dataRow.Item(0)
 
-            If dtDatosPagos.Rows.Count = 1 Then
-                drDatosPagos = dtDatosPagos.Rows(0)
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value = drDatosPagos.clabe
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value = drDatosPagos.cuenta
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", contRows).Value = drDatosPagos.convenio
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", contRows).Value = drDatosPagos.referencia
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoBeneficiario", contRows).Value = drDatosPagos.nombreCorto
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("idBancoBen", contRows).Value = drDatosPagos.idBanco
-                Vw_CXP_SugPagoTesoreriaDataGridView.Item("noContrato", contRows).Value = drDatosPagos.noContrato
+            If dtDatosPagos.Rows.Count = 1 Or dtDatosPagosAvi.Rows.Count = 1 Then
 
-                If Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "37" Or Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "34" Then
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
-                    d.Visible = False
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
+                If Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", contRows).Value = "CXP" Then
+                    drDatosPagos = dtDatosPagos.Rows(0)
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value = drDatosPagos.clabe
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value = drDatosPagos.cuenta
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", contRows).Value = drDatosPagos.convenio
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", contRows).Value = drDatosPagos.referencia
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoBeneficiario", contRows).Value = drDatosPagos.nombreCorto
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("idBancoBen", contRows).Value = drDatosPagos.idBanco
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("noContrato", contRows).Value = drDatosPagos.noContrato
                 Else
-                    d.Visible = True
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = True
-                    'Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = False
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = False
-                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = True
+                    drDatosPagosAvi = dtDatosPagosAvi.Rows(0)
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value = drDatosPagosAvi.clabe
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value = drDatosPagosAvi.cuenta
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", contRows).Value = drDatosPagosAvi.convenio
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", contRows).Value = drDatosPagosAvi.referencia
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoBeneficiario", contRows).Value = drDatosPagosAvi.nombreCorto
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("idBancoBen", contRows).Value = drDatosPagosAvi.idBanco
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("noContrato", contRows).Value = "" 'drDatosPagosAvi.noContrato
                 End If
 
-            ElseIf dtDatosPagos.Rows.Count = 0 Then
-                'CXP_PagosTesoreriaDataGridView.Rows.Remove(rows)
-            End If
+                If Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "37" Then
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
+                        d.Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
 
-            contRows += 1
-            'gbxSeleccionar.Enabled = True
-            'gbxLayout.Enabled = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").DisplayIndex = 18
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Frozen = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").HeaderText = "Fecha Proceso"
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = False
+
+                    ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "34" Then
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
+                        d.Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
+
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").DisplayIndex = 18
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Frozen = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").HeaderText = "Fecha Pago"
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = False
+
+                    ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "33" Then
+                        d.Visible = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = True
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = False
+                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = True
+                    End If
+                End If
+
+                contRows += 1
         Next
         pbxCargando.Visible = False
     End Sub
@@ -124,7 +165,6 @@ Public Class frmTesSolicitudesDePago
         Dim contRows As Integer = 0
         For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
             rows.Cells("sugerencia").Style.BackColor = Color.Red
-
             contRows += 1
         Next
     End Sub
@@ -166,6 +206,8 @@ Public Class frmTesSolicitudesDePago
     End Sub
 
     Private Sub btnGenerarLayOut_Click(sender As Object, e As EventArgs) Handles btnGenerarLayOut.Click
+        pbxCargando.Visible = True
+        Application.DoEvents()
         Dim taCuentasBancarias As New dsTesoreriaTableAdapters.CXP_CuentasBancariasTableAdapter
         Dim dtCuentasBancarias As New dsTesoreria.CXP_CuentasBancariasDataTable
         Dim drCuentasBancarias As dsTesoreria.CXP_CuentasBancariasRow
@@ -176,25 +218,32 @@ Public Class frmTesSolicitudesDePago
                 cont += 1
             End If
         Next
+
+        'For Each item As Object In cblTipoSolicitud.Items
+        '    MsgBox(item.ToString)
+        'Next
+
         If cont > 0 Then
 
             taCuentasBancarias.Fill(dtCuentasBancarias, varGlobal_IdEmpresa)
 
-            For Each drCuentasBancarias In dtCuentasBancarias.Rows
+            'For Each drCuentasBancarias In dtCuentasBancarias.Rows
+            For Each item In cblTipoSolicitud.Items
                 Dim txt As StreamWriter
                 sfdTxtBancario = New SaveFileDialog
                 sfdTxtBancario.Filter = "txt files (*.txt)|*.txt"
                 sfdTxtBancario.FilterIndex = 2
                 sfdTxtBancario.RestoreDirectory = True
-                sfdTxtBancario.FileName = varGlobal_rfcEmpresa & " " & drCuentasBancarias.nombre.Replace(",", "") & " " & Date.Now.Day & "-" & Date.Now.Month & "-" & Date.Now.Year & ".txt"
-                If lecturGridTxt(drCuentasBancarias.idBancoSat, True, fechaProceso).ToString.Length > 0 Then
-
+                sfdTxtBancario.FileName = varGlobal_rfcEmpresa.Replace("FIN940905AX7", "Finagil").Replace("SAR951230N5A", "Arfin") & " " & item.ToString & " " & Date.Now.Day & "-" & Date.Now.Month & "-" & Date.Now.Year & ".txt"
+                If lecturGridTxt(item.ToString, True, fechaProceso).ToString.Length > 0 Then
+                    Application.DoEvents()
                     If sfdTxtBancario.ShowDialog = DialogResult.OK Then
                         Try
                             txt = New StreamWriter(sfdTxtBancario.FileName)
-                            txt.WriteLine(lecturGridTxt(drCuentasBancarias.idBancoSat, False, fechaProceso))
+                            txt.Write(lecturGridTxt(item.ToString, False, fechaProceso))
                             txt.Close()
-                            generaConsulta()
+
+
                         Catch ex As Exception
                             MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation)
                             txt.Close()
@@ -204,119 +253,221 @@ Public Class frmTesSolicitudesDePago
                     End If
                 End If
             Next
+            MsgBox("Proceso terminado...", MsgBoxStyle.Information, "")
+            generaConsulta()
         Else
             MsgBox("No se ha seleccionado ningún registro...", MsgBoxStyle.Information, "")
         End If
+        pbxCargando.Visible = False
     End Sub
 
-    Private Function lecturGridTxt(ByVal idBancoSat As Integer, ByVal consulta As Boolean, ByVal fechaProceso As Date)
+    Private Function lecturGridTxt(ByVal idBancoSat As String, ByVal consulta As Boolean, ByVal fechaProceso As Date)
         Dim taVwAutorizaciones As New dsTesoreriaTableAdapters.Vw_CXP_AutorizacionesTableAdapter
         Dim taCuentasBancarias As New dsTesoreriaTableAdapters.CXP_CuentasBancariasTableAdapter
 
         Dim texto As String = ""
         For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
             Dim referencia As String = ""
-            If taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) = idBancoSat Then
+            'If taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) = idBancoSat Then
+            If rows.Cells("tipoSolicitud").Value = idBancoSat Then
                 If rows.Cells("seleccionar").Value = True Then
-                    If rows.Cells("clabeBeneficiaria").Value <> String.Empty Then
-                        If rows.Cells("Tipar").Value = "-" Then
-                            'Pagos distintos a contratos
-                            If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
-                                'Pagos a terceros
-                                texto += "PTC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
-                            Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
-                            rows.Cells("moneda").Value & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
-                            Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) & "0                  000000000000.00" & vbNewLine
-
-                                referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) & "0                  000000000000.00" & vbNewLine
-                            Else
-                                'Pagos interbancarios
-                                texto += "PSC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
-                            Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
-                            rows.Cells("moneda").Value & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
-                            Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & "40" & rows.Cells("clabeBeneficiaria").Value.ToString.Substring(0, 3) &
-                            Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) & "0999999H0                  000000000000.00" & vbNewLine
-
-                                referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) & "0999999H0                  000000000000.00" & vbNewLine
-                            End If
-                        Else
-                            'Pagos de contratos
-                            If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
-                                'Pagos a terceros
-                                texto += "PTC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
-                            Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
-                            rows.Cells("moneda").Value & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
-                            Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            obtContrato(rows.Cells("noContrato").Value) & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" & vbNewLine
-
-                                referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            obtContrato(rows.Cells("noContrato").Value) & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" & vbNewLine
-                            Else
-                                'Pagos interbancarios
-                                texto += "PSC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
-                            Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
-                            rows.Cells("moneda").Value & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
-                                                        Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & "40" & rows.Cells("clabeBeneficiaria").Value.ToString.Substring(0, 3) &
-                                                        Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            obtContrato(rows.Cells("noContrato").Value) & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0999999H0                  000000000000.00" & vbNewLine
-
-                                referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                            obtContrato(rows.Cells("noContrato").Value) & " " &
-                            tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0999999H0                  000000000000.00" & vbNewLine
-                            End If
-                        End If
-                        If consulta = False Then
-                            taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
-                            taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
-                        End If
-                    Else
-                        '///////////////**************************
-                        If rows.Cells("convenio").Value <> String.Empty Then
+                    If rows.Cells("tipoSolicitud").Value = "CXP" Then
+                        If rows.Cells("clabeBeneficiaria").Value <> String.Empty Then
                             If rows.Cells("Tipar").Value = "-" Then
                                 'Pagos distintos a contratos
                                 If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
-                                    'Pagos CIE
-                                    texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
-                                    Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
-                                    Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
-                                    Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                                    tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) &
-                                    Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+                                    'Pagos a terceros
+                                    texto += "PTC" & Stuff(rows.Cells("clabeBeneficiaria").Value.ToString.Substring(6, 11), "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) & "0                  000000000000.00"
 
                                     referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                                    tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30)
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30)
+                                Else
+                                    'Pagos interbancarios
+                                    texto += "PSC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & "40" & rows.Cells("clabeBeneficiaria").Value.ToString.Substring(0, 3) &
+                                Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) & Stuff(rows.Cells("folioSolicitud").Value, "I", "0", 7) & "H0                  000000000000.00"
+
+                                    referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30)
                                 End If
                             Else
                                 'Pagos de contratos
                                 If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
-                                    'Pagos CIE
-                                    texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
-                                    Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
-                                    Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
-                                    Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                                    obtContrato(rows.Cells("noContrato").Value) & " " &
-                                    tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" & vbNewLine &
-                                    Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+                                    'Pagos a terceros
+                                    texto += "PTC" & Stuff(rows.Cells("clabeBeneficiaria").Value.ToString.Substring(6, 11), "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                obtContrato(rows.Cells("noContrato").Value) & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00"
 
                                     referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
-                                    obtContrato(rows.Cells("noContrato").Value) & " " &
-                                    tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" & vbNewLine
+                                obtContrato(rows.Cells("noContrato").Value) & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30)
+                                Else
+                                    'Pagos interbancarios
+                                    texto += "PSC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                                            Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & "40" & rows.Cells("clabeBeneficiaria").Value.ToString.Substring(0, 3) &
+                                                            Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                obtContrato(rows.Cells("noContrato").Value) & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & Stuff(rows.Cells("folioSolicitud").Value, "I", "0", 7) & "H0                  000000000000.00"
+
+                                    referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                obtContrato(rows.Cells("noContrato").Value) & " " &
+                                tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30)
                                 End If
                             End If
                             If consulta = False Then
+                                Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
                                 taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
-                                taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
+                                taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
+                                taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                texto = texto & vbCrLf
+                            End If
+                        Else
+                            '///////////////**************************
+                            If rows.Cells("convenio").Value <> String.Empty Then
+                                If rows.Cells("Tipar").Value = "-" Then
+                                    'Pagos distintos a contratos
+                                    If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
+                                        'Pagos CIE
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                        Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                        Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) &
+                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+
+                                        referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30)
+                                    End If
+                                Else
+                                    'Pagos de contratos
+                                    If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
+                                        'Pagos CIE
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                        Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                        Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                        obtContrato(rows.Cells("noContrato").Value) & " " &
+                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" &
+                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+
+                                        referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                        obtContrato(rows.Cells("noContrato").Value) & " " &
+                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30)
+                                    End If
+                                End If
+                                If consulta = False Then
+                                    Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                    taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
+                                    taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
+                                    taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                    texto = texto & vbCrLf
+                                End If
+                            End If
+                        End If
+                    Else
+                        If rows.Cells("clabeBeneficiaria").Value <> String.Empty Then
+                            If rows.Cells("Tipar").Value = "-" Then
+                                'Pagos distintos a contratos
+                                If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
+                                    'Pagos a terceros
+                                    texto += "PTC" & Stuff(rows.Cells("clabeBeneficiaria").Value.ToString.Substring(6, 11), "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                Stuff(rows.Cells("referencia").Value, "D", " ", 30) & "0                  000000000000.00"
+
+                                    referencia = rows.Cells("referencia").Value
+                                Else
+                                    'Pagos interbancarios
+                                    texto += "PSC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & "40" & rows.Cells("clabeBeneficiaria").Value.ToString.Substring(0, 3) &
+                                Stuff(rows.Cells("referencia").Value, "D", " ", 30) & Stuff(rows.Cells("folioSolicitud").Value, "I", "0", 7) & "H0                  000000000000.00"
+
+                                    referencia = rows.Cells("referencia").Value
+                                End If
+                            Else
+                                'Pagos de contratos
+                                If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
+                                    'Pagos a terceros
+                                    texto += "PTC" & Stuff(rows.Cells("clabeBeneficiaria").Value.ToString.Substring(6, 11), "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                Stuff(rows.Cells("referencia").Value, "D", " ", 30) & "0                  000000000000.00"
+
+                                    referencia = rows.Cells("referencia").Value
+                                Else
+                                    'Pagos interbancarios
+                                    texto += "PSC" & Stuff(rows.Cells("clabeBeneficiaria").Value, "I", "0", 18) &
+                                Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                rows.Cells("moneda").Value.ToString.Replace("MXN", "MXP") & Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                                            Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & "40" & rows.Cells("clabeBeneficiaria").Value.ToString.Substring(0, 3) &
+                                                            Stuff(rows.Cells("referencia").Value, "D", " ", 30) & Stuff(rows.Cells("folioSolicitud").Value, "I", "0", 7) & "H0                  000000000000.00"
+
+                                    referencia = rows.Cells("referencia").Value
+                                End If
+                            End If
+                            If consulta = False Then
+                                Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
+                                taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
+                                taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                texto = texto & vbCrLf
+                            End If
+                        Else
+                            '///////////////**************************
+                            If rows.Cells("convenio").Value <> String.Empty Then
+                                If rows.Cells("Tipar").Value = "-" Then
+                                    'Pagos distintos a contratos
+                                    If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
+                                        'Pagos CIE
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                        Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                        Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) &
+                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+
+                                        referencia = rows.Cells("referencia").Value
+                                    End If
+                                Else
+                                    'Pagos de contratos
+                                    If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
+                                        'Pagos CIE
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
+                                        Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
+                                        Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
+                                        obtContrato(rows.Cells("noContrato").Value) & " " &
+                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" &
+                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+
+                                        referencia = rows.Cells("referencia").Value
+                                    End If
+                                End If
+                                If consulta = False Then
+                                    Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                    taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
+                                    taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
+                                    taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                    texto = texto & vbCrLf
+                                End If
                             End If
                         End If
                     End If
-                    End If
+                End If
             End If
         Next
         Return texto
@@ -327,13 +478,23 @@ Public Class frmTesSolicitudesDePago
     End Function
     Private Function obtRazonSocial(ByVal razonSocial As String, ByVal longitudMaxima As Integer) As String
         If razonSocial.Length > longitudMaxima Then
-            obtRazonSocial = razonSocial.Substring(0, longitudMaxima)
+            obtRazonSocial = Eliminar_Acentos(razonSocial.Substring(0, longitudMaxima))
         Else
-            obtRazonSocial = razonSocial
+            obtRazonSocial = Eliminar_Acentos(razonSocial)
         End If
     End Function
 
     Private Sub generaConsulta()
+
+        Dim listaTipoSol As String = ""
+
+
+        'For i = 0 To cblTipoSolicitud.Items.Count
+        For Each rw As Object In cblTipoSolicitud.CheckedItems
+            listaTipoSol += "'" & rw.ToString & "',"
+        Next
+        ' Next
+
 
         Dim p As String = "0"
 
@@ -361,8 +522,14 @@ Public Class frmTesSolicitudesDePago
         btnSalir.Enabled = False
         Try
             Application.DoEvents()
-            Me.Vw_CXP_SugPagoTesoreriaTableAdapter.PagosElectronicos_FillBy(Me.DsTesoreria.Vw_CXP_SugPagoTesoreria, New System.Nullable(Of Decimal)(CType(varGlobal_IdEmpresa, Decimal)), New System.Nullable(Of Date)(CType(dtpFechaPagoInicial.Value.AddDays(-1), Date)), New System.Nullable(Of Date)(CType(dtpFechaPagoFinal.Value, Date)))
-            Me.Vw_CXP_SugPagoTesoreriaBindingSource.Filter = "estatusPago = '" & p & "' AND ref IN('" & t & "','" & c & "')"
+            If p = "33" Then
+                Me.Vw_CXP_SugPagoTesoreriaTableAdapter.PagosElectronicosNP_FillBy(Me.DsTesoreria.Vw_CXP_SugPagoTesoreria, New System.Nullable(Of Decimal)(CType(varGlobal_IdEmpresa, Decimal)), New System.Nullable(Of Date)(CType(dtpFechaPagoInicial.Value.AddDays(-1), Date)), New System.Nullable(Of Date)(CType(dtpFechaPagoFinal.Value, Date)), p)
+            ElseIf p = "34" Then
+                Me.Vw_CXP_SugPagoTesoreriaTableAdapter.PagosElectronicosP_FillBy(Me.DsTesoreria.Vw_CXP_SugPagoTesoreria, New System.Nullable(Of Decimal)(CType(varGlobal_IdEmpresa, Decimal)), p, New System.Nullable(Of Date)(CType(dtpFechaPagoInicial.Value.AddDays(-1), Date)), New System.Nullable(Of Date)(CType(dtpFechaPagoFinal.Value, Date)))
+            ElseIf p = "37" Then
+                Me.Vw_CXP_SugPagoTesoreriaTableAdapter.PagosElectronicosPP_FillBy(Me.DsTesoreria.Vw_CXP_SugPagoTesoreria, New System.Nullable(Of Decimal)(CType(varGlobal_IdEmpresa, Decimal)), p, New System.Nullable(Of Date)(CType(dtpFechaPagoInicial.Value.AddDays(-1), Date)), New System.Nullable(Of Date)(CType(dtpFechaPagoFinal.Value.AddDays(1), Date)))
+            End If
+            Me.Vw_CXP_SugPagoTesoreriaBindingSource.Filter = "ref IN('" & t & "','" & c & "') AND tipoSolicitud IN (" & listaTipoSol & ")"
             Application.DoEvents()
             Vw_CXP_SugPagoTesoreriaDataGridView.Visible = True
         Catch ex As System.Exception
@@ -374,11 +541,6 @@ Public Class frmTesSolicitudesDePago
         btnSalir.Enabled = True
         pbxCargando.Visible = False
     End Sub
-
-    Private Sub loadTable()
-
-    End Sub
-
 
     Private Sub Vw_CXP_SugPagoTesoreriaDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Vw_CXP_SugPagoTesoreriaDataGridView.CellContentClick
         If e.ColumnIndex = 0 Then
@@ -403,11 +565,15 @@ Public Class frmTesSolicitudesDePago
             Try
                 filePath = ofdPdfConfirmacion.FileName
                 extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid)
+
+                System.IO.File.Copy(ofdPdfConfirmacion.FileName, My.Settings.fileNas & "CXP\ComPago\ComOriginales\" & guuid & ".pdf")
+
+                MsgBox("Proceso terminado..." & vbNewLine & "Páginas comprobante: " & contadorPagosPag.ToString & vbNewLine & "Documentos confirmados: " & contadorPagosTes.ToString, MsgBoxStyle.Information, "")
             Catch ex As Exception
                 MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
             End Try
         Else
-            MsgBox("Proceso cancelado")
+            MsgBox("Proceso cancelado", MsgBoxStyle.Information, "")
         End If
     End Sub
 
@@ -425,4 +591,13 @@ Public Class frmTesSolicitudesDePago
         gbxLayout.Enabled = True
         gbxSeleccionar.Enabled = True
     End Sub
+
+    Private Sub frmTesSolicitudesDePago_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        contadorActividad = 0
+    End Sub
+
+    Private Sub Vw_CXP_SugPagoTesoreriaDataGridView_MouseMove(sender As Object, e As MouseEventArgs) Handles Vw_CXP_SugPagoTesoreriaDataGridView.MouseMove
+        contadorActividad = 0
+    End Sub
+
 End Class

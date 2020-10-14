@@ -25,24 +25,25 @@ Partial Class frmPeridos
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPeridos))
         Me.CXP_PeriodosBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.CXP_PeriodosBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_PeriodosDataGridView = New System.Windows.Forms.DataGridView()
-        Me.CXP_PeriodosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.CXPEstatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
+        Me.CXP_PeriodosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_PeriodosTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.CXP_PeriodosTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
-        Me.CXPEstatusBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_EstatusTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.CXP_EstatusTableAdapter()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -51,13 +52,13 @@ Partial Class frmPeridos
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.folioPoliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.CXP_PeriodosBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_PeriodosBindingNavigator.SuspendLayout()
         CType(Me.CXP_PeriodosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXP_PeriodosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXP_PeriodosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CXP_PeriodosBindingNavigator
@@ -78,37 +79,6 @@ Partial Class frmPeridos
         Me.CXP_PeriodosBindingNavigator.TabIndex = 0
         Me.CXP_PeriodosBindingNavigator.Text = "BindingNavigator1"
         '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Posición"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Posición actual"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
-        Me.BindingNavigatorCountItem.Text = "de {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Número total de elementos"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
         'BindingNavigatorAddNewItem
         '
         Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -117,6 +87,13 @@ Partial Class frmPeridos
         Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorAddNewItem.Text = "Agregar nuevo"
+        '
+        'BindingNavigatorCountItem
+        '
+        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(37, 22)
+        Me.BindingNavigatorCountItem.Text = "de {0}"
+        Me.BindingNavigatorCountItem.ToolTipText = "Número total de elementos"
         '
         'BindingNavigatorDeleteItem
         '
@@ -146,6 +123,25 @@ Partial Class frmPeridos
         Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorMovePreviousItem.Text = "Mover anterior"
         '
+        'BindingNavigatorSeparator
+        '
+        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
+        '
+        'BindingNavigatorPositionItem
+        '
+        Me.BindingNavigatorPositionItem.AccessibleName = "Posición"
+        Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
+        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
+        Me.BindingNavigatorPositionItem.Text = "0"
+        Me.BindingNavigatorPositionItem.ToolTipText = "Posición actual"
+        '
+        'BindingNavigatorSeparator1
+        '
+        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
+        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
         'BindingNavigatorMoveNextItem
         '
         Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -164,6 +160,11 @@ Partial Class frmPeridos
         Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorMoveLastItem.Text = "Mover último"
         '
+        'BindingNavigatorSeparator2
+        '
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
+        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
         'CXP_PeriodosBindingNavigatorSaveItem
         '
         Me.CXP_PeriodosBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -178,22 +179,37 @@ Partial Class frmPeridos
         Me.CXP_PeriodosDataGridView.AllowUserToDeleteRows = False
         Me.CXP_PeriodosDataGridView.AutoGenerateColumns = False
         Me.CXP_PeriodosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.CXP_PeriodosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
+        Me.CXP_PeriodosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.folioPoliza})
         Me.CXP_PeriodosDataGridView.DataSource = Me.CXP_PeriodosBindingSource
         Me.CXP_PeriodosDataGridView.Location = New System.Drawing.Point(12, 28)
         Me.CXP_PeriodosDataGridView.Name = "CXP_PeriodosDataGridView"
         Me.CXP_PeriodosDataGridView.Size = New System.Drawing.Size(886, 382)
         Me.CXP_PeriodosDataGridView.TabIndex = 1
         '
-        'CXP_PeriodosBindingSource
+        'btnSalir
         '
-        Me.CXP_PeriodosBindingSource.DataMember = "CXP_Periodos"
-        Me.CXP_PeriodosBindingSource.DataSource = Me.DsContabilidad
+        Me.btnSalir.Location = New System.Drawing.Point(823, 416)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 2
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'CXPEstatusBindingSource
+        '
+        Me.CXPEstatusBindingSource.DataMember = "CXP_Estatus"
+        Me.CXPEstatusBindingSource.DataSource = Me.DsContabilidad
+        Me.CXPEstatusBindingSource.Filter = "grupoEstatus='EJERCICIOS'"
         '
         'DsContabilidad
         '
         Me.DsContabilidad.DataSetName = "dsContabilidad"
         Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_PeriodosBindingSource
+        '
+        Me.CXP_PeriodosBindingSource.DataMember = "CXP_Periodos"
+        Me.CXP_PeriodosBindingSource.DataSource = Me.DsContabilidad
         '
         'CXP_PeriodosTableAdapter
         '
@@ -202,15 +218,14 @@ Partial Class frmPeridos
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PeriodosTableAdapter = Me.CXP_PeriodosTableAdapter
+        Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'CXPEstatusBindingSource
-        '
-        Me.CXPEstatusBindingSource.DataMember = "CXP_Estatus"
-        Me.CXPEstatusBindingSource.DataSource = Me.DsContabilidad
-        Me.CXPEstatusBindingSource.Filter = "grupoEstatus='EJERCICIOS'"
         '
         'CXP_EstatusTableAdapter
         '
@@ -267,14 +282,11 @@ Partial Class frmPeridos
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.Visible = False
         '
-        'btnSalir
+        'folioPoliza
         '
-        Me.btnSalir.Location = New System.Drawing.Point(823, 416)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 2
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
+        Me.folioPoliza.DataPropertyName = "folioPoliza"
+        Me.folioPoliza.HeaderText = "Última Poliza"
+        Me.folioPoliza.Name = "folioPoliza"
         '
         'frmPeridos
         '
@@ -291,9 +303,9 @@ Partial Class frmPeridos
         Me.CXP_PeriodosBindingNavigator.ResumeLayout(False)
         Me.CXP_PeriodosBindingNavigator.PerformLayout()
         CType(Me.CXP_PeriodosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXP_PeriodosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPEstatusBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXP_PeriodosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -319,6 +331,7 @@ Partial Class frmPeridos
     Friend WithEvents CXP_PeriodosDataGridView As DataGridView
     Friend WithEvents CXPEstatusBindingSource As BindingSource
     Friend WithEvents CXP_EstatusTableAdapter As dsContabilidadTableAdapters.CXP_EstatusTableAdapter
+    Friend WithEvents btnSalir As Button
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -326,5 +339,5 @@ Partial Class frmPeridos
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents btnSalir As Button
+    Friend WithEvents folioPoliza As DataGridViewTextBoxColumn
 End Class

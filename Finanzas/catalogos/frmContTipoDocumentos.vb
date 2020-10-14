@@ -1,7 +1,7 @@
 ﻿Public Class frmContTipoDocumentos
     Private Sub CXP_tipoDeDocumentoBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_tipoDeDocumentoBindingNavigatorSaveItem.Click
         CXP_tipoDeDocumentoBindingSource.Current("idEmpresa") = varGlobal_IdEmpresa
-        CXP_tipoDeDocumentoBindingSource.Current("folioActual") = (FolioInicialTextBox.Text) - 1
+        'CXP_tipoDeDocumentoBindingSource.Current("folioActual") = (FolioInicialTextBox.Text) - 1
         Me.Validate()
         Me.CXP_tipoDeDocumentoBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DsProduction)

@@ -28,8 +28,9 @@ Public Class frmDocumentosAdjuntos
     End Sub
 
     Private Sub CXP_PagosDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles CXP_PagosDataGridView.CellContentClick
+        contadorActividad = 0
         Try
-            If e.ColumnIndex = 3 Then
+            If e.ColumnIndex = 0 Then
                 Select Case varGlobal_IdEmpresa
                     Case "23"
                         System.IO.File.Copy(My.Settings.addFinagil & CXP_PagosDataGridView.Item("uuid", e.RowIndex).Value & ".pdf", "C:\Files\" & CXP_PagosDataGridView.Item("uuid", e.RowIndex).Value & ".pdf", True)
@@ -46,7 +47,33 @@ Public Class frmDocumentosAdjuntos
     End Sub
 
     Private Sub lnkFolioSolicitud_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkFolioSolicitud.LinkClicked
-        System.IO.File.Copy(My.Settings.fileNas & "CXP\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", True)
-        System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf")
+        Try
+            System.IO.File.Copy(My.Settings.fileNas & "CXP\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", True)
+            System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf")
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
+    End Sub
+
+    Private Sub lnkComprobanteIndividual_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkComprobanteIndividual.LinkClicked
+        Dim taPagosTes As New dsTesoreriaTableAdapters.CXP_PagosTesoreriaTableAdapter
+        Try
+            Dim documento As String = taPagosTes.OntieneComPago_ScalarQuery(idSolPago, varGlobal_IdEmpresa)
+            System.IO.File.Copy(My.Settings.fileNas & "CXP\ComPago\" & documento & ".pdf", "C:\Files\" & documento & ".pdf", True)
+            System.Diagnostics.Process.Start("C:\Files\" & documento & ".pdf")
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
+    End Sub
+
+    Private Sub lnkComprobanteOriginal_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkComprobanteOriginal.LinkClicked
+        Dim taPagosTes As New dsTesoreriaTableAdapters.CXP_PagosTesoreriaTableAdapter
+        Try
+            Dim documento As String = taPagosTes.OntieneComPago_ScalarQuery(idSolPago, varGlobal_IdEmpresa).Substring(0, 36)
+            System.IO.File.Copy(My.Settings.fileNas & "CXP\ComPago\ComOriginales\" & documento & ".pdf", "C:\Files\" & documento & ".pdf", True)
+            System.Diagnostics.Process.Start("C:\Files\" & documento & ".pdf")
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
     End Sub
 End Class
