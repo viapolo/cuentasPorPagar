@@ -326,7 +326,7 @@ Public Class mdicuentasPorPagar
             End If
         Next
 
-        If varGlUser = "viapolo" Or varGlUser = "desarrollo" Or varGlIdUser = "ecacerest" Then
+        If varGlUser = "desarrollo" Or varGlUser = "viapolo" Or varGlIdUser = "ecacerest" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
@@ -689,6 +689,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmFacturasPendientes.MdiParent = Me
         frmFacturasPendientes.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ComprobacionesDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprobacionesDeGastosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmContabilizaComprobaciones.MdiParent = Me
+        frmContabilizaComprobaciones.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

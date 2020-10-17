@@ -65,6 +65,7 @@ Partial Class mdicuentasPorPagar
         Me.SolicitudesSinComprobanteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DiariosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidadorCFDIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FacturasPendientesDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TesoreríaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PagosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SolicitudesDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -85,7 +86,9 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
-        Me.FacturasPendientesDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EventosContablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComprobacionesDeGastosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReembolsosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -294,7 +297,7 @@ Partial Class mdicuentasPorPagar
         '
         'ContabilidadToolStripMenuItem1
         '
-        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem, Me.GenerarPDFExpedienteToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.DiariosToolStripMenuItem1, Me.ValidadorCFDIToolStripMenuItem, Me.FacturasPendientesDePagoToolStripMenuItem})
+        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem, Me.GenerarPDFExpedienteToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.DiariosToolStripMenuItem1, Me.ValidadorCFDIToolStripMenuItem, Me.FacturasPendientesDePagoToolStripMenuItem, Me.EventosContablesToolStripMenuItem})
         Me.ContabilidadToolStripMenuItem1.Enabled = False
         Me.ContabilidadToolStripMenuItem1.Name = "ContabilidadToolStripMenuItem1"
         Me.ContabilidadToolStripMenuItem1.Size = New System.Drawing.Size(87, 20)
@@ -385,6 +388,13 @@ Partial Class mdicuentasPorPagar
         Me.ValidadorCFDIToolStripMenuItem.Name = "ValidadorCFDIToolStripMenuItem"
         Me.ValidadorCFDIToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ValidadorCFDIToolStripMenuItem.Text = "Validador CFDI"
+        '
+        'FacturasPendientesDePagoToolStripMenuItem
+        '
+        Me.FacturasPendientesDePagoToolStripMenuItem.Enabled = False
+        Me.FacturasPendientesDePagoToolStripMenuItem.Name = "FacturasPendientesDePagoToolStripMenuItem"
+        Me.FacturasPendientesDePagoToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.FacturasPendientesDePagoToolStripMenuItem.Text = "Facturas pendientes de pago"
         '
         'TesoreríaToolStripMenuItem
         '
@@ -515,12 +525,27 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
-        'FacturasPendientesDePagoToolStripMenuItem
+        'EventosContablesToolStripMenuItem
         '
-        Me.FacturasPendientesDePagoToolStripMenuItem.Enabled = False
-        Me.FacturasPendientesDePagoToolStripMenuItem.Name = "FacturasPendientesDePagoToolStripMenuItem"
-        Me.FacturasPendientesDePagoToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
-        Me.FacturasPendientesDePagoToolStripMenuItem.Text = "Facturas pendientes de pago"
+        Me.EventosContablesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComprobacionesDeGastosToolStripMenuItem, Me.ReembolsosToolStripMenuItem})
+        Me.EventosContablesToolStripMenuItem.Enabled = False
+        Me.EventosContablesToolStripMenuItem.Name = "EventosContablesToolStripMenuItem"
+        Me.EventosContablesToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.EventosContablesToolStripMenuItem.Text = "Eventos Contables"
+        '
+        'ComprobacionesDeGastosToolStripMenuItem
+        '
+        Me.ComprobacionesDeGastosToolStripMenuItem.Enabled = False
+        Me.ComprobacionesDeGastosToolStripMenuItem.Name = "ComprobacionesDeGastosToolStripMenuItem"
+        Me.ComprobacionesDeGastosToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ComprobacionesDeGastosToolStripMenuItem.Text = "Comprobaciones de Gastos"
+        '
+        'ReembolsosToolStripMenuItem
+        '
+        Me.ReembolsosToolStripMenuItem.Enabled = False
+        Me.ReembolsosToolStripMenuItem.Name = "ReembolsosToolStripMenuItem"
+        Me.ReembolsosToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ReembolsosToolStripMenuItem.Text = "Reembolsos"
         '
         'mdicuentasPorPagar
         '
@@ -607,4 +632,7 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents timActividad As Timer
     Friend WithEvents ValidadorCFDIToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FacturasPendientesDePagoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EventosContablesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ComprobacionesDeGastosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReembolsosToolStripMenuItem As ToolStripMenuItem
 End Class

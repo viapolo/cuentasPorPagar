@@ -18690,8 +18690,8 @@ Namespace dsTesoreriaTableAdapters
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "UPDATE       CXP_PagosTesoreria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                estatus = @estatusNuevo, fech"& _ 
                 "aPago = @fechaPago, uuidPago = @uuidPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (destinoRecurso = @destin"& _ 
-                "oRecurso) AND (importe = @importe) AND (referencia = @referencia) AND (origenRec"& _ 
-                "urso = @origenRecurso) AND (estatus = @estatusAnterior)"
+                "oRecurso) AND (importe = @importe) AND (referencia LIKE '%' + @referencia + '%')"& _ 
+                " AND (origenRecurso = @origenRecurso) AND (estatus = @estatusAnterior)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@estatusNuevo", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "estatus", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaPago", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18705,7 +18705,8 @@ Namespace dsTesoreriaTableAdapters
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT        ISNULL(folioSolicitud, 0) AS folioSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_Pa"& _ 
                 "gosTesoreria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (destinoRecurso = @destinoRecurso) AND (importe = @im"& _ 
-                "porte) AND (referencia = @referencia) AND (origenRecurso = @origenRecurso)"
+                "porte) AND (referencia LIKE '%' + @referencia + '%') AND (origenRecurso = @orige"& _ 
+                "nRecurso)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@destinoRecurso", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "destinoRecurso", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@importe", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 2, "importe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -19241,7 +19242,7 @@ Namespace dsTesoreriaTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function ObtFolioSolicitud_ScalarQuery(ByVal destinoRecurso As Global.System.Nullable(Of Decimal), ByVal importe As Global.System.Nullable(Of Decimal), ByVal referencia As String, ByVal origenRecurso As Global.System.Nullable(Of Decimal)) As Global.System.Nullable(Of Decimal)
+        Public Overloads Overridable Function ObtFolioSolicitud_ScalarQuery(ByVal destinoRecurso As Global.System.Nullable(Of Decimal), ByVal importe As Global.System.Nullable(Of Decimal), ByVal referencia As String, ByVal origenRecurso As Global.System.Nullable(Of Decimal)) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             If (destinoRecurso.HasValue = true) Then
                 command.Parameters(0).Value = CType(destinoRecurso.Value,Decimal)
@@ -19278,9 +19279,9 @@ Namespace dsTesoreriaTableAdapters
             End Try
             If ((returnValue Is Nothing)  _
                         OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
-                Return New Global.System.Nullable(Of Decimal)()
+                Return Nothing
             Else
-                Return New Global.System.Nullable(Of Decimal)(CType(returnValue,Decimal))
+                Return CType(returnValue,Object)
             End If
         End Function
         

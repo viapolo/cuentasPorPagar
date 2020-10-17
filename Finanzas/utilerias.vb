@@ -409,7 +409,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                     arreglo(3) = Trim(text.Substring(text.IndexOf("Importe:") + 8, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe:") + 8))).Replace(vbLf, "").Replace(",", "")
                     arreglo(5) = Trim(text.Substring(text.IndexOf("Fecha de aplicación:") + 20, 12)).Replace(vbLf, "")
                     If arreglo(0) = "Grupo Pago Mismo Banco" Then
-                        arreglo(4) = Trim(text.Substring(text.IndexOf("Motivo de pago:") + 15, text.IndexOf("Datos de confirmación de la transferencia") - (text.IndexOf("Motivo de pago:") + 15))).Replace(vbLf, "")
+                        arreglo(4) = Trim(text.Substring(text.IndexOf("Motivo de pago:") + 15, text.IndexOf("Datos de confirmación de la transferencia") - (text.IndexOf("Motivo de pago:") + 15))).Replace(vbLf, " ")
                     Else
                         arreglo(4) = Trim(text.Substring(text.IndexOf("Concepto de pago:") + 17, text.IndexOf("Referencia:") - (text.IndexOf("Concepto de pago:") + 17))).Replace(vbLf, "")
                     End If
@@ -421,91 +421,95 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         procesadosTes = taPagosTesoreria.CambiaEstatusPago_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, taCuentasProv.ObtClabe_ScalarQuery(arreglo(2).Trim), arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), 37)
         procesadosSol = taPagos.CambiaEstatus_UpdateQuery("Pagada", taPagosTesoreria.ObtFolioSolicitud_ScalarQuery(taCuentasProv.ObtClabe_ScalarQuery(arreglo(2).Trim), arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim)), "En Proceso de Pago", varGlobal_IdEmpresa)
 
+        If procesadosTes = 1 Then
+            contadorPagosTes += 1
+        End If
+
         If procesadosSol = 1 Then
             contadorPagosSol += 1
         End If
 
-        If procesadosTes = 1 Then
-            Try
+        'If procesadosTes = 1 Then
+        '    Try
 
-                Dim fechaHorActual As Date = Date.Now
-                contadorPagosTes += 1
-                Dim dtDatosSolicitud As New dsTesoreria.DatosSolicitudDataTable
-                Dim rwDatosSolTmp As dsTesoreria.DatosSolicitudRow
-                taDatosSolicitud.Fill(dtDatosSolicitud, taCuentasProv.ObtClabe_ScalarQuery(arreglo(2).Trim), arreglo(3).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), arreglo(4).Trim)
+        '        Dim fechaHorActual As Date = Date.Now
+        '        contadorPagosTes += 1
+        '        Dim dtDatosSolicitud As New dsTesoreria.DatosSolicitudDataTable
+        '        Dim rwDatosSolTmp As dsTesoreria.DatosSolicitudRow
+        '        taDatosSolicitud.Fill(dtDatosSolicitud, taCuentasProv.ObtClabe_ScalarQuery(arreglo(2).Trim), arreglo(3).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), arreglo(4).Trim)
 
-                rwDatosSolTmp = dtDatosSolicitud.Rows(0)
-                If rwDatosSolTmp.tipoSolicitud = "CXP" Then
-                    Dim tipoPoliza As Integer = taDatosPolizas.ObtTipoPoliza_ScalarQuery(rwDatosSolTmp.tipoSolicitud, rwDatosSolTmp.formaDePago, rwDatosSolTmp.monedaPago, rwDatosSolTmp.idEmpresa)
+        '        rwDatosSolTmp = dtDatosSolicitud.Rows(0)
+        '        If rwDatosSolTmp.tipoSolicitud = "CXP" Then
+        '            Dim tipoPoliza As Integer = taDatosPolizas.ObtTipoPoliza_ScalarQuery(rwDatosSolTmp.tipoSolicitud, rwDatosSolTmp.formaDePago, rwDatosSolTmp.monedaPago, rwDatosSolTmp.idEmpresa)
 
-                    If tipoPoliza <> 0 Then
-                        Dim folioPoliza As Integer = taPolizas.ConsultaUltimoFolio_ScalarQuery(tipoPoliza, varGlobal_IdEmpresa)
+        '            If tipoPoliza <> 0 Then
+        '                Dim folioPoliza As Integer = taPolizas.ConsultaUltimoFolio_ScalarQuery(tipoPoliza, varGlobal_IdEmpresa)
 
-                        For Each rwDatosSolicitud As dsTesoreria.DatosSolicitudRow In dtDatosSolicitud
+        '                For Each rwDatosSolicitud As dsTesoreria.DatosSolicitudRow In dtDatosSolicitud
 
-                            Dim dtImpuestos As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
-                            taImpuestos.Fill(dtImpuestos, rwDatosSolicitud.uuid)
-                            Dim contador As Integer = 0
+        '                    Dim dtImpuestos As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
+        '                    taImpuestos.Fill(dtImpuestos, rwDatosSolicitud.uuid)
+        '                    Dim contador As Integer = 0
 
-                            For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
-                                Dim efecto As String = ""
-                                Dim tipo As String = ""
-                                Dim retecionL As String = ""
-                                Dim mPago As Decimal = 0
+        '                    For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
+        '                        Dim efecto As String = ""
+        '                        Dim tipo As String = ""
+        '                        Dim retecionL As String = ""
+        '                        Dim mPago As Decimal = 0
 
-                                Dim percentPago As Decimal = CDec(rwDatosSolicitud.totalPagado) / CDec(rwDatosSolicitud.totalOrg)
-                                'cargo
-                                taRegContable.Insert(rwDatosSolicitud.ctaCargoPago, rwDatosSolicitud.idProveedor, rwDatosSolicitud.importeSolicitado, 0, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                'abono
-                                taRegContable.Insert(rwDatosSolicitud.ctaAbonoPago, rwDatosSolicitud.idProveedor, 0, rwDatosSolicitud.totalPagado, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                        Dim percentPago As Decimal = CDec(rwDatosSolicitud.totalPagado) / CDec(rwDatosSolicitud.totalOrg)
+        '                        'cargo
+        '                        taRegContable.Insert(rwDatosSolicitud.ctaCargoPago, rwDatosSolicitud.idProveedor, rwDatosSolicitud.importeSolicitado, 0, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                        'abono
+        '                        taRegContable.Insert(rwDatosSolicitud.ctaAbonoPago, rwDatosSolicitud.idProveedor, 0, rwDatosSolicitud.totalPagado, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
 
-                                If rowsCfdi.mTras <> "X" Then
-                                    efecto = "TRA"
-                                    mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
-                                    tipo = "Federal"
-                                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                End If
+        '                        If rowsCfdi.mTras <> "X" Then
+        '                            efecto = "TRA"
+        '                            mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
+        '                            tipo = "Federal"
+        '                            taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                            taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                        End If
 
-                                If rowsCfdi.mRet <> "X" Then
-                                    efecto = "RET"
-                                    mPago = Math.Round(CDec(Val(rowsCfdi.mRet) * percentPago), 2)
-                                    tipo = "Federal"
-                                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                End If
+        '                        If rowsCfdi.mRet <> "X" Then
+        '                            efecto = "RET"
+        '                            mPago = Math.Round(CDec(Val(rowsCfdi.mRet) * percentPago), 2)
+        '                            tipo = "Federal"
+        '                            taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                            taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpTraDescripcion_ScalarQuery(rwDatosSolicitud.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                        End If
 
-                                If contador = 0 Then
-                                    If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
-                                        efecto = "LOC"
-                                        mPago = Math.Round(CDec(Val(rowsCfdi.mLocTra) * percentPago), 2)
-                                        tipo = "Local"
-                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "P")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "S")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                    End If
+        '                        If contador = 0 Then
+        '                            If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
+        '                                efecto = "LOC"
+        '                                mPago = Math.Round(CDec(Val(rowsCfdi.mLocTra) * percentPago), 2)
+        '                                tipo = "Local"
+        '                                taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "P")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                                taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "S")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "TRA", "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                            End If
 
-                                    If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
-                                        efecto = "LOC"
-                                        mPago = Math.Round(CDec(Val(rowsCfdi.mLocRet) * percentPago), 2)
-                                        tipo = "Local"
-                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "P")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "S")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
-                                    End If
-                                End If
+        '                            If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
+        '                                efecto = "LOC"
+        '                                mPago = Math.Round(CDec(Val(rowsCfdi.mLocRet) * percentPago), 2)
+        '                                tipo = "Local"
+        '                                taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "P")), rwDatosSolicitud.idProveedor, 0, mPago, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "P") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                                taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "S")), rwDatosSolicitud.idProveedor, mPago, 0, taConceptos.ObtCtaImpLocalDes_ScalarQuery(rwDatosSolicitud.idConcepto, tipo, "RET", "S") & " " & rwDatosSolicitud.rfc, "F-" & rwDatosSolicitud.serie & " " & rwDatosSolicitud.folio & " " & rwDatosSolicitud.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDatosSolicitud.uuid, rwDatosSolicitud.folioSolicitud, fechaHorActual, 29, rwDatosSolicitud.idConcepto, 2)
+        '                            End If
+        '                        End If
 
-                                contador += 1
-                            Next
-                        Next
+        '                        contador += 1
+        '                    Next
+        '                Next
 
-                        taPolizas.ConsumeUltimoFolio_UpdateQuery(taDatosPolizas.ObtTipoPoliza_ScalarQuery(rwDatosSolTmp.tipoSolicitud, rwDatosSolTmp.formaDePago, rwDatosSolTmp.monedaPago, rwDatosSolTmp.idEmpresa), varGlobal_IdEmpresa)
-                    End If
-                Else
-                    ''''Para otro tipo de asientos
-                End If
-            Catch ex As Exception
-                MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
-            End Try
-        End If
+        '                taPolizas.ConsumeUltimoFolio_UpdateQuery(taDatosPolizas.ObtTipoPoliza_ScalarQuery(rwDatosSolTmp.tipoSolicitud, rwDatosSolTmp.formaDePago, rwDatosSolTmp.monedaPago, rwDatosSolTmp.idEmpresa), varGlobal_IdEmpresa)
+        '            End If
+        '        Else
+        '            ''''Para otro tipo de asientos
+        '        End If
+        '    Catch ex As Exception
+        '        MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        '    End Try
+        'End If
 
         escritor = File.AppendText(destino)
         escritor.Write(arreglo(0) & vbNewLine & arreglo(1) & vbNewLine & arreglo(2) & vbNewLine & arreglo(3) & vbNewLine & arreglo(4))

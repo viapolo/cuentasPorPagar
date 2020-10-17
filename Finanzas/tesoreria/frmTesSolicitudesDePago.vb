@@ -557,6 +557,7 @@ Public Class frmTesSolicitudesDePago
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPdfConfirmacion.Click
+        contadorPagosTes = 0
         Dim filePath As String = ""
         ofdPdfConfirmacion.Filter = "pdf|*.pdf|PDF|*.PDF"
         Dim guuid As String = Guid.NewGuid.ToString

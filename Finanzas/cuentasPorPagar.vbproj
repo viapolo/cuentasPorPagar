@@ -72,6 +72,7 @@
     </Reference>
     <Reference Include="PdfSharp">
       <HintPath>C:\Users\vicente-apolonio\Downloads\PdfSharp\PdfSharp.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -283,6 +284,18 @@
     </Compile>
     <Compile Include="contabilidad\dsContabilidad.vb">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmContabilizaComprobaciones.Designer.vb">
+      <DependentUpon>frmContabilizaComprobaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmContabilizaComprobaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleComprobaciones.Designer.vb">
+      <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleComprobaciones.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmFacturasPendientes.Designer.vb">
       <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
@@ -606,6 +619,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmContabilizaComprobaciones.resx">
+      <DependentUpon>frmContabilizaComprobaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetalleComprobaciones.resx">
+      <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmFacturasPendientes.resx">
       <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
