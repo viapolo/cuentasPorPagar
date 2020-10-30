@@ -437,10 +437,19 @@ Public Class mdicuentasPorPagar
             If Not p Is Nothing Then
                 If p.ProcessName.ToString = "cuentasPorPagar" Then
                     Try
-                        p.Kill() ' lo cierra  
-                        'Listar() ' actualiza el list  
-
-                        Exit For ' sale  
+                        Process.Start(My.Settings.hostExe & "cuentasPorPagarF.exe")
+                        p.Kill()
+                        Exit For
+                    Catch msg As Exception
+                        MsgBox(msg.Message.ToString, MsgBoxStyle.Critical)
+                        Exit Sub
+                    End Try
+                End If
+                If p.ProcessName.ToString = "cuentasPorPagarF" Then
+                    Try
+                        Process.Start(My.Settings.hostExe & "cuentasPorPagar.exe")
+                        p.Kill()
+                        Exit For
                     Catch msg As Exception
                         MsgBox(msg.Message.ToString, MsgBoxStyle.Critical)
                         Exit Sub
@@ -448,7 +457,7 @@ Public Class mdicuentasPorPagar
                 End If
             End If
         Next
-        Process.Start(My.Settings.hostExe & "cuentasPorPagar.exe")
+
     End Sub
 
     Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldosPorUsuarioToolStripMenuItem.Click

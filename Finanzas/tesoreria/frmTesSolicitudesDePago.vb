@@ -10,6 +10,8 @@ Public Class frmTesSolicitudesDePago
     Dim taPagos As New dsTesoreriaTableAdapters.CXP_PagosTableAdapter
     Dim taPagosTesoreria As New dsTesoreriaTableAdapters.CXP_PagosTesoreriaTableAdapter
     Dim importeTotal As Decimal = 0
+    Dim totalregistros As Integer = 0
+    Dim registrosSeleccionados As Integer = 0
 
     Private Sub frmTesSolicitudesDePago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFechaPagoInicial.Value = Date.Now.AddDays(-Now.Day + 1)
@@ -35,6 +37,8 @@ Public Class frmTesSolicitudesDePago
 
     Private Sub btnConsultar_Click(sender As Object, e As EventArgs) Handles btnConsultar.Click
         importeTotal = 0
+        totalregistros = 0
+        registrosSeleccionados = 0
         lblTotalAPagar.Text = "$0"
         pbxCargando.Visible = True
         Application.DoEvents()
@@ -44,6 +48,8 @@ Public Class frmTesSolicitudesDePago
         Else
             generaConsulta()
         End If
+        tssTotalRegistros.Text = Vw_CXP_SugPagoTesoreriaDataGridView.Rows.Count.ToString
+        tssRegistrosSeleccionados.Text = "0"
     End Sub
 
     Private Sub actualizaGrid()
@@ -636,6 +642,7 @@ Public Class frmTesSolicitudesDePago
     Private Sub actualizaImporte()
         Vw_CXP_SugPagoTesoreriaDataGridView.EndEdit()
         importeTotal = 0
+        registrosSeleccionados = 0
 
         Me.Refresh()
         Me.Update()
@@ -643,8 +650,10 @@ Public Class frmTesSolicitudesDePago
         For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
             If rows.Cells("seleccionar").Value = True Then
                 importeTotal = importeTotal + CDec(rows.Cells("importeSolicitado").Value)
+                registrosSeleccionados += 1
             End If
         Next
+        tssRegistrosSeleccionados.Text = registrosSeleccionados.ToString
         lblTotalAPagar.Text = FormatCurrency(importeTotal.ToString)
     End Sub
 
@@ -658,5 +667,9 @@ Public Class frmTesSolicitudesDePago
 
     Private Sub Vw_CXP_SugPagoTesoreriaDataGridView_CellContextMenuStripChanged(sender As Object, e As DataGridViewCellEventArgs) Handles Vw_CXP_SugPagoTesoreriaDataGridView.CellContextMenuStripChanged
         actualizaImporte()
+    End Sub
+
+    Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
+
     End Sub
 End Class
