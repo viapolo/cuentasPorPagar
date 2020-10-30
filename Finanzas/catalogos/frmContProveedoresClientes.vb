@@ -159,7 +159,7 @@ Public Class frmContProveedoresClientes
 
             'valida CURP
             If CurpTextBox.Text.Trim <> String.Empty Then
-                If Regex.IsMatch(CurpTextBox.Text.Trim, "^([a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2})$") = False Then
+                If Regex.IsMatch(CurpTextBox.Text.Trim, "^([a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9-a-zA-Z]{2})$") = False Then
                     MsgBox("Estructura de la clave CURP incorrecta.", MsgBoxStyle.Information, "")
                     validacion = "NO"
                     Exit Sub

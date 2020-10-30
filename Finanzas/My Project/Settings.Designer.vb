@@ -124,6 +124,18 @@ Namespace My
                 Me("addFinagil") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\contratos$\Executables\")>  _
+        Public Property hostExe() As String
+            Get
+                Return CType(Me("hostExe"),String)
+            End Get
+            Set
+                Me("hostExe") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

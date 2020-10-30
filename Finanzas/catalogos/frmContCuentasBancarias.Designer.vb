@@ -72,6 +72,10 @@ Partial Class frmContCuentasBancarias
         Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
         Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
+        Me.Contpaq = New cuentasPorPagar.contpaq()
+        Me.ContpaqBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
         NumeroDeCuentaLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
@@ -91,6 +95,9 @@ Partial Class frmContCuentasBancarias
         CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NumeroDeCuentaLabel
@@ -424,15 +431,17 @@ Partial Class frmContCuentasBancarias
         '
         'ComboBox1
         '
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_CuentasBancariasBindingSource, "cuentaCont", True))
-        Me.ComboBox1.DataSource = Me.CXPCuentasContablesBindingSource
-        Me.ComboBox1.DisplayMember = "nombre"
+        Me.ComboBox1.DataSource = Me.CuentasBindingSource
+        Me.ComboBox1.DisplayMember = "nCuenta"
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(161, 186)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(200, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(257, 21)
         Me.ComboBox1.TabIndex = 6
-        Me.ComboBox1.ValueMember = "idCuentaContable"
+        Me.ComboBox1.ValueMember = "Id"
         '
         'CXPCuentasContablesBindingSource
         '
@@ -509,6 +518,25 @@ Partial Class frmContCuentasBancarias
         '
         Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
         '
+        'Contpaq
+        '
+        Me.Contpaq.DataSetName = "contpaq"
+        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ContpaqBindingSource
+        '
+        Me.ContpaqBindingSource.DataSource = Me.Contpaq
+        Me.ContpaqBindingSource.Position = 0
+        '
+        'CuentasBindingSource
+        '
+        Me.CuentasBindingSource.DataMember = "Cuentas"
+        Me.CuentasBindingSource.DataSource = Me.ContpaqBindingSource
+        '
+        'CuentasTableAdapter
+        '
+        Me.CuentasTableAdapter.ClearBeforeFill = True
+        '
         'frmContCuentasBancarias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -550,6 +578,9 @@ Partial Class frmContCuentasBancarias
         CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -592,4 +623,8 @@ Partial Class frmContCuentasBancarias
     Friend WithEvents CXP_CuentasContablesTableAdapter As dsProductionTableAdapters.CXP_CuentasContablesTableAdapter
     Friend WithEvents CXP_tipoDeDocumentoBindingSource As BindingSource
     Friend WithEvents CXP_tipoDeDocumentoTableAdapter As dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter
+    Friend WithEvents ContpaqBindingSource As BindingSource
+    Friend WithEvents Contpaq As contpaq
+    Friend WithEvents CuentasBindingSource As BindingSource
+    Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
 End Class

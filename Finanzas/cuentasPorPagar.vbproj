@@ -285,16 +285,34 @@
     <Compile Include="contabilidad\dsContabilidad.vb">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
     </Compile>
+    <Compile Include="contabilidad\frmComprobaAsignaCuenta.Designer.vb">
+      <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmComprobaAsignaCuenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmContabilizaComprobaciones.Designer.vb">
       <DependentUpon>frmContabilizaComprobaciones.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmContabilizaComprobaciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmContabilizaReembolsos.Designer.vb">
+      <DependentUpon>frmContabilizaReembolsos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmContabilizaReembolsos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmDetalleComprobaciones.Designer.vb">
       <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmDetalleComprobaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleReembolsos.Designer.vb">
+      <DependentUpon>frmDetalleReembolsos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleReembolsos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmFacturasPendientes.Designer.vb">
@@ -331,6 +349,12 @@
       <DependentUpon>frmPolizasMvtos.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmPolizasMvtos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmRptProveedores.Designer.vb">
+      <DependentUpon>frmRptProveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmRptProveedores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\rptPdfDocumentacion.vb">
@@ -496,6 +520,12 @@
     <Compile Include="tesoreria\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="tesoreria\frmCargPagNoCie.Designer.vb">
+      <DependentUpon>frmCargPagNoCie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmCargPagNoCie.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="tesoreria\frmDocumentosAdjuntos.Designer.vb">
       <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>
     </Compile>
@@ -620,11 +650,20 @@
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmComprobaAsignaCuenta.resx">
+      <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmContabilizaComprobaciones.resx">
       <DependentUpon>frmContabilizaComprobaciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmContabilizaReembolsos.resx">
+      <DependentUpon>frmContabilizaReembolsos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetalleComprobaciones.resx">
       <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetalleReembolsos.resx">
+      <DependentUpon>frmDetalleReembolsos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmFacturasPendientes.resx">
       <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
@@ -643,6 +682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmPolizasMvtos.resx">
       <DependentUpon>frmPolizasMvtos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmRptProveedores.resx">
+      <DependentUpon>frmRptProveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\rptPdfDocumentacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -711,6 +753,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="tesoreria\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmCargPagNoCie.resx">
+      <DependentUpon>frmCargPagNoCie.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="tesoreria\frmDocumentosAdjuntos.resx">
       <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>

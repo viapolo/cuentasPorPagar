@@ -430,7 +430,25 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub CambiarDeEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CambiarDeEmpresaToolStripMenuItem.Click
-        lfrInicio.Show()
+        'lfrInicio.Show()
+
+        Dim p As Process
+        For Each p In Process.GetProcesses()
+            If Not p Is Nothing Then
+                If p.ProcessName.ToString = "cuentasPorPagar" Then
+                    Try
+                        p.Kill() ' lo cierra  
+                        'Listar() ' actualiza el list  
+
+                        Exit For ' sale  
+                    Catch msg As Exception
+                        MsgBox(msg.Message.ToString, MsgBoxStyle.Critical)
+                        Exit Sub
+                    End Try
+                End If
+            End If
+        Next
+        Process.Start(My.Settings.hostExe & "cuentasPorPagar.exe")
     End Sub
 
     Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldosPorUsuarioToolStripMenuItem.Click
@@ -698,6 +716,24 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmContabilizaComprobaciones.MdiParent = Me
         frmContabilizaComprobaciones.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ReembolsosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReembolsosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmContabilizaReembolsos.MdiParent = Me
+        frmContabilizaReembolsos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ProveedoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProveedoresToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmRptProveedores.MdiParent = Me
+        frmRptProveedores.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

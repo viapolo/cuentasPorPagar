@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmDetalleComprobaciones
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class frmDetalleReembolsos
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,16 +20,14 @@ Partial Class frmDetalleComprobaciones
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.cmbCuentaAbono = New System.Windows.Forms.ComboBox()
-        Me.CuentasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Contpaq = New cuentasPorPagar.contpaq()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.dgvDetalleComprobaciones = New System.Windows.Forms.DataGridView()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.dgvDetalleReembolsos = New System.Windows.Forms.DataGridView()
         Me.idCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,69 +35,40 @@ Partial Class frmDetalleComprobaciones
         Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.uuid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contpaq = New cuentasPorPagar.contpaq()
+        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmbCuentaAbono = New System.Windows.Forms.ComboBox()
+        Me.CuentasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.dtpFechaProceso = New System.Windows.Forms.DateTimePicker()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlCuentasContpaq = New System.Windows.Forms.Panel()
         Me.cmbCuentasContpaq = New System.Windows.Forms.ComboBox()
-        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.btnProcesar = New System.Windows.Forms.Button()
-        Me.dtpFechaProceso = New System.Windows.Forms.DateTimePicker()
-        CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvDetalleReembolsos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvDetalleComprobaciones, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlCuentasContpaq.SuspendLayout()
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCuentasContpaq.SuspendLayout()
         Me.SuspendLayout()
         '
-        'cmbCuentaAbono
+        'dgvDetalleReembolsos
         '
-        Me.cmbCuentaAbono.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.cmbCuentaAbono.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbCuentaAbono.DataSource = Me.CuentasBindingSource1
-        Me.cmbCuentaAbono.DisplayMember = "nCuenta"
-        Me.cmbCuentaAbono.FormattingEnabled = True
-        Me.cmbCuentaAbono.Location = New System.Drawing.Point(122, 15)
-        Me.cmbCuentaAbono.Name = "cmbCuentaAbono"
-        Me.cmbCuentaAbono.Size = New System.Drawing.Size(790, 21)
-        Me.cmbCuentaAbono.TabIndex = 1
-        Me.cmbCuentaAbono.ValueMember = "Id"
-        '
-        'CuentasBindingSource1
-        '
-        Me.CuentasBindingSource1.DataMember = "Cuentas"
-        Me.CuentasBindingSource1.DataSource = Me.Contpaq
-        '
-        'Contpaq
-        '
-        Me.Contpaq.DataSetName = "contpaq"
-        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(13, 18)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(77, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Cuenta abono:"
-        '
-        'dgvDetalleComprobaciones
-        '
-        Me.dgvDetalleComprobaciones.AllowUserToAddRows = False
-        Me.dgvDetalleComprobaciones.AllowUserToDeleteRows = False
-        Me.dgvDetalleComprobaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDetalleComprobaciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid})
-        Me.dgvDetalleComprobaciones.Location = New System.Drawing.Point(12, 42)
-        Me.dgvDetalleComprobaciones.Name = "dgvDetalleComprobaciones"
-        Me.dgvDetalleComprobaciones.ReadOnly = True
-        Me.dgvDetalleComprobaciones.Size = New System.Drawing.Size(1005, 364)
-        Me.dgvDetalleComprobaciones.TabIndex = 0
+        Me.dgvDetalleReembolsos.AllowUserToAddRows = False
+        Me.dgvDetalleReembolsos.AllowUserToDeleteRows = False
+        Me.dgvDetalleReembolsos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDetalleReembolsos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid})
+        Me.dgvDetalleReembolsos.Location = New System.Drawing.Point(12, 41)
+        Me.dgvDetalleReembolsos.Name = "dgvDetalleReembolsos"
+        Me.dgvDetalleReembolsos.ReadOnly = True
+        Me.dgvDetalleReembolsos.Size = New System.Drawing.Size(1005, 364)
+        Me.dgvDetalleReembolsos.TabIndex = 1
         '
         'idCuenta
         '
@@ -157,11 +126,59 @@ Partial Class frmDetalleComprobaciones
         Me.uuid.Name = "uuid"
         Me.uuid.ReadOnly = True
         '
+        'Contpaq
+        '
+        Me.Contpaq.DataSetName = "contpaq"
+        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CuentasBindingSource
+        '
+        Me.CuentasBindingSource.DataMember = "Cuentas"
+        Me.CuentasBindingSource.DataSource = Me.Contpaq
+        '
+        'CuentasTableAdapter
+        '
+        Me.CuentasTableAdapter.ClearBeforeFill = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(14, 15)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(77, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Cuenta abono:"
+        '
+        'cmbCuentaAbono
+        '
+        Me.cmbCuentaAbono.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmbCuentaAbono.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbCuentaAbono.DataSource = Me.CuentasBindingSource1
+        Me.cmbCuentaAbono.DisplayMember = "nCuenta"
+        Me.cmbCuentaAbono.FormattingEnabled = True
+        Me.cmbCuentaAbono.Location = New System.Drawing.Point(123, 12)
+        Me.cmbCuentaAbono.Name = "cmbCuentaAbono"
+        Me.cmbCuentaAbono.Size = New System.Drawing.Size(790, 21)
+        Me.cmbCuentaAbono.TabIndex = 4
+        Me.cmbCuentaAbono.ValueMember = "Id"
+        '
+        'CuentasBindingSource1
+        '
+        Me.CuentasBindingSource1.DataMember = "Cuentas"
+        Me.CuentasBindingSource1.DataSource = Me.Contpaq
+        '
+        'dtpFechaProceso
+        '
+        Me.dtpFechaProceso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaProceso.Location = New System.Drawing.Point(919, 12)
+        Me.dtpFechaProceso.Name = "dtpFechaProceso"
+        Me.dtpFechaProceso.Size = New System.Drawing.Size(99, 20)
+        Me.dtpFechaProceso.TabIndex = 6
+        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.HeaderText = "Id Cta"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
@@ -170,43 +187,51 @@ Partial Class frmDetalleComprobaciones
         Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn2.HeaderText = "Cuenta Contable"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         '
         'DataGridViewTextBoxColumn3
         '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn3.HeaderText = "Cargo"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         '
         'DataGridViewTextBoxColumn4
         '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn4.HeaderText = "Abono"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.HeaderText = "Referencia"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 200
         '
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.HeaderText = "Concepto"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
         Me.DataGridViewTextBoxColumn6.Width = 250
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.HeaderText = "uuid"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         '
         'pnlCuentasContpaq
         '
         Me.pnlCuentasContpaq.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.pnlCuentasContpaq.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pnlCuentasContpaq.Controls.Add(Me.cmbCuentasContpaq)
-        Me.pnlCuentasContpaq.Location = New System.Drawing.Point(269, 204)
+        Me.pnlCuentasContpaq.Location = New System.Drawing.Point(280, 196)
         Me.pnlCuentasContpaq.Name = "pnlCuentasContpaq"
         Me.pnlCuentasContpaq.Size = New System.Drawing.Size(469, 62)
-        Me.pnlCuentasContpaq.TabIndex = 6
+        Me.pnlCuentasContpaq.TabIndex = 7
         Me.pnlCuentasContpaq.Visible = False
         '
         'cmbCuentasContpaq
@@ -222,83 +247,30 @@ Partial Class frmDetalleComprobaciones
         Me.cmbCuentasContpaq.TabIndex = 0
         Me.cmbCuentasContpaq.ValueMember = "Id"
         '
-        'CuentasBindingSource
-        '
-        Me.CuentasBindingSource.DataMember = "Cuentas"
-        Me.CuentasBindingSource.DataSource = Me.Contpaq
-        '
-        'CuentasTableAdapter
-        '
-        Me.CuentasTableAdapter.ClearBeforeFill = True
-        '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(942, 421)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 4
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'btnProcesar
-        '
-        Me.btnProcesar.Location = New System.Drawing.Point(16, 420)
-        Me.btnProcesar.Name = "btnProcesar"
-        Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
-        Me.btnProcesar.TabIndex = 3
-        Me.btnProcesar.Text = "Procesar"
-        Me.btnProcesar.UseVisualStyleBackColor = True
-        '
-        'dtpFechaProceso
-        '
-        Me.dtpFechaProceso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaProceso.Location = New System.Drawing.Point(918, 15)
-        Me.dtpFechaProceso.Name = "dtpFechaProceso"
-        Me.dtpFechaProceso.Size = New System.Drawing.Size(99, 20)
-        Me.dtpFechaProceso.TabIndex = 2
-        '
-        'frmDetalleComprobaciones
+        'frmDetalleReembolsos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1029, 455)
-        Me.Controls.Add(Me.dtpFechaProceso)
-        Me.Controls.Add(Me.btnProcesar)
-        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.pnlCuentasContpaq)
-        Me.Controls.Add(Me.dgvDetalleComprobaciones)
+        Me.Controls.Add(Me.dtpFechaProceso)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmbCuentaAbono)
+        Me.Controls.Add(Me.dgvDetalleReembolsos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Name = "frmDetalleComprobaciones"
-        Me.Text = "Detalle Comprobaciones"
-        CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Name = "frmDetalleReembolsos"
+        Me.Text = "Detalle Reembolsos"
+        CType(Me.dgvDetalleReembolsos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvDetalleComprobaciones, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlCuentasContpaq.ResumeLayout(False)
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCuentasContpaq.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmbCuentaAbono As ComboBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents dgvDetalleComprobaciones As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents pnlCuentasContpaq As Panel
-    Friend WithEvents cmbCuentasContpaq As ComboBox
-    Friend WithEvents CuentasBindingSource As BindingSource
-    Friend WithEvents Contpaq As contpaq
-    Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
-    Friend WithEvents btnSalir As Button
-    Friend WithEvents btnProcesar As Button
-    Friend WithEvents CuentasBindingSource1 As BindingSource
-    Friend WithEvents dtpFechaProceso As DateTimePicker
+
+    Friend WithEvents dgvDetalleReembolsos As DataGridView
     Friend WithEvents idCuenta As DataGridViewTextBoxColumn
     Friend WithEvents cuentaContable As DataGridViewTextBoxColumn
     Friend WithEvents cargo As DataGridViewTextBoxColumn
@@ -306,4 +278,20 @@ Partial Class frmDetalleComprobaciones
     Friend WithEvents referencia As DataGridViewTextBoxColumn
     Friend WithEvents concepto As DataGridViewTextBoxColumn
     Friend WithEvents uuid As DataGridViewTextBoxColumn
+    Friend WithEvents Contpaq As contpaq
+    Friend WithEvents CuentasBindingSource As BindingSource
+    Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
+    Friend WithEvents Label2 As Label
+    Friend WithEvents cmbCuentaAbono As ComboBox
+    Friend WithEvents dtpFechaProceso As DateTimePicker
+    Friend WithEvents CuentasBindingSource1 As BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents pnlCuentasContpaq As Panel
+    Friend WithEvents cmbCuentasContpaq As ComboBox
 End Class

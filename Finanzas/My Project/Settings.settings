@@ -35,5 +35,8 @@
     <Setting Name="addFinagil" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\Todos\Procesados\</Value>
     </Setting>
+    <Setting Name="hostExe" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-raid2\contratos$\Executables\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

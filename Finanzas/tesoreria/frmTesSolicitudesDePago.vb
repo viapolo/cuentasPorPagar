@@ -1,5 +1,6 @@
 ﻿
 
+Imports System.ComponentModel
 Imports System.IO
 Imports System.Windows.Forms
 
@@ -8,6 +9,7 @@ Public Class frmTesSolicitudesDePago
 
     Dim taPagos As New dsTesoreriaTableAdapters.CXP_PagosTableAdapter
     Dim taPagosTesoreria As New dsTesoreriaTableAdapters.CXP_PagosTesoreriaTableAdapter
+    Dim importeTotal As Decimal = 0
 
     Private Sub frmTesSolicitudesDePago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFechaPagoInicial.Value = Date.Now.AddDays(-Now.Day + 1)
@@ -32,7 +34,8 @@ Public Class frmTesSolicitudesDePago
     End Sub
 
     Private Sub btnConsultar_Click(sender As Object, e As EventArgs) Handles btnConsultar.Click
-
+        importeTotal = 0
+        lblTotalAPagar.Text = "$0"
         pbxCargando.Visible = True
         Application.DoEvents()
 
@@ -41,7 +44,6 @@ Public Class frmTesSolicitudesDePago
         Else
             generaConsulta()
         End If
-
     End Sub
 
     Private Sub actualizaGrid()
@@ -96,6 +98,7 @@ Public Class frmTesSolicitudesDePago
                     drDatosPagos = dtDatosPagos.Rows(0)
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value = drDatosPagos.clabe
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value = drDatosPagos.cuenta
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Item("concepto", contRows).Value = drDatosPagos.concepto
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", contRows).Value = drDatosPagos.convenio
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", contRows).Value = drDatosPagos.referencia
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoBeneficiario", contRows).Value = drDatosPagos.nombreCorto
@@ -112,48 +115,56 @@ Public Class frmTesSolicitudesDePago
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("noContrato", contRows).Value = "" 'drDatosPagosAvi.noContrato
                 End If
 
+
                 If Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "37" Then
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
-                        d.Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
+                    d.Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
 
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").DisplayIndex = 18
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Frozen = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").HeaderText = "Fecha Proceso"
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").DisplayIndex = 18
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Frozen = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").HeaderText = "Fecha Proceso"
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = False
 
-                    ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "34" Then
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
-                        d.Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
+                ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "34" Then
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
+                    d.Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").DisplayIndex = 9
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").HeaderText = "Banco Ordenante"
 
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").DisplayIndex = 18
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Frozen = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").HeaderText = "Fecha Pago"
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").DisplayIndex = 18
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Frozen = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").HeaderText = "Fecha Pago"
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = False
 
-                    ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "33" Then
-                        d.Visible = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = True
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = False
-                        Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = True
+                ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "33" Then
+                    d.Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Frozen = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("nombre").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProgPago").Visible = True
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaProceso").Visible = False
+                    Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("fechaPago").Visible = False
+                    If Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", contRows).Value = "AVI" Then
+                        dataRow = dc.Items(1)
+                        dc.Value = dataRow.Item(0)
                     End If
                 End If
+            End If
 
-                contRows += 1
+            contRows += 1
         Next
         pbxCargando.Visible = False
     End Sub
@@ -197,12 +208,14 @@ Public Class frmTesSolicitudesDePago
                 rows.Cells("seleccionar").Value = True
             End If
         Next
+        'actualizaImporte()
     End Sub
 
     Private Sub btnSeleccionarNada_Click(sender As Object, e As EventArgs) Handles btnSeleccionarNada.Click
         For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
             rows.Cells("seleccionar").Value = False
         Next
+        actualizaImporte()
     End Sub
 
     Private Sub btnGenerarLayOut_Click(sender As Object, e As EventArgs) Handles btnGenerarLayOut.Click
@@ -340,12 +353,12 @@ Public Class frmTesSolicitudesDePago
                                     'Pagos distintos a contratos
                                     If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
                                         'Pagos CIE
-                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("concepto").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "I", "0", 7) &
                                         Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
                                         Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
                                         Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
                                         tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) &
-                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+                                        Stuff(rows.Cells("referencia").Value, "D", " ", 20)
 
                                         referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
                                         tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30)
@@ -354,13 +367,13 @@ Public Class frmTesSolicitudesDePago
                                     'Pagos de contratos
                                     If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
                                         'Pagos CIE
-                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("concepto").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "I", "0", 7) &
                                         Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
                                         Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
                                         Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
                                         obtContrato(rows.Cells("noContrato").Value) & " " &
-                                        tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" &
-                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+                                         tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) &
+                                        Stuff(rows.Cells("referencia").Value, "D", " ", 20)
 
                                         referencia = Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
                                         obtContrato(rows.Cells("noContrato").Value) & " " &
@@ -433,12 +446,12 @@ Public Class frmTesSolicitudesDePago
                                     'Pagos distintos a contratos
                                     If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
                                         'Pagos CIE
-                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("concepto").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "I", "0", 7) &
                                         Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
                                         Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
                                         Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
                                         tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22).Trim, "D", " ", 30) &
-                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+                                        Stuff(rows.Cells("referencia").Value, "D", " ", 20)
 
                                         referencia = rows.Cells("referencia").Value
                                     End If
@@ -446,13 +459,13 @@ Public Class frmTesSolicitudesDePago
                                     'Pagos de contratos
                                     If rows.Cells("idBancoBen").Value = taCuentasBancarias.ObtIdBanco_ScalarQuery(rows.Cells("bancoOrdenante").Value) Then
                                         'Pagos CIE
-                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("razonSocial").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "D", " ", 7) &
+                                        texto += "CIL" & Stuff(obtRazonSocial(rows.Cells("concepto").Value.ToString.Trim, 30), "D", " ", 30) & Stuff(obtRazonSocial(rows.Cells("convenio").Value.ToString.Trim, 30), "I", "0", 7) &
                                         Stuff(CXP_CuentasBancariasTableAdapter.ObtNumeroCuenta_ScalarQuery(rows.Cells("bancoOrdenante").Value), "I", "0", 18) &
                                         Stuff(rows.Cells("importeSolicitado").Value, "I", "0", 16) &
                                         Stuff(rows.Cells("tipoSolicitud").Value & rows.Cells("folioSolicitud").Value & " " &
                                         obtContrato(rows.Cells("noContrato").Value) & " " &
                                         tokenReferencia(taVwAutorizaciones.ObtRefernciaPago_ScalarQuery(rows.Cells("idEmpresa").Value, rows.Cells("folioSolicitud").Value), "D", 4, 22 - (obtContrato(rows.Cells("noContrato").Value).Length + 1)).Trim, "D", " ", 30) & "0                  000000000000.00" &
-                                        Stuff(rows.Cells("referencia").Value, "I", " ", 20)
+                                        Stuff(rows.Cells("referencia").Value, "D", " ", 20)
 
                                         referencia = rows.Cells("referencia").Value
                                     End If
@@ -470,6 +483,7 @@ Public Class frmTesSolicitudesDePago
                 End If
             End If
         Next
+
         Return texto
     End Function
 
@@ -514,7 +528,7 @@ Public Class frmTesSolicitudesDePago
             t = "TRE"
         End If
         If chkConvenio.Checked = True Then
-            c = "CER"
+            c = "CRE"
         End If
 
         dtpFechaPagoInicial.Enabled = False
@@ -529,7 +543,7 @@ Public Class frmTesSolicitudesDePago
             ElseIf p = "37" Then
                 Me.Vw_CXP_SugPagoTesoreriaTableAdapter.PagosElectronicosPP_FillBy(Me.DsTesoreria.Vw_CXP_SugPagoTesoreria, New System.Nullable(Of Decimal)(CType(varGlobal_IdEmpresa, Decimal)), p, New System.Nullable(Of Date)(CType(dtpFechaPagoInicial.Value.AddDays(-1), Date)), New System.Nullable(Of Date)(CType(dtpFechaPagoFinal.Value.AddDays(1), Date)))
             End If
-            Me.Vw_CXP_SugPagoTesoreriaBindingSource.Filter = "ref IN('" & t & "','" & c & "') AND tipoSolicitud IN (" & listaTipoSol & ")"
+            Me.Vw_CXP_SugPagoTesoreriaBindingSource.Filter = "ref IN ('" & t & "','" & c & "') AND tipoSolicitud IN (" & listaTipoSol & ")"
             Application.DoEvents()
             Vw_CXP_SugPagoTesoreriaDataGridView.Visible = True
         Catch ex As System.Exception
@@ -553,6 +567,24 @@ Public Class frmTesSolicitudesDePago
             mdiFrmDocumentosAdjuntos.idSolPago = Vw_CXP_SugPagoTesoreriaDataGridView.Item(0, e.RowIndex).Value
             mdiFrmDocumentosAdjuntos.Show()
             Me.Cursor = Cursors.Default
+        ElseIf e.ColumnIndex = 11 Then
+            actualizaImporte()
+        ElseIf e.ColumnIndex = 17 Then
+            If Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value = "" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" Then
+                Dim mdiCargPagNoCie As New frmCargPagNoCie
+                Dim mdiSolicitudesPago As New mdicuentasPorPagar
+                Me.Enabled = False
+                mdiSolicitudesPago = MdiParent
+                mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
+                Me.Cursor = Cursors.WaitCursor
+                mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
+                mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
+                mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
+                mdiCargPagNoCie.Show()
+                Me.Cursor = Cursors.Default
+            Else
+                MsgBox("El pago se realizó por convenio CIE o es Avio", MsgBoxStyle.Information, "")
+            End If
         End If
     End Sub
 
@@ -565,7 +597,7 @@ Public Class frmTesSolicitudesDePago
         If ofdPdfConfirmacion.ShowDialog() = DialogResult.OK Then
             Try
                 filePath = ofdPdfConfirmacion.FileName
-                extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid)
+                extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid, "", "", "", "")
 
                 System.IO.File.Copy(ofdPdfConfirmacion.FileName, My.Settings.fileNas & "CXP\ComPago\ComOriginales\" & guuid & ".pdf")
 
@@ -601,4 +633,30 @@ Public Class frmTesSolicitudesDePago
         contadorActividad = 0
     End Sub
 
+    Private Sub actualizaImporte()
+        Vw_CXP_SugPagoTesoreriaDataGridView.EndEdit()
+        importeTotal = 0
+
+        Me.Refresh()
+        Me.Update()
+
+        For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
+            If rows.Cells("seleccionar").Value = True Then
+                importeTotal = importeTotal + CDec(rows.Cells("importeSolicitado").Value)
+            End If
+        Next
+        lblTotalAPagar.Text = FormatCurrency(importeTotal.ToString)
+    End Sub
+
+    Private Sub Vw_CXP_SugPagoTesoreriaDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles Vw_CXP_SugPagoTesoreriaDataGridView.CellEndEdit
+        actualizaImporte()
+    End Sub
+
+    Private Sub frmTesSolicitudesDePago_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+    End Sub
+
+    Private Sub Vw_CXP_SugPagoTesoreriaDataGridView_CellContextMenuStripChanged(sender As Object, e As DataGridViewCellEventArgs) Handles Vw_CXP_SugPagoTesoreriaDataGridView.CellContextMenuStripChanged
+        actualizaImporte()
+    End Sub
 End Class

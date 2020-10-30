@@ -4617,17 +4617,17 @@ Namespace contpaqTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Id, RowVersion, Codigo, Nombre, NomIdioma, Tipo, EsBaja, CtaMayor, "& _ 
                 "CtaEfectivo, FechaRegistro, SistOrigen, IdMoneda, DigAgrup, IdSegNeg, SegNegMovt"& _ 
-                "os, Afectable, TimeStamp, IdRubro, Consume, IdAgrupadorSAT,                     "& _ 
-                "     ConceptosConsume, Codigo + '  ' + Nombre AS nCuenta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Cuenta"& _ 
-                "s"
+                "os, Afectable, TimeStamp, IdRubro, Consume, IdAgrupadorSAT, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       ConceptosConsume, Codigo + '  ' + Nombre AS nCuenta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Cuen"& _ 
+                "tas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Codigo NOT LIKE '14%') AND (Codigo NOT LIKE '13%') AND (Codig"& _ 
+                "o NOT LIKE '2620%') AND (Codigo NOT LIKE '2614%')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Id, RowVersion, Codigo, Nombre, NomIdioma, Tipo, EsBaja, CtaMayor, "& _ 
-                "CtaEfectivo, FechaRegistro, SistOrigen, IdMoneda, DigAgrup, IdSegNeg, SegNegMovt"& _ 
-                "os, Afectable, TimeStamp, IdRubro, Consume, IdAgrupadorSAT, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "       ConceptosConsume, Codigo + '  ' + Nombre AS nCuenta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Cuen"& _ 
-                "tas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Id = @id)"
+            Me._commandCollection(1).CommandText = "SELECT Afectable, Codigo, ConceptosConsume, Consume, CtaEfectivo, CtaMayor, DigAg"& _ 
+                "rup, EsBaja, FechaRegistro, Id, IdAgrupadorSAT, IdMoneda, IdRubro, IdSegNeg, Nom"& _ 
+                "Idioma, Nombre, RowVersion, SegNegMovtos, SistOrigen, TimeStamp, Tipo, Codigo + "& _ 
+                "'  ' + Nombre AS nCuenta FROM Cuentas WHERE (Id = @id)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
