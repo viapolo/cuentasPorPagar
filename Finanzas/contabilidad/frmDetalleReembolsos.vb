@@ -2,16 +2,24 @@
 
 Public Class frmDetalleReembolsos
     Public idSolicitud As Integer
+    Public fechaSolicitud As Date
     Dim taDetalleReembolsos As New dsContabilidadTableAdapters.Vw_CXP_AutorizacionesTableAdapter
     Dim dtDetalleReembolsos As New dsContabilidad.Vw_CXP_AutorizacionesDataTable
+    Dim taPagosTesoreria As New dsContabilidadTableAdapters.CXP_PagosTesoreriaTableAdapter
+    Dim taImpuestosCfdi As New dsTesoreriaTableAdapters.Vw_CXP_ImpuestosCFDITableAdapter
+    Dim dtImpuestosCfdi As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
+    Dim taDatosPolizas As New dsTesoreriaTableAdapters.DatosPolizasTableAdapter
+    Dim taPeriodos As New dsContabilidadTableAdapters.CXP_PeriodosTableAdapter
+    Dim taRegContable As New dsProductionTableAdapters.CXP_RegContTableAdapter
+
     Dim posRow As Integer
     Dim posCol As Integer
+
     Private Sub frmDetalleReembolsos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim totalCargoDed As Decimal = 0
         Dim totalCargoNDed As Decimal = 0
         Dim descripcion, solicitante As String
-        Dim taImpuestosCfdi As New dsTesoreriaTableAdapters.Vw_CXP_ImpuestosCFDITableAdapter
-        Dim dtImpuestosCfdi As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
+
         Dim rwImpuestosCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow
 
         Try
@@ -25,6 +33,17 @@ Public Class frmDetalleReembolsos
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "Error en conexión...")
         End Try
 
+        If taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud) = "01/01/1900 12:00:00 a. m." Then
+            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)
+            dtpFechaProceso.Enabled = True
+            lblFechaPago.Text = "Fecha de pago:"
+            btnProcesar.Enabled = False
+        Else
+            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)
+            dtpFechaProceso.Enabled = False
+            lblFechaPago.Text = "Fecha de registro:"
+        End If
+
         cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "1103020200000000")
 
         taDetalleReembolsos.DetalleReembolso_FillBy(dtDetalleReembolsos, varGlobal_IdEmpresa, idSolicitud)
@@ -32,7 +51,7 @@ Public Class frmDetalleReembolsos
         For Each rwComprobaciongts As dsContabilidad.Vw_CXP_AutorizacionesRow In dtDetalleReembolsos.Rows
             Dim contador As Integer = 0
             If rwComprobaciongts.folio = "ND" Then
-                dgvDetalleReembolsos.Rows.Add("", "", rwComprobaciongts.totalPagadoTC, 0, "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.decripcion, "ND")
+                dgvDetalleReembolsos.Rows.Add("", "", rwComprobaciongts.totalPagadoTC, 0, "REEMB GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.decripcion, "ND")
                 totalCargoNDed += rwComprobaciongts.totalPagadoTC
             ElseIf rwComprobaciongts.folio <> "PROVEEDOR" Then
                 taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
@@ -82,7 +101,7 @@ Public Class frmDetalleReembolsos
             'idProveedor = rwComprobaciongts.idProveedor
 
         Next
-        dgvDetalleReembolsos.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "COMP GTS S- " & idSolicitud & " ", "S- " & idSolicitud & " " & solicitante & " " & descripcion, "ND")
+        dgvDetalleReembolsos.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "REEMB GTS S- " & idSolicitud & " ", "S- " & idSolicitud & " " & solicitante & " " & descripcion, "ND")
         dgvDetalleReembolsos.Focus()
     End Sub
 
@@ -99,7 +118,7 @@ Public Class frmDetalleReembolsos
 
     Public Sub actualizaCuenta()
         dgvDetalleReembolsos.Item(0, posRow).Value = cmbCuentasContpaq.SelectedValue
-        dgvDetalleReembolsos.Item(1, posRow).Value = cmbCuentasContpaq.SelectedValue
+        dgvDetalleReembolsos.Item(1, posRow).Value = cmbCuentasContpaq.SelectedText
         pnlCuentasContpaq.Visible = False
     End Sub
 
@@ -122,5 +141,49 @@ Public Class frmDetalleReembolsos
 
     Private Sub dgvDetalleReembolsos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetalleReembolsos.CellContentClick
 
+    End Sub
+
+    Private Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
+
+        Dim rwDatosSolicitud As dsContabilidad.Vw_CXP_AutorizacionesRow
+        Dim dtAutorizaciones As New dsContabilidad.Vw_CXP_AutorizacionesDataTable
+
+        Dim contValid As Integer = 0
+
+        For Each rows As DataGridViewRow In dgvDetalleReembolsos.Rows
+            If dgvDetalleReembolsos.Item("idCuenta", contValid).Value.ToString = "" Then
+                contValid += 1
+                MsgBox("No se han asignado cuentas en todos los registros", MsgBoxStyle.Information, "")
+                Exit Sub
+            End If
+        Next
+
+        taDetalleReembolsos.ObtDatosSolicitud_FillBy(dtAutorizaciones, varGlobal_IdEmpresa, idSolicitud)
+        If dtAutorizaciones.Rows.Count = 1 Then
+            rwDatosSolicitud = dtAutorizaciones.Rows(0)
+        End If
+
+        Dim idTipoDocumento As Integer = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", rwDatosSolicitud.formaDePago, rwDatosSolicitud.monedaPago, varGlobal_IdEmpresa)
+
+        Dim folioPoliza As Integer = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+        Dim contador As Integer = 0
+        For Each rows As DataGridViewRow In dgvDetalleReembolsos.Rows
+
+            taRegContable.Insert(CDec(dgvDetalleReembolsos.Item("idCuenta", contador).Value), rwDatosSolicitud.idProveedor, CDec(dgvDetalleReembolsos.Item("cargo", contador).Value), CDec(dgvDetalleReembolsos.Item("abono", contador).Value), dgvDetalleReembolsos.Item("referencia", contador).Value, dgvDetalleReembolsos.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleReembolsos.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", rwDatosSolicitud.idConcepto, 2)
+            contador += 1
+        Next
+        'taTipoDeDocumento.ConsumeFolio_UpdateQuery(idTipoDocumento)
+        taPeriodos.ConsumeFolio_UpdateQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+        btnProcesar.Enabled = False
+        MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
+        'taRegCont.CambiaEstatus_UpdateQuery("Contabilizado", idSolicitud, idComprobacion, varGlobal_IdEmpresa)
+    End Sub
+
+    Private Sub cmbCuentasContpaq_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCuentasContpaq.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Close()
     End Sub
 End Class

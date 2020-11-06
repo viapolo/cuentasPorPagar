@@ -25,7 +25,7 @@ Public Class frmDetalleComprobaciones
         Dim descripcion, solicitante As String
 
         If taRegCont.ConsultaEstatus_ScalarQuery(idSolicitud, varGlobal_IdEmpresa, idComprobacion) = "Contabilizado" Then
-            MsgBox("Comporbación ya contabilizada", MsgBoxStyle.Information, "")
+            MsgBox("Comprobación ya contabilizada", MsgBoxStyle.Information, "")
             Exit Sub
         End If
 
@@ -65,7 +65,7 @@ Public Class frmDetalleComprobaciones
                         ElseIf rowsCfdi.tipoFactor = "No Objeto" Then
                             dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.importeCon, 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) = 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.base, 0, rwComprobaciongts.rfcBen & " Tasa 0 %", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.base, 0, rwComprobaciongts.rfcBen & " Tasa 0%", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) > 0 Then
                             dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.base, 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                             dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.mTras, 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
@@ -146,8 +146,6 @@ Public Class frmDetalleComprobaciones
     Private Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
         Dim contValid As Integer = 0
 
-
-
         For Each rows As DataGridViewRow In dgvDetalleComprobaciones.Rows
             If dgvDetalleComprobaciones.Item("idCuenta", contValid).Value.ToString = "" Then
                 contValid += 1
@@ -155,7 +153,7 @@ Public Class frmDetalleComprobaciones
                 Exit Sub
             End If
         Next
-        If Date.Now.Month < dtpFechaProceso.Value.Month Then
+        If dtpFechaProceso.Value.Month < Date.Now.Month Then
             If taPeriodos.ExistePeriodoCerrado_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa) <> "NE" Then
                 Dim idTipoDocumento As Integer = taEmpresas.ObtPolizaDiario_ScalarQuery(varGlobal_IdEmpresa)
                 Dim folioPoliza As Integer = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)

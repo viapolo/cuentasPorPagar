@@ -21,10 +21,15 @@
             mdiComprobacionesReembolsos.MdiParent = mdiSolicitudesPago
             Me.Cursor = Cursors.WaitCursor
             mdiComprobacionesReembolsos.idSolicitud = Vw_CXP_MisSolicitudesSCDataGridView.Item("idFolioSolicitud", e.RowIndex).Value
+            mdiComprobacionesReembolsos.fechaSolicitud = Vw_CXP_MisSolicitudesSCDataGridView.Item("fechaSolicitud", e.RowIndex).Value
             mdiComprobacionesReembolsos.Show()
 
             Me.Cursor = Cursors.Default
 
         End If
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Close()
     End Sub
 End Class

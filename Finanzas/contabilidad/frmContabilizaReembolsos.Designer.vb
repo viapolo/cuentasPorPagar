@@ -25,20 +25,22 @@ Partial Class frmContabilizaReembolsos
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Vw_CXP_MisSolicitudesSCDataGridView = New System.Windows.Forms.DataGridView()
+        Me.Vw_CXP_MisSolicitudesSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Vw_CXP_MisSolicitudesSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.Vw_CXP_MisSolicitudesSCTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_MisSolicitudesSCTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.idFolioSolicitud = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.razonSocial = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.usuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Vw_CXP_MisSolicitudesSCDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_MisSolicitudesSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,13 +52,23 @@ Partial Class frmContabilizaReembolsos
         Me.Vw_CXP_MisSolicitudesSCDataGridView.AllowUserToDeleteRows = False
         Me.Vw_CXP_MisSolicitudesSCDataGridView.AutoGenerateColumns = False
         Me.Vw_CXP_MisSolicitudesSCDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_CXP_MisSolicitudesSCDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioSolicitud, Me.fecha, Me.total, Me.razonSocial, Me.usuario})
+        Me.Vw_CXP_MisSolicitudesSCDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioSolicitud, Me.fecha, Me.total, Me.razonSocial, Me.usuario, Me.fechaSolicitud})
         Me.Vw_CXP_MisSolicitudesSCDataGridView.DataSource = Me.Vw_CXP_MisSolicitudesSCBindingSource
         Me.Vw_CXP_MisSolicitudesSCDataGridView.Location = New System.Drawing.Point(12, 12)
         Me.Vw_CXP_MisSolicitudesSCDataGridView.Name = "Vw_CXP_MisSolicitudesSCDataGridView"
         Me.Vw_CXP_MisSolicitudesSCDataGridView.ReadOnly = True
         Me.Vw_CXP_MisSolicitudesSCDataGridView.Size = New System.Drawing.Size(976, 305)
         Me.Vw_CXP_MisSolicitudesSCDataGridView.TabIndex = 2
+        '
+        'Vw_CXP_MisSolicitudesSCBindingSource
+        '
+        Me.Vw_CXP_MisSolicitudesSCBindingSource.DataMember = "Vw_CXP_MisSolicitudesSC"
+        Me.Vw_CXP_MisSolicitudesSCBindingSource.DataSource = Me.DsContabilidad
+        '
+        'DsContabilidad
+        '
+        Me.DsContabilidad.DataSetName = "dsContabilidad"
+        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DataGridViewTextBoxColumn1
         '
@@ -88,16 +100,6 @@ Partial Class frmContabilizaReembolsos
         Me.DataGridViewTextBoxColumn5.HeaderText = "Usuario"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         '
-        'Vw_CXP_MisSolicitudesSCBindingSource
-        '
-        Me.Vw_CXP_MisSolicitudesSCBindingSource.DataMember = "Vw_CXP_MisSolicitudesSC"
-        Me.Vw_CXP_MisSolicitudesSCBindingSource.DataSource = Me.DsContabilidad
-        '
-        'DsContabilidad
-        '
-        Me.DsContabilidad.DataSetName = "dsContabilidad"
-        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Vw_CXP_MisSolicitudesSCTableAdapter
         '
         Me.Vw_CXP_MisSolicitudesSCTableAdapter.ClearBeforeFill = True
@@ -109,12 +111,23 @@ Partial Class frmContabilizaReembolsos
         Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(913, 339)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 3
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'idFolioSolicitud
         '
@@ -157,11 +170,20 @@ Partial Class frmContabilizaReembolsos
         Me.usuario.Name = "usuario"
         Me.usuario.ReadOnly = True
         '
+        'fechaSolicitud
+        '
+        Me.fechaSolicitud.DataPropertyName = "fechaSolicitud"
+        Me.fechaSolicitud.HeaderText = "fechaSolicitud"
+        Me.fechaSolicitud.Name = "fechaSolicitud"
+        Me.fechaSolicitud.ReadOnly = True
+        Me.fechaSolicitud.Visible = False
+        '
         'frmContabilizaReembolsos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1000, 374)
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.Vw_CXP_MisSolicitudesSCDataGridView)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmContabilizaReembolsos"
@@ -183,9 +205,11 @@ Partial Class frmContabilizaReembolsos
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents btnSalir As Button
     Friend WithEvents idFolioSolicitud As DataGridViewLinkColumn
     Friend WithEvents fecha As DataGridViewTextBoxColumn
     Friend WithEvents total As DataGridViewTextBoxColumn
     Friend WithEvents razonSocial As DataGridViewTextBoxColumn
     Friend WithEvents usuario As DataGridViewTextBoxColumn
+    Friend WithEvents fechaSolicitud As DataGridViewTextBoxColumn
 End Class

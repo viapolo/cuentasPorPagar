@@ -51,6 +51,11 @@ Partial Class frmDetalleReembolsos
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlCuentasContpaq = New System.Windows.Forms.Panel()
         Me.cmbCuentasContpaq = New System.Windows.Forms.ComboBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnProcesar = New System.Windows.Forms.Button()
+        Me.lblFechaPago = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         CType(Me.dgvDetalleReembolsos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,7 +163,7 @@ Partial Class frmDetalleReembolsos
         Me.cmbCuentaAbono.FormattingEnabled = True
         Me.cmbCuentaAbono.Location = New System.Drawing.Point(123, 12)
         Me.cmbCuentaAbono.Name = "cmbCuentaAbono"
-        Me.cmbCuentaAbono.Size = New System.Drawing.Size(790, 21)
+        Me.cmbCuentaAbono.Size = New System.Drawing.Size(495, 21)
         Me.cmbCuentaAbono.TabIndex = 4
         Me.cmbCuentaAbono.ValueMember = "Id"
         '
@@ -247,11 +252,61 @@ Partial Class frmDetalleReembolsos
         Me.cmbCuentasContpaq.TabIndex = 0
         Me.cmbCuentasContpaq.ValueMember = "Id"
         '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(942, 420)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 8
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'btnProcesar
+        '
+        Me.btnProcesar.Location = New System.Drawing.Point(12, 420)
+        Me.btnProcesar.Name = "btnProcesar"
+        Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
+        Me.btnProcesar.TabIndex = 9
+        Me.btnProcesar.Text = "Procesar"
+        Me.btnProcesar.UseVisualStyleBackColor = True
+        '
+        'lblFechaPago
+        '
+        Me.lblFechaPago.AutoSize = True
+        Me.lblFechaPago.Location = New System.Drawing.Point(815, 15)
+        Me.lblFechaPago.Name = "lblFechaPago"
+        Me.lblFechaPago.Size = New System.Drawing.Size(82, 13)
+        Me.lblFechaPago.TabIndex = 10
+        Me.lblFechaPago.Text = "Fecha de pago:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(624, 15)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(81, 13)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Fecha solicitud:"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Enabled = False
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.Location = New System.Drawing.Point(711, 12)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(98, 20)
+        Me.DateTimePicker1.TabIndex = 12
+        '
         'frmDetalleReembolsos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1029, 455)
+        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblFechaPago)
+        Me.Controls.Add(Me.btnProcesar)
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.pnlCuentasContpaq)
         Me.Controls.Add(Me.dtpFechaProceso)
         Me.Controls.Add(Me.Label2)
@@ -294,4 +349,9 @@ Partial Class frmDetalleReembolsos
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents pnlCuentasContpaq As Panel
     Friend WithEvents cmbCuentasContpaq As ComboBox
+    Friend WithEvents btnSalir As Button
+    Friend WithEvents btnProcesar As Button
+    Friend WithEvents lblFechaPago As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class

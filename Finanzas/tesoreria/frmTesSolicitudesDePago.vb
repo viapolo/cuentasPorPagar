@@ -214,7 +214,7 @@ Public Class frmTesSolicitudesDePago
                 rows.Cells("seleccionar").Value = True
             End If
         Next
-        'actualizaImporte()
+        actualizaImporte()
     End Sub
 
     Private Sub btnSeleccionarNada_Click(sender As Object, e As EventArgs) Handles btnSeleccionarNada.Click

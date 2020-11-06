@@ -326,7 +326,7 @@ Public Class mdicuentasPorPagar
             End If
         Next
 
-        If varGlUser = "desarrollo" Or varGlUser = "viapolo" Or varGlIdUser = "ecacerest" Then
+        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = "viapolo" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
