@@ -41,6 +41,8 @@ Partial Class frmContabilizaReembolsos
         Me.razonSocial = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.usuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fechaSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.monedaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Vw_CXP_MisSolicitudesSCDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_MisSolicitudesSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,7 +54,7 @@ Partial Class frmContabilizaReembolsos
         Me.Vw_CXP_MisSolicitudesSCDataGridView.AllowUserToDeleteRows = False
         Me.Vw_CXP_MisSolicitudesSCDataGridView.AutoGenerateColumns = False
         Me.Vw_CXP_MisSolicitudesSCDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_CXP_MisSolicitudesSCDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioSolicitud, Me.fecha, Me.total, Me.razonSocial, Me.usuario, Me.fechaSolicitud})
+        Me.Vw_CXP_MisSolicitudesSCDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioSolicitud, Me.fecha, Me.total, Me.razonSocial, Me.usuario, Me.fechaSolicitud, Me.fPago, Me.monedaPago})
         Me.Vw_CXP_MisSolicitudesSCDataGridView.DataSource = Me.Vw_CXP_MisSolicitudesSCBindingSource
         Me.Vw_CXP_MisSolicitudesSCDataGridView.Location = New System.Drawing.Point(12, 12)
         Me.Vw_CXP_MisSolicitudesSCDataGridView.Name = "Vw_CXP_MisSolicitudesSCDataGridView"
@@ -111,6 +113,7 @@ Partial Class frmContabilizaReembolsos
         Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
@@ -178,6 +181,22 @@ Partial Class frmContabilizaReembolsos
         Me.fechaSolicitud.ReadOnly = True
         Me.fechaSolicitud.Visible = False
         '
+        'fPago
+        '
+        Me.fPago.DataPropertyName = "fPago"
+        Me.fPago.HeaderText = "fPago"
+        Me.fPago.Name = "fPago"
+        Me.fPago.ReadOnly = True
+        Me.fPago.Visible = False
+        '
+        'monedaPago
+        '
+        Me.monedaPago.DataPropertyName = "monedaPago"
+        Me.monedaPago.HeaderText = "monedaPago"
+        Me.monedaPago.Name = "monedaPago"
+        Me.monedaPago.ReadOnly = True
+        Me.monedaPago.Visible = False
+        '
         'frmContabilizaReembolsos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -212,4 +231,6 @@ Partial Class frmContabilizaReembolsos
     Friend WithEvents razonSocial As DataGridViewTextBoxColumn
     Friend WithEvents usuario As DataGridViewTextBoxColumn
     Friend WithEvents fechaSolicitud As DataGridViewTextBoxColumn
+    Friend WithEvents fPago As DataGridViewTextBoxColumn
+    Friend WithEvents monedaPago As DataGridViewTextBoxColumn
 End Class

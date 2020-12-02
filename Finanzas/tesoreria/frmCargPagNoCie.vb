@@ -4,6 +4,8 @@ Public Class frmCargPagNoCie
     Public tipoSolicitud As String
     Public folioSolicitud As String
     Public idBanco As String
+    Public tdc As String
+    Public referencia As String
     Private Sub frmCargPagNoCie_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -17,7 +19,7 @@ Public Class frmCargPagNoCie
         If ofdPdfConfirmacion.ShowDialog() = DialogResult.OK Then
             Try
                 filePath = ofdPdfConfirmacion.FileName
-                extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid, "TDC", folioSolicitud, tipoSolicitud, idBanco)
+                extraePaginaSharp(filePath, My.Settings.fileNas & "CXP\ComPago\", guuid, tdc, folioSolicitud, tipoSolicitud, idBanco, referencia)
 
                 System.IO.File.Copy(ofdPdfConfirmacion.FileName, My.Settings.fileNas & "CXP\ComPago\ComOriginales\" & guuid & ".pdf")
 

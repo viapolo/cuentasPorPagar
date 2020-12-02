@@ -23,10 +23,10 @@ Partial Class frmDetalleReembolsos
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvDetalleReembolsos = New System.Windows.Forms.DataGridView()
         Me.idCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,7 +55,7 @@ Partial Class frmDetalleReembolsos
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.lblFechaPago = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFechaSolicitud = New System.Windows.Forms.DateTimePicker()
         CType(Me.dgvDetalleReembolsos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,10 +69,10 @@ Partial Class frmDetalleReembolsos
         Me.dgvDetalleReembolsos.AllowUserToDeleteRows = False
         Me.dgvDetalleReembolsos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalleReembolsos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid})
-        Me.dgvDetalleReembolsos.Location = New System.Drawing.Point(12, 41)
+        Me.dgvDetalleReembolsos.Location = New System.Drawing.Point(12, 39)
         Me.dgvDetalleReembolsos.Name = "dgvDetalleReembolsos"
         Me.dgvDetalleReembolsos.ReadOnly = True
-        Me.dgvDetalleReembolsos.Size = New System.Drawing.Size(1005, 364)
+        Me.dgvDetalleReembolsos.Size = New System.Drawing.Size(1005, 366)
         Me.dgvDetalleReembolsos.TabIndex = 1
         '
         'idCuenta
@@ -93,20 +93,20 @@ Partial Class frmDetalleReembolsos
         '
         'cargo
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.cargo.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "C2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.cargo.DefaultCellStyle = DataGridViewCellStyle5
         Me.cargo.HeaderText = "Cargo"
         Me.cargo.Name = "cargo"
         Me.cargo.ReadOnly = True
         '
         'abono
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.abono.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.abono.DefaultCellStyle = DataGridViewCellStyle6
         Me.abono.HeaderText = "Abono"
         Me.abono.Name = "abono"
         Me.abono.ReadOnly = True
@@ -195,19 +195,19 @@ Partial Class frmDetalleReembolsos
         '
         'DataGridViewTextBoxColumn3
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn3.HeaderText = "Cargo"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         '
         'DataGridViewTextBoxColumn4
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn4.HeaderText = "Abono"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
@@ -273,7 +273,7 @@ Partial Class frmDetalleReembolsos
         'lblFechaPago
         '
         Me.lblFechaPago.AutoSize = True
-        Me.lblFechaPago.Location = New System.Drawing.Point(815, 15)
+        Me.lblFechaPago.Location = New System.Drawing.Point(831, 15)
         Me.lblFechaPago.Name = "lblFechaPago"
         Me.lblFechaPago.Size = New System.Drawing.Size(82, 13)
         Me.lblFechaPago.TabIndex = 10
@@ -288,21 +288,21 @@ Partial Class frmDetalleReembolsos
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "Fecha solicitud:"
         '
-        'DateTimePicker1
+        'dtpFechaSolicitud
         '
-        Me.DateTimePicker1.Enabled = False
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(711, 12)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(98, 20)
-        Me.DateTimePicker1.TabIndex = 12
+        Me.dtpFechaSolicitud.Enabled = False
+        Me.dtpFechaSolicitud.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaSolicitud.Location = New System.Drawing.Point(711, 12)
+        Me.dtpFechaSolicitud.Name = "dtpFechaSolicitud"
+        Me.dtpFechaSolicitud.Size = New System.Drawing.Size(98, 20)
+        Me.dtpFechaSolicitud.TabIndex = 12
         '
         'frmDetalleReembolsos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1029, 455)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.dtpFechaSolicitud)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblFechaPago)
         Me.Controls.Add(Me.btnProcesar)
@@ -353,5 +353,5 @@ Partial Class frmDetalleReembolsos
     Friend WithEvents btnProcesar As Button
     Friend WithEvents lblFechaPago As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtpFechaSolicitud As DateTimePicker
 End Class

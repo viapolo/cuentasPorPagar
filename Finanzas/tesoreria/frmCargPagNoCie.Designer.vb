@@ -29,7 +29,7 @@ Partial Class frmCargPagNoCie
         '
         'btnSubirComprobante
         '
-        Me.btnSubirComprobante.Location = New System.Drawing.Point(12, 12)
+        Me.btnSubirComprobante.Location = New System.Drawing.Point(81, 12)
         Me.btnSubirComprobante.Name = "btnSubirComprobante"
         Me.btnSubirComprobante.Size = New System.Drawing.Size(118, 23)
         Me.btnSubirComprobante.TabIndex = 0
@@ -58,6 +58,7 @@ Partial Class frmCargPagNoCie
         Me.Controls.Add(Me.btnSubirComprobante)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmCargPagNoCie"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cargar comprobantes"
         Me.ResumeLayout(False)
 

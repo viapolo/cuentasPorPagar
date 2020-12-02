@@ -22,6 +22,8 @@
             Me.Cursor = Cursors.WaitCursor
             mdiComprobacionesReembolsos.idSolicitud = Vw_CXP_MisSolicitudesSCDataGridView.Item("idFolioSolicitud", e.RowIndex).Value
             mdiComprobacionesReembolsos.fechaSolicitud = Vw_CXP_MisSolicitudesSCDataGridView.Item("fechaSolicitud", e.RowIndex).Value
+            mdiComprobacionesReembolsos.fPago = Vw_CXP_MisSolicitudesSCDataGridView.Item("fPago", e.RowIndex).Value
+            mdiComprobacionesReembolsos.monedaPago = Vw_CXP_MisSolicitudesSCDataGridView.Item("monedaPago", e.RowIndex).Value
             mdiComprobacionesReembolsos.Show()
 
             Me.Cursor = Cursors.Default

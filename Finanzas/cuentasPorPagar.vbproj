@@ -14,9 +14,9 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>\\server-raid2\FINAGIL_CXP\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -24,9 +24,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -60,6 +61,24 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5B4970C6F10FAD4CEBEB7A9407BB4520A085D23B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>cuentasPorPagar_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -502,6 +521,18 @@
       <DependentUpon>rptPolizaDiario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="tesoreria\frmCancelaMovimiento.Designer.vb">
+      <DependentUpon>frmCancelaMovimiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmCancelaMovimiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tesoreria\rptVistPreviaTraspaso.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptVistPreviaTraspaso.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ShowMessage.vb" />
     <Compile Include="ShowMsgForm.Designer.vb">
       <DependentUpon>ShowMsgForm.vb</DependentUpon>
@@ -560,6 +591,12 @@
       <DependentUpon>frmTraspasos.vb</DependentUpon>
     </Compile>
     <Compile Include="tesoreria\frmTraspasos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tesoreria\frmTraspasosVPrev.Designer.vb">
+      <DependentUpon>frmTraspasosVPrev.vb</DependentUpon>
+    </Compile>
+    <Compile Include="tesoreria\frmTraspasosVPrev.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="utilerias.vb" />
@@ -748,6 +785,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptPolizaDiario.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmCancelaMovimiento.resx">
+      <DependentUpon>frmCancelaMovimiento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\rptVistPreviaTraspaso.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptVistPreviaTraspaso.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowMsgForm.resx">
       <DependentUpon>ShowMsgForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -765,6 +809,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="tesoreria\frmTesSolicitudesDePago.resx">
       <DependentUpon>frmTesSolicitudesDePago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmTraspasos.resx">
+      <DependentUpon>frmTraspasos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tesoreria\frmTraspasosVPrev.resx">
+      <DependentUpon>frmTraspasosVPrev.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -822,6 +872,7 @@
     <None Include="dsSeguridad.xss">
       <DependentUpon>dsSeguridad.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

@@ -35,6 +35,7 @@ Partial Class frmContCuentasBancarias
         Dim SaldoInicialLabel As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContCuentasBancarias))
+        Dim CuentaClabeLabel As System.Windows.Forms.Label
         Me.CXP_CuentasBancariasBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_CuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -64,6 +65,9 @@ Partial Class frmContCuentasBancarias
         Me.Button1 = New System.Windows.Forms.Button()
         Me.NombreTextBox = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ContpaqBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Contpaq = New cuentasPorPagar.contpaq()
         Me.CXPCuentasContablesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_CuentasBancariasTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasBancariasTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
@@ -72,10 +76,8 @@ Partial Class frmContCuentasBancarias
         Me.CXP_CuentasContablesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_CuentasContablesTableAdapter()
         Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
-        Me.Contpaq = New cuentasPorPagar.contpaq()
-        Me.ContpaqBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
+        Me.CuentaClabeTextBox = New System.Windows.Forms.TextBox()
         NumeroDeCuentaLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
@@ -87,17 +89,18 @@ Partial Class frmContCuentasBancarias
         FechaInicialLabel = New System.Windows.Forms.Label()
         SaldoInicialLabel = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
+        CuentaClabeLabel = New System.Windows.Forms.Label()
         CType(Me.CXP_CuentasBancariasBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CXP_CuentasBancariasBindingNavigator.SuspendLayout()
         CType(Me.CXP_CuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NumeroDeCuentaLabel
@@ -112,7 +115,7 @@ Partial Class frmContCuentasBancarias
         'NombreLabel
         '
         NombreLabel.AutoSize = True
-        NombreLabel.Location = New System.Drawing.Point(110, 57)
+        NombreLabel.Location = New System.Drawing.Point(110, 85)
         NombreLabel.Name = "NombreLabel"
         NombreLabel.Size = New System.Drawing.Size(47, 13)
         NombreLabel.TabIndex = 3
@@ -121,7 +124,7 @@ Partial Class frmContCuentasBancarias
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(124, 110)
+        Label1.Location = New System.Drawing.Point(124, 138)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(31, 13)
         Label1.TabIndex = 7
@@ -130,7 +133,7 @@ Partial Class frmContCuentasBancarias
         'Label2
         '
         Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(57, 83)
+        Label2.Location = New System.Drawing.Point(57, 111)
         Label2.Name = "Label2"
         Label2.Size = New System.Drawing.Size(98, 13)
         Label2.TabIndex = 8
@@ -139,7 +142,7 @@ Partial Class frmContCuentasBancarias
         'Label3
         '
         Label3.AutoSize = True
-        Label3.Location = New System.Drawing.Point(344, 109)
+        Label3.Location = New System.Drawing.Point(344, 137)
         Label3.Name = "Label3"
         Label3.Size = New System.Drawing.Size(49, 13)
         Label3.TabIndex = 10
@@ -148,7 +151,7 @@ Partial Class frmContCuentasBancarias
         'FolioChequeInicialLabel
         '
         FolioChequeInicialLabel.AutoSize = True
-        FolioChequeInicialLabel.Location = New System.Drawing.Point(427, 136)
+        FolioChequeInicialLabel.Location = New System.Drawing.Point(427, 164)
         FolioChequeInicialLabel.Name = "FolioChequeInicialLabel"
         FolioChequeInicialLabel.Size = New System.Drawing.Size(102, 13)
         FolioChequeInicialLabel.TabIndex = 11
@@ -157,7 +160,7 @@ Partial Class frmContCuentasBancarias
         'FolioChequeFinalLabel
         '
         FolioChequeFinalLabel.AutoSize = True
-        FolioChequeFinalLabel.Location = New System.Drawing.Point(432, 162)
+        FolioChequeFinalLabel.Location = New System.Drawing.Point(432, 190)
         FolioChequeFinalLabel.Name = "FolioChequeFinalLabel"
         FolioChequeFinalLabel.Size = New System.Drawing.Size(97, 13)
         FolioChequeFinalLabel.TabIndex = 13
@@ -166,7 +169,7 @@ Partial Class frmContCuentasBancarias
         'FolioChequeActualLabel
         '
         FolioChequeActualLabel.AutoSize = True
-        FolioChequeActualLabel.Location = New System.Drawing.Point(424, 188)
+        FolioChequeActualLabel.Location = New System.Drawing.Point(424, 216)
         FolioChequeActualLabel.Name = "FolioChequeActualLabel"
         FolioChequeActualLabel.Size = New System.Drawing.Size(105, 13)
         FolioChequeActualLabel.TabIndex = 15
@@ -175,7 +178,7 @@ Partial Class frmContCuentasBancarias
         'FechaInicialLabel
         '
         FechaInicialLabel.AutoSize = True
-        FechaInicialLabel.Location = New System.Drawing.Point(38, 165)
+        FechaInicialLabel.Location = New System.Drawing.Point(38, 193)
         FechaInicialLabel.Name = "FechaInicialLabel"
         FechaInicialLabel.Size = New System.Drawing.Size(117, 13)
         FechaInicialLabel.TabIndex = 17
@@ -184,7 +187,7 @@ Partial Class frmContCuentasBancarias
         'SaldoInicialLabel
         '
         SaldoInicialLabel.AutoSize = True
-        SaldoInicialLabel.Location = New System.Drawing.Point(90, 136)
+        SaldoInicialLabel.Location = New System.Drawing.Point(90, 164)
         SaldoInicialLabel.Name = "SaldoInicialLabel"
         SaldoInicialLabel.Size = New System.Drawing.Size(67, 13)
         SaldoInicialLabel.TabIndex = 19
@@ -193,7 +196,7 @@ Partial Class frmContCuentasBancarias
         'Label4
         '
         Label4.AutoSize = True
-        Label4.Location = New System.Drawing.Point(66, 188)
+        Label4.Location = New System.Drawing.Point(66, 216)
         Label4.Name = "Label4"
         Label4.Size = New System.Drawing.Size(89, 13)
         Label4.TabIndex = 24
@@ -334,10 +337,10 @@ Partial Class frmContCuentasBancarias
         Me.cmbNombre.DataSource = Me.CXPBancosBindingSource
         Me.cmbNombre.DisplayMember = "razonSocial"
         Me.cmbNombre.FormattingEnabled = True
-        Me.cmbNombre.Location = New System.Drawing.Point(161, 80)
+        Me.cmbNombre.Location = New System.Drawing.Point(161, 108)
         Me.cmbNombre.Name = "cmbNombre"
         Me.cmbNombre.Size = New System.Drawing.Size(471, 21)
-        Me.cmbNombre.TabIndex = 2
+        Me.cmbNombre.TabIndex = 3
         Me.cmbNombre.ValueMember = "idBancos"
         '
         'CXPBancosBindingSource
@@ -348,11 +351,11 @@ Partial Class frmContCuentasBancarias
         'txtRFC
         '
         Me.txtRFC.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXPBancosBindingSource, "rfc", True))
-        Me.txtRFC.Location = New System.Drawing.Point(161, 107)
+        Me.txtRFC.Location = New System.Drawing.Point(161, 135)
         Me.txtRFC.Name = "txtRFC"
         Me.txtRFC.ReadOnly = True
         Me.txtRFC.Size = New System.Drawing.Size(111, 20)
-        Me.txtRFC.TabIndex = 5
+        Me.txtRFC.TabIndex = 4
         '
         'cmbMoneda
         '
@@ -360,10 +363,10 @@ Partial Class frmContCuentasBancarias
         Me.cmbMoneda.DataSource = Me.CXPcMonedaBindingSource
         Me.cmbMoneda.DisplayMember = "c_NombreMoneda"
         Me.cmbMoneda.FormattingEnabled = True
-        Me.cmbMoneda.Location = New System.Drawing.Point(399, 106)
+        Me.cmbMoneda.Location = New System.Drawing.Point(399, 134)
         Me.cmbMoneda.Name = "cmbMoneda"
         Me.cmbMoneda.Size = New System.Drawing.Size(233, 21)
-        Me.cmbMoneda.TabIndex = 3
+        Me.cmbMoneda.TabIndex = 5
         Me.cmbMoneda.ValueMember = "c_Moneda"
         '
         'CXPcMonedaBindingSource
@@ -374,7 +377,7 @@ Partial Class frmContCuentasBancarias
         'FolioChequeInicialTextBox
         '
         Me.FolioChequeInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "folioChequeInicial", True))
-        Me.FolioChequeInicialTextBox.Location = New System.Drawing.Point(532, 133)
+        Me.FolioChequeInicialTextBox.Location = New System.Drawing.Point(532, 161)
         Me.FolioChequeInicialTextBox.Name = "FolioChequeInicialTextBox"
         Me.FolioChequeInicialTextBox.Size = New System.Drawing.Size(100, 20)
         Me.FolioChequeInicialTextBox.TabIndex = 7
@@ -382,52 +385,52 @@ Partial Class frmContCuentasBancarias
         'FolioChequeFinalTextBox
         '
         Me.FolioChequeFinalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "folioChequeFinal", True))
-        Me.FolioChequeFinalTextBox.Location = New System.Drawing.Point(532, 159)
+        Me.FolioChequeFinalTextBox.Location = New System.Drawing.Point(532, 187)
         Me.FolioChequeFinalTextBox.Name = "FolioChequeFinalTextBox"
         Me.FolioChequeFinalTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.FolioChequeFinalTextBox.TabIndex = 8
+        Me.FolioChequeFinalTextBox.TabIndex = 9
         '
         'FolioChequeActualTextBox
         '
         Me.FolioChequeActualTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "folioChequeActual", True))
-        Me.FolioChequeActualTextBox.Location = New System.Drawing.Point(532, 185)
+        Me.FolioChequeActualTextBox.Location = New System.Drawing.Point(532, 213)
         Me.FolioChequeActualTextBox.Name = "FolioChequeActualTextBox"
         Me.FolioChequeActualTextBox.ReadOnly = True
         Me.FolioChequeActualTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.FolioChequeActualTextBox.TabIndex = 16
+        Me.FolioChequeActualTextBox.TabIndex = 11
         '
         'FechaInicialDateTimePicker
         '
         Me.FechaInicialDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.CXP_CuentasBancariasBindingSource, "fechaInicial", True))
-        Me.FechaInicialDateTimePicker.Location = New System.Drawing.Point(161, 159)
+        Me.FechaInicialDateTimePicker.Location = New System.Drawing.Point(161, 187)
         Me.FechaInicialDateTimePicker.Name = "FechaInicialDateTimePicker"
         Me.FechaInicialDateTimePicker.Size = New System.Drawing.Size(200, 20)
-        Me.FechaInicialDateTimePicker.TabIndex = 5
+        Me.FechaInicialDateTimePicker.TabIndex = 8
         '
         'SaldoInicialTextBox
         '
         Me.SaldoInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "saldoInicial", True))
-        Me.SaldoInicialTextBox.Location = New System.Drawing.Point(161, 133)
+        Me.SaldoInicialTextBox.Location = New System.Drawing.Point(161, 161)
         Me.SaldoInicialTextBox.Name = "SaldoInicialTextBox"
         Me.SaldoInicialTextBox.Size = New System.Drawing.Size(111, 20)
-        Me.SaldoInicialTextBox.TabIndex = 4
+        Me.SaldoInicialTextBox.TabIndex = 6
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(557, 213)
+        Me.Button1.Location = New System.Drawing.Point(557, 241)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 21
+        Me.Button1.TabIndex = 12
         Me.Button1.Text = "Salir"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'NombreTextBox
         '
         Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "nombre", True))
-        Me.NombreTextBox.Location = New System.Drawing.Point(161, 54)
+        Me.NombreTextBox.Location = New System.Drawing.Point(161, 82)
         Me.NombreTextBox.Name = "NombreTextBox"
         Me.NombreTextBox.Size = New System.Drawing.Size(471, 20)
-        Me.NombreTextBox.TabIndex = 1
+        Me.NombreTextBox.TabIndex = 2
         '
         'ComboBox1
         '
@@ -437,11 +440,26 @@ Partial Class frmContCuentasBancarias
         Me.ComboBox1.DataSource = Me.CuentasBindingSource
         Me.ComboBox1.DisplayMember = "nCuenta"
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(161, 186)
+        Me.ComboBox1.Location = New System.Drawing.Point(161, 214)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(257, 21)
-        Me.ComboBox1.TabIndex = 6
+        Me.ComboBox1.TabIndex = 10
         Me.ComboBox1.ValueMember = "Id"
+        '
+        'CuentasBindingSource
+        '
+        Me.CuentasBindingSource.DataMember = "Cuentas"
+        Me.CuentasBindingSource.DataSource = Me.ContpaqBindingSource
+        '
+        'ContpaqBindingSource
+        '
+        Me.ContpaqBindingSource.DataSource = Me.Contpaq
+        Me.ContpaqBindingSource.Position = 0
+        '
+        'Contpaq
+        '
+        Me.Contpaq.DataSetName = "contpaq"
+        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'CXPCuentasContablesBindingSource
         '
@@ -518,30 +536,34 @@ Partial Class frmContCuentasBancarias
         '
         Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
         '
-        'Contpaq
-        '
-        Me.Contpaq.DataSetName = "contpaq"
-        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ContpaqBindingSource
-        '
-        Me.ContpaqBindingSource.DataSource = Me.Contpaq
-        Me.ContpaqBindingSource.Position = 0
-        '
-        'CuentasBindingSource
-        '
-        Me.CuentasBindingSource.DataMember = "Cuentas"
-        Me.CuentasBindingSource.DataSource = Me.ContpaqBindingSource
-        '
         'CuentasTableAdapter
         '
         Me.CuentasTableAdapter.ClearBeforeFill = True
+        '
+        'CuentaClabeLabel
+        '
+        CuentaClabeLabel.AutoSize = True
+        CuentaClabeLabel.Location = New System.Drawing.Point(74, 57)
+        CuentaClabeLabel.Name = "CuentaClabeLabel"
+        CuentaClabeLabel.Size = New System.Drawing.Size(81, 13)
+        CuentaClabeLabel.TabIndex = 24
+        CuentaClabeLabel.Text = "Cuenta CLABE:"
+        '
+        'CuentaClabeTextBox
+        '
+        Me.CuentaClabeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_CuentasBancariasBindingSource, "cuentaClabe", True))
+        Me.CuentaClabeTextBox.Location = New System.Drawing.Point(161, 54)
+        Me.CuentaClabeTextBox.Name = "CuentaClabeTextBox"
+        Me.CuentaClabeTextBox.Size = New System.Drawing.Size(471, 20)
+        Me.CuentaClabeTextBox.TabIndex = 1
         '
         'frmContCuentasBancarias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(720, 256)
+        Me.ClientSize = New System.Drawing.Size(720, 284)
+        Me.Controls.Add(CuentaClabeLabel)
+        Me.Controls.Add(Me.CuentaClabeTextBox)
         Me.Controls.Add(Label4)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.NombreTextBox)
@@ -576,11 +598,11 @@ Partial Class frmContCuentasBancarias
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPBancosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPcMonedaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasContablesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXP_tipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContpaqBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -627,4 +649,5 @@ Partial Class frmContCuentasBancarias
     Friend WithEvents Contpaq As contpaq
     Friend WithEvents CuentasBindingSource As BindingSource
     Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
+    Friend WithEvents CuentaClabeTextBox As TextBox
 End Class

@@ -37,8 +37,8 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub timActividad_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timActividad.Tick
-        contadorActividad = contadorActividad + 1
-        frmAccesoDirecto.Label1.Text = contadorActividad.ToString
+        'contadorActividad = contadorActividad + 1
+        'frmAccesoDirecto.Label1.Text = contadorActividad.ToString
         'If contadorActividad > 1000 Then
         '    timActividad.Enabled = False
         '    Me.Enabled = False

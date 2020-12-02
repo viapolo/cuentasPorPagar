@@ -48,8 +48,12 @@ Public Class frmDetalleComprobaciones
         For Each rwComprobaciongts As dsContabilidad.CXP_ComprobGtosRow In dtComprobacionGts.Rows
             Dim contador As Integer = 0
             If rwComprobaciongts.serie = "ND" Then
-                dgvDetalleComprobaciones.Rows.Add("", "", rwComprobaciongts.importe, 0, "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
-                totalCargoNDed += rwComprobaciongts.importe
+                If rwComprobaciongts.importe >= 0 Then
+                    dgvDetalleComprobaciones.Rows.Add("", "", rwComprobaciongts.importe, 0, "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
+                Else
+                    dgvDetalleComprobaciones.Rows.Add("", "", 0, Math.Abs(rwComprobaciongts.importe), "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
+                End If
+                                    totalCargoNDed += rwComprobaciongts.importe
             Else
                 taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
                 rwImpuestosCfdi = dtImpuestosCfdi.Rows(0)
@@ -145,6 +149,11 @@ Public Class frmDetalleComprobaciones
 
     Private Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
         Dim contValid As Integer = 0
+        Dim periodoEjercicio As String = "2"
+
+        If varGlobal_IdEmpresa = 23 Then
+            periodoEjercicio = "1"
+        End If
 
         For Each rows As DataGridViewRow In dgvDetalleComprobaciones.Rows
             If dgvDetalleComprobaciones.Item("idCuenta", contValid).Value.ToString = "" Then
@@ -159,7 +168,7 @@ Public Class frmDetalleComprobaciones
                 Dim folioPoliza As Integer = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
                 Dim contador As Integer = 0
                 For Each rows As DataGridViewRow In dgvDetalleComprobaciones.Rows
-                    taRegContable.Insert(CDec(dgvDetalleComprobaciones.Item("idCuenta", contador).Value), idProveedor, CDec(dgvDetalleComprobaciones.Item("cargo", contador).Value), CDec(dgvDetalleComprobaciones.Item("abono", contador).Value), dgvDetalleComprobaciones.Item("referencia", contador).Value, dgvDetalleComprobaciones.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleComprobaciones.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", idConcepto, 2)
+                    taRegContable.Insert(CDec(dgvDetalleComprobaciones.Item("idCuenta", contador).Value), idProveedor, CDec(dgvDetalleComprobaciones.Item("cargo", contador).Value), CDec(dgvDetalleComprobaciones.Item("abono", contador).Value), dgvDetalleComprobaciones.Item("referencia", contador).Value, dgvDetalleComprobaciones.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleComprobaciones.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", idConcepto, periodoEjercicio)
                     contador += 1
                 Next
                 'taTipoDeDocumento.ConsumeFolio_UpdateQuery(idTipoDocumento)

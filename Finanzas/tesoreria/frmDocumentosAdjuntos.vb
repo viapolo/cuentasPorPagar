@@ -3,9 +3,12 @@ Imports System.ComponentModel
 
 Public Class frmDocumentosAdjuntos
     Public idSolPago As String
+    Public tipoSolicitud As String
     Private Sub frmDocumentosAdjuntos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'If tipoSolicitud = "CXP" Then
         'TODO: esta línea de código carga datos en la tabla 'DsTesoreria.CXP_Pagos' Puede moverla o quitarla según sea necesario.
         Me.CXP_PagosTableAdapter.DocumentosAdjuntos_FillBy(Me.DsTesoreria.CXP_Pagos, idSolPago, varGlobal_IdEmpresa)
+        'End If
         lnkFolioSolicitud.Text = idSolPago
     End Sub
 
@@ -48,8 +51,14 @@ Public Class frmDocumentosAdjuntos
 
     Private Sub lnkFolioSolicitud_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkFolioSolicitud.LinkClicked
         Try
-            System.IO.File.Copy(My.Settings.fileNas & "CXP\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", True)
-            System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf")
+            Select Case tipoSolicitud
+                Case "TRA"
+                    System.IO.File.Copy(My.Settings.fileNas & "TRA\" & tipoSolicitud & "-" & idSolPago & ".pdf", "C:\Files\" & tipoSolicitud & "-" & idSolPago & ".pdf", True)
+                    System.Diagnostics.Process.Start("C:\Files\" & tipoSolicitud & "-" & idSolPago & ".pdf")
+                Case Else
+                    System.IO.File.Copy(My.Settings.fileNas & "CXP\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", "C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf", True)
+                    System.Diagnostics.Process.Start("C:\Files\" & varGlobal_IdEmpresa & "-" & idSolPago & ".pdf")
+            End Select
         Catch ex As Exception
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
         End Try
