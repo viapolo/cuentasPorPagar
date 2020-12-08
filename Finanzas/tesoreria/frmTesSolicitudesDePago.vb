@@ -637,37 +637,37 @@ Public Class frmTesSolicitudesDePago
             Me.Cursor = Cursors.Default
         ElseIf e.ColumnIndex = 12 Then
             actualizaImporte()
-        ElseIf e.ColumnIndex = 17 Then
-            If Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value = "" Then
-                Dim mdiCargPagNoCie As New frmCargPagNoCie
-                Dim mdiSolicitudesPago As New mdicuentasPorPagar
-                Me.Enabled = False
-                mdiSolicitudesPago = MdiParent
-                mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
-                Me.Cursor = Cursors.WaitCursor
-                mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
-                mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
-                mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
-                mdiCargPagNoCie.referencia = Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", e.RowIndex).Value
-                mdiCargPagNoCie.tdc = "TDC"
-                mdiCargPagNoCie.Show()
-                Me.Cursor = Cursors.Default
-            ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value <> "" Then
-                Dim mdiCargPagNoCie As New frmCargPagNoCie
-                Dim mdiSolicitudesPago As New mdicuentasPorPagar
-                Me.Enabled = False
-                mdiSolicitudesPago = MdiParent
-                mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
-                Me.Cursor = Cursors.WaitCursor
-                mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
-                mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
-                mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
-                mdiCargPagNoCie.tdc = "CIE"
-                mdiCargPagNoCie.Show()
-                Me.Cursor = Cursors.Default
-            Else
-                MsgBox("El pago es Avio", MsgBoxStyle.Information, "")
-            End If
+            'ElseIf e.ColumnIndex = 17 Then
+            '    If Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value = "" Then
+            '        Dim mdiCargPagNoCie As New frmCargPagNoCie
+            '        Dim mdiSolicitudesPago As New mdicuentasPorPagar
+            '        Me.Enabled = False
+            '        mdiSolicitudesPago = MdiParent
+            '        mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
+            '        Me.Cursor = Cursors.WaitCursor
+            '        mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
+            '        mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
+            '        mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
+            '        mdiCargPagNoCie.referencia = Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", e.RowIndex).Value
+            '        mdiCargPagNoCie.tdc = "TDC"
+            '        mdiCargPagNoCie.Show()
+            '        Me.Cursor = Cursors.Default
+            '    ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value <> "" Then
+            '        Dim mdiCargPagNoCie As New frmCargPagNoCie
+            '        Dim mdiSolicitudesPago As New mdicuentasPorPagar
+            '        Me.Enabled = False
+            '        mdiSolicitudesPago = MdiParent
+            '        mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
+            '        Me.Cursor = Cursors.WaitCursor
+            '        mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
+            '        mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
+            '        mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
+            '        mdiCargPagNoCie.tdc = "CIE"
+            '        mdiCargPagNoCie.Show()
+            '        Me.Cursor = Cursors.Default
+            '    Else
+            '        MsgBox("El pago es Avio", MsgBoxStyle.Information, "")
+            '    End If
         End If
     End Sub
 

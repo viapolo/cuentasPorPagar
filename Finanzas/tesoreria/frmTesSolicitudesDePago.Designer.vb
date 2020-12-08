@@ -44,8 +44,6 @@ Partial Class frmTesSolicitudesDePago
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Vw_CXP_SugPagoTesoreriaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsTesoreria = New cuentasPorPagar.dsTesoreria()
         Me.dtpFechaPagoInicial = New System.Windows.Forms.DateTimePicker()
         Me.btnConsultar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
@@ -78,6 +76,8 @@ Partial Class frmTesSolicitudesDePago
         Me.tssRegistrosSeleccionados = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssTotalRegistros = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Vw_CXP_SugPagoTesoreriaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsTesoreria = New cuentasPorPagar.dsTesoreria()
         Me.CXPCuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_CXP_SugPagoTesoreriaTableAdapter = New cuentasPorPagar.dsTesoreriaTableAdapters.Vw_CXP_SugPagoTesoreriaTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsTesoreriaTableAdapters.TableAdapterManager()
@@ -134,8 +134,6 @@ Partial Class frmTesSolicitudesDePago
         Me.ColumnaPersonalizada1 = New cuentasPorPagar.ColumnaPersonalizada()
         CType(Me.Vw_CXP_SugPagoTesoreriaDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsMenuOpciones.SuspendLayout()
-        CType(Me.Vw_CXP_SugPagoTesoreriaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxSeleccionar.SuspendLayout()
         Me.gbxLayout.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -144,6 +142,8 @@ Partial Class frmTesSolicitudesDePago
         Me.GroupBox2.SuspendLayout()
         CType(Me.pbxCargando, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.Vw_CXP_SugPagoTesoreriaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -221,16 +221,6 @@ Partial Class frmTesSolicitudesDePago
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
         Me.ToolStripMenuItem3.Size = New System.Drawing.Size(193, 22)
         Me.ToolStripMenuItem3.Text = "Cancelar Movimiento"
-        '
-        'Vw_CXP_SugPagoTesoreriaBindingSource
-        '
-        Me.Vw_CXP_SugPagoTesoreriaBindingSource.DataMember = "Vw_CXP_SugPagoTesoreria"
-        Me.Vw_CXP_SugPagoTesoreriaBindingSource.DataSource = Me.DsTesoreria
-        '
-        'DsTesoreria
-        '
-        Me.DsTesoreria.DataSetName = "dsTesoreria"
-        Me.DsTesoreria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'dtpFechaPagoInicial
         '
@@ -504,6 +494,16 @@ Partial Class frmTesSolicitudesDePago
         Me.tssTotalRegistros.Size = New System.Drawing.Size(13, 17)
         Me.tssTotalRegistros.Text = "0"
         '
+        'Vw_CXP_SugPagoTesoreriaBindingSource
+        '
+        Me.Vw_CXP_SugPagoTesoreriaBindingSource.DataMember = "Vw_CXP_SugPagoTesoreria"
+        Me.Vw_CXP_SugPagoTesoreriaBindingSource.DataSource = Me.DsTesoreria
+        '
+        'DsTesoreria
+        '
+        Me.DsTesoreria.DataSetName = "dsTesoreria"
+        Me.DsTesoreria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'CXPCuentasBancariasBindingSource
         '
         Me.CXPCuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
@@ -690,6 +690,7 @@ Partial Class frmTesSolicitudesDePago
         Me.DataGridViewTextBoxColumn10.HeaderText = "Banco Destino"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn10.Width = 39
         '
         'DataGridViewTextBoxColumn11
@@ -757,6 +758,7 @@ Partial Class frmTesSolicitudesDePago
         Me.DataGridViewTextBoxColumn16.HeaderText = "ok2"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
         Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn16.Visible = False
         Me.DataGridViewTextBoxColumn16.Width = 5
         '
@@ -844,7 +846,7 @@ Partial Class frmTesSolicitudesDePago
         Me.DataGridViewTextBoxColumn26.HeaderText = "Fecha Solicitud"
         Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
         Me.DataGridViewTextBoxColumn26.ReadOnly = True
-        Me.DataGridViewTextBoxColumn26.Visible = False
+        Me.DataGridViewTextBoxColumn26.Visible = True
         Me.DataGridViewTextBoxColumn26.Width = 5
         '
         'DataGridViewTextBoxColumn27
@@ -1081,8 +1083,6 @@ Partial Class frmTesSolicitudesDePago
         Me.Text = "Pagos por tranferencia electrónica y convenio"
         CType(Me.Vw_CXP_SugPagoTesoreriaDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.cmsMenuOpciones.ResumeLayout(False)
-        CType(Me.Vw_CXP_SugPagoTesoreriaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxSeleccionar.ResumeLayout(False)
         Me.gbxLayout.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
@@ -1094,6 +1094,8 @@ Partial Class frmTesSolicitudesDePago
         CType(Me.pbxCargando, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.Vw_CXP_SugPagoTesoreriaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -746,4 +746,8 @@ Public Class mdicuentasPorPagar
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
+
+    Private Sub BancosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BancosToolStripMenuItem1.Click
+
+    End Sub
 End Class

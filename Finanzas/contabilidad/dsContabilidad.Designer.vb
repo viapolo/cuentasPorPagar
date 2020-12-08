@@ -22191,11 +22191,11 @@ Namespace dsContabilidadTableAdapters
                 "Documento) AND (folioTipoDocumento = @folioTipoDocumento) AND (folioSolicitud = "& _ 
                 "@folioSolicitud) AND (idConcepto = @idConcepto)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Variant], 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idTipoDocumento", Global.System.Data.SqlDbType.[Variant], 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "idTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@folioTipoDocumento", Global.System.Data.SqlDbType.[Variant], 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "folioTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@folioSolicitud", Global.System.Data.SqlDbType.[Variant], 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "folioSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConcepto", Global.System.Data.SqlDbType.[Variant], 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "idConcepto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idTipoDocumento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@folioTipoDocumento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "folioTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@folioSolicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "folioSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idConcepto", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idConcepto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        Vw_CXP_PolizasDet.idConcepto, CXP_Conceptos.nombre AS nConcepto, Vw"& _ 
@@ -22264,32 +22264,32 @@ Namespace dsContabilidadTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function DetallePoliza_FillBy(ByVal dataTable As dsContabilidad.Vw_CXP_PolizasDetDataTable, ByVal idEmpresa As Object, ByVal idTipoDocumento As Object, ByVal folioTipoDocumento As Object, ByVal folioSolicitud As Object, ByVal idConcepto As Object) As Integer
+        Public Overloads Overridable Function DetallePoliza_FillBy(ByVal dataTable As dsContabilidad.Vw_CXP_PolizasDetDataTable, ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal folioTipoDocumento As Global.System.Nullable(Of Decimal), ByVal folioSolicitud As Global.System.Nullable(Of Decimal), ByVal idConcepto As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (idEmpresa Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("idEmpresa")
+            If (idEmpresa.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa,Object)
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (idTipoDocumento Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("idTipoDocumento")
+            If (idTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idTipoDocumento.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idTipoDocumento,Object)
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (folioTipoDocumento Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("folioTipoDocumento")
+            If (folioTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(folioTipoDocumento.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(folioTipoDocumento,Object)
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (folioSolicitud Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("folioSolicitud")
+            If (folioSolicitud.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(folioSolicitud.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(folioSolicitud,Object)
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (idConcepto Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("idConcepto")
+            If (idConcepto.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(idConcepto.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(idConcepto,Object)
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -22302,32 +22302,32 @@ Namespace dsContabilidadTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function DetallePoliza_GetDataBy(ByVal idEmpresa As Object, ByVal idTipoDocumento As Object, ByVal folioTipoDocumento As Object, ByVal folioSolicitud As Object, ByVal idConcepto As Object) As dsContabilidad.Vw_CXP_PolizasDetDataTable
+        Public Overloads Overridable Function DetallePoliza_GetDataBy(ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal folioTipoDocumento As Global.System.Nullable(Of Decimal), ByVal folioSolicitud As Global.System.Nullable(Of Decimal), ByVal idConcepto As Global.System.Nullable(Of Decimal)) As dsContabilidad.Vw_CXP_PolizasDetDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (idEmpresa Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("idEmpresa")
+            If (idEmpresa.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa,Object)
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (idTipoDocumento Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("idTipoDocumento")
+            If (idTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idTipoDocumento.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idTipoDocumento,Object)
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (folioTipoDocumento Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("folioTipoDocumento")
+            If (folioTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(folioTipoDocumento.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(folioTipoDocumento,Object)
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (folioSolicitud Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("folioSolicitud")
+            If (folioSolicitud.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(folioSolicitud.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(folioSolicitud,Object)
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (idConcepto Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("idConcepto")
+            If (idConcepto.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(idConcepto.Value,Decimal)
             Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(idConcepto,Object)
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsContabilidad.Vw_CXP_PolizasDetDataTable = New dsContabilidad.Vw_CXP_PolizasDetDataTable()
             Me.Adapter.Fill(dataTable)
