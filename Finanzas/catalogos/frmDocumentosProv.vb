@@ -24,6 +24,7 @@
             actualizaGridView()
         Catch ex As Exception
             MsgBox(ex.ToString, MsgBoxStyle.Information, "")
+            Exit Sub
         End Try
     End Sub
 
@@ -169,5 +170,12 @@
         If (e.KeyCode = Keys.Escape) Then
             Me.Close()
         End If
+    End Sub
+
+    Private Sub CXP_ProveedoresArchDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles CXP_ProveedoresArchDataGridView.DataError
+        MsgBox(e.ToString, MsgBoxStyle.Critical, "")
+        CXP_ProveedoresArchDataGridView.EndEdit()
+        CXP_ProveedoresArchBindingSource.EndEdit()
+        Exit Sub
     End Sub
 End Class

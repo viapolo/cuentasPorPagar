@@ -31,7 +31,7 @@
         Dim drDatosUaurios As dsTesoreria.DatosUsuarioSolicitaRow
 
         Try
-            If tipoSolicitudCan = "TRA" Then
+            If tipoSolicitudCan = "TRA" Or tipoSolicitudCan = "FAC" Or tipoSolicitudCan = "AVI" Then
                 If estatusSolicitud = "33" Then
                     taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(35, SqlTypes.SqlDateTime.Null, idBancoOrigenCan, Nothing, importeCan, 33, folioSolicitudCan, tipoSolicitudCan)
                 Else
@@ -56,6 +56,7 @@
                 End If
             End If
             MsgBox("Proceso termiando", MsgBoxStyle.Information, "")
+            frmTesSolicitudesDePago.actualizaGrid()
             Me.Close()
         Catch ex As Exception
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "")

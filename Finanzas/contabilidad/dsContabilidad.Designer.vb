@@ -27456,7 +27456,8 @@ Namespace dsContabilidadTableAdapters
                 "= '') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (idEmpresas = @idEmpresas) AND (idConcepto = "& _ 
                 "40 OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         idConcepto = 42) AND (estatus = 'Autoriza 2') AN"& _ 
                 "D (st = 'No Pagada') AND (fechaSolicitud >= CONVERT(DATETIME, '2020-11-01 00:00:"& _ 
-                "00', 102)) AND (estatusReemb = '')"
+                "00', 102)) AND (estatusReemb = '' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         estatusReemb IS N"& _ 
+                "ULL)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresas", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -30972,7 +30973,7 @@ Namespace dsContabilidadTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        idPagos, idProveedor, idUsuario, folioSolicitud, fechaSolicitud, fe"& _ 
@@ -30982,6 +30983,14 @@ Namespace dsContabilidadTableAdapters
                 "go, contrato, noContrato, idAutoriza2, naAutoriza2, naAutoriza1, cCostos, fPago,"& _ 
                 " idCuentas, tipoDeCambio, monedaPago, estatusReemb"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_Pagos"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "UPDATE       CXP_Pagos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                estatusReemb = @estatusReemb"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (folioSolicitud = @folioSolicitud) AND (idEmpresas = @idEMpresas)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@estatusReemb", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "estatusReemb", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@folioSolicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "folioSolicitud", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEMpresas", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -32159,6 +32168,43 @@ Namespace dsContabilidadTableAdapters
                     ByVal Original_monedaPago As String,  _
                     ByVal Original_estatusReemb As String) As Integer
             Return Me.Update(idProveedor, idUsuario, folioSolicitud, fechaSolicitud, fechaFactura, serie, folio, uuid, subtotalPagado, totalPagado, trasladosPagados, retencionesPagadas, decripcion, idConcepto, parcialidad, usuario, idEmpresas, estatus, autoriza1, autoriza2, ok1, ok2, moneda, fechaPago, contrato, noContrato, idAutoriza2, naAutoriza2, naAutoriza1, cCostos, fPago, idCuentas, tipoDeCambio, monedaPago, estatusReemb, Original_idPagos, Original_idProveedor, Original_idUsuario, Original_folioSolicitud, Original_fechaSolicitud, Original_fechaFactura, Original_serie, Original_folio, Original_uuid, Original_subtotalPagado, Original_totalPagado, Original_trasladosPagados, Original_retencionesPagadas, Original_decripcion, Original_idConcepto, Original_parcialidad, Original_usuario, Original_idEmpresas, Original_estatus, Original_autoriza1, Original_autoriza2, Original_ok1, Original_ok2, Original_moneda, Original_fechaPago, Original_contrato, Original_noContrato, Original_idAutoriza2, Original_naAutoriza2, Original_naAutoriza1, Original_cCostos, Original_fPago, Original_idCuentas, Original_tipoDeCambio, Original_monedaPago, Original_estatusReemb, Original_idPagos)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function ActualizaContabilizado_UpdateQuery(ByVal estatusReemb As String, ByVal folioSolicitud As Global.System.Nullable(Of Decimal), ByVal idEMpresas As Global.System.Nullable(Of Decimal)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (estatusReemb Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(estatusReemb,String)
+            End If
+            If (folioSolicitud.HasValue = true) Then
+                command.Parameters(1).Value = CType(folioSolicitud.Value,Decimal)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (idEMpresas.HasValue = true) Then
+                command.Parameters(2).Value = CType(idEMpresas.Value,Decimal)
+            Else
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     

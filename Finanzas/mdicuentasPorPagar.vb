@@ -36,24 +36,24 @@ Public Class mdicuentasPorPagar
         contadorActividad = 0
     End Sub
 
-    Private Sub timActividad_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timActividad.Tick
-        'contadorActividad = contadorActividad + 1
-        'frmAccesoDirecto.Label1.Text = contadorActividad.ToString
-        'If contadorActividad > 1000 Then
-        '    timActividad.Enabled = False
-        '    Me.Enabled = False
-        '    Dim Response
-        '    Response = MsgBox("Se ha superado el tiempo de inactividad, ¿Desea continuar?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Tiempo de inactividad")
+    'Private Sub timActividad_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timActividad.Tick
+    'contadorActividad = contadorActividad + 1
+    'frmAccesoDirecto.Label1.Text = contadorActividad.ToString
+    'If contadorActividad > 1000 Then
+    '    timActividad.Enabled = False
+    '    Me.Enabled = False
+    '    Dim Response
+    '    Response = MsgBox("Se ha superado el tiempo de inactividad, ¿Desea continuar?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Tiempo de inactividad")
 
-        '    If Response = vbYes Then
-        '        Me.Enabled = True
-        '        timActividad.Enabled = True
-        '        contadorActividad = 0
-        '    Else
-        '        Me.Close()
-        '    End If
-        'End If
-    End Sub
+    '    If Response = vbYes Then
+    '        Me.Enabled = True
+    '        timActividad.Enabled = True
+    '        contadorActividad = 0
+    '    Else
+    '        Me.Close()
+    '    End If
+    'End If
+    'End Sub
 
     Private Sub PerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
@@ -628,13 +628,8 @@ Public Class mdicuentasPorPagar
         contadorActividad = 0
     End Sub
 
-    Private Sub PruebasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebasToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        Form1.MdiParent = Me
-        Form1.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub PruebasToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
 
@@ -748,6 +743,29 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub BancosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BancosToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmBancos_1.MdiParent = Me
+        frmBancos_1.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 
+    Private Sub CargarDatosBancariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CargarDatosBancariosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCargaCuentas.MdiParent = Me
+        frmCargaCuentas.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub PruebasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PruebasToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        Form1.MdiParent = Me
+        Form1.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
     End Sub
 End Class

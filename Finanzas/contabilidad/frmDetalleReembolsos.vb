@@ -13,6 +13,7 @@ Public Class frmDetalleReembolsos
     Dim taDatosPolizas As New dsTesoreriaTableAdapters.DatosPolizasTableAdapter
     Dim taPeriodos As New dsContabilidadTableAdapters.CXP_PeriodosTableAdapter
     Dim taRegContable As New dsProductionTableAdapters.CXP_RegContTableAdapter
+    Dim taPagos As New dsContabilidadTableAdapters.CXP_PagosTableAdapter
 
     Dim posRow As Integer
     Dim posCol As Integer
@@ -185,6 +186,7 @@ Public Class frmDetalleReembolsos
 
             taPeriodos.ConsumeFolio_UpdateQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
             btnProcesar.Enabled = False
+            taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)
             MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
 
         Else
@@ -200,6 +202,7 @@ Public Class frmDetalleReembolsos
 
             taPeriodos.ConsumeFolio_UpdateQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
             btnProcesar.Enabled = False
+            taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)
             MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
         End If
 

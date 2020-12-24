@@ -433,4 +433,8 @@ Public Class frmContProveedoresClientes
             Call btnDocumentacion_Click(sender, e)
         End If
     End Sub
+
+    Private Sub FPagoInicialTextBox_TextChanged(sender As Object, e As EventArgs) Handles FPagoInicialTextBox.TextChanged
+        FPagoInicialTextBox.Text = FPagoInicialTextBox.Text.Replace("True", "Cheque").Replace("False", "Transferencia")
+    End Sub
 End Class

@@ -24,6 +24,7 @@ Public Class frmCargPagNoCie
                 System.IO.File.Copy(ofdPdfConfirmacion.FileName, My.Settings.fileNas & "CXP\ComPago\ComOriginales\" & guuid & ".pdf")
 
                 MsgBox("Proceso terminado..." & vbNewLine & "Páginas comprobante: " & contadorPagosPag.ToString & vbNewLine & "Documentos confirmados: " & contadorPagosTes.ToString, MsgBoxStyle.Information, "")
+
             Catch ex As Exception
                 MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
             End Try

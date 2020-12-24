@@ -70,7 +70,7 @@ Public Class frmTesSolicitudesDePago
         End If
     End Sub
 
-    Private Sub actualizaGrid()
+    Public Sub actualizaGrid()
         Dim dataRow As DataRowView
 
         Dim taDatosPagos As New dsTesoreriaTableAdapters.DatosPagosTableAdapter
@@ -553,7 +553,7 @@ Public Class frmTesSolicitudesDePago
         End If
     End Function
 
-    Private Sub generaConsulta()
+    Public Sub generaConsulta()
 
         Dim listaTipoSol As String = ""
 
@@ -772,7 +772,7 @@ Public Class frmTesSolicitudesDePago
     End Sub
 
     Private Sub cmsMenuOpciones_Opening(sender As Object, e As CancelEventArgs) Handles cmsMenuOpciones.Opening
-        If (tipoSolicitudG = "CXP" Or tipoSolicitudG = "AVI") And (estatusSol = "33" Or estatusSol = "34") Then
+        If (tipoSolicitudG = "CXP") And (estatusSol = "33" Or estatusSol = "34") Then
             ToolStripMenuItem3.Enabled = False
         Else
             ToolStripMenuItem3.Enabled = True

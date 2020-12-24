@@ -220,16 +220,15 @@ Public Class frmGenPolizas
                         nConcepto = Stuff(nConcepto, "D", " ", 100)
 
                         encabezadoD = "P  " & rwPolizasEnc.fecha.ToString("yyyyMMdd") & "    3" & Space(10 - rwPolizasEnc.folioTipoDocumento.ToString.Length) & rwPolizasEnc.folioTipoDocumento.ToString & " 1 0          " & nConcepto & " 11 0 0 "
-
                         taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, idConceptoD)
                         filePolizaD.WriteLine(Eliminar_AcentosPolizas(encabezadoD.ToUpper))
-
                         Dim uuid As String = ""
                         Dim uuidA(0) As String
                         Dim cont As Integer = 1
                         Dim totalCargo As Decimal = 0
                         Dim totalAbono As Decimal = 0
                         Dim diferencia As Decimal = 0
+
 
                         For Each rwPolDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDet.Rows
                             If rwPolDet.TipoMovto = 0 Then

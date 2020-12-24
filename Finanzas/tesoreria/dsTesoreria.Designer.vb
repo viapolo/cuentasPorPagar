@@ -9877,8 +9877,6 @@ Partial Public Class dsTesoreria
         
         Private columnestatusPago As Global.System.Data.DataColumn
         
-        Private columnidEmpresa As Global.System.Data.DataColumn
-        
         Private columnfPago As Global.System.Data.DataColumn
         
         Private columnfechaPago As Global.System.Data.DataColumn
@@ -9896,6 +9894,12 @@ Partial Public Class dsTesoreria
         Private columntipoSolicitud As Global.System.Data.DataColumn
         
         Private columnfolioSolicitud As Global.System.Data.DataColumn
+        
+        Private columncuentaClabe As Global.System.Data.DataColumn
+        
+        Private columnnumeroDeCuenta As Global.System.Data.DataColumn
+        
+        Private columnidMoneda As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -9974,14 +9978,6 @@ Partial Public Class dsTesoreria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property idEmpresaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnidEmpresa
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property fPagoColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnfPago
@@ -10053,6 +10049,30 @@ Partial Public Class dsTesoreria
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property cuentaClabeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncuentaClabe
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property numeroDeCuentaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnumeroDeCuenta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idMonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10089,9 +10109,26 @@ Partial Public Class dsTesoreria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddVw_CXP_EstadoCuentaRow(ByVal nombre As String, ByVal idCuentaBancaria As Decimal, ByVal monedaPago As String, ByVal importeSolicitado As Decimal, ByVal estatusPago As Decimal, ByVal idEmpresa As Decimal, ByVal fPago As String, ByVal fechaPago As Date, ByVal tipoDeCambio As Decimal, ByVal fechaSolicitud As Date, ByVal referencia As String, ByVal Tipar As String, ByVal razonSocial As String, ByVal tipoSolicitud As String, ByVal folioSolicitud As Decimal) As Vw_CXP_EstadoCuentaRow
+        Public Overloads Function AddVw_CXP_EstadoCuentaRow( _
+                    ByVal nombre As String,  _
+                    ByVal idCuentaBancaria As Decimal,  _
+                    ByVal monedaPago As String,  _
+                    ByVal importeSolicitado As Decimal,  _
+                    ByVal estatusPago As Decimal,  _
+                    ByVal fPago As String,  _
+                    ByVal fechaPago As Date,  _
+                    ByVal tipoDeCambio As Decimal,  _
+                    ByVal fechaSolicitud As Date,  _
+                    ByVal referencia As String,  _
+                    ByVal Tipar As String,  _
+                    ByVal razonSocial As String,  _
+                    ByVal tipoSolicitud As String,  _
+                    ByVal folioSolicitud As Decimal,  _
+                    ByVal cuentaClabe As String,  _
+                    ByVal numeroDeCuenta As String,  _
+                    ByVal idMoneda As String) As Vw_CXP_EstadoCuentaRow
             Dim rowVw_CXP_EstadoCuentaRow As Vw_CXP_EstadoCuentaRow = CType(Me.NewRow,Vw_CXP_EstadoCuentaRow)
-            Dim columnValuesArray() As Object = New Object() {nombre, idCuentaBancaria, monedaPago, importeSolicitado, estatusPago, idEmpresa, fPago, fechaPago, tipoDeCambio, fechaSolicitud, referencia, Tipar, razonSocial, tipoSolicitud, folioSolicitud}
+            Dim columnValuesArray() As Object = New Object() {nombre, idCuentaBancaria, monedaPago, importeSolicitado, estatusPago, fPago, fechaPago, tipoDeCambio, fechaSolicitud, referencia, Tipar, razonSocial, tipoSolicitud, folioSolicitud, cuentaClabe, numeroDeCuenta, idMoneda}
             rowVw_CXP_EstadoCuentaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_CXP_EstadoCuentaRow)
             Return rowVw_CXP_EstadoCuentaRow
@@ -10099,8 +10136,8 @@ Partial Public Class dsTesoreria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function FindByidCuentaBancaria(ByVal idCuentaBancaria As Decimal) As Vw_CXP_EstadoCuentaRow
-            Return CType(Me.Rows.Find(New Object() {idCuentaBancaria}),Vw_CXP_EstadoCuentaRow)
+        Public Function FindByfolioSolicitudtipoSolicitudidCuentaBancaria(ByVal folioSolicitud As Decimal, ByVal tipoSolicitud As String, ByVal idCuentaBancaria As Decimal) As Vw_CXP_EstadoCuentaRow
+            Return CType(Me.Rows.Find(New Object() {folioSolicitud, tipoSolicitud, idCuentaBancaria}),Vw_CXP_EstadoCuentaRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10125,7 +10162,6 @@ Partial Public Class dsTesoreria
             Me.columnmonedaPago = MyBase.Columns("monedaPago")
             Me.columnimporteSolicitado = MyBase.Columns("importeSolicitado")
             Me.columnestatusPago = MyBase.Columns("estatusPago")
-            Me.columnidEmpresa = MyBase.Columns("idEmpresa")
             Me.columnfPago = MyBase.Columns("fPago")
             Me.columnfechaPago = MyBase.Columns("fechaPago")
             Me.columntipoDeCambio = MyBase.Columns("tipoDeCambio")
@@ -10135,6 +10171,9 @@ Partial Public Class dsTesoreria
             Me.columnrazonSocial = MyBase.Columns("razonSocial")
             Me.columntipoSolicitud = MyBase.Columns("tipoSolicitud")
             Me.columnfolioSolicitud = MyBase.Columns("folioSolicitud")
+            Me.columncuentaClabe = MyBase.Columns("cuentaClabe")
+            Me.columnnumeroDeCuenta = MyBase.Columns("numeroDeCuenta")
+            Me.columnidMoneda = MyBase.Columns("idMoneda")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10150,8 +10189,6 @@ Partial Public Class dsTesoreria
             MyBase.Columns.Add(Me.columnimporteSolicitado)
             Me.columnestatusPago = New Global.System.Data.DataColumn("estatusPago", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnestatusPago)
-            Me.columnidEmpresa = New Global.System.Data.DataColumn("idEmpresa", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidEmpresa)
             Me.columnfPago = New Global.System.Data.DataColumn("fPago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnfPago)
             Me.columnfechaPago = New Global.System.Data.DataColumn("fechaPago", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
@@ -10170,10 +10207,15 @@ Partial Public Class dsTesoreria
             MyBase.Columns.Add(Me.columntipoSolicitud)
             Me.columnfolioSolicitud = New Global.System.Data.DataColumn("folioSolicitud", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnfolioSolicitud)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnidCuentaBancaria}, true))
+            Me.columncuentaClabe = New Global.System.Data.DataColumn("cuentaClabe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncuentaClabe)
+            Me.columnnumeroDeCuenta = New Global.System.Data.DataColumn("numeroDeCuenta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnumeroDeCuenta)
+            Me.columnidMoneda = New Global.System.Data.DataColumn("idMoneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidMoneda)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnfolioSolicitud, Me.columntipoSolicitud, Me.columnidCuentaBancaria}, true))
             Me.columnnombre.MaxLength = 100
             Me.columnidCuentaBancaria.AllowDBNull = false
-            Me.columnidCuentaBancaria.Unique = true
             Me.columnmonedaPago.MaxLength = 5
             Me.columnfPago.MaxLength = 100
             Me.columnreferencia.MaxLength = 30
@@ -10181,7 +10223,12 @@ Partial Public Class dsTesoreria
             Me.columnTipar.MaxLength = 1
             Me.columnrazonSocial.AllowDBNull = false
             Me.columnrazonSocial.MaxLength = 200
+            Me.columntipoSolicitud.AllowDBNull = false
             Me.columntipoSolicitud.MaxLength = 20
+            Me.columnfolioSolicitud.AllowDBNull = false
+            Me.columncuentaClabe.MaxLength = 50
+            Me.columnnumeroDeCuenta.MaxLength = 50
+            Me.columnidMoneda.MaxLength = 5
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18951,21 +18998,6 @@ Partial Public Class dsTesoreria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property idEmpresa() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableVw_CXP_EstadoCuenta.idEmpresaColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idEmpresa' de la tabla 'Vw_CXP_EstadoCuenta' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableVw_CXP_EstadoCuenta.idEmpresaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property fPago() As String
             Get
                 Try 
@@ -19067,12 +19099,7 @@ Partial Public Class dsTesoreria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property tipoSolicitud() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableVw_CXP_EstadoCuenta.tipoSolicitudColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'tipoSolicitud' de la tabla 'Vw_CXP_EstadoCuenta' es DBNul"& _ 
-                            "l.", e)
-                End Try
+                Return CType(Me(Me.tableVw_CXP_EstadoCuenta.tipoSolicitudColumn),String)
             End Get
             Set
                 Me(Me.tableVw_CXP_EstadoCuenta.tipoSolicitudColumn) = value
@@ -19083,15 +19110,57 @@ Partial Public Class dsTesoreria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property folioSolicitud() As Decimal
             Get
+                Return CType(Me(Me.tableVw_CXP_EstadoCuenta.folioSolicitudColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableVw_CXP_EstadoCuenta.folioSolicitudColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property cuentaClabe() As String
+            Get
                 Try 
-                    Return CType(Me(Me.tableVw_CXP_EstadoCuenta.folioSolicitudColumn),Decimal)
+                    Return CType(Me(Me.tableVw_CXP_EstadoCuenta.cuentaClabeColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'folioSolicitud' de la tabla 'Vw_CXP_EstadoCuenta' es DBNu"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cuentaClabe' de la tabla 'Vw_CXP_EstadoCuenta' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_EstadoCuenta.cuentaClabeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property numeroDeCuenta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_EstadoCuenta.numeroDeCuentaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'numeroDeCuenta' de la tabla 'Vw_CXP_EstadoCuenta' es DBNu"& _ 
                             "ll.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableVw_CXP_EstadoCuenta.folioSolicitudColumn) = value
+                Me(Me.tableVw_CXP_EstadoCuenta.numeroDeCuentaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idMoneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_EstadoCuenta.idMonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idMoneda' de la tabla 'Vw_CXP_EstadoCuenta' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_EstadoCuenta.idMonedaColumn) = value
             End Set
         End Property
         
@@ -19141,18 +19210,6 @@ Partial Public Class dsTesoreria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetestatusPagoNull()
             Me(Me.tableVw_CXP_EstadoCuenta.estatusPagoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsidEmpresaNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_EstadoCuenta.idEmpresaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetidEmpresaNull()
-            Me(Me.tableVw_CXP_EstadoCuenta.idEmpresaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19217,26 +19274,38 @@ Partial Public Class dsTesoreria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IstipoSolicitudNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_EstadoCuenta.tipoSolicitudColumn)
+        Public Function IscuentaClabeNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_EstadoCuenta.cuentaClabeColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SettipoSolicitudNull()
-            Me(Me.tableVw_CXP_EstadoCuenta.tipoSolicitudColumn) = Global.System.Convert.DBNull
+        Public Sub SetcuentaClabeNull()
+            Me(Me.tableVw_CXP_EstadoCuenta.cuentaClabeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsfolioSolicitudNull() As Boolean
-            Return Me.IsNull(Me.tableVw_CXP_EstadoCuenta.folioSolicitudColumn)
+        Public Function IsnumeroDeCuentaNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_EstadoCuenta.numeroDeCuentaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetfolioSolicitudNull()
-            Me(Me.tableVw_CXP_EstadoCuenta.folioSolicitudColumn) = Global.System.Convert.DBNull
+        Public Sub SetnumeroDeCuentaNull()
+            Me(Me.tableVw_CXP_EstadoCuenta.numeroDeCuentaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_EstadoCuenta.idMonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidMonedaNull()
+            Me(Me.tableVw_CXP_EstadoCuenta.idMonedaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -32457,7 +32526,6 @@ Namespace dsTesoreriaTableAdapters
             tableMapping.ColumnMappings.Add("monedaPago", "monedaPago")
             tableMapping.ColumnMappings.Add("importeSolicitado", "importeSolicitado")
             tableMapping.ColumnMappings.Add("estatusPago", "estatusPago")
-            tableMapping.ColumnMappings.Add("idEmpresa", "idEmpresa")
             tableMapping.ColumnMappings.Add("fPago", "fPago")
             tableMapping.ColumnMappings.Add("fechaPago", "fechaPago")
             tableMapping.ColumnMappings.Add("tipoDeCambio", "tipoDeCambio")
@@ -32467,6 +32535,9 @@ Namespace dsTesoreriaTableAdapters
             tableMapping.ColumnMappings.Add("razonSocial", "razonSocial")
             tableMapping.ColumnMappings.Add("tipoSolicitud", "tipoSolicitud")
             tableMapping.ColumnMappings.Add("folioSolicitud", "folioSolicitud")
+            tableMapping.ColumnMappings.Add("cuentaClabe", "cuentaClabe")
+            tableMapping.ColumnMappings.Add("numeroDeCuenta", "numeroDeCuenta")
+            tableMapping.ColumnMappings.Add("idMoneda", "idMoneda")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -32480,23 +32551,55 @@ Namespace dsTesoreriaTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        nombre, idCuentaBancaria, monedaPago, importeSolicitado, estatusPag"& _ 
-                "o, idEmpresa, fPago, fechaPago, tipoDeCambio, fechaSolicitud, referencia, Tipar,"& _ 
-                " razonSocial, tipoSolicitud, folioSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_EstadoCuenta"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (idEmpresa = @idEmpresa)"
+                "o, fPago, fechaPago, tipoDeCambio, fechaSolicitud, referencia, Tipar, razonSocia"& _ 
+                "l, tipoSolicitud, folioSolicitud, cuentaClabe, numeroDeCuenta, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          idMoneda"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_EstadoCuenta"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        nombre, idCuentaBancaria, SUM(importeSolicitado) AS importeSolicita"& _ 
+                "do, cuentaClabe, numeroDeCuenta, idMoneda, folioSolicitud, tipoSolicitud, COUNT("& _ 
+                "*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_EstadoCuenta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (idEmpresa = @idE"& _ 
+                "mpresa)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY nombre, idCuentaBancaria, cuentaClabe, numeroDeCuenta, idMoned"& _ 
+                "a, folioSolicitud, tipoSolicitud"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsTesoreria.Vw_CXP_EstadoCuentaDataTable, ByVal idEmpresa As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsTesoreria.Vw_CXP_EstadoCuentaDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As dsTesoreria.Vw_CXP_EstadoCuentaDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As dsTesoreria.Vw_CXP_EstadoCuentaDataTable = New dsTesoreria.Vw_CXP_EstadoCuentaDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function Bancos_1_FillBy(ByVal dataTable As dsTesoreria.Vw_CXP_EstadoCuentaDataTable, ByVal idEmpresa As Global.System.Nullable(Of Decimal)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (idEmpresa.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa.Value,Decimal)
             Else
@@ -32512,9 +32615,9 @@ Namespace dsTesoreriaTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal idEmpresa As Global.System.Nullable(Of Decimal)) As dsTesoreria.Vw_CXP_EstadoCuentaDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function Bancos_1_GetDataBy(ByVal idEmpresa As Global.System.Nullable(Of Decimal)) As dsTesoreria.Vw_CXP_EstadoCuentaDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (idEmpresa.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(idEmpresa.Value,Decimal)
             Else

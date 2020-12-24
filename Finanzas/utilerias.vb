@@ -404,6 +404,8 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
 
             leePDF(destino & guuid & "-" + Pagina.ToString & ".pdf", destino & guuid & "-" + Pagina.ToString & ".txt", guuid, Pagina, tdc, folioSolicitud, tipoSolicitud, idBanco, referencia)
 
+            'actualiza formulario
+            frmTesSolicitudesDePago.generaConsulta()
         Next
     End Sub
 
@@ -473,31 +475,35 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                             arreglo(4) = Trim(text.Substring(text.IndexOf("Concepto de pago:") + 17, text.IndexOf("Referencia numérica:") - (text.IndexOf("Concepto de pago:") + 17))).Replace(vbLf, "")
                         End If
                         'actualiza registro correspondiente
-                        procesadosTes = taPagosTesoreria.CambiaEstatusPago_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, arreglo(3).Trim, arreglo(4).Substring(0, 10).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), 37)
-                        If procesadosTes = 1 Then
-                            procesadosSol = taPagos.CambiaEstatus_UpdateQuery("Pagada", taPagosTesoreria.ObtFolioSolicitud_ScalarQuery(arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim)), "En Proceso de Pago", varGlobal_IdEmpresa)
-                            'obtienes tipo de solicitud y folio
-                            taPagosTesoreria.GeneralesSolicitud_FillBy(dtGeneralesSolicitud, arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), 34, varGlobal_IdEmpresa)
-                            If dtGeneralesSolicitud.Rows.Count > 0 Then
-                                rwGeneralesSolicitud = dtGeneralesSolicitud.Rows(0)
-                                folioSolicitud = rwGeneralesSolicitud.folioSolicitud
-                                tipoSolicitud = rwGeneralesSolicitud.tipoSolicitud
-                            Else
-                                MsgBox("No se pudo encontrar el documento relacionado", MsgBoxStyle.Critical, "")
-                            End If
+                        If arreglo(4).Trim.ToString.Length > 10 Then
+                            procesadosTes = taPagosTesoreria.CambiaEstatusPago_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, arreglo(3).Trim, arreglo(4).Substring(0, 10).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), 37)
+                        Else
+                            procesadosTes = taPagosTesoreria.CambiaEstatusPago_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), 37)
                         End If
+                        If procesadosTes = 1 Then
+                                procesadosSol = taPagos.CambiaEstatus_UpdateQuery("Pagada", taPagosTesoreria.ObtFolioSolicitud_ScalarQuery(arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim)), "En Proceso de Pago", varGlobal_IdEmpresa)
+                                'obtienes tipo de solicitud y folio
+                                taPagosTesoreria.GeneralesSolicitud_FillBy(dtGeneralesSolicitud, arreglo(3).Trim, arreglo(4).Trim, taCuentasBanc.ObtIdCuenta_ScalarQuery(arreglo(1).Trim), 34, varGlobal_IdEmpresa)
+                                If dtGeneralesSolicitud.Rows.Count > 0 Then
+                                    rwGeneralesSolicitud = dtGeneralesSolicitud.Rows(0)
+                                    folioSolicitud = rwGeneralesSolicitud.folioSolicitud
+                                    tipoSolicitud = rwGeneralesSolicitud.tipoSolicitud
+                                Else
+                                    MsgBox("No se pudo encontrar el documento relacionado", MsgBoxStyle.Critical, "")
+                                End If
+                            End If
 
-                    ElseIf tdc = "TDC" Then
+                        ElseIf tdc = "TDC" Then
                             'lee PDF para llenar arreglo
                             arreglo(0) = Trim(text.Substring(text.IndexOf("Tipo de operación:") + 18, text.IndexOf("Descripción:") - (text.IndexOf("Tipo de operación:") + 18))).Replace(vbLf, "")
-                        'arreglo(1) = Trim(text.Substring(text.IndexOf("Cuenta de retiro:") + 17, text.IndexOf("Tarjeta de crédito:") - (text.IndexOf("Cuenta de retiro:") + 17))).Replace(vbLf, "")
-                        'arreglo(2) = Trim(text.Substring(text.IndexOf("Tarjeta de crédito:") + 19, text.IndexOf("Divisa cuenta de retiro:") - (text.IndexOf("Tarjeta de crédito:") + 19))).Replace(vbLf, "")
-                        arreglo(3) = Trim(text.Substring(text.IndexOf("Importe de la operación:") + 24, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe de la operación:") + 24))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim
+                            'arreglo(1) = Trim(text.Substring(text.IndexOf("Cuenta de retiro:") + 17, text.IndexOf("Tarjeta de crédito:") - (text.IndexOf("Cuenta de retiro:") + 17))).Replace(vbLf, "")
+                            'arreglo(2) = Trim(text.Substring(text.IndexOf("Tarjeta de crédito:") + 19, text.IndexOf("Divisa cuenta de retiro:") - (text.IndexOf("Tarjeta de crédito:") + 19))).Replace(vbLf, "")
+                            arreglo(3) = Trim(text.Substring(text.IndexOf("Importe de la operación:") + 24, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe de la operación:") + 24))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim
                             arreglo(5) = Trim(text.Substring(text.IndexOf("Fecha de creación:") + 18, 12)).Replace(vbLf, "")
                             arreglo(4) = Trim(text.Substring(text.IndexOf("Descripción:") + 12, text.IndexOf("Importe de la operación:") - (text.IndexOf("Descripción:") + 12))).Replace(vbLf, " ")
-                        'actualiza registro correspondiente
-                        procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(3).Trim, 33, folioSolicitud, tipoSolicitud)
-                        procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(3).Trim, 37, folioSolicitud, tipoSolicitud)
+                            'actualiza registro correspondiente
+                            procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(3).Trim, 33, folioSolicitud, tipoSolicitud)
+                        'procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(3).Trim, 37, folioSolicitud, tipoSolicitud)
                         If procesadosTes = 1 Then
                                 procesadosSol = taPagos.CambiaEstatus_UpdateQuery("Pagada", folioSolicitud, "No Pagada", varGlobal_IdEmpresa)
                             Else

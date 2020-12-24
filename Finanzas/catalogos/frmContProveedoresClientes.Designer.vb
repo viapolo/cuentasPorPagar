@@ -100,6 +100,7 @@ Partial Class frmContProveedoresClientes
         Me.CXPEstatus1BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblTipoPersona = New System.Windows.Forms.Label()
         Me.UsuarioSolicitaTextBox = New System.Windows.Forms.TextBox()
+        Me.FPagoInicialTextBox = New System.Windows.Forms.TextBox()
         RazonSocialLabel = New System.Windows.Forms.Label()
         RfcLabel = New System.Windows.Forms.Label()
         CurpLabel = New System.Windows.Forms.Label()
@@ -862,7 +863,7 @@ Partial Class frmContProveedoresClientes
         '
         Me.lblTipoPersona.AutoSize = True
         Me.lblTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTipoPersona.Location = New System.Drawing.Point(599, 364)
+        Me.lblTipoPersona.Location = New System.Drawing.Point(631, 361)
         Me.lblTipoPersona.Name = "lblTipoPersona"
         Me.lblTipoPersona.Size = New System.Drawing.Size(45, 13)
         Me.lblTipoPersona.TabIndex = 62
@@ -878,11 +879,25 @@ Partial Class frmContProveedoresClientes
         Me.UsuarioSolicitaTextBox.Size = New System.Drawing.Size(378, 23)
         Me.UsuarioSolicitaTextBox.TabIndex = 63
         '
+        'FPagoInicialTextBox
+        '
+        Me.FPagoInicialTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.FPagoInicialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_ProveedoresBindingSource, "fPagoInicial", True))
+        Me.FPagoInicialTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FPagoInicialTextBox.ForeColor = System.Drawing.Color.DarkRed
+        Me.FPagoInicialTextBox.Location = New System.Drawing.Point(634, 393)
+        Me.FPagoInicialTextBox.Name = "FPagoInicialTextBox"
+        Me.FPagoInicialTextBox.ReadOnly = True
+        Me.FPagoInicialTextBox.Size = New System.Drawing.Size(100, 14)
+        Me.FPagoInicialTextBox.TabIndex = 64
+        Me.FPagoInicialTextBox.Text = "Transferencia"
+        '
         'frmContProveedoresClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1033, 441)
+        Me.ClientSize = New System.Drawing.Size(1033, 444)
+        Me.Controls.Add(Me.FPagoInicialTextBox)
         Me.Controls.Add(UsuarioSolicitaLabel)
         Me.Controls.Add(Me.UsuarioSolicitaTextBox)
         Me.Controls.Add(Me.lblTipoPersona)
@@ -1006,4 +1021,5 @@ Partial Class frmContProveedoresClientes
     Friend WithEvents lblTipoPersona As Label
     Friend WithEvents CXP_ProveedoresBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents UsuarioSolicitaTextBox As TextBox
+    Friend WithEvents FPagoInicialTextBox As TextBox
 End Class
