@@ -125,6 +125,7 @@ Public Class frmDetalleReembolsos
     Public Sub actualizaCuenta()
         dgvDetalleReembolsos.Item(0, posRow).Value = cmbCuentasContpaq.SelectedValue
         dgvDetalleReembolsos.Item(1, posRow).Value = cmbCuentasContpaq.SelectedText
+
         pnlCuentasContpaq.Visible = False
     End Sub
 
@@ -140,9 +141,10 @@ Public Class frmDetalleReembolsos
     Private Sub dgvDetalleReembolsos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetalleReembolsos.CellClick
         posCol = e.ColumnIndex
         posRow = e.RowIndex
-
-        pnlCuentasContpaq.Visible = True
-        cmbCuentasContpaq.Focus()
+        If e.RowIndex < dgvDetalleReembolsos.Rows.Count - 1 Then
+            pnlCuentasContpaq.Visible = True
+            cmbCuentasContpaq.Focus()
+        End If
     End Sub
 
     Private Sub dgvDetalleReembolsos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetalleReembolsos.CellContentClick
@@ -173,8 +175,8 @@ Public Class frmDetalleReembolsos
         'Eventos contable según fecha de pago
         Dim idTipoDocumento As Integer
         Dim folioPoliza As Integer
-        If diarioEgreso = "Diario" Then
-            'diario
+        If diarioEgreso = "Egreso" Then
+            'egreso
             idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", rwDatosSolicitud.formaDePago, rwDatosSolicitud.monedaPago, varGlobal_IdEmpresa)
 
             folioPoliza = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
@@ -190,7 +192,7 @@ Public Class frmDetalleReembolsos
             MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
 
         Else
-            'egreso
+            'diario
             idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", fPago, monedaPago, varGlobal_IdEmpresa)
             folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
 

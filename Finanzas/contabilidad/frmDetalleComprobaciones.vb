@@ -76,19 +76,19 @@ Public Class frmDetalleComprobaciones
                         End If
                     Else
                         If rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.importeCon, 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.importeCon), rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         End If
                     End If
                     If rowsCfdi.mRet <> "X" Then
-                        dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.mRet, 0, rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                        dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.mRet), rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                     End If
 
                     If contador = 0 Then
                         If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.mLocTra, 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocTra, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         End If
                         If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.mLocRet, 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocRet, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         End If
                     End If
                     contador += 1
@@ -118,8 +118,10 @@ Public Class frmDetalleComprobaciones
         posCol = e.ColumnIndex
         posRow = e.RowIndex
 
-        pnlCuentasContpaq.Visible = True
-        cmbCuentasContpaq.Focus()
+        If e.RowIndex < dgvDetalleComprobaciones.Rows.Count - 1 Then
+            pnlCuentasContpaq.Visible = True
+            cmbCuentasContpaq.Focus()
+        End If
     End Sub
 
     Private Sub cmbCuentasContpaq_KeyUp(sender As Object, e As KeyEventArgs) Handles cmbCuentasContpaq.KeyUp

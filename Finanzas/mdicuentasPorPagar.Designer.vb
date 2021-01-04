@@ -31,7 +31,6 @@ Partial Class mdicuentasPorPagar
         Me.SucursalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmpresasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CambiarDeEmpresaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentaciónProveedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CatálogosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SATToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,9 +41,7 @@ Partial Class mdicuentasPorPagar
         Me.PaisesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDeDocumentoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContabilidadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CuentasBancariasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CuentasContablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDeDocumentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDeGastoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoDeCuentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -81,11 +78,14 @@ Partial Class mdicuentasPorPagar
         Me.InversionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstadoDeCuentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BancosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProveedoresToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CuentasBancariasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaldosPorUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SugerenciaDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SistemasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CargarDatosBancariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PruebasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
@@ -93,14 +93,14 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
-        Me.PruebasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CambiarDeEmpresaToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraciónToolStripMenuItem, Me.CatálogosToolStripMenuItem, Me.ContabilidadToolStripMenuItem1, Me.TesoreríaToolStripMenuItem, Me.ToolStripMenuItem1, Me.SugerenciaDePagoToolStripMenuItem, Me.SistemasToolStripMenuItem, Me.SalirToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraciónToolStripMenuItem, Me.CatálogosToolStripMenuItem, Me.ContabilidadToolStripMenuItem1, Me.TesoreríaToolStripMenuItem, Me.ToolStripMenuItem1, Me.SugerenciaDePagoToolStripMenuItem, Me.SistemasToolStripMenuItem, Me.CambiarDeEmpresaToolStripMenuItem1, Me.SalirToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(770, 24)
@@ -109,7 +109,7 @@ Partial Class mdicuentasPorPagar
         '
         'ConfiguraciónToolStripMenuItem
         '
-        Me.ConfiguraciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.NombrePerfilesToolStripMenuItem, Me.SucursalesToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.EmpresasToolStripMenuItem, Me.CambiarDeEmpresaToolStripMenuItem, Me.DocumentaciónProveedorToolStripMenuItem})
+        Me.ConfiguraciónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.NombrePerfilesToolStripMenuItem, Me.SucursalesToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.EmpresasToolStripMenuItem, Me.DocumentaciónProveedorToolStripMenuItem})
         Me.ConfiguraciónToolStripMenuItem.Enabled = False
         Me.ConfiguraciónToolStripMenuItem.Name = "ConfiguraciónToolStripMenuItem"
         Me.ConfiguraciónToolStripMenuItem.Size = New System.Drawing.Size(95, 20)
@@ -149,13 +149,6 @@ Partial Class mdicuentasPorPagar
         Me.EmpresasToolStripMenuItem.Name = "EmpresasToolStripMenuItem"
         Me.EmpresasToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
         Me.EmpresasToolStripMenuItem.Text = "Empresas"
-        '
-        'CambiarDeEmpresaToolStripMenuItem
-        '
-        Me.CambiarDeEmpresaToolStripMenuItem.Enabled = False
-        Me.CambiarDeEmpresaToolStripMenuItem.Name = "CambiarDeEmpresaToolStripMenuItem"
-        Me.CambiarDeEmpresaToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
-        Me.CambiarDeEmpresaToolStripMenuItem.Text = "Cambiar de Empresa"
         '
         'DocumentaciónProveedorToolStripMenuItem
         '
@@ -224,18 +217,11 @@ Partial Class mdicuentasPorPagar
         '
         'ContabilidadToolStripMenuItem
         '
-        Me.ContabilidadToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CuentasBancariasToolStripMenuItem, Me.CuentasContablesToolStripMenuItem, Me.ProveedoresToolStripMenuItem, Me.TipoDeDocumentoToolStripMenuItem, Me.TipoDeGastoToolStripMenuItem, Me.TipoDeCuentaToolStripMenuItem, Me.TipoDeSolcitudPorConceptoToolStripMenuItem, Me.PólizaMovimientosToolStripMenuItem})
+        Me.ContabilidadToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CuentasContablesToolStripMenuItem, Me.TipoDeDocumentoToolStripMenuItem, Me.TipoDeGastoToolStripMenuItem, Me.TipoDeCuentaToolStripMenuItem, Me.TipoDeSolcitudPorConceptoToolStripMenuItem, Me.PólizaMovimientosToolStripMenuItem})
         Me.ContabilidadToolStripMenuItem.Enabled = False
         Me.ContabilidadToolStripMenuItem.Name = "ContabilidadToolStripMenuItem"
         Me.ContabilidadToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
         Me.ContabilidadToolStripMenuItem.Text = "Contabilidad"
-        '
-        'CuentasBancariasToolStripMenuItem
-        '
-        Me.CuentasBancariasToolStripMenuItem.Enabled = False
-        Me.CuentasBancariasToolStripMenuItem.Name = "CuentasBancariasToolStripMenuItem"
-        Me.CuentasBancariasToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
-        Me.CuentasBancariasToolStripMenuItem.Text = "Cuentas Bancarias"
         '
         'CuentasContablesToolStripMenuItem
         '
@@ -243,13 +229,6 @@ Partial Class mdicuentasPorPagar
         Me.CuentasContablesToolStripMenuItem.Name = "CuentasContablesToolStripMenuItem"
         Me.CuentasContablesToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
         Me.CuentasContablesToolStripMenuItem.Text = "Cuentas Contables"
-        '
-        'ProveedoresToolStripMenuItem
-        '
-        Me.ProveedoresToolStripMenuItem.Enabled = False
-        Me.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
-        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
-        Me.ProveedoresToolStripMenuItem.Text = "Proveedores"
         '
         'TipoDeDocumentoToolStripMenuItem
         '
@@ -432,7 +411,7 @@ Partial Class mdicuentasPorPagar
         '
         'TesoreríaToolStripMenuItem
         '
-        Me.TesoreríaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PagosToolStripMenuItem, Me.OtrosMovimientosToolStripMenuItem, Me.EstadoDeCuentaToolStripMenuItem})
+        Me.TesoreríaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PagosToolStripMenuItem, Me.OtrosMovimientosToolStripMenuItem, Me.EstadoDeCuentaToolStripMenuItem, Me.ProveedoresToolStripMenuItem2, Me.CuentasBancariasToolStripMenuItem1})
         Me.TesoreríaToolStripMenuItem.Enabled = False
         Me.TesoreríaToolStripMenuItem.Name = "TesoreríaToolStripMenuItem"
         Me.TesoreríaToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
@@ -511,6 +490,20 @@ Partial Class mdicuentasPorPagar
         Me.BancosToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
         Me.BancosToolStripMenuItem1.Text = "Bancos"
         '
+        'ProveedoresToolStripMenuItem2
+        '
+        Me.ProveedoresToolStripMenuItem2.Enabled = False
+        Me.ProveedoresToolStripMenuItem2.Name = "ProveedoresToolStripMenuItem2"
+        Me.ProveedoresToolStripMenuItem2.Size = New System.Drawing.Size(176, 22)
+        Me.ProveedoresToolStripMenuItem2.Text = "Proveedores"
+        '
+        'CuentasBancariasToolStripMenuItem1
+        '
+        Me.CuentasBancariasToolStripMenuItem1.Enabled = False
+        Me.CuentasBancariasToolStripMenuItem1.Name = "CuentasBancariasToolStripMenuItem1"
+        Me.CuentasBancariasToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
+        Me.CuentasBancariasToolStripMenuItem1.Text = "Cuentas Bancarias"
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaldosPorUsuarioToolStripMenuItem})
@@ -547,6 +540,12 @@ Partial Class mdicuentasPorPagar
         Me.CargarDatosBancariosToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.CargarDatosBancariosToolStripMenuItem.Text = "Cargar datos bancarios"
         '
+        'PruebasToolStripMenuItem1
+        '
+        Me.PruebasToolStripMenuItem1.Name = "PruebasToolStripMenuItem1"
+        Me.PruebasToolStripMenuItem1.Size = New System.Drawing.Size(195, 22)
+        Me.PruebasToolStripMenuItem1.Text = "Pruebas"
+        '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
@@ -582,11 +581,11 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
-        'PruebasToolStripMenuItem1
+        'CambiarDeEmpresaToolStripMenuItem1
         '
-        Me.PruebasToolStripMenuItem1.Name = "PruebasToolStripMenuItem1"
-        Me.PruebasToolStripMenuItem1.Size = New System.Drawing.Size(195, 22)
-        Me.PruebasToolStripMenuItem1.Text = "Pruebas"
+        Me.CambiarDeEmpresaToolStripMenuItem1.Name = "CambiarDeEmpresaToolStripMenuItem1"
+        Me.CambiarDeEmpresaToolStripMenuItem1.Size = New System.Drawing.Size(128, 20)
+        Me.CambiarDeEmpresaToolStripMenuItem1.Text = "Cambiar de Empresa"
         '
         'mdicuentasPorPagar
         '
@@ -624,9 +623,7 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents ImpuestosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MonedasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContabilidadToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CuentasBancariasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CuentasContablesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProveedoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConceptosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoDeDocumentoToolStripMenuItem As ToolStripMenuItem
@@ -640,7 +637,6 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents AutorizadoresToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TipoDeCuentaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoDeSolcitudPorConceptoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CambiarDeEmpresaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents SaldosPorUsuarioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SucursalesToolStripMenuItem As ToolStripMenuItem
@@ -681,4 +677,7 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents SistemasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CargarDatosBancariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PruebasToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ProveedoresToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents CuentasBancariasToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents CambiarDeEmpresaToolStripMenuItem1 As ToolStripMenuItem
 End Class

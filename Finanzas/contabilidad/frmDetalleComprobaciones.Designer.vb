@@ -63,6 +63,7 @@ Partial Class frmDetalleComprobaciones
         Me.cmbCuentaAbono.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbCuentaAbono.DataSource = Me.CuentasBindingSource1
         Me.cmbCuentaAbono.DisplayMember = "nCuenta"
+        Me.cmbCuentaAbono.Enabled = False
         Me.cmbCuentaAbono.FormattingEnabled = True
         Me.cmbCuentaAbono.Location = New System.Drawing.Point(122, 15)
         Me.cmbCuentaAbono.Name = "cmbCuentaAbono"

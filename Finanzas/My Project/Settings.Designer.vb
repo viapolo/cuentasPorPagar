@@ -127,7 +127,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\contratos$\Executables\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\FINAGIL_CXP\")>  _
         Public Property hostExe() As String
             Get
                 Return CType(Me("hostExe"),String)

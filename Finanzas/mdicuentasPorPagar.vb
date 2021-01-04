@@ -147,7 +147,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub CuentasBancariasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasBancariasToolStripMenuItem.Click
+    Private Sub CuentasBancariasToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContCuentasBancarias.MdiParent = Me
@@ -156,7 +156,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub ProveedoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProveedoresToolStripMenuItem.Click
+    Private Sub ProveedoresToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContProveedoresClientes.MdiParent = Me
@@ -326,7 +326,7 @@ Public Class mdicuentasPorPagar
             End If
         Next
 
-        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = "viapolo" Then
+        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
@@ -429,34 +429,8 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub CambiarDeEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CambiarDeEmpresaToolStripMenuItem.Click
-        'lfrInicio.Show()
+    Private Sub CambiarDeEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
-        Dim p As Process
-        For Each p In Process.GetProcesses()
-            If Not p Is Nothing Then
-                If p.ProcessName.ToString = "cuentasPorPagar" Then
-                    Try
-                        Process.Start(My.Settings.hostExe & "cuentasPorPagarF.exe")
-                        p.Kill()
-                        Exit For
-                    Catch msg As Exception
-                        MsgBox(msg.Message.ToString, MsgBoxStyle.Critical)
-                        Exit Sub
-                    End Try
-                End If
-                If p.ProcessName.ToString = "cuentasPorPagarF" Then
-                    Try
-                        Process.Start(My.Settings.hostExe & "cuentasPorPagar.exe")
-                        p.Kill()
-                        Exit For
-                    Catch msg As Exception
-                        MsgBox(msg.Message.ToString, MsgBoxStyle.Critical)
-                        Exit Sub
-                    End Try
-                End If
-            End If
-        Next
 
     End Sub
 
@@ -767,5 +741,41 @@ Public Class mdicuentasPorPagar
         Form1.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ProveedoresToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ProveedoresToolStripMenuItem2.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmContProveedoresClientes.MdiParent = Me
+        frmContProveedoresClientes.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub CuentasBancariasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CuentasBancariasToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmContCuentasBancarias.MdiParent = Me
+        frmContCuentasBancarias.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub CambiarDeEmpresaToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CambiarDeEmpresaToolStripMenuItem1.Click
+        Dim p As Process
+        For Each p In Process.GetProcesses()
+            If Not p Is Nothing Then
+                If p.ProcessName.ToString = "cuentasPorPagar" Then
+                    Try
+                        Process.Start(My.Settings.hostExe & "cuentasPorPagar.application")
+                        p.Kill()
+                        Exit For
+                    Catch msg As Exception
+                        MsgBox(msg.Message.ToString, MsgBoxStyle.Critical)
+                        Exit Sub
+                    End Try
+                End If
+            End If
+        Next
     End Sub
 End Class

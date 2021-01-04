@@ -1634,6 +1634,8 @@ Partial Public Class dsContabilidad
         
         Private columnidConcepto As Global.System.Data.DataColumn
         
+        Private columnimpSol As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -1838,6 +1840,14 @@ Partial Public Class dsContabilidad
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property impSolColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnimpSol
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1895,9 +1905,10 @@ Partial Public Class dsContabilidad
                     ByVal destinoRecurso As Decimal,  _
                     ByVal claveBancos As String,  _
                     ByVal estatusPago As Decimal,  _
-                    ByVal idConcepto As Integer) As Vw_CXP_PolizasEncRow
+                    ByVal idConcepto As Integer,  _
+                    ByVal impSol As Decimal) As Vw_CXP_PolizasEncRow
             Dim rowVw_CXP_PolizasEncRow As Vw_CXP_PolizasEncRow = CType(Me.NewRow,Vw_CXP_PolizasEncRow)
-            Dim columnValuesArray() As Object = New Object() {idTipoDocumento, folioTipoDocumento, nConcepto, estatus, idEmpresa, folioSolicitud, fecha, periodoEjercicio, razonSocial, rfc, folioCheque, numeroDeCuenta, tipoDeCambio, importeSolicitado, monedaPago, referencia, clabe, destinoRecurso, claveBancos, estatusPago, idConcepto}
+            Dim columnValuesArray() As Object = New Object() {idTipoDocumento, folioTipoDocumento, nConcepto, estatus, idEmpresa, folioSolicitud, fecha, periodoEjercicio, razonSocial, rfc, folioCheque, numeroDeCuenta, tipoDeCambio, importeSolicitado, monedaPago, referencia, clabe, destinoRecurso, claveBancos, estatusPago, idConcepto, impSol}
             rowVw_CXP_PolizasEncRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVw_CXP_PolizasEncRow)
             Return rowVw_CXP_PolizasEncRow
@@ -1941,6 +1952,7 @@ Partial Public Class dsContabilidad
             Me.columnclaveBancos = MyBase.Columns("claveBancos")
             Me.columnestatusPago = MyBase.Columns("estatusPago")
             Me.columnidConcepto = MyBase.Columns("idConcepto")
+            Me.columnimpSol = MyBase.Columns("impSol")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1988,6 +2000,8 @@ Partial Public Class dsContabilidad
             MyBase.Columns.Add(Me.columnestatusPago)
             Me.columnidConcepto = New Global.System.Data.DataColumn("idConcepto", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnidConcepto)
+            Me.columnimpSol = New Global.System.Data.DataColumn("impSol", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnimpSol)
             Me.columnnConcepto.MaxLength = 250
             Me.columnestatus.MaxLength = 20
             Me.columnrazonSocial.MaxLength = 200
@@ -11204,6 +11218,21 @@ Partial Public Class dsContabilidad
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property impSol() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVw_CXP_PolizasEnc.impSolColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'impSol' de la tabla 'Vw_CXP_PolizasEnc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVw_CXP_PolizasEnc.impSolColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsidTipoDocumentoNull() As Boolean
             Return Me.IsNull(Me.tableVw_CXP_PolizasEnc.idTipoDocumentoColumn)
         End Function
@@ -11452,6 +11481,18 @@ Partial Public Class dsContabilidad
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetidConceptoNull()
             Me(Me.tableVw_CXP_PolizasEnc.idConceptoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsimpSolNull() As Boolean
+            Return Me.IsNull(Me.tableVw_CXP_PolizasEnc.impSolColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetimpSolNull()
+            Me(Me.tableVw_CXP_PolizasEnc.impSolColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -21776,6 +21817,7 @@ Namespace dsContabilidadTableAdapters
             tableMapping.ColumnMappings.Add("claveBancos", "claveBancos")
             tableMapping.ColumnMappings.Add("estatusPago", "estatusPago")
             tableMapping.ColumnMappings.Add("idConcepto", "idConcepto")
+            tableMapping.ColumnMappings.Add("impSol", "impSol")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -21802,31 +21844,31 @@ Namespace dsContabilidadTableAdapters
                 "lizasEnc.razonSocial, ISNULL(Vw_CXP_PolizasEnc.referencia, '') AS referencia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
                 "                         Vw_CXP_PolizasEnc.rfc, Vw_CXP_PolizasEnc.tipoDeCambio, "& _ 
                 "Vw_CXP_PolizasEnc.destinoRecurso, CXP_Bancos.claveBancos, Vw_CXP_PolizasEnc.esta"& _ 
-                "tusPago, 0 AS idConcepto, '' AS nConcepto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_PolizasEnc LEF"& _ 
-                "T OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "       CXP_CuentasBancariasProv ON CXP_Bancos.idBancos = CXP_CuentasBancariasPro"& _ 
-                "v.idBanco ON Vw_CXP_PolizasEnc.destinoRecurso = CXP_CuentasBancariasProv.idCuent"& _ 
-                "as"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_PolizasEnc.fecha BETWEEN @fechaInicio AND @fechaFin) AN"& _ 
-                "D (Vw_CXP_PolizasEnc.idTipoDocumento = @idTipoDocumento) AND (Vw_CXP_PolizasEnc."& _ 
-                "idEmpresa = @idEmpresa) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_CXP_PolizasEnc.period"& _ 
-                "oEjercicio = @periodoEjercicio) AND (Vw_CXP_PolizasEnc.importeSolicitado IS NOT "& _ 
-                "NULL)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_CXP_PolizasEnc.folioTipoDocumento, Vw_CXP_PolizasEnc.idTipoDo"& _ 
-                "cumento, Vw_CXP_PolizasEnc.estatus, Vw_CXP_PolizasEnc.idEmpresa, Vw_CXP_PolizasE"& _ 
-                "nc.folioSolicitud, CONVERT(varchar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_PolizasEnc"& _ 
-                ".fecha, 103), Vw_CXP_PolizasEnc.periodoEjercicio, Vw_CXP_PolizasEnc.razonSocial,"& _ 
-                " Vw_CXP_PolizasEnc.fecha, Vw_CXP_PolizasEnc.rfc, Vw_CXP_PolizasEnc.folioCheque, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_PolizasEnc.numeroDeCuenta, Vw_CXP_PolizasEnc.m"& _ 
-                "onedaPago, Vw_CXP_PolizasEnc.tipoDeCambio, Vw_CXP_PolizasEnc.referencia, Vw_CXP_"& _ 
-                "PolizasEnc.clabe, Vw_CXP_PolizasEnc.destinoRecurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         C"& _ 
-                "XP_Bancos.claveBancos, Vw_CXP_PolizasEnc.estatusPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_CXP_PolizasEnc"& _ 
-                ".idTipoDocumento, Vw_CXP_PolizasEnc.folioTipoDocumento, Vw_CXP_PolizasEnc.folioS"& _ 
-                "olicitud"
+                "tusPago, 0 AS idConcepto, '' AS nConcepto, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_Pol"& _ 
+                "izasEnc.importeSolicitado AS impSol"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_PolizasEnc LEFT OUTE"& _ 
+                "R JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " CXP_CuentasBancariasProv ON CXP_Bancos.idBancos = CXP_CuentasBancariasProv.idBa"& _ 
+                "nco ON Vw_CXP_PolizasEnc.destinoRecurso = CXP_CuentasBancariasProv.idCuentas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
+                "ERE        (Vw_CXP_PolizasEnc.fecha >= @fechaInicio) AND (Vw_CXP_PolizasEnc.idTi"& _ 
+                "poDocumento = @idTipoDocumento) AND (Vw_CXP_PolizasEnc.idEmpresa = @idEmpresa) A"& _ 
+                "ND (Vw_CXP_PolizasEnc.importeSolicitado IS NOT NULL) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "AND (Vw_CXP_PolizasEnc.fecha <= @fechaFin)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_CXP_PolizasEnc.folioTipo"& _ 
+                "Documento, Vw_CXP_PolizasEnc.idTipoDocumento, Vw_CXP_PolizasEnc.estatus, Vw_CXP_"& _ 
+                "PolizasEnc.idEmpresa, Vw_CXP_PolizasEnc.folioSolicitud, CONVERT(varchar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    Vw_CXP_PolizasEnc.fecha, 103), Vw_CXP_PolizasEnc.periodoEjer"& _ 
+                "cicio, Vw_CXP_PolizasEnc.razonSocial, Vw_CXP_PolizasEnc.fecha, Vw_CXP_PolizasEnc"& _ 
+                ".rfc, Vw_CXP_PolizasEnc.folioCheque, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_PolizasEn"& _ 
+                "c.numeroDeCuenta, Vw_CXP_PolizasEnc.monedaPago, Vw_CXP_PolizasEnc.tipoDeCambio, "& _ 
+                "Vw_CXP_PolizasEnc.referencia, Vw_CXP_PolizasEnc.clabe, Vw_CXP_PolizasEnc.destino"& _ 
+                "Recurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos.claveBancos, Vw_CXP_PolizasEnc.es"& _ 
+                "tatusPago, Vw_CXP_PolizasEnc.importeSolicitado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_CXP_PolizasEnc.idTip"& _ 
+                "oDocumento, Vw_CXP_PolizasEnc.folioTipoDocumento, Vw_CXP_PolizasEnc.folioSolicit"& _ 
+                "ud"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaInicio", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaFin", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idTipoDocumento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@periodoEjercicio", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "periodoEjercicio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaFin", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT        ISNULL(Vw_CXP_PolizasEnc.clabe, '') AS clabe, Vw_CXP_PolizasEnc.est"& _ 
@@ -21839,63 +21881,57 @@ Namespace dsContabilidadTableAdapters
                 "lizasEnc.razonSocial, ISNULL(Vw_CXP_PolizasEnc.referencia, '') AS referencia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
                 "                         Vw_CXP_PolizasEnc.rfc, Vw_CXP_PolizasEnc.tipoDeCambio, "& _ 
                 "Vw_CXP_PolizasEnc.destinoRecurso, CXP_Bancos.claveBancos, Vw_CXP_PolizasEnc.esta"& _ 
-                "tusPago, 0 AS idConcepto, '' AS nConcepto"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_PolizasEnc LEF"& _ 
-                "T OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "       CXP_CuentasBancariasProv ON CXP_Bancos.idBancos = CXP_CuentasBancariasPro"& _ 
-                "v.idBanco ON Vw_CXP_PolizasEnc.destinoRecurso = CXP_CuentasBancariasProv.idCuent"& _ 
-                "as"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_PolizasEnc.fecha BETWEEN @fechaInicio AND @fechaFin) AN"& _ 
-                "D (Vw_CXP_PolizasEnc.idTipoDocumento = @idTipoDocumento) AND (Vw_CXP_PolizasEnc."& _ 
-                "idEmpresa = @idEmpresa) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_CXP_PolizasEnc.period"& _ 
-                "oEjercicio = @periodoEjercicio) AND (Vw_CXP_PolizasEnc.importeSolicitado IS NOT "& _ 
-                "NULL)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_CXP_PolizasEnc.folioTipoDocumento, Vw_CXP_PolizasEnc.idTipoDo"& _ 
-                "cumento, Vw_CXP_PolizasEnc.estatus, Vw_CXP_PolizasEnc.idEmpresa, Vw_CXP_PolizasE"& _ 
-                "nc.folioSolicitud, CONVERT(varchar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_PolizasEnc"& _ 
-                ".fecha, 103), Vw_CXP_PolizasEnc.periodoEjercicio, Vw_CXP_PolizasEnc.razonSocial,"& _ 
-                " Vw_CXP_PolizasEnc.fecha, Vw_CXP_PolizasEnc.rfc, Vw_CXP_PolizasEnc.folioCheque, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_PolizasEnc.numeroDeCuenta, Vw_CXP_PolizasEnc.m"& _ 
-                "onedaPago, Vw_CXP_PolizasEnc.tipoDeCambio, Vw_CXP_PolizasEnc.referencia, Vw_CXP_"& _ 
-                "PolizasEnc.clabe, Vw_CXP_PolizasEnc.destinoRecurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         C"& _ 
-                "XP_Bancos.claveBancos, Vw_CXP_PolizasEnc.estatusPago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_CXP_PolizasEnc"& _ 
-                ".idTipoDocumento, Vw_CXP_PolizasEnc.folioTipoDocumento, Vw_CXP_PolizasEnc.folioS"& _ 
-                "olicitud"
+                "tusPago, 0 AS idConcepto, '' AS nConcepto, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_Pol"& _ 
+                "izasEnc.importeSolicitado AS impSol"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_PolizasEnc LEFT OUTE"& _ 
+                "R JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " CXP_CuentasBancariasProv ON CXP_Bancos.idBancos = CXP_CuentasBancariasProv.idBa"& _ 
+                "nco ON Vw_CXP_PolizasEnc.destinoRecurso = CXP_CuentasBancariasProv.idCuentas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
+                "ERE        (Vw_CXP_PolizasEnc.idTipoDocumento = @idTipoDocumento) AND (Vw_CXP_Po"& _ 
+                "lizasEnc.idEmpresa = @idEmpresa) AND (Vw_CXP_PolizasEnc.importeSolicitado IS NOT"& _ 
+                " NULL) AND (Vw_CXP_PolizasEnc.fecha BETWEEN "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         @fechaIni"& _ 
+                "cial AND @fechaFinal)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_CXP_PolizasEnc.folioTipoDocumento, Vw_CXP_Pol"& _ 
+                "izasEnc.idTipoDocumento, Vw_CXP_PolizasEnc.estatus, Vw_CXP_PolizasEnc.idEmpresa,"& _ 
+                " Vw_CXP_PolizasEnc.folioSolicitud, CONVERT(varchar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         V"& _ 
+                "w_CXP_PolizasEnc.fecha, 103), Vw_CXP_PolizasEnc.periodoEjercicio, Vw_CXP_Polizas"& _ 
+                "Enc.razonSocial, Vw_CXP_PolizasEnc.fecha, Vw_CXP_PolizasEnc.rfc, Vw_CXP_PolizasE"& _ 
+                "nc.folioCheque, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_PolizasEnc.numeroDeCuenta, Vw_"& _ 
+                "CXP_PolizasEnc.monedaPago, Vw_CXP_PolizasEnc.tipoDeCambio, Vw_CXP_PolizasEnc.ref"& _ 
+                "erencia, Vw_CXP_PolizasEnc.clabe, Vw_CXP_PolizasEnc.destinoRecurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               CXP_Bancos.claveBancos, Vw_CXP_PolizasEnc.estatusPago, Vw_CXP_Pol"& _ 
+                "izasEnc.importeSolicitado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_CXP_PolizasEnc.idTipoDocumento, Vw_CXP_Po"& _ 
+                "lizasEnc.folioTipoDocumento, Vw_CXP_PolizasEnc.folioSolicitud"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaInicio", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaFin", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idTipoDocumento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@periodoEjercicio", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "periodoEjercicio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaInicial", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaFinal", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fecha", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsContabilidad.Vw_CXP_PolizasEncDataTable, ByVal fechaInicio As Global.System.Nullable(Of Date), ByVal fechaFin As Global.System.Nullable(Of Date), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal periodoEjercicio As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsContabilidad.Vw_CXP_PolizasEncDataTable, ByVal fechaInicio As Global.System.Nullable(Of Date), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal fechaFin As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (fechaInicio.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(fechaInicio.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (fechaFin.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(fechaFin.Value,Date)
+            If (idTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idTipoDocumento.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (idTipoDocumento.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(idTipoDocumento.Value,Decimal)
+            If (idEmpresa.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(idEmpresa.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (idEmpresa.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(idEmpresa.Value,Decimal)
+            If (fechaFin.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(fechaFin.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (periodoEjercicio.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(periodoEjercicio.Value,Decimal)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -21908,32 +21944,27 @@ Namespace dsContabilidadTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal fechaInicio As Global.System.Nullable(Of Date), ByVal fechaFin As Global.System.Nullable(Of Date), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal periodoEjercicio As Global.System.Nullable(Of Decimal)) As dsContabilidad.Vw_CXP_PolizasEncDataTable
+        Public Overloads Overridable Function GetData(ByVal fechaInicio As Global.System.Nullable(Of Date), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal fechaFin As Global.System.Nullable(Of Date)) As dsContabilidad.Vw_CXP_PolizasEncDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (fechaInicio.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(fechaInicio.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (fechaFin.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(fechaFin.Value,Date)
+            If (idTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idTipoDocumento.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (idTipoDocumento.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(idTipoDocumento.Value,Decimal)
+            If (idEmpresa.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(idEmpresa.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (idEmpresa.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(idEmpresa.Value,Decimal)
+            If (fechaFin.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(fechaFin.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (periodoEjercicio.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(periodoEjercicio.Value,Decimal)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsContabilidad.Vw_CXP_PolizasEncDataTable = New dsContabilidad.Vw_CXP_PolizasEncDataTable()
             Me.Adapter.Fill(dataTable)
@@ -21944,32 +21975,27 @@ Namespace dsContabilidadTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function PolizasXRangoFechas_FillBy(ByVal dataTable As dsContabilidad.Vw_CXP_PolizasEncDataTable, ByVal fechaInicio As Global.System.Nullable(Of Date), ByVal fechaFin As Global.System.Nullable(Of Date), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal periodoEjercicio As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function PolizasXRangoFechas_FillBy(ByVal dataTable As dsContabilidad.Vw_CXP_PolizasEncDataTable, ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal fechaInicial As Global.System.Nullable(Of Date), ByVal fechaFinal As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (fechaInicio.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fechaInicio.Value,Date)
+            If (idTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(idTipoDocumento.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (fechaFin.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(fechaFin.Value,Date)
+            If (idEmpresa.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idEmpresa.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (idTipoDocumento.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(idTipoDocumento.Value,Decimal)
+            If (fechaInicial.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(fechaInicial.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (idEmpresa.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(idEmpresa.Value,Decimal)
+            If (fechaFinal.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(fechaFinal.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (periodoEjercicio.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(periodoEjercicio.Value,Decimal)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -21982,32 +22008,27 @@ Namespace dsContabilidadTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function PolizasXRangoFechas_GetDataBy(ByVal fechaInicio As Global.System.Nullable(Of Date), ByVal fechaFin As Global.System.Nullable(Of Date), ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal periodoEjercicio As Global.System.Nullable(Of Decimal)) As dsContabilidad.Vw_CXP_PolizasEncDataTable
+        Public Overloads Overridable Function PolizasXRangoFechas_GetDataBy(ByVal idTipoDocumento As Global.System.Nullable(Of Decimal), ByVal idEmpresa As Global.System.Nullable(Of Decimal), ByVal fechaInicial As Global.System.Nullable(Of Date), ByVal fechaFinal As Global.System.Nullable(Of Date)) As dsContabilidad.Vw_CXP_PolizasEncDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (fechaInicio.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(fechaInicio.Value,Date)
+            If (idTipoDocumento.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(idTipoDocumento.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (fechaFin.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(fechaFin.Value,Date)
+            If (idEmpresa.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(idEmpresa.Value,Decimal)
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (idTipoDocumento.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(idTipoDocumento.Value,Decimal)
+            If (fechaInicial.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(fechaInicial.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (idEmpresa.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(idEmpresa.Value,Decimal)
+            If (fechaFinal.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(fechaFinal.Value,Date)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (periodoEjercicio.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(periodoEjercicio.Value,Decimal)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsContabilidad.Vw_CXP_PolizasEncDataTable = New dsContabilidad.Vw_CXP_PolizasEncDataTable()
             Me.Adapter.Fill(dataTable)
@@ -22189,7 +22210,7 @@ Namespace dsContabilidadTableAdapters
                 "poDocumento, importe, noContrato, referencia, rfc, uuid"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_"& _ 
                 "PolizasDet"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (idEmpresa = @idEmpresa) AND (idTipoDocumento = @idTipo"& _ 
                 "Documento) AND (folioTipoDocumento = @folioTipoDocumento) AND (folioSolicitud = "& _ 
-                "@folioSolicitud) AND (idConcepto = @idConcepto)"
+                "@folioSolicitud) AND (idConcepto = @idConcepto) AND (idCuenta <> 0)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idTipoDocumento", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idTipoDocumento", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
