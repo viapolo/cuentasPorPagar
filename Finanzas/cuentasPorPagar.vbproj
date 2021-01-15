@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>30</ApplicationRevision>
+    <ApplicationRevision>35</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -104,6 +104,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -112,6 +113,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="Web References.mx.gob.sat.facturaelectronica.consultaqr.Reference.cs">
+      <HintPath>..\..\WEB_cxp\cxP\bin\Web References.mx.gob.sat.facturaelectronica.consultaqr.Reference.cs.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -311,6 +315,12 @@
     <Compile Include="contabilidad\dsContabilidad.vb">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
     </Compile>
+    <Compile Include="contabilidad\frmAplicacionBlanco.Designer.vb">
+      <DependentUpon>frmAplicacionBlanco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmAplicacionBlanco.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmComprobaAsignaCuenta.Designer.vb">
       <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
     </Compile>
@@ -329,10 +339,22 @@
     <Compile Include="contabilidad\frmContabilizaReembolsos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmContabilizarNomina.Designer.vb">
+      <DependentUpon>frmContabilizarNomina.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmContabilizarNomina.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmDetalleComprobaciones.Designer.vb">
       <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmDetalleComprobaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleNomina.Designer.vb">
+      <DependentUpon>frmDetalleNomina.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleNomina.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmDetalleReembolsos.Designer.vb">
@@ -381,6 +403,12 @@
       <DependentUpon>frmRptProveedores.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmRptProveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmValidaCfdi.Designer.vb">
+      <DependentUpon>frmValidaCfdi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmValidaCfdi.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\rptPdfDocumentacion.vb">
@@ -539,6 +567,7 @@
       <DependentUpon>rptPolizaDiario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="readXML_CFDI_class.vb" />
     <Compile Include="tesoreria\frmBancos.Designer.vb">
       <DependentUpon>frmBancos.vb</DependentUpon>
     </Compile>
@@ -636,6 +665,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="utilerias.vb" />
+    <Compile Include="validaXSD.vb" />
     <Compile Include="Win32.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -723,6 +753,9 @@
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmAplicacionBlanco.resx">
+      <DependentUpon>frmAplicacionBlanco.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmComprobaAsignaCuenta.resx">
       <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
     </EmbeddedResource>
@@ -732,8 +765,14 @@
     <EmbeddedResource Include="contabilidad\frmContabilizaReembolsos.resx">
       <DependentUpon>frmContabilizaReembolsos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmContabilizarNomina.resx">
+      <DependentUpon>frmContabilizarNomina.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetalleComprobaciones.resx">
       <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetalleNomina.resx">
+      <DependentUpon>frmDetalleNomina.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetalleReembolsos.resx">
       <DependentUpon>frmDetalleReembolsos.vb</DependentUpon>
@@ -758,6 +797,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmRptProveedores.resx">
       <DependentUpon>frmRptProveedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmValidaCfdi.resx">
+      <DependentUpon>frmValidaCfdi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\rptPdfDocumentacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1070,6 +1112,9 @@
     <Content Include="Resources\NotAllowed.PNG" />
     <Content Include="Resources\UnderConstruction.PNG" />
     <Content Include="Resources\Warning.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

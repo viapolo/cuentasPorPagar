@@ -326,7 +326,7 @@ Public Class mdicuentasPorPagar
             End If
         Next
 
-        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Then
+        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = "viapolo" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
@@ -677,7 +677,12 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ValidadorCFDIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidadorCFDIToolStripMenuItem.Click
-
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmValidaCfdi.MdiParent = Me
+        frmValidaCfdi.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
     End Sub
 
     Private Sub FacturasPendientesDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasPendientesDePagoToolStripMenuItem.Click
@@ -777,5 +782,23 @@ Public Class mdicuentasPorPagar
                 End If
             End If
         Next
+    End Sub
+
+    Private Sub NóminaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NóminaToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmContabilizarNomina.MdiParent = Me
+        frmContabilizarNomina.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub AplicacionesEnBlancoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AplicacionesEnBlancoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmAplicacionBlanco.MdiParent = Me
+        frmAplicacionBlanco.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
     End Sub
 End Class

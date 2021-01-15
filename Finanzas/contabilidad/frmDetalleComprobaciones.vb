@@ -58,25 +58,25 @@ Public Class frmDetalleComprobaciones
                 taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
                 rwImpuestosCfdi = dtImpuestosCfdi.Rows(0)
 
-                Dim porcentajePago As Integer = rwComprobaciongts.importe / rwImpuestosCfdi.total
+                Dim porcentajePago As Decimal = rwComprobaciongts.importe / rwImpuestosCfdi.total
 
                 'dgvDetalleComprobaciones.Rows.Add("", "", rwImpuestosCfdi.SubTotal, 0, rwComprobaciongts.rfc, "S-" & idSolicitud & " F-" & rwComprobaciongts.serie & " " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                 taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
                 For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestosCfdi.Rows
                     If rowsCfdi.mTras <> "X" Then
                         If rowsCfdi.tipoFactor = "Exento" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.base, 0, rwComprobaciongts.rfcBen & " Exento", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " Exento", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.importeCon, 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.importeCon * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) = 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.base, 0, rwComprobaciongts.rfcBen & " Tasa 0%", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " Tasa 0%", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) > 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.base, 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                            dgvDetalleComprobaciones.Rows.Add("", "", rowsCfdi.mTras, 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.mTras * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         End If
                     Else
                         If rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.importeCon), rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.importeCon * Math.Round(porcentajePago, 10)), rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                         End If
                     End If
                     If rowsCfdi.mRet <> "X" Then

@@ -136,6 +136,30 @@ Namespace My
                 Me("hostExe") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\ARFIN\")>  _
+        Public Property addArfinValida() As String
+            Get
+                Return CType(Me("addArfinValida"),String)
+            End Get
+            Set
+                Me("addArfinValida") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\")>  _
+        Public Property addFinagilValida() As String
+            Get
+                Return CType(Me("addFinagilValida"),String)
+            End Get
+            Set
+                Me("addFinagilValida") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

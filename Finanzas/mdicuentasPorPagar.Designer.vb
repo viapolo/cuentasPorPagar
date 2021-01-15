@@ -67,6 +67,7 @@ Partial Class mdicuentasPorPagar
         Me.EventosContablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprobacionesDeGastosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReembolsosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NóminaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TesoreríaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PagosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SolicitudesDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -86,6 +87,7 @@ Partial Class mdicuentasPorPagar
         Me.SistemasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CargarDatosBancariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PruebasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CambiarDeEmpresaToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.tssUsuario = New System.Windows.Forms.ToolStripStatusLabel()
@@ -93,7 +95,7 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
-        Me.CambiarDeEmpresaToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AplicacionesEnBlancoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -389,7 +391,7 @@ Partial Class mdicuentasPorPagar
         '
         'EventosContablesToolStripMenuItem
         '
-        Me.EventosContablesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComprobacionesDeGastosToolStripMenuItem, Me.ReembolsosToolStripMenuItem})
+        Me.EventosContablesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ComprobacionesDeGastosToolStripMenuItem, Me.ReembolsosToolStripMenuItem, Me.NóminaToolStripMenuItem, Me.AplicacionesEnBlancoToolStripMenuItem})
         Me.EventosContablesToolStripMenuItem.Enabled = False
         Me.EventosContablesToolStripMenuItem.Name = "EventosContablesToolStripMenuItem"
         Me.EventosContablesToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
@@ -408,6 +410,13 @@ Partial Class mdicuentasPorPagar
         Me.ReembolsosToolStripMenuItem.Name = "ReembolsosToolStripMenuItem"
         Me.ReembolsosToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.ReembolsosToolStripMenuItem.Text = "Reembolsos"
+        '
+        'NóminaToolStripMenuItem
+        '
+        Me.NóminaToolStripMenuItem.Enabled = False
+        Me.NóminaToolStripMenuItem.Name = "NóminaToolStripMenuItem"
+        Me.NóminaToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.NóminaToolStripMenuItem.Text = "Nómina"
         '
         'TesoreríaToolStripMenuItem
         '
@@ -546,6 +555,12 @@ Partial Class mdicuentasPorPagar
         Me.PruebasToolStripMenuItem1.Size = New System.Drawing.Size(195, 22)
         Me.PruebasToolStripMenuItem1.Text = "Pruebas"
         '
+        'CambiarDeEmpresaToolStripMenuItem1
+        '
+        Me.CambiarDeEmpresaToolStripMenuItem1.Name = "CambiarDeEmpresaToolStripMenuItem1"
+        Me.CambiarDeEmpresaToolStripMenuItem1.Size = New System.Drawing.Size(128, 20)
+        Me.CambiarDeEmpresaToolStripMenuItem1.Text = "Cambiar de Empresa"
+        '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
@@ -581,11 +596,12 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
-        'CambiarDeEmpresaToolStripMenuItem1
+        'AplicacionesEnBlancoToolStripMenuItem
         '
-        Me.CambiarDeEmpresaToolStripMenuItem1.Name = "CambiarDeEmpresaToolStripMenuItem1"
-        Me.CambiarDeEmpresaToolStripMenuItem1.Size = New System.Drawing.Size(128, 20)
-        Me.CambiarDeEmpresaToolStripMenuItem1.Text = "Cambiar de Empresa"
+        Me.AplicacionesEnBlancoToolStripMenuItem.Enabled = False
+        Me.AplicacionesEnBlancoToolStripMenuItem.Name = "AplicacionesEnBlancoToolStripMenuItem"
+        Me.AplicacionesEnBlancoToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.AplicacionesEnBlancoToolStripMenuItem.Text = "Aplicaciones en blanco"
         '
         'mdicuentasPorPagar
         '
@@ -680,4 +696,6 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents ProveedoresToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents CuentasBancariasToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CambiarDeEmpresaToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents NóminaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AplicacionesEnBlancoToolStripMenuItem As ToolStripMenuItem
 End Class

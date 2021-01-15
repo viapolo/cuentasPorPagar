@@ -38,5 +38,11 @@
     <Setting Name="hostExe" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\server-raid2\FINAGIL_CXP\</Value>
     </Setting>
+    <Setting Name="addArfinValida" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\ARFIN\</Value>
+    </Setting>
+    <Setting Name="addFinagilValida" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

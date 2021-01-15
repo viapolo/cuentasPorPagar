@@ -32,9 +32,8 @@ Public Class frmGenPolizas
         sfdPolizas.FilterIndex = 2
         sfdPolizas.RestoreDirectory = True
         sfdPolizas.FileName = "PD " & taTipoDocumento.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa) & " " & Date.Now.Day & "-" & Date.Now.Month & "-" & Date.Now.Year & ".txt"
-
         If sfdPolizas.ShowDialog = DialogResult.OK Then
-            taPolizasEnc.Fill(dtPolizasEnc, dtpFechaInicial.Value, taTipoDocumento.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa), varGlobal_IdEmpresa, dtpFechaFinal.Value.AddHours(11).AddMinutes(59))
+            taPolizasEnc.Fill(dtPolizasEnc, dtpFechaInicial.Value.ToLongDateString, taTipoDocumento.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa), varGlobal_IdEmpresa, dtpFechaFinal.Value.AddDays(1))
             Dim estatus As String = ""
             If varGlobal_IdEmpresa = "24" Then
                 Dim renglonD As String = ""
@@ -598,8 +597,17 @@ Public Class frmGenPolizas
                                             '    dReferencia = dReferencia.Substring(0, 100)
                                             'End If
 
-                                            renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
+                                            If rwPolizasDet.uuid <> "ND" Or idConceptoD <> 52 Or idConceptoD <> 51 Then
+                                                'renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
+                                                '"AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
+                                                renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
                                                     "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
+                                            Else
+                                                renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1)
+                                            End If
+
+                                            'renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
+                                            '"AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
                                         End If
                                         filePolizaD.WriteLine(Eliminar_AcentosPolizas(renglonD.ToUpper))
                                     Next
