@@ -173,9 +173,8 @@
     End Sub
 
     Private Sub CXP_ProveedoresArchDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles CXP_ProveedoresArchDataGridView.DataError
+        'Me.Close()
         MsgBox(e.ToString, MsgBoxStyle.Critical, "")
-        CXP_ProveedoresArchDataGridView.EndEdit()
-        CXP_ProveedoresArchBindingSource.EndEdit()
         Exit Sub
     End Sub
 End Class

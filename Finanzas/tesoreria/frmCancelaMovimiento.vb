@@ -4,6 +4,8 @@
     Public importeCan As String
     Public estatusSolicitud As String
     Public idBancoOrigenCan As String
+
+
     Dim taPagosTesoreria As New dsTesoreriaTableAdapters.CXP_PagosTesoreriaTableAdapter
     Dim taPagos As New dsTesoreriaTableAdapters.CXP_PagosTableAdapter
     Dim taCorreosFinagil As New dsTesoreriaTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
@@ -33,12 +35,12 @@
         Try
             If tipoSolicitudCan = "TRA" Or tipoSolicitudCan = "FAC" Or tipoSolicitudCan = "AVI" Then
                 If estatusSolicitud = "33" Then
-                    taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(35, SqlTypes.SqlDateTime.Null, idBancoOrigenCan, Nothing, importeCan, 33, folioSolicitudCan, tipoSolicitudCan)
+                    taPagosTesoreria.CambiaEstusCancelacion_UpdateQuery(35, SqlTypes.SqlDateTime.Null, idBancoOrigenCan, Nothing, importeCan, 33, folioSolicitudCan, tipoSolicitudCan)
                 Else
-                    taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(33, SqlTypes.SqlDateTime.Null, idBancoOrigenCan, Nothing, importeCan, 37, folioSolicitudCan, tipoSolicitudCan)
+                    taPagosTesoreria.CambiaEstusCancelacion_UpdateQuery(33, SqlTypes.SqlDateTime.Null, idBancoOrigenCan, Nothing, importeCan, 37, folioSolicitudCan, tipoSolicitudCan)
                 End If
             Else
-                taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(33, SqlTypes.SqlDateTime.Null, Nothing, Nothing, importeCan, 37, folioSolicitudCan, tipoSolicitudCan)
+                taPagosTesoreria.CambiaEstusCancelacion_UpdateQuery(33, SqlTypes.SqlDateTime.Null, Nothing, Nothing, importeCan, 37, folioSolicitudCan, tipoSolicitudCan)
             End If
 
             If tipoSolicitudCan = "CXP" Then

@@ -50,11 +50,17 @@ Partial Class frmDetalleComprobaciones
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.dtpFechaProceso = New System.Windows.Forms.DateTimePicker()
+        Me.cmbNoDeducibles = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.CuentasBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.lblCargos = New System.Windows.Forms.Label()
+        Me.lblAbonos = New System.Windows.Forms.Label()
         CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDetalleComprobaciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCuentasContpaq.SuspendLayout()
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CuentasBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmbCuentaAbono
@@ -67,7 +73,7 @@ Partial Class frmDetalleComprobaciones
         Me.cmbCuentaAbono.FormattingEnabled = True
         Me.cmbCuentaAbono.Location = New System.Drawing.Point(122, 15)
         Me.cmbCuentaAbono.Name = "cmbCuentaAbono"
-        Me.cmbCuentaAbono.Size = New System.Drawing.Size(790, 21)
+        Me.cmbCuentaAbono.Size = New System.Drawing.Size(369, 21)
         Me.cmbCuentaAbono.TabIndex = 1
         Me.cmbCuentaAbono.ValueMember = "Id"
         '
@@ -96,10 +102,10 @@ Partial Class frmDetalleComprobaciones
         Me.dgvDetalleComprobaciones.AllowUserToDeleteRows = False
         Me.dgvDetalleComprobaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalleComprobaciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid})
-        Me.dgvDetalleComprobaciones.Location = New System.Drawing.Point(12, 42)
+        Me.dgvDetalleComprobaciones.Location = New System.Drawing.Point(12, 75)
         Me.dgvDetalleComprobaciones.Name = "dgvDetalleComprobaciones"
         Me.dgvDetalleComprobaciones.ReadOnly = True
-        Me.dgvDetalleComprobaciones.Size = New System.Drawing.Size(1005, 364)
+        Me.dgvDetalleComprobaciones.Size = New System.Drawing.Size(1005, 331)
         Me.dgvDetalleComprobaciones.TabIndex = 0
         '
         'idCuenta
@@ -258,11 +264,61 @@ Partial Class frmDetalleComprobaciones
         Me.dtpFechaProceso.Size = New System.Drawing.Size(99, 20)
         Me.dtpFechaProceso.TabIndex = 2
         '
+        'cmbNoDeducibles
+        '
+        Me.cmbNoDeducibles.DataSource = Me.CuentasBindingSource2
+        Me.cmbNoDeducibles.DisplayMember = "nCuenta"
+        Me.cmbNoDeducibles.Enabled = False
+        Me.cmbNoDeducibles.FormattingEnabled = True
+        Me.cmbNoDeducibles.Location = New System.Drawing.Point(122, 43)
+        Me.cmbNoDeducibles.Name = "cmbNoDeducibles"
+        Me.cmbNoDeducibles.Size = New System.Drawing.Size(369, 21)
+        Me.cmbNoDeducibles.TabIndex = 7
+        Me.cmbNoDeducibles.ValueMember = "Id"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 46)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(78, 13)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "No deducibles:"
+        '
+        'CuentasBindingSource2
+        '
+        Me.CuentasBindingSource2.DataMember = "Cuentas"
+        Me.CuentasBindingSource2.DataSource = Me.Contpaq
+        '
+        'lblCargos
+        '
+        Me.lblCargos.AutoSize = True
+        Me.lblCargos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCargos.Location = New System.Drawing.Point(191, 421)
+        Me.lblCargos.Name = "lblCargos"
+        Me.lblCargos.Size = New System.Drawing.Size(50, 13)
+        Me.lblCargos.TabIndex = 9
+        Me.lblCargos.Text = "Cargos:"
+        '
+        'lblAbonos
+        '
+        Me.lblAbonos.AutoSize = True
+        Me.lblAbonos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAbonos.Location = New System.Drawing.Point(438, 421)
+        Me.lblAbonos.Name = "lblAbonos"
+        Me.lblAbonos.Size = New System.Drawing.Size(53, 13)
+        Me.lblAbonos.TabIndex = 10
+        Me.lblAbonos.Text = "Abonos:"
+        '
         'frmDetalleComprobaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1029, 455)
+        Me.Controls.Add(Me.lblAbonos)
+        Me.Controls.Add(Me.lblCargos)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.cmbNoDeducibles)
         Me.Controls.Add(Me.dtpFechaProceso)
         Me.Controls.Add(Me.btnProcesar)
         Me.Controls.Add(Me.btnSalir)
@@ -278,6 +334,7 @@ Partial Class frmDetalleComprobaciones
         CType(Me.dgvDetalleComprobaciones, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCuentasContpaq.ResumeLayout(False)
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CuentasBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -307,4 +364,9 @@ Partial Class frmDetalleComprobaciones
     Friend WithEvents referencia As DataGridViewTextBoxColumn
     Friend WithEvents concepto As DataGridViewTextBoxColumn
     Friend WithEvents uuid As DataGridViewTextBoxColumn
+    Friend WithEvents cmbNoDeducibles As ComboBox
+    Friend WithEvents CuentasBindingSource2 As BindingSource
+    Friend WithEvents Label1 As Label
+    Friend WithEvents lblCargos As Label
+    Friend WithEvents lblAbonos As Label
 End Class

@@ -31,10 +31,7 @@ Partial Class frmGenPolizas
         Me.ProveedoresContpaqTableAdapter = New cuentasPorPagar.contpaqTableAdapters.ProveedoresTableAdapter()
         Me.BancosContpaqTableAdapter = New cuentasPorPagar.contpaqTableAdapters.BancosTableAdapter()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
-        Me.Vw_CXP_PolizasEncBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
-        Me.Vw_CXP_PolizasEncTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_PolizasEncTableAdapter()
         Me.dtpFechaFinal = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -48,13 +45,16 @@ Partial Class frmGenPolizas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.fbdPolizas = New System.Windows.Forms.FolderBrowserDialog()
         Me.TableAdapterManager1 = New cuentasPorPagar.contpaqTableAdapters.TableAdapterManager()
+        Me.Vw_CXP_PolizasEncBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
+        Me.Vw_CXP_PolizasEncTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_PolizasEncTableAdapter()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnProcesar
@@ -106,16 +106,6 @@ Partial Class frmGenPolizas
         Me.DsProduction.DataSetName = "dsProduction"
         Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Vw_CXP_PolizasEncBindingSource
-        '
-        Me.Vw_CXP_PolizasEncBindingSource.DataMember = "Vw_CXP_PolizasEnc"
-        Me.Vw_CXP_PolizasEncBindingSource.DataSource = Me.DsContabilidad
-        '
-        'DsContabilidad
-        '
-        Me.DsContabilidad.DataSetName = "dsContabilidad"
-        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
@@ -162,14 +152,10 @@ Partial Class frmGenPolizas
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'Vw_CXP_PolizasEncTableAdapter
-        '
-        Me.Vw_CXP_PolizasEncTableAdapter.ClearBeforeFill = True
-        '
         'dtpFechaFinal
         '
         Me.dtpFechaFinal.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right
-        Me.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpFechaFinal.Location = New System.Drawing.Point(172, 20)
         Me.dtpFechaFinal.Name = "dtpFechaFinal"
         Me.dtpFechaFinal.Size = New System.Drawing.Size(105, 20)
@@ -266,6 +252,20 @@ Partial Class frmGenPolizas
         Me.TableAdapterManager1.Connection = Nothing
         Me.TableAdapterManager1.UpdateOrder = cuentasPorPagar.contpaqTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'Vw_CXP_PolizasEncBindingSource
+        '
+        Me.Vw_CXP_PolizasEncBindingSource.DataMember = "Vw_CXP_PolizasEnc"
+        Me.Vw_CXP_PolizasEncBindingSource.DataSource = Me.DsContabilidad
+        '
+        'DsContabilidad
+        '
+        Me.DsContabilidad.DataSetName = "dsContabilidad"
+        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_CXP_PolizasEncTableAdapter
+        '
+        Me.Vw_CXP_PolizasEncTableAdapter.ClearBeforeFill = True
+        '
         'frmGenPolizas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -280,14 +280,14 @@ Partial Class frmGenPolizas
         Me.Text = "Generar Pólizas Contables"
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

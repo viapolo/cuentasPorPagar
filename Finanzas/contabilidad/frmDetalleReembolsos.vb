@@ -72,30 +72,30 @@ Public Class frmDetalleReembolsos
                 For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestosCfdi.Rows
                     If rowsCfdi.mTras <> "X" Then
                         If rowsCfdi.tipoFactor = "Exento" Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.base * porcentajePago, 0, rwComprobaciongts.rfc & " Exento", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.base * porcentajePago, 0, rowsCfdi.rfcEmisor & " Exento", "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.importeCon * porcentajePago, 0, rwComprobaciongts.rfc & " No Objeto", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.importeCon * porcentajePago, 0, rowsCfdi.rfcEmisor & " No Objeto", "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) = 0 Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.base * porcentajePago, 0, rwComprobaciongts.rfc & " Tasa 0 %", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.base * porcentajePago, 0, rowsCfdi.rfcEmisor & " Tasa 0 %", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) > 0 Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.base * porcentajePago, 0, rwComprobaciongts.rfc, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mTras * porcentajePago, 0, rwComprobaciongts.rfc, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.base * porcentajePago, 0, rowsCfdi.rfcEmisor, "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mTras * porcentajePago, 0, rowsCfdi.rfcEmisor, "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         End If
                     Else
                         If rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.importeCon * porcentajePago, 0, rwComprobaciongts.rfc & " No Objeto", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.importeCon * porcentajePago, 0, rowsCfdi.rfcEmisor & " No Objeto", "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         End If
                     End If
                     If rowsCfdi.mRet <> "X" Then
-                        dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mRet * porcentajePago, 0, rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfc, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                        dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mRet * porcentajePago, 0, rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rowsCfdi.rfcEmisor, "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                     End If
 
                     If contador = 0 Then
                         If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mLocTra * porcentajePago, 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfc, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mLocTra * porcentajePago, 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rowsCfdi.rfcEmisor, "F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         End If
                         If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
-                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mLocRet * porcentajePago, 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfc, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
+                            dgvDetalleReembolsos.Rows.Add("", "", rowsCfdi.mLocRet * porcentajePago, 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rowsCfdi.rfcEmisor, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.decripcion, rwComprobaciongts.uuid)
                         End If
                     End If
                     contador += 1
@@ -107,7 +107,7 @@ Public Class frmDetalleReembolsos
             solicitante = rwComprobaciongts.razonSocial
 
         Next
-        dgvDetalleReembolsos.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "REEMB GTS S- " & idSolicitud & " ", "S- " & idSolicitud & " " & solicitante & " " & descripcion, "ND")
+        dgvDetalleReembolsos.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "REEMB GTS S-" & idSolicitud & " ", solicitante & " " & descripcion, "ND")
         dgvDetalleReembolsos.Focus()
     End Sub
 
@@ -156,6 +156,7 @@ Public Class frmDetalleReembolsos
         Dim rwDatosSolicitud As dsContabilidad.Vw_CXP_AutorizacionesRow
         Dim dtAutorizaciones As New dsContabilidad.Vw_CXP_AutorizacionesDataTable
         Dim taPolizas As New dsTesoreriaTableAdapters.CXP_tipoDeDocumentoTableAdapter
+        Dim taEmpresas As New dsProductionTableAdapters.CXP_EmpresasTableAdapter
 
         Dim contValid As Integer = 0
 
@@ -179,21 +180,29 @@ Public Class frmDetalleReembolsos
             'egreso
             idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", rwDatosSolicitud.formaDePago, rwDatosSolicitud.monedaPago, varGlobal_IdEmpresa)
 
-            folioPoliza = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+            If dtpFechaProceso.Value.Month = Date.Now.Month Then
+                folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
+            Else
+                folioPoliza = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+            End If
+
             Dim contador As Integer = 0
             For Each rows As DataGridViewRow In dgvDetalleReembolsos.Rows
                 taRegContable.Insert(CDec(dgvDetalleReembolsos.Item("idCuenta", contador).Value), rwDatosSolicitud.idProveedor, CDec(dgvDetalleReembolsos.Item("cargo", contador).Value), CDec(dgvDetalleReembolsos.Item("abono", contador).Value), dgvDetalleReembolsos.Item("referencia", contador).Value, dgvDetalleReembolsos.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleReembolsos.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", rwDatosSolicitud.idConcepto, 2)
                 contador += 1
             Next
-
-            taPeriodos.ConsumeFolio_UpdateQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+            If dtpFechaProceso.Value.Month = Date.Now.Month Then
+                taPolizas.ConsumeUltimoFolio_UpdateQuery(idTipoDocumento, varGlobal_IdEmpresa)
+            Else
+                taPeriodos.ConsumeFolio_UpdateQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+            End If
             btnProcesar.Enabled = False
-            taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)
-            MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
+                taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)
+                MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
 
-        Else
-            'diario
-            idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", fPago, monedaPago, varGlobal_IdEmpresa)
+            Else
+                'diario
+                idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", fPago, monedaPago, varGlobal_IdEmpresa)
             folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
 
             Dim contador As Integer = 0
@@ -211,11 +220,8 @@ Public Class frmDetalleReembolsos
 
     End Sub
 
-    Private Sub cmbCuentasContpaq_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCuentasContpaq.SelectedIndexChanged
-
-    End Sub
-
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
+
 End Class

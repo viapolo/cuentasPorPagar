@@ -81,11 +81,7 @@ Public Class frmContProveedoresClientes
     End Sub
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
 
-        frmVerPdf.Show()
-
-    End Sub
 
     Private Sub btnCtasBancarias_Click(sender As Object, e As EventArgs) Handles btnCtasBancarias.Click
         Dim taUsuarios As New dsSeguridadTableAdapters.USUARIOTableAdapter

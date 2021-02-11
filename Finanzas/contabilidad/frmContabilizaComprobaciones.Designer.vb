@@ -29,6 +29,8 @@ Partial Class frmContabilizaComprobaciones
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Vw_CXP_MisComprobacionesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.Vw_CXP_MisComprobacionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
@@ -42,14 +44,12 @@ Partial Class frmContabilizaComprobaciones
         Me.Vw_CXP_MisComprobacionesBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.Vw_CXP_MisComprobacionesDataGridView = New System.Windows.Forms.DataGridView()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.Vw_CXP_MisComprobacionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.Vw_CXP_MisComprobacionesTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_MisComprobacionesTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
         Me.idFolioComprobacion = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.idFolioSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saldoSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -59,9 +59,9 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Vw_CXP_MisComprobacionesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Vw_CXP_MisComprobacionesBindingNavigator.SuspendLayout()
-        CType(Me.Vw_CXP_MisComprobacionesDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_MisComprobacionesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Vw_CXP_MisComprobacionesDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Vw_CXP_MisComprobacionesBindingNavigator
@@ -91,6 +91,16 @@ Partial Class frmContabilizaComprobaciones
         Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorAddNewItem.Text = "Agregar nuevo"
+        '
+        'Vw_CXP_MisComprobacionesBindingSource
+        '
+        Me.Vw_CXP_MisComprobacionesBindingSource.DataMember = "Vw_CXP_MisComprobaciones"
+        Me.Vw_CXP_MisComprobacionesBindingSource.DataSource = Me.DsContabilidad
+        '
+        'DsContabilidad
+        '
+        Me.DsContabilidad.DataSetName = "dsContabilidad"
+        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BindingNavigatorCountItem
         '
@@ -185,7 +195,7 @@ Partial Class frmContabilizaComprobaciones
         Me.Vw_CXP_MisComprobacionesDataGridView.AllowUserToOrderColumns = True
         Me.Vw_CXP_MisComprobacionesDataGridView.AutoGenerateColumns = False
         Me.Vw_CXP_MisComprobacionesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_CXP_MisComprobacionesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioComprobacion, Me.idFolioSolicitud, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11})
+        Me.Vw_CXP_MisComprobacionesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioComprobacion, Me.idFolioSolicitud, Me.DataGridViewTextBoxColumn3, Me.saldoSolicitud, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11})
         Me.Vw_CXP_MisComprobacionesDataGridView.DataSource = Me.Vw_CXP_MisComprobacionesBindingSource
         Me.Vw_CXP_MisComprobacionesDataGridView.Location = New System.Drawing.Point(12, 28)
         Me.Vw_CXP_MisComprobacionesDataGridView.Name = "Vw_CXP_MisComprobacionesDataGridView"
@@ -202,16 +212,6 @@ Partial Class frmContabilizaComprobaciones
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'Vw_CXP_MisComprobacionesBindingSource
-        '
-        Me.Vw_CXP_MisComprobacionesBindingSource.DataMember = "Vw_CXP_MisComprobaciones"
-        Me.Vw_CXP_MisComprobacionesBindingSource.DataSource = Me.DsContabilidad
-        '
-        'DsContabilidad
-        '
-        Me.DsContabilidad.DataSetName = "dsContabilidad"
-        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Vw_CXP_MisComprobacionesTableAdapter
         '
         Me.Vw_CXP_MisComprobacionesTableAdapter.ClearBeforeFill = True
@@ -221,10 +221,15 @@ Partial Class frmContabilizaComprobaciones
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
-        'Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
@@ -262,14 +267,14 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
         Me.DataGridViewTextBoxColumn3.Width = 72
         '
-        'DataGridViewTextBoxColumn2
+        'saldoSolicitud
         '
-        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "saldoSolicitud"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Sal X Comp"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 87
+        Me.saldoSolicitud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.saldoSolicitud.DataPropertyName = "saldoSolicitud"
+        Me.saldoSolicitud.HeaderText = "Sal X Comp"
+        Me.saldoSolicitud.Name = "saldoSolicitud"
+        Me.saldoSolicitud.ReadOnly = True
+        Me.saldoSolicitud.Width = 87
         '
         'DataGridViewTextBoxColumn4
         '
@@ -353,9 +358,9 @@ Partial Class frmContabilizaComprobaciones
         CType(Me.Vw_CXP_MisComprobacionesBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Vw_CXP_MisComprobacionesBindingNavigator.ResumeLayout(False)
         Me.Vw_CXP_MisComprobacionesBindingNavigator.PerformLayout()
-        CType(Me.Vw_CXP_MisComprobacionesDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Vw_CXP_MisComprobacionesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Vw_CXP_MisComprobacionesDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -383,7 +388,7 @@ Partial Class frmContabilizaComprobaciones
     Friend WithEvents idFolioComprobacion As DataGridViewLinkColumn
     Friend WithEvents idFolioSolicitud As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents saldoSolicitud As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn

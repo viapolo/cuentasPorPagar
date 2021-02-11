@@ -2,6 +2,7 @@
 Public Class frmDetalleComprobaciones
     Public idComprobacion As Integer
     Public idSolicitud As Integer
+    Public impPendiXComprobar As Decimal
     Dim posRow As Integer
     Dim posCol As Integer
     Dim taPeriodos As New dsContabilidadTableAdapters.CXP_PeriodosTableAdapter
@@ -16,6 +17,7 @@ Public Class frmDetalleComprobaciones
 
         Dim taComprobacionGts As New dsContabilidadTableAdapters.CXP_ComprobGtosTableAdapter
         Dim dtComprobacionGts As New dsContabilidad.CXP_ComprobGtosDataTable
+        Dim rwDetComprobacionGts As dsContabilidad.CXP_ComprobGtosRow
 
         Dim taImpuestosCfdi As New dsTesoreriaTableAdapters.Vw_CXP_ImpuestosCFDITableAdapter
         Dim dtImpuestosCfdi As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
@@ -23,6 +25,8 @@ Public Class frmDetalleComprobaciones
         Dim totalCargoDed As Decimal = 0
         Dim totalCargoNDed As Decimal = 0
         Dim descripcion, solicitante As String
+        Dim totalCargos As Decimal = 0
+        Dim totalAbonos As Decimal = 0
 
         If taRegCont.ConsultaEstatus_ScalarQuery(idSolicitud, varGlobal_IdEmpresa, idComprobacion) = "Contabilizado" Then
             MsgBox("Comprobación ya contabilizada", MsgBoxStyle.Information, "")
@@ -41,69 +45,90 @@ Public Class frmDetalleComprobaciones
         End Try
 
         cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "1501909000000000")
+        cmbNoDeducibles.SelectedIndex = CuentasBindingSource2.Find("Codigo", "5105170100000000")
 
+        Try
+            taComprobacionGts.DetalleComprobacion_FillBy(dtComprobacionGts, varGlobal_IdEmpresa, idSolicitud, idComprobacion)
 
-        taComprobacionGts.DetalleComprobacion_FillBy(dtComprobacionGts, varGlobal_IdEmpresa, idSolicitud, idComprobacion)
-
-        For Each rwComprobaciongts As dsContabilidad.CXP_ComprobGtosRow In dtComprobacionGts.Rows
-            Dim contador As Integer = 0
-            If rwComprobaciongts.serie = "ND" Then
-                If rwComprobaciongts.importe >= 0 Then
-                    dgvDetalleComprobaciones.Rows.Add("", "", rwComprobaciongts.importe, 0, "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
-                Else
-                    dgvDetalleComprobaciones.Rows.Add("", "", 0, Math.Abs(rwComprobaciongts.importe), "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
-                End If
-                                    totalCargoNDed += rwComprobaciongts.importe
-            Else
-                taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
-                rwImpuestosCfdi = dtImpuestosCfdi.Rows(0)
-
-                Dim porcentajePago As Decimal = rwComprobaciongts.importe / rwImpuestosCfdi.total
-
-                'dgvDetalleComprobaciones.Rows.Add("", "", rwImpuestosCfdi.SubTotal, 0, rwComprobaciongts.rfc, "S-" & idSolicitud & " F-" & rwComprobaciongts.serie & " " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
-                For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestosCfdi.Rows
-                    If rowsCfdi.mTras <> "X" Then
-                        If rowsCfdi.tipoFactor = "Exento" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " Exento", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                        ElseIf rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.importeCon * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                        ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) = 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " Tasa 0%", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                        ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) > 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                            dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.mTras * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                        End If
+            For Each rwComprobaciongts As dsContabilidad.CXP_ComprobGtosRow In dtComprobacionGts.Rows
+                rwDetComprobacionGts = dtComprobacionGts.Rows(0)
+                Dim contador As Integer = 0
+                If rwComprobaciongts.serie = "ND" Then
+                    If rwComprobaciongts.importe >= 0 Then
+                        dgvDetalleComprobaciones.Rows.Add("", "", rwComprobaciongts.importe, 0, "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
                     Else
-                        If rowsCfdi.tipoFactor = "No Objeto" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.importeCon * Math.Round(porcentajePago, 10)), rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                        End If
+                        dgvDetalleComprobaciones.Rows.Add("", "", 0, Math.Abs(rwComprobaciongts.importe), "COMP GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.descripcion, "ND")
                     End If
-                    If rowsCfdi.mRet <> "X" Then
-                        dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.mRet), rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
-                    End If
+                    totalCargoNDed += rwComprobaciongts.importe
+                Else
+                    taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
+                    rwImpuestosCfdi = dtImpuestosCfdi.Rows(0)
 
-                    If contador = 0 Then
-                        If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocTra, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                    Dim porcentajePago As Decimal = rwComprobaciongts.importe / rwImpuestosCfdi.total
+
+                    'dgvDetalleComprobaciones.Rows.Add("", "", rwImpuestosCfdi.SubTotal, 0, rwComprobaciongts.rfc, "S-" & idSolicitud & " F-" & rwComprobaciongts.serie & " " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                    taImpuestosCfdi.Fill(dtImpuestosCfdi, rwComprobaciongts.uuid)
+                    For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestosCfdi.Rows
+                        If rowsCfdi.mTras <> "X" Then
+                            If rowsCfdi.tipoFactor = "Exento" Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " Exento", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                            ElseIf rowsCfdi.tipoFactor = "No Objeto" Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.importeCon * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                            ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) = 0 Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen & " Tasa 0%", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                            ElseIf rowsCfdi.tipoFactor = "Tasa" And CDec(rowsCfdi.mTras) > 0 Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.base * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.mTras * Math.Round(porcentajePago, 10)), 0, rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                            End If
+                        Else
+                            If rowsCfdi.tipoFactor = "No Objeto" Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.importeCon * Math.Round(porcentajePago, 10) - rowsCfdi.descuento), 0, rwComprobaciongts.rfcBen & " No Obj", "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                            End If
                         End If
-                        If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocRet, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                        If rowsCfdi.mRet <> "X" Then
+                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.mRet), rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
                         End If
-                    End If
-                    contador += 1
-                Next
-                totalCargoDed += rwComprobaciongts.importe
+
+                        If contador = 0 Then
+                            If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocTra, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            End If
+                            If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
+                                dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocRet, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                            End If
+                        End If
+                        contador += 1
+                    Next
+                    totalCargoDed += rwComprobaciongts.importe
+                End If
+
+                descripcion = rwComprobaciongts.destinoN
+                solicitante = rwComprobaciongts.razonSocial
+                idConcepto = rwComprobaciongts.idConcepto
+                idProveedor = rwComprobaciongts.idProveedor
+
+            Next
+            If impPendiXComprobar > 0 And impPendiXComprobar <= 0.5 Then
+
+                dgvDetalleComprobaciones.Rows.Add(cmbNoDeducibles.SelectedValue, cmbNoDeducibles.Text, impPendiXComprobar, 0, "COMP GTS S-" & idSolicitud & " ", "S-" & idSolicitud & " F- " & rwDetComprobacionGts.folio & " " & utilerias.Eliminar_AcentosPolizas(descripcion), "ND")
+
+            Else
+                impPendiXComprobar = 0
             End If
+            dgvDetalleComprobaciones.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed + impPendiXComprobar, "COMP GTS S-" & idSolicitud & " ", "S-" & idSolicitud & " " & solicitante & " " & descripcion, "ND")
 
-            descripcion = rwComprobaciongts.destinoN
-            solicitante = rwComprobaciongts.razonSocial
-            idConcepto = rwComprobaciongts.idConcepto
-            idProveedor = rwComprobaciongts.idProveedor
+            For Each rw As DataGridViewRow In dgvDetalleComprobaciones.Rows
+                totalCargos += CDec(dgvDetalleComprobaciones.Item("cargo", rw.Index).Value)
+                totalAbonos += CDec(dgvDetalleComprobaciones.Item("abono", rw.Index).Value)
+            Next
 
-        Next
-        dgvDetalleComprobaciones.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "COMP GTS S-" & idSolicitud & " ", "S-" & idSolicitud & " " & solicitante & " " & descripcion, "ND")
-        dgvDetalleComprobaciones.Focus()
+            lblCargos.Text = "Cargos: " & FormatCurrency(totalCargos.ToString)
+            lblAbonos.Text = "Abonos: " & FormatCurrency(totalAbonos.ToString)
+
+            dgvDetalleComprobaciones.Focus()
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
     End Sub
 
     Private Sub frmDetalleComprobaciones_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
@@ -156,6 +181,20 @@ Public Class frmDetalleComprobaciones
         If varGlobal_IdEmpresa = 23 Then
             periodoEjercicio = "1"
         End If
+
+        If impPendiXComprobar > 0 And impPendiXComprobar <= 0.5 Then
+            Dim taComprobacionGts As New dsContabilidadTableAdapters.CXP_ComprobGtosTableAdapter
+            Dim dtComprobacionGts As New dsContabilidad.CXP_ComprobGtosDataTable
+            Dim rwDetComprobacionGts As dsContabilidad.CXP_ComprobGtosRow
+
+            taComprobacionGts.DetalleComprobacion_FillBy(dtComprobacionGts, varGlobal_IdEmpresa, idSolicitud, idComprobacion)
+            If dtComprobacionGts.Rows.Count > 0 Then
+                rwDetComprobacionGts = dtComprobacionGts.Rows(0)
+                taRegCont.Insert(rwDetComprobacionGts.idProveedorUsuario, rwDetComprobacionGts.idFolioSolicitud, rwDetComprobacionGts.idEmpresa, "ND", impPendiXComprobar, 0, "Saldos Menores", rwDetComprobacionGts.destinoN, rwDetComprobacionGts.destinoE, rwDetComprobacionGts.motivo, rwDetComprobacionGts.fechaLlegada, rwDetComprobacionGts.fechaSalida, rwDetComprobacionGts.folioComprobacion, rwDetComprobacionGts.ok1, rwDetComprobacionGts.ok2, rwDetComprobacionGts.naAutoriza1, rwDetComprobacionGts.naAutoriza2, rwDetComprobacionGts.mail1, rwDetComprobacionGts.mail2, rwDetComprobacionGts.fechaComprobacion, "", "ND", rwDetComprobacionGts.estatus, "Contabilizado")
+            End If
+
+        End If
+
 
         For Each rows As DataGridViewRow In dgvDetalleComprobaciones.Rows
             If dgvDetalleComprobaciones.Item("idCuenta", contValid).Value.ToString = "" Then

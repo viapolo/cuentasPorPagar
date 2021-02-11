@@ -37,8 +37,8 @@
         taDetalleReembolsos.DetalleReembolso_FillBy(dtDetalleReembolsos, varGlobal_IdEmpresa, idSolicitud)
 
         For Each rwComprobaciongts As dsContabilidad.Vw_CXP_AutorizacionesRow In dtDetalleReembolsos.Rows
-            dgvDetalleNomina.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, rwComprobaciongts.totalPagadoTC, 0, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), "S-" & idSolicitud & " " & rwComprobaciongts.decripcion, "ND")
-            dgvDetalleNomina.Rows.Add(cmbCuentaCargo.SelectedValue, cmbCuentaCargo.Text, 0, rwComprobaciongts.totalPagadoTC, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), "S-" & idSolicitud & " " & rwComprobaciongts.decripcion, "ND")
+            dgvDetalleNomina.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, rwComprobaciongts.totalPagadoTC, 0, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), rwComprobaciongts.decripcion, "ND")
+            dgvDetalleNomina.Rows.Add(cmbCuentaCargo.SelectedValue, cmbCuentaCargo.Text, 0, rwComprobaciongts.totalPagadoTC, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), rwComprobaciongts.decripcion, "ND")
         Next
     End Sub
 

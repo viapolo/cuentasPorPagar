@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>35</ApplicationRevision>
+    <ApplicationRevision>53</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -231,12 +231,6 @@
       <DependentUpon>frmTipoGasto.vb</DependentUpon>
     </Compile>
     <Compile Include="catalogos\frmTipoGasto.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="catalogos\frmVerPdf.Designer.vb">
-      <DependentUpon>frmVerPdf.vb</DependentUpon>
-    </Compile>
-    <Compile Include="catalogos\frmVerPdf.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CeldaPersonalizada.vb" />
@@ -516,6 +510,24 @@
     <Compile Include="herramientas\frmCargaCuentas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="herramientas\frmCorreosNotificacionesPago.Designer.vb">
+      <DependentUpon>frmCorreosNotificacionesPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="herramientas\frmCorreosNotificacionesPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="herramientas\frmGeneraPolizas.Designer.vb">
+      <DependentUpon>frmGeneraPolizas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="herramientas\frmGeneraPolizas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="herramientas\frmNotificacionesPago.Designer.vb">
+      <DependentUpon>frmNotificacionesPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="herramientas\frmNotificacionesPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="lfrInicio.Designer.vb">
       <DependentUpon>lfrInicio.vb</DependentUpon>
     </Compile>
@@ -720,9 +732,6 @@
     <EmbeddedResource Include="catalogos\frmTipoGasto.resx">
       <DependentUpon>frmTipoGasto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="catalogos\frmVerPdf.resx">
-      <DependentUpon>frmVerPdf.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmAutorizaciones.resx">
       <DependentUpon>frmAutorizaciones.vb</DependentUpon>
     </EmbeddedResource>
@@ -840,6 +849,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="herramientas\frmCargaCuentas.resx">
       <DependentUpon>frmCargaCuentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="herramientas\frmCorreosNotificacionesPago.resx">
+      <DependentUpon>frmCorreosNotificacionesPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="herramientas\frmGeneraPolizas.resx">
+      <DependentUpon>frmGeneraPolizas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="herramientas\frmNotificacionesPago.resx">
+      <DependentUpon>frmNotificacionesPago.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lfrInicio.resx">
       <DependentUpon>lfrInicio.vb</DependentUpon>
@@ -1032,25 +1050,25 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-    <COMReference Include="AcroPDFLib">
-      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
-      <VersionMajor>1</VersionMajor>
+    <COMReference Include="CrystalReportViewerExportLib">
+      <Guid>{5C21A516-C6AC-42F2-A7B7-846FFE1B122A}</Guid>
+      <VersionMajor>13</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-    <COMReference Include="AxAcroPDFLib">
-      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
-      <VersionMajor>1</VersionMajor>
+    <COMReference Include="CrystalReportViewerWebReportSourceLib">
+      <Guid>{14173BA7-071D-4216-8C9B-EAB29A55E2D4}</Guid>
+      <VersionMajor>13</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>aximp</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
@@ -1085,6 +1103,15 @@
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

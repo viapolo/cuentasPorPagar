@@ -33,7 +33,7 @@ Public Class frmGenPolizas
         sfdPolizas.RestoreDirectory = True
         sfdPolizas.FileName = "PD " & taTipoDocumento.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa) & " " & Date.Now.Day & "-" & Date.Now.Month & "-" & Date.Now.Year & ".txt"
         If sfdPolizas.ShowDialog = DialogResult.OK Then
-            taPolizasEnc.Fill(dtPolizasEnc, dtpFechaInicial.Value.ToLongDateString, taTipoDocumento.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa), varGlobal_IdEmpresa, dtpFechaFinal.Value.AddDays(1))
+            taPolizasEnc.Fill(dtPolizasEnc, dtpFechaInicial.Value.ToString("dd/MM/yyyy"), taTipoDocumento.ObtTipoDeAsiento_ScalarQuery(varGlobal_IdEmpresa), varGlobal_IdEmpresa, dtpFechaFinal.Value.AddDays(1).ToString("dd/MM/yyyy"))
             Dim estatus As String = ""
             If varGlobal_IdEmpresa = "24" Then
                 Dim renglonD As String = ""
@@ -75,7 +75,7 @@ Public Class frmGenPolizas
                         nConcepto = Stuff(nConcepto, "D", " ", 100)
 
                         encabezadoD = "P  " & rwPolizasEnc.fecha.ToString("yyyyMMdd") & "    3" & Space(10 - rwPolizasEnc.folioTipoDocumento.ToString.Length) & rwPolizasEnc.folioTipoDocumento.ToString & " 1 0          " & nConcepto & " 11 0 0 "
-                        taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, idConceptoD)
+                        taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud)
                         filePolizaD.WriteLine(Eliminar_AcentosPolizas(encabezadoD.ToUpper))
                         Dim uuid As String = ""
                         Dim uuidA(0) As String
@@ -96,12 +96,12 @@ Public Class frmGenPolizas
                             'MsgBox((totalCargo - totalAbono).ToString & "-" & rwPolizasEnc.folioSolicitud)
                             diferencia = totalCargo - totalAbono
                         End If
-                        For Each drDetConceptos As dsContabilidad.DataTableDetallePolizasRow In dtDetalleSol.Rows
-                            Dim taPolizaDetB As New dsContabilidadTableAdapters.Vw_CXP_PolizasDetTableAdapter
-                            Dim dtPolizaDetB As New dsContabilidad.Vw_CXP_PolizasDetDataTable
+                        'For Each drDetConceptos As dsContabilidad.DataTableDetallePolizasRow In dtDetalleSol.Rows
+                        Dim taPolizaDetB As New dsContabilidadTableAdapters.Vw_CXP_PolizasDetTableAdapter
+                        Dim dtPolizaDetB As New dsContabilidad.Vw_CXP_PolizasDetDataTable
 
-                            taPolizaDetB.DetallePoliza_FillBy(dtPolizaDetB, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, drDetConceptos.idConcepto)
-                            For Each rwPolizasDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDetB.Rows
+                        taPolizaDetB.DetallePoliza_FillBy(dtPolizaDetB, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud)
+                        For Each rwPolizasDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDetB.Rows
 
                                 CuentasTableAdapter.DatosCtas_FillBy(dtCuentasCpq, rwPolizasDet.idCuenta)
 
@@ -116,30 +116,30 @@ Public Class frmGenPolizas
                                     Dim dReferencia As String = Stuff(Trim("S-" & rwPolizasDet.folioSolicitud & " " & Eliminar_AcentosPolizas(rwPolizasDet.concepto.Trim)), "D", " ", 100)
                                     Dim dReferencia1 As String = "" 'Stuff(Trim(rwPolizasDet.folioSolicitud), "D", " ", 20)
 
-                                    If rwPolizasDet.noContrato = String.Empty Then
-                                        If cont = dtPolizaDet.Rows.Count Then
-                                            If idConceptoD = 34 Or idConceptoD = 41 Then
-                                                dReferencia1 = rwPolizasDet.referencia
-                                            Else
-                                                If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
-                                                    dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
-                                                End If
-                                            End If
+                                If rwPolizasDet.noContrato = String.Empty Then
+                                    If cont = dtPolizaDet.Rows.Count Then
+                                        If idConceptoD = 34 Or idConceptoD = 41 Then
+                                            dReferencia1 = rwPolizasDet.referencia
                                         Else
                                             If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
                                                 dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
-                                            Else
-                                                dReferencia1 = Stuff(Trim(rwPolizasDet.referencia.Replace("IVA ", "")), "D", " ", 20)
                                             End If
                                         End If
                                     Else
-                                        dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
+                                        If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
+                                            dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
+                                        Else
+                                            dReferencia1 = Stuff(Trim(rwPolizasDet.referencia.Replace("IVA ", "")), "D", " ", 20)
+                                        End If
                                     End If
+                                Else
+                                    dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
+                                End If
 
-                                    If dReferencia1.Length > 20 Then
-                                        dReferencia1 = Stuff(dReferencia1.Substring(0, 19), "D", " ", 20)
-                                    Else
-                                        dReferencia1 = Stuff(dReferencia1, "D", " ", 20)
+                                If dReferencia1.Length > 20 Then
+                                    dReferencia1 = Stuff(dReferencia1.Substring(0, 19), "D", " ", 20)
+                                Else
+                                    dReferencia1 = Stuff(dReferencia1, "D", " ", 20)
                                     End If
 
 
@@ -171,7 +171,7 @@ Public Class frmGenPolizas
                                 filePolizaD.WriteLine(renglonD.ToUpper)
                                 cont += 1
                             Next
-                        Next
+                        'Next
                     Next
                     filePolizaD.Close()
                     MsgBox("Proceso terminado", MsgBoxStyle.Information, "")
@@ -221,7 +221,7 @@ Public Class frmGenPolizas
                         nConcepto = Stuff(nConcepto, "D", " ", 100)
 
                         encabezadoD = "P  " & rwPolizasEnc.fecha.ToString("yyyyMMdd") & "    3" & Space(10 - rwPolizasEnc.folioTipoDocumento.ToString.Length) & rwPolizasEnc.folioTipoDocumento.ToString & " 1 0          " & nConcepto & " 11 0 0 "
-                        taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, idConceptoD)
+                        taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud)
                         filePolizaD.WriteLine(Eliminar_AcentosPolizas(encabezadoD.ToUpper))
                         Dim uuid As String = ""
                         Dim uuidA(0) As String
@@ -243,11 +243,11 @@ Public Class frmGenPolizas
                             'MsgBox((totalCargo - totalAbono).ToString & "-" & rwPolizasEnc.folioSolicitud)
                             diferencia = totalCargo - totalAbono
                         End If
-                        For Each drDetConceptos As dsContabilidad.DataTableDetallePolizasRow In dtDetalleSol.Rows
-                            Dim taPolizaDetB As New dsContabilidadTableAdapters.Vw_CXP_PolizasDetTableAdapter
+                        'For Each drDetConceptos As dsContabilidad.DataTableDetallePolizasRow In dtDetalleSol.Rows
+                        Dim taPolizaDetB As New dsContabilidadTableAdapters.Vw_CXP_PolizasDetTableAdapter
                             Dim dtPolizaDetB As New dsContabilidad.Vw_CXP_PolizasDetDataTable
 
-                            taPolizaDetB.DetallePoliza_FillBy(dtPolizaDetB, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, drDetConceptos.idConcepto)
+                            taPolizaDetB.DetallePoliza_FillBy(dtPolizaDetB, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud)
                             For Each rwPolizasDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDetB.Rows
 
                                 CuentasTableAdapter.DatosCtas_FillBy(dtCuentasCpq, rwPolizasDet.idCuenta)
@@ -276,8 +276,8 @@ Public Class frmGenPolizas
                                             If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
                                                 dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
                                             Else
-                                                dReferencia1 = Stuff(Trim(rwPolizasDet.referencia.Replace("IVA ", "")), "D", " ", 20)
-                                            End If
+                                            dReferencia1 = Stuff(Trim(rwPolizasDet.referencia), "D", " ", 20)
+                                        End If
                                         End If
                                     Else
                                         dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
@@ -318,8 +318,8 @@ Public Class frmGenPolizas
                                 filePolizaD.WriteLine(renglonD.ToUpper)
                                 cont += 1
                             Next
+                            'Next
                         Next
-                    Next
                     filePolizaD.Close()
                     MsgBox("Proceso terminado", MsgBoxStyle.Information, "")
                     tsBarProceso.Value = 0
@@ -327,151 +327,6 @@ Public Class frmGenPolizas
                 Else
                     MsgBox("Sin registros en el rango de fecha seleccionado", MsgBoxStyle.Information, "")
                 End If
-                'If dtPolizasEnc.Rows.Count > 0 Then
-                '    filePolizaD = New StreamWriter(sfdPolizas.FileName)
-                '    tsBarProceso.Maximum = dtPolizasEnc.Rows.Count
-                '    Dim dtDetalleSol As New dsContabilidad.DataTableDetallePolizasDataTable
-                '    Dim rwDetalleSol As dsContabilidad.DataTableDetallePolizasRow
-
-                '    For Each rwPolizasEnc As dsContabilidad.Vw_CXP_PolizasEncRow In dtPolizasEnc.Rows
-                '        tsBarProceso.Value = Cuenta
-                '        Application.DoEvents()
-
-                '        Cuenta = Cuenta + 1
-                '        Dim nConceptoD As String = ""
-                '        Dim idConceptoD As Integer
-
-                '        taDetallePolizas.Fill(dtDetalleSol, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, varGlobal_IdEmpresa)
-
-
-                '        If dtDetalleSol.Rows.Count > 0 Then
-                '            rwDetalleSol = dtDetalleSol.Rows(0)
-                '            nConceptoD = rwDetalleSol.nConcepto
-                '            idConceptoD = rwDetalleSol.idConcepto
-                '        End If
-
-                '        'MsgBox(taPolizaDet.Obtieneestatus_ScalarQuery(rwPolizasEnc.folioTipoDocumento, varGlobal_IdEmpresa, rwPolizasEnc.folioSolicitud))
-
-                '        If taPolizaDet.Obtieneestatus_ScalarQuery(rwPolizasEnc.folioTipoDocumento, varGlobal_IdEmpresa, rwPolizasEnc.folioSolicitud) = "NE" Then
-                '            estatus = ""
-                '        Else
-                '            estatus = "CAX-"
-                '        End If
-
-
-                '        Dim nConcepto As String = estatus & rwPolizasEnc.razonSocial & " " & rwPolizasEnc.folioSolicitud & " " & nConceptoD.Replace("GASTOS A COMPROBAR", "COMPROBACION DE GASTOS").Replace(vbLf, "")
-                '        If nConcepto.Length > 100 Then
-                '            nConcepto = nConcepto.Substring(0, 99)
-                '        End If
-                '        nConcepto = Stuff(nConcepto, "D", " ", 100)
-
-                '        encabezadoD = "P  " & rwPolizasEnc.fecha.ToString("yyyyMMdd") & "    3" & Space(10 - rwPolizasEnc.folioTipoDocumento.ToString.Length) & rwPolizasEnc.folioTipoDocumento.ToString & " 1 0          " & nConcepto & " 11 0 0 "
-                '        taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, idConceptoD)
-                '        filePolizaD.WriteLine(Eliminar_AcentosPolizas(encabezadoD.ToUpper))
-                '        Dim uuid As String = ""
-                '        Dim uuidA(0) As String
-                '        Dim cont As Integer = 1
-                '        Dim totalCargo As Decimal = 0
-                '        Dim totalAbono As Decimal = 0
-                '        Dim diferencia As Decimal = 0
-
-                '        For Each rwPolDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDet.Rows
-                '            If rwPolDet.TipoMovto = 0 Then
-                '                totalAbono += rwPolDet.importe
-                '            Else
-                '                totalCargo += rwPolDet.importe
-                '            End If
-                '        Next
-
-                '        If totalCargo <> totalAbono Then
-                '            'MsgBox((totalCargo - totalAbono).ToString & "-" & rwPolizasEnc.folioSolicitud)
-                '            diferencia = totalCargo - totalAbono
-                '        End If
-                '        For Each drDetConceptos As dsContabilidad.DataTableDetallePolizasRow In dtDetalleSol.Rows
-                '            For Each rwPolizasDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDet.Rows
-
-                '                CuentasTableAdapter.DatosCtas_FillBy(dtCuentasCpq, rwPolizasDet.idCuenta)
-
-                '                'If rwPolizasDet.folioTipoDocumento = 1088 Then
-                '                '    MsgBox("Hola")
-                '                'End If
-
-                '                If dtCuentasCpq.Rows.Count >= 1 Then
-                '                    rwCuentasCpq = dtCuentasCpq.Rows(0)
-                '                    Dim dImporte As String = ""
-                '                    If cont = 1 Then
-                '                        dImporte = Stuff(Trim((rwPolizasDet.importe + diferencia).ToString), "D", " ", 20)
-                '                    Else
-                '                        dImporte = Stuff(Trim(rwPolizasDet.importe.ToString), "D", " ", 20)
-                '                    End If
-                '                    Dim dReferencia As String = Stuff(Trim("S-" & rwPolizasDet.folioSolicitud & " " & Eliminar_AcentosPolizas(rwPolizasDet.concepto.Trim)), "D", " ", 100)
-                '                    Dim dReferencia1 As String = "" 'Stuff(Trim(rwPolizasDet.folioSolicitud), "D", " ", 20)
-
-                '                    If rwPolizasDet.noContrato = String.Empty Then
-                '                        If cont = dtPolizaDet.Rows.Count Then
-                '                            If idConceptoD = 34 Or idConceptoD = 41 Then
-                '                                dReferencia1 = rwPolizasDet.referencia
-                '                            Else
-                '                                dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
-                '                            End If
-
-                '                        Else
-                '                            dReferencia1 = Stuff(Trim(rwPolizasDet.referencia.Replace("IVA ", "")), "D", " ", 20)
-                '                        End If
-                '                    Else
-                '                        dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
-                '                    End If
-
-                '                    If dReferencia1.Length > 20 Then
-                '                        dReferencia1 = Stuff(dReferencia1.Substring(0, 19), "D", " ", 20)
-                '                    Else
-                '                        dReferencia1 = Stuff(dReferencia1, "D", " ", 20)
-                '                    End If
-
-
-                '                    If idConceptoD = 34 Or idConceptoD = 41 Then
-                '                        dReferencia = Stuff(Trim(Eliminar_AcentosPolizas(rwPolizasDet.concepto.Trim)), "D", " ", 100)
-                '                    End If
-
-                '                    If dReferencia.Length > 100 Then
-                '                        dReferencia = dReferencia.Substring(0, 100)
-                '                    End If
-
-
-
-
-                '                    Dim dsegNegocios As String = Stuff(Trim(rwPolizasDet.idSuc), "D", " ", 4)
-                '                    Dim idDiario As String = Stuff("0", "D", " ", 10)
-                '                    Dim importeME As String = "0.00"
-
-                '                    If CDec(rwPolizasDet.TipoDeCambio) > 1 Then
-                '                        importeME = Stuff((Math.Round((CDec(rwPolizasDet.importe) * CDec(rwPolizasDet.TipoDeCambio)), 2).ToString), "D", " ", 20)
-                '                    Else
-                '                        importeME = Stuff(importeME, "D", " ", 20)
-                '                    End If
-
-                '                    If rwPolizasDet.uuid <> "ND" Then
-                '                        renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
-                '                            "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
-                '                    Else
-                '                        renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1)
-                '                    End If
-                '                Else
-                '                    renglonD = "NO EXISTE CUENTA CONTABLE"
-                '                    filePolizaD.WriteLine(renglonD.ToUpper)
-                '                    'Exit For
-                '                End If
-                '                filePolizaD.WriteLine(renglonD.ToUpper)
-                '                cont += 1
-                '            Next
-                '        Next
-                '    Next
-                '    filePolizaD.Close()
-                '    MsgBox("Proceso terminado", MsgBoxStyle.Information, "")
-                '    tsBarProceso.Value = 0
-                '    Application.DoEvents()
-
-                'End If
             End If
         Else
             MsgBox("Proceso cancelado...", MsgBoxStyle.Information, "")
@@ -498,6 +353,10 @@ Public Class frmGenPolizas
 
         Dim taDetallePolizas As New dsContabilidadTableAdapters.DataTableDetallePolizasTableAdapter
 
+        Dim taAutorizaciones As New dsContabilidadTableAdapters.Vw_CXP_AutorizacionesTableAdapter
+        Dim dtAutorizaciones As New dsContabilidad.Vw_CXP_AutorizacionesDataTable
+        Dim rwAutorizaciones As dsContabilidad.Vw_CXP_AutorizacionesRow
+
         'Dim CuentasTableAdapter As New contpaqTableAdapters.CuentasTableAdapter
         Dim dtCuentasCpq As New contpaq.CuentasDataTable
         Dim rwCuentasCpq As contpaq.CuentasRow
@@ -518,7 +377,7 @@ Public Class frmGenPolizas
             For Each rwTipoPoliza As dsContabilidad.CXP_tipoDeDocumentoRow In dtTipoDePoliza
                 Dim fileNamePoliza As String = ""
 
-                taPolizasEnc.PolizasXRangoFechas_FillBy(dtPolizasEnc, rwTipoPoliza.idTipoDeDocumento, varGlobal_IdEmpresa, dtpFechaInicio.Value, dtpFechaFin.Value.AddHours(11).AddMinutes(59))
+                taPolizasEnc.PolizasXRangoFechas_FillBy(dtPolizasEnc, rwTipoPoliza.idTipoDeDocumento, varGlobal_IdEmpresa, dtpFechaInicio.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.AddDays(1).ToString("dd/MM/yyyy"))
                 If dtPolizasEnc.Rows.Count > 0 Then
 
 
@@ -537,14 +396,12 @@ Public Class frmGenPolizas
                                 If dtProveedoresCpq.Rows.Count > 0 Then
                                     rwProveedoresCpq = dtProveedoresCpq.Rows(0)
 
-
-
-                                    'Application.DoEvents()
-
                                     Cuenta = Cuenta + 1
 
                                     Dim nConceptoD As String = ""
                                     Dim idConceptoD As Integer
+                                    Dim conComprobante As String = ""
+                                    Dim conceptoNominaD As String = ""
 
                                     taDetallePolizas.Fill(dtDetalleSol, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, varGlobal_IdEmpresa)
 
@@ -552,11 +409,29 @@ Public Class frmGenPolizas
                                         rwDetalleSol = dtDetalleSol.Rows(0)
                                         nConceptoD = rwDetalleSol.nConcepto
                                         idConceptoD = rwDetalleSol.idConcepto
+                                        conceptoNominaD = rwDetalleSol.concepto
                                     End If
 
-                                    Dim nConcepto As String = Stuff(Trim(rwPolizasEnc.razonSocial & " " & rwPolizasEnc.folioSolicitud & " " & nConceptoD), "D", " ", 100)
+                                    taAutorizaciones.ObtDatosSolicitud_FillBy(dtAutorizaciones, varGlobal_IdEmpresa, rwPolizasEnc.folioSolicitud)
+
+                                    If dtAutorizaciones.Rows.Count > 0 Then
+                                        rwAutorizaciones = dtAutorizaciones.Rows(0)
+                                        conComprobante = rwAutorizaciones.serie
+                                    End If
+
+                                    Dim nConcepto As String
+                                    If idConceptoD <> 51 And idConceptoD <> 52 Then
+                                        nConcepto = Stuff(Trim(rwPolizasEnc.razonSocial & " " & rwPolizasEnc.folioSolicitud & " " & nConceptoD), "D", " ", 100)
+                                    Else
+                                        nConcepto = Stuff(Trim("S-" & rwPolizasEnc.folioSolicitud & " " & conceptoNominaD), "D", " ", 100)
+                                    End If
+
+                                    If nConcepto.Length > 100 Then
+                                        nConcepto = nConcepto.Substring(0, 100)
+                                    End If
+
                                     encabezadoD = "P  " & rwPolizasEnc.fecha.ToString("yyyyMMdd") & " " & Stuff(rwTipoPoliza.idConpaq.ToString, "I", " ", 4) & Space(10 - rwPolizasEnc.folioTipoDocumento.ToString.Length) & rwPolizasEnc.folioTipoDocumento.ToString & " 1 0          " & nConcepto & " 11 0 0 "
-                                    taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, idConceptoD)
+                                    taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud)
                                     filePolizaD.WriteLine(Eliminar_AcentosPolizas(encabezadoD.ToUpper))
                                     Dim uuid As String = ""
                                     Dim uuidA(0) As String
@@ -569,14 +444,18 @@ Public Class frmGenPolizas
                                             Dim dImporte As String = Stuff(Trim(rwPolizasDet.importe.ToString), "D", " ", 20)
                                             Dim dReferencia As String = Stuff(Trim("S-" & rwPolizasDet.folioSolicitud & " " & rwPolizasDet.concepto.Trim), "D", " ", 100)
 
+
                                             If dReferencia.Length > 100 Then
                                                 dReferencia = dReferencia.Substring(0, 100)
                                             End If
 
-                                            Dim dReferencia1 As String = "" 'Stuff(Trim(rwPolizasDet.folioSolicitud), "D", " ", 20)
+                                            Dim dReferencia1 As String = ""
 
                                             If rwPolizasDet.noContrato = String.Empty Then
-                                                dReferencia1 = Stuff(Trim(rwPolizasDet.rfc), "D", " ", 20)
+                                                dReferencia1 = Stuff(Trim(rwPolizasDet.referencia), "D", " ", 20)
+                                                If dReferencia1.Length > 20 Then
+                                                    dReferencia1 = dReferencia1.Substring(0, 20)
+                                                End If
                                             Else
                                                 dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
                                             End If
@@ -592,22 +471,20 @@ Public Class frmGenPolizas
                                                 importeME = Stuff(importeME, "D", " ", 20)
                                             End If
 
-                                            'Dim importeME As String = Stuff((Math.Round((CDec(rwPolizasDet.importe) * CDec(rwPolizasDet.TipoDeCambio)), 2).ToString), "D", " ", 20)
-                                            'If dReferencia.Length > 100 Then
-                                            '    dReferencia = dReferencia.Substring(0, 100)
-                                            'End If
+                                            'asigna segmento de negocios Toluca para todos los abonos a bancos
+                                            If rwCuentasCpq.Codigo = "1103020200000000" And rwPolizasDet.TipoMovto = 1 Then
+                                                dsegNegocios = Stuff(Trim("1"), "D", " ", 4)
+                                            End If
 
-                                            If rwPolizasDet.uuid <> "ND" Or idConceptoD <> 52 Or idConceptoD <> 51 Then
-                                                'renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
-                                                '"AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
+                                            If rwPolizasDet.uuid <> "ND" And idConceptoD <> 52 And idConceptoD <> 51 And conComprobante <> "PSC" Then
+                                                renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
+                                                    "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
+                                            ElseIf rwPolizasDet.uuid <> "ND" And conComprobante = "PSC" And (idConceptoD = 40 Or idConceptoD = 42) Then
                                                 renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
                                                     "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
                                             Else
                                                 renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1)
                                             End If
-
-                                            'renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
-                                            '"AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
                                         End If
                                         filePolizaD.WriteLine(Eliminar_AcentosPolizas(renglonD.ToUpper))
                                     Next
@@ -615,12 +492,23 @@ Public Class frmGenPolizas
                                     If rwPolizasEnc.referencia.Length >= 20 Then
                                         referecnia20 = rwPolizasEnc.referencia.Substring(0, 20)
                                     End If
-                                    filePolizaD.WriteLine("EG" &
+                                    If idConceptoD <> 51 And idConceptoD <> 52 Then
+                                        Dim cuentaDestino As String = ""
+
+                                        If rwPolizasEnc.clabe <> String.Empty Then
+                                            cuentaDestino = rwPolizasEnc.clabe
+                                        ElseIf rwPolizasEnc.convenio <> String.Empty Then
+                                            cuentaDestino = rwPolizasEnc.convenio
+                                        Else
+                                            cuentaDestino = rwPolizasEnc.referencia.Substring(0, 25)
+                                        End If
+
+                                        filePolizaD.WriteLine("EG" &
                                                           " " & "04040" &
                                                           " " & Stuff("53", "I", " ", 30) &
                                                           " " & Stuff(rwPolizasEnc.folioCheque.ToString, "I", " ", 20) &
-                                                          " " & dtpFechaInicial.Value.ToString("yyyyMMdd") &
-                                                          " " & dtpFechaInicial.Value.ToString("yyyyMMdd") &
+                                                          " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
+                                                          " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
                                                           " " & Stuff(rwProveedoresCpq.Codigo, "D", " ", 6) &
                                                           " " & Stuff(Eliminar_AcentosPolizas(rwProveedoresCpq.Nombre.ToUpper), "D", " ", 200) &
                                                           " " & Stuff(rwPolizasEnc.numeroDeCuenta, "D", " ", 20) &
@@ -629,7 +517,7 @@ Public Class frmGenPolizas
                                                           " " & Stuff(referecnia20, "D", " ", 20) &
                                                           " " & Stuff("11", "I", " ", 5) &
                                                           " " & Stuff(BancosContpaqTableAdapter.ObtCodigoProv_ScalarQuery(rwPolizasEnc.claveBancos), "I", " ", 30) &
-                                                          " " & Stuff(rwPolizasEnc.numeroDeCuenta, "D", " ", 30) &
+                                                          " " & Stuff(cuentaDestino, "D", " ", 30) &
                                                           " " & Stuff("03", "D", " ", 5) &
                                                           " " & Space(36) &
                                                           " " & Stuff(rwPolizasEnc.rfc, "D", " ", 13) &
@@ -639,6 +527,9 @@ Public Class frmGenPolizas
                                                           " " & Space(5) &
                                                           " " & Stuff("2", "D", " ", 4)
                                                           )
+                                    End If
+                                Else
+                                    filePolizaD.WriteLine("****** NO EXISTE EL RFC " & rwPolizasEnc.rfc & " NO EXISTE")
                                 End If
                             Next
 
@@ -647,7 +538,163 @@ Public Class frmGenPolizas
                             tsBarProceso.Value = 0
                             Application.DoEvents()
                         End If
+                    End If
+                    If varGlobal_IdEmpresa = "23" Then
+                        If dtPolizasEnc.Rows.Count > 0 Then
+                            filePolizaD = New StreamWriter(fbdPolizas.SelectedPath & "\" & fileNamePoliza)
+                            tsBarProceso.Maximum = dtPolizasEnc.Rows.Count
+                            Dim dtDetalleSol As New dsContabilidad.DataTableDetallePolizasDataTable
+                            Dim rwDetalleSol As dsContabilidad.DataTableDetallePolizasRow
 
+                            For Each rwPolizasEnc As dsContabilidad.Vw_CXP_PolizasEncRow In dtPolizasEnc.Rows
+
+                                tsBarProceso.Value = Cuenta
+                                ProveedoresContpaqTableAdapter.Fill(dtProveedoresCpq, rwPolizasEnc.rfc)
+                                If dtProveedoresCpq.Rows.Count > 0 Then
+                                    rwProveedoresCpq = dtProveedoresCpq.Rows(0)
+
+                                    Cuenta = Cuenta + 1
+
+                                    Dim nConceptoD As String = ""
+                                    Dim idConceptoD As Integer
+                                    Dim conComprobante As String = ""
+                                    Dim conceptoNominaD As String = ""
+
+                                    taDetallePolizas.Fill(dtDetalleSol, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud, varGlobal_IdEmpresa)
+
+                                    If dtDetalleSol.Rows.Count > 0 Then
+                                        rwDetalleSol = dtDetalleSol.Rows(0)
+                                        nConceptoD = rwDetalleSol.nConcepto
+                                        idConceptoD = rwDetalleSol.idConcepto
+                                        conceptoNominaD = rwDetalleSol.concepto
+                                    End If
+
+                                    taAutorizaciones.ObtDatosSolicitud_FillBy(dtAutorizaciones, varGlobal_IdEmpresa, rwPolizasEnc.folioSolicitud)
+
+                                    If dtAutorizaciones.Rows.Count > 0 Then
+                                        rwAutorizaciones = dtAutorizaciones.Rows(0)
+                                        conComprobante = rwAutorizaciones.serie
+                                    End If
+
+                                    Dim nConcepto As String
+                                    If idConceptoD <> 51 And idConceptoD <> 52 Then
+                                        nConcepto = Stuff(Trim(rwPolizasEnc.razonSocial & " " & rwPolizasEnc.folioSolicitud & " " & nConceptoD), "D", " ", 100)
+                                    Else
+                                        nConcepto = Stuff(Trim("S-" & rwPolizasEnc.folioSolicitud & " " & conceptoNominaD), "D", " ", 100)
+                                    End If
+
+                                    If nConcepto.Length > 100 Then
+                                        nConcepto = nConcepto.Substring(0, 100)
+                                    End If
+
+                                    encabezadoD = "P  " & rwPolizasEnc.fecha.ToString("yyyyMMdd") & " " & Stuff(rwTipoPoliza.idConpaq.ToString, "I", " ", 4) & Space(10 - rwPolizasEnc.folioTipoDocumento.ToString.Length) & rwPolizasEnc.folioTipoDocumento.ToString & " 1 0          " & nConcepto & " 11 0 0 "
+                                    taPolizaDet.DetallePoliza_FillBy(dtPolizaDet, rwPolizasEnc.idEmpresa, rwPolizasEnc.idTipoDocumento, rwPolizasEnc.folioTipoDocumento, rwPolizasEnc.folioSolicitud)
+                                    filePolizaD.WriteLine(Eliminar_AcentosPolizas(encabezadoD.ToUpper))
+                                    Dim uuid As String = ""
+                                    Dim uuidA(0) As String
+                                    Dim cont As Integer = 0
+                                    For Each rwPolizasDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDet.Rows
+
+                                        CuentasTableAdapter.DatosCtas_FillBy(dtCuentasCpq, rwPolizasDet.idCuenta)
+                                        If dtCuentasCpq.Rows.Count >= 1 Then
+                                            rwCuentasCpq = dtCuentasCpq.Rows(0)
+                                            Dim dImporte As String = Stuff(Trim(rwPolizasDet.importe.ToString), "D", " ", 20)
+                                            Dim dReferencia As String = Stuff(Trim("S-" & rwPolizasDet.folioSolicitud & " " & rwPolizasDet.concepto.Trim), "D", " ", 100)
+
+
+                                            If dReferencia.Length > 100 Then
+                                                dReferencia = dReferencia.Substring(0, 100)
+                                            End If
+
+                                            Dim dReferencia1 As String = ""
+
+                                            If rwPolizasDet.noContrato = String.Empty Then
+                                                dReferencia1 = Stuff(Trim(rwPolizasDet.referencia), "D", " ", 20)
+                                                If dReferencia1.Length > 20 Then
+                                                    dReferencia1 = dReferencia1.Substring(0, 20)
+                                                End If
+                                            Else
+                                                dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
+                                            End If
+
+                                            Dim dsegNegocios As String = Stuff(Trim(rwPolizasDet.idSuc), "D", " ", 4)
+                                            Dim idDiario As String = Stuff("0", "D", " ", 10)
+
+                                            Dim importeME As String = "0.00"
+
+                                            If CDec(rwPolizasDet.TipoDeCambio) > 1 Then
+                                                importeME = Stuff((Math.Round((CDec(rwPolizasDet.importe) * CDec(rwPolizasDet.TipoDeCambio)), 2).ToString), "D", " ", 20)
+                                            Else
+                                                importeME = Stuff(importeME, "D", " ", 20)
+                                            End If
+
+                                            'asigna segmento de negocios Toluca para todos los abonos a bancos
+                                            If rwCuentasCpq.Codigo = "1103020200000000" And rwPolizasDet.TipoMovto = 1 Then
+                                                dsegNegocios = Stuff(Trim("1"), "D", " ", 4)
+                                            End If
+
+                                            If rwPolizasDet.uuid <> "ND" And idConceptoD <> 52 And idConceptoD <> 51 And conComprobante <> "PSC" Then
+                                                renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
+                                                    "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
+                                            ElseIf rwPolizasDet.uuid <> "ND" And conComprobante = "PSC" And (idConceptoD = 40 Or idConceptoD = 42) Then
+                                                renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
+                                                    "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
+                                            Else
+                                                renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1)
+                                            End If
+                                        End If
+                                        filePolizaD.WriteLine(Eliminar_AcentosPolizas(renglonD.ToUpper))
+                                    Next
+                                    Dim referecnia20 As String = ""
+                                    If rwPolizasEnc.referencia.Length >= 20 Then
+                                        referecnia20 = rwPolizasEnc.referencia.Substring(0, 20)
+                                    End If
+                                    If idConceptoD <> 51 And idConceptoD <> 52 Then
+                                        Dim cuentaDestino As String = ""
+
+                                        If rwPolizasEnc.clabe <> String.Empty Then
+                                            cuentaDestino = rwPolizasEnc.clabe
+                                        ElseIf rwPolizasEnc.convenio <> String.Empty Then
+                                            cuentaDestino = rwPolizasEnc.convenio
+                                        Else
+                                            cuentaDestino = rwPolizasEnc.referencia.Substring(0, 25)
+                                        End If
+
+                                        filePolizaD.WriteLine("EG" &
+                                                          " " & "04040" &
+                                                          " " & Stuff("53", "I", " ", 30) &
+                                                          " " & Stuff(rwPolizasEnc.folioCheque.ToString, "I", " ", 20) &
+                                                          " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
+                                                          " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
+                                                          " " & Stuff(rwProveedoresCpq.Codigo, "D", " ", 6) &
+                                                          " " & Stuff(Eliminar_AcentosPolizas(rwProveedoresCpq.Nombre.ToUpper), "D", " ", 200) &
+                                                          " " & Stuff(rwPolizasEnc.numeroDeCuenta, "D", " ", 20) &
+                                                          " " & Stuff(rwPolizasEnc.monedaPago.Replace("MXN", "1").Replace("USD", "2").Replace("EUR", "3"), "I", " ", 4) &
+                                                          " " & Stuff(rwPolizasEnc.impSol.ToString, "D", " ", 20) &
+                                                          " " & Stuff(referecnia20, "D", " ", 20) &
+                                                          " " & Stuff("11", "I", " ", 5) &
+                                                          " " & Stuff(BancosContpaqTableAdapter.ObtCodigoProv_ScalarQuery(rwPolizasEnc.claveBancos), "I", " ", 30) &
+                                                          " " & Stuff(cuentaDestino, "D", " ", 30) &
+                                                          " " & Stuff("03", "D", " ", 5) &
+                                                          " " & Space(36) &
+                                                          " " & Stuff(rwPolizasEnc.rfc, "D", " ", 13) &
+                                                          " " & Space(60) &
+                                                          " " & Stuff(rwPolizasEnc.tipoDeCambio.ToString, "D", " ", 20) &
+                                                          " " & Space(37) &
+                                                          " " & Space(5) &
+                                                          " " & Stuff("2", "D", " ", 4)
+                                                          )
+                                    End If
+                                Else
+                                    filePolizaD.WriteLine("****** NO EXISTE EL RFC " & rwPolizasEnc.rfc & " NO EXISTE")
+                                End If
+                            Next
+
+                            filePolizaD.Close()
+                            MsgBox("Proceso terminado", MsgBoxStyle.Information, "")
+                            tsBarProceso.Value = 0
+                            Application.DoEvents()
+                        End If
                     End If
                 Else
                     MsgBox("No existen registros en las fechas seleccionadas", MsgBoxStyle.Information, "")

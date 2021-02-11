@@ -801,4 +801,22 @@ Public Class mdicuentasPorPagar
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
+
+    Private Sub GenerarPólizasFaltantesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPólizasFaltantesToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmGeneraPolizas.MdiParent = Me
+        frmGeneraPolizas.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub NotificacionesDePagoPorProveedorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificacionesDePagoPorProveedorToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmNotificacionesPago.MdiParent = Me
+        frmNotificacionesPago.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 End Class

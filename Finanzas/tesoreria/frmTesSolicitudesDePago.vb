@@ -767,6 +767,9 @@ Public Class frmTesSolicitudesDePago
         convenioG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value
         folioSolicitudG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
         idBancoG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("origenRecurso", e.RowIndex).Value
+        If idBancoG = 0 Then
+            idBancoG = CXPCuentasBancariasBindingSource.Current("idCuentaBancaria") 'Vw_CXP_SugPagoTesoreriaDataGridView.Item("idBancoBen", e.RowIndex).Value
+        End If
         referenciaG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", e.RowIndex).Value
         importeG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("importeSolicitado", e.RowIndex).Value
     End Sub

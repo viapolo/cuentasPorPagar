@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="csProduction (MySettings)" DbObjectName="Production.dbo.CXP_Proveedores" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [CXP_Proveedores] WHERE (([idProveedor] = @Original_idProveedor) AND ((@IsNull_rfc = 1 AND [rfc] IS NULL) OR ([rfc] = @Original_rfc)) AND ((@IsNull_nit = 1 AND [nit] IS NULL) OR ([nit] = @Original_nit)) AND ((@IsNull_curp = 1 AND [curp] IS NULL) OR ([curp] = @Original_curp)) AND ((@IsNull_razonSocial = 1 AND [razonSocial] IS NULL) OR ([razonSocial] = @Original_razonSocial)) AND ((@IsNull_idSucursal = 1 AND [idSucursal] IS NULL) OR ([idSucursal] = @Original_idSucursal)) AND ((@IsNull_relacionado = 1 AND [relacionado] IS NULL) OR ([relacionado] = @Original_relacionado)) AND ((@IsNull_cuentaContablePagar = 1 AND [cuentaContablePagar] IS NULL) OR ([cuentaContablePagar] = @Original_cuentaContablePagar)) AND ((@IsNull_montoMaxTransaccion = 1 AND [montoMaxTransaccion] IS NULL) OR ([montoMaxTransaccion] = @Original_montoMaxTransaccion)) AND ((@IsNull_extranjero = 1 AND [extranjero] IS NULL) OR ([extranjero] = @Original_extranjero)) AND ((@IsNull_nacionalidad = 1 AND [nacionalidad] IS NULL) OR ([nacionalidad] = @Original_nacionalidad)) AND ((@IsNull_fechaRegistro = 1 AND [fechaRegistro] IS NULL) OR ([fechaRegistro] = @Original_fechaRegistro)) AND ((@IsNull_mail = 1 AND [mail] IS NULL) OR ([mail] = @Original_mail)) AND ((@IsNull_empresa = 1 AND [empresa] IS NULL) OR ([empresa] = @Original_empresa)) AND ((@IsNull_banco = 1 AND [banco] IS NULL) OR ([banco] = @Original_banco)) AND ((@IsNull_cuentaBancaria = 1 AND [cuentaBancaria] IS NULL) OR ([cuentaBancaria] = @Original_cuentaBancaria)) AND ((@IsNull_Clabe = 1 AND [Clabe] IS NULL) OR ([Clabe] = @Original_Clabe)) AND ((@IsNull_activo = 1 AND [activo] IS NULL) OR ([activo] = @Original_activo)) AND ((@IsNull_autorizado = 1 AND [autorizado] IS NULL) OR ([autorizado] = @Original_autorizado)) AND ((@IsNull_calle = 1 AND [calle] IS NULL) OR ([calle] = @Original_calle)) AND ((@IsNull_colonia = 1 AND [colonia] IS NULL) OR ([colonia] = @Original_colonia)) AND ((@IsNull_localidad = 1 AND [localidad] IS NULL) OR ([localidad] = @Original_localidad)) AND ((@IsNull_delegacion = 1 AND [delegacion] IS NULL) OR ([delegacion] = @Original_delegacion)) AND ((@IsNull_estado = 1 AND [estado] IS NULL) OR ([estado] = @Original_estado)) AND ((@IsNull_pais = 1 AND [pais] IS NULL) OR ([pais] = @Original_pais)) AND ((@IsNull_cp = 1 AND [cp] IS NULL) OR ([cp] = @Original_cp)) AND ((@IsNull_activoS = 1 AND [activoS] IS NULL) OR ([activoS] = @Original_activoS)) AND ((@IsNull_autorizadoS = 1 AND [autorizadoS] IS NULL) OR ([autorizadoS] = @Original_autorizadoS)) AND ((@IsNull_usuarioSolicita = 1 AND [usuarioSolicita] IS NULL) OR ([usuarioSolicita] = @Original_usuarioSolicita)) AND ((@IsNull_motivoRechazo = 1 AND [motivoRechazo] IS NULL) OR ([motivoRechazo] = @Original_motivoRechazo)) AND ((@IsNull_autorizaP1 = 1 AND [autorizaP1] IS NULL) OR ([autorizaP1] = @Original_autorizaP1)) AND ((@IsNull_autorizaP2 = 1 AND [autorizaP2] IS NULL) OR ([autorizaP2] = @Original_autorizaP2)) AND ((@IsNull_fPagoInicial = 1 AND [fPagoInicial] IS NULL) OR ([fPagoInicial] = @Original_fPagoInicial)))</CommandText>
+                    <CommandText>DELETE FROM [CXP_Proveedores] WHERE (([idProveedor] = @Original_idProveedor) AND ((@IsNull_rfc = 1 AND [rfc] IS NULL) OR ([rfc] = @Original_rfc)) AND ((@IsNull_nit = 1 AND [nit] IS NULL) OR ([nit] = @Original_nit)) AND ((@IsNull_curp = 1 AND [curp] IS NULL) OR ([curp] = @Original_curp)) AND ((@IsNull_razonSocial = 1 AND [razonSocial] IS NULL) OR ([razonSocial] = @Original_razonSocial)) AND ((@IsNull_idSucursal = 1 AND [idSucursal] IS NULL) OR ([idSucursal] = @Original_idSucursal)) AND ((@IsNull_relacionado = 1 AND [relacionado] IS NULL) OR ([relacionado] = @Original_relacionado)) AND ((@IsNull_cuentaContablePagar = 1 AND [cuentaContablePagar] IS NULL) OR ([cuentaContablePagar] = @Original_cuentaContablePagar)) AND ((@IsNull_montoMaxTransaccion = 1 AND [montoMaxTransaccion] IS NULL) OR ([montoMaxTransaccion] = @Original_montoMaxTransaccion)) AND ((@IsNull_extranjero = 1 AND [extranjero] IS NULL) OR ([extranjero] = @Original_extranjero)) AND ((@IsNull_nacionalidad = 1 AND [nacionalidad] IS NULL) OR ([nacionalidad] = @Original_nacionalidad)) AND ((@IsNull_fechaRegistro = 1 AND [fechaRegistro] IS NULL) OR ([fechaRegistro] = @Original_fechaRegistro)) AND ((@IsNull_mail = 1 AND [mail] IS NULL) OR ([mail] = @Original_mail)) AND ((@IsNull_empresa = 1 AND [empresa] IS NULL) OR ([empresa] = @Original_empresa)) AND ((@IsNull_banco = 1 AND [banco] IS NULL) OR ([banco] = @Original_banco)) AND ((@IsNull_cuentaBancaria = 1 AND [cuentaBancaria] IS NULL) OR ([cuentaBancaria] = @Original_cuentaBancaria)) AND ((@IsNull_Clabe = 1 AND [Clabe] IS NULL) OR ([Clabe] = @Original_Clabe)) AND ((@IsNull_activo = 1 AND [activo] IS NULL) OR ([activo] = @Original_activo)) AND ((@IsNull_autorizado = 1 AND [autorizado] IS NULL) OR ([autorizado] = @Original_autorizado)) AND ((@IsNull_calle = 1 AND [calle] IS NULL) OR ([calle] = @Original_calle)) AND ((@IsNull_colonia = 1 AND [colonia] IS NULL) OR ([colonia] = @Original_colonia)) AND ((@IsNull_localidad = 1 AND [localidad] IS NULL) OR ([localidad] = @Original_localidad)) AND ((@IsNull_delegacion = 1 AND [delegacion] IS NULL) OR ([delegacion] = @Original_delegacion)) AND ((@IsNull_estado = 1 AND [estado] IS NULL) OR ([estado] = @Original_estado)) AND ((@IsNull_pais = 1 AND [pais] IS NULL) OR ([pais] = @Original_pais)) AND ((@IsNull_cp = 1 AND [cp] IS NULL) OR ([cp] = @Original_cp)) AND ((@IsNull_activoS = 1 AND [activoS] IS NULL) OR ([activoS] = @Original_activoS)) AND ((@IsNull_autorizadoS = 1 AND [autorizadoS] IS NULL) OR ([autorizadoS] = @Original_autorizadoS)) AND ((@IsNull_usuarioSolicita = 1 AND [usuarioSolicita] IS NULL) OR ([usuarioSolicita] = @Original_usuarioSolicita)) AND ((@IsNull_motivoRechazo = 1 AND [motivoRechazo] IS NULL) OR ([motivoRechazo] = @Original_motivoRechazo)) AND ((@IsNull_autorizaP1 = 1 AND [autorizaP1] IS NULL) OR ([autorizaP1] = @Original_autorizaP1)) AND ((@IsNull_autorizaP2 = 1 AND [autorizaP2] IS NULL) OR ([autorizaP2] = @Original_autorizaP2)) AND ((@IsNull_fPagoInicial = 1 AND [fPagoInicial] IS NULL) OR ([fPagoInicial] = @Original_fPagoInicial)) AND ((@IsNull_notificaPago = 1 AND [notificaPago] IS NULL) OR ([notificaPago] = @Original_notificaPago)) AND ((@IsNull_adjuntaComprobante = 1 AND [adjuntaComprobante] IS NULL) OR ([adjuntaComprobante] = @Original_adjuntaComprobante)) AND ((@IsNull_notificaContabilidad = 1 AND [notificaContabilidad] IS NULL) OR ([notificaContabilidad] = @Original_notificaContabilidad)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_rfc" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="rfc" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -79,13 +79,19 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_autorizaP2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="autorizaP2" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_fPagoInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="fPagoInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_fPagoInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="fPagoInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_notificaPago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="notificaPago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_notificaPago" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_adjuntaComprobante" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="adjuntaComprobante" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_adjuntaComprobante" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="adjuntaComprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_notificaContabilidad" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="notificaContabilidad" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_notificaContabilidad" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaContabilidad" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [CXP_Proveedores] ([rfc], [nit], [curp], [razonSocial], [idSucursal], [relacionado], [cuentaContablePagar], [montoMaxTransaccion], [extranjero], [nacionalidad], [fechaRegistro], [mail], [empresa], [banco], [cuentaBancaria], [Clabe], [activo], [autorizado], [calle], [colonia], [localidad], [delegacion], [estado], [pais], [cp], [activoS], [autorizadoS], [usuarioSolicita], [motivoRechazo], [autorizaP1], [autorizaP2], [fPagoInicial]) VALUES (@rfc, @nit, @curp, @razonSocial, @idSucursal, @relacionado, @cuentaContablePagar, @montoMaxTransaccion, @extranjero, @nacionalidad, @fechaRegistro, @mail, @empresa, @banco, @cuentaBancaria, @Clabe, @activo, @autorizado, @calle, @colonia, @localidad, @delegacion, @estado, @pais, @cp, @activoS, @autorizadoS, @usuarioSolicita, @motivoRechazo, @autorizaP1, @autorizaP2, @fPagoInicial);
-SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuentaContablePagar, montoMaxTransaccion, extranjero, nacionalidad, fechaRegistro, mail, empresa, banco, cuentaBancaria, Clabe, activo, autorizado, calle, colonia, localidad, delegacion, estado, pais, cp, activoS, autorizadoS, usuarioSolicita, motivoRechazo, autorizaP1, autorizaP2, fPagoInicial FROM CXP_Proveedores WHERE (idProveedor = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [CXP_Proveedores] ([rfc], [nit], [curp], [razonSocial], [idSucursal], [relacionado], [cuentaContablePagar], [montoMaxTransaccion], [extranjero], [nacionalidad], [fechaRegistro], [mail], [empresa], [banco], [cuentaBancaria], [Clabe], [activo], [autorizado], [calle], [colonia], [localidad], [delegacion], [estado], [pais], [cp], [activoS], [autorizadoS], [usuarioSolicita], [motivoRechazo], [autorizaP1], [autorizaP2], [fPagoInicial], [notificaPago], [adjuntaComprobante], [notificaContabilidad]) VALUES (@rfc, @nit, @curp, @razonSocial, @idSucursal, @relacionado, @cuentaContablePagar, @montoMaxTransaccion, @extranjero, @nacionalidad, @fechaRegistro, @mail, @empresa, @banco, @cuentaBancaria, @Clabe, @activo, @autorizado, @calle, @colonia, @localidad, @delegacion, @estado, @pais, @cp, @activoS, @autorizadoS, @usuarioSolicita, @motivoRechazo, @autorizaP1, @autorizaP2, @fPagoInicial, @notificaPago, @adjuntaComprobante, @notificaContabilidad);
+SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuentaContablePagar, montoMaxTransaccion, extranjero, nacionalidad, fechaRegistro, mail, empresa, banco, cuentaBancaria, Clabe, activo, autorizado, calle, colonia, localidad, delegacion, estado, pais, cp, activoS, autorizadoS, usuarioSolicita, motivoRechazo, autorizaP1, autorizaP2, fPagoInicial, notificaPago, adjuntaComprobante, notificaContabilidad FROM CXP_Proveedores WHERE (idProveedor = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@rfc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfc" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@nit" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nit" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -119,21 +125,24 @@ SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuenta
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@autorizaP1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="autorizaP1" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@autorizaP2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="autorizaP2" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@fPagoInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="fPagoInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@notificaPago" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@adjuntaComprobante" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="adjuntaComprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@notificaContabilidad" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaContabilidad" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuentaContablePagar, montoMaxTransaccion, extranjero, nacionalidad, fechaRegistro, mail, empresa, banco, cuentaBancaria, Clabe, activo, autorizado, calle, 
-                         colonia, localidad, delegacion, estado, pais, cp, activoS, autorizadoS, usuarioSolicita, motivoRechazo, autorizaP1, autorizaP2, fPagoInicial
+                         colonia, localidad, delegacion, estado, pais, cp, activoS, autorizadoS, usuarioSolicita, motivoRechazo, autorizaP1, autorizaP2, fPagoInicial, notificaPago, adjuntaComprobante, notificaContabilidad
 FROM            CXP_Proveedores</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [CXP_Proveedores] SET [rfc] = @rfc, [nit] = @nit, [curp] = @curp, [razonSocial] = @razonSocial, [idSucursal] = @idSucursal, [relacionado] = @relacionado, [cuentaContablePagar] = @cuentaContablePagar, [montoMaxTransaccion] = @montoMaxTransaccion, [extranjero] = @extranjero, [nacionalidad] = @nacionalidad, [fechaRegistro] = @fechaRegistro, [mail] = @mail, [empresa] = @empresa, [banco] = @banco, [cuentaBancaria] = @cuentaBancaria, [Clabe] = @Clabe, [activo] = @activo, [autorizado] = @autorizado, [calle] = @calle, [colonia] = @colonia, [localidad] = @localidad, [delegacion] = @delegacion, [estado] = @estado, [pais] = @pais, [cp] = @cp, [activoS] = @activoS, [autorizadoS] = @autorizadoS, [usuarioSolicita] = @usuarioSolicita, [motivoRechazo] = @motivoRechazo, [autorizaP1] = @autorizaP1, [autorizaP2] = @autorizaP2, [fPagoInicial] = @fPagoInicial WHERE (([idProveedor] = @Original_idProveedor) AND ((@IsNull_rfc = 1 AND [rfc] IS NULL) OR ([rfc] = @Original_rfc)) AND ((@IsNull_nit = 1 AND [nit] IS NULL) OR ([nit] = @Original_nit)) AND ((@IsNull_curp = 1 AND [curp] IS NULL) OR ([curp] = @Original_curp)) AND ((@IsNull_razonSocial = 1 AND [razonSocial] IS NULL) OR ([razonSocial] = @Original_razonSocial)) AND ((@IsNull_idSucursal = 1 AND [idSucursal] IS NULL) OR ([idSucursal] = @Original_idSucursal)) AND ((@IsNull_relacionado = 1 AND [relacionado] IS NULL) OR ([relacionado] = @Original_relacionado)) AND ((@IsNull_cuentaContablePagar = 1 AND [cuentaContablePagar] IS NULL) OR ([cuentaContablePagar] = @Original_cuentaContablePagar)) AND ((@IsNull_montoMaxTransaccion = 1 AND [montoMaxTransaccion] IS NULL) OR ([montoMaxTransaccion] = @Original_montoMaxTransaccion)) AND ((@IsNull_extranjero = 1 AND [extranjero] IS NULL) OR ([extranjero] = @Original_extranjero)) AND ((@IsNull_nacionalidad = 1 AND [nacionalidad] IS NULL) OR ([nacionalidad] = @Original_nacionalidad)) AND ((@IsNull_fechaRegistro = 1 AND [fechaRegistro] IS NULL) OR ([fechaRegistro] = @Original_fechaRegistro)) AND ((@IsNull_mail = 1 AND [mail] IS NULL) OR ([mail] = @Original_mail)) AND ((@IsNull_empresa = 1 AND [empresa] IS NULL) OR ([empresa] = @Original_empresa)) AND ((@IsNull_banco = 1 AND [banco] IS NULL) OR ([banco] = @Original_banco)) AND ((@IsNull_cuentaBancaria = 1 AND [cuentaBancaria] IS NULL) OR ([cuentaBancaria] = @Original_cuentaBancaria)) AND ((@IsNull_Clabe = 1 AND [Clabe] IS NULL) OR ([Clabe] = @Original_Clabe)) AND ((@IsNull_activo = 1 AND [activo] IS NULL) OR ([activo] = @Original_activo)) AND ((@IsNull_autorizado = 1 AND [autorizado] IS NULL) OR ([autorizado] = @Original_autorizado)) AND ((@IsNull_calle = 1 AND [calle] IS NULL) OR ([calle] = @Original_calle)) AND ((@IsNull_colonia = 1 AND [colonia] IS NULL) OR ([colonia] = @Original_colonia)) AND ((@IsNull_localidad = 1 AND [localidad] IS NULL) OR ([localidad] = @Original_localidad)) AND ((@IsNull_delegacion = 1 AND [delegacion] IS NULL) OR ([delegacion] = @Original_delegacion)) AND ((@IsNull_estado = 1 AND [estado] IS NULL) OR ([estado] = @Original_estado)) AND ((@IsNull_pais = 1 AND [pais] IS NULL) OR ([pais] = @Original_pais)) AND ((@IsNull_cp = 1 AND [cp] IS NULL) OR ([cp] = @Original_cp)) AND ((@IsNull_activoS = 1 AND [activoS] IS NULL) OR ([activoS] = @Original_activoS)) AND ((@IsNull_autorizadoS = 1 AND [autorizadoS] IS NULL) OR ([autorizadoS] = @Original_autorizadoS)) AND ((@IsNull_usuarioSolicita = 1 AND [usuarioSolicita] IS NULL) OR ([usuarioSolicita] = @Original_usuarioSolicita)) AND ((@IsNull_motivoRechazo = 1 AND [motivoRechazo] IS NULL) OR ([motivoRechazo] = @Original_motivoRechazo)) AND ((@IsNull_autorizaP1 = 1 AND [autorizaP1] IS NULL) OR ([autorizaP1] = @Original_autorizaP1)) AND ((@IsNull_autorizaP2 = 1 AND [autorizaP2] IS NULL) OR ([autorizaP2] = @Original_autorizaP2)) AND ((@IsNull_fPagoInicial = 1 AND [fPagoInicial] IS NULL) OR ([fPagoInicial] = @Original_fPagoInicial)));
-SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuentaContablePagar, montoMaxTransaccion, extranjero, nacionalidad, fechaRegistro, mail, empresa, banco, cuentaBancaria, Clabe, activo, autorizado, calle, colonia, localidad, delegacion, estado, pais, cp, activoS, autorizadoS, usuarioSolicita, motivoRechazo, autorizaP1, autorizaP2, fPagoInicial FROM CXP_Proveedores WHERE (idProveedor = @idProveedor)</CommandText>
+                    <CommandText>UPDATE [CXP_Proveedores] SET [rfc] = @rfc, [nit] = @nit, [curp] = @curp, [razonSocial] = @razonSocial, [idSucursal] = @idSucursal, [relacionado] = @relacionado, [cuentaContablePagar] = @cuentaContablePagar, [montoMaxTransaccion] = @montoMaxTransaccion, [extranjero] = @extranjero, [nacionalidad] = @nacionalidad, [fechaRegistro] = @fechaRegistro, [mail] = @mail, [empresa] = @empresa, [banco] = @banco, [cuentaBancaria] = @cuentaBancaria, [Clabe] = @Clabe, [activo] = @activo, [autorizado] = @autorizado, [calle] = @calle, [colonia] = @colonia, [localidad] = @localidad, [delegacion] = @delegacion, [estado] = @estado, [pais] = @pais, [cp] = @cp, [activoS] = @activoS, [autorizadoS] = @autorizadoS, [usuarioSolicita] = @usuarioSolicita, [motivoRechazo] = @motivoRechazo, [autorizaP1] = @autorizaP1, [autorizaP2] = @autorizaP2, [fPagoInicial] = @fPagoInicial, [notificaPago] = @notificaPago, [adjuntaComprobante] = @adjuntaComprobante, [notificaContabilidad] = @notificaContabilidad WHERE (([idProveedor] = @Original_idProveedor) AND ((@IsNull_rfc = 1 AND [rfc] IS NULL) OR ([rfc] = @Original_rfc)) AND ((@IsNull_nit = 1 AND [nit] IS NULL) OR ([nit] = @Original_nit)) AND ((@IsNull_curp = 1 AND [curp] IS NULL) OR ([curp] = @Original_curp)) AND ((@IsNull_razonSocial = 1 AND [razonSocial] IS NULL) OR ([razonSocial] = @Original_razonSocial)) AND ((@IsNull_idSucursal = 1 AND [idSucursal] IS NULL) OR ([idSucursal] = @Original_idSucursal)) AND ((@IsNull_relacionado = 1 AND [relacionado] IS NULL) OR ([relacionado] = @Original_relacionado)) AND ((@IsNull_cuentaContablePagar = 1 AND [cuentaContablePagar] IS NULL) OR ([cuentaContablePagar] = @Original_cuentaContablePagar)) AND ((@IsNull_montoMaxTransaccion = 1 AND [montoMaxTransaccion] IS NULL) OR ([montoMaxTransaccion] = @Original_montoMaxTransaccion)) AND ((@IsNull_extranjero = 1 AND [extranjero] IS NULL) OR ([extranjero] = @Original_extranjero)) AND ((@IsNull_nacionalidad = 1 AND [nacionalidad] IS NULL) OR ([nacionalidad] = @Original_nacionalidad)) AND ((@IsNull_fechaRegistro = 1 AND [fechaRegistro] IS NULL) OR ([fechaRegistro] = @Original_fechaRegistro)) AND ((@IsNull_mail = 1 AND [mail] IS NULL) OR ([mail] = @Original_mail)) AND ((@IsNull_empresa = 1 AND [empresa] IS NULL) OR ([empresa] = @Original_empresa)) AND ((@IsNull_banco = 1 AND [banco] IS NULL) OR ([banco] = @Original_banco)) AND ((@IsNull_cuentaBancaria = 1 AND [cuentaBancaria] IS NULL) OR ([cuentaBancaria] = @Original_cuentaBancaria)) AND ((@IsNull_Clabe = 1 AND [Clabe] IS NULL) OR ([Clabe] = @Original_Clabe)) AND ((@IsNull_activo = 1 AND [activo] IS NULL) OR ([activo] = @Original_activo)) AND ((@IsNull_autorizado = 1 AND [autorizado] IS NULL) OR ([autorizado] = @Original_autorizado)) AND ((@IsNull_calle = 1 AND [calle] IS NULL) OR ([calle] = @Original_calle)) AND ((@IsNull_colonia = 1 AND [colonia] IS NULL) OR ([colonia] = @Original_colonia)) AND ((@IsNull_localidad = 1 AND [localidad] IS NULL) OR ([localidad] = @Original_localidad)) AND ((@IsNull_delegacion = 1 AND [delegacion] IS NULL) OR ([delegacion] = @Original_delegacion)) AND ((@IsNull_estado = 1 AND [estado] IS NULL) OR ([estado] = @Original_estado)) AND ((@IsNull_pais = 1 AND [pais] IS NULL) OR ([pais] = @Original_pais)) AND ((@IsNull_cp = 1 AND [cp] IS NULL) OR ([cp] = @Original_cp)) AND ((@IsNull_activoS = 1 AND [activoS] IS NULL) OR ([activoS] = @Original_activoS)) AND ((@IsNull_autorizadoS = 1 AND [autorizadoS] IS NULL) OR ([autorizadoS] = @Original_autorizadoS)) AND ((@IsNull_usuarioSolicita = 1 AND [usuarioSolicita] IS NULL) OR ([usuarioSolicita] = @Original_usuarioSolicita)) AND ((@IsNull_motivoRechazo = 1 AND [motivoRechazo] IS NULL) OR ([motivoRechazo] = @Original_motivoRechazo)) AND ((@IsNull_autorizaP1 = 1 AND [autorizaP1] IS NULL) OR ([autorizaP1] = @Original_autorizaP1)) AND ((@IsNull_autorizaP2 = 1 AND [autorizaP2] IS NULL) OR ([autorizaP2] = @Original_autorizaP2)) AND ((@IsNull_fPagoInicial = 1 AND [fPagoInicial] IS NULL) OR ([fPagoInicial] = @Original_fPagoInicial)) AND ((@IsNull_notificaPago = 1 AND [notificaPago] IS NULL) OR ([notificaPago] = @Original_notificaPago)) AND ((@IsNull_adjuntaComprobante = 1 AND [adjuntaComprobante] IS NULL) OR ([adjuntaComprobante] = @Original_adjuntaComprobante)) AND ((@IsNull_notificaContabilidad = 1 AND [notificaContabilidad] IS NULL) OR ([notificaContabilidad] = @Original_notificaContabilidad)));
+SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuentaContablePagar, montoMaxTransaccion, extranjero, nacionalidad, fechaRegistro, mail, empresa, banco, cuentaBancaria, Clabe, activo, autorizado, calle, colonia, localidad, delegacion, estado, pais, cp, activoS, autorizadoS, usuarioSolicita, motivoRechazo, autorizaP1, autorizaP2, fPagoInicial, notificaPago, adjuntaComprobante, notificaContabilidad FROM CXP_Proveedores WHERE (idProveedor = @idProveedor)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@rfc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfc" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@nit" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nit" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -167,6 +176,9 @@ SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuenta
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@autorizaP1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="autorizaP1" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@autorizaP2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="autorizaP2" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@fPagoInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="fPagoInicial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@notificaPago" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@adjuntaComprobante" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="adjuntaComprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@notificaContabilidad" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaContabilidad" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_rfc" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="rfc" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_rfc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="rfc" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -232,6 +244,12 @@ SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuenta
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_autorizaP2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="autorizaP2" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_fPagoInicial" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="fPagoInicial" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_fPagoInicial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="fPagoInicial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_notificaPago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="notificaPago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_notificaPago" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_adjuntaComprobante" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="adjuntaComprobante" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_adjuntaComprobante" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="adjuntaComprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_notificaContabilidad" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="notificaContabilidad" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_notificaContabilidad" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="notificaContabilidad" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="idProveedor" ColumnName="idProveedor" DataSourceName="Production.dbo.CXP_Proveedores" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
@@ -272,6 +290,9 @@ SELECT idProveedor, rfc, nit, curp, razonSocial, idSucursal, relacionado, cuenta
               <Mapping SourceColumn="autorizaP1" DataSetColumn="autorizaP1" />
               <Mapping SourceColumn="autorizaP2" DataSetColumn="autorizaP2" />
               <Mapping SourceColumn="fPagoInicial" DataSetColumn="fPagoInicial" />
+              <Mapping SourceColumn="notificaPago" DataSetColumn="notificaPago" />
+              <Mapping SourceColumn="adjuntaComprobante" DataSetColumn="adjuntaComprobante" />
+              <Mapping SourceColumn="notificaContabilidad" DataSetColumn="notificaContabilidad" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="csProduction (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ExisteRfcScalarQuery" Modifier="Public" Name="ExisteRfcScalarQuery" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ExisteRfcScalarQuery">
@@ -283,6 +304,17 @@ WHERE        (rfc = @rfc)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="rfc" ColumnName="ISNULL(MAX(rfc), 'NE')" DataSourceName="" DataTypeServer="varchar(13)" DbType="AnsiString" Direction="Input" ParameterName="@rfc" Precision="0" Scale="0" Size="13" SourceColumn="rfc" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectName="Production.dbo.CXP_Proveedores" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="NotificaPagos_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="NotificaPagos_GetDataBy2" GeneratorSourceName="NotificaPagos_FillBy" GetMethodModifier="Public" GetMethodName="NotificaPagos_GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="NotificaPagos_GetDataBy2" UserSourceName="NotificaPagos_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Clabe, activo, activoS, adjuntaComprobante, autorizaP1, autorizaP2, autorizado, autorizadoS, banco, calle, colonia, cp, cuentaBancaria, cuentaContablePagar, curp, delegacion, empresa, estado, extranjero, fPagoInicial, 
+                         fechaRegistro, idProveedor, idSucursal, localidad, mail, montoMaxTransaccion, motivoRechazo, nacionalidad, nit, notificaContabilidad, notificaPago, pais, razonSocial, relacionado, rfc, usuarioSolicita
+FROM            CXP_Proveedores
+WHERE        (activoS = 'ACTIVO') AND (autorizadoS = 'AUTORIZADO')</CommandText>
+                    <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
@@ -608,6 +640,183 @@ WHERE        (claveBancos = @claveBancos)</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CXP_CorreosProveedoresTableAdapter" GeneratorDataComponentClassName="CXP_CorreosProveedoresTableAdapter" Name="CXP_CorreosProveedores" UserDataComponentName="CXP_CorreosProveedoresTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectName="Production.dbo.CXP_CorreosProveedores" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [CXP_CorreosProveedores] WHERE (([idCorreo] = @Original_idCorreo) AND ((@IsNull_idProveedor = 1 AND [idProveedor] IS NULL) OR ([idProveedor] = @Original_idProveedor)) AND ((@IsNull_direccionCorreo = 1 AND [direccionCorreo] IS NULL) OR ([direccionCorreo] = @Original_direccionCorreo)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idCorreo" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idCorreo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idProveedor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_direccionCorreo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="direccionCorreo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_direccionCorreo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="direccionCorreo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [CXP_CorreosProveedores] ([idProveedor], [direccionCorreo]) VALUES (@idProveedor, @direccionCorreo);
+SELECT idCorreo, idProveedor, direccionCorreo FROM CXP_CorreosProveedores WHERE (idCorreo = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@direccionCorreo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="direccionCorreo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        idCorreo, idProveedor, direccionCorreo
+FROM            CXP_CorreosProveedores
+WHERE        (idProveedor = @idProveedor)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="idProveedor" ColumnName="idProveedor" DataSourceName="Production.dbo.CXP_CorreosProveedores" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [CXP_CorreosProveedores] SET [idProveedor] = @idProveedor, [direccionCorreo] = @direccionCorreo WHERE (([idCorreo] = @Original_idCorreo) AND ((@IsNull_idProveedor = 1 AND [idProveedor] IS NULL) OR ([idProveedor] = @Original_idProveedor)) AND ((@IsNull_direccionCorreo = 1 AND [direccionCorreo] IS NULL) OR ([direccionCorreo] = @Original_direccionCorreo)));
+SELECT idCorreo, idProveedor, direccionCorreo FROM CXP_CorreosProveedores WHERE (idCorreo = @idCorreo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@direccionCorreo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="direccionCorreo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idCorreo" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idCorreo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_idProveedor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_direccionCorreo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="direccionCorreo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_direccionCorreo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="direccionCorreo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="idCorreo" ColumnName="idCorreo" DataSourceName="Production.dbo.CXP_CorreosProveedores" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@idCorreo" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idCorreo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idCorreo" DataSetColumn="idCorreo" />
+              <Mapping SourceColumn="idProveedor" DataSetColumn="idProveedor" />
+              <Mapping SourceColumn="direccionCorreo" DataSetColumn="direccionCorreo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DatosPagosTableAdapter" GeneratorDataComponentClassName="DatosPagosTableAdapter" Name="DatosPagos" UserDataComponentName="DatosPagosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CXP_CorreosProveedores.idCorreo, CXP_CorreosProveedores.idProveedor, CXP_CorreosProveedores.direccionCorreo, CXP_Proveedores.notificaPago, CXP_Proveedores.adjuntaComprobante, 
+                         CXP_Proveedores.notificaContabilidad
+FROM            CXP_CorreosProveedores RIGHT OUTER JOIN
+                         CXP_Proveedores ON CXP_CorreosProveedores.idProveedor = CXP_Proveedores.idProveedor
+WHERE        (CXP_CorreosProveedores.idProveedor = @idProveedor)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="idProveedor" ColumnName="idProveedor" DataSourceName="Production.dbo.CXP_CorreosProveedores" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@idProveedor" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idProveedor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idCorreo" DataSetColumn="idCorreo" />
+              <Mapping SourceColumn="idProveedor" DataSetColumn="idProveedor" />
+              <Mapping SourceColumn="direccionCorreo" DataSetColumn="direccionCorreo" />
+              <Mapping SourceColumn="notificaPago" DataSetColumn="notificaPago" />
+              <Mapping SourceColumn="adjuntaComprobante" DataSetColumn="adjuntaComprobante" />
+              <Mapping SourceColumn="notificaContabilidad" DataSetColumn="notificaContabilidad" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CXP_PagosTableAdapter" GeneratorDataComponentClassName="CXP_PagosTableAdapter" Name="CXP_Pagos" UserDataComponentName="CXP_PagosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="csProduction (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CXP_PagosTesoreria.tipoSolicitud, CXP_PagosTesoreria.fechaPago, CXP_PagosTesoreria.referencia, Vw_CXP_Autorizaciones.idEmpresas, Vw_CXP_Autorizaciones.rfcEmpresa, Vw_CXP_Autorizaciones.nombreEmpresa, 
+                         Vw_CXP_Autorizaciones.rfc, Vw_CXP_Autorizaciones.razonSocial, Vw_CXP_Autorizaciones.usuario, Vw_CXP_Autorizaciones.nombre, Vw_CXP_Autorizaciones.folioSolicitud, Vw_CXP_Autorizaciones.fechaSolicitud, 
+                         Vw_CXP_Autorizaciones.fechaFactura, Vw_CXP_Autorizaciones.serie, Vw_CXP_Autorizaciones.folio, Vw_CXP_Autorizaciones.uuid, Vw_CXP_Autorizaciones.subtotalPagado, Vw_CXP_Autorizaciones.totalPagado, 
+                         Vw_CXP_Autorizaciones.trasladosPagados, Vw_CXP_Autorizaciones.retencionesPagadas, Vw_CXP_Autorizaciones.decripcion, Vw_CXP_Autorizaciones.Concepto, Vw_CXP_Autorizaciones.mailAutoriza2, 
+                         Vw_CXP_Autorizaciones.ok1, Vw_CXP_Autorizaciones.ok2, Vw_CXP_Autorizaciones.estatus, Vw_CXP_Autorizaciones.sucursal, Vw_CXP_Autorizaciones.idPagos, Vw_CXP_Autorizaciones.departamento, 
+                         Vw_CXP_Autorizaciones.impLocRet, Vw_CXP_Autorizaciones.impLocTra, Vw_CXP_Autorizaciones.total, Vw_CXP_Autorizaciones.moneda, Vw_CXP_Autorizaciones.id_usuario, Vw_CXP_Autorizaciones.mailAutoriza1, 
+                         Vw_CXP_Autorizaciones.Autoriza1ant, Vw_CXP_Autorizaciones.mailGenero, Vw_CXP_Autorizaciones.NombreCorto, Vw_CXP_Autorizaciones.contrato, Vw_CXP_Autorizaciones.Cliente, Vw_CXP_Autorizaciones.Descr, 
+                         Vw_CXP_Autorizaciones.noContrato, Vw_CXP_Autorizaciones.Autoriza1, Vw_CXP_Autorizaciones.Autoriza2, Vw_CXP_Autorizaciones.Tipar, Vw_CXP_Autorizaciones.cCostos, Vw_CXP_Autorizaciones.fPago, 
+                         Vw_CXP_Autorizaciones.idCuentas, CXP_PagosTesoreria.importe, Vw_CXP_Autorizaciones.tipoDeCambio, Vw_CXP_Autorizaciones.totalPagadoTC, Vw_CXP_Autorizaciones.formaDePago, Vw_CXP_Autorizaciones.monedaPago, 
+                         Vw_CXP_Autorizaciones.idConcepto, Vw_CXP_Autorizaciones.idProveedor, Vw_CXP_Autorizaciones.subTotal, Vw_CXP_Autorizaciones.tPagado, Vw_CXP_Autorizaciones.estatusReemb, CXP_PagosTesoreria.uuidPago
+FROM            CXP_PagosTesoreria LEFT OUTER JOIN
+                         Vw_CXP_Autorizaciones ON CXP_PagosTesoreria.folioSolicitud = Vw_CXP_Autorizaciones.folioSolicitud AND CXP_PagosTesoreria.idEmpresa = Vw_CXP_Autorizaciones.idEmpresas
+WHERE        (CXP_PagosTesoreria.tipoSolicitud = @tipoSolicitud) AND (Vw_CXP_Autorizaciones.idEmpresas = @idEmpresas) AND (Vw_CXP_Autorizaciones.folioSolicitud = @folioSolicitud)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="tipoSolicitud" ColumnName="tipoSolicitud" DataSourceName="Production.dbo.CXP_PagosTesoreria" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@tipoSolicitud" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="tipoSolicitud" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="idEmpresas" ColumnName="idEmpresas" DataSourceName="Production.dbo.Vw_CXP_Autorizaciones" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@idEmpresas" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="idEmpresas" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="folioSolicitud" ColumnName="folioSolicitud" DataSourceName="Production.dbo.Vw_CXP_Autorizaciones" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@folioSolicitud" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="folioSolicitud" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idPagos" DataSetColumn="idPagos" />
+              <Mapping SourceColumn="idProveedor" DataSetColumn="idProveedor" />
+              <Mapping SourceColumn="folioSolicitud" DataSetColumn="folioSolicitud" />
+              <Mapping SourceColumn="fechaSolicitud" DataSetColumn="fechaSolicitud" />
+              <Mapping SourceColumn="fechaFactura" DataSetColumn="fechaFactura" />
+              <Mapping SourceColumn="serie" DataSetColumn="serie" />
+              <Mapping SourceColumn="folio" DataSetColumn="folio" />
+              <Mapping SourceColumn="uuid" DataSetColumn="uuid" />
+              <Mapping SourceColumn="subtotalPagado" DataSetColumn="subtotalPagado" />
+              <Mapping SourceColumn="totalPagado" DataSetColumn="totalPagado" />
+              <Mapping SourceColumn="trasladosPagados" DataSetColumn="trasladosPagados" />
+              <Mapping SourceColumn="retencionesPagadas" DataSetColumn="retencionesPagadas" />
+              <Mapping SourceColumn="decripcion" DataSetColumn="decripcion" />
+              <Mapping SourceColumn="idConcepto" DataSetColumn="idConcepto" />
+              <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
+              <Mapping SourceColumn="idEmpresas" DataSetColumn="idEmpresas" />
+              <Mapping SourceColumn="estatus" DataSetColumn="estatus" />
+              <Mapping SourceColumn="ok1" DataSetColumn="ok1" />
+              <Mapping SourceColumn="ok2" DataSetColumn="ok2" />
+              <Mapping SourceColumn="moneda" DataSetColumn="moneda" />
+              <Mapping SourceColumn="fechaPago" DataSetColumn="fechaPago" />
+              <Mapping SourceColumn="contrato" DataSetColumn="contrato" />
+              <Mapping SourceColumn="noContrato" DataSetColumn="noContrato" />
+              <Mapping SourceColumn="idCuentas" DataSetColumn="idCuentas" />
+              <Mapping SourceColumn="tipoDeCambio" DataSetColumn="tipoDeCambio" />
+              <Mapping SourceColumn="monedaPago" DataSetColumn="monedaPago" />
+              <Mapping SourceColumn="estatusReemb" DataSetColumn="estatusReemb" />
+              <Mapping SourceColumn="tipoSolicitud" DataSetColumn="tipoSolicitud" />
+              <Mapping SourceColumn="referencia" DataSetColumn="referencia" />
+              <Mapping SourceColumn="rfcEmpresa" DataSetColumn="rfcEmpresa" />
+              <Mapping SourceColumn="nombreEmpresa" DataSetColumn="nombreEmpresa" />
+              <Mapping SourceColumn="rfc" DataSetColumn="rfc" />
+              <Mapping SourceColumn="razonSocial" DataSetColumn="razonSocial" />
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="Concepto" DataSetColumn="Concepto" />
+              <Mapping SourceColumn="mailAutoriza2" DataSetColumn="mailAutoriza2" />
+              <Mapping SourceColumn="sucursal" DataSetColumn="sucursal" />
+              <Mapping SourceColumn="departamento" DataSetColumn="departamento" />
+              <Mapping SourceColumn="impLocRet" DataSetColumn="impLocRet" />
+              <Mapping SourceColumn="impLocTra" DataSetColumn="impLocTra" />
+              <Mapping SourceColumn="total" DataSetColumn="total" />
+              <Mapping SourceColumn="id_usuario" DataSetColumn="id_usuario" />
+              <Mapping SourceColumn="mailAutoriza1" DataSetColumn="mailAutoriza1" />
+              <Mapping SourceColumn="Autoriza1ant" DataSetColumn="Autoriza1ant" />
+              <Mapping SourceColumn="mailGenero" DataSetColumn="mailGenero" />
+              <Mapping SourceColumn="NombreCorto" DataSetColumn="NombreCorto" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="Descr" DataSetColumn="Descr" />
+              <Mapping SourceColumn="Autoriza1" DataSetColumn="Autoriza1" />
+              <Mapping SourceColumn="Autoriza2" DataSetColumn="Autoriza2" />
+              <Mapping SourceColumn="Tipar" DataSetColumn="Tipar" />
+              <Mapping SourceColumn="cCostos" DataSetColumn="cCostos" />
+              <Mapping SourceColumn="fPago" DataSetColumn="fPago" />
+              <Mapping SourceColumn="importe" DataSetColumn="importe" />
+              <Mapping SourceColumn="totalPagadoTC" DataSetColumn="totalPagadoTC" />
+              <Mapping SourceColumn="formaDePago" DataSetColumn="formaDePago" />
+              <Mapping SourceColumn="subTotal" DataSetColumn="subTotal" />
+              <Mapping SourceColumn="tPagado" DataSetColumn="tPagado" />
+              <Mapping SourceColumn="uuidPago" DataSetColumn="uuidPago" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -616,7 +825,7 @@ WHERE        (claveBancos = @claveBancos)</CommandText>
   <xs:element name="dsHerramientas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHerramientas" msprop:Generator_UserDSName="dsHerramientas">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CXP_Proveedores" msprop:Generator_TableClassName="CXP_ProveedoresDataTable" msprop:Generator_TableVarName="tableCXP_Proveedores" msprop:Generator_TablePropName="CXP_Proveedores" msprop:Generator_RowDeletingName="CXP_ProveedoresRowDeleting" msprop:Generator_RowChangingName="CXP_ProveedoresRowChanging" msprop:Generator_RowEvHandlerName="CXP_ProveedoresRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_ProveedoresRowDeleted" msprop:Generator_UserTableName="CXP_Proveedores" msprop:Generator_RowChangedName="CXP_ProveedoresRowChanged" msprop:Generator_RowEvArgName="CXP_ProveedoresRowChangeEvent" msprop:Generator_RowClassName="CXP_ProveedoresRow">
+        <xs:element name="CXP_Proveedores" msprop:Generator_TableClassName="CXP_ProveedoresDataTable" msprop:Generator_TableVarName="tableCXP_Proveedores" msprop:Generator_RowChangedName="CXP_ProveedoresRowChanged" msprop:Generator_TablePropName="CXP_Proveedores" msprop:Generator_RowDeletingName="CXP_ProveedoresRowDeleting" msprop:Generator_RowChangingName="CXP_ProveedoresRowChanging" msprop:Generator_RowEvHandlerName="CXP_ProveedoresRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_ProveedoresRowDeleted" msprop:Generator_RowClassName="CXP_ProveedoresRow" msprop:Generator_UserTableName="CXP_Proveedores" msprop:Generator_RowEvArgName="CXP_ProveedoresRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idProveedor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidProveedor" msprop:Generator_ColumnPropNameInRow="idProveedor" msprop:Generator_ColumnPropNameInTable="idProveedorColumn" msprop:Generator_UserColumnName="idProveedor" type="xs:decimal" />
@@ -808,10 +1017,13 @@ WHERE        (claveBancos = @claveBancos)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="notificaPago" msprop:Generator_ColumnVarNameInTable="columnnotificaPago" msprop:Generator_ColumnPropNameInRow="notificaPago" msprop:Generator_ColumnPropNameInTable="notificaPagoColumn" msprop:Generator_UserColumnName="notificaPago" type="xs:boolean" minOccurs="0" />
+              <xs:element name="adjuntaComprobante" msprop:Generator_ColumnVarNameInTable="columnadjuntaComprobante" msprop:Generator_ColumnPropNameInRow="adjuntaComprobante" msprop:Generator_ColumnPropNameInTable="adjuntaComprobanteColumn" msprop:Generator_UserColumnName="adjuntaComprobante" type="xs:boolean" minOccurs="0" />
+              <xs:element name="notificaContabilidad" msprop:Generator_ColumnVarNameInTable="columnnotificaContabilidad" msprop:Generator_ColumnPropNameInRow="notificaContabilidad" msprop:Generator_ColumnPropNameInTable="notificaContabilidadColumn" msprop:Generator_UserColumnName="notificaContabilidad" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CXP_CuentasBancariasProv" msprop:Generator_TableClassName="CXP_CuentasBancariasProvDataTable" msprop:Generator_TableVarName="tableCXP_CuentasBancariasProv" msprop:Generator_TablePropName="CXP_CuentasBancariasProv" msprop:Generator_RowDeletingName="CXP_CuentasBancariasProvRowDeleting" msprop:Generator_RowChangingName="CXP_CuentasBancariasProvRowChanging" msprop:Generator_RowEvHandlerName="CXP_CuentasBancariasProvRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_CuentasBancariasProvRowDeleted" msprop:Generator_UserTableName="CXP_CuentasBancariasProv" msprop:Generator_RowChangedName="CXP_CuentasBancariasProvRowChanged" msprop:Generator_RowEvArgName="CXP_CuentasBancariasProvRowChangeEvent" msprop:Generator_RowClassName="CXP_CuentasBancariasProvRow">
+        <xs:element name="CXP_CuentasBancariasProv" msprop:Generator_TableClassName="CXP_CuentasBancariasProvDataTable" msprop:Generator_TableVarName="tableCXP_CuentasBancariasProv" msprop:Generator_RowChangedName="CXP_CuentasBancariasProvRowChanged" msprop:Generator_TablePropName="CXP_CuentasBancariasProv" msprop:Generator_RowDeletingName="CXP_CuentasBancariasProvRowDeleting" msprop:Generator_RowChangingName="CXP_CuentasBancariasProvRowChanging" msprop:Generator_RowEvHandlerName="CXP_CuentasBancariasProvRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_CuentasBancariasProvRowDeleted" msprop:Generator_RowClassName="CXP_CuentasBancariasProvRow" msprop:Generator_UserTableName="CXP_CuentasBancariasProv" msprop:Generator_RowEvArgName="CXP_CuentasBancariasProvRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idCuentas" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCuentas" msprop:Generator_ColumnPropNameInRow="idCuentas" msprop:Generator_ColumnPropNameInTable="idCuentasColumn" msprop:Generator_UserColumnName="idCuentas" type="xs:decimal" />
@@ -911,7 +1123,7 @@ WHERE        (claveBancos = @claveBancos)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CXP_Bancos" msprop:Generator_TableClassName="CXP_BancosDataTable" msprop:Generator_TableVarName="tableCXP_Bancos" msprop:Generator_TablePropName="CXP_Bancos" msprop:Generator_RowDeletingName="CXP_BancosRowDeleting" msprop:Generator_RowChangingName="CXP_BancosRowChanging" msprop:Generator_RowEvHandlerName="CXP_BancosRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_BancosRowDeleted" msprop:Generator_UserTableName="CXP_Bancos" msprop:Generator_RowChangedName="CXP_BancosRowChanged" msprop:Generator_RowEvArgName="CXP_BancosRowChangeEvent" msprop:Generator_RowClassName="CXP_BancosRow">
+        <xs:element name="CXP_Bancos" msprop:Generator_TableClassName="CXP_BancosDataTable" msprop:Generator_TableVarName="tableCXP_Bancos" msprop:Generator_RowChangedName="CXP_BancosRowChanged" msprop:Generator_TablePropName="CXP_Bancos" msprop:Generator_RowDeletingName="CXP_BancosRowDeleting" msprop:Generator_RowChangingName="CXP_BancosRowChanging" msprop:Generator_RowEvHandlerName="CXP_BancosRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_BancosRowDeleted" msprop:Generator_RowClassName="CXP_BancosRow" msprop:Generator_UserTableName="CXP_Bancos" msprop:Generator_RowEvArgName="CXP_BancosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idBancos" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidBancos" msprop:Generator_ColumnPropNameInRow="idBancos" msprop:Generator_ColumnPropNameInTable="idBancosColumn" msprop:Generator_UserColumnName="idBancos" type="xs:decimal" />
@@ -946,6 +1158,320 @@ WHERE        (claveBancos = @claveBancos)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="CXP_CorreosProveedores" msprop:Generator_TableClassName="CXP_CorreosProveedoresDataTable" msprop:Generator_TableVarName="tableCXP_CorreosProveedores" msprop:Generator_RowChangedName="CXP_CorreosProveedoresRowChanged" msprop:Generator_TablePropName="CXP_CorreosProveedores" msprop:Generator_RowDeletingName="CXP_CorreosProveedoresRowDeleting" msprop:Generator_RowChangingName="CXP_CorreosProveedoresRowChanging" msprop:Generator_RowEvHandlerName="CXP_CorreosProveedoresRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_CorreosProveedoresRowDeleted" msprop:Generator_RowClassName="CXP_CorreosProveedoresRow" msprop:Generator_UserTableName="CXP_CorreosProveedores" msprop:Generator_RowEvArgName="CXP_CorreosProveedoresRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCorreo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCorreo" msprop:Generator_ColumnPropNameInRow="idCorreo" msprop:Generator_ColumnPropNameInTable="idCorreoColumn" msprop:Generator_UserColumnName="idCorreo" type="xs:decimal" />
+              <xs:element name="idProveedor" msprop:Generator_ColumnVarNameInTable="columnidProveedor" msprop:Generator_ColumnPropNameInRow="idProveedor" msprop:Generator_ColumnPropNameInTable="idProveedorColumn" msprop:Generator_UserColumnName="idProveedor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="direccionCorreo" msprop:Generator_ColumnVarNameInTable="columndireccionCorreo" msprop:Generator_ColumnPropNameInRow="direccionCorreo" msprop:Generator_ColumnPropNameInTable="direccionCorreoColumn" msprop:Generator_UserColumnName="direccionCorreo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DatosPagos" msprop:Generator_TableClassName="DatosPagosDataTable" msprop:Generator_TableVarName="tableDatosPagos" msprop:Generator_RowChangedName="DatosPagosRowChanged" msprop:Generator_TablePropName="DatosPagos" msprop:Generator_RowDeletingName="DatosPagosRowDeleting" msprop:Generator_RowChangingName="DatosPagosRowChanging" msprop:Generator_RowEvHandlerName="DatosPagosRowChangeEventHandler" msprop:Generator_RowDeletedName="DatosPagosRowDeleted" msprop:Generator_RowClassName="DatosPagosRow" msprop:Generator_UserTableName="DatosPagos" msprop:Generator_RowEvArgName="DatosPagosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCorreo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCorreo" msprop:Generator_ColumnPropNameInRow="idCorreo" msprop:Generator_ColumnPropNameInTable="idCorreoColumn" msprop:Generator_UserColumnName="idCorreo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="idProveedor" msprop:Generator_ColumnVarNameInTable="columnidProveedor" msprop:Generator_ColumnPropNameInRow="idProveedor" msprop:Generator_ColumnPropNameInTable="idProveedorColumn" msprop:Generator_UserColumnName="idProveedor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="direccionCorreo" msprop:Generator_ColumnVarNameInTable="columndireccionCorreo" msprop:Generator_ColumnPropNameInRow="direccionCorreo" msprop:Generator_ColumnPropNameInTable="direccionCorreoColumn" msprop:Generator_UserColumnName="direccionCorreo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="notificaPago" msprop:Generator_ColumnVarNameInTable="columnnotificaPago" msprop:Generator_ColumnPropNameInRow="notificaPago" msprop:Generator_ColumnPropNameInTable="notificaPagoColumn" msprop:Generator_UserColumnName="notificaPago" type="xs:boolean" minOccurs="0" />
+              <xs:element name="adjuntaComprobante" msprop:Generator_ColumnVarNameInTable="columnadjuntaComprobante" msprop:Generator_ColumnPropNameInRow="adjuntaComprobante" msprop:Generator_ColumnPropNameInTable="adjuntaComprobanteColumn" msprop:Generator_UserColumnName="adjuntaComprobante" type="xs:boolean" minOccurs="0" />
+              <xs:element name="notificaContabilidad" msprop:Generator_ColumnVarNameInTable="columnnotificaContabilidad" msprop:Generator_ColumnPropNameInRow="notificaContabilidad" msprop:Generator_ColumnPropNameInTable="notificaContabilidadColumn" msprop:Generator_UserColumnName="notificaContabilidad" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CXP_Pagos" msprop:Generator_TableClassName="CXP_PagosDataTable" msprop:Generator_TableVarName="tableCXP_Pagos" msprop:Generator_RowChangedName="CXP_PagosRowChanged" msprop:Generator_TablePropName="CXP_Pagos" msprop:Generator_RowDeletingName="CXP_PagosRowDeleting" msprop:Generator_RowChangingName="CXP_PagosRowChanging" msprop:Generator_RowEvHandlerName="CXP_PagosRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_PagosRowDeleted" msprop:Generator_RowClassName="CXP_PagosRow" msprop:Generator_UserTableName="CXP_Pagos" msprop:Generator_RowEvArgName="CXP_PagosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idPagos" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidPagos" msprop:Generator_ColumnPropNameInRow="idPagos" msprop:Generator_ColumnPropNameInTable="idPagosColumn" msprop:Generator_UserColumnName="idPagos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="idProveedor" msprop:Generator_ColumnVarNameInTable="columnidProveedor" msprop:Generator_ColumnPropNameInRow="idProveedor" msprop:Generator_ColumnPropNameInTable="idProveedorColumn" msprop:Generator_UserColumnName="idProveedor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="folioSolicitud" msprop:Generator_ColumnVarNameInTable="columnfolioSolicitud" msprop:Generator_ColumnPropNameInRow="folioSolicitud" msprop:Generator_ColumnPropNameInTable="folioSolicitudColumn" msprop:Generator_UserColumnName="folioSolicitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fechaSolicitud" msprop:Generator_ColumnVarNameInTable="columnfechaSolicitud" msprop:Generator_ColumnPropNameInRow="fechaSolicitud" msprop:Generator_ColumnPropNameInTable="fechaSolicitudColumn" msprop:Generator_UserColumnName="fechaSolicitud" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fechaFactura" msprop:Generator_ColumnVarNameInTable="columnfechaFactura" msprop:Generator_ColumnPropNameInRow="fechaFactura" msprop:Generator_ColumnPropNameInTable="fechaFacturaColumn" msprop:Generator_UserColumnName="fechaFactura" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="serie" msprop:Generator_ColumnVarNameInTable="columnserie" msprop:Generator_ColumnPropNameInRow="serie" msprop:Generator_ColumnPropNameInTable="serieColumn" msprop:Generator_UserColumnName="serie" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="folio" msprop:Generator_ColumnVarNameInTable="columnfolio" msprop:Generator_ColumnPropNameInRow="folio" msprop:Generator_ColumnPropNameInTable="folioColumn" msprop:Generator_UserColumnName="folio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="uuid" msprop:Generator_ColumnVarNameInTable="columnuuid" msprop:Generator_ColumnPropNameInRow="uuid" msprop:Generator_ColumnPropNameInTable="uuidColumn" msprop:Generator_UserColumnName="uuid" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="36" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="subtotalPagado" msprop:Generator_ColumnVarNameInTable="columnsubtotalPagado" msprop:Generator_ColumnPropNameInRow="subtotalPagado" msprop:Generator_ColumnPropNameInTable="subtotalPagadoColumn" msprop:Generator_UserColumnName="subtotalPagado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalPagado" msprop:Generator_ColumnVarNameInTable="columntotalPagado" msprop:Generator_ColumnPropNameInRow="totalPagado" msprop:Generator_ColumnPropNameInTable="totalPagadoColumn" msprop:Generator_UserColumnName="totalPagado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="trasladosPagados" msprop:Generator_ColumnVarNameInTable="columntrasladosPagados" msprop:Generator_ColumnPropNameInRow="trasladosPagados" msprop:Generator_ColumnPropNameInTable="trasladosPagadosColumn" msprop:Generator_UserColumnName="trasladosPagados" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retencionesPagadas" msprop:Generator_ColumnVarNameInTable="columnretencionesPagadas" msprop:Generator_ColumnPropNameInRow="retencionesPagadas" msprop:Generator_ColumnPropNameInTable="retencionesPagadasColumn" msprop:Generator_UserColumnName="retencionesPagadas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="decripcion" msprop:Generator_ColumnVarNameInTable="columndecripcion" msprop:Generator_ColumnPropNameInRow="decripcion" msprop:Generator_ColumnPropNameInTable="decripcionColumn" msprop:Generator_UserColumnName="decripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idConcepto" msprop:Generator_ColumnVarNameInTable="columnidConcepto" msprop:Generator_ColumnPropNameInRow="idConcepto" msprop:Generator_ColumnPropNameInTable="idConceptoColumn" msprop:Generator_UserColumnName="idConcepto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idEmpresas" msprop:Generator_ColumnVarNameInTable="columnidEmpresas" msprop:Generator_ColumnPropNameInRow="idEmpresas" msprop:Generator_ColumnPropNameInTable="idEmpresasColumn" msprop:Generator_UserColumnName="idEmpresas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ok1" msprop:Generator_ColumnVarNameInTable="columnok1" msprop:Generator_ColumnPropNameInRow="ok1" msprop:Generator_ColumnPropNameInTable="ok1Column" msprop:Generator_UserColumnName="ok1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ok2" msprop:Generator_ColumnVarNameInTable="columnok2" msprop:Generator_ColumnPropNameInRow="ok2" msprop:Generator_ColumnPropNameInTable="ok2Column" msprop:Generator_UserColumnName="ok2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="moneda" msprop:Generator_ColumnVarNameInTable="columnmoneda" msprop:Generator_ColumnPropNameInRow="moneda" msprop:Generator_ColumnPropNameInTable="monedaColumn" msprop:Generator_UserColumnName="moneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fechaPago" msprop:Generator_ColumnVarNameInTable="columnfechaPago" msprop:Generator_ColumnPropNameInRow="fechaPago" msprop:Generator_ColumnPropNameInTable="fechaPagoColumn" msprop:Generator_UserColumnName="fechaPago" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="contrato" msprop:Generator_ColumnVarNameInTable="columncontrato" msprop:Generator_ColumnPropNameInRow="contrato" msprop:Generator_ColumnPropNameInTable="contratoColumn" msprop:Generator_UserColumnName="contrato" type="xs:boolean" minOccurs="0" />
+              <xs:element name="noContrato" msprop:Generator_ColumnVarNameInTable="columnnoContrato" msprop:Generator_ColumnPropNameInRow="noContrato" msprop:Generator_ColumnPropNameInTable="noContratoColumn" msprop:Generator_UserColumnName="noContrato" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idCuentas" msprop:Generator_ColumnVarNameInTable="columnidCuentas" msprop:Generator_ColumnPropNameInRow="idCuentas" msprop:Generator_ColumnPropNameInTable="idCuentasColumn" msprop:Generator_UserColumnName="idCuentas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tipoDeCambio" msprop:Generator_ColumnVarNameInTable="columntipoDeCambio" msprop:Generator_ColumnPropNameInRow="tipoDeCambio" msprop:Generator_ColumnPropNameInTable="tipoDeCambioColumn" msprop:Generator_UserColumnName="tipoDeCambio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="monedaPago" msprop:Generator_ColumnVarNameInTable="columnmonedaPago" msprop:Generator_ColumnPropNameInRow="monedaPago" msprop:Generator_ColumnPropNameInTable="monedaPagoColumn" msprop:Generator_UserColumnName="monedaPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estatusReemb" msprop:Generator_ColumnVarNameInTable="columnestatusReemb" msprop:Generator_ColumnPropNameInRow="estatusReemb" msprop:Generator_ColumnPropNameInTable="estatusReembColumn" msprop:Generator_UserColumnName="estatusReemb" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipoSolicitud" msprop:Generator_ColumnVarNameInTable="columntipoSolicitud" msprop:Generator_ColumnPropNameInRow="tipoSolicitud" msprop:Generator_ColumnPropNameInTable="tipoSolicitudColumn" msprop:Generator_UserColumnName="tipoSolicitud" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="referencia" msprop:Generator_ColumnVarNameInTable="columnreferencia" msprop:Generator_ColumnPropNameInRow="referencia" msprop:Generator_ColumnPropNameInTable="referenciaColumn" msprop:Generator_UserColumnName="referencia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rfcEmpresa" msprop:Generator_ColumnVarNameInTable="columnrfcEmpresa" msprop:Generator_ColumnPropNameInRow="rfcEmpresa" msprop:Generator_ColumnPropNameInTable="rfcEmpresaColumn" msprop:Generator_UserColumnName="rfcEmpresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombreEmpresa" msprop:Generator_ColumnVarNameInTable="columnnombreEmpresa" msprop:Generator_ColumnPropNameInRow="nombreEmpresa" msprop:Generator_ColumnPropNameInTable="nombreEmpresaColumn" msprop:Generator_UserColumnName="nombreEmpresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rfc" msprop:Generator_ColumnVarNameInTable="columnrfc" msprop:Generator_ColumnPropNameInRow="rfc" msprop:Generator_ColumnPropNameInTable="rfcColumn" msprop:Generator_UserColumnName="rfc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="razonSocial" msprop:Generator_ColumnVarNameInTable="columnrazonSocial" msprop:Generator_ColumnPropNameInRow="razonSocial" msprop:Generator_ColumnPropNameInTable="razonSocialColumn" msprop:Generator_UserColumnName="razonSocial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Concepto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_UserColumnName="Concepto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mailAutoriza2" msprop:Generator_ColumnVarNameInTable="columnmailAutoriza2" msprop:Generator_ColumnPropNameInRow="mailAutoriza2" msprop:Generator_ColumnPropNameInTable="mailAutoriza2Column" msprop:Generator_UserColumnName="mailAutoriza2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sucursal" msprop:Generator_ColumnVarNameInTable="columnsucursal" msprop:Generator_ColumnPropNameInRow="sucursal" msprop:Generator_ColumnPropNameInTable="sucursalColumn" msprop:Generator_UserColumnName="sucursal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="departamento" msprop:Generator_ColumnVarNameInTable="columndepartamento" msprop:Generator_ColumnPropNameInRow="departamento" msprop:Generator_ColumnPropNameInTable="departamentoColumn" msprop:Generator_UserColumnName="departamento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="impLocRet" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnimpLocRet" msprop:Generator_ColumnPropNameInRow="impLocRet" msprop:Generator_ColumnPropNameInTable="impLocRetColumn" msprop:Generator_UserColumnName="impLocRet" type="xs:decimal" minOccurs="0" />
+              <xs:element name="impLocTra" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnimpLocTra" msprop:Generator_ColumnPropNameInRow="impLocTra" msprop:Generator_ColumnPropNameInTable="impLocTraColumn" msprop:Generator_UserColumnName="impLocTra" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id_usuario" msprop:Generator_ColumnVarNameInTable="columnid_usuario" msprop:Generator_ColumnPropNameInRow="id_usuario" msprop:Generator_ColumnPropNameInTable="id_usuarioColumn" msprop:Generator_UserColumnName="id_usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mailAutoriza1" msprop:Generator_ColumnVarNameInTable="columnmailAutoriza1" msprop:Generator_ColumnPropNameInRow="mailAutoriza1" msprop:Generator_ColumnPropNameInTable="mailAutoriza1Column" msprop:Generator_UserColumnName="mailAutoriza1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Autoriza1ant" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAutoriza1ant" msprop:Generator_ColumnPropNameInRow="Autoriza1ant" msprop:Generator_ColumnPropNameInTable="Autoriza1antColumn" msprop:Generator_UserColumnName="Autoriza1ant" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="152" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mailGenero" msprop:Generator_ColumnVarNameInTable="columnmailGenero" msprop:Generator_ColumnPropNameInRow="mailGenero" msprop:Generator_ColumnPropNameInTable="mailGeneroColumn" msprop:Generator_UserColumnName="mailGenero" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NombreCorto" msprop:Generator_ColumnVarNameInTable="columnNombreCorto" msprop:Generator_ColumnPropNameInRow="NombreCorto" msprop:Generator_ColumnPropNameInTable="NombreCortoColumn" msprop:Generator_UserColumnName="NombreCorto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descr" msprop:Generator_ColumnVarNameInTable="columnDescr" msprop:Generator_ColumnPropNameInRow="Descr" msprop:Generator_ColumnPropNameInTable="DescrColumn" msprop:Generator_UserColumnName="Descr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Autoriza1" msprop:Generator_ColumnVarNameInTable="columnAutoriza1" msprop:Generator_ColumnPropNameInRow="Autoriza1" msprop:Generator_ColumnPropNameInTable="Autoriza1Column" msprop:Generator_UserColumnName="Autoriza1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Autoriza2" msprop:Generator_ColumnVarNameInTable="columnAutoriza2" msprop:Generator_ColumnPropNameInRow="Autoriza2" msprop:Generator_ColumnPropNameInTable="Autoriza2Column" msprop:Generator_UserColumnName="Autoriza2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tipar" msprop:Generator_ColumnVarNameInTable="columnTipar" msprop:Generator_ColumnPropNameInRow="Tipar" msprop:Generator_ColumnPropNameInTable="TiparColumn" msprop:Generator_UserColumnName="Tipar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cCostos" msprop:Generator_ColumnVarNameInTable="columncCostos" msprop:Generator_ColumnPropNameInRow="cCostos" msprop:Generator_ColumnPropNameInTable="cCostosColumn" msprop:Generator_UserColumnName="cCostos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fPago" msprop:Generator_ColumnVarNameInTable="columnfPago" msprop:Generator_ColumnPropNameInRow="fPago" msprop:Generator_ColumnPropNameInTable="fPagoColumn" msprop:Generator_UserColumnName="fPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="importe" msprop:Generator_ColumnVarNameInTable="columnimporte" msprop:Generator_ColumnPropNameInRow="importe" msprop:Generator_ColumnPropNameInTable="importeColumn" msprop:Generator_UserColumnName="importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalPagadoTC" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntotalPagadoTC" msprop:Generator_ColumnPropNameInRow="totalPagadoTC" msprop:Generator_ColumnPropNameInTable="totalPagadoTCColumn" msprop:Generator_UserColumnName="totalPagadoTC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="formaDePago" msprop:Generator_ColumnVarNameInTable="columnformaDePago" msprop:Generator_ColumnPropNameInRow="formaDePago" msprop:Generator_ColumnPropNameInTable="formaDePagoColumn" msprop:Generator_UserColumnName="formaDePago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="subTotal" msprop:Generator_ColumnVarNameInTable="columnsubTotal" msprop:Generator_ColumnPropNameInRow="subTotal" msprop:Generator_ColumnPropNameInTable="subTotalColumn" msprop:Generator_UserColumnName="subTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tPagado" msprop:Generator_ColumnVarNameInTable="columntPagado" msprop:Generator_ColumnPropNameInRow="tPagado" msprop:Generator_ColumnPropNameInTable="tPagadoColumn" msprop:Generator_UserColumnName="tPagado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="uuidPago" msprop:Generator_ColumnVarNameInTable="columnuuidPago" msprop:Generator_ColumnPropNameInRow="uuidPago" msprop:Generator_ColumnPropNameInTable="uuidPagoColumn" msprop:Generator_UserColumnName="uuidPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -959,6 +1485,18 @@ WHERE        (claveBancos = @claveBancos)</CommandText>
     <xs:unique name="CXP_Bancos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CXP_Bancos" />
       <xs:field xpath="mstns:idBancos" />
+    </xs:unique>
+    <xs:unique name="CXP_CorreosProveedores_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CXP_CorreosProveedores" />
+      <xs:field xpath="mstns:idCorreo" />
+    </xs:unique>
+    <xs:unique name="DatosPagos_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:DatosPagos" />
+      <xs:field xpath="mstns:idCorreo" />
+    </xs:unique>
+    <xs:unique name="CXP_Pagos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CXP_Pagos" />
+      <xs:field xpath="mstns:idPagos" />
     </xs:unique>
   </xs:element>
 </xs:schema>
