@@ -84,6 +84,7 @@ Partial Class frmUsuario
         Me.CXPtipoConceptoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.CXPDepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.CXPSucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ActivoCheckBox = New System.Windows.Forms.CheckBox()
@@ -98,7 +99,6 @@ Partial Class frmUsuario
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.CXP_SucursalesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_SucursalesTableAdapter()
-        Me.CXPDepartamentosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_DepartamentosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_DepartamentosTableAdapter()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
@@ -122,10 +122,10 @@ Partial Class frmUsuario
         CType(Me.CXPConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPtipoConceptoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.CXPDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPSucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.CXPDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -208,17 +208,24 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresArchTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
         Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
@@ -230,6 +237,8 @@ Partial Class frmUsuario
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Me.CXP_UsuariosTableAdapter
         Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_CorreosFasesTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -407,7 +416,7 @@ Partial Class frmUsuario
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(1078, 245)
+        Me.btnSalir.Location = New System.Drawing.Point(1078, 388)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 15
@@ -450,10 +459,10 @@ Partial Class frmUsuario
         Me.dgvEmpresas.AllowUserToDeleteRows = False
         Me.dgvEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvEmpresas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idEmpresa, Me.empresa, Me.eliminar})
-        Me.dgvEmpresas.Location = New System.Drawing.Point(6, 49)
+        Me.dgvEmpresas.Location = New System.Drawing.Point(11, 49)
         Me.dgvEmpresas.Name = "dgvEmpresas"
         Me.dgvEmpresas.ReadOnly = True
-        Me.dgvEmpresas.Size = New System.Drawing.Size(480, 113)
+        Me.dgvEmpresas.Size = New System.Drawing.Size(471, 113)
         Me.dgvEmpresas.TabIndex = 19
         '
         'idEmpresa
@@ -549,7 +558,7 @@ Partial Class frmUsuario
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(997, 245)
+        Me.btnCancelar.Location = New System.Drawing.Point(997, 388)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 26
@@ -646,6 +655,11 @@ Partial Class frmUsuario
         Me.ComboBox2.TabIndex = 35
         Me.ComboBox2.ValueMember = "departamento"
         '
+        'CXPDepartamentosBindingSource
+        '
+        Me.CXPDepartamentosBindingSource.DataMember = "CXP_Departamentos"
+        Me.CXPDepartamentosBindingSource.DataSource = Me.DsProduction
+        '
         'ComboBox1
         '
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "sucursal", True))
@@ -701,7 +715,7 @@ Partial Class frmUsuario
         Me.GroupBox2.Controls.Add(Me.btnAgregar)
         Me.GroupBox2.Location = New System.Drawing.Point(15, 250)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(492, 168)
+        Me.GroupBox2.Size = New System.Drawing.Size(497, 177)
         Me.GroupBox2.TabIndex = 30
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Permisos por Empresa:"
@@ -716,7 +730,7 @@ Partial Class frmUsuario
         Me.GroupBox3.Controls.Add(Me.dgvTipoConceptos)
         Me.GroupBox3.Location = New System.Drawing.Point(518, 37)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(641, 202)
+        Me.GroupBox3.Size = New System.Drawing.Size(641, 206)
         Me.GroupBox3.TabIndex = 31
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Permisos Web:"
@@ -767,11 +781,6 @@ Partial Class frmUsuario
         '
         Me.CXP_SucursalesTableAdapter.ClearBeforeFill = True
         '
-        'CXPDepartamentosBindingSource
-        '
-        Me.CXPDepartamentosBindingSource.DataMember = "CXP_Departamentos"
-        Me.CXPDepartamentosBindingSource.DataSource = Me.DsProduction
-        '
         'CXP_DepartamentosTableAdapter
         '
         Me.CXP_DepartamentosTableAdapter.ClearBeforeFill = True
@@ -813,12 +822,12 @@ Partial Class frmUsuario
         CType(Me.CXPtipoConceptoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.CXPDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPSucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.CXPDepartamentosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

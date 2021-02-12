@@ -512,6 +512,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                     'Notifica pago
                     taCorreosProveedores.Fill(dtCorreosProveedores, rwDatosSolTmp.idProveedor)
                     Dim contNotifica As Integer = 0
+
                     For Each rwCorreosProveedores In dtCorreosProveedores.Rows
                         If rwCorreosProveedores.notificaPago = True Then
                             taDetallePago.Fill(dtDetallePago, rwDatosSolTmp.tipoSolicitud, varGlobal_IdEmpresa, rwDatosSolTmp.folioSolicitud)
@@ -559,6 +560,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                 End If
                             End If
                         End If
+                        contNotifica += 1
                     Next
                     'Termina notifica pago
 
