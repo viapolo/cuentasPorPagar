@@ -43,6 +43,16 @@
         '    Me.Close()
         '    CXP_UsuariosTableAdapter.Dispose()
         'End If
+        If CXP_UsuariosBindingSource.Current("idUsuarioProd") <> cmbJefeAlterno.SelectedValue Then
+            If chkJefeAlterno.Checked = True Then
+                CXP_UsuariosBindingSource.Current("jefeAlterno") = cmbJefeAlterno.SelectedValue
+            Else
+                CXP_UsuariosBindingSource.Current("jefeAlterno") = Nothing
+            End If
+        Else
+            MsgBox("El usuario solicitante no puede ser el mismo que autoriza", MsgBoxStyle.Information, "")
+        End If
+
         cmbUsuarioActual.Enabled = False
             btnAgregarUsuario.Enabled = False
 
@@ -191,5 +201,21 @@
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         CXP_UsuariosBindingSource.Filter = "nombre like '%" & txtBuscar.Text & "%'"
+    End Sub
+
+    Private Sub chkJefeAlterno_CheckedChanged(sender As Object, e As EventArgs) Handles chkJefeAlterno.CheckedChanged
+        If chkJefeAlterno.Checked = True Then
+            gbxJefeAlterno.Enabled = True
+        Else
+            gbxJefeAlterno.Enabled = False
+        End If
+    End Sub
+
+    Private Sub cmbJefeAlterno_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbJefeAlterno.SelectedIndexChanged
+        If cmbJefeAlterno.SelectedValue <> Nothing Then
+            chkJefeAlterno.Checked = True
+        Else
+            chkJefeAlterno.Checked = False
+        End If
     End Sub
 End Class

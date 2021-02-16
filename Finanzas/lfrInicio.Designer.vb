@@ -28,6 +28,7 @@ Partial Class lfrInicio
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(lfrInicio))
         Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.UsernameTextBox = New System.Windows.Forms.TextBox()
         Me.OK = New System.Windows.Forms.Button()
@@ -136,6 +137,7 @@ Partial Class lfrInicio
         Me.Controls.Add(Me.UsernameTextBox)
         Me.Controls.Add(Me.UsernameLabel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "lfrInicio"

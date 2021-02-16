@@ -568,6 +568,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
 
                         If tipoPoliza <> 0 Then
                             If rwDatosSolTmp.idConcepto = 43 Then
+                                'Pago de contratos
                                 taDatosSolicitud.Detalle_Contabilidad_FillBy(dtDatosDetalleSolicitud, rwDatosSolTmp.destinoRecurso, rwDatosSolTmp.importeSolicitado, rwDatosSolTmp.origenRecurso, rwDatosSolTmp.referencia)
                                 If dtDatosDetalleSolicitud.Rows.Count > 0 Then
                                     Dim perImpuesto As Decimal = taDatosAnexos.ScalarQuery_SacaIVAAnexo(rwDatosSolTmp.noContrato)
@@ -575,7 +576,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                         taRegContable.Insert(rwDetalleEvento.ctaCargoPago, rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.serie & " " & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 29, rwDetalleEvento.idConcepto, 2)
                                     Next
                                 End If
-                                'cargo
+                                'Termina pago de contratos
                             Else
                                 taDatosSolicitud.Detalle_Contabilidad_FillBy(dtDatosDetalleSolicitud, rwDatosSolTmp.destinoRecurso, rwDatosSolTmp.importeSolicitado, rwDatosSolTmp.origenRecurso, rwDatosSolTmp.referencia)
                                 If dtDatosDetalleSolicitud.Rows.Count > 0 Then

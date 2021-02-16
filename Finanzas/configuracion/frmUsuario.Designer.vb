@@ -100,6 +100,10 @@ Partial Class frmUsuario
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.CXP_SucursalesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_SucursalesTableAdapter()
         Me.CXP_DepartamentosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_DepartamentosTableAdapter()
+        Me.gbxJefeAlterno = New System.Windows.Forms.GroupBox()
+        Me.cmbJefeAlterno = New System.Windows.Forms.ComboBox()
+        Me.USUARIOBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.chkJefeAlterno = New System.Windows.Forms.CheckBox()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
         MailLabel = New System.Windows.Forms.Label()
@@ -126,6 +130,8 @@ Partial Class frmUsuario
         CType(Me.CXPSucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.gbxJefeAlterno.SuspendLayout()
+        CType(Me.USUARIOBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -364,6 +370,8 @@ Partial Class frmUsuario
         '
         'cmbUsuarioActual
         '
+        Me.cmbUsuarioActual.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmbUsuarioActual.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbUsuarioActual.DataSource = Me.USUARIOBindingSource
         Me.cmbUsuarioActual.DisplayMember = "nombrecompleto"
         Me.cmbUsuarioActual.Enabled = False
@@ -785,11 +793,52 @@ Partial Class frmUsuario
         '
         Me.CXP_DepartamentosTableAdapter.ClearBeforeFill = True
         '
+        'gbxJefeAlterno
+        '
+        Me.gbxJefeAlterno.Controls.Add(Me.cmbJefeAlterno)
+        Me.gbxJefeAlterno.Enabled = False
+        Me.gbxJefeAlterno.Location = New System.Drawing.Point(544, 252)
+        Me.gbxJefeAlterno.Name = "gbxJefeAlterno"
+        Me.gbxJefeAlterno.Size = New System.Drawing.Size(368, 61)
+        Me.gbxJefeAlterno.TabIndex = 34
+        Me.gbxJefeAlterno.TabStop = False
+        Me.gbxJefeAlterno.Text = "Configurar autorizante alterno:"
+        '
+        'cmbJefeAlterno
+        '
+        Me.cmbJefeAlterno.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmbJefeAlterno.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbJefeAlterno.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "jefeAlterno", True))
+        Me.cmbJefeAlterno.DataSource = Me.USUARIOBindingSource1
+        Me.cmbJefeAlterno.DisplayMember = "nombrecompleto"
+        Me.cmbJefeAlterno.FormattingEnabled = True
+        Me.cmbJefeAlterno.Location = New System.Drawing.Point(8, 22)
+        Me.cmbJefeAlterno.Name = "cmbJefeAlterno"
+        Me.cmbJefeAlterno.Size = New System.Drawing.Size(354, 21)
+        Me.cmbJefeAlterno.TabIndex = 1
+        Me.cmbJefeAlterno.ValueMember = "cve_empleado"
+        '
+        'USUARIOBindingSource1
+        '
+        Me.USUARIOBindingSource1.DataMember = "USUARIO"
+        Me.USUARIOBindingSource1.DataSource = Me.DsSeguridad
+        '
+        'chkJefeAlterno
+        '
+        Me.chkJefeAlterno.AutoSize = True
+        Me.chkJefeAlterno.Location = New System.Drawing.Point(525, 255)
+        Me.chkJefeAlterno.Name = "chkJefeAlterno"
+        Me.chkJefeAlterno.Size = New System.Drawing.Size(15, 14)
+        Me.chkJefeAlterno.TabIndex = 0
+        Me.chkJefeAlterno.UseVisualStyleBackColor = True
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1179, 439)
+        Me.Controls.Add(Me.chkJefeAlterno)
+        Me.Controls.Add(Me.gbxJefeAlterno)
         Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.GroupBox3)
@@ -828,6 +877,8 @@ Partial Class frmUsuario
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.gbxJefeAlterno.ResumeLayout(False)
+        CType(Me.USUARIOBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -903,4 +954,8 @@ Partial Class frmUsuario
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents CXPDepartamentosBindingSource As BindingSource
     Friend WithEvents CXP_DepartamentosTableAdapter As dsProductionTableAdapters.CXP_DepartamentosTableAdapter
+    Friend WithEvents gbxJefeAlterno As GroupBox
+    Friend WithEvents chkJefeAlterno As CheckBox
+    Friend WithEvents cmbJefeAlterno As ComboBox
+    Friend WithEvents USUARIOBindingSource1 As BindingSource
 End Class

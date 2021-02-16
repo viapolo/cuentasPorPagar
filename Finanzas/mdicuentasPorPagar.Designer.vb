@@ -24,6 +24,7 @@ Partial Class mdicuentasPorPagar
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mdicuentasPorPagar))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.ConfiguraciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -54,6 +55,7 @@ Partial Class mdicuentasPorPagar
         Me.PeriodosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarPDFExpedienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NotificacionesDePagoPorProveedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FacturasElctrónicasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GastosToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -97,7 +99,6 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
-        Me.NotificacionesDePagoPorProveedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -319,6 +320,13 @@ Partial Class mdicuentasPorPagar
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Name = "GenerarPDFDeExpedienteDigitalToolStripMenuItem"
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Size = New System.Drawing.Size(274, 22)
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Text = "Generar PDF de Expediente Digital"
+        '
+        'NotificacionesDePagoPorProveedorToolStripMenuItem
+        '
+        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Enabled = False
+        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Name = "NotificacionesDePagoPorProveedorToolStripMenuItem"
+        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Text = "Notificaciones de pago por proveedor"
         '
         'ConsultasToolStripMenuItem
         '
@@ -611,13 +619,6 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
-        'NotificacionesDePagoPorProveedorToolStripMenuItem
-        '
-        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Enabled = False
-        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Name = "NotificacionesDePagoPorProveedorToolStripMenuItem"
-        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Size = New System.Drawing.Size(274, 22)
-        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Text = "Notificaciones de pago por proveedor"
-        '
         'mdicuentasPorPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -628,6 +629,7 @@ Partial Class mdicuentasPorPagar
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
         Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "mdicuentasPorPagar"
