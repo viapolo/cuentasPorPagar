@@ -1,4 +1,5 @@
 ﻿Public Class frmPeridos
+
     Private Sub CXP_PeriodosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles CXP_PeriodosBindingNavigatorSaveItem.Click
         CXP_PeriodosBindingSource.Current("idEmpresa") = varGlobal_IdEmpresa
         Me.Validate()
@@ -20,17 +21,39 @@
         oMCCol.Width = 200
         oMCCol.HeaderText = "Inicio"
         oMCCol.DataPropertyName = "inicioPeriodo"
+        oMCCol.Visible = False
         Me.CXP_PeriodosDataGridView.Columns.Add(oMCCol)
 
         Dim oMCColF As ColumnaPersonalizada = New ColumnaPersonalizada()
         oMCColF.Width = 200
         oMCColF.HeaderText = "Fin"
         oMCColF.DataPropertyName = "finPeriodo"
+        oMCColF.Visible = False
         Me.CXP_PeriodosDataGridView.Columns.Add(oMCColF)
+
+
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
+
+
+    Private Sub CXP_PeriodosDataGridView_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles CXP_PeriodosDataGridView.DataBindingComplete
+        actualizaGrid()
+    End Sub
+
+    Public Sub actualizaGrid()
+        For Each rw As DataGridViewRow In CXP_PeriodosDataGridView.Rows
+            If rw.Cells.Item("estatus").Value = 31 Then
+                rw.ReadOnly = False
+                rw.DefaultCellStyle.ForeColor = Color.Green
+            Else
+                rw.ReadOnly = True
+                rw.DefaultCellStyle.ForeColor = Color.Red
+            End If
+        Next
+    End Sub
+
 End Class
 

@@ -184,6 +184,11 @@ Public Class mdicuentasPorPagar
             Next
         End If
 
+        If varGlobal_IdEmpresa = 24 Then
+            Me.Icon = My.Resources.icono_arf
+            Me.BackgroundImage = My.Resources.logoArfin
+        End If
+
         contadorActividad = 0
 
         'frmAccesoDirecto.MdiParent = Me
@@ -816,6 +821,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmNotificacionesPago.MdiParent = Me
         frmNotificacionesPago.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub PolizasDeEgresoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PolizasDeEgresoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmPolizasEgresos.MdiParent = Me
+        frmPolizasEgresos.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

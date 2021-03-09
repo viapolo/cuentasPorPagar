@@ -22,6 +22,7 @@
             mdiComprobacionesDetalle.idComprobacion = Vw_CXP_MisComprobacionesDataGridView.Item("idFolioComprobacion", e.RowIndex).Value
             mdiComprobacionesDetalle.idSolicitud = Vw_CXP_MisComprobacionesDataGridView.Item("idFolioSolicitud", e.RowIndex).Value
             mdiComprobacionesDetalle.impPendiXComprobar = Vw_CXP_MisComprobacionesDataGridView.Item("saldoSolicitud", e.RowIndex).Value
+            mdiComprobacionesDetalle.nombreDeudor = Vw_CXP_MisComprobacionesDataGridView.Item("razonSocial", e.RowIndex).Value
             mdiComprobacionesDetalle.Show()
 
             Me.Cursor = Cursors.Default

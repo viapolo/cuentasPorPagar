@@ -99,6 +99,7 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
+        Me.PolizasDeEgresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -286,7 +287,7 @@ Partial Class mdicuentasPorPagar
         '
         'ContabilidadToolStripMenuItem1
         '
-        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem, Me.GenerarPDFExpedienteToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.DiariosToolStripMenuItem1, Me.ValidadorCFDIToolStripMenuItem, Me.FacturasPendientesDePagoToolStripMenuItem, Me.EventosContablesToolStripMenuItem})
+        Me.ContabilidadToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPólizasToolStripMenuItem, Me.PeriodosToolStripMenuItem, Me.GenerarPDFExpedienteToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.DiariosToolStripMenuItem1, Me.ValidadorCFDIToolStripMenuItem, Me.FacturasPendientesDePagoToolStripMenuItem, Me.EventosContablesToolStripMenuItem, Me.PolizasDeEgresoToolStripMenuItem})
         Me.ContabilidadToolStripMenuItem1.Enabled = False
         Me.ContabilidadToolStripMenuItem1.Name = "ContabilidadToolStripMenuItem1"
         Me.ContabilidadToolStripMenuItem1.Size = New System.Drawing.Size(87, 20)
@@ -619,11 +620,18 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
+        'PolizasDeEgresoToolStripMenuItem
+        '
+        Me.PolizasDeEgresoToolStripMenuItem.Enabled = False
+        Me.PolizasDeEgresoToolStripMenuItem.Name = "PolizasDeEgresoToolStripMenuItem"
+        Me.PolizasDeEgresoToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.PolizasDeEgresoToolStripMenuItem.Text = "Pólizas de egreso"
+        '
         'mdicuentasPorPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.cuentasPorPagar.My.Resources.Resources.LOGOpeque2
+        Me.BackgroundImage = Global.cuentasPorPagar.My.Resources.Resources.logo_small
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(770, 315)
         Me.Controls.Add(Me.MenuStrip)
@@ -717,4 +725,5 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents AplicacionesEnBlancoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerarPólizasFaltantesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NotificacionesDePagoPorProveedorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PolizasDeEgresoToolStripMenuItem As ToolStripMenuItem
 End Class

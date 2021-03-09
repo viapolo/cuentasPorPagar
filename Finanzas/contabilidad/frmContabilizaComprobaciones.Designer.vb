@@ -51,7 +51,7 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.saldoSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.razonSocial = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -195,7 +195,7 @@ Partial Class frmContabilizaComprobaciones
         Me.Vw_CXP_MisComprobacionesDataGridView.AllowUserToOrderColumns = True
         Me.Vw_CXP_MisComprobacionesDataGridView.AutoGenerateColumns = False
         Me.Vw_CXP_MisComprobacionesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_CXP_MisComprobacionesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioComprobacion, Me.idFolioSolicitud, Me.DataGridViewTextBoxColumn3, Me.saldoSolicitud, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11})
+        Me.Vw_CXP_MisComprobacionesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioComprobacion, Me.idFolioSolicitud, Me.DataGridViewTextBoxColumn3, Me.saldoSolicitud, Me.DataGridViewTextBoxColumn4, Me.razonSocial, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11})
         Me.Vw_CXP_MisComprobacionesDataGridView.DataSource = Me.Vw_CXP_MisComprobacionesBindingSource
         Me.Vw_CXP_MisComprobacionesDataGridView.Location = New System.Drawing.Point(12, 28)
         Me.Vw_CXP_MisComprobacionesDataGridView.Name = "Vw_CXP_MisComprobacionesDataGridView"
@@ -288,14 +288,14 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Width = 88
         '
-        'DataGridViewTextBoxColumn5
+        'razonSocial
         '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "razonSocial"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Beneficiario"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 87
+        Me.razonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.razonSocial.DataPropertyName = "razonSocial"
+        Me.razonSocial.HeaderText = "Beneficiario"
+        Me.razonSocial.Name = "razonSocial"
+        Me.razonSocial.ReadOnly = True
+        Me.razonSocial.Width = 87
         '
         'DataGridViewTextBoxColumn6
         '
@@ -390,7 +390,7 @@ Partial Class frmContabilizaComprobaciones
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents saldoSolicitud As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents razonSocial As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn

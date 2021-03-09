@@ -3,6 +3,7 @@ Public Class frmDetalleComprobaciones
     Public idComprobacion As Integer
     Public idSolicitud As Integer
     Public impPendiXComprobar As Decimal
+    Public nombreDeudor As String
     Dim posRow As Integer
     Dim posCol As Integer
     Dim taPeriodos As New dsContabilidadTableAdapters.CXP_PeriodosTableAdapter

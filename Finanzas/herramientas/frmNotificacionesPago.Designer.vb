@@ -25,12 +25,9 @@ Partial Class frmNotificacionesPago
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNotificacionesPago))
         Me.dgvNotificaProveedores = New System.Windows.Forms.DataGridView()
-        Me.CXPProveedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsHerramientas = New cuentasPorPagar.dsHerramientas()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.txtBuscar = New System.Windows.Forms.TextBox()
-        Me.CXP_ProveedoresTableAdapter = New cuentasPorPagar.dsHerramientasTableAdapters.CXP_ProveedoresTableAdapter()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -44,25 +41,28 @@ Partial Class frmNotificacionesPago
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.TableAdapterManager = New cuentasPorPagar.dsHerramientasTableAdapters.TableAdapterManager()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.razonSocial = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.notificaPago = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.adjuntaComprobante = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.notificaContabilidad = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.RfcDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActivoSDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CXPProveedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsHerramientas = New cuentasPorPagar.dsHerramientas()
+        Me.CXP_ProveedoresTableAdapter = New cuentasPorPagar.dsHerramientasTableAdapters.CXP_ProveedoresTableAdapter()
+        Me.TableAdapterManager = New cuentasPorPagar.dsHerramientasTableAdapters.TableAdapterManager()
         Me.AutorizadoSDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActivoSDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RfcDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.notificaContabilidad = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.adjuntaComprobante = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.notificaPago = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.razonSocial = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.IdProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvNotificaProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CXPProveedoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsHerramientas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator1.SuspendLayout()
+        CType(Me.CXPProveedoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsHerramientas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvNotificaProveedores
@@ -78,16 +78,6 @@ Partial Class frmNotificacionesPago
         Me.dgvNotificaProveedores.Name = "dgvNotificaProveedores"
         Me.dgvNotificaProveedores.Size = New System.Drawing.Size(976, 392)
         Me.dgvNotificaProveedores.TabIndex = 0
-        '
-        'CXPProveedoresBindingSource
-        '
-        Me.CXPProveedoresBindingSource.DataMember = "CXP_Proveedores"
-        Me.CXPProveedoresBindingSource.DataSource = Me.DsHerramientas
-        '
-        'DsHerramientas
-        '
-        Me.DsHerramientas.DataSetName = "dsHerramientas"
-        Me.DsHerramientas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'btnSalir
         '
@@ -113,10 +103,6 @@ Partial Class frmNotificacionesPago
         Me.txtBuscar.Name = "txtBuscar"
         Me.txtBuscar.Size = New System.Drawing.Size(258, 20)
         Me.txtBuscar.TabIndex = 3
-        '
-        'CXP_ProveedoresTableAdapter
-        '
-        Me.CXP_ProveedoresTableAdapter.ClearBeforeFill = True
         '
         'BindingNavigator1
         '
@@ -232,15 +218,6 @@ Partial Class frmNotificacionesPago
         Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CorreosProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Me.CXP_ProveedoresTableAdapter
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsHerramientasTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "idProveedor"
@@ -278,12 +255,69 @@ Partial Class frmNotificacionesPago
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         '
-        'IdProveedorDataGridViewTextBoxColumn
+        'CXPProveedoresBindingSource
         '
-        Me.IdProveedorDataGridViewTextBoxColumn.DataPropertyName = "idProveedor"
-        Me.IdProveedorDataGridViewTextBoxColumn.HeaderText = "Id"
-        Me.IdProveedorDataGridViewTextBoxColumn.Name = "IdProveedorDataGridViewTextBoxColumn"
-        Me.IdProveedorDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CXPProveedoresBindingSource.DataMember = "CXP_Proveedores"
+        Me.CXPProveedoresBindingSource.DataSource = Me.DsHerramientas
+        '
+        'DsHerramientas
+        '
+        Me.DsHerramientas.DataSetName = "dsHerramientas"
+        Me.DsHerramientas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_ProveedoresTableAdapter
+        '
+        Me.CXP_ProveedoresTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CorreosProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Me.CXP_ProveedoresTableAdapter
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsHerramientasTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'AutorizadoSDataGridViewTextBoxColumn
+        '
+        Me.AutorizadoSDataGridViewTextBoxColumn.DataPropertyName = "autorizadoS"
+        Me.AutorizadoSDataGridViewTextBoxColumn.HeaderText = "Autorizado"
+        Me.AutorizadoSDataGridViewTextBoxColumn.Name = "AutorizadoSDataGridViewTextBoxColumn"
+        Me.AutorizadoSDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ActivoSDataGridViewTextBoxColumn
+        '
+        Me.ActivoSDataGridViewTextBoxColumn.DataPropertyName = "activoS"
+        Me.ActivoSDataGridViewTextBoxColumn.HeaderText = "Activo"
+        Me.ActivoSDataGridViewTextBoxColumn.Name = "ActivoSDataGridViewTextBoxColumn"
+        Me.ActivoSDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RfcDataGridViewTextBoxColumn
+        '
+        Me.RfcDataGridViewTextBoxColumn.DataPropertyName = "rfc"
+        Me.RfcDataGridViewTextBoxColumn.HeaderText = "RFC"
+        Me.RfcDataGridViewTextBoxColumn.Name = "RfcDataGridViewTextBoxColumn"
+        Me.RfcDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'notificaContabilidad
+        '
+        Me.notificaContabilidad.DataPropertyName = "notificaContabilidad"
+        Me.notificaContabilidad.HeaderText = "Notifica Contabilidad"
+        Me.notificaContabilidad.Name = "notificaContabilidad"
+        Me.notificaContabilidad.Width = 80
+        '
+        'adjuntaComprobante
+        '
+        Me.adjuntaComprobante.DataPropertyName = "adjuntaComprobante"
+        Me.adjuntaComprobante.HeaderText = "Adjunta Comprobante"
+        Me.adjuntaComprobante.Name = "adjuntaComprobante"
+        '
+        'notificaPago
+        '
+        Me.notificaPago.DataPropertyName = "notificaPago"
+        Me.notificaPago.HeaderText = "Notifica Pago"
+        Me.notificaPago.Name = "notificaPago"
+        Me.notificaPago.Width = 80
         '
         'razonSocial
         '
@@ -295,46 +329,12 @@ Partial Class frmNotificacionesPago
         Me.razonSocial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.razonSocial.Width = 300
         '
-        'notificaPago
+        'IdProveedorDataGridViewTextBoxColumn
         '
-        Me.notificaPago.DataPropertyName = "notificaPago"
-        Me.notificaPago.HeaderText = "Notifica Pago"
-        Me.notificaPago.Name = "notificaPago"
-        Me.notificaPago.Width = 80
-        '
-        'adjuntaComprobante
-        '
-        Me.adjuntaComprobante.DataPropertyName = "adjuntaComprobante"
-        Me.adjuntaComprobante.HeaderText = "Adjunta Comprobante"
-        Me.adjuntaComprobante.Name = "adjuntaComprobante"
-        '
-        'notificaContabilidad
-        '
-        Me.notificaContabilidad.DataPropertyName = "notificaContabilidad"
-        Me.notificaContabilidad.HeaderText = "Notifica Contabilidad"
-        Me.notificaContabilidad.Name = "notificaContabilidad"
-        Me.notificaContabilidad.Width = 80
-        '
-        'RfcDataGridViewTextBoxColumn
-        '
-        Me.RfcDataGridViewTextBoxColumn.DataPropertyName = "rfc"
-        Me.RfcDataGridViewTextBoxColumn.HeaderText = "RFC"
-        Me.RfcDataGridViewTextBoxColumn.Name = "RfcDataGridViewTextBoxColumn"
-        Me.RfcDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ActivoSDataGridViewTextBoxColumn
-        '
-        Me.ActivoSDataGridViewTextBoxColumn.DataPropertyName = "activoS"
-        Me.ActivoSDataGridViewTextBoxColumn.HeaderText = "Activo"
-        Me.ActivoSDataGridViewTextBoxColumn.Name = "ActivoSDataGridViewTextBoxColumn"
-        Me.ActivoSDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'AutorizadoSDataGridViewTextBoxColumn
-        '
-        Me.AutorizadoSDataGridViewTextBoxColumn.DataPropertyName = "autorizadoS"
-        Me.AutorizadoSDataGridViewTextBoxColumn.HeaderText = "Autorizado"
-        Me.AutorizadoSDataGridViewTextBoxColumn.Name = "AutorizadoSDataGridViewTextBoxColumn"
-        Me.AutorizadoSDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdProveedorDataGridViewTextBoxColumn.DataPropertyName = "idProveedor"
+        Me.IdProveedorDataGridViewTextBoxColumn.HeaderText = "Id"
+        Me.IdProveedorDataGridViewTextBoxColumn.Name = "IdProveedorDataGridViewTextBoxColumn"
+        Me.IdProveedorDataGridViewTextBoxColumn.ReadOnly = True
         '
         'frmNotificacionesPago
         '
@@ -350,11 +350,11 @@ Partial Class frmNotificacionesPago
         Me.Name = "frmNotificacionesPago"
         Me.Text = "Notificaciones de pago a proveedores"
         CType(Me.dgvNotificaProveedores, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CXPProveedoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsHerramientas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator1.ResumeLayout(False)
         Me.BindingNavigator1.PerformLayout()
+        CType(Me.CXPProveedoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsHerramientas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

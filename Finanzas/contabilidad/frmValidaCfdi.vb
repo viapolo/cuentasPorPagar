@@ -24,6 +24,16 @@ Public Class frmValidaCfdi
                 If nombreArchivo(1).ToLower = "xml" Then
                     If File.Exists(nombreArchivo(0) & ".pdf") Then
                         If leerXml.LeeXML(archivos, "RFCR") = varGlobal_rfcEmpresa Then
+                            Dim xml As XmlDocument = New XmlDocument
+                            Dim ns As XmlNamespaceManager = New XmlNamespaceManager(xml.NameTable)
+                            ns.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
+
+                            xml.Load(archivos)
+                            Dim node As XmlNode = xml.DocumentElement.SelectSingleNode("descendant::cfdi:Addenda", ns)
+
+                            node.ParentNode.RemoveChild(node)
+                            xml.Save(archivos)
+
                             Dim resXSD As validaXSD = New validaXSD
                             Dim var As String = "Sin errores en XSD"
                             Try
@@ -71,6 +81,7 @@ Public Class frmValidaCfdi
                     End If
                 End If
             Next
+            MsgBox("Proceso de validación terminado correctamente...", MsgBoxStyle.Information, "")
         Else
             MsgBox("Proceso cancelado", MsgBoxStyle.Information, "")
         End If

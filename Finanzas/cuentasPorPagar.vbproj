@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>56</ApplicationRevision>
+    <ApplicationRevision>81</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -81,7 +81,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo-small.ico</ApplicationIcon>
+    <ApplicationIcon>icono_2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -360,6 +360,12 @@
     <Compile Include="contabilidad\frmDetalleReembolsos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmDetPolizasEgresos.Designer.vb">
+      <DependentUpon>frmDetPolizasEgresos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetPolizasEgresos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmFacturasPendientes.Designer.vb">
       <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
     </Compile>
@@ -388,6 +394,12 @@
       <DependentUpon>frmPeridos.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmPeridos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmPolizasEgresos.Designer.vb">
+      <DependentUpon>frmPolizasEgresos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmPolizasEgresos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmPolizasMvtos.Designer.vb">
@@ -789,6 +801,9 @@
     <EmbeddedResource Include="contabilidad\frmDetalleReembolsos.resx">
       <DependentUpon>frmDetalleReembolsos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetPolizasEgresos.resx">
+      <DependentUpon>frmDetPolizasEgresos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmFacturasPendientes.resx">
       <DependentUpon>frmFacturasPendientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -803,6 +818,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmPeridos.resx">
       <DependentUpon>frmPeridos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmPolizasEgresos.resx">
+      <DependentUpon>frmPolizasEgresos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmPolizasMvtos.resx">
       <DependentUpon>frmPolizasMvtos.vb</DependentUpon>
@@ -1135,10 +1153,14 @@
     <None Include="Resources\tenor.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icono_2.ico" />
     <Content Include="logo-small.ico" />
     <Content Include="Resources\Confirm.PNG" />
+    <None Include="Resources\icono_arf.ico" />
     <Content Include="Resources\Info.PNG" />
     <Content Include="Resources\Lock.PNG" />
+    <None Include="Resources\logo-small.png" />
+    <Content Include="Resources\logoArfin.png" />
     <Content Include="Resources\monitor.ico" />
     <Content Include="Resources\NotAllowed.PNG" />
     <Content Include="Resources\UnderConstruction.PNG" />

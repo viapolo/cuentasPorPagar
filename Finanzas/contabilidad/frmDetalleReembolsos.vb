@@ -5,6 +5,7 @@ Public Class frmDetalleReembolsos
     Public fechaSolicitud As Date
     Public fPago As String
     Public monedaPago As String
+    Public nombreDeudor As String
     Dim taDetalleReembolsos As New dsContabilidadTableAdapters.Vw_CXP_AutorizacionesTableAdapter
     Dim dtDetalleReembolsos As New dsContabilidad.Vw_CXP_AutorizacionesDataTable
     Dim taPagosTesoreria As New dsContabilidadTableAdapters.CXP_PagosTesoreriaTableAdapter
@@ -58,6 +59,8 @@ Public Class frmDetalleReembolsos
 
         For Each rwComprobaciongts As dsContabilidad.Vw_CXP_AutorizacionesRow In dtDetalleReembolsos.Rows
             Dim contador As Integer = 0
+            descripcion = ""
+            solicitante = ""
             If rwComprobaciongts.folio = "ND" Then
                 dgvDetalleReembolsos.Rows.Add("", "", rwComprobaciongts.totalPagadoTC, 0, "REEMB GTS S-" & idSolicitud, "S-" & idSolicitud & " " & rwComprobaciongts.decripcion, "ND")
                 totalCargoNDed += rwComprobaciongts.totalPagadoTC
@@ -107,7 +110,7 @@ Public Class frmDetalleReembolsos
             solicitante = rwComprobaciongts.razonSocial
 
         Next
-        dgvDetalleReembolsos.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "REEMB GTS S-" & idSolicitud & " ", solicitante & " " & descripcion, "ND")
+        dgvDetalleReembolsos.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed, "REEMB GTS S-" & idSolicitud & " ", nombreDeudor & " " & descripcion, "ND")
         dgvDetalleReembolsos.Focus()
     End Sub
 

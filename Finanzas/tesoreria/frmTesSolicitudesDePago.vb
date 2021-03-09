@@ -310,6 +310,8 @@ Public Class frmTesSolicitudesDePago
     Private Function lecturGridTxt(ByVal idBancoSat As String, ByVal consulta As Boolean, ByVal fechaProceso As Date)
         Dim taVwAutorizaciones As New dsTesoreriaTableAdapters.Vw_CXP_AutorizacionesTableAdapter
         Dim taCuentasBancarias As New dsTesoreriaTableAdapters.CXP_CuentasBancariasTableAdapter
+        Dim idBancoXEmpresa As Integer
+        If varGlobal_IdEmpresa = 24 Then idBancoXEmpresa = 1 Else idBancoXEmpresa = 2
 
         Dim texto As String = ""
         For Each rows As DataGridViewRow In Vw_CXP_SugPagoTesoreriaDataGridView.Rows
@@ -395,10 +397,10 @@ Public Class frmTesSolicitudesDePago
                                 End If
                             End If
                             If consulta = False Then
-                                Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(idBancoXEmpresa)
                                 taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
                                 taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
-                                taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(idBancoXEmpresa)
                                 texto = texto & vbCrLf
                             End If
                         Else
@@ -436,10 +438,10 @@ Public Class frmTesSolicitudesDePago
                                     End If
                                 End If
                                 If consulta = False Then
-                                    Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                    Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(idBancoXEmpresa)
                                     taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
                                     taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
-                                    taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                    taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(idBancoXEmpresa)
                                     texto = texto & vbCrLf
                                 End If
                             End If
@@ -488,10 +490,10 @@ Public Class frmTesSolicitudesDePago
                                 End If
                             End If
                             If consulta = False Then
-                                Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(idBancoXEmpresa)
                                 taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
                                 taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
-                                taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(idBancoXEmpresa)
                                 texto = texto & vbCrLf
                             End If
                         Else
@@ -526,10 +528,10 @@ Public Class frmTesSolicitudesDePago
                                     End If
                                 End If
                                 If consulta = False Then
-                                    Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(rows.Cells("bancoOrdenante").Value)
+                                    Dim folioCheque As Integer = taCuentasBancarias.ConsultaChequeActual_ScalarQuery(idBancoXEmpresa)
                                     taPagos.CambiaEstatus_UpdateQuery("En Proceso de Pago", rows.Cells("folioSolicitud").Value, "No Pagada", rows.Cells("idEmpresa").Value)
                                     taPagosTesoreria.CambiaEstatus_UpdateQuery(37, fechaProceso, Eliminar_Acentos(referencia.Trim), rows.Cells("bancoOrdenante").Value, folioCheque, rows.Cells("tipoSolicitud").Value, rows.Cells("folioSolicitud").Value, 33, rows.Cells("idEmpresa").Value)
-                                    taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(rows.Cells("bancoOrdenante").Value)
+                                    taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(idBancoXEmpresa)
                                     texto = texto & vbCrLf
                                 End If
                             End If
@@ -637,37 +639,6 @@ Public Class frmTesSolicitudesDePago
             Me.Cursor = Cursors.Default
         ElseIf e.ColumnIndex = 12 Then
             actualizaImporte()
-            'ElseIf e.ColumnIndex = 17 Then
-            '    If Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value = "" Then
-            '        Dim mdiCargPagNoCie As New frmCargPagNoCie
-            '        Dim mdiSolicitudesPago As New mdicuentasPorPagar
-            '        Me.Enabled = False
-            '        mdiSolicitudesPago = MdiParent
-            '        mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
-            '        Me.Cursor = Cursors.WaitCursor
-            '        mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
-            '        mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
-            '        mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
-            '        mdiCargPagNoCie.referencia = Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", e.RowIndex).Value
-            '        mdiCargPagNoCie.tdc = "TDC"
-            '        mdiCargPagNoCie.Show()
-            '        Me.Cursor = Cursors.Default
-            '    ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value <> "AVI" And Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value <> "" Then
-            '        Dim mdiCargPagNoCie As New frmCargPagNoCie
-            '        Dim mdiSolicitudesPago As New mdicuentasPorPagar
-            '        Me.Enabled = False
-            '        mdiSolicitudesPago = MdiParent
-            '        mdiCargPagNoCie.MdiParent = mdiSolicitudesPago
-            '        Me.Cursor = Cursors.WaitCursor
-            '        mdiCargPagNoCie.folioSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value
-            '        mdiCargPagNoCie.tipoSolicitud = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
-            '        mdiCargPagNoCie.idBanco = Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoOrdenante", e.RowIndex).Value
-            '        mdiCargPagNoCie.tdc = "CIE"
-            '        mdiCargPagNoCie.Show()
-            '        Me.Cursor = Cursors.Default
-            '    Else
-            '        MsgBox("El pago es Avio", MsgBoxStyle.Information, "")
-            '    End If
         End If
     End Sub
 
@@ -759,9 +730,6 @@ Public Class frmTesSolicitudesDePago
     End Sub
 
     Private Sub Vw_CXP_SugPagoTesoreriaDataGridView_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles Vw_CXP_SugPagoTesoreriaDataGridView.CellMouseDown
-        'If e.Button = MouseButtons.Right Then
-        '    ShowMsg("Cancelar procesod de pago", "El folio: " & Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value & " - " & Vw_CXP_SugPagoTesoreriaDataGridView.Item("folioSolicitud", e.RowIndex).Value & " está por cancelarse, ¿Confirma proceso?", ShowMsgImage.Confirm, ShowMsgButtons.YesNoCancel)
-        'End If
         idSolPagoG = Vw_CXP_SugPagoTesoreriaDataGridView.Item(0, e.RowIndex).Value
         tipoSolicitudG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("tipoSolicitud", e.RowIndex).Value
         convenioG = Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", e.RowIndex).Value
