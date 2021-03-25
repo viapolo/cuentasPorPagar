@@ -58,14 +58,14 @@
                     efecto = "TRA"
                     mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
                     tipo = "Federal"
-                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(cmbConcepto.SelectedValue, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S", rowsCfdi.tasaOCuota)), cmbProveedor.SelectedValue, 0, mPago, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2)
+                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(cmbConcepto.SelectedValue, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S", rowsCfdi.tasaOCuota)), cmbProveedor.SelectedValue, 0, mPago, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2, "CXP")
                 End If
 
                 If rowsCfdi.mRet <> "X" Then
                     efecto = "RET"
                     mPago = Math.Round(CDec(Val(rowsCfdi.mRet) * percentPago), 2)
                     tipo = "Federal"
-                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(cmbConcepto.SelectedValue, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S", rowsCfdi.tasaOCuota)), cmbProveedor.SelectedValue, mPago, 0, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2)
+                    taRegContable.Insert(CDec(taConceptos.ObtCtaImpTras_ScalarQuery(cmbConcepto.SelectedValue, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S", rowsCfdi.tasaOCuota)), cmbProveedor.SelectedValue, mPago, 0, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2, "CXP")
                 End If
 
                 If contador = 0 Then
@@ -73,14 +73,14 @@
                         efecto = "LOC"
                         mPago = Math.Round(CDec(Val(rowsCfdi.mLocTra) * percentPago), 2)
                         tipo = "Local"
-                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(cmbConcepto.SelectedValue, tipo, "TRA", "S")), cmbProveedor.SelectedValue, mPago, 0, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2)
+                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(cmbConcepto.SelectedValue, tipo, "TRA", "S")), cmbProveedor.SelectedValue, mPago, 0, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2, "CXP")
                     End If
 
                     If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
                         efecto = "LOC"
                         mPago = Math.Round(CDec(Val(rowsCfdi.mLocRet) * percentPago), 2)
                         tipo = "Local"
-                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(cmbConcepto.SelectedValue, tipo, "RET", "S")), cmbProveedor.SelectedValue, mPago, 0, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2)
+                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpLocal_ScalarQuery(cmbConcepto.SelectedValue, tipo, "RET", "S")), cmbProveedor.SelectedValue, mPago, 0, txtRfc.Text, "F-" & rowsCfdi.serie & " " & rowsCfdi.folio & " " & txtDescripcion.Text.Trim, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rowsCfdi.uuid, folioSolicitud, fechaHorActual, 29, cmbConcepto.SelectedValue, 2, "CXP")
                     End If
                 End If
                 contador += 1

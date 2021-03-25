@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>81</ApplicationRevision>
+    <ApplicationRevision>90</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -180,6 +180,12 @@
       <DependentUpon>frmCuentasBancarias.vb</DependentUpon>
     </Compile>
     <Compile Include="catalogos\frmCuentasBancarias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="catalogos\frmCuentasBanco.Designer.vb">
+      <DependentUpon>frmCuentasBanco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\frmCuentasBanco.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="catalogos\frmDocumentosProv.Designer.vb">
@@ -595,6 +601,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="readXML_CFDI_class.vb" />
+    <Compile Include="tesoreria\dsTesoreria.vb">
+      <DependentUpon>dsTesoreria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="tesoreria\frmBancos.Designer.vb">
       <DependentUpon>frmBancos.vb</DependentUpon>
     </Compile>
@@ -719,6 +728,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmCuentasBancarias.resx">
       <DependentUpon>frmCuentasBancarias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="catalogos\frmCuentasBanco.resx">
+      <DependentUpon>frmCuentasBanco.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="catalogos\frmDocumentosProv.resx">
       <DependentUpon>frmDocumentosProv.vb</DependentUpon>

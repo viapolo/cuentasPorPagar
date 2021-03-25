@@ -31,52 +31,54 @@ Public Class frmValidaCfdi
                             xml.Load(archivos)
                             Dim node As XmlNode = xml.DocumentElement.SelectSingleNode("descendant::cfdi:Addenda", ns)
 
-                            node.ParentNode.RemoveChild(node)
-                            xml.Save(archivos)
+                            If Not (node Is Nothing) Then
+                                node.ParentNode.RemoveChild(node)
+                                xml.Save(archivos)
+                            End If
 
                             Dim resXSD As validaXSD = New validaXSD
-                            Dim var As String = "Sin errores en XSD"
-                            Try
-                                'valida estructura XSD
-                                resXSD.LoadValidatedXmlDocument(archivos, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
-                                resXSD.LoadValidatedXDocument(archivos, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
-                                resXSD.LoadXml(archivos, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
-                                'guarda archivos válidos en servidor
-                                If var = "Sin errores en XSD" Then
-                                    If leerXml.LeeXML(archivos, "RFCR") = "SAR951230N5A" Then
-                                        If Directory.Exists(My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day)) Then
-                                            File.Copy(archivos, My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(archivos, My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                Dim var As String = "Sin errores en XSD"
+                                Try
+                                    'valida estructura XSD
+                                    resXSD.LoadValidatedXmlDocument(archivos, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
+                                    resXSD.LoadValidatedXDocument(archivos, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
+                                    resXSD.LoadXml(archivos, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
+                                    'guarda archivos válidos en servidor
+                                    If var = "Sin errores en XSD" Then
+                                        If leerXml.LeeXML(archivos, "RFCR") = "SAR951230N5A" Then
+                                            If Directory.Exists(My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day)) Then
+                                                File.Copy(archivos, My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(archivos, My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                            Else
+                                                Directory.CreateDirectory(My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day))
+                                                File.Copy(archivos, My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(archivos, My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                            End If
                                         Else
-                                            Directory.CreateDirectory(My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day))
-                                            File.Copy(archivos, My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(archivos, My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addArfinValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
-                                        End If
-                                    Else
-                                        If Directory.Exists(My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day)) Then
-                                            File.Copy(archivos, My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(archivos, My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
-                                        Else
-                                            Directory.CreateDirectory(My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day))
-                                            File.Copy(archivos, My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(archivos, My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
-                                            File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                            If Directory.Exists(My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day)) Then
+                                                File.Copy(archivos, My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(archivos, My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".pdf", True)
+                                            Else
+                                                Directory.CreateDirectory(My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day))
+                                                File.Copy(archivos, My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(archivos, My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & Date.Now.Year.ToString & "-" & MonthName(Date.Now.Month) & "-" & String.Format("{0:00}", Date.Now.Day) & "\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                                File.Copy(nombreArchivo(0) & ".pdf", My.Settings.addFinagilValida & "Todos\" & leerXml.LeeXML(archivos, "UUID") & ".xml", True)
+                                            End If
                                         End If
                                     End If
-                                End If
-                            Catch ex As Exception
-                                var = ex.ToString
-                            End Try
-                            dgvCfdi.Rows.Add(leerXml.LeeXML(archivos, "Serie"), leerXml.LeeXML(archivos, "Folio"), leerXml.LeeXML(archivos, "UUID"), leerXml.Valida_SAT(leerXml.LeeXML(archivos, "RFCE"), leerXml.LeeXML(archivos, "RFCR"), leerXml.LeeXML(archivos, "Total"), leerXml.LeeXML(archivos, "UUID")), var)
-                        End If
-                    Else
+                                Catch ex As Exception
+                                    var = ex.ToString
+                                End Try
+                                dgvCfdi.Rows.Add(leerXml.LeeXML(archivos, "Serie"), leerXml.LeeXML(archivos, "Folio"), leerXml.LeeXML(archivos, "UUID"), leerXml.Valida_SAT(leerXml.LeeXML(archivos, "RFCE"), leerXml.LeeXML(archivos, "RFCR"), leerXml.LeeXML(archivos, "Total"), leerXml.LeeXML(archivos, "UUID")), var)
+                            End If
+                        Else
                         MsgBox("No existe el PDF correspondiente", MsgBoxStyle.Information, "")
                     End If
                 End If

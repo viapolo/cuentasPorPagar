@@ -71,6 +71,7 @@ Partial Class mdicuentasPorPagar
         Me.ReembolsosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NóminaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AplicacionesEnBlancoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PolizasDeEgresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TesoreríaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PagosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SolicitudesDePagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -99,7 +100,7 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
-        Me.PolizasDeEgresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CuentasBancoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -436,9 +437,16 @@ Partial Class mdicuentasPorPagar
         Me.AplicacionesEnBlancoToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.AplicacionesEnBlancoToolStripMenuItem.Text = "Aplicaciones en blanco"
         '
+        'PolizasDeEgresoToolStripMenuItem
+        '
+        Me.PolizasDeEgresoToolStripMenuItem.Enabled = False
+        Me.PolizasDeEgresoToolStripMenuItem.Name = "PolizasDeEgresoToolStripMenuItem"
+        Me.PolizasDeEgresoToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.PolizasDeEgresoToolStripMenuItem.Text = "Pólizas de egreso"
+        '
         'TesoreríaToolStripMenuItem
         '
-        Me.TesoreríaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PagosToolStripMenuItem, Me.OtrosMovimientosToolStripMenuItem, Me.EstadoDeCuentaToolStripMenuItem, Me.ProveedoresToolStripMenuItem2, Me.CuentasBancariasToolStripMenuItem1})
+        Me.TesoreríaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PagosToolStripMenuItem, Me.OtrosMovimientosToolStripMenuItem, Me.EstadoDeCuentaToolStripMenuItem, Me.ProveedoresToolStripMenuItem2, Me.CuentasBancariasToolStripMenuItem1, Me.CuentasBancoToolStripMenuItem})
         Me.TesoreríaToolStripMenuItem.Enabled = False
         Me.TesoreríaToolStripMenuItem.Name = "TesoreríaToolStripMenuItem"
         Me.TesoreríaToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
@@ -449,7 +457,7 @@ Partial Class mdicuentasPorPagar
         Me.PagosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SolicitudesDePagoToolStripMenuItem, Me.PagosConChequeToolStripMenuItem, Me.TesoreríaToolStripMenuItem1})
         Me.PagosToolStripMenuItem.Enabled = False
         Me.PagosToolStripMenuItem.Name = "PagosToolStripMenuItem"
-        Me.PagosToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.PagosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PagosToolStripMenuItem.Text = "Pagos"
         '
         'SolicitudesDePagoToolStripMenuItem
@@ -478,7 +486,7 @@ Partial Class mdicuentasPorPagar
         Me.OtrosMovimientosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TraspasosToolStripMenuItem, Me.PagoDeFondeosToolStripMenuItem, Me.InversionesToolStripMenuItem})
         Me.OtrosMovimientosToolStripMenuItem.Enabled = False
         Me.OtrosMovimientosToolStripMenuItem.Name = "OtrosMovimientosToolStripMenuItem"
-        Me.OtrosMovimientosToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.OtrosMovimientosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OtrosMovimientosToolStripMenuItem.Text = "Otros movimientos"
         '
         'TraspasosToolStripMenuItem
@@ -507,7 +515,7 @@ Partial Class mdicuentasPorPagar
         Me.EstadoDeCuentaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BancosToolStripMenuItem1})
         Me.EstadoDeCuentaToolStripMenuItem.Enabled = False
         Me.EstadoDeCuentaToolStripMenuItem.Name = "EstadoDeCuentaToolStripMenuItem"
-        Me.EstadoDeCuentaToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.EstadoDeCuentaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.EstadoDeCuentaToolStripMenuItem.Text = "Estado de cuenta"
         '
         'BancosToolStripMenuItem1
@@ -521,14 +529,14 @@ Partial Class mdicuentasPorPagar
         '
         Me.ProveedoresToolStripMenuItem2.Enabled = False
         Me.ProveedoresToolStripMenuItem2.Name = "ProveedoresToolStripMenuItem2"
-        Me.ProveedoresToolStripMenuItem2.Size = New System.Drawing.Size(176, 22)
+        Me.ProveedoresToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
         Me.ProveedoresToolStripMenuItem2.Text = "Proveedores"
         '
         'CuentasBancariasToolStripMenuItem1
         '
         Me.CuentasBancariasToolStripMenuItem1.Enabled = False
         Me.CuentasBancariasToolStripMenuItem1.Name = "CuentasBancariasToolStripMenuItem1"
-        Me.CuentasBancariasToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
+        Me.CuentasBancariasToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.CuentasBancariasToolStripMenuItem1.Text = "Cuentas Bancarias"
         '
         'ToolStripMenuItem1
@@ -620,12 +628,12 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
-        'PolizasDeEgresoToolStripMenuItem
+        'CuentasBancoToolStripMenuItem
         '
-        Me.PolizasDeEgresoToolStripMenuItem.Enabled = False
-        Me.PolizasDeEgresoToolStripMenuItem.Name = "PolizasDeEgresoToolStripMenuItem"
-        Me.PolizasDeEgresoToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
-        Me.PolizasDeEgresoToolStripMenuItem.Text = "Pólizas de egreso"
+        Me.CuentasBancoToolStripMenuItem.Enabled = False
+        Me.CuentasBancoToolStripMenuItem.Name = "CuentasBancoToolStripMenuItem"
+        Me.CuentasBancoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CuentasBancoToolStripMenuItem.Text = "Cuentas - Banco"
         '
         'mdicuentasPorPagar
         '
@@ -726,4 +734,5 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents GenerarPólizasFaltantesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NotificacionesDePagoPorProveedorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PolizasDeEgresoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CuentasBancoToolStripMenuItem As ToolStripMenuItem
 End Class

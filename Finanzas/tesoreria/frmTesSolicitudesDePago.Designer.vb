@@ -26,9 +26,6 @@ Partial Class frmTesSolicitudesDePago
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -37,35 +34,10 @@ Partial Class frmTesSolicitudesDePago
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Vw_CXP_SugPagoTesoreriaDataGridView = New System.Windows.Forms.DataGridView()
-        Me.folioSolicitud = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.estatusPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tipoSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.idEmpresa = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.importeSolicitado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tipar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.moneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.seleccionar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.bancoBeneficiario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cuentaBeneficiaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.clabeBeneficiaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fechaProgPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.convenio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.razonSocial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.formaDePago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.idBancoBen = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.noContrato = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fechaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fechaProceso = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.origenRecurso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmsMenuOpciones = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -106,11 +78,11 @@ Partial Class frmTesSolicitudesDePago
         Me.tssRegistrosSeleccionados = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tssTotalRegistros = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.CxP_CuentasBancariasProvTableAdapter1 = New cuentasPorPagar.dsHerramientasTableAdapters.CXP_CuentasBancariasProvTableAdapter()
         Me.CXPCuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_CXP_SugPagoTesoreriaTableAdapter = New cuentasPorPagar.dsTesoreriaTableAdapters.Vw_CXP_SugPagoTesoreriaTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsTesoreriaTableAdapters.TableAdapterManager()
         Me.CXP_CuentasBancariasTableAdapter = New cuentasPorPagar.dsTesoreriaTableAdapters.CXP_CuentasBancariasTableAdapter()
-        Me.CxP_CuentasBancariasProvTableAdapter1 = New cuentasPorPagar.dsHerramientasTableAdapters.CXP_CuentasBancariasProvTableAdapter()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -133,6 +105,34 @@ Partial Class frmTesSolicitudesDePago
         Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnaPersonalizada1 = New cuentasPorPagar.ColumnaPersonalizada()
+        Me.folioSolicitud = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.estatusPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipoSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idEmpresa = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.importeSolicitado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.moneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.seleccionar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.bancoBeneficiario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cuentaBeneficiaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.clabeBeneficiaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaProgPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.convenio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.razonSocial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.formaDePago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idBancoBen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.noContrato = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaProceso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.origenRecurso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Vw_CXP_SugPagoTesoreriaDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsMenuOpciones.SuspendLayout()
         CType(Me.Vw_CXP_SugPagoTesoreriaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -185,270 +185,6 @@ Partial Class frmTesSolicitudesDePago
         Me.Vw_CXP_SugPagoTesoreriaDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.Vw_CXP_SugPagoTesoreriaDataGridView.Size = New System.Drawing.Size(1224, 375)
         Me.Vw_CXP_SugPagoTesoreriaDataGridView.TabIndex = 2
-        '
-        'folioSolicitud
-        '
-        Me.folioSolicitud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.folioSolicitud.DataPropertyName = "folioSolicitud"
-        Me.folioSolicitud.Frozen = True
-        Me.folioSolicitud.HeaderText = "Folio Solicitud"
-        Me.folioSolicitud.Name = "folioSolicitud"
-        Me.folioSolicitud.ReadOnly = True
-        Me.folioSolicitud.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.folioSolicitud.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.folioSolicitud.Width = 5
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "importe"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridViewTextBoxColumn7.Frozen = True
-        Me.DataGridViewTextBoxColumn7.HeaderText = "importe"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Visible = False
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "ok1"
-        Me.DataGridViewTextBoxColumn20.Frozen = True
-        Me.DataGridViewTextBoxColumn20.HeaderText = "ok1"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        Me.DataGridViewTextBoxColumn20.ReadOnly = True
-        Me.DataGridViewTextBoxColumn20.Visible = False
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "ok2"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "ok2"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        Me.DataGridViewTextBoxColumn21.ReadOnly = True
-        Me.DataGridViewTextBoxColumn21.Visible = False
-        '
-        'DataGridViewTextBoxColumn26
-        '
-        Me.DataGridViewTextBoxColumn26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.DataGridViewTextBoxColumn26.DataPropertyName = "fechaSolicitud"
-        Me.DataGridViewTextBoxColumn26.Frozen = True
-        Me.DataGridViewTextBoxColumn26.HeaderText = "Fecha Solicitud"
-        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
-        Me.DataGridViewTextBoxColumn26.ReadOnly = True
-        Me.DataGridViewTextBoxColumn26.Width = 5
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "estatusSolicitud"
-        Me.DataGridViewTextBoxColumn17.Frozen = True
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Estatus Sol"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.ReadOnly = True
-        Me.DataGridViewTextBoxColumn17.Width = 5
-        '
-        'estatusPago
-        '
-        Me.estatusPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.estatusPago.DataPropertyName = "estatusPago"
-        Me.estatusPago.Frozen = True
-        Me.estatusPago.HeaderText = "estatusPago"
-        Me.estatusPago.Name = "estatusPago"
-        Me.estatusPago.ReadOnly = True
-        Me.estatusPago.Visible = False
-        '
-        'tipoSolicitud
-        '
-        Me.tipoSolicitud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.tipoSolicitud.DataPropertyName = "tipoSolicitud"
-        Me.tipoSolicitud.Frozen = True
-        Me.tipoSolicitud.HeaderText = "Tipo Sol"
-        Me.tipoSolicitud.Name = "tipoSolicitud"
-        Me.tipoSolicitud.ReadOnly = True
-        Me.tipoSolicitud.Width = 5
-        '
-        'idEmpresa
-        '
-        Me.idEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.idEmpresa.DataPropertyName = "idEmpresa"
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.idEmpresa.DefaultCellStyle = DataGridViewCellStyle3
-        Me.idEmpresa.Frozen = True
-        Me.idEmpresa.HeaderText = "idEmpresa"
-        Me.idEmpresa.Name = "idEmpresa"
-        Me.idEmpresa.ReadOnly = True
-        Me.idEmpresa.Visible = False
-        '
-        'importeSolicitado
-        '
-        Me.importeSolicitado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.importeSolicitado.DataPropertyName = "importeSolicitado"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.importeSolicitado.DefaultCellStyle = DataGridViewCellStyle4
-        Me.importeSolicitado.Frozen = True
-        Me.importeSolicitado.HeaderText = "Imp Solicitado"
-        Me.importeSolicitado.Name = "importeSolicitado"
-        Me.importeSolicitado.ReadOnly = True
-        Me.importeSolicitado.Width = 5
-        '
-        'Tipar
-        '
-        Me.Tipar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.Tipar.DataPropertyName = "Tipar"
-        Me.Tipar.Frozen = True
-        Me.Tipar.HeaderText = "C"
-        Me.Tipar.Name = "Tipar"
-        Me.Tipar.ReadOnly = True
-        Me.Tipar.Width = 39
-        '
-        'moneda
-        '
-        Me.moneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.moneda.DataPropertyName = "monedaPago"
-        Me.moneda.Frozen = True
-        Me.moneda.HeaderText = "Moneda"
-        Me.moneda.Name = "moneda"
-        Me.moneda.ReadOnly = True
-        Me.moneda.Width = 5
-        '
-        'seleccionar
-        '
-        Me.seleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.seleccionar.Frozen = True
-        Me.seleccionar.HeaderText = "Seleccionar"
-        Me.seleccionar.Name = "seleccionar"
-        Me.seleccionar.Width = 69
-        '
-        'bancoBeneficiario
-        '
-        Me.bancoBeneficiario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.bancoBeneficiario.Frozen = True
-        Me.bancoBeneficiario.HeaderText = "Banco Beneficiario"
-        Me.bancoBeneficiario.Name = "bancoBeneficiario"
-        Me.bancoBeneficiario.ReadOnly = True
-        Me.bancoBeneficiario.Width = 5
-        '
-        'cuentaBeneficiaria
-        '
-        Me.cuentaBeneficiaria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.cuentaBeneficiaria.Frozen = True
-        Me.cuentaBeneficiaria.HeaderText = "Cuenta Beneficiaria"
-        Me.cuentaBeneficiaria.Name = "cuentaBeneficiaria"
-        Me.cuentaBeneficiaria.ReadOnly = True
-        Me.cuentaBeneficiaria.Width = 5
-        '
-        'clabeBeneficiaria
-        '
-        Me.clabeBeneficiaria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.clabeBeneficiaria.Frozen = True
-        Me.clabeBeneficiaria.HeaderText = "CLABE"
-        Me.clabeBeneficiaria.Name = "clabeBeneficiaria"
-        Me.clabeBeneficiaria.ReadOnly = True
-        Me.clabeBeneficiaria.Width = 5
-        '
-        'fechaProgPago
-        '
-        Me.fechaProgPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.fechaProgPago.DataPropertyName = "fechaProgPago"
-        Me.fechaProgPago.Frozen = True
-        Me.fechaProgPago.HeaderText = "Fecha Prog Pago"
-        Me.fechaProgPago.Name = "fechaProgPago"
-        Me.fechaProgPago.ReadOnly = True
-        Me.fechaProgPago.Width = 5
-        '
-        'concepto
-        '
-        Me.concepto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.concepto.HeaderText = "Concepto"
-        Me.concepto.Name = "concepto"
-        Me.concepto.ReadOnly = True
-        Me.concepto.Width = 5
-        '
-        'convenio
-        '
-        Me.convenio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.convenio.HeaderText = "Convenio"
-        Me.convenio.Name = "convenio"
-        Me.convenio.ReadOnly = True
-        Me.convenio.Width = 5
-        '
-        'referencia
-        '
-        Me.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.referencia.HeaderText = "Referencia"
-        Me.referencia.Name = "referencia"
-        Me.referencia.ReadOnly = True
-        Me.referencia.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.referencia.Width = 5
-        '
-        'razonSocial
-        '
-        Me.razonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.razonSocial.DataPropertyName = "razonSocial"
-        Me.razonSocial.HeaderText = "Beneficiario"
-        Me.razonSocial.Name = "razonSocial"
-        Me.razonSocial.ReadOnly = True
-        Me.razonSocial.Width = 5
-        '
-        'formaDePago
-        '
-        Me.formaDePago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.formaDePago.DataPropertyName = "fPago"
-        Me.formaDePago.HeaderText = "Forma de Pago"
-        Me.formaDePago.Name = "formaDePago"
-        Me.formaDePago.ReadOnly = True
-        Me.formaDePago.Width = 5
-        '
-        'idBancoBen
-        '
-        Me.idBancoBen.DataPropertyName = "destinoRecurso"
-        Me.idBancoBen.HeaderText = "idBancoBen"
-        Me.idBancoBen.Name = "idBancoBen"
-        Me.idBancoBen.Visible = False
-        '
-        'noContrato
-        '
-        Me.noContrato.HeaderText = "noContrato"
-        Me.noContrato.Name = "noContrato"
-        Me.noContrato.Visible = False
-        '
-        'nombre
-        '
-        Me.nombre.DataPropertyName = "nombre"
-        Me.nombre.HeaderText = "nombre"
-        Me.nombre.Name = "nombre"
-        Me.nombre.Visible = False
-        '
-        'fechaPago
-        '
-        Me.fechaPago.DataPropertyName = "fechaPago"
-        Me.fechaPago.HeaderText = "fechaPago"
-        Me.fechaPago.Name = "fechaPago"
-        Me.fechaPago.ReadOnly = True
-        Me.fechaPago.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.fechaPago.Visible = False
-        '
-        'fechaProceso
-        '
-        Me.fechaProceso.DataPropertyName = "fechaProceso"
-        Me.fechaProceso.HeaderText = "fechaProceso"
-        Me.fechaProceso.Name = "fechaProceso"
-        Me.fechaProceso.ReadOnly = True
-        Me.fechaProceso.Visible = False
-        '
-        'origenRecurso
-        '
-        Me.origenRecurso.DataPropertyName = "origenRecurso"
-        Me.origenRecurso.HeaderText = "origenRecurso"
-        Me.origenRecurso.Name = "origenRecurso"
-        Me.origenRecurso.ReadOnly = True
         '
         'cmsMenuOpciones
         '
@@ -769,6 +505,10 @@ Partial Class frmTesSolicitudesDePago
         Me.tssTotalRegistros.Size = New System.Drawing.Size(13, 17)
         Me.tssTotalRegistros.Text = "0"
         '
+        'CxP_CuentasBancariasProvTableAdapter1
+        '
+        Me.CxP_CuentasBancariasProvTableAdapter1.ClearBeforeFill = True
+        '
         'CXPCuentasBancariasBindingSource
         '
         Me.CXPCuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
@@ -797,10 +537,6 @@ Partial Class frmTesSolicitudesDePago
         'CXP_CuentasBancariasTableAdapter
         '
         Me.CXP_CuentasBancariasTableAdapter.ClearBeforeFill = True
-        '
-        'CxP_CuentasBancariasProvTableAdapter1
-        '
-        Me.CxP_CuentasBancariasProvTableAdapter1.ClearBeforeFill = True
         '
         'DataGridViewTextBoxColumn1
         '
@@ -881,6 +617,7 @@ Partial Class frmTesSolicitudesDePago
         Me.DataGridViewTextBoxColumn6.HeaderText = "Imp Solicitado"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn6.Visible = False
         '
         'DataGridViewTextBoxColumn8
@@ -1040,6 +777,274 @@ Partial Class frmTesSolicitudesDePago
         Me.ColumnaPersonalizada1.HeaderText = "Banco Ordenante"
         Me.ColumnaPersonalizada1.Name = "ColumnaPersonalizada1"
         Me.ColumnaPersonalizada1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'folioSolicitud
+        '
+        Me.folioSolicitud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.folioSolicitud.DataPropertyName = "folioSolicitud"
+        Me.folioSolicitud.Frozen = True
+        Me.folioSolicitud.HeaderText = "Folio Solicitud"
+        Me.folioSolicitud.Name = "folioSolicitud"
+        Me.folioSolicitud.ReadOnly = True
+        Me.folioSolicitud.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.folioSolicitud.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.folioSolicitud.Width = 5
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "importe"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn7.Frozen = True
+        Me.DataGridViewTextBoxColumn7.HeaderText = "importe"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Visible = False
+        Me.DataGridViewTextBoxColumn7.Width = 5
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "ok1"
+        Me.DataGridViewTextBoxColumn20.Frozen = True
+        Me.DataGridViewTextBoxColumn20.HeaderText = "ok1"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.ReadOnly = True
+        Me.DataGridViewTextBoxColumn20.Visible = False
+        Me.DataGridViewTextBoxColumn20.Width = 5
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "ok2"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "ok2"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.ReadOnly = True
+        Me.DataGridViewTextBoxColumn21.Visible = False
+        '
+        'DataGridViewTextBoxColumn26
+        '
+        Me.DataGridViewTextBoxColumn26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.DataGridViewTextBoxColumn26.DataPropertyName = "fechaSolicitud"
+        Me.DataGridViewTextBoxColumn26.Frozen = True
+        Me.DataGridViewTextBoxColumn26.HeaderText = "Fecha Solicitud"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        Me.DataGridViewTextBoxColumn26.ReadOnly = True
+        Me.DataGridViewTextBoxColumn26.Width = 5
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "estatusSolicitud"
+        Me.DataGridViewTextBoxColumn17.Frozen = True
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Estatus Sol"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Width = 5
+        '
+        'estatusPago
+        '
+        Me.estatusPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.estatusPago.DataPropertyName = "estatusPago"
+        Me.estatusPago.Frozen = True
+        Me.estatusPago.HeaderText = "estatusPago"
+        Me.estatusPago.Name = "estatusPago"
+        Me.estatusPago.ReadOnly = True
+        Me.estatusPago.Visible = False
+        Me.estatusPago.Width = 5
+        '
+        'tipoSolicitud
+        '
+        Me.tipoSolicitud.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.tipoSolicitud.DataPropertyName = "tipoSolicitud"
+        Me.tipoSolicitud.Frozen = True
+        Me.tipoSolicitud.HeaderText = "Tipo Sol"
+        Me.tipoSolicitud.Name = "tipoSolicitud"
+        Me.tipoSolicitud.ReadOnly = True
+        Me.tipoSolicitud.Width = 5
+        '
+        'idEmpresa
+        '
+        Me.idEmpresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.idEmpresa.DataPropertyName = "idEmpresa"
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.idEmpresa.DefaultCellStyle = DataGridViewCellStyle3
+        Me.idEmpresa.Frozen = True
+        Me.idEmpresa.HeaderText = "idEmpresa"
+        Me.idEmpresa.Name = "idEmpresa"
+        Me.idEmpresa.ReadOnly = True
+        Me.idEmpresa.Visible = False
+        Me.idEmpresa.Width = 5
+        '
+        'importeSolicitado
+        '
+        Me.importeSolicitado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.importeSolicitado.DataPropertyName = "importeSolicitado"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.importeSolicitado.DefaultCellStyle = DataGridViewCellStyle4
+        Me.importeSolicitado.Frozen = True
+        Me.importeSolicitado.HeaderText = "Imp Solicitado"
+        Me.importeSolicitado.Name = "importeSolicitado"
+        Me.importeSolicitado.ReadOnly = True
+        Me.importeSolicitado.Width = 5
+        '
+        'Tipar
+        '
+        Me.Tipar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.Tipar.DataPropertyName = "Tipar"
+        Me.Tipar.Frozen = True
+        Me.Tipar.HeaderText = "C"
+        Me.Tipar.Name = "Tipar"
+        Me.Tipar.ReadOnly = True
+        Me.Tipar.Width = 39
+        '
+        'moneda
+        '
+        Me.moneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.moneda.DataPropertyName = "monedaPago"
+        Me.moneda.Frozen = True
+        Me.moneda.HeaderText = "Moneda"
+        Me.moneda.Name = "moneda"
+        Me.moneda.ReadOnly = True
+        Me.moneda.Width = 5
+        '
+        'seleccionar
+        '
+        Me.seleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.seleccionar.Frozen = True
+        Me.seleccionar.HeaderText = "Seleccionar"
+        Me.seleccionar.Name = "seleccionar"
+        Me.seleccionar.Width = 69
+        '
+        'bancoBeneficiario
+        '
+        Me.bancoBeneficiario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.bancoBeneficiario.Frozen = True
+        Me.bancoBeneficiario.HeaderText = "Banco Beneficiario"
+        Me.bancoBeneficiario.Name = "bancoBeneficiario"
+        Me.bancoBeneficiario.ReadOnly = True
+        Me.bancoBeneficiario.Width = 5
+        '
+        'cuentaBeneficiaria
+        '
+        Me.cuentaBeneficiaria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.cuentaBeneficiaria.Frozen = True
+        Me.cuentaBeneficiaria.HeaderText = "Cuenta Beneficiaria"
+        Me.cuentaBeneficiaria.Name = "cuentaBeneficiaria"
+        Me.cuentaBeneficiaria.ReadOnly = True
+        Me.cuentaBeneficiaria.Width = 5
+        '
+        'clabeBeneficiaria
+        '
+        Me.clabeBeneficiaria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.clabeBeneficiaria.Frozen = True
+        Me.clabeBeneficiaria.HeaderText = "CLABE"
+        Me.clabeBeneficiaria.Name = "clabeBeneficiaria"
+        Me.clabeBeneficiaria.ReadOnly = True
+        Me.clabeBeneficiaria.Width = 5
+        '
+        'fechaProgPago
+        '
+        Me.fechaProgPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.fechaProgPago.DataPropertyName = "fechaProgPago"
+        Me.fechaProgPago.Frozen = True
+        Me.fechaProgPago.HeaderText = "Fecha Prog Pago"
+        Me.fechaProgPago.Name = "fechaProgPago"
+        Me.fechaProgPago.ReadOnly = True
+        Me.fechaProgPago.Width = 5
+        '
+        'concepto
+        '
+        Me.concepto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.concepto.HeaderText = "Concepto"
+        Me.concepto.Name = "concepto"
+        Me.concepto.ReadOnly = True
+        Me.concepto.Width = 5
+        '
+        'convenio
+        '
+        Me.convenio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.convenio.HeaderText = "Convenio"
+        Me.convenio.Name = "convenio"
+        Me.convenio.ReadOnly = True
+        Me.convenio.Width = 5
+        '
+        'referencia
+        '
+        Me.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.referencia.HeaderText = "Referencia"
+        Me.referencia.Name = "referencia"
+        Me.referencia.ReadOnly = True
+        Me.referencia.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.referencia.Width = 5
+        '
+        'razonSocial
+        '
+        Me.razonSocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.razonSocial.DataPropertyName = "razonSocial"
+        Me.razonSocial.HeaderText = "Beneficiario"
+        Me.razonSocial.Name = "razonSocial"
+        Me.razonSocial.ReadOnly = True
+        Me.razonSocial.Width = 5
+        '
+        'formaDePago
+        '
+        Me.formaDePago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.formaDePago.DataPropertyName = "fPago"
+        Me.formaDePago.HeaderText = "Forma de Pago"
+        Me.formaDePago.Name = "formaDePago"
+        Me.formaDePago.ReadOnly = True
+        Me.formaDePago.Width = 5
+        '
+        'idBancoBen
+        '
+        Me.idBancoBen.DataPropertyName = "destinoRecurso"
+        Me.idBancoBen.HeaderText = "idBancoBen"
+        Me.idBancoBen.Name = "idBancoBen"
+        Me.idBancoBen.Visible = False
+        '
+        'noContrato
+        '
+        Me.noContrato.HeaderText = "noContrato"
+        Me.noContrato.Name = "noContrato"
+        Me.noContrato.Visible = False
+        '
+        'nombre
+        '
+        Me.nombre.DataPropertyName = "nombre"
+        Me.nombre.HeaderText = "nombre"
+        Me.nombre.Name = "nombre"
+        Me.nombre.Visible = False
+        '
+        'fechaPago
+        '
+        Me.fechaPago.DataPropertyName = "fechaPago"
+        Me.fechaPago.HeaderText = "fechaPago"
+        Me.fechaPago.Name = "fechaPago"
+        Me.fechaPago.ReadOnly = True
+        Me.fechaPago.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.fechaPago.Visible = False
+        '
+        'fechaProceso
+        '
+        Me.fechaProceso.DataPropertyName = "fechaProceso"
+        Me.fechaProceso.HeaderText = "fechaProceso"
+        Me.fechaProceso.Name = "fechaProceso"
+        Me.fechaProceso.ReadOnly = True
+        Me.fechaProceso.Visible = False
+        '
+        'origenRecurso
+        '
+        Me.origenRecurso.DataPropertyName = "origenRecurso"
+        Me.origenRecurso.HeaderText = "origenRecurso"
+        Me.origenRecurso.Name = "origenRecurso"
+        Me.origenRecurso.ReadOnly = True
         '
         'frmTesSolicitudesDePago
         '

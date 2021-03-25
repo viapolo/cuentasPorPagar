@@ -833,4 +833,13 @@ Public Class mdicuentasPorPagar
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
+
+    Private Sub CuentasBancoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasBancoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCuentasBanco.MdiParent = Me
+        frmCuentasBanco.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 End Class

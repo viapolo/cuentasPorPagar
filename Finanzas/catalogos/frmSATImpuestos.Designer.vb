@@ -30,8 +30,8 @@ Partial Class frmSATImpuestos
         Dim Label1 As System.Windows.Forms.Label
         Dim DescripcionLargaLabel As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSATImpuestos))
         Dim Label3 As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSATImpuestos))
         Me.CXP_ImpuestoBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_ImpuestoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -142,6 +142,15 @@ Partial Class frmSATImpuestos
         Label2.Size = New System.Drawing.Size(40, 13)
         Label2.TabIndex = 18
         Label2.Text = "Factor:"
+        '
+        'Label3
+        '
+        Label3.AutoSize = True
+        Label3.Location = New System.Drawing.Point(29, 143)
+        Label3.Name = "Label3"
+        Label3.Size = New System.Drawing.Size(73, 13)
+        Label3.TabIndex = 20
+        Label3.Text = "Tasa o cuota:"
         '
         'CXP_ImpuestoBindingNavigator
         '
@@ -425,15 +434,6 @@ Partial Class frmSATImpuestos
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox2.TabIndex = 19
-        '
-        'Label3
-        '
-        Label3.AutoSize = True
-        Label3.Location = New System.Drawing.Point(29, 143)
-        Label3.Name = "Label3"
-        Label3.Size = New System.Drawing.Size(73, 13)
-        Label3.TabIndex = 20
-        Label3.Text = "Tasa o cuota:"
         '
         'frmSATImpuestos
         '

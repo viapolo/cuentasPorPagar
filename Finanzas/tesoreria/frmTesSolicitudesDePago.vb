@@ -79,6 +79,9 @@ Public Class frmTesSolicitudesDePago
         Dim dtDatosPagosAvi As New dsTesoreria.DatosPagosAviDataTable
         Dim drDatosPagos As dsTesoreria.DatosPagosRow
         Dim drDatosPagosAvi As dsTesoreria.DatosPagosAviRow
+        Dim taCuentasBanco As New dsConfiguracionTableAdapters.CXP_CuentaBancoTableAdapter
+        Dim dtCuentasBanco As New dsConfiguracion.CXP_CuentaBancoDataTable
+        Dim rwCuentasBanco As dsConfiguracion.CXP_CuentaBancoRow
 
         Dim contRows As Integer = 0
 
@@ -128,6 +131,11 @@ Public Class frmTesSolicitudesDePago
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("bancoBeneficiario", contRows).Value = drDatosPagos.nombreCorto
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("idBancoBen", contRows).Value = drDatosPagos.idBanco
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("noContrato", contRows).Value = drDatosPagos.noContrato
+                    If Vw_CXP_SugPagoTesoreriaDataGridView.Item("Tipar", contRows).Value <> String.Empty Then
+                        If Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value.ToString <> String.Empty Then
+                            Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value = drDatosPagos.clabe.ToString.Substring(6, 11)
+                        End If
+                    End If
                 Else
                     drDatosPagosAvi = dtDatosPagosAvi.Rows(0)
                     Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value = drDatosPagosAvi.clabe
@@ -141,6 +149,7 @@ Public Class frmTesSolicitudesDePago
 
 
                 If Vw_CXP_SugPagoTesoreriaDataGridView.Item("estatusPago", contRows).Value = "37" Then
+
                     Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("seleccionar").Visible = False
                     d.Visible = False
                     Vw_CXP_SugPagoTesoreriaDataGridView.Columns.Item("bancoOrdenante").Visible = False
@@ -192,8 +201,35 @@ Public Class frmTesSolicitudesDePago
                         dc.Value = dataRow.Item(0)
                     End If
                 End If
-            End If
+                If Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value <> String.Empty Or Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value <> String.Empty Then
+                    If Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value <> "" Then
+                        If Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value.ToString.Substring(0, 3) = "012" Then
+                            taCuentasBanco.ExisteEstatus_FillBy(dtCuentasBanco, Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value, Vw_CXP_SugPagoTesoreriaDataGridView.Item("moneda", contRows).Value.ToString.Replace("MXN", "MXP"), "TER")
+                        Else
+                            taCuentasBanco.ExisteEstatus_FillBy(dtCuentasBanco, Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value, Vw_CXP_SugPagoTesoreriaDataGridView.Item("moneda", contRows).Value.ToString.Replace("MXN", "MXP"), "TER")
+                        End If
+                    Else
+                        taCuentasBanco.ExisteEstatus_FillBy(dtCuentasBanco, Nothing, Vw_CXP_SugPagoTesoreriaDataGridView.Item("moneda", contRows).Value.ToString.Replace("MXN", "MXP"), "TER")
+                    End If
 
+                    If dtCuentasBanco.Rows.Count = 0 Then
+                        taCuentasBanco.ExisteEstatus_FillBy(dtCuentasBanco, Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value, Vw_CXP_SugPagoTesoreriaDataGridView.Item("moneda", contRows).Value.ToString.Replace("MXN", "MXP"), "INT")
+                        If dtCuentasBanco.Rows.Count = 0 Then
+                            rows.DefaultCellStyle.BackColor = Color.Aqua
+                        End If
+                    End If
+                ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", contRows).Value <> String.Empty Then
+                    taCuentasBanco.ExisteEstatus_FillBy(dtCuentasBanco, Vw_CXP_SugPagoTesoreriaDataGridView.Item("convenio", contRows).Value, Vw_CXP_SugPagoTesoreriaDataGridView.Item("moneda", contRows).Value.ToString.Replace("MXN", "MXP"), "CIE")
+                    If dtCuentasBanco.Rows.Count = 0 Then
+                        rows.DefaultCellStyle.BackColor = Color.Aqua
+                    End If
+                ElseIf Vw_CXP_SugPagoTesoreriaDataGridView.Item("cuentaBeneficiaria", contRows).Value = String.Empty And Vw_CXP_SugPagoTesoreriaDataGridView.Item("clabeBeneficiaria", contRows).Value = String.Empty And Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", contRows).Value <> String.Empty Then
+                    taCuentasBanco.ExisteEstatus_FillBy(dtCuentasBanco, obtNumCadena(Vw_CXP_SugPagoTesoreriaDataGridView.Item("referencia", contRows).Value), Vw_CXP_SugPagoTesoreriaDataGridView.Item("moneda", contRows).Value.ToString.Replace("MXN", "MXP"), "TCR")
+                    If dtCuentasBanco.Rows.Count = 0 Then
+                        rows.DefaultCellStyle.BackColor = Color.Aqua
+                    End If
+                End If
+                End If
             contRows += 1
         Next
         pbxCargando.Visible = False

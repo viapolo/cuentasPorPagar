@@ -168,6 +168,9 @@ Public Class frmContProveedoresClientes
                         If tableAdapterDocumentacionProv.NoDoctosOblig_ScalarQuery(tipoPersona) <= tableAdapterProveedorArch.noDocOblig_ScalarQuery(IdProveedorTextBox.Text.Trim) Then
                             tableAdapterProveedorArch.CambiaEstatusAll_UpdateQuery(16, CXP_ProveedoresBindingSource.Current("idProveedor"))
                             tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(11, CXP_ProveedoresBindingSource.Current("idProveedor"))
+
+                            insertaCuentaNuevaEnBanco(CXP_ProveedoresBindingSource.Current("idProveedor"), RazonSocialTextBox.Text.Trim)
+
                             CXP_ProveedoresBindingSource.Current("autorizaP1") = varGlobal_NombreUsuario
                             CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
 
@@ -211,6 +214,8 @@ Public Class frmContProveedoresClientes
                                 tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(11, CXP_ProveedoresBindingSource.Current("idProveedor"))
                                 CXP_ProveedoresBindingSource.Current("autorizaP1") = varGlobal_NombreUsuario
                                 CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
+
+                                insertaCuentaNuevaEnBanco(CXP_ProveedoresBindingSource.Current("idProveedor"), RazonSocialTextBox.Text.Trim)
 
                                 notificaAutorizacion()
                                 taProveedores.CambioEstatusActYAut_UpdateQuery(cmbAutorizado.SelectedValue, cmbActivo.SelectedValue, RelacionadoCheckBox.Checked, Date.Now, varGlobal_NombreUsuario, IdProveedorTextBox.Text.Trim)
@@ -257,6 +262,8 @@ Public Class frmContProveedoresClientes
                                     tableAdatpterCuentasBancarias.CambiaEstatusAll_UpdateQuery(11, CXP_ProveedoresBindingSource.Current("idProveedor"))
                                     CXP_ProveedoresBindingSource.Current("autorizaP1") = varGlobal_NombreUsuario
                                     CXP_ProveedoresBindingSource.Current("autorizaP2") = autoriza2
+
+                                    insertaCuentaNuevaEnBanco(CXP_ProveedoresBindingSource.Current("idProveedor"), RazonSocialTextBox.Text.Trim)
 
                                     notificaAutorizacion()
                                     'Me.Validate()

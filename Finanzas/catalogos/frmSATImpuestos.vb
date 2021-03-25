@@ -45,17 +45,17 @@
     End Sub
 
     Private Sub cmbEfecto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbEfecto.SelectedIndexChanged
-        If cmbEfecto.Text = "TRA" And cmbDescripcion.Text = "ISR" Then
-            MsgBox("El impuesto ISR no puede ser trasladado", MsgBoxStyle.Information)
-            cmbEfecto.Text = "RET"
-        End If
+        'If cmbEfecto.Text = "TRA" And cmbDescripcion.Text = "ISR" Then
+        '    MsgBox("El impuesto ISR no puede ser trasladado", MsgBoxStyle.Information)
+        '    cmbEfecto.Text = "RET"
+        'End If
     End Sub
 
     Private Sub cmbEfecto_LostFocus(sender As Object, e As EventArgs) Handles cmbEfecto.LostFocus
-        If cmbEfecto.Text = "TRA" And cmbDescripcion.Text = "ISR" Then
-            MsgBox("El impuesto ISR no puede ser trasladado", MsgBoxStyle.Information)
-            cmbEfecto.Text = "RET"
-        End If
+        'If cmbEfecto.Text = "TRA" And cmbDescripcion.Text = "ISR" Then
+        '    MsgBox("El impuesto ISR no puede ser trasladado", MsgBoxStyle.Information)
+        '    cmbEfecto.Text = "RET"
+        'End If
     End Sub
 
     Private Sub cmbTipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipo.SelectedIndexChanged
@@ -69,6 +69,10 @@
     End Sub
 
     Private Sub cmbFactor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFactor.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub BindingNavigatorMoveLastItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorMoveLastItem.Click
 
     End Sub
 End Class

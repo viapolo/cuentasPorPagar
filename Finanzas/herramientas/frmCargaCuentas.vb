@@ -2,7 +2,8 @@
 Public Class frmCargaCuentas
     Private Sub btnSeleccionarArchivo_Click(sender As Object, e As EventArgs) Handles btnSeleccionarArchivo.Click
         ' // Pasar valores para Leer el rango      
-        loadRange("E:\DatosCTAB.xls", "Hoja1", "A1:N628", DataGridView1)
+        ' loadRange("E:\DatosCTAB.xls", "Hoja1", "A1:N628", DataGridView1)
+        leeTxt("C:\Users\vicente-apolonio\OneDrive - Corporativo La Moderna\Desktop\files\Cuentas Tarjetas de Credito 3.txt")
     End Sub
 
     Private Sub loadRange(
@@ -50,11 +51,44 @@ Public Class frmCargaCuentas
 
     End Sub
 
-    Private Sub frmCargaCuentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    Private Sub leeTxt(ByVal archivo As String)
+        ' Apuntador libre a archivo
+        Dim Apunt As Integer = FreeFile()
+        ' Variable donde guardamos cada línea de texto
+        Dim Texto As String
+        ' Abrimos el archivo y lo recorremos hasta el final línea por línea
+        DataGridView1.Columns.Add("cuenta", "Cuenta")
+        DataGridView1.Columns.Add("moneda", "Moneda")
+        DataGridView1.Columns.Add("nombre", "Nombre")
+        DataGridView1.Columns.Add("mail", "Mail")
+
+        FileOpen(Apunt, archivo, OpenMode.Input, OpenAccess.Read)
+        Do While Not EOF(Apunt)
+            ' Leemos la línea de texto del archivo
+            Texto = LineInput(Apunt)
+            ' Aqui ya puedes hacer el tratamiento que desees con la línea de texto
+            '.....
+            If Text <> String.Empty Then
+                DataGridView1.Rows.Add(Texto.Substring(2, 18), Texto.Substring(20, 3), Texto.Substring(39, 30), Texto.Substring(99, 70), True)
+            End If
+        Loop
+        ' Cerramos el archivo
+        FileClose(Apunt)
     End Sub
 
     Private Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
+        procesaTxt()
+    End Sub
+
+    Private Sub procesaTxt()
+        Dim taCuentasBanco As New dsConfiguracionTableAdapters.CXP_CuentaBancoTableAdapter
+        For Each rowsDg As DataGridViewRow In DataGridView1.Rows
+            taCuentasBanco.Insert(rowsDg.Cells("cuenta").Value, rowsDg.Cells("moneda").Value, rowsDg.Cells("nombre").Value, "TCR", True)
+        Next
+    End Sub
+
+    Private Sub procesaExcel()
         Dim taProveedores As New dsHerramientasTableAdapters.CXP_ProveedoresTableAdapter
         Dim taCuentasBancariasProv As New dsHerramientasTableAdapters.CXP_CuentasBancariasProvTableAdapter
         Dim taBancos As New dsHerramientasTableAdapters.CXP_BancosTableAdapter
@@ -70,6 +104,9 @@ Public Class frmCargaCuentas
                 MsgBox(cont.ToString)
             End If
         Next
+    End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        MsgBox(obtNumCadena(TextBox1.Text))
     End Sub
 End Class

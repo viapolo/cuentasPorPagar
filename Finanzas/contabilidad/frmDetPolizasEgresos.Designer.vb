@@ -42,11 +42,6 @@ Partial Class frmDetPolizasEgresos
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.CXP_RegContBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.CXP_RegContDataGridView = New System.Windows.Forms.DataGridView()
-        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Contpaq = New cuentasPorPagar.contpaq()
-        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -64,6 +59,12 @@ Partial Class frmDetPolizasEgresos
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Contpaq = New cuentasPorPagar.contpaq()
+        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_RegContBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXP_RegContBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -225,36 +226,6 @@ Partial Class frmDetPolizasEgresos
         Me.CXP_RegContDataGridView.Size = New System.Drawing.Size(1160, 247)
         Me.CXP_RegContDataGridView.TabIndex = 1
         '
-        'CuentasBindingSource
-        '
-        Me.CuentasBindingSource.DataMember = "Cuentas"
-        Me.CuentasBindingSource.DataSource = Me.Contpaq
-        '
-        'Contpaq
-        '
-        Me.Contpaq.DataSetName = "contpaq"
-        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CuentasTableAdapter
-        '
-        Me.CuentasTableAdapter.ClearBeforeFill = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "idCuenta"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "idCuenta"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "periodoEjercicio"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "periodoEjercicio"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.ReadOnly = True
-        Me.DataGridViewTextBoxColumn17.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
         'descCuenta
         '
         Me.descCuenta.HeaderText = "Desc Cuenta"
@@ -374,11 +345,51 @@ Partial Class frmDetPolizasEgresos
         Me.idCuenta.ReadOnly = True
         Me.idCuenta.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
+        'CuentasBindingSource
+        '
+        Me.CuentasBindingSource.DataMember = "Cuentas"
+        Me.CuentasBindingSource.DataSource = Me.Contpaq
+        '
+        'Contpaq
+        '
+        Me.Contpaq.DataSetName = "contpaq"
+        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CuentasTableAdapter
+        '
+        Me.CuentasTableAdapter.ClearBeforeFill = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "idCuenta"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "idCuenta"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "periodoEjercicio"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "periodoEjercicio"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(13, 282)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmDetPolizasEgresos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1184, 325)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CXP_RegContDataGridView)
         Me.Controls.Add(Me.CXP_RegContBindingNavigator)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -437,4 +448,5 @@ Partial Class frmDetPolizasEgresos
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents idCuenta As DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As Button
 End Class
