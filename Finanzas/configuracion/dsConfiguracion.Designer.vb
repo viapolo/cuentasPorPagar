@@ -3094,11 +3094,10 @@ Namespace dsConfiguracionTableAdapters
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT        activa, cuenta, idCuenta, moneda, nombre, tipo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP"& _ 
-                "_CuentaBanco"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (cuenta LIKE '%' + @cuenta + '%') AND (moneda = @mone"& _ 
-                "da) AND (tipo = @tipo) AND (activa = 1)"
+                "_CuentaBanco"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (cuenta LIKE '%' + @cuenta + '%') AND (tipo = @tipo) "& _ 
+                "AND (activa = 1)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cuenta", Global.System.Data.SqlDbType.VarChar, 25, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@moneda", Global.System.Data.SqlDbType.VarChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tipo", Global.System.Data.SqlDbType.VarChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -3130,22 +3129,17 @@ Namespace dsConfiguracionTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function ExisteEstatus_FillBy(ByVal dataTable As dsConfiguracion.CXP_CuentaBancoDataTable, ByVal cuenta As String, ByVal moneda As String, ByVal tipo As String) As Integer
+        Public Overloads Overridable Function ExisteEstatus_FillBy(ByVal dataTable As dsConfiguracion.CXP_CuentaBancoDataTable, ByVal cuenta As String, ByVal tipo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (cuenta Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(cuenta,String)
             End If
-            If (moneda Is Nothing) Then
+            If (tipo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(moneda,String)
-            End If
-            If (tipo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(tipo,String)
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(tipo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -3158,22 +3152,17 @@ Namespace dsConfiguracionTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function ExisteEstatus_GetDataBy(ByVal cuenta As String, ByVal moneda As String, ByVal tipo As String) As dsConfiguracion.CXP_CuentaBancoDataTable
+        Public Overloads Overridable Function ExisteEstatus_GetDataBy(ByVal cuenta As String, ByVal tipo As String) As dsConfiguracion.CXP_CuentaBancoDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (cuenta Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(cuenta,String)
             End If
-            If (moneda Is Nothing) Then
+            If (tipo Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(moneda,String)
-            End If
-            If (tipo Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(tipo,String)
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(tipo,String)
             End If
             Dim dataTable As dsConfiguracion.CXP_CuentaBancoDataTable = New dsConfiguracion.CXP_CuentaBancoDataTable()
             Me.Adapter.Fill(dataTable)

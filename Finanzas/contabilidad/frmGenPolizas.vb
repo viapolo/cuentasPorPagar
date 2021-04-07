@@ -512,10 +512,10 @@ Public Class frmGenPolizas
                                         ElseIf rwPolizasEnc.convenio <> String.Empty Then
                                             cuentaDestino = rwPolizasEnc.convenio
                                         Else
-                                            If rwPolizasEnc.referencia.Length >= 25 Then
-                                                cuentaDestino = rwPolizasEnc.referencia.Substring(0, 18)
+                                            If rwPolizasEnc.referencia.Replace(" ", "").Length >= 25 Then
+                                                cuentaDestino = rwPolizasEnc.referencia.Replace(" ", "").Substring(0, 18)
                                             Else
-                                                cuentaDestino = rwPolizasEnc.referencia
+                                                cuentaDestino = rwPolizasEnc.referencia.Replace(" ", "")
                                             End If
                                         End If
 

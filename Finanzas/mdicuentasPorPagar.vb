@@ -842,4 +842,13 @@ Public Class mdicuentasPorPagar
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub
+
+    Private Sub ConceptosEspecialesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConceptosEspecialesToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCompraFondos.MdiParent = Me
+        frmCompraFondos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 End Class

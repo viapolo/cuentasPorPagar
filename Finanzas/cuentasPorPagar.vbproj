@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>90</ApplicationRevision>
+    <ApplicationRevision>98</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -324,6 +324,12 @@
     <Compile Include="contabilidad\frmAplicacionBlanco.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmCompraFondos.Designer.vb">
+      <DependentUpon>frmCompraFondos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmCompraFondos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmComprobaAsignaCuenta.Designer.vb">
       <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
     </Compile>
@@ -346,6 +352,12 @@
       <DependentUpon>frmContabilizarNomina.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmContabilizarNomina.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleCompraFondos.Designer.vb">
+      <DependentUpon>frmDetalleCompraFondos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleCompraFondos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmDetalleComprobaciones.Designer.vb">
@@ -792,6 +804,9 @@
     <EmbeddedResource Include="contabilidad\frmAplicacionBlanco.resx">
       <DependentUpon>frmAplicacionBlanco.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmCompraFondos.resx">
+      <DependentUpon>frmCompraFondos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmComprobaAsignaCuenta.resx">
       <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
     </EmbeddedResource>
@@ -803,6 +818,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmContabilizarNomina.resx">
       <DependentUpon>frmContabilizarNomina.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetalleCompraFondos.resx">
+      <DependentUpon>frmDetalleCompraFondos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetalleComprobaciones.resx">
       <DependentUpon>frmDetalleComprobaciones.vb</DependentUpon>

@@ -41,7 +41,7 @@ Module utilerias
         Dim str As String = String.Empty
         For i = 0 To cadena.Trim().Length - 1
             Try
-                If IsNumeric(cadena.Substring(i, 1)) Then
+                If IsNumeric(cadena.Substring(i, 1)) Or cadena.Substring(i, 1) = "." Then
                     str += cadena.Substring(i, 1)
                 End If
             Catch exp As Exception
@@ -332,6 +332,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         Dim taDatosPolizas As New dsTesoreriaTableAdapters.DatosPolizasTableAdapter
         Dim dtGeneralesSolicitud As New dsTesoreria.CXP_PagosTesoreriaDataTable
         Dim rwGeneralesSolicitud As dsTesoreria.CXP_PagosTesoreriaRow
+        Dim taCuentasBanco As New dsTesoreriaTableAdapters.CXP_CuentaBancoTableAdapter
 
         Dim arreglo(5) As String
         Dim escritor As StreamWriter
@@ -351,9 +352,9 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                         arreglo(1) = Trim(text.Substring(text.IndexOf("Cuenta de retiro:") + 17, text.IndexOf("Cuenta de depósito:") - (text.IndexOf("Cuenta de retiro:") + 17))).Replace(vbLf, "")
                         arreglo(2) = Trim(text.Substring(text.IndexOf("Cuenta de depósito:") + 19, text.IndexOf("Divisa de la cuenta:") - (text.IndexOf("Cuenta de depósito:") + 19))).Replace(vbLf, "")
                         If text.IndexOf("Importe:") > 0 Then
-                            arreglo(3) = Trim(text.Substring(text.IndexOf("Importe:") + 8, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe:") + 8))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim
+                            arreglo(3) = utilerias.obtNumCadena(Trim(text.Substring(text.IndexOf("Importe:") + 8, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe:") + 8))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim)
                         Else
-                            arreglo(3) = Trim(text.Substring(text.IndexOf("Importe de la operación:") + 24, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe de la operación:") + 24))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim
+                            arreglo(3) = utilerias.obtNumCadena(Trim(text.Substring(text.IndexOf("Importe de la operación:") + 24, text.IndexOf("Cuenta de retiro:") - (text.IndexOf("Importe de la operación:") + 24))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim)
                         End If
                         arreglo(5) = Trim(text.Substring(text.IndexOf("Fecha de aplicación:") + 20, 12)).Replace(vbLf, "")
                         If arreglo(0) = "Grupo Pago Mismo Banco" Or arreglo(0) = "Traspaso Mismo Banco" Then
@@ -386,6 +387,8 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                 MsgBox("No se pudo encontrar el documento relacionado", MsgBoxStyle.Critical, "")
                             End If
                         End If
+
+                        taCuentasBanco.CambiaEstatus_UpdateQuery(True, arreglo(2))
 
                     ElseIf tdc = "TDC" Then
                         'lee PDF para llenar arreglo
@@ -637,20 +640,28 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                                     taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, "GASTOS A COMPROBAR", rwDetalleEvento.razonSocial & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                     'taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(idBanco)
                                                 Else
-                                                    If rwDatosSolTmp.serie = "PSC" Then
+                                                    If rwDetalleEvento.serie = "PSC" Then
                                                         Dim conceptoCorto As String = rwDatosSolTmp.Concepto
-                                                        If conceptoCorto > 20 Then
+                                                        If conceptoCorto.Length > 20 Then
                                                             conceptoCorto = conceptoCorto.Substring(0, 19)
                                                         End If
-                                                        'cargo
-                                                        taRegContable.Insert(rwDetalleEvento.ctaCargoPago, rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
-                                                        'abono
-                                                        taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+
+                                                        If rwDatosSolTmp.idConcepto = 102 Then 'Devolución saldos a favor
+                                                            'cargo
+                                                            taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311019000080000"), rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                            'abono
+                                                            taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                        Else
+                                                            'cargo
+                                                            taRegContable.Insert(rwDetalleEvento.ctaCargoPago, rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                            'abono
+                                                            taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                        End If
                                                     Else
                                                         'cargo
-                                                        taRegContable.Insert(rwDetalleEvento.ctaCargoPago, rwDetalleEvento.idProveedor, rwDetalleEvento.totalPagado, 0, "PAGO-F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", ""), "F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                        taRegContable.Insert(rwDetalleEvento.ctaCargoPago, rwDetalleEvento.idProveedor, rwDetalleEvento.totalPagado, 0, "PAGO-F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", ""), "F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                         'abono
-                                                        taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, "PAGO-F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", ""), "F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                        taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, "PAGO-F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", ""), "F-" & rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                     End If
                                                 End If
 

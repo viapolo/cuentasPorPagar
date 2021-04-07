@@ -82,7 +82,7 @@
                 Dim folioPoliza As Integer = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
                 Dim contador As Integer = 0
                 For Each rows As DataGridViewRow In dgvDetalleNomina.Rows
-                    taRegContable.Insert(CDec(dgvDetalleNomina.Item("idCuenta", contador).Value), rwDatosSolicitud.idProveedor, CDec(dgvDetalleNomina.Item("cargo", contador).Value), CDec(dgvDetalleNomina.Item("abono", contador).Value), dgvDetalleNomina.Item("referencia", contador).Value, dgvDetalleNomina.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleNomina.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", rwDatosSolicitud.idConcepto, 2)
+                    taRegContable.Insert(CDec(dgvDetalleNomina.Item("idCuenta", contador).Value), rwDatosSolicitud.idProveedor, CDec(dgvDetalleNomina.Item("cargo", contador).Value), CDec(dgvDetalleNomina.Item("abono", contador).Value), dgvDetalleNomina.Item("referencia", contador).Value, dgvDetalleNomina.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleNomina.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", rwDatosSolicitud.idConcepto, 2, "CXP")
                     contador += 1
                 Next
 
@@ -99,8 +99,8 @@
             Dim folioPoliza As Integer = taTipoDeDocumento.ConsultaFolio_ScalarQuery(idTipoDocumento) 'taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
                 Dim contador As Integer = 0
                 For Each rows As DataGridViewRow In dgvDetalleNomina.Rows
-                    taRegContable.Insert(CDec(dgvDetalleNomina.Item("idCuenta", contador).Value), rwDatosSolicitud.idProveedor, CDec(dgvDetalleNomina.Item("cargo", contador).Value), CDec(dgvDetalleNomina.Item("abono", contador).Value), dgvDetalleNomina.Item("referencia", contador).Value, dgvDetalleNomina.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleNomina.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", rwDatosSolicitud.idConcepto, 2)
-                    contador += 1
+                taRegContable.Insert(CDec(dgvDetalleNomina.Item("idCuenta", contador).Value), rwDatosSolicitud.idProveedor, CDec(dgvDetalleNomina.Item("cargo", contador).Value), CDec(dgvDetalleNomina.Item("abono", contador).Value), dgvDetalleNomina.Item("referencia", contador).Value, dgvDetalleNomina.Item("concepto", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, dgvDetalleNomina.Item("uuid", contador).Value, idSolicitud, dtpFechaProceso.Value, "29", rwDatosSolicitud.idConcepto, 2, "CXP")
+                contador += 1
                 Next
             taTipoDeDocumento.ConsumeFolio_UpdateQuery(idTipoDocumento)
             taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)

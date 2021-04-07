@@ -96,7 +96,7 @@
             Dim folioPoliza As Integer = taPeriodos.ConsultaFolio_ScalarQuery(dtpFecha.Value.Year, dtpFecha.Value.Month, varGlobal_IdEmpresa) 'taTipoDeDocumento.ConsultaFolio_ScalarQuery(idTipoDocumento)
             Dim contador As Integer = 0
             For Each rows As DataGridViewRow In dgvDetalleCfdi.Rows
-                taRegContable.Insert(CDec(dgvDetalleCfdi.Item("id", contador).Value), CDec(cmbProveedor.SelectedValue), CDec(dgvDetalleCfdi.Item("cargo", contador).Value), CDec(dgvDetalleCfdi.Item("abono", contador).Value), dgvDetalleCfdi.Item("referencia", contador).Value, dgvDetalleCfdi.Item("descripcion", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, uuid, 0, dtpFecha.Value, "29", CDec(cmbConcepto.SelectedValue), 1)
+                taRegContable.Insert(CDec(dgvDetalleCfdi.Item("id", contador).Value), CDec(cmbProveedor.SelectedValue), CDec(dgvDetalleCfdi.Item("cargo", contador).Value), CDec(dgvDetalleCfdi.Item("abono", contador).Value), dgvDetalleCfdi.Item("referencia", contador).Value, dgvDetalleCfdi.Item("descripcion", contador).Value, idTipoDocumento, folioPoliza, varGlobal_IdEmpresa, uuid, 0, dtpFecha.Value, "29", CDec(cmbConcepto.SelectedValue), 1, "CXP")
                 contador += 1
             Next
             'taTipoDeDocumento.ConsumeFolio_UpdateQuery(idTipoDocumento)
