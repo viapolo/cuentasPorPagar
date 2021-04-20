@@ -50,7 +50,7 @@ Partial Class frmCompraFondos
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.idFolioSolicitud = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -221,7 +221,7 @@ Partial Class frmCompraFondos
         Me.Vw_CXP_AutorizacionesDataGridView.AllowUserToOrderColumns = True
         Me.Vw_CXP_AutorizacionesDataGridView.AutoGenerateColumns = False
         Me.Vw_CXP_AutorizacionesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Vw_CXP_AutorizacionesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn6})
+        Me.Vw_CXP_AutorizacionesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFolioSolicitud, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn6})
         Me.Vw_CXP_AutorizacionesDataGridView.DataSource = Me.Vw_CXP_AutorizacionesBindingSource
         Me.Vw_CXP_AutorizacionesDataGridView.Location = New System.Drawing.Point(12, 28)
         Me.Vw_CXP_AutorizacionesDataGridView.Name = "Vw_CXP_AutorizacionesDataGridView"
@@ -268,14 +268,14 @@ Partial Class frmCompraFondos
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.Width = 200
         '
-        'DataGridViewTextBoxColumn8
+        'idFolioSolicitud
         '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "folioSolicitud"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "folioSolicitud"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.idFolioSolicitud.DataPropertyName = "folioSolicitud"
+        Me.idFolioSolicitud.HeaderText = "folioSolicitud"
+        Me.idFolioSolicitud.Name = "idFolioSolicitud"
+        Me.idFolioSolicitud.ReadOnly = True
+        Me.idFolioSolicitud.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.idFolioSolicitud.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'DataGridViewTextBoxColumn5
         '
@@ -388,7 +388,7 @@ Partial Class frmCompraFondos
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewLinkColumn
+    Friend WithEvents idFolioSolicitud As DataGridViewLinkColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn

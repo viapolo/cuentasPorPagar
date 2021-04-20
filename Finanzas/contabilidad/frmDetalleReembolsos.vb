@@ -43,11 +43,13 @@ Public Class frmDetalleReembolsos
             dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)
             dtpFechaSolicitud.Value = fechaSolicitud
             dtpFechaProceso.Enabled = False
+            dtpFechaSolicitud.Value = fechaSolicitud
             cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "1103020200000000")
             diarioEgreso = "Egreso"
         Else
             Me.Text = "Detalle Reembolsos - Diario"
             dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)
+            dtpFechaProceso.Value = Date.Now
             dtpFechaSolicitud.Value = fechaSolicitud
             dtpFechaProceso.Enabled = False
             cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "2311019000900000")
@@ -160,6 +162,7 @@ Public Class frmDetalleReembolsos
         Dim dtAutorizaciones As New dsContabilidad.Vw_CXP_AutorizacionesDataTable
         Dim taPolizas As New dsTesoreriaTableAdapters.CXP_tipoDeDocumentoTableAdapter
         Dim taEmpresas As New dsProductionTableAdapters.CXP_EmpresasTableAdapter
+        Dim taTipoDeDocumento As New dsContabilidadTableAdapters.CXP_tipoDeDocumentoTableAdapter
 
         Dim contValid As Integer = 0
 
@@ -204,9 +207,17 @@ Public Class frmDetalleReembolsos
                 MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
 
             Else
-                'diario
+            'diario
+
+
+            If dtpFechaProceso.Value.Month = Date.Now.Month Then
+                idTipoDocumento = taTipoDeDocumento.ObtTipoDePoliza_ScalarQuery("Diario", varGlobal_IdEmpresa)
+                folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
+            Else
                 idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", fPago, monedaPago, varGlobal_IdEmpresa)
-            folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
+                folioPoliza = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
+            End If
+            'folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
 
             Dim contador As Integer = 0
             For Each rows As DataGridViewRow In dgvDetalleReembolsos.Rows

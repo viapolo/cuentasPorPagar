@@ -28,6 +28,8 @@ Partial Class frmDetalleCompraFondos
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvDetalleReembolsos = New System.Windows.Forms.DataGridView()
+        Me.Contpaq = New cuentasPorPagar.contpaq()
+        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
         Me.idCuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cuentaContable = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,8 +37,7 @@ Partial Class frmDetalleCompraFondos
         Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.uuid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Contpaq = New cuentasPorPagar.contpaq()
-        Me.CuentasTableAdapter = New cuentasPorPagar.contpaqTableAdapters.CuentasTableAdapter()
+        Me.agregar = New System.Windows.Forms.DataGridViewLinkColumn()
         CType(Me.dgvDetalleReembolsos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -54,7 +55,7 @@ Partial Class frmDetalleCompraFondos
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvDetalleReembolsos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvDetalleReembolsos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDetalleReembolsos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid})
+        Me.dgvDetalleReembolsos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid, Me.agregar})
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -74,8 +75,17 @@ Partial Class frmDetalleCompraFondos
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvDetalleReembolsos.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgvDetalleReembolsos.Size = New System.Drawing.Size(1005, 331)
+        Me.dgvDetalleReembolsos.Size = New System.Drawing.Size(1114, 331)
         Me.dgvDetalleReembolsos.TabIndex = 1
+        '
+        'Contpaq
+        '
+        Me.Contpaq.DataSetName = "contpaq"
+        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CuentasTableAdapter
+        '
+        Me.CuentasTableAdapter.ClearBeforeFill = True
         '
         'idCuenta
         '
@@ -133,20 +143,19 @@ Partial Class frmDetalleCompraFondos
         Me.uuid.Name = "uuid"
         Me.uuid.ReadOnly = True
         '
-        'Contpaq
+        'agregar
         '
-        Me.Contpaq.DataSetName = "contpaq"
-        Me.Contpaq.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CuentasTableAdapter
-        '
-        Me.CuentasTableAdapter.ClearBeforeFill = True
+        Me.agregar.HeaderText = "-"
+        Me.agregar.Name = "agregar"
+        Me.agregar.ReadOnly = True
+        Me.agregar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.agregar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'frmDetalleCompraFondos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1036, 450)
+        Me.ClientSize = New System.Drawing.Size(1138, 450)
         Me.Controls.Add(Me.dgvDetalleReembolsos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmDetalleCompraFondos"
@@ -158,6 +167,8 @@ Partial Class frmDetalleCompraFondos
     End Sub
 
     Friend WithEvents dgvDetalleReembolsos As DataGridView
+    Friend WithEvents Contpaq As contpaq
+    Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
     Friend WithEvents idCuenta As DataGridViewTextBoxColumn
     Friend WithEvents cuentaContable As DataGridViewTextBoxColumn
     Friend WithEvents cargo As DataGridViewTextBoxColumn
@@ -165,6 +176,5 @@ Partial Class frmDetalleCompraFondos
     Friend WithEvents referencia As DataGridViewTextBoxColumn
     Friend WithEvents concepto As DataGridViewTextBoxColumn
     Friend WithEvents uuid As DataGridViewTextBoxColumn
-    Friend WithEvents Contpaq As contpaq
-    Friend WithEvents CuentasTableAdapter As contpaqTableAdapters.CuentasTableAdapter
+    Friend WithEvents agregar As DataGridViewLinkColumn
 End Class

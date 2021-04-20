@@ -51,8 +51,8 @@ Partial Class frmDetalleComprobaciones
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.dtpFechaProceso = New System.Windows.Forms.DateTimePicker()
         Me.cmbNoDeducibles = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.CuentasBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.lblCargos = New System.Windows.Forms.Label()
         Me.lblAbonos = New System.Windows.Forms.Label()
         CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -276,6 +276,11 @@ Partial Class frmDetalleComprobaciones
         Me.cmbNoDeducibles.TabIndex = 7
         Me.cmbNoDeducibles.ValueMember = "Id"
         '
+        'CuentasBindingSource2
+        '
+        Me.CuentasBindingSource2.DataMember = "Cuentas"
+        Me.CuentasBindingSource2.DataSource = Me.Contpaq
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -284,11 +289,6 @@ Partial Class frmDetalleComprobaciones
         Me.Label1.Size = New System.Drawing.Size(78, 13)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "No deducibles:"
-        '
-        'CuentasBindingSource2
-        '
-        Me.CuentasBindingSource2.DataMember = "Cuentas"
-        Me.CuentasBindingSource2.DataSource = Me.Contpaq
         '
         'lblCargos
         '

@@ -603,7 +603,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub SugerenciaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SugerenciaDePagoToolStripMenuItem.Click
+    Private Sub SugerenciaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) 
         contadorActividad = 0
     End Sub
 
@@ -848,6 +848,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmCompraFondos.MdiParent = Me
         frmCompraFondos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ChequesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChequesToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmContabilizaCheques.MdiParent = Me
+        frmContabilizaCheques.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

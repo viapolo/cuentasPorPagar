@@ -29,10 +29,12 @@ Partial Class frmContTipoDocumentos
         Dim DocumentoDeLabel As System.Windows.Forms.Label
         Dim FolioInicialLabel As System.Windows.Forms.Label
         Dim FolioActualLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContTipoDocumentos))
         Dim IdConpaqLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContTipoDocumentos))
         Me.CXP_tipoDeDocumentoBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
@@ -51,8 +53,6 @@ Partial Class frmContTipoDocumentos
         Me.FolioActualTextBox = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.CXP_tipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_tipoDeDocumentoTableAdapter()
         Me.TableAdapterManager = New cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager()
         Me.IdConpaqTextBox = New System.Windows.Forms.TextBox()
@@ -123,6 +123,15 @@ Partial Class frmContTipoDocumentos
         FolioActualLabel.TabIndex = 19
         FolioActualLabel.Text = "Folio Actual:"
         '
+        'IdConpaqLabel
+        '
+        IdConpaqLabel.AutoSize = True
+        IdConpaqLabel.Location = New System.Drawing.Point(353, 111)
+        IdConpaqLabel.Name = "IdConpaqLabel"
+        IdConpaqLabel.Size = New System.Drawing.Size(59, 13)
+        IdConpaqLabel.TabIndex = 22
+        IdConpaqLabel.Text = "Id Conpaq:"
+        '
         'CXP_tipoDeDocumentoBindingNavigator
         '
         Me.CXP_tipoDeDocumentoBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
@@ -149,6 +158,16 @@ Partial Class frmContTipoDocumentos
         Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorAddNewItem.Text = "Add new"
+        '
+        'CXP_tipoDeDocumentoBindingSource
+        '
+        Me.CXP_tipoDeDocumentoBindingSource.DataMember = "CXP_tipoDeDocumento"
+        Me.CXP_tipoDeDocumentoBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BindingNavigatorCountItem
         '
@@ -289,23 +308,14 @@ Partial Class frmContTipoDocumentos
         'ComboBox1
         '
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CXP_tipoDeDocumentoBindingSource, "documentoDe", True))
+        Me.ComboBox1.DataSource = Me.CXP_tipoDeDocumentoBindingSource
+        Me.ComboBox1.DisplayMember = "documentoDe"
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Ingreso", "Egreso", "Diario"})
         Me.ComboBox1.Location = New System.Drawing.Point(417, 79)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(100, 21)
         Me.ComboBox1.TabIndex = 22
-        '
-        'CXP_tipoDeDocumentoBindingSource
-        '
-        Me.CXP_tipoDeDocumentoBindingSource.DataMember = "CXP_tipoDeDocumento"
-        Me.CXP_tipoDeDocumentoBindingSource.DataSource = Me.DsProduction
-        '
-        'DsProduction
-        '
-        Me.DsProduction.DataSetName = "dsProduction"
-        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'CXP_tipoDeDocumentoTableAdapter
         '
@@ -353,17 +363,9 @@ Partial Class frmContTipoDocumentos
         Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
         Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_CorreosFasesTableAdapter = Nothing
         Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'IdConpaqLabel
-        '
-        IdConpaqLabel.AutoSize = True
-        IdConpaqLabel.Location = New System.Drawing.Point(353, 111)
-        IdConpaqLabel.Name = "IdConpaqLabel"
-        IdConpaqLabel.Size = New System.Drawing.Size(59, 13)
-        IdConpaqLabel.TabIndex = 22
-        IdConpaqLabel.Text = "Id Conpaq:"
         '
         'IdConpaqTextBox
         '

@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>98</ApplicationRevision>
+    <ApplicationRevision>107</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -336,6 +336,12 @@
     <Compile Include="contabilidad\frmComprobaAsignaCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmContabilizaCheques.Designer.vb">
+      <DependentUpon>frmContabilizaCheques.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmContabilizaCheques.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmContabilizaComprobaciones.Designer.vb">
       <DependentUpon>frmContabilizaComprobaciones.vb</DependentUpon>
     </Compile>
@@ -370,6 +376,12 @@
       <DependentUpon>frmDetalleNomina.vb</DependentUpon>
     </Compile>
     <Compile Include="contabilidad\frmDetalleNomina.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmDetallePagCheques.Designer.vb">
+      <DependentUpon>frmDetallePagCheques.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetallePagCheques.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmDetalleReembolsos.Designer.vb">
@@ -810,6 +822,9 @@
     <EmbeddedResource Include="contabilidad\frmComprobaAsignaCuenta.resx">
       <DependentUpon>frmComprobaAsignaCuenta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmContabilizaCheques.resx">
+      <DependentUpon>frmContabilizaCheques.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmContabilizaComprobaciones.resx">
       <DependentUpon>frmContabilizaComprobaciones.vb</DependentUpon>
     </EmbeddedResource>
@@ -827,6 +842,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetalleNomina.resx">
       <DependentUpon>frmDetalleNomina.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetallePagCheques.resx">
+      <DependentUpon>frmDetallePagCheques.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetalleReembolsos.resx">
       <DependentUpon>frmDetalleReembolsos.vb</DependentUpon>
