@@ -263,6 +263,8 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         accentedStr = accentedStr.Replace("&#217;", "U")
         accentedStr = accentedStr.Replace("&#218;", "U")
 
+        'accentedStr = accentedStr.Replace(vbCrLf, " ")
+
 
         Dim tempBytes As Byte()
         tempBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accentedStr)
@@ -333,11 +335,15 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         Dim dtGeneralesSolicitud As New dsTesoreria.CXP_PagosTesoreriaDataTable
         Dim rwGeneralesSolicitud As dsTesoreria.CXP_PagosTesoreriaRow
         Dim taCuentasBanco As New dsTesoreriaTableAdapters.CXP_CuentaBancoTableAdapter
+        Dim taAutorizaciones As New dsTesoreriaTableAdapters.Vw_CXP_AutorizacionesTableAdapter
 
         Dim arreglo(5) As String
         Dim escritor As StreamWriter
         Dim text As String = ""
         Dim procesadosTes, procesadosSol As Integer
+        Dim idBancoXEmpresa As Integer
+
+        If varGlobal_IdEmpresa = 24 Then idBancoXEmpresa = 1 Else idBancoXEmpresa = 2
 
         If System.IO.File.Exists(origen) Then
             Dim PdfReader As iTextSharp.text.pdf.PdfReader = New iTextSharp.text.pdf.PdfReader(origen)
@@ -388,7 +394,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                             End If
                         End If
 
-                        taCuentasBanco.CambiaEstatus_UpdateQuery(True, arreglo(2))
+
 
                     ElseIf tdc = "TDC" Then
                         'lee PDF para llenar arreglo
@@ -407,7 +413,8 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                         'arreglo(2) = Trim(text.Substring(text.IndexOf("Tarjeta de crédito:") + 19, text.IndexOf("Divisa cuenta de retiro:") - (text.IndexOf("Tarjeta de crédito:") + 19))).Replace(vbLf, "")
 
                         'actualiza registro correspondiente
-                        procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(4), arreglo(3).Trim, 33, folioSolicitud, tipoSolicitud)
+                        procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdcTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(4), CDec(taCuentasBanc.ConsultaChequeActual_ScalarQuery(idBancoXEmpresa)), arreglo(3).Trim, 33, folioSolicitud, tipoSolicitud)
+                        taCuentasBanc.ConsumeFolioCheque_UpdateQuery(idBancoXEmpresa)
                         'procesadosTes = taPagosTesoreria.CambiaEstatusPagoTdc_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(3).Trim, 37, folioSolicitud, tipoSolicitud)
                         If procesadosTes = 1 Then
                             procesadosSol = taPagos.CambiaEstatus_UpdateQuery("Pagada", folioSolicitud, "No Pagada", varGlobal_IdEmpresa)
@@ -461,7 +468,9 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                             arreglo(3) = Trim(text.Substring(text.IndexOf("Importe Total de Pago:") + 22, text.IndexOf("Fecha de Operación:") - (text.IndexOf("Importe Total de Pago:") + 22))).Replace(vbLf, "").Replace(",", "").Replace("MXN", "").Replace("USD", "").Replace("EUR", "").Replace("MXP", "").Trim.Replace("$", "").Trim
                         End If
 
-                        procesadosTes = taPagosTesoreria.CambiaEstatusPagoImss_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(4).Trim, taCuentasProv.ObtIdPorReferencia_ScalarQuery("No Pagada", arreglo(4).Trim), folioSolicitud, varGlobal_IdEmpresa)
+                        procesadosTes = taPagosTesoreria.CambiaEstatusPagoImss_UpdateQuery(34, CDate(arreglo(5)), guuid & "-" & pagina.ToString, idBanco, arreglo(4).Trim, CDec(taCuentasBanc.ConsultaChequeActual_ScalarQuery(idBancoXEmpresa)), taCuentasProv.ObtIdPorReferencia_ScalarQuery("No Pagada", arreglo(4).Trim), folioSolicitud, varGlobal_IdEmpresa)
+                        taCuentasBanc.ConsumeFolioCheque_UpdateQuery(idBancoXEmpresa)
+
                         If procesadosTes = 1 Then
                             procesadosSol = taPagos.CambiaEstatus_UpdateQuery("Pagada", folioSolicitud, "No Pagada", varGlobal_IdEmpresa)
                         End If
@@ -496,6 +505,8 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                     End If
 
                 End If
+                taCuentasBanco.CambiaEstatus_UpdateQuery(True, arreglo(2))
+
             Next
             PdfReader.Close()
         End If
@@ -615,6 +626,119 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                                 taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                 'abono
                                                 taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.importeSolicitado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                            ElseIf rwDetalleEvento.Tipar = "B" Then
+                                                Dim dtImpuestos As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
+                                                taImpuestos.Fill(dtImpuestos, rwDetalleEvento.uuid)
+                                                For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
+                                                    Dim efecto As String = ""
+                                                    Dim tipo As String = ""
+                                                    Dim retecionL As String = ""
+                                                    Dim mPago As Decimal = 0
+                                                    Dim percentPago As Decimal
+                                                    Dim tasaGen As String = ""
+                                                    Dim idCuenta As Integer = 0
+
+                                                    If rwDetalleEvento.totalOrg > 0 Then
+                                                        percentPago = CDec(rwDetalleEvento.totalPagado) / CDec(rwDetalleEvento.totalOrg)
+                                                    Else
+                                                        percentPago = 1
+                                                    End If
+
+                                                    If rowsCfdi.mTras <> "X" Then
+                                                        efecto = "TRA"
+                                                        mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
+                                                        tipo = "Federal"
+                                                        If rowsCfdi.tasaOCuota = "0.080000" Then
+                                                            idCuenta = taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040100080000")
+                                                        ElseIf rowsCfdi.tasaOCuota = "0.160000" Then
+                                                            idCuenta = taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040100060000")
+                                                        End If
+                                                        taRegContable.Insert(idCuenta, CDec(rwDetalleEvento.idProveedor), CDec(mPago), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+                                                        taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040300000000"), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                    End If
+                                                Next
+                                            End If
+                                        Next
+                                    Else
+                                        taDatosSolicitud.Detalle_ContabilidadTradCfdi_FillBy(dtDatosDetalleSolicitud, rwDatosSolTmp.destinoRecurso, rwDatosSolTmp.importeSolicitado, rwDatosSolTmp.origenRecurso, folioSolicitud)
+                                        For Each rwDetalleEvento As dsTesoreria.DatosSolicitudRow In dtDatosDetalleSolicitud
+                                            If rwDetalleEvento.Tipar = "B" Or rwDetalleEvento.Tipar = "F" Then
+                                                Dim dtImpuestos As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
+                                                Dim percentPago As Decimal
+                                                taImpuestos.Fill(dtImpuestos, rwDetalleEvento.uuid)
+
+                                                If rwDetalleEvento.totalOrg > 0 Then
+                                                    percentPago = CDec(rwDetalleEvento.totalPagado) / CDec(rwDetalleEvento.totalOrg)
+                                                Else
+                                                    percentPago = 1
+                                                End If
+                                                'cargo
+                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), CDec(rwDetalleEvento.idProveedor), CDec(rwDetalleEvento.totalPagado), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+
+                                                For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
+                                                    Dim efecto As String = ""
+                                                    Dim tipo As String = ""
+                                                    Dim retecionL As String = ""
+                                                    Dim mPago As Decimal = 0
+
+                                                    Dim tasaGen As String = ""
+                                                    Dim idCuenta As Integer = 0
+
+
+
+                                                    If rowsCfdi.mTras <> "X" Then
+                                                        efecto = "TRA"
+                                                        mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
+                                                        tipo = "Federal"
+                                                        If rowsCfdi.tasaOCuota = "0.080000" Then
+                                                            idCuenta = taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040100080000")
+                                                        ElseIf rowsCfdi.tasaOCuota = "0.160000" Then
+                                                            idCuenta = taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040100060000")
+                                                        End If
+                                                        taRegContable.Insert(idCuenta, CDec(rwDetalleEvento.idProveedor), CDec(mPago), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+                                                        taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040300000000"), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                    End If
+                                                Next
+                                                taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                            End If
+                                            If rwDetalleEvento.Tipar = "P" Then
+                                                Dim dtImpuestos As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable
+                                                Dim percentPago As Decimal
+                                                taImpuestos.Fill(dtImpuestos, rwDetalleEvento.uuid)
+
+                                                If rwDetalleEvento.totalOrg > 0 Then
+                                                    percentPago = CDec(rwDetalleEvento.totalPagado) / CDec(rwDetalleEvento.totalOrg)
+                                                Else
+                                                    percentPago = 1
+                                                End If
+                                                'cargo
+                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), CDec(rwDetalleEvento.idProveedor), CDec(rwDetalleEvento.totalPagado), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+
+                                                For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
+                                                    Dim efecto As String = ""
+                                                    Dim tipo As String = ""
+                                                    Dim retecionL As String = ""
+                                                    Dim mPago As Decimal = 0
+
+                                                    Dim tasaGen As String = ""
+                                                    Dim idCuenta As Integer = 0
+
+
+
+                                                    If rowsCfdi.mTras <> "X" Then
+                                                        efecto = "TRA"
+                                                        mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
+                                                        tipo = "Federal"
+                                                        If rowsCfdi.tasaOCuota = "0.080000" Then
+                                                            idCuenta = taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040100070000")
+                                                        ElseIf rowsCfdi.tasaOCuota = "0.160000" Then
+                                                            idCuenta = taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040100020000")
+                                                        End If
+                                                        taRegContable.Insert(idCuenta, CDec(rwDetalleEvento.idProveedor), CDec(mPago), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+                                                        'taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040300000000"), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                    End If
+                                                Next
+                                                taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                             End If
                                         Next
                                     End If
@@ -641,14 +765,14 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                                     'taCuentasBancarias.ConsumeFolioCheque_UpdateQuery(idBanco)
                                                 Else
                                                     If rwDetalleEvento.serie = "PSC" Then
-                                                        Dim conceptoCorto As String = rwDatosSolTmp.Concepto
+                                                        Dim conceptoCorto As String = taAutorizaciones.ObtConcepto_ScalarQuery(varGlobal_IdEmpresa, CInt(folioSolicitud), rwDatosSolTmp.tipoSolicitud)
                                                         If conceptoCorto.Length > 20 Then
                                                             conceptoCorto = conceptoCorto.Substring(0, 19)
                                                         End If
 
                                                         If rwDatosSolTmp.idConcepto = 102 Then 'Devolución saldos a favor
                                                             'cargo
-                                                            taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311019000080000"), rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                            taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("231101900008" & rwDetalleEvento.noContrato.Substring(1, 4)), rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                             'abono
                                                             taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, conceptoCorto, rwDetalleEvento.folio.Replace("PROVEEDOR", "") & " " & rwDetalleEvento.razonSocial.Trim & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                         Else
@@ -681,19 +805,19 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
 
 
 
-                                                    If rowsCfdi.mTras <> "X" And rowsCfdi.mTras <> 0 Then
+                                                    If rowsCfdi.mTras <> "X" Then
                                                         efecto = "TRA"
                                                         mPago = Math.Round(CDec(Val(rowsCfdi.mTras) * percentPago), 2)
                                                         tipo = "Federal"
-                                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpTrasPago_ScalarQuery(rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P", rowsCfdi.tasaOCuota, CDec(varGlobal_IdEmpresa))), rwDetalleEvento.idProveedor, mPago, 0, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpTrasPago_ScalarQuery(rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P", rowsCfdi.tasaOCuota.ToString.Replace("0.000000", "0.000099"), CDec(varGlobal_IdEmpresa), rwDetalleEvento.idConcepto)), CDec(rwDetalleEvento.idProveedor), CDec(mPago), 0, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
                                                         taRegContable.Insert(CDec(taConceptos.ObtCtaImpTraSol_ScalarQuery(rwDetalleEvento.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S", CDec(varGlobal_IdEmpresa))), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                     End If
 
-                                                    If rowsCfdi.mRet <> "X" And rowsCfdi.mRet <> 0 Then
+                                                    If rowsCfdi.mRet <> "X" Then
                                                         efecto = "RET"
                                                         mPago = Math.Round(CDec(Val(rowsCfdi.mRet) * percentPago), 2)
                                                         tipo = "Federal"
-                                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpTrasPago_ScalarQuery(rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P", rowsCfdi.tasaOCuota, CDec(varGlobal_IdEmpresa))), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                        taRegContable.Insert(CDec(taConceptos.ObtCtaImpTrasPago_ScalarQuery(rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "P", rowsCfdi.tasaOCuota, CDec(varGlobal_IdEmpresa), rwDetalleEvento.idConcepto)), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                         taRegContable.Insert(CDec(taConceptos.ObtCtaImpTraSol_ScalarQuery(rwDetalleEvento.idConcepto, rowsCfdi.Impuesto, efecto, rowsCfdi.tipoFactor, tipo, "S", CDec(varGlobal_IdEmpresa))), rwDetalleEvento.idProveedor, mPago, 0, rwDetalleEvento.rfc, "F-" & rwDetalleEvento.folio & " " & rwDetalleEvento.decripcion, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                     End If
 

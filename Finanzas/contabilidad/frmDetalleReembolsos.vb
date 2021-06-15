@@ -38,22 +38,31 @@ Public Class frmDetalleReembolsos
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "Error en conexión...")
         End Try
 
-        If CDate(taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)).Month = fechaSolicitud.Month And CDate(taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)).Year = fechaSolicitud.Year Then
+        Dim str As String = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa).ToString
+
+        If CDate(taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa)).Month = fechaSolicitud.Month Then
+
             Me.Text = "Detalle Reembolsos - Egreso"
-            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)
+            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa)
             dtpFechaSolicitud.Value = fechaSolicitud
             dtpFechaProceso.Enabled = False
-            dtpFechaSolicitud.Value = fechaSolicitud
             cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "1103020200000000")
             diarioEgreso = "Egreso"
-        Else
+        ElseIf CDate(taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa)).Month <> fechaSolicitud.Month And taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa) = "1900-01-01 00:00:00.000" Then
             Me.Text = "Detalle Reembolsos - Diario"
-            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud)
+            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa)
             dtpFechaProceso.Value = Date.Now
             dtpFechaSolicitud.Value = fechaSolicitud
-            dtpFechaProceso.Enabled = False
+            'dtpFechaProceso.Enabled = False
             cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "2311019000900000")
             diarioEgreso = "Diario"
+        ElseIf taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa).ToString <> "01/01/1900 12:00:00 a. m." Then
+            Me.Text = "Detalle Reembolsos - Egreso"
+            dtpFechaProceso.Value = taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa)
+            dtpFechaSolicitud.Value = fechaSolicitud
+            dtpFechaProceso.Enabled = False
+            cmbCuentaAbono.SelectedIndex = CuentasBindingSource1.Find("Codigo", "1103020200000000")
+            diarioEgreso = "Egreso"
         End If
 
 
@@ -186,7 +195,9 @@ Public Class frmDetalleReembolsos
             'egreso
             idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", rwDatosSolicitud.formaDePago, rwDatosSolicitud.monedaPago, varGlobal_IdEmpresa)
 
-            If dtpFechaProceso.Value.Month = Date.Now.Month Then
+            If dtpFechaProceso.Value.Month = dtpFechaSolicitud.Value.Month Then
+                folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
+            ElseIf taPagosTesoreria.ObtFechaPago_ScalarQuery("CXP", idSolicitud, varGlobal_IdEmpresa) <> "01/01/1900 12:00:00 a. m." Then
                 folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
             Else
                 folioPoliza = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
@@ -203,17 +214,18 @@ Public Class frmDetalleReembolsos
                 taPeriodos.ConsumeFolio_UpdateQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
             End If
             btnProcesar.Enabled = False
-                taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)
-                MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
+            taPagos.ActualizaContabilizado_UpdateQuery("Contabilizado", idSolicitud, varGlobal_IdEmpresa)
+            MsgBox("Proceso ejecutado correctamente", MsgBoxStyle.Information, "")
 
-            Else
+        Else
             'diario
 
 
-            If dtpFechaProceso.Value.Month = Date.Now.Month Then
+            If dtpFechaProceso.Value.Month <> Date.Now.Month Then
                 idTipoDocumento = taTipoDeDocumento.ObtTipoDePoliza_ScalarQuery("Diario", varGlobal_IdEmpresa)
                 folioPoliza = taPolizas.ConsultaUltimoFolio_ScalarQuery(idTipoDocumento, varGlobal_IdEmpresa)
             Else
+                dtpFechaProceso.Value = DateSerial(Date.Now.Year, Date.Now.Month, 0)
                 idTipoDocumento = taDatosPolizas.ObtTipoPoliza_ScalarQuery("CXP", fPago, monedaPago, varGlobal_IdEmpresa)
                 folioPoliza = taPeriodos.ConsultaFolio_ScalarQuery(dtpFechaProceso.Value.Year, dtpFechaProceso.Value.Month, varGlobal_IdEmpresa)
             End If

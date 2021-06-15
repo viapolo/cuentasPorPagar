@@ -235,4 +235,15 @@
             'Termina notifica pago
         End If
     End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnGeneraPolizaDiario.Click
+
+    End Sub
+
+    Private Sub frmGeneraPolizas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Proveedores' Puede moverla o quitarla según sea necesario.
+        Me.CXP_ProveedoresTableAdapter.Fill(Me.DsProduction.CXP_Proveedores)
+        Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)
+
+    End Sub
 End Class

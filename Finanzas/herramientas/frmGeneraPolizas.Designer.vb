@@ -22,6 +22,7 @@ Partial Class frmGeneraPolizas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnProcesar = New System.Windows.Forms.Button()
         Me.txtTipoSolicitud = New System.Windows.Forms.TextBox()
         Me.txtFolioSolicitud = New System.Windows.Forms.TextBox()
@@ -30,6 +31,21 @@ Partial Class frmGeneraPolizas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnNotificaPago = New System.Windows.Forms.Button()
+        Me.btnGeneraPolizaDiario = New System.Windows.Forms.Button()
+        Me.txtUuid = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ddlConc = New System.Windows.Forms.ComboBox()
+        Me.CXPConceptosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction = New cuentasPorPagar.dsProduction()
+        Me.ddlProveedores = New System.Windows.Forms.ComboBox()
+        Me.CXPProveedoresBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.CXP_ConceptosTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ConceptosTableAdapter()
+        Me.CXP_ProveedoresTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_ProveedoresTableAdapter()
+        CType(Me.CXPConceptosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXPProveedoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnProcesar
@@ -98,11 +114,106 @@ Partial Class frmGeneraPolizas
         Me.btnNotificaPago.Text = "Notifica pago"
         Me.btnNotificaPago.UseVisualStyleBackColor = True
         '
+        'btnGeneraPolizaDiario
+        '
+        Me.btnGeneraPolizaDiario.Location = New System.Drawing.Point(527, 199)
+        Me.btnGeneraPolizaDiario.Name = "btnGeneraPolizaDiario"
+        Me.btnGeneraPolizaDiario.Size = New System.Drawing.Size(117, 23)
+        Me.btnGeneraPolizaDiario.TabIndex = 8
+        Me.btnGeneraPolizaDiario.Text = "Genera Pólizas Diario"
+        Me.btnGeneraPolizaDiario.UseVisualStyleBackColor = True
+        '
+        'txtUuid
+        '
+        Me.txtUuid.Location = New System.Drawing.Point(134, 123)
+        Me.txtUuid.Name = "txtUuid"
+        Me.txtUuid.Size = New System.Drawing.Size(257, 20)
+        Me.txtUuid.TabIndex = 9
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(16, 123)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(45, 13)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = "UUUID:"
+        '
+        'ddlConc
+        '
+        Me.ddlConc.DataSource = Me.CXPConceptosBindingSource
+        Me.ddlConc.DisplayMember = "nombre"
+        Me.ddlConc.FormattingEnabled = True
+        Me.ddlConc.Location = New System.Drawing.Point(134, 159)
+        Me.ddlConc.Name = "ddlConc"
+        Me.ddlConc.Size = New System.Drawing.Size(374, 21)
+        Me.ddlConc.TabIndex = 11
+        Me.ddlConc.ValueMember = "idConcepto"
+        '
+        'CXPConceptosBindingSource
+        '
+        Me.CXPConceptosBindingSource.DataMember = "CXP_Conceptos"
+        Me.CXPConceptosBindingSource.DataSource = Me.DsProduction
+        '
+        'DsProduction
+        '
+        Me.DsProduction.DataSetName = "dsProduction"
+        Me.DsProduction.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ddlProveedores
+        '
+        Me.ddlProveedores.DataSource = Me.CXPProveedoresBindingSource
+        Me.ddlProveedores.DisplayMember = "razonSocial"
+        Me.ddlProveedores.FormattingEnabled = True
+        Me.ddlProveedores.Location = New System.Drawing.Point(134, 199)
+        Me.ddlProveedores.Name = "ddlProveedores"
+        Me.ddlProveedores.Size = New System.Drawing.Size(374, 21)
+        Me.ddlProveedores.TabIndex = 12
+        Me.ddlProveedores.ValueMember = "idProveedor"
+        '
+        'CXPProveedoresBindingSource
+        '
+        Me.CXPProveedoresBindingSource.DataMember = "CXP_Proveedores"
+        Me.CXPProveedoresBindingSource.DataSource = Me.DsProduction
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(16, 159)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(56, 13)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "Concepto:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(16, 206)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(59, 13)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Proveedor:"
+        '
+        'CXP_ConceptosTableAdapter
+        '
+        Me.CXP_ConceptosTableAdapter.ClearBeforeFill = True
+        '
+        'CXP_ProveedoresTableAdapter
+        '
+        Me.CXP_ProveedoresTableAdapter.ClearBeforeFill = True
+        '
         'frmGeneraPolizas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(821, 274)
+        Me.ClientSize = New System.Drawing.Size(667, 245)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ddlProveedores)
+        Me.Controls.Add(Me.ddlConc)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.txtUuid)
+        Me.Controls.Add(Me.btnGeneraPolizaDiario)
         Me.Controls.Add(Me.btnNotificaPago)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -113,6 +224,9 @@ Partial Class frmGeneraPolizas
         Me.Controls.Add(Me.btnProcesar)
         Me.Name = "frmGeneraPolizas"
         Me.Text = "frmGeneraPolizas"
+        CType(Me.CXPConceptosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXPProveedoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -126,4 +240,16 @@ Partial Class frmGeneraPolizas
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents btnNotificaPago As Button
+    Friend WithEvents btnGeneraPolizaDiario As Button
+    Friend WithEvents txtUuid As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents ddlConc As ComboBox
+    Friend WithEvents ddlProveedores As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents CXPConceptosBindingSource As BindingSource
+    Friend WithEvents DsProduction As dsProduction
+    Friend WithEvents CXP_ConceptosTableAdapter As dsProductionTableAdapters.CXP_ConceptosTableAdapter
+    Friend WithEvents CXPProveedoresBindingSource As BindingSource
+    Friend WithEvents CXP_ProveedoresTableAdapter As dsProductionTableAdapters.CXP_ProveedoresTableAdapter
 End Class

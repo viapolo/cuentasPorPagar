@@ -72,11 +72,16 @@ Partial Class frmPolizasEgresos
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.txtPolizaInicial = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmbTipoDeDocumento = New System.Windows.Forms.ComboBox()
+        Me.CXPtipoDeDocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CXP_tipoDeDocumentoTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.CXP_tipoDeDocumentoTableAdapter()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_PolizasEncBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Vw_CXP_PolizasEncDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.CXPtipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DsContabilidad
@@ -97,6 +102,7 @@ Partial Class frmPolizasEgresos
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.CONT_TiposDeCambioTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
@@ -123,7 +129,7 @@ Partial Class frmPolizasEgresos
         Me.Vw_CXP_PolizasEncDataGridView.Location = New System.Drawing.Point(12, 39)
         Me.Vw_CXP_PolizasEncDataGridView.Name = "Vw_CXP_PolizasEncDataGridView"
         Me.Vw_CXP_PolizasEncDataGridView.ReadOnly = True
-        Me.Vw_CXP_PolizasEncDataGridView.Size = New System.Drawing.Size(804, 342)
+        Me.Vw_CXP_PolizasEncDataGridView.Size = New System.Drawing.Size(1049, 342)
         Me.Vw_CXP_PolizasEncDataGridView.TabIndex = 2
         '
         'folioTipoDocumento
@@ -312,7 +318,7 @@ Partial Class frmPolizasEgresos
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(741, 10)
+        Me.Button1.Location = New System.Drawing.Point(951, 9)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 3
@@ -321,14 +327,14 @@ Partial Class frmPolizasEgresos
         '
         'dtpFechaInicio
         '
-        Me.dtpFechaInicio.Location = New System.Drawing.Point(284, 12)
+        Me.dtpFechaInicio.Location = New System.Drawing.Point(516, 11)
         Me.dtpFechaInicio.Name = "dtpFechaInicio"
         Me.dtpFechaInicio.Size = New System.Drawing.Size(200, 20)
         Me.dtpFechaInicio.TabIndex = 4
         '
         'dtpFechaFin
         '
-        Me.dtpFechaFin.Location = New System.Drawing.Point(525, 12)
+        Me.dtpFechaFin.Location = New System.Drawing.Point(735, 11)
         Me.dtpFechaFin.Name = "dtpFechaFin"
         Me.dtpFechaFin.Size = New System.Drawing.Size(200, 20)
         Me.dtpFechaFin.TabIndex = 5
@@ -364,7 +370,7 @@ Partial Class frmPolizasEgresos
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsBarProceso})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 427)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(828, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1073, 22)
         Me.StatusStrip1.TabIndex = 8
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -405,7 +411,7 @@ Partial Class frmPolizasEgresos
         '
         'txtPolizaInicial
         '
-        Me.txtPolizaInicial.Location = New System.Drawing.Point(88, 12)
+        Me.txtPolizaInicial.Location = New System.Drawing.Point(427, 11)
         Me.txtPolizaInicial.Name = "txtPolizaInicial"
         Me.txtPolizaInicial.Size = New System.Drawing.Size(69, 20)
         Me.txtPolizaInicial.TabIndex = 10
@@ -414,17 +420,48 @@ Partial Class frmPolizasEgresos
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 15)
+        Me.Label1.Location = New System.Drawing.Point(353, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(68, 13)
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "Póliza Inicial:"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(17, 14)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(62, 13)
+        Me.Label2.TabIndex = 12
+        Me.Label2.Text = "Tipo Poliza:"
+        '
+        'cmbTipoDeDocumento
+        '
+        Me.cmbTipoDeDocumento.DataSource = Me.CXPtipoDeDocumentoBindingSource
+        Me.cmbTipoDeDocumento.DisplayMember = "nombre"
+        Me.cmbTipoDeDocumento.FormattingEnabled = True
+        Me.cmbTipoDeDocumento.Location = New System.Drawing.Point(85, 9)
+        Me.cmbTipoDeDocumento.Name = "cmbTipoDeDocumento"
+        Me.cmbTipoDeDocumento.Size = New System.Drawing.Size(263, 21)
+        Me.cmbTipoDeDocumento.TabIndex = 13
+        Me.cmbTipoDeDocumento.ValueMember = "idTipoDeDocumento"
+        '
+        'CXPtipoDeDocumentoBindingSource
+        '
+        Me.CXPtipoDeDocumentoBindingSource.DataMember = "CXP_tipoDeDocumento"
+        Me.CXPtipoDeDocumentoBindingSource.DataSource = Me.DsContabilidad
+        '
+        'CXP_tipoDeDocumentoTableAdapter
+        '
+        Me.CXP_tipoDeDocumentoTableAdapter.ClearBeforeFill = True
+        '
         'frmPolizasEgresos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(828, 449)
+        Me.ClientSize = New System.Drawing.Size(1073, 449)
+        Me.Controls.Add(Me.cmbTipoDeDocumento)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtPolizaInicial)
         Me.Controls.Add(Me.btnSalir)
@@ -443,6 +480,7 @@ Partial Class frmPolizasEgresos
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.CXPtipoDeDocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -502,4 +540,8 @@ Partial Class frmPolizasEgresos
     Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
     Friend WithEvents txtPolizaInicial As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents cmbTipoDeDocumento As ComboBox
+    Friend WithEvents CXPtipoDeDocumentoBindingSource As BindingSource
+    Friend WithEvents CXP_tipoDeDocumentoTableAdapter As dsContabilidadTableAdapters.CXP_tipoDeDocumentoTableAdapter
 End Class

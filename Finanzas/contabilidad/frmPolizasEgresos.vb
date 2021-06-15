@@ -4,9 +4,9 @@ Public Class frmPolizasEgresos
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If varGlobal_IdEmpresa = 24 Then
-            Vw_CXP_PolizasEncTableAdapter.PolizasXRangoFechas_FillBy(Me.DsContabilidad.Vw_CXP_PolizasEnc, 6, varGlobal_IdEmpresa, dtpFechaInicio.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.AddDays(1).ToString("dd/MM/yyyy"))
+            Vw_CXP_PolizasEncTableAdapter.PolizasXRangoFechas_FillBy(Me.DsContabilidad.Vw_CXP_PolizasEnc, cmbTipoDeDocumento.SelectedValue, varGlobal_IdEmpresa, dtpFechaInicio.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.AddDays(1).ToString("dd/MM/yyyy"))
         Else
-            Vw_CXP_PolizasEncTableAdapter.PolizasXRangoFechas_FillBy(Me.DsContabilidad.Vw_CXP_PolizasEnc, 4, varGlobal_IdEmpresa, dtpFechaInicio.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.AddDays(1).ToString("dd/MM/yyyy"))
+            Vw_CXP_PolizasEncTableAdapter.PolizasXRangoFechas_FillBy(Me.DsContabilidad.Vw_CXP_PolizasEnc, cmbTipoDeDocumento.SelectedValue, varGlobal_IdEmpresa, dtpFechaInicio.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.AddDays(1).ToString("dd/MM/yyyy"))
         End If
     End Sub
 
@@ -40,6 +40,7 @@ Public Class frmPolizasEgresos
 
     Private Sub frmPolizasEgresos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFechaInicio.Value = Date.Now.AddDays(-Now.Day + 1)
+        CXP_tipoDeDocumentoTableAdapter.Fill(Me.DsContabilidad.CXP_tipoDeDocumento, varGlobal_IdEmpresa)
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click

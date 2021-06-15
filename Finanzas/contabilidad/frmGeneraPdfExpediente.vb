@@ -10,9 +10,18 @@
                     tipoPersona = "M"
                     Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "M")
                 ElseIf txtRfc.Text.Trim.Length = 13 Then
-                    tipoPersona = "F"
-                    Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
+                    If txtRfc.Text.Trim = "XAXX010101000" Then
+                        tipoPersona = "C"
+                        Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
+                    Else
+                        tipoPersona = "F"
+                        Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
+                    End If
+
                 End If
+            ElseIf txtRfc.Text.Trim = "XAXX010101000" Then
+                tipoPersona = "C"
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
             Else
                 tipoPersona = "C"
                 Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
@@ -38,14 +47,22 @@
         Dim cont As Integer = 0
 
         If taUsuarios.ExisteRfc_ScalarQuery(txtRfc.Text.Trim) = "NE" Or IsNothing(taUsuarios.ExisteRfc_ScalarQuery(txtRfc.Text.Trim)) Then
-            If taProveedores.ObtClientProv_ScalarQuery(txtRfc.Text.Trim) = False Then
+            If taProveedores.ObtClientProv_ScalarQuery(txtRfc.Text.Trim) = False Or IsNothing(taProveedores.ObtClientProv_ScalarQuery(txtRfc.Text.Trim)) Then
                 If txtRfc.Text.Trim.Length = 12 Then
                     tipoPersona = "M"
                     Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "M")
                 ElseIf txtRfc.Text.Trim.Length = 13 Then
-                    tipoPersona = "F"
-                    Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
+                    If txtRfc.Text.Trim = "XAXX010101000" Then
+                        tipoPersona = "C"
+                        Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
+                    Else
+                        tipoPersona = "F"
+                        Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
+                    End If
                 End If
+            ElseIf txtRfc.Text.Trim = "XAXX010101000" Then
+                tipoPersona = "C"
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
             Else
                 tipoPersona = "C"
                 Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
@@ -73,5 +90,43 @@
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
+    End Sub
+
+    Private Sub cmbProveedor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbProveedor.SelectedIndexChanged
+        Dim taUsuarios As New dsSeguridadTableAdapters.USUARIOTableAdapter
+        Dim taProveedores As New dsProductionTableAdapters.CXP_ProveedoresTableAdapter
+        Dim tipoPersona As String = ""
+        Dim cont As Integer = 0
+
+        If taUsuarios.ExisteRfc_ScalarQuery(txtRfc.Text.Trim) = "NE" Or IsNothing(taUsuarios.ExisteRfc_ScalarQuery(txtRfc.Text.Trim)) Then
+            If taProveedores.ObtClientProv_ScalarQuery(txtRfc.Text.Trim) = False Then
+                If txtRfc.Text.Trim.Length = 12 Then
+                    tipoPersona = "M"
+                    Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "M")
+                ElseIf txtRfc.Text.Trim.Length = 13 Then
+                    If txtRfc.Text.Trim = "XAXX010101000" Then
+                        tipoPersona = "C"
+                        Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
+                    Else
+                        tipoPersona = "F"
+                        Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "F")
+                    End If
+                End If
+            ElseIf txtRfc.Text.Trim = "XAXX010101000" Then
+                tipoPersona = "C"
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
+            Else
+                tipoPersona = "C"
+                Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "C")
+            End If
+        Else
+            tipoPersona = "E"
+            Me.CXP_DocumentacionProvTableAdapter.TipoPersona_FillBy(Me.DsProduction.CXP_DocumentacionProv, "E")
+        End If
+
+        For Each row As DataGridViewRow In dgvDocumentacion.Rows
+            dgvDocumentacion.Item("generaPdf", cont).Value = "Generar PDF"
+            cont += 1
+        Next
     End Sub
 End Class

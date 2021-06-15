@@ -283,17 +283,19 @@ Public Class frmGenPolizas
                                             If idConceptoD = 34 Or idConceptoD = 41 Then
                                                 dReferencia1 = rwPolizasDet.referencia
                                             Else
-                                                If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
-                                                    dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
-                                                End If
-                                            End If
-                                        Else
                                             If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
                                                 dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
                                             Else
+                                                dReferencia1 = Stuff(Trim(rwPolizasDet.referencia), "D", " ", 20)
+                                            End If
+                                            End If
+                                        Else
+                                        If dReferencia.IndexOf(Eliminar_AcentosPolizas(rwPolizasEnc.razonSocial)) > 0 Then
+                                            dReferencia1 = "PROV F-" & taCfdi.ObtieneFolio_ScalarQuery(rwPolizasDet.uuid) '& rwPolizasDet.folio
+                                        Else
                                             dReferencia1 = Stuff(Trim(rwPolizasDet.referencia), "D", " ", 20)
                                         End If
-                                        End If
+                                    End If
                                     Else
                                         dReferencia1 = Stuff(Trim(rwPolizasDet.noContrato), "D", " ", 20)
                                     End If
@@ -384,10 +386,8 @@ Public Class frmGenPolizas
 
         Dim Cuenta As Integer = 1
 
-
-
-        'Dim nombreArchivo As String = sfdPolizas.FileName
-
+        'revisa eventos de AVIO, si no tienen cuenta contable le asigna la correspondiente
+        actualizaCuentasContablesAvio()
 
 
         taTipoDePoliza.ObtTipoDePoliza_FillBy(dtTipoDePoliza, "Egreso", varGlobal_IdEmpresa)
@@ -561,7 +561,7 @@ Public Class frmGenPolizas
                                                           " " & Stuff(Eliminar_AcentosPolizas(rwProveedoresCpq.Nombre.ToUpper), "D", " ", 200) &
                                                           " " & Stuff(rwPolizasEnc.numeroDeCuenta, "D", " ", 20) &
                                                           " " & Stuff(rwPolizasEnc.monedaPago.Replace("MXN", "1").Replace("USD", "2").Replace("EUR", "3"), "I", " ", 4) &
-                                                          " " & Stuff(rwPolizasEnc.impSol.ToString, "D", " ", 20) &
+                                                          " " & Stuff(rwDetalleSol.importe.ToString, "D", " ", 20) &
                                                           " " & Stuff(referecnia20, "D", " ", 20) &
                                                           " " & Stuff("11", "I", " ", 5) &
                                                           " " & Stuff(BancosContpaqTableAdapter.ObtCodigoProv_ScalarQuery(rwPolizasEnc.claveBancos), "I", " ", 30) &
@@ -719,6 +719,8 @@ Public Class frmGenPolizas
 
                                             If rwPolizasEnc.tipoSolicitud = "AVI" Then
                                                 dsegNegocios = CStr(CInt(taDetallePolizaAvio.ObtSucursal_ScalarQuery(rwPolizasEnc.referencia)))
+                                            ElseIf rwPolizasEnc.tipoSolicitud = "TRA" Then
+                                                dsegNegocios = Stuff(Trim("1"), "D", " ", 4)
                                             End If
 
                                             'asigna segmento de negocios Toluca para todos los abonos a bancos
@@ -783,9 +785,8 @@ Public Class frmGenPolizas
                                         If rwDetalleSol.ref = "CHE" Then
                                             formPagoSat = "02"
                                             taTipoEgreso = "49"
-                                        End If
-                                        filePolizaD.WriteLine("EG" &
-                                                          " " & "04040" &
+                                            filePolizaD.WriteLine("CH" &
+                                                          " " & "04050" &
                                                           " " & Stuff(taTipoEgreso, "I", " ", 30) &
                                                       " " & Stuff(rwPolizasEnc.folioCheque.ToString, "I", " ", 20) &
                                                       " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
@@ -794,7 +795,7 @@ Public Class frmGenPolizas
                                                       " " & Stuff(Eliminar_AcentosPolizas(rwProveedoresCpq.Nombre.ToUpper), "D", " ", 200) &
                                                       " " & Stuff(rwPolizasEnc.numeroDeCuenta.Substring(8, 10), "D", " ", 20) &
                                                       " " & Stuff(rwPolizasEnc.monedaPago.Replace("MXN", "1").Replace("USD", "2").Replace("EUR", "3"), "I", " ", 4) &
-                                                      " " & Stuff(rwPolizasEnc.impSol.ToString, "D", " ", 20) &
+                                                      " " & Stuff(rwDetalleSol.importe.ToString, "D", " ", 20) &
                                                       " " & Stuff(referecnia20, "D", " ", 20) &
                                                       " " & Stuff("11", "I", " ", 5) &
                                                       " " & Stuff(BancosContpaqTableAdapter.ObtCodigoProv_ScalarQuery(rwPolizasEnc.claveBancos), "I", " ", 30) &
@@ -808,6 +809,35 @@ Public Class frmGenPolizas
                                                       " " & Space(5) &
                                                       " " & Stuff("2", "D", " ", 4)
                                                       )
+                                        Else
+                                            taTipoEgreso = "53"
+                                            formPagoSat = "03"
+                                            filePolizaD.WriteLine("EG" &
+                                                          " " & "04040" &
+                                                          " " & Stuff(taTipoEgreso, "I", " ", 30) &
+                                                      " " & Stuff(rwPolizasEnc.folioCheque.ToString, "I", " ", 20) &
+                                                      " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
+                                                      " " & rwPolizasEnc.fecha.ToString("yyyyMMdd") &
+                                                      " " & Stuff(rwProveedoresCpq.Codigo, "D", " ", 6) &
+                                                      " " & Stuff(Eliminar_AcentosPolizas(rwProveedoresCpq.Nombre.ToUpper), "D", " ", 200) &
+                                                      " " & Stuff(rwPolizasEnc.numeroDeCuenta.Substring(8, 10), "D", " ", 20) &
+                                                      " " & Stuff(rwPolizasEnc.monedaPago.Replace("MXN", "1").Replace("USD", "2").Replace("EUR", "3"), "I", " ", 4) &
+                                                      " " & Stuff(rwDetalleSol.importe.ToString, "D", " ", 20) &
+                                                      " " & Stuff(referecnia20, "D", " ", 20) &
+                                                      " " & Stuff("11", "I", " ", 5) &
+                                                      " " & Stuff(BancosContpaqTableAdapter.ObtCodigoProv_ScalarQuery(rwPolizasEnc.claveBancos), "I", " ", 30) &
+                                                      " " & Stuff(cuentaDestino, "D", " ", 30) &
+                                                      " " & Stuff("03", "D", " ", 5) &
+                                                      " " & Space(36) &
+                                                      " " & Stuff(rwPolizasEnc.rfc, "D", " ", 13) &
+                                                      " " & Space(60) &
+                                                      " " & Stuff(tipoCambio, "D", " ", 20) &
+                                                      " " & Space(37) &
+                                                      " " & Space(5) &
+                                                      " " & Stuff("2", "D", " ", 4)
+                                                      )
+                                        End If
+
                                     End If
                                 Else
                                     filePolizaD.WriteLine("****** NO EXISTE EL RFC " & rwPolizasEnc.rfc & " - " & rwPolizasEnc.razonSocial & " NO EXISTE")
@@ -861,6 +891,23 @@ Public Class frmGenPolizas
 
     Private Sub btnProcesarP_Click(sender As Object, e As EventArgs) Handles btnProcesarP.Click
         generaPolizaP()
+    End Sub
+
+    Private Sub actualizaCuentasContablesAvio()
+        Dim taSinCuentasContablesAvio As New dsContabilidadTableAdapters.CXP_RegContTableAdapter
+        Dim dtSinCuentasContablesAvio As New dsContabilidad.CXP_RegContDataTable
+        Dim taCuentasConpaq As New contpaqTableAdapters.CuentasTableAdapter
+
+        Try
+            taSinCuentasContablesAvio.AviSinCuentaContable_Fill(dtSinCuentasContablesAvio, varGlobal_IdEmpresa)
+
+            For Each rwSinCuentasContablesAvio As dsContabilidad.CXP_RegContRow In dtSinCuentasContablesAvio
+                taSinCuentasContablesAvio.ActualizaCuentaContable_UpdateQuery(taCuentasConpaq.ObtieneIdCta_ScalarQuery("231101900020" & rwSinCuentasContablesAvio.referenciaContrato.Substring(1, 4)), "AVI", varGlobal_IdEmpresa, rwSinCuentasContablesAvio.folioSolicitud, rwSinCuentasContablesAvio.idReg)
+            Next
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
+        End Try
+
     End Sub
 
 

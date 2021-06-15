@@ -157,7 +157,7 @@ Partial Class frmContabilizaCheques
         '
         'estatusReemb
         '
-        Me.estatusReemb.DataPropertyName = "estatusReemb"
+        Me.estatusReemb.DataPropertyName = "estatus"
         Me.estatusReemb.HeaderText = "estatusReemb"
         Me.estatusReemb.Name = "estatusReemb"
         Me.estatusReemb.ReadOnly = True

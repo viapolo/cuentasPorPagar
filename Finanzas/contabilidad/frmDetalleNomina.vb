@@ -19,6 +19,7 @@
             MsgBox("La solicitud ya ha sido contabilizada", MsgBoxStyle.Information, "")
         End If
         Try
+
             If varGlobal_IdEmpresa = "24" Then
                 CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
             Else
@@ -37,8 +38,15 @@
         taDetalleReembolsos.DetalleReembolso_FillBy(dtDetalleReembolsos, varGlobal_IdEmpresa, idSolicitud)
 
         For Each rwComprobaciongts As dsContabilidad.Vw_CXP_AutorizacionesRow In dtDetalleReembolsos.Rows
-            dgvDetalleNomina.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, rwComprobaciongts.totalPagadoTC, 0, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), rwComprobaciongts.decripcion, "ND")
-            dgvDetalleNomina.Rows.Add(cmbCuentaCargo.SelectedValue, cmbCuentaCargo.Text, 0, rwComprobaciongts.totalPagadoTC, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), rwComprobaciongts.decripcion, "ND")
+
+            If rwComprobaciongts.decripcion.IndexOf("CAT") > 0 Then
+                dgvDetalleNomina.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, rwComprobaciongts.totalPagadoTC, 0, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), rwComprobaciongts.decripcion, "ND")
+                dgvDetalleNomina.Rows.Add(cmbCuentaCargo.SelectedValue, cmbCuentaCargo.Text, 0, rwComprobaciongts.totalPagadoTC, rwComprobaciongts.decripcion.Substring(rwComprobaciongts.decripcion.IndexOf("CAT"), rwComprobaciongts.decripcion.Length - rwComprobaciongts.decripcion.IndexOf("CAT")), rwComprobaciongts.decripcion, "ND")
+            Else
+                Dim referencia() As String = rwComprobaciongts.decripcion.Split("/")
+                dgvDetalleNomina.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, rwComprobaciongts.totalPagadoTC, 0, referencia(0), referencia(1), "ND")
+                dgvDetalleNomina.Rows.Add(cmbCuentaCargo.SelectedValue, cmbCuentaCargo.Text, 0, rwComprobaciongts.totalPagadoTC, referencia(0), referencia(1), "ND")
+            End If
         Next
     End Sub
 
@@ -109,10 +117,6 @@
             End If
     End Sub
 
-    Private Sub frmDetalleNomina_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
-
-    End Sub
-
     Private Sub frmDetalleNomina_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         frmContabilizarNomina.Enabled = True
     End Sub
@@ -120,4 +124,5 @@
     Private Sub frmDetalleNomina_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         frmContabilizarNomina.Enabled = True
     End Sub
+
 End Class

@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>107</ApplicationRevision>
+    <ApplicationRevision>133</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -390,6 +390,12 @@
     <Compile Include="contabilidad\frmDetalleReembolsos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmDetalleRetInversiones.Designer.vb">
+      <DependentUpon>frmDetalleRetInversiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmDetalleRetInversiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmDetPolizasEgresos.Designer.vb">
       <DependentUpon>frmDetPolizasEgresos.vb</DependentUpon>
     </Compile>
@@ -420,6 +426,12 @@
     <Compile Include="contabilidad\frmGeneraPdfExpedienteView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmInversion.Designer.vb">
+      <DependentUpon>frmInversion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmInversion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmPeridos.Designer.vb">
       <DependentUpon>frmPeridos.vb</DependentUpon>
     </Compile>
@@ -438,6 +450,18 @@
     <Compile Include="contabilidad\frmPolizasMvtos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="contabilidad\frmReporteInversiones.Designer.vb">
+      <DependentUpon>frmReporteInversiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmReporteInversiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\frmRetiroDeInversion.Designer.vb">
+      <DependentUpon>frmRetiroDeInversion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\frmRetiroDeInversion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="contabilidad\frmRptProveedores.Designer.vb">
       <DependentUpon>frmRptProveedores.vb</DependentUpon>
     </Compile>
@@ -449,6 +473,12 @@
     </Compile>
     <Compile Include="contabilidad\frmValidaCfdi.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\rptInversiones.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptInversiones.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="contabilidad\rptPdfDocumentacion.vb">
       <AutoGen>True</AutoGen>
@@ -559,6 +589,12 @@
       <DependentUpon>frmCorreosNotificacionesPago.vb</DependentUpon>
     </Compile>
     <Compile Include="herramientas\frmCorreosNotificacionesPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="herramientas\frmCuentasConceptos.Designer.vb">
+      <DependentUpon>frmCuentasConceptos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="herramientas\frmCuentasConceptos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="herramientas\frmGeneraPolizas.Designer.vb">
@@ -686,12 +722,6 @@
       <DependentUpon>frmDocumentosAdjuntos.vb</DependentUpon>
     </Compile>
     <Compile Include="tesoreria\frmDocumentosAdjuntos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="tesoreria\frmInversiones.Designer.vb">
-      <DependentUpon>frmInversiones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="tesoreria\frmInversiones.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="tesoreria\frmPagoFondeos.Designer.vb">
@@ -849,6 +879,9 @@
     <EmbeddedResource Include="contabilidad\frmDetalleReembolsos.resx">
       <DependentUpon>frmDetalleReembolsos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmDetalleRetInversiones.resx">
+      <DependentUpon>frmDetalleRetInversiones.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmDetPolizasEgresos.resx">
       <DependentUpon>frmDetPolizasEgresos.vb</DependentUpon>
     </EmbeddedResource>
@@ -864,6 +897,9 @@
     <EmbeddedResource Include="contabilidad\frmGeneraPdfExpedienteView.resx">
       <DependentUpon>frmGeneraPdfExpedienteView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmInversion.resx">
+      <DependentUpon>frmInversion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmPeridos.resx">
       <DependentUpon>frmPeridos.vb</DependentUpon>
     </EmbeddedResource>
@@ -873,11 +909,21 @@
     <EmbeddedResource Include="contabilidad\frmPolizasMvtos.resx">
       <DependentUpon>frmPolizasMvtos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmReporteInversiones.resx">
+      <DependentUpon>frmReporteInversiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\frmRetiroDeInversion.resx">
+      <DependentUpon>frmRetiroDeInversion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmRptProveedores.resx">
       <DependentUpon>frmRptProveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmValidaCfdi.resx">
       <DependentUpon>frmValidaCfdi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\rptInversiones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptInversiones.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\rptPdfDocumentacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -921,6 +967,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="herramientas\frmCorreosNotificacionesPago.resx">
       <DependentUpon>frmCorreosNotificacionesPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="herramientas\frmCuentasConceptos.resx">
+      <DependentUpon>frmCuentasConceptos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="herramientas\frmGeneraPolizas.resx">
       <DependentUpon>frmGeneraPolizas.vb</DependentUpon>

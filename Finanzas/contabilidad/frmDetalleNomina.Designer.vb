@@ -71,10 +71,10 @@ Partial Class frmDetalleNomina
         Me.dgvDetalleNomina.AllowUserToDeleteRows = False
         Me.dgvDetalleNomina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetalleNomina.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCuenta, Me.cuentaContable, Me.cargo, Me.abono, Me.referencia, Me.concepto, Me.uuid})
-        Me.dgvDetalleNomina.Location = New System.Drawing.Point(10, 95)
+        Me.dgvDetalleNomina.Location = New System.Drawing.Point(10, 66)
         Me.dgvDetalleNomina.Name = "dgvDetalleNomina"
         Me.dgvDetalleNomina.ReadOnly = True
-        Me.dgvDetalleNomina.Size = New System.Drawing.Size(1005, 300)
+        Me.dgvDetalleNomina.Size = New System.Drawing.Size(1005, 329)
         Me.dgvDetalleNomina.TabIndex = 1
         '
         'idCuenta

@@ -335,9 +335,12 @@ Public Class mdicuentasPorPagar
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
+                        For Each submenu3a As ToolStripMenuItem In submenu2a.DropDownItems
+                            submenu3a.Enabled = True
+                        Next
                         submenu2a.Enabled = True
                     Next
-                    submenu1.Enabled = True
+                        submenu1.Enabled = True
                 Next
                 vLocMnuOpciones.Enabled = True
             Next
@@ -531,12 +534,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub InversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmInversiones.MdiParent = Me
-        frmInversiones.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+
     End Sub
 
     Private Sub FacturasElctrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasElctrónicasToolStripMenuItem.Click
@@ -857,6 +855,42 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmContabilizaCheques.MdiParent = Me
         frmContabilizaCheques.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub CuentasConceptosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasConceptosToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCuentasConceptos.MdiParent = Me
+        frmCuentasConceptos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub InversionesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem1.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmInversion.MdiParent = Me
+        frmInversion.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub RetiroDeInversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RetiroDeInversionesToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmRetiroDeInversion.MdiParent = Me
+        frmRetiroDeInversion.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub InversionesToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem2.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmReporteInversiones.MdiParent = Me
+        frmReporteInversiones.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

@@ -14,7 +14,7 @@
     End Sub
 
     Private Sub PagosConChequeDataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles PagosConChequeDataGridView.CellContentClick
-        If e.ColumnIndex = 1 And PagosConChequeDataGridView.Item("estatusReemb", e.RowIndex).Value.ToString = "" Then 'estatusReemb
+        If e.ColumnIndex = 1 And PagosConChequeDataGridView.Item("estatusReemb", e.RowIndex).Value.ToString = "33" Then 'estatusReemb
             Dim mdiContabilizaCheques As New frmDetallePagCheques
             Dim mdiSolicitudesPago As New mdicuentasPorPagar
             Me.Enabled = False
@@ -30,7 +30,7 @@
             mdiContabilizaCheques.Show()
 
             Me.Cursor = Cursors.Default
-        ElseIf e.ColumnIndex = 1 And PagosConChequeDataGridView.Item("estatusReemb", e.RowIndex).Value <> String.Empty Then 'estatusReemb
+        ElseIf e.ColumnIndex = 1 And PagosConChequeDataGridView.Item("estatusReemb", e.RowIndex).Value = "34" Then 'estatusReemb
             MsgBox("El cheque ya fue contabilizado...", MsgBoxStyle.Information, "")
         End If
     End Sub
