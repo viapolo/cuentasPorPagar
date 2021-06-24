@@ -869,13 +869,13 @@ Public Class frmGenPolizas
         dtpFechaInicio.Value = Date.Now.AddDays(-Now.Day + 1)
         Try
             If varGlobal_IdEmpresa = "24" Then
-                CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
-                ProveedoresContpaqTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
-                BancosContpaqTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
+                CuentasTableAdapter.Connection.ConnectionString = My.Settings.csContpaqArfin
+                ProveedoresContpaqTableAdapter.Connection.ConnectionString = My.Settings.csContpaqArfin
+                BancosContpaqTableAdapter.Connection.ConnectionString = My.Settings.csContpaqArfin
             Else
-                CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
-                ProveedoresContpaqTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
-                BancosContpaqTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
+                CuentasTableAdapter.Connection.ConnectionString = My.Settings.csContpaqFinagil
+                ProveedoresContpaqTableAdapter.Connection.ConnectionString = My.Settings.csContpaqFinagil
+                BancosContpaqTableAdapter.Connection.ConnectionString = My.Settings.csContpaqFinagil
             End If
             'TODO: esta línea de código carga datos en la tabla 'Contpaq.Cuentas' Puede moverla o quitarla según sea necesario.
             Me.CuentasTableAdapter.Fill(Me.Contpaq.Cuentas)

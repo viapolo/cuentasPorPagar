@@ -20,9 +20,9 @@
         End If
         Try
             If varGlobal_IdEmpresa = "24" Then
-                CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil"
+                CuentasTableAdapter.Connection.ConnectionString = My.Settings.csContpaqArfin
             Else
-                CuentasTableAdapter.Connection.ConnectionString = "Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil"
+                CuentasTableAdapter.Connection.ConnectionString = My.Settings.csContpaqFinagil
             End If
             'Me.CuentasTableAdapter.Fill(Me.Contpaq.Cuentas)
             Me.CXP_ConceptosTableAdapter.Fill(Me.DsProduction.CXP_Conceptos, varGlobal_IdEmpresa)

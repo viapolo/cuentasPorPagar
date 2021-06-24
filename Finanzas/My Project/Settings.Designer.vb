@@ -79,8 +79,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Secu"& _ 
-            "rity Info=True;User ID=finagil;Password=finagil")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persi"& _ 
+            "st Security Info=True;User ID=finagil;Password=finagil")>  _
         Public ReadOnly Property csContpaqFinagil() As String
             Get
                 Return CType(Me("csContpaqFinagil"),String)
@@ -157,6 +157,17 @@ Namespace My
             Set
                 Me("addFinagilValida") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctCONEARFIN;Persist Security I"& _ 
+            "nfo=True;User ID=finagil;Password=finagil")>  _
+        Public ReadOnly Property csContpaqArfin() As String
+            Get
+                Return CType(Me("csContpaqArfin"),String)
+            End Get
         End Property
     End Class
 End Namespace
