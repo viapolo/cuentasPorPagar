@@ -89,7 +89,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\TMPFINAGIL\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\TMPFINAGIL\")>  _
         Public Property fileNas() As String
             Get
                 Return CType(Me("fileNas"),String)
@@ -101,8 +101,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\ARFIN\Todos\Proces"& _ 
-            "ados\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\CFDI_PROV\ARFIN\Todos\Procesados\")>  _
         Public Property addArfin() As String
             Get
                 Return CType(Me("addArfin"),String)
@@ -114,8 +113,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\Todos\Proc"& _ 
-            "esados\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\CFDI_PROV\FINAGIL\Todos\Procesados\")>  _
         Public Property addFinagil() As String
             Get
                 Return CType(Me("addFinagil"),String)
@@ -139,7 +137,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\ARFIN\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\CFDI_PROV\ARFIN\")>  _
         Public Property addArfinValida() As String
             Get
                 Return CType(Me("addArfinValida"),String)
@@ -151,7 +149,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-nas\Contabilidad CFDI\ARCHIVOS ADD CONTPAQi\CFDI_PROV\FINAGIL\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\CFDI_PROV\FINAGIL\")>  _
         Public Property addFinagilValida() As String
             Get
                 Return CType(Me("addFinagilValida"),String)
