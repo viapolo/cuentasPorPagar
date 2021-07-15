@@ -845,10 +845,10 @@ GROUP BY CXP_CuentasBancariasProv.cuenta, CXP_CuentasBancariasProv.clabe, CXP_Cu
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_CXP_SugPagoTesoreria.tipoSolicitud, Vw_CXP_SugPagoTesoreria.folioSolicitud, Vw_CXP_SugPagoTesoreria.idEmpresa, Vw_CXP_SugPagoTesoreria.importe, Vw_CXP_SugPagoTesoreria.estatusSolicitud, 
-                         Vw_CXP_SugPagoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, Vw_CXP_SugPagoTesoreria.ok1, Vw_CXP_SugPagoTesoreria.ok2, Vw_CXP_SugPagoTesoreria.Tipar, CXP_tipoDocumentoSat.ref, 
-                         Vw_CXP_SugPagoTesoreria.formaDePago, Vw_CXP_SugPagoTesoreria.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, Vw_CXP_SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, 
-                         Vw_CXP_SugPagoTesoreria.origenRecurso, CXP_CuentasBancarias.nombre, Vw_CXP_SugPagoTesoreria.fechaPago, Vw_CXP_SugPagoTesoreria.fechaProceso, Vw_CXP_SugPagoTesoreria.destinoRecurso, 
-                         Vw_CXP_SugPagoTesoreria.fechaSolicitud
+                         Vw_CXP_SugPagoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, SUBSTRING(Vw_CXP_SugPagoTesoreria.ok1, 0, 49) AS ok1, SUBSTRING(Vw_CXP_SugPagoTesoreria.ok2, 0, 49) AS ok2, 
+                         Vw_CXP_SugPagoTesoreria.Tipar, CXP_tipoDocumentoSat.ref, Vw_CXP_SugPagoTesoreria.formaDePago, Vw_CXP_SugPagoTesoreria.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, 
+                         Vw_CXP_SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, Vw_CXP_SugPagoTesoreria.origenRecurso, CXP_CuentasBancarias.nombre, Vw_CXP_SugPagoTesoreria.fechaPago, 
+                         Vw_CXP_SugPagoTesoreria.fechaProceso, Vw_CXP_SugPagoTesoreria.destinoRecurso, Vw_CXP_SugPagoTesoreria.fechaSolicitud
 FROM            Vw_CXP_SugPagoTesoreria INNER JOIN
                          CXP_tipoDocumentoSat ON Vw_CXP_SugPagoTesoreria.formaDePago = CXP_tipoDocumentoSat.idTipoDocumento INNER JOIN
                          CXP_CuentasBancarias ON Vw_CXP_SugPagoTesoreria.origenRecurso = CXP_CuentasBancarias.idCuentaBancaria</CommandText>
@@ -923,10 +923,10 @@ WHERE        (Vw_CXP_SugPagoTesoreria.idEmpresa = @idEmpresa) AND (Vw_CXP_SugPag
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Vw_CXP_SugPagoTesoreria.tipoSolicitud, Vw_CXP_SugPagoTesoreria.folioSolicitud, Vw_CXP_SugPagoTesoreria.idEmpresa, Vw_CXP_SugPagoTesoreria.importe, Vw_CXP_SugPagoTesoreria.estatusSolicitud, 
-                         Vw_CXP_SugPagoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, Vw_CXP_SugPagoTesoreria.ok1, Vw_CXP_SugPagoTesoreria.ok2, Vw_CXP_SugPagoTesoreria.Tipar, CXP_tipoDocumentoSat.ref, 
-                         Vw_CXP_SugPagoTesoreria.formaDePago, Vw_CXP_SugPagoTesoreria.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, Vw_CXP_SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, 
-                         Vw_CXP_SugPagoTesoreria.origenRecurso, CXP_CuentasBancarias.nombre, Vw_CXP_SugPagoTesoreria.fechaPago, Vw_CXP_SugPagoTesoreria.fechaProceso, Vw_CXP_SugPagoTesoreria.destinoRecurso, 
-                         Vw_CXP_SugPagoTesoreria.fechaSolicitud
+                         Vw_CXP_SugPagoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, SUBSTRING(Vw_CXP_SugPagoTesoreria.ok1, 0, 45) AS ok1, SUBSTRING(Vw_CXP_SugPagoTesoreria.ok2, 0, 45) AS ok2, 
+                         Vw_CXP_SugPagoTesoreria.Tipar, CXP_tipoDocumentoSat.ref, Vw_CXP_SugPagoTesoreria.formaDePago, Vw_CXP_SugPagoTesoreria.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, 
+                         Vw_CXP_SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, Vw_CXP_SugPagoTesoreria.origenRecurso, ISNULL(CXP_CuentasBancarias.nombre, '') AS nombre, 
+                         Vw_CXP_SugPagoTesoreria.fechaPago, Vw_CXP_SugPagoTesoreria.fechaProceso, Vw_CXP_SugPagoTesoreria.destinoRecurso, Vw_CXP_SugPagoTesoreria.fechaSolicitud
 FROM            Vw_CXP_SugPagoTesoreria LEFT OUTER JOIN
                          CXP_tipoDocumentoSat ON Vw_CXP_SugPagoTesoreria.formaDePago = CXP_tipoDocumentoSat.idTipoDocumento LEFT OUTER JOIN
                          CXP_CuentasBancarias ON Vw_CXP_SugPagoTesoreria.origenRecurso = CXP_CuentasBancarias.idCuentaBancaria
@@ -3335,14 +3335,14 @@ WHERE        (cuenta = @cuenta) OR
               <xs:element name="ok1" msprop:Generator_ColumnVarNameInTable="columnok1" msprop:Generator_ColumnPropNameInRow="ok1" msprop:Generator_ColumnPropNameInTable="ok1Column" msprop:Generator_UserColumnName="ok1" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="ok2" msprop:Generator_ColumnVarNameInTable="columnok2" msprop:Generator_ColumnPropNameInRow="ok2" msprop:Generator_ColumnPropNameInTable="ok2Column" msprop:Generator_UserColumnName="ok2" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

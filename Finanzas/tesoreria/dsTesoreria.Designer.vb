@@ -2863,8 +2863,8 @@ Partial Public Class dsTesoreria
             Me.columnnombreCorto.MaxLength = 50
             Me.columnfPago.MaxLength = 100
             Me.columnestatus.MaxLength = 50
-            Me.columnok2.MaxLength = 50
-            Me.columnok1.MaxLength = 50
+            Me.columnok2.MaxLength = 100
+            Me.columnok1.MaxLength = 100
             Me.columnnoContrato.MaxLength = 10
             Me.columnconcepto.MaxLength = 50
         End Sub
@@ -3416,8 +3416,8 @@ Partial Public Class dsTesoreria
             MyBase.Columns.Add(Me.columnfechaSolicitud)
             Me.columntipoSolicitud.MaxLength = 20
             Me.columnestatusSolicitud.MaxLength = 50
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 200
+            Me.columnok2.MaxLength = 200
             Me.columnTipar.AllowDBNull = false
             Me.columnTipar.MaxLength = 1
             Me.columnref.MaxLength = 5
@@ -4398,8 +4398,8 @@ Partial Public Class dsTesoreria
             Me.columnConcepto.ReadOnly = true
             Me.columnConcepto.MaxLength = 250
             Me.columnmailAutoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnestatus.MaxLength = 50
             Me.columnsucursal.MaxLength = 50
             Me.columndepartamento.MaxLength = 50
@@ -5175,8 +5175,8 @@ Partial Public Class dsTesoreria
             Me.columnestatus.MaxLength = 50
             Me.columnautoriza1.MaxLength = 100
             Me.columnautoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnmoneda.MaxLength = 5
             Me.columnnoContrato.MaxLength = 10
             Me.columnnaAutoriza2.MaxLength = 100
@@ -25514,19 +25514,19 @@ Namespace dsTesoreriaTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        Vw_CXP_SugPagoTesoreria.tipoSolicitud, Vw_CXP_SugPagoTesoreria.foli"& _ 
                 "oSolicitud, Vw_CXP_SugPagoTesoreria.idEmpresa, Vw_CXP_SugPagoTesoreria.importe, "& _ 
                 "Vw_CXP_SugPagoTesoreria.estatusSolicitud, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugP"& _ 
-                "agoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, Vw_CXP_SugP"& _ 
-                "agoTesoreria.ok1, Vw_CXP_SugPagoTesoreria.ok2, Vw_CXP_SugPagoTesoreria.Tipar, CX"& _ 
-                "P_tipoDocumentoSat.ref, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoTesoreria.forma"& _ 
-                "DePago, Vw_CXP_SugPagoTesoreria.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, Vw_C"& _ 
-                "XP_SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                  Vw_CXP_SugPagoTesoreria.origenRecurso, CXP_CuentasBancarias.no"& _ 
-                "mbre, Vw_CXP_SugPagoTesoreria.fechaPago, Vw_CXP_SugPagoTesoreria.fechaProceso, V"& _ 
-                "w_CXP_SugPagoTesoreria.destinoRecurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPago"& _ 
-                "Tesoreria.fechaSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_SugPagoTesoreria INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                       CXP_tipoDocumentoSat ON Vw_CXP_SugPagoTesoreria.formaDePa"& _ 
-                "go = CXP_tipoDocumentoSat.idTipoDocumento INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         C"& _ 
-                "XP_CuentasBancarias ON Vw_CXP_SugPagoTesoreria.origenRecurso = CXP_CuentasBancar"& _ 
-                "ias.idCuentaBancaria"
+                "agoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, SUBSTRING(V"& _ 
+                "w_CXP_SugPagoTesoreria.ok1, 0, 49) AS ok1, SUBSTRING(Vw_CXP_SugPagoTesoreria.ok2"& _ 
+                ", 0, 49) AS ok2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoTesoreria.Tipar, CXP_t"& _ 
+                "ipoDocumentoSat.ref, Vw_CXP_SugPagoTesoreria.formaDePago, Vw_CXP_SugPagoTesoreri"& _ 
+                "a.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_"& _ 
+                "SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, Vw_CXP_SugPa"& _ 
+                "goTesoreria.origenRecurso, CXP_CuentasBancarias.nombre, Vw_CXP_SugPagoTesoreria."& _ 
+                "fechaPago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoTesoreria.fechaProceso, Vw_C"& _ 
+                "XP_SugPagoTesoreria.destinoRecurso, Vw_CXP_SugPagoTesoreria.fechaSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM"& _ 
+                "            Vw_CXP_SugPagoTesoreria INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_tip"& _ 
+                "oDocumentoSat ON Vw_CXP_SugPagoTesoreria.formaDePago = CXP_tipoDocumentoSat.idTi"& _ 
+                "poDocumento INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_CuentasBancarias ON Vw_CXP_"& _ 
+                "SugPagoTesoreria.origenRecurso = CXP_CuentasBancarias.idCuentaBancaria"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -25575,21 +25575,22 @@ Namespace dsTesoreriaTableAdapters
             Me._commandCollection(3).CommandText = "SELECT        Vw_CXP_SugPagoTesoreria.tipoSolicitud, Vw_CXP_SugPagoTesoreria.foli"& _ 
                 "oSolicitud, Vw_CXP_SugPagoTesoreria.idEmpresa, Vw_CXP_SugPagoTesoreria.importe, "& _ 
                 "Vw_CXP_SugPagoTesoreria.estatusSolicitud, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugP"& _ 
-                "agoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, Vw_CXP_SugP"& _ 
-                "agoTesoreria.ok1, Vw_CXP_SugPagoTesoreria.ok2, Vw_CXP_SugPagoTesoreria.Tipar, CX"& _ 
-                "P_tipoDocumentoSat.ref, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoTesoreria.forma"& _ 
-                "DePago, Vw_CXP_SugPagoTesoreria.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, Vw_C"& _ 
-                "XP_SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                  Vw_CXP_SugPagoTesoreria.origenRecurso, CXP_CuentasBancarias.no"& _ 
-                "mbre, Vw_CXP_SugPagoTesoreria.fechaPago, Vw_CXP_SugPagoTesoreria.fechaProceso, V"& _ 
-                "w_CXP_SugPagoTesoreria.destinoRecurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPago"& _ 
-                "Tesoreria.fechaSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_SugPagoTesoreria LEFT OUTER JOI"& _ 
-                "N"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_tipoDocumentoSat ON Vw_CXP_SugPagoTesoreria.form"& _ 
-                "aDePago = CXP_tipoDocumentoSat.idTipoDocumento LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "         CXP_CuentasBancarias ON Vw_CXP_SugPagoTesoreria.origenRecurso = CXP_Cue"& _ 
-                "ntasBancarias.idCuentaBancaria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_SugPagoTesoreria.idEmpresa "& _ 
-                "= @idEmpresa) AND (Vw_CXP_SugPagoTesoreria.fechaProgPago BETWEEN @fechaInicial A"& _ 
-                "ND @fechaFinal) AND (Vw_CXP_SugPagoTesoreria.estatusPago = @estatusPago)"
+                "agoTesoreria.estatusPago, Vw_CXP_SugPagoTesoreria.importeSolicitado, SUBSTRING(V"& _ 
+                "w_CXP_SugPagoTesoreria.ok1, 0, 45) AS ok1, SUBSTRING(Vw_CXP_SugPagoTesoreria.ok2"& _ 
+                ", 0, 45) AS ok2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoTesoreria.Tipar, CXP_t"& _ 
+                "ipoDocumentoSat.ref, Vw_CXP_SugPagoTesoreria.formaDePago, Vw_CXP_SugPagoTesoreri"& _ 
+                "a.fPago, Vw_CXP_SugPagoTesoreria.razonSocial, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_"& _ 
+                "SugPagoTesoreria.fechaProgPago, Vw_CXP_SugPagoTesoreria.monedaPago, Vw_CXP_SugPa"& _ 
+                "goTesoreria.origenRecurso, ISNULL(CXP_CuentasBancarias.nombre, '') AS nombre, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "                         Vw_CXP_SugPagoTesoreria.fechaPago, Vw_CXP_SugPagoTesore"& _ 
+                "ria.fechaProceso, Vw_CXP_SugPagoTesoreria.destinoRecurso, Vw_CXP_SugPagoTesoreri"& _ 
+                "a.fechaSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_SugPagoTesoreria LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    CXP_tipoDocumentoSat ON Vw_CXP_SugPagoTesoreria.formaDePago "& _ 
+                "= CXP_tipoDocumentoSat.idTipoDocumento LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " CXP_CuentasBancarias ON Vw_CXP_SugPagoTesoreria.origenRecurso = CXP_CuentasBanc"& _ 
+                "arias.idCuentaBancaria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_SugPagoTesoreria.idEmpresa = @idEmp"& _ 
+                "resa) AND (Vw_CXP_SugPagoTesoreria.fechaProgPago BETWEEN @fechaInicial AND @fech"& _ 
+                "aFinal) AND (Vw_CXP_SugPagoTesoreria.estatusPago = @estatusPago)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaInicial", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaProgPago", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
