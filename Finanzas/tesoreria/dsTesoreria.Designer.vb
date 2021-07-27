@@ -3416,8 +3416,8 @@ Partial Public Class dsTesoreria
             MyBase.Columns.Add(Me.columnfechaSolicitud)
             Me.columntipoSolicitud.MaxLength = 20
             Me.columnestatusSolicitud.MaxLength = 50
-            Me.columnok1.MaxLength = 200
-            Me.columnok2.MaxLength = 200
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnTipar.AllowDBNull = false
             Me.columnTipar.MaxLength = 1
             Me.columnref.MaxLength = 5

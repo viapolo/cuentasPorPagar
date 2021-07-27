@@ -40,6 +40,7 @@ Public Class frmPolizasEgresos
 
     Private Sub frmPolizasEgresos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtpFechaInicio.Value = Date.Now.AddDays(-Now.Day + 1)
+        CXPtipoDeDocumentoBindingSource.Filter = "documentoDe='Egreso'"
         CXP_tipoDeDocumentoTableAdapter.Fill(Me.DsContabilidad.CXP_tipoDeDocumento, varGlobal_IdEmpresa)
     End Sub
 
@@ -61,5 +62,9 @@ Public Class frmPolizasEgresos
             mdiDetallePolizasEgresos.Show()
             Me.Cursor = Cursors.Default
         End If
+    End Sub
+
+    Private Sub cmbTipoDeDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipoDeDocumento.SelectedIndexChanged
+
     End Sub
 End Class

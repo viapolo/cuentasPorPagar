@@ -108,6 +108,7 @@ Partial Class frmPolizasEgresos
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_InversionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing

@@ -670,7 +670,7 @@ Public Class mdicuentasPorPagar
         contadorActividad = 0
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GastosToolStripMenuItem.Click
         contadorActividad = 0
     End Sub
 
@@ -891,6 +891,15 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         frmReporteInversiones.MdiParent = Me
         frmReporteInversiones.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub PerfilesDeAccesoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PerfilesDeAccesoToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmPerfiles.MdiParent = Me
+        frmPerfiles.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

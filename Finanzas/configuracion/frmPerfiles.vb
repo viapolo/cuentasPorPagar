@@ -7,7 +7,7 @@
         Me.CXP_PerfilesUsuarioTableAdapter.Fill(Me.DsProduction.CXP_PerfilesUsuario, cmbNombrePerfil.SelectedValue)
 
         For Each vLocMnuOpciones As ToolStripMenuItem In mdicuentasPorPagar.MenuStrip.Items
-            cmbMenu.Items.Add(vLocMnuOpciones.Name)
+            cmbMenu.Items.Add(vLocMnuOpciones.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
             'cmbMenu.Enabled = True
         Next
     End Sub
@@ -16,11 +16,11 @@
         cmbSubMenu1.Text = ""
         cmbSubMenu1.Items.Clear()
         For Each vLocMnuOpciones As ToolStripMenuItem In mdicuentasPorPagar.MenuStrip.Items
-            If vLocMnuOpciones.Name = cmbMenu.Text Then
+            If vLocMnuOpciones.Name = cmbMenu.Text & "ToolStripMenuItem" Then
                 For Each submenu As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-                    cmbSubMenu1.Items.Add(submenu.Name)
+                    cmbSubMenu1.Items.Add(submenu.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
                 Next
-                cmbSubMenu1.Enabled = True
+                'cmbSubMenu1.Enabled = True
                 chkEscritura.Enabled = True
                 chkLectura.Enabled = True
                 btnAgregar.Enabled = True
@@ -36,13 +36,13 @@
             For Each submenu As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                 If submenu.Name = cmbSubMenu1.Text Then
                     For Each submenu1 As ToolStripMenuItem In submenu.DropDownItems
-                        cmbSubMenu2.Items.Add(submenu1.Name)
+                        cmbSubMenu2.Items.Add(submenu1.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
                     Next
                     cmbSubMenu2.Enabled = True
                 End If
             Next
         Next
-        cmbSubMenu1.Enabled = False
+        'cmbSubMenu1.Enabled = False
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
@@ -82,7 +82,7 @@
     End Sub
 
     Private Sub cmbSubMenu2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSubMenu2.SelectedIndexChanged
-        cmbSubMenu2.Enabled = False
+        'cmbSubMenu2.Enabled = False
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click

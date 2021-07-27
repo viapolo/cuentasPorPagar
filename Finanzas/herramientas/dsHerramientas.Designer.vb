@@ -3728,8 +3728,8 @@ Partial Public Class dsHerramientas
             Me.columndecripcion.MaxLength = 200
             Me.columnusuario.MaxLength = 50
             Me.columnestatus.MaxLength = 50
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnmoneda.MaxLength = 5
             Me.columnnoContrato.MaxLength = 10
             Me.columnmonedaPago.MaxLength = 5

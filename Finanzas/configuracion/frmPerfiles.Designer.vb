@@ -275,6 +275,8 @@ Partial Class frmPerfiles
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_Estado_NominaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_AutorizacionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_CodigoPostalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_EstadoTableAdapter = Nothing
@@ -282,21 +284,38 @@ Partial Class frmPerfiles
         Me.TableAdapterManager.CXP_c_PaisTableAdapter = Nothing
         Me.TableAdapterManager.CXP_c_RegimenFiscalTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CodigoAgrupadorTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasContablesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DepartamentosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_DiariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_DocumentacionProvTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EmpresasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_Estatus2TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ImpConTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ImpuestoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_PerfilesUsuarioTableAdapter = Me.CXP_PerfilesUsuarioTableAdapter
+        Me.TableAdapterManager.CXP_ProveedoresArchTableAdapter = Nothing
         Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_RegContTableAdapter = Nothing
         Me.TableAdapterManager.CXP_SucursalesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoConceptoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoCuentaContableTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
         Me.TableAdapterManager.CXP_TipoGastoTableAdapter = Nothing
         Me.TableAdapterManager.CXP_UsuariosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_XmlCfdi2TableAdapter = Nothing
         Me.TableAdapterManager.CXP_XmlCfdiTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_Correos_SistemaFinagilTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_CorreosFasesTableAdapter = Nothing
+        Me.TableAdapterManager.SucursalesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsProductionTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'cmbNombrePerfil
@@ -344,6 +363,7 @@ Partial Class frmPerfiles
         Me.chkAccesoWeb.TabIndex = 15
         Me.chkAccesoWeb.Text = "Acceso Web"
         Me.chkAccesoWeb.UseVisualStyleBackColor = True
+        Me.chkAccesoWeb.Visible = False
         '
         'frmPerfiles
         '
