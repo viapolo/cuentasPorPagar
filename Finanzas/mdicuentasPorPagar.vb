@@ -250,88 +250,74 @@ Public Class mdicuentasPorPagar
             End
         End Try
 
-        strSelect = "SELECT cve_menu, cve_submenu, cve_ssubmenu, cve_sssubmenu FROM SEG_MAESTRA " &
-       "WHERE cve_perfil IN (SELECT PERFILES.cve_perfil FROM PERFILES " &
-                             "INNER JOIN USUARIOS_PERFILES ON PERFILES.cve_perfil = USUARIOS_PERFILES.cve_perfil " &
-                             "INNER JOIN USUARIO ON USUARIOS_PERFILES.cve_empleado = USUARIO.cve_empleado " &
-                             "WHERE nom_sistema = 'TESORERIAFINAGIL' AND (USUARIO.id_usuario = '" & Usuario & "' ))" &
-       "ORDER BY cve_menu, cve_submenu, cve_ssubmenu, cve_sssubmenu"
+        Dim taPerfiles As New dsProductionTableAdapters.PermisosPerfilesTableAdapter
+        Dim dtPerfiles As New dsProduction.PermisosPerfilesDataTable
+        Dim drPerfiles As dsProduction.PermisosPerfilesRow
 
-        cn.ConnectionString = strConnectionSecurity
+        taPerfiles.Fill(dtPerfiles, Usuario)
 
-        With cm
-            .Connection = cn
-            .CommandText = strSelect
-        End With
-
-        ' Llenar el DataSet lo cual abre y cierra la conexión
-
-        daMenus.Fill(dsAgil, "Menus")
-
-        'UsuarioGlobalNombre = USER_SEC.ScalarNombre(Usuario)
-        'UsuarioGlobalDepto = USER_SEC.ScalarDepto(Usuario)
-        'UsuarioGlobalCorreo = USER_SEC.ScalarCorreo(Usuario)
-
-
-        Dim a As Integer = 0
-        Dim b As Integer = 0
-        Dim c As Integer = 0
-
-        For Each drMenu In dsAgil.Tables("Menus").Rows
-
-            If drMenu(0) > 0 Then
-                MenuStrip.Items(drMenu(0)).Enabled = True
-                If drMenu(1) > 0 Then
-                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
-                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems
-                            If a = drMenu(1) Then
-                                menu2.Enabled = True
-                            End If
-                            a += 1
-                        Next
-                    Next
-                Else
-                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
-                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems
-                            menu2.Enabled = True
-                        Next
-                    Next
-                End If
-
-                If drMenu(2) > 0 Then
-                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
-                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems.Find(menu1.DropDownItems(drMenu(1)).name, True)
-                            For Each menu3 As ToolStripMenuItem In menu2.DropDownItems '.Find(menu2.DropDownItems(drMenu(2)).name, True)
-                                If b = drMenu(2) Then
-                                    menu3.Enabled = True
+        For Each drPerfiles In dtPerfiles
+            If drPerfiles.submenu2 <> String.Empty Then
+                For Each m As ToolStripMenuItem In MenuStrip.Items.Find(MenuStrip.Items(drPerfiles.menu & "ToolStripMenuItem").Name, True)
+                    If m.Name.Replace(" ", "") = drPerfiles.menu & "ToolStripMenuItem" Then
+                        MenuStrip.Items(drPerfiles.menu.Replace(" ", "") & "ToolStripMenuItem").Enabled = True = True
+                    End If
+                    For Each m1 As ToolStripMenuItem In m.DropDownItems
+                        If m1.Name.Replace(" ", "") = drPerfiles.submenu1 & "ToolStripMenuItem" Then
+                            m1.Enabled = True
+                            For Each m2 As ToolStripMenuItem In m1.DropDownItems
+                                If m2.Name.Replace(" ", "") = drPerfiles.submenu2 & "ToolStripMenuItem" Then
+                                    m2.Enabled = True
                                 End If
-                                b += 1
                             Next
-                        Next
-                    Next
-                Else
-                    For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items.Find(MenuStrip.Items(drMenu(0)).Name, True)
-                        For Each menu2 As ToolStripMenuItem In menu1.DropDownItems.Find(menu1.DropDownItems(drMenu(1)).name, True)
-                            For Each menu3 As ToolStripMenuItem In menu2.DropDownItems '.Find(menu2.DropDownItems(drMenu(2)).name, True)
-                                menu3.Enabled = True
-                            Next
-                        Next
-                    Next
-                End If
-            Else
-                For Each menu1 As ToolStripMenuItem In Me.MenuStrip.Items
-                    menu1.Enabled = True
-                    For Each menu2 As ToolStripMenuItem In menu1.DropDownItems
-                        menu2.Enabled = True
-                        For Each menu3 As ToolStripMenuItem In menu2.DropDownItems
-                            MenuStrip.Enabled = True
-                        Next
+                        End If
                     Next
                 Next
+            Else
+                If drPerfiles.submenu1 <> String.Empty Then
+                    For Each m As ToolStripMenuItem In MenuStrip.Items.Find(MenuStrip.Items(drPerfiles.menu & "ToolStripMenuItem").Name, True)
+                        If m.Name.Replace(" ", "") = drPerfiles.menu & "ToolStripMenuItem" Then
+                            MenuStrip.Items(drPerfiles.menu.Replace(" ", "") & "ToolStripMenuItem").Enabled = True = True
+                        End If
+                        For Each m1 As ToolStripMenuItem In m.DropDownItems
+                            If m1.Name.Replace(" ", "") = drPerfiles.submenu1 & "ToolStripMenuItem" Then
+                                m1.Enabled = True
+                            End If
+                        Next
+                    Next
+                    If drPerfiles.submenu2 = String.Empty Then
+                        For Each m As ToolStripMenuItem In MenuStrip.Items.Find(MenuStrip.Items(drPerfiles.menu & "ToolStripMenuItem").Name, True)
+                            If m.Name.Replace(" ", "") = drPerfiles.menu & "ToolStripMenuItem" Then
+                                For Each all As ToolStripMenuItem In m.DropDownItems
+                                    If all.Name.Replace(" ", "") = drPerfiles.submenu1 & "ToolStripMenuItem" Then
+                                        For Each all2 As ToolStripMenuItem In all.DropDownItems
+                                            all2.Enabled = True
+                                        Next
+                                    End If
+                                Next
+                            End If
+                        Next
+                    End If
+                Else
+                    If drPerfiles.menu <> String.Empty Then
+                        For Each m As ToolStripMenuItem In MenuStrip.Items.Find(MenuStrip.Items(drPerfiles.menu & "ToolStripMenuItem").Name, True)
+                            m.Enabled = True
+                            If m.Name.Replace(" ", "") = drPerfiles.menu & "ToolStripMenuItem" Then
+                                For Each all As ToolStripMenuItem In m.DropDownItems
+                                    all.Enabled = True
+                                    For Each all2 As ToolStripMenuItem In all.DropDownItems
+                                        all2.Enabled = True
+                                    Next
+                                Next
+                            End If
+                        Next
+                    End If
+                End If
             End If
         Next
 
-        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = "viapolo" Then
+
+        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = "viapolo1" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems
@@ -340,11 +326,12 @@ Public Class mdicuentasPorPagar
                         Next
                         submenu2a.Enabled = True
                     Next
-                        submenu1.Enabled = True
+                    submenu1.Enabled = True
                 Next
                 vLocMnuOpciones.Enabled = True
             Next
         End If
+
         tssUsuario.Text = "Usuario: " & varGlUser
         tssEmpresa.Text = "Empresa: " & varGlEmpresaD
     End Sub
@@ -662,7 +649,7 @@ Public Class mdicuentasPorPagar
         contadorActividad = 0
     End Sub
 
-    Private Sub ContabilidadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ContabilidadToolStripMenuItem1.Click
+    Private Sub ContabilidadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ContabilidadToolStripMenuItem.Click
         contadorActividad = 0
     End Sub
 
@@ -704,6 +691,7 @@ Public Class mdicuentasPorPagar
         frmContabilizaComprobaciones.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
+        varGlobal_ToolStrip = ComprobacionesDeGastosToolStripMenuItem.Name.ToString.Replace("ToolStripMenuItem", "")
     End Sub
 
     Private Sub ReembolsosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReembolsosToolStripMenuItem.Click
@@ -902,5 +890,9 @@ Public Class mdicuentasPorPagar
         frmPerfiles.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub ContabilidadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfiguracionContableToolStripMenuItem.Click
+
     End Sub
 End Class

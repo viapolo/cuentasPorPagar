@@ -104,6 +104,10 @@ Partial Class frmUsuario
         Me.cmbJefeAlterno = New System.Windows.Forms.ComboBox()
         Me.USUARIOBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.chkJefeAlterno = New System.Windows.Forms.CheckBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.cmbPerfil = New System.Windows.Forms.ComboBox()
+        Me.CXPUsuariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsProduction3 = New cuentasPorPagar.dsProduction()
         NombreLabel = New System.Windows.Forms.Label()
         UsuarioLabel = New System.Windows.Forms.Label()
         MailLabel = New System.Windows.Forms.Label()
@@ -132,6 +136,9 @@ Partial Class frmUsuario
         Me.GroupBox3.SuspendLayout()
         Me.gbxJefeAlterno.SuspendLayout()
         CType(Me.USUARIOBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.CXPUsuariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsProduction3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NombreLabel
@@ -832,11 +839,44 @@ Partial Class frmUsuario
         Me.chkJefeAlterno.TabIndex = 0
         Me.chkJefeAlterno.UseVisualStyleBackColor = True
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.cmbPerfil)
+        Me.GroupBox4.Location = New System.Drawing.Point(918, 249)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(241, 64)
+        Me.GroupBox4.TabIndex = 35
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Perfil módulo de escritorio:"
+        '
+        'cmbPerfil
+        '
+        Me.cmbPerfil.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.CXP_UsuariosBindingSource, "idPerfil", True))
+        Me.cmbPerfil.DataSource = Me.CXPPerfilesBindingSource
+        Me.cmbPerfil.DisplayMember = "nombrePerfil"
+        Me.cmbPerfil.FormattingEnabled = True
+        Me.cmbPerfil.Location = New System.Drawing.Point(0, 26)
+        Me.cmbPerfil.Name = "cmbPerfil"
+        Me.cmbPerfil.Size = New System.Drawing.Size(235, 21)
+        Me.cmbPerfil.TabIndex = 0
+        Me.cmbPerfil.ValueMember = "idPerf"
+        '
+        'CXPUsuariosBindingSource
+        '
+        Me.CXPUsuariosBindingSource.DataMember = "CXP_Usuarios"
+        Me.CXPUsuariosBindingSource.DataSource = Me.DsProduction3
+        '
+        'DsProduction3
+        '
+        Me.DsProduction3.DataSetName = "dsProduction"
+        Me.DsProduction3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1179, 439)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.chkJefeAlterno)
         Me.Controls.Add(Me.gbxJefeAlterno)
         Me.Controls.Add(Me.txtBuscar)
@@ -879,6 +919,9 @@ Partial Class frmUsuario
         Me.GroupBox3.PerformLayout()
         Me.gbxJefeAlterno.ResumeLayout(False)
         CType(Me.USUARIOBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox4.ResumeLayout(False)
+        CType(Me.CXPUsuariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsProduction3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -958,4 +1001,8 @@ Partial Class frmUsuario
     Friend WithEvents chkJefeAlterno As CheckBox
     Friend WithEvents cmbJefeAlterno As ComboBox
     Friend WithEvents USUARIOBindingSource1 As BindingSource
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents cmbPerfil As ComboBox
+    Friend WithEvents DsProduction3 As dsProduction
+    Friend WithEvents CXPUsuariosBindingSource As BindingSource
 End Class

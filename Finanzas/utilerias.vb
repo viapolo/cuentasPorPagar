@@ -36,6 +36,7 @@ Module utilerias
     Public contadorPagosSol As Integer
     Public contadorPagosPag As Integer
     Dim estatusProceso As Boolean = True
+    Public varGlobal_ToolStrip As String
 
     Public Function obtNumCadena(cadena As String)
         Dim str As String = String.Empty
@@ -623,7 +624,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                         For Each rwDetalleEvento As dsTesoreria.DatosSolicitudRow In dtDatosDetalleSolicitud
                                             If rwDetalleEvento.Tipar = "L" Or rwDetalleEvento.Tipar = "R" Or rwDetalleEvento.Tipar = "S" Then
                                                 'cargo
-                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), rwDetalleEvento.idProveedor, rwDetalleEvento.subtotalPagado, 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                 'abono
                                                 taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.importeSolicitado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                             ElseIf rwDetalleEvento.Tipar = "B" Then
@@ -924,5 +925,34 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         Next
     End Sub
 
+    Public Function obtienePermisosLecturEscritura(ByVal nombreToolStrip As String)
+        Dim lectura As Boolean = False
+        Dim taPermisos As New dsProductionTableAdapters.PermisosPerfilesTableAdapter
+        Dim dtPermisos As New dsProduction.PermisosPerfilesDataTable
+        Dim drPermisos As dsProduction.PermisosPerfilesRow
+
+        taPermisos.PermisosLectura_FillBy(dtPermisos, nombreToolStrip, varGlobal_IdUsuario)
+        For Each drPermisos In dtPermisos
+            If drPermisos.submenu2 = nombreToolStrip.Replace("ToolStripMenuItem", "") Then
+                lectura = drPermisos.lecturaEscritura
+                Exit For
+            Else
+                If drPermisos.submenu1 = nombreToolStrip.Replace("ToolStripMenuItem", "") Then
+                    lectura = drPermisos.lecturaEscritura
+                    Exit For
+                End If
+            End If
+        Next
+        Return lectura
+    End Function
+
+    Public Sub habilitaControles(ByVal formulario As Object, ByVal estatus As Boolean)
+        Dim f As Integer
+        For f = 0 To formulario.Controls.Count - 1
+            If TypeOf formulario.Controls(f) Is TextBox Or TypeOf formulario.Controls(f) Is CheckBox Or TypeOf formulario.Controls(f) Is DateTimePicker Or TypeOf formulario.Controls(f) Is ComboBox Or TypeOf formulario.Controls(f) Is Label Or TypeOf formulario.Controls(f) Is DataGridView Then
+                formulario.Controls(f).Enabled = estatus
+            End If
+        Next
+    End Sub
 
 End Module

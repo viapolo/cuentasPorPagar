@@ -24,9 +24,9 @@ Partial Class frmContabilizaComprobaciones
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmContabilizaComprobaciones))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Vw_CXP_MisComprobacionesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.Vw_CXP_MisComprobacionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -43,9 +43,6 @@ Partial Class frmContabilizaComprobaciones
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.Vw_CXP_MisComprobacionesBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.Vw_CXP_MisComprobacionesDataGridView = New System.Windows.Forms.DataGridView()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.Vw_CXP_MisComprobacionesTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_MisComprobacionesTableAdapter()
-        Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
         Me.idFolioComprobacion = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.idFolioSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -57,6 +54,9 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.Vw_CXP_MisComprobacionesTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.Vw_CXP_MisComprobacionesTableAdapter()
+        Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
         CType(Me.Vw_CXP_MisComprobacionesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Vw_CXP_MisComprobacionesBindingNavigator.SuspendLayout()
         CType(Me.Vw_CXP_MisComprobacionesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -203,38 +203,6 @@ Partial Class frmContabilizaComprobaciones
         Me.Vw_CXP_MisComprobacionesDataGridView.Size = New System.Drawing.Size(1060, 334)
         Me.Vw_CXP_MisComprobacionesDataGridView.TabIndex = 2
         '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(997, 368)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 3
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'Vw_CXP_MisComprobacionesTableAdapter
-        '
-        Me.Vw_CXP_MisComprobacionesTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Connection = Nothing
-        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'idFolioComprobacion
         '
         Me.idFolioComprobacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
@@ -259,9 +227,9 @@ Partial Class frmContabilizaComprobaciones
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "impDepositado"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Format = "C2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn3.HeaderText = "Imp Dep"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -280,9 +248,9 @@ Partial Class frmContabilizaComprobaciones
         '
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "decripcion"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn4.HeaderText = "Descripción"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -314,7 +282,6 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         Me.DataGridViewTextBoxColumn8.Visible = False
-        Me.DataGridViewTextBoxColumn8.Width = 81
         '
         'DataGridViewTextBoxColumn9
         '
@@ -332,17 +299,50 @@ Partial Class frmContabilizaComprobaciones
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
         Me.DataGridViewTextBoxColumn10.Visible = False
-        Me.DataGridViewTextBoxColumn10.Width = 67
         '
         'DataGridViewTextBoxColumn11
         '
         Me.DataGridViewTextBoxColumn11.DataPropertyName = "fechaComprobacion"
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn11.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Format = "d"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn11.DefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridViewTextBoxColumn11.HeaderText = "Fech Comp"
         Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
         Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(997, 368)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 3
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'Vw_CXP_MisComprobacionesTableAdapter
+        '
+        Me.Vw_CXP_MisComprobacionesTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.CONT_TiposDeCambioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_InversionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'frmContabilizaComprobaciones
         '

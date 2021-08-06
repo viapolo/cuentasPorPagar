@@ -46,7 +46,7 @@ Partial Class frmPerfiles
         Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.eliminar = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.DsProduction = New cuentasPorPagar.dsProduction()
         Me.CXP_PerfilesUsuarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CXP_PerfilesUsuarioTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter()
@@ -56,7 +56,6 @@ Partial Class frmPerfiles
         Me.DsProduction1 = New cuentasPorPagar.dsProduction()
         Me.CXP_PerfilesTableAdapter = New cuentasPorPagar.dsProductionTableAdapters.CXP_PerfilesTableAdapter()
         Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.chkAccesoWeb = New System.Windows.Forms.CheckBox()
         CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsSeguridadBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.USUARIOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +87,7 @@ Partial Class frmPerfiles
         '
         'cmbMenu
         '
+        Me.cmbMenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbMenu.DropDownWidth = 121
         Me.cmbMenu.FormattingEnabled = True
         Me.cmbMenu.Location = New System.Drawing.Point(12, 85)
@@ -97,6 +97,7 @@ Partial Class frmPerfiles
         '
         'cmbSubMenu1
         '
+        Me.cmbSubMenu1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbSubMenu1.FormattingEnabled = True
         Me.cmbSubMenu1.Location = New System.Drawing.Point(218, 85)
         Me.cmbSubMenu1.Name = "cmbSubMenu1"
@@ -105,6 +106,7 @@ Partial Class frmPerfiles
         '
         'cmbSubMenu2
         '
+        Me.cmbSubMenu2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbSubMenu2.FormattingEnabled = True
         Me.cmbSubMenu2.Location = New System.Drawing.Point(427, 85)
         Me.cmbSubMenu2.Name = "cmbSubMenu2"
@@ -249,14 +251,14 @@ Partial Class frmPerfiles
         Me.DataGridViewTextBoxColumn1.Visible = False
         Me.DataGridViewTextBoxColumn1.Width = 30
         '
-        'Button1
+        'btnBuscar
         '
-        Me.Button1.Location = New System.Drawing.Point(296, 30)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 12
-        Me.Button1.Text = "Buscar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnBuscar.Location = New System.Drawing.Point(296, 30)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.TabIndex = 12
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
         '
         'DsProduction
         '
@@ -322,6 +324,7 @@ Partial Class frmPerfiles
         '
         Me.cmbNombrePerfil.DataSource = Me.CXPPerfilesBindingSource
         Me.cmbNombrePerfil.DisplayMember = "nombrePerfil"
+        Me.cmbNombrePerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbNombrePerfil.FormattingEnabled = True
         Me.cmbNombrePerfil.Location = New System.Drawing.Point(91, 32)
         Me.cmbNombrePerfil.Name = "cmbNombrePerfil"
@@ -352,28 +355,14 @@ Partial Class frmPerfiles
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
-        'chkAccesoWeb
-        '
-        Me.chkAccesoWeb.Appearance = System.Windows.Forms.Appearance.Button
-        Me.chkAccesoWeb.AutoSize = True
-        Me.chkAccesoWeb.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.CXP_PerfilesUsuarioBindingSource, "web", True))
-        Me.chkAccesoWeb.Location = New System.Drawing.Point(632, 54)
-        Me.chkAccesoWeb.Name = "chkAccesoWeb"
-        Me.chkAccesoWeb.Size = New System.Drawing.Size(79, 23)
-        Me.chkAccesoWeb.TabIndex = 15
-        Me.chkAccesoWeb.Text = "Acceso Web"
-        Me.chkAccesoWeb.UseVisualStyleBackColor = True
-        Me.chkAccesoWeb.Visible = False
-        '
         'frmPerfiles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(957, 335)
-        Me.Controls.Add(Me.chkAccesoWeb)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.cmbNombrePerfil)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.CXP_PerfilesUsuarioDataGridView)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnAgregar)
@@ -385,6 +374,7 @@ Partial Class frmPerfiles
         Me.Controls.Add(Me.cmbSubMenu2)
         Me.Controls.Add(Me.cmbSubMenu1)
         Me.Controls.Add(Me.cmbMenu)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmPerfiles"
         Me.Text = "Perfiles"
         CType(Me.DsSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
@@ -418,7 +408,7 @@ Partial Class frmPerfiles
     Friend WithEvents CXP_PerfilesUsuarioTableAdapter As dsProductionTableAdapters.CXP_PerfilesUsuarioTableAdapter
     Friend WithEvents TableAdapterManager As dsProductionTableAdapters.TableAdapterManager
     Friend WithEvents CXP_PerfilesUsuarioDataGridView As DataGridView
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnBuscar As Button
     Friend WithEvents cmbNombrePerfil As ComboBox
     Friend WithEvents DsProduction1 As dsProduction
     Friend WithEvents CXPPerfilesBindingSource As BindingSource
@@ -432,5 +422,4 @@ Partial Class frmPerfiles
     Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
     Friend WithEvents eliminar As DataGridViewLinkColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents chkAccesoWeb As CheckBox
 End Class

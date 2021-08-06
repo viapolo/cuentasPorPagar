@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>143</ApplicationRevision>
+    <ApplicationRevision>147</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -318,6 +318,12 @@
     </Compile>
     <Compile Include="contabilidad\dsContabilidad.vb">
       <DependentUpon>dsContabilidad.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\fmrCancelCompGastos.Designer.vb">
+      <DependentUpon>fmrCancelCompGastos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\fmrCancelCompGastos.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\frmAplicacionBlanco.Designer.vb">
       <DependentUpon>frmAplicacionBlanco.vb</DependentUpon>
@@ -843,6 +849,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\fmrCancelCompGastos.resx">
+      <DependentUpon>fmrCancelCompGastos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\frmAplicacionBlanco.resx">
       <DependentUpon>frmAplicacionBlanco.vb</DependentUpon>

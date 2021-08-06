@@ -10,6 +10,7 @@
             cmbMenu.Items.Add(vLocMnuOpciones.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
             'cmbMenu.Enabled = True
         Next
+        deshabilitaControles()
     End Sub
 
     Private Sub cmbMenu_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMenu.SelectedIndexChanged
@@ -26,27 +27,41 @@
                 btnAgregar.Enabled = True
             End If
         Next
-        cmbMenu.Enabled = False
+        If cmbSubMenu1.Items.Count = 0 Then
+            cmbSubMenu1.Enabled = False
+            cmbSubMenu2.Enabled = False
+        Else
+            cmbSubMenu1.Enabled = True
+            cmbSubMenu2.Enabled = True
+        End If
+        'cmbMenu.Enabled = False
     End Sub
 
     Private Sub cmbSubMenu1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSubMenu1.SelectedIndexChanged
         cmbSubMenu2.Text = ""
         cmbSubMenu2.Items.Clear()
         For Each vLocMnuOpciones As ToolStripMenuItem In mdicuentasPorPagar.MenuStrip.Items
-            For Each submenu As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
-                If submenu.Name = cmbSubMenu1.Text Then
-                    For Each submenu1 As ToolStripMenuItem In submenu.DropDownItems
-                        cmbSubMenu2.Items.Add(submenu1.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
-                    Next
-                    cmbSubMenu2.Enabled = True
-                End If
-            Next
+            If vLocMnuOpciones.Name = cmbMenu.Text & "ToolStripMenuItem" Then
+                For Each submenu As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
+                    If submenu.Name = cmbSubMenu1.Text & "ToolStripMenuItem" Then
+                        For Each submenu1 As ToolStripMenuItem In submenu.DropDownItems
+                            cmbSubMenu2.Items.Add(submenu1.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
+                        Next
+                        cmbSubMenu2.Enabled = True
+                    End If
+                Next
+            End If
         Next
+        If cmbSubMenu2.Items.Count = 0 Then
+            cmbSubMenu2.Enabled = False
+        Else
+            cmbSubMenu2.Enabled = True
+        End If
         'cmbSubMenu1.Enabled = False
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue, chkAccesoWeb.Checked)
+        taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue, False)
         cmbSubMenu1.Text = ""
         cmbSubMenu1.Items.Clear()
         cmbSubMenu2.Text = ""
@@ -59,12 +74,13 @@
         cmbMenu.Enabled = True
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         CXP_PerfilesUsuarioDataGridView.Rows.Clear()
         taPerfiles.Fill(DsProduction.CXP_PerfilesUsuario, cmbNombrePerfil.SelectedValue)
         For Each rowsa As dsProduction.CXP_PerfilesUsuarioRow In DsProduction.CXP_PerfilesUsuario.Rows
             CXP_PerfilesUsuarioDataGridView.Rows.Add(rowsa.nombrePerfil, rowsa.menu, rowsa.submenu1, rowsa.submenu2, rowsa.lectura, rowsa.lecturaEscritura, "Eliminar", rowsa.idPerfil)
         Next
+        habilitaControles()
         'cmbMenu.Enabled = True
         'cmbNombrePerfil.Enabled = False
     End Sub
@@ -89,11 +105,33 @@
         cmbNombrePerfil.Enabled = True
     End Sub
 
-    Private Sub chkAccesoWeb_CheckedChanged(sender As Object, e As EventArgs) Handles chkAccesoWeb.CheckedChanged
+    Private Sub chkAccesoWeb_CheckedChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub chkAccesoWeb_Click(sender As Object, e As EventArgs) Handles chkAccesoWeb.Click
-        taPerfiles.ActWeb_UpdateQuery(chkAccesoWeb.Checked, cmbNombrePerfil.SelectedValue)
+    Private Sub chkAccesoWeb_Click(sender As Object, e As EventArgs)
+        'taPerfiles.ActWeb_UpdateQuery(chkAccesoWeb.Checked, cmbNombrePerfil.SelectedValue)
     End Sub
+
+    Private Sub habilitaControles()
+        Dim f As Integer
+        For f = 0 To Me.Controls.Count - 1
+            If TypeOf Me.Controls(f) Is TextBox Or TypeOf Me.Controls(f) Is CheckBox Or TypeOf Me.Controls(f) Is DateTimePicker Or TypeOf Me.Controls(f) Is ComboBox Or TypeOf Me.Controls(f) Is Label Or TypeOf Me.Controls(f) Is DataGridView Then
+                Me.Controls(f).Enabled = True
+            End If
+        Next
+
+    End Sub
+
+    Private Sub deshabilitaControles()
+        Dim f As Integer
+        For f = 0 To Me.Controls.Count - 1
+            If TypeOf Me.Controls(f) Is TextBox Or TypeOf Me.Controls(f) Is CheckBox Or TypeOf Me.Controls(f) Is DateTimePicker Or TypeOf Me.Controls(f) Is ComboBox Or TypeOf Me.Controls(f) Is Label Or TypeOf Me.Controls(f) Is DataGridView Then
+                Me.Controls(f).Enabled = False
+            End If
+        Next
+        btnBuscar.Enabled = True
+        cmbNombrePerfil.Enabled = True
+    End Sub
+
 End Class

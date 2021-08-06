@@ -11,6 +11,8 @@
     Dim concatEmpresas As String = ""
     Dim concatConceptos As String = ""
     Private Sub frmUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DsProduction3.CXP_Usuarios' Puede moverla o quitarla según sea necesario.
+        Me.CXP_UsuariosTableAdapter.Fill(Me.DsProduction3.CXP_Usuarios)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Departamentos' Puede moverla o quitarla según sea necesario.
         Me.CXP_DepartamentosTableAdapter.Fill(Me.DsProduction.CXP_Departamentos)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Sucursales' Puede moverla o quitarla según sea necesario.
