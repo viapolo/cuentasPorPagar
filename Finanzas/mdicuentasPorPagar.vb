@@ -685,13 +685,14 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ComprobacionesDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprobacionesDeGastosToolStripMenuItem.Click
+        varGlobal_ToolStrip = ComprobacionesDeGastosToolStripMenuItem.Name.ToString.Replace("ToolStripMenuItem", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContabilizaComprobaciones.MdiParent = Me
         frmContabilizaComprobaciones.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
-        varGlobal_ToolStrip = ComprobacionesDeGastosToolStripMenuItem.Name.ToString.Replace("ToolStripMenuItem", "")
+
     End Sub
 
     Private Sub ReembolsosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReembolsosToolStripMenuItem.Click

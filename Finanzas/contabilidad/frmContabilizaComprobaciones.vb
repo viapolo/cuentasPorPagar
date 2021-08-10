@@ -1,11 +1,11 @@
 ﻿Public Class frmContabilizaComprobaciones
     Private Sub frmContabilizaComprobaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If obtienePermisosLecturEscritura(varGlobal_ToolStrip) = False Then
-            habilitaControles(Me, False)
-            BindingNavigatorAddNewItem.Visible = False
-            BindingNavigatorDeleteItem.Visible = False
-            Vw_CXP_MisComprobacionesBindingNavigatorSaveItem.Visible = False
-        End If
+        'If obtienePermisosLecturEscritura(varGlobal_ToolStrip) = False Then
+        '    habilitaControles(Me, False)
+        '    BindingNavigatorAddNewItem.Visible = False
+        '    BindingNavigatorDeleteItem.Visible = False
+        '    Vw_CXP_MisComprobacionesBindingNavigatorSaveItem.Visible = False
+        'End If
 
         Try
             Me.Vw_CXP_MisComprobacionesTableAdapter.Fill(Me.DsContabilidad.Vw_CXP_MisComprobaciones, New System.Nullable(Of Decimal)(CType(varGlobal_IdEmpresa, Decimal)))
