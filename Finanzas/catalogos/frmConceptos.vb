@@ -15,6 +15,18 @@
     End Sub
 
     Private Sub frmConceptos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If obtienePermisosLecturEscritura(varGlobal_menu) = False Then
+            If obtienePermisosLecturEscritura(varGlobal_submenu1) = False Then
+                If obtienePermisosLecturEscritura(varGlobal_submenu2) = False Then
+                    habilitaControles(Me, False)
+                    BindingNavigatorAddNewItem.Visible = False
+                    BindingNavigatorDeleteItem.Visible = False
+                    'Vw_CXP_MisComprobacionesBindingNavigatorSaveItem.Visible = False
+                End If
+            End If
+        End If
+
         'TODO: esta línea de código carga datos en la tabla 'DsProduction4.CXP_Estatus2' Puede moverla o quitarla según sea necesario.
         Me.CXP_Estatus2TableAdapter.Fill(Me.DsProduction4.CXP_Estatus2)
         'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Estatus' Puede moverla o quitarla según sea necesario.

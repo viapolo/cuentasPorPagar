@@ -74,6 +74,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub EmpresasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmpresasToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmEmpresas.MdiParent = Me
@@ -83,6 +84,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmUsuario.MdiParent = Me
@@ -92,6 +94,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub MonedasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MonedasToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSATMonedas.MdiParent = Me
@@ -103,6 +106,7 @@ Public Class mdicuentasPorPagar
 
 
     Private Sub ImpuestosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImpuestosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSATImpuestos.MdiParent = Me
@@ -112,6 +116,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub TipoDeDocumentoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeDocumentoToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContTipoDocumentos.MdiParent = Me
@@ -121,6 +126,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub BancosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BancosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         Bancos.MdiParent = Me
@@ -130,6 +136,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub CuentasContablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasContablesToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContCuentasContables.MdiParent = Me
@@ -139,6 +146,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub CódigoAgrupalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CódigoAgrupalToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmCodigoAgrupador.MdiParent = Me
@@ -166,6 +174,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub PaisesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaisesToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmNacionalidades.MdiParent = Me
@@ -338,6 +347,7 @@ Public Class mdicuentasPorPagar
 
 
     Private Sub NombrePerfilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NombrePerfilesToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmNombrePerfiles.MdiParent = Me
@@ -354,6 +364,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ConceptosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConceptosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmConceptos.MdiParent = Me
@@ -363,6 +374,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub TipoDeGastoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeGastoToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmTipoGasto.MdiParent = Me
@@ -376,6 +388,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub TipoDeDocumentoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TipoDeDocumentoToolStripMenuItem1.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSATTipoDocumento.MdiParent = Me
@@ -398,6 +411,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub AutorizadoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AutorizadoresToolStripMenuItem1.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmAutorizaciones.MdiParent = Me
@@ -407,6 +421,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub TipoDeCuentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeCuentaToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmTipoCuentaContable.MdiParent = Me
@@ -416,6 +431,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub TipoDeSolcitudPorConceptoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoDeSolcitudPorConceptoToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmTipoConcepto.MdiParent = Me
@@ -429,7 +445,7 @@ Public Class mdicuentasPorPagar
 
     End Sub
 
-    Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldosPorUsuarioToolStripMenuItem.Click
+    Private Sub SaldosPorUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSaldosGastos.MdiParent = Me
@@ -439,6 +455,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub SucursalesToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles SucursalesToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSucursales.MdiParent = Me
@@ -448,6 +465,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub DepartamentosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepartamentosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmDepartamentos.MdiParent = Me
@@ -457,6 +475,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub DocumentaciónProveedorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DocumentaciónProveedorToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmDocumentosProveedores.MdiParent = Me
@@ -466,6 +485,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub GenerarPólizasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPólizasToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmGenPolizas.MdiParent = Me
@@ -475,6 +495,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub SolicitudesDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitudesDePagoToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmTesSolicitudesDePago.MdiParent = Me
@@ -484,6 +505,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub PeriodosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PeriodosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmPeridos.MdiParent = Me
@@ -493,6 +515,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub GenerarPDFDeExpedienteDigitalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPDFDeExpedienteDigitalToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmGeneraPdfExpediente.MdiParent = Me
@@ -503,6 +526,7 @@ Public Class mdicuentasPorPagar
 
 
     Private Sub TraspasosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TraspasosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmTraspasos.MdiParent = Me
@@ -512,6 +536,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub PagoDeFondeosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagoDeFondeosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmPagoFondeos.MdiParent = Me
@@ -521,10 +546,11 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub InversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem.Click
-
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
     End Sub
 
     Private Sub FacturasElctrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasElctrónicasToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSolicitudesDePago.MdiParent = Me
@@ -534,6 +560,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub DiariosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DiariosToolStripMenuItem1.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmDiario.MdiParent = Me
@@ -543,6 +570,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub GastosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GastosToolStripMenuItem1.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         fmrPolizasDiarioSCuenta.MdiParent = Me
@@ -552,6 +580,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ComprobaciónDeGastosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ComprobaciónDeGastosToolStripMenuItem1.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmCompGstPDF.MdiParent = Me
@@ -561,6 +590,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub SolicitudesConComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitudesConComprobanteToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmCCPDF.MdiParent = Me
@@ -570,6 +600,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub SolicitudesSinComprobanteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitudesSinComprobanteToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmSCPDF.MdiParent = Me
@@ -580,6 +611,7 @@ Public Class mdicuentasPorPagar
 
 
     Private Sub PagosConChequeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagosConChequeToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmTesSolicitudesDePagoChe.MdiParent = Me
@@ -588,7 +620,7 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub SugerenciaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+    Private Sub SugerenciaDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs)
         contadorActividad = 0
     End Sub
 
@@ -629,6 +661,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub PólizaMovimientosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PólizaMovimientosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmPolizasMvtos.MdiParent = Me
@@ -642,23 +675,22 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ConfiguraciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfiguraciónToolStripMenuItem.Click
-        contadorActividad = 0
+        varGlobal_menu = sender.ToString.Replace(" ", "")
     End Sub
 
     Private Sub CatálogosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CatálogosToolStripMenuItem.Click
-        contadorActividad = 0
+        varGlobal_menu = sender.ToString.Replace(" ", "")
     End Sub
 
-    Private Sub ContabilidadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ContabilidadToolStripMenuItem.Click
-        contadorActividad = 0
-    End Sub
+
+
 
     Private Sub TesoreríaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TesoreríaToolStripMenuItem.Click
-        contadorActividad = 0
+        varGlobal_menu = sender.ToString.Replace(" ", "")
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles GastosToolStripMenuItem.Click
-        contadorActividad = 0
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+        varGlobal_menu = sender.ToString.Replace(" ", "")
     End Sub
 
     Private Sub MDI_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs)
@@ -667,6 +699,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ValidadorCFDIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValidadorCFDIToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmValidaCfdi.MdiParent = Me
@@ -676,6 +709,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub FacturasPendientesDePagoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasPendientesDePagoToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmFacturasPendientes.MdiParent = Me
@@ -685,7 +719,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ComprobacionesDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprobacionesDeGastosToolStripMenuItem.Click
-        varGlobal_ToolStrip = ComprobacionesDeGastosToolStripMenuItem.Name.ToString.Replace("ToolStripMenuItem", "")
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContabilizaComprobaciones.MdiParent = Me
@@ -696,6 +730,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ReembolsosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReembolsosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContabilizaReembolsos.MdiParent = Me
@@ -705,6 +740,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ProveedoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProveedoresToolStripMenuItem1.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmRptProveedores.MdiParent = Me
@@ -714,6 +750,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub BancosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BancosToolStripMenuItem1.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmBancos_1.MdiParent = Me
@@ -741,6 +778,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ProveedoresToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ProveedoresToolStripMenuItem2.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContProveedoresClientes.MdiParent = Me
@@ -750,6 +788,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub CuentasBancariasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CuentasBancariasToolStripMenuItem1.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContCuentasBancarias.MdiParent = Me
@@ -777,6 +816,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub NóminaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NóminaToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContabilizarNomina.MdiParent = Me
@@ -786,6 +826,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub AplicacionesEnBlancoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AplicacionesEnBlancoToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmAplicacionBlanco.MdiParent = Me
@@ -804,6 +845,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub NotificacionesDePagoPorProveedorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotificacionesDePagoPorProveedorToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmNotificacionesPago.MdiParent = Me
@@ -813,6 +855,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub PolizasDeEgresoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PolizasDeEgresoToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmPolizasEgresos.MdiParent = Me
@@ -822,6 +865,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub CuentasBancoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasBancoToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmCuentasBanco.MdiParent = Me
@@ -831,6 +875,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ConceptosEspecialesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConceptosEspecialesToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmCompraFondos.MdiParent = Me
@@ -840,6 +885,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub ChequesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChequesToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmContabilizaCheques.MdiParent = Me
@@ -849,6 +895,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub CuentasConceptosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasConceptosToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmCuentasConceptos.MdiParent = Me
@@ -876,6 +923,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub InversionesToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem2.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmReporteInversiones.MdiParent = Me
@@ -885,6 +933,7 @@ Public Class mdicuentasPorPagar
     End Sub
 
     Private Sub PerfilesDeAccesoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PerfilesDeAccesoToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
         Me.Cursor = Cursors.WaitCursor
         MenuStrip.Enabled = False
         frmPerfiles.MdiParent = Me
@@ -893,7 +942,52 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub ContabilidadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfiguracionContableToolStripMenuItem.Click
 
+    Private Sub ContabilidadToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ContabilidadToolStripMenuItem.Click
+        varGlobal_menu = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub ConfiguracionContableToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfiguracionContableToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub EventosContablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EventosContablesToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub EventosContablesToolStripMenuItem_MouseDown(sender As Object, e As MouseEventArgs) Handles EventosContablesToolStripMenuItem.MouseDown
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub SistemasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SistemasToolStripMenuItem.Click
+        varGlobal_menu = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub SATToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SATToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub HerramientasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HerramientasToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub ConsultasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultasToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub PagosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub OtrosMovimientosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OtrosMovimientosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub EstadoDeCuentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EstadoDeCuentaToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+    End Sub
+
+    Private Sub TesoreríaToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TesoreríaToolStripMenuItem1.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
     End Sub
 End Class

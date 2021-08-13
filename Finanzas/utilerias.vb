@@ -36,7 +36,9 @@ Module utilerias
     Public contadorPagosSol As Integer
     Public contadorPagosPag As Integer
     Dim estatusProceso As Boolean = True
-    Public varGlobal_ToolStrip As String
+    Public varGlobal_menu As String
+    Public varGlobal_submenu1 As String
+    Public varGlobal_submenu2 As String
 
     Public Function obtNumCadena(cadena As String)
         Dim str As String = String.Empty
@@ -925,32 +927,37 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
         Next
     End Sub
 
-    Public Function obtienePermisosLecturEscritura(ByVal nombreToolStrip As String)
+    Public Function obtienePermisosLecturEscritura(ByVal menu As String)
         Dim lectura As Boolean = False
         Dim taPermisos As New dsProductionTableAdapters.PermisosPerfilesTableAdapter
         Dim dtPermisos As New dsProduction.PermisosPerfilesDataTable
         Dim drPermisos As dsProduction.PermisosPerfilesRow
 
-        taPermisos.PermisosLectura_FillBy(dtPermisos, nombreToolStrip, varGlobal_IdUsuario)
-        For Each drPermisos In dtPermisos
-            If drPermisos.submenu2 = nombreToolStrip.Replace("ToolStripMenuItem", "") Then
-                lectura = drPermisos.lecturaEscritura
-                Exit For
+        If Not IsNothing(taPermisos.Permisos3_ScalarQuery(varGlobal_NombreUsuario, menu)) Then
+            lectura = taPermisos.Permisos3_ScalarQuery(varGlobal_NombreUsuario, menu)
+        Else
+            If Not IsNothing(taPermisos.Permisos2_ScalarQuery(varGlobal_NombreUsuario, menu)) Then
+                lectura = taPermisos.Permisos2_ScalarQuery(varGlobal_NombreUsuario, menu)
             Else
-                If drPermisos.submenu1 = nombreToolStrip.Replace("ToolStripMenuItem", "") Then
-                    lectura = drPermisos.lecturaEscritura
-                    Exit For
+                If Not IsNothing(taPermisos.Permisos1_ScalarQuery(varGlobal_NombreUsuario, menu)) Then
+                    lectura = taPermisos.Permisos1_ScalarQuery(varGlobal_NombreUsuario, menu)
+                Else
+                    lectura = False
                 End If
             End If
-        Next
+            End If
+
         Return lectura
     End Function
 
     Public Sub habilitaControles(ByVal formulario As Object, ByVal estatus As Boolean)
         Dim f As Integer
         For f = 0 To formulario.Controls.Count - 1
-            If TypeOf formulario.Controls(f) Is TextBox Or TypeOf formulario.Controls(f) Is CheckBox Or TypeOf formulario.Controls(f) Is DateTimePicker Or TypeOf formulario.Controls(f) Is ComboBox Or TypeOf formulario.Controls(f) Is Label Or TypeOf formulario.Controls(f) Is DataGridView Then
+            If TypeOf formulario.Controls(f) Is GroupBox Or TypeOf formulario.Controls(f) Is LinkLabel Or TypeOf formulario.Controls(f) Is Button Or TypeOf formulario.Controls(f) Is CheckBox Or TypeOf formulario.Controls(f) Is DateTimePicker Or TypeOf formulario.Controls(f) Is ComboBox Or TypeOf formulario.Controls(f) Is Label Or TypeOf formulario.Controls(f) Is DataGridView Then
                 formulario.Controls(f).Enabled = estatus
+                If formulario.Controls(f).name = "btnBuscar" Or formulario.Controls(f).name = "btnSalir" Then
+                    formulario.Controls(f).Enabled = True
+                End If
             End If
         Next
     End Sub

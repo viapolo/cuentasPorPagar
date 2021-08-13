@@ -10,6 +10,7 @@
             cmbMenu.Items.Add(vLocMnuOpciones.Name.ToString.Replace("ToolStripMenuItem1", "").Replace("ToolStripMenuItem", ""))
             'cmbMenu.Enabled = True
         Next
+        chkLectura.Checked = True
         deshabilitaControles()
     End Sub
 
@@ -61,17 +62,21 @@
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue, False)
-        cmbSubMenu1.Text = ""
-        cmbSubMenu1.Items.Clear()
-        cmbSubMenu2.Text = ""
-        cmbSubMenu2.Items.Clear()
-        taPerfiles.Fill(DsProduction.CXP_PerfilesUsuario, cmbNombrePerfil.SelectedValue)
-        CXP_PerfilesUsuarioDataGridView.Rows.Clear()
-        For Each rowsa As dsProduction.CXP_PerfilesUsuarioRow In DsProduction.CXP_PerfilesUsuario.Rows
-            CXP_PerfilesUsuarioDataGridView.Rows.Add(rowsa.nombrePerfil, rowsa.menu, rowsa.submenu1, rowsa.submenu2, rowsa.lectura, rowsa.lecturaEscritura, "Eliminar", rowsa.idPerfil)
-        Next
-        cmbMenu.Enabled = True
+        If cmbMenu.Text.Trim <> String.Empty Then
+            taPerfiles.Insert(cmbMenu.Text.Trim, cmbSubMenu1.Text.Trim, cmbSubMenu2.Text.Trim, chkLectura.Checked, chkEscritura.Checked, cmbNombrePerfil.SelectedValue, False)
+            cmbSubMenu1.Text = ""
+            cmbSubMenu1.Items.Clear()
+            cmbSubMenu2.Text = ""
+            cmbSubMenu2.Items.Clear()
+            taPerfiles.Fill(DsProduction.CXP_PerfilesUsuario, cmbNombrePerfil.SelectedValue)
+            CXP_PerfilesUsuarioDataGridView.Rows.Clear()
+            For Each rowsa As dsProduction.CXP_PerfilesUsuarioRow In DsProduction.CXP_PerfilesUsuario.Rows
+                CXP_PerfilesUsuarioDataGridView.Rows.Add(rowsa.nombrePerfil, rowsa.menu, rowsa.submenu1, rowsa.submenu2, rowsa.lectura, rowsa.lecturaEscritura, "Eliminar", rowsa.idPerfil)
+            Next
+            cmbMenu.Enabled = True
+        Else
+            MsgBox("Al menos debe de existir un menú primario", MsgBoxStyle.Information, "")
+        End If
     End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
@@ -134,4 +139,19 @@
         cmbNombrePerfil.Enabled = True
     End Sub
 
+    Private Sub chkLectura_CheckedChanged(sender As Object, e As EventArgs) Handles chkLectura.CheckedChanged
+        If chkLectura.Checked = True Then
+            chkEscritura.Checked = False
+        Else
+            chkEscritura.Checked = True
+        End If
+    End Sub
+
+    Private Sub chkEscritura_CheckedChanged(sender As Object, e As EventArgs) Handles chkEscritura.CheckedChanged
+        If chkEscritura.Checked = True Then
+            chkLectura.Checked = False
+        Else
+            chkLectura.Checked = True
+        End If
+    End Sub
 End Class

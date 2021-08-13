@@ -93,8 +93,6 @@ Partial Class mdicuentasPorPagar
         Me.ProveedoresToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CuentasBancariasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CuentasBancoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GastosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaldosPorUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SistemasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CargarDatosBancariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PruebasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -113,7 +111,7 @@ Partial Class mdicuentasPorPagar
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraciónToolStripMenuItem, Me.CatálogosToolStripMenuItem, Me.ContabilidadToolStripMenuItem, Me.TesoreríaToolStripMenuItem, Me.GastosToolStripMenuItem, Me.SistemasToolStripMenuItem, Me.CambiarDeEmpresaToolStripMenuItem1, Me.SalirToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraciónToolStripMenuItem, Me.CatálogosToolStripMenuItem, Me.ContabilidadToolStripMenuItem, Me.TesoreríaToolStripMenuItem, Me.SistemasToolStripMenuItem, Me.CambiarDeEmpresaToolStripMenuItem1, Me.SalirToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(770, 24)
@@ -126,7 +124,7 @@ Partial Class mdicuentasPorPagar
         Me.ConfiguraciónToolStripMenuItem.Enabled = False
         Me.ConfiguraciónToolStripMenuItem.Name = "ConfiguraciónToolStripMenuItem"
         Me.ConfiguraciónToolStripMenuItem.Size = New System.Drawing.Size(95, 20)
-        Me.ConfiguraciónToolStripMenuItem.Text = "&Configuración"
+        Me.ConfiguraciónToolStripMenuItem.Text = "Configuración"
         '
         'UsuariosToolStripMenuItem
         '
@@ -183,7 +181,7 @@ Partial Class mdicuentasPorPagar
         Me.CatálogosToolStripMenuItem.Enabled = False
         Me.CatálogosToolStripMenuItem.Name = "CatálogosToolStripMenuItem"
         Me.CatálogosToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
-        Me.CatálogosToolStripMenuItem.Text = "C&atálogos"
+        Me.CatálogosToolStripMenuItem.Text = "Catálogos"
         '
         'SATToolStripMenuItem
         '
@@ -602,21 +600,6 @@ Partial Class mdicuentasPorPagar
         Me.CuentasBancoToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.CuentasBancoToolStripMenuItem.Text = "Cuentas - Banco"
         '
-        'GastosToolStripMenuItem
-        '
-        Me.GastosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaldosPorUsuarioToolStripMenuItem})
-        Me.GastosToolStripMenuItem.Enabled = False
-        Me.GastosToolStripMenuItem.Name = "GastosToolStripMenuItem"
-        Me.GastosToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
-        Me.GastosToolStripMenuItem.Text = "Gastos"
-        '
-        'SaldosPorUsuarioToolStripMenuItem
-        '
-        Me.SaldosPorUsuarioToolStripMenuItem.Enabled = False
-        Me.SaldosPorUsuarioToolStripMenuItem.Name = "SaldosPorUsuarioToolStripMenuItem"
-        Me.SaldosPorUsuarioToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.SaldosPorUsuarioToolStripMenuItem.Text = "Saldos por Empleado"
-        '
         'SistemasToolStripMenuItem
         '
         Me.SistemasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CargarDatosBancariosToolStripMenuItem, Me.PruebasToolStripMenuItem1, Me.GenerarPólizasFaltantesToolStripMenuItem})
@@ -734,8 +717,6 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents AutorizadoresToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents TipoDeCuentaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoDeSolcitudPorConceptoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GastosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaldosPorUsuarioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SucursalesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DepartamentosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DocumentaciónProveedorToolStripMenuItem As ToolStripMenuItem

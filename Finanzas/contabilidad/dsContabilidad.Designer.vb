@@ -5705,8 +5705,8 @@ Partial Public Class dsContabilidad
             Me.columnestatus.MaxLength = 20
             Me.columnrfc.MaxLength = 13
             Me.columnestatusCont.MaxLength = 20
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6383,8 +6383,8 @@ Partial Public Class dsContabilidad
             Me.columndestinoN.MaxLength = 200
             Me.columndestinoE.MaxLength = 200
             Me.columnmotivo.MaxLength = 300
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnnaAutoriza1.MaxLength = 100
             Me.columnnaAutoriza2.MaxLength = 100
             Me.columnmail1.MaxLength = 100
@@ -7003,8 +7003,8 @@ Partial Public Class dsContabilidad
             Me.columndestinoN.MaxLength = 200
             Me.columndestinoE.MaxLength = 200
             Me.columnmotivo.MaxLength = 300
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnnaAutoriza1.MaxLength = 100
             Me.columnnaAutoriza2.MaxLength = 100
             Me.columnmail1.MaxLength = 100
@@ -8516,8 +8516,8 @@ Partial Public Class dsContabilidad
             Me.columnConcepto.ReadOnly = true
             Me.columnConcepto.MaxLength = 250
             Me.columnmailAutoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnestatus.MaxLength = 50
             Me.columnsucursal.MaxLength = 50
             Me.columndepartamento.MaxLength = 50
@@ -10552,8 +10552,8 @@ Partial Public Class dsContabilidad
             Me.columnestatus.MaxLength = 50
             Me.columnautoriza1.MaxLength = 100
             Me.columnautoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnmoneda.MaxLength = 5
             Me.columnnoContrato.MaxLength = 10
             Me.columnnaAutoriza2.MaxLength = 100
@@ -11207,8 +11207,8 @@ Partial Public Class dsContabilidad
             MyBase.Columns.Add(Me.columnidConcepto1)
             Me.columntipoSolicitud.MaxLength = 20
             Me.columnestatusSolicitud.MaxLength = 50
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnTipar.ReadOnly = true
             Me.columnTipar.MaxLength = 1
             Me.columnrazonSocial.ReadOnly = true
@@ -14326,8 +14326,8 @@ Partial Public Class dsContabilidad
             Me.columndecripcion.MaxLength = 200
             Me.columnusuario.MaxLength = 50
             Me.columnautoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 50
-            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
             Me.columnnoContrato.MaxLength = 10
             Me.columnnaAutoriza2.MaxLength = 100
             Me.columnnaAutoriza1.MaxLength = 100
