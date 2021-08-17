@@ -40,6 +40,7 @@ Module utilerias
     Public varGlobal_submenu1 As String
     Public varGlobal_submenu2 As String
 
+
     Public Function obtNumCadena(cadena As String)
         Dim str As String = String.Empty
         For i = 0 To cadena.Trim().Length - 1
@@ -626,7 +627,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                         For Each rwDetalleEvento As dsTesoreria.DatosSolicitudRow In dtDatosDetalleSolicitud
                                             If rwDetalleEvento.Tipar = "L" Or rwDetalleEvento.Tipar = "R" Or rwDetalleEvento.Tipar = "S" Then
                                                 'cargo
-                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), rwDetalleEvento.idProveedor, rwDetalleEvento.subtotalPagado, 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), rwDetalleEvento.idProveedor, rwDetalleEvento.importeSolicitado, 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                 'abono
                                                 taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.importeSolicitado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                             ElseIf rwDetalleEvento.Tipar = "B" Then
@@ -676,7 +677,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                                     percentPago = 1
                                                 End If
                                                 'cargo
-                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), CDec(rwDetalleEvento.idProveedor), CDec(rwDetalleEvento.totalPagado), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), CDec(rwDetalleEvento.idProveedor), CDec(rwDetalleEvento.subtotalPagado), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
 
                                                 For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
                                                     Dim efecto As String = ""

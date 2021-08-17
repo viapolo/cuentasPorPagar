@@ -52,5 +52,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctCONEARFIN;Persist Security Info=True;User ID=finagil;Password=finagil</Value>
     </Setting>
+    <Setting Name="superUsuario" Type="System.String" Scope="User">
+      <Value Profile="(Default)">lgarciac</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -185,6 +185,7 @@ Public Class mdicuentasPorPagar
 
     Private Sub mdicuentasPorPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
         If IsMdiContainer Then
             For Each cin As Control In Controls
                 If cin.GetType().Equals(GetType(MdiClient)) Then
@@ -326,7 +327,7 @@ Public Class mdicuentasPorPagar
         Next
 
 
-        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = "viapolo1" Then
+        If varGlUser = "desarrollo" Or varGlUser = "ecacerest" Or varGlUser = My.Settings.superUsuario Or varGlUser = "viapolo" Then
             For Each vLocMnuOpciones As ToolStripMenuItem In Me.MenuStrip.Items
                 For Each submenu1 As ToolStripMenuItem In vLocMnuOpciones.DropDownItems
                     For Each submenu2a As ToolStripMenuItem In submenu1.DropDownItems

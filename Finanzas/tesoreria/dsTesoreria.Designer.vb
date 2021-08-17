@@ -3416,8 +3416,8 @@ Partial Public Class dsTesoreria
             MyBase.Columns.Add(Me.columnfechaSolicitud)
             Me.columntipoSolicitud.MaxLength = 20
             Me.columnestatusSolicitud.MaxLength = 50
-            Me.columnok1.MaxLength = 100
-            Me.columnok2.MaxLength = 100
+            Me.columnok1.MaxLength = 200
+            Me.columnok2.MaxLength = 200
             Me.columnTipar.AllowDBNull = false
             Me.columnTipar.MaxLength = 1
             Me.columnref.MaxLength = 5
@@ -35819,7 +35819,7 @@ Namespace dsTesoreriaTableAdapters
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "UPDATE       CXP_CuentaBanco"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                activa = @activa"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
-                "cuenta = @cuenta) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (SUBSTRING(cuenta, 7, 11) = @cuen"& _ 
+                "cuenta = @cuenta) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (SUBSTRING(cuenta, 8, 10) = @cuen"& _ 
                 "ta) AND (activa = 0);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@activa", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "activa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

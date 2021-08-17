@@ -16,13 +16,16 @@
 
     Private Sub frmConceptos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        If obtienePermisosLecturEscritura(varGlobal_menu) = False Then
-            If obtienePermisosLecturEscritura(varGlobal_submenu1) = False Then
-                If obtienePermisosLecturEscritura(varGlobal_submenu2) = False Then
-                    habilitaControles(Me, False)
-                    BindingNavigatorAddNewItem.Visible = False
-                    BindingNavigatorDeleteItem.Visible = False
-                    'Vw_CXP_MisComprobacionesBindingNavigatorSaveItem.Visible = False
+        If varGlobal_NombreUsuario <> My.Settings.superUsuario Then
+            If obtienePermisosLecturEscritura(varGlobal_menu) = False Then
+                If obtienePermisosLecturEscritura(varGlobal_submenu1) = False Then
+                    If obtienePermisosLecturEscritura(varGlobal_submenu2) = False Then
+                        habilitaControles(Me, False)
+                        BindingNavigatorAddNewItem.Visible = False
+                        BindingNavigatorDeleteItem.Visible = False
+                        CXP_ConceptosBindingNavigatorSaveItem.Visible = False
+                        'Vw_CXP_MisComprobacionesBindingNavigatorSaveItem.Visible = False
+                    End If
                 End If
             End If
         End If

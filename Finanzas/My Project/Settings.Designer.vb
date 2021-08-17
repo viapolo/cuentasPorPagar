@@ -169,6 +169,18 @@ Namespace My
                 Return CType(Me("csContpaqArfin"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("lgarciac")>  _
+        Public Property superUsuario() As String
+            Get
+                Return CType(Me("superUsuario"),String)
+            End Get
+            Set
+                Me("superUsuario") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
