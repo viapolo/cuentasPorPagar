@@ -2,6 +2,7 @@
     Public noProveedorParaDocumentosProv As Integer
     Public tipoPersonaParaDocumentosProv As String
     Dim conFormDoc As Integer
+    Dim idError As Boolean = False
     Private Sub frmDocumentosProv_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             'TODO: esta línea de código carga datos en la tabla 'DsProduction.CXP_Estatus2' Puede moverla o quitarla según sea necesario.
@@ -163,7 +164,9 @@
     End Sub
 
     Private Sub CXP_ProveedoresArchDataGridView_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles CXP_ProveedoresArchDataGridView.DataBindingComplete
-        actualizaGridView()
+        If idError = False Then
+            actualizaGridView()
+        End If
     End Sub
 
     Private Sub frmDocumentosProv_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -173,8 +176,10 @@
     End Sub
 
     Private Sub CXP_ProveedoresArchDataGridView_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles CXP_ProveedoresArchDataGridView.DataError
-        'Me.Close()
-        MsgBox(e.ToString, MsgBoxStyle.Critical, "")
-        Exit Sub
+        If idError = False Then
+            MsgBox("La configuración de la documentación del cliente es incorrecta, favor de comunicarse con el administrador", MsgBoxStyle.Critical, "")
+            idError = True
+            Exit Sub
+        End If
     End Sub
 End Class
