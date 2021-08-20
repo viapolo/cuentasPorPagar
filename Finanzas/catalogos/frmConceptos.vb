@@ -286,15 +286,5 @@
         'dgvImpuestos.Rows.Add(cmbImpuesto.SelectedValue, cmbImpuesto.Text, taImpuesto.ObtCuenta_ScalarQuery(cmbImpuesto.SelectedValue), "Eliminar")
     End Sub
 
-    Private Sub cmbImpuestosP_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbImpuestosP.SelectedIndexChanged
 
-    End Sub
-
-    Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
-
-    End Sub
-
-    Private Sub CXP_ConceptosBindingNavigator_RefreshItems(sender As Object, e As EventArgs) Handles CXP_ConceptosBindingNavigator.RefreshItems
-
-    End Sub
 End Class

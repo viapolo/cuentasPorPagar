@@ -991,4 +991,14 @@ Public Class mdicuentasPorPagar
     Private Sub TesoreríaToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TesoreríaToolStripMenuItem1.Click
         varGlobal_submenu2 = sender.ToString.Replace(" ", "")
     End Sub
+
+    Private Sub CancelarSaldosComprobacionesDeGastosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CancelarSaldosComprobacionesDeGastosToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        fmrCancelCompGastos.MdiParent = Me
+        fmrCancelCompGastos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
 End Class

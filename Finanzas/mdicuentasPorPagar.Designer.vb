@@ -105,6 +105,7 @@ Partial Class mdicuentasPorPagar
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ofdPrueba = New System.Windows.Forms.OpenFileDialog()
         Me.timActividad = New System.Windows.Forms.Timer(Me.components)
+        Me.CancelarSaldosComprobacionesDeGastosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -321,7 +322,7 @@ Partial Class mdicuentasPorPagar
         '
         'HerramientasToolStripMenuItem
         '
-        Me.HerramientasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem, Me.NotificacionesDePagoPorProveedorToolStripMenuItem, Me.CuentasConceptosToolStripMenuItem})
+        Me.HerramientasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem, Me.NotificacionesDePagoPorProveedorToolStripMenuItem, Me.CuentasConceptosToolStripMenuItem, Me.CancelarSaldosComprobacionesDeGastosToolStripMenuItem})
         Me.HerramientasToolStripMenuItem.Enabled = False
         Me.HerramientasToolStripMenuItem.Name = "HerramientasToolStripMenuItem"
         Me.HerramientasToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
@@ -331,21 +332,21 @@ Partial Class mdicuentasPorPagar
         '
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Enabled = False
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Name = "GenerarPDFDeExpedienteDigitalToolStripMenuItem"
-        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Size = New System.Drawing.Size(301, 22)
         Me.GenerarPDFDeExpedienteDigitalToolStripMenuItem.Text = "Generar PDF de Expediente Digital"
         '
         'NotificacionesDePagoPorProveedorToolStripMenuItem
         '
         Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Enabled = False
         Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Name = "NotificacionesDePagoPorProveedorToolStripMenuItem"
-        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Size = New System.Drawing.Size(301, 22)
         Me.NotificacionesDePagoPorProveedorToolStripMenuItem.Text = "Notificaciones de pago por proveedor"
         '
         'CuentasConceptosToolStripMenuItem
         '
         Me.CuentasConceptosToolStripMenuItem.Enabled = False
         Me.CuentasConceptosToolStripMenuItem.Name = "CuentasConceptosToolStripMenuItem"
-        Me.CuentasConceptosToolStripMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.CuentasConceptosToolStripMenuItem.Size = New System.Drawing.Size(301, 22)
         Me.CuentasConceptosToolStripMenuItem.Text = "Cuentas - Conceptos"
         '
         'ConsultasToolStripMenuItem
@@ -667,6 +668,13 @@ Partial Class mdicuentasPorPagar
         '
         Me.timActividad.Enabled = True
         '
+        'CancelarSaldosComprobacionesDeGastosToolStripMenuItem
+        '
+        Me.CancelarSaldosComprobacionesDeGastosToolStripMenuItem.Enabled = False
+        Me.CancelarSaldosComprobacionesDeGastosToolStripMenuItem.Name = "CancelarSaldosComprobacionesDeGastosToolStripMenuItem"
+        Me.CancelarSaldosComprobacionesDeGastosToolStripMenuItem.Size = New System.Drawing.Size(301, 22)
+        Me.CancelarSaldosComprobacionesDeGastosToolStripMenuItem.Text = "Cancelar saldos comprobaciones de gastos"
+        '
         'mdicuentasPorPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -771,4 +779,5 @@ Partial Class mdicuentasPorPagar
     Friend WithEvents RetiroDeInversionesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InversionesToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents PerfilesDeAccesoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CancelarSaldosComprobacionesDeGastosToolStripMenuItem As ToolStripMenuItem
 End Class
