@@ -24,10 +24,10 @@ Partial Class frmInversion
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cmbBancoOrigen = New System.Windows.Forms.ComboBox()
-        Me.CXP_InversionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.CXPCuentasBancariasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsTesoreria = New cuentasPorPagar.dsTesoreria()
+        Me.CXP_InversionesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtpFechaInicial = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,10 +42,10 @@ Partial Class frmInversion
         Me.txtMonto = New System.Windows.Forms.TextBox()
         Me.txtTasa = New System.Windows.Forms.TextBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
-        CType(Me.CXP_InversionesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CXPCuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CXP_InversionesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmbBancoOrigen
@@ -60,16 +60,6 @@ Partial Class frmInversion
         Me.cmbBancoOrigen.TabIndex = 0
         Me.cmbBancoOrigen.ValueMember = "idCuentaBancaria"
         '
-        'CXP_InversionesBindingSource
-        '
-        Me.CXP_InversionesBindingSource.DataMember = "CXP_Inversiones"
-        Me.CXP_InversionesBindingSource.DataSource = Me.DsContabilidad
-        '
-        'DsContabilidad
-        '
-        Me.DsContabilidad.DataSetName = "dsContabilidad"
-        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'CXPCuentasBancariasBindingSource
         '
         Me.CXPCuentasBancariasBindingSource.DataMember = "CXP_CuentasBancarias"
@@ -79,6 +69,16 @@ Partial Class frmInversion
         '
         Me.DsTesoreria.DataSetName = "dsTesoreria"
         Me.DsTesoreria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CXP_InversionesBindingSource
+        '
+        Me.CXP_InversionesBindingSource.DataMember = "CXP_Inversiones"
+        Me.CXP_InversionesBindingSource.DataSource = Me.DsContabilidad
+        '
+        'DsContabilidad
+        '
+        Me.DsContabilidad.DataSetName = "dsContabilidad"
+        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label1
         '
@@ -166,6 +166,7 @@ Partial Class frmInversion
         Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
         Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
         Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasInversionesTableAdapter = Nothing
         Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
         Me.TableAdapterManager.CXP_InversionesTableAdapter = Me.CXP_InversionesTableAdapter
         Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
@@ -198,7 +199,7 @@ Partial Class frmInversion
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(91, 124)
+        Me.btnGuardar.Location = New System.Drawing.Point(516, 126)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
         Me.btnGuardar.TabIndex = 14
@@ -226,10 +227,10 @@ Partial Class frmInversion
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmInversion"
         Me.Text = "Inversiones"
-        CType(Me.CXP_InversionesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CXPCuentasBancariasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsTesoreria, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CXP_InversionesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

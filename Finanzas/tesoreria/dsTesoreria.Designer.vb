@@ -2863,8 +2863,8 @@ Partial Public Class dsTesoreria
             Me.columnnombreCorto.MaxLength = 50
             Me.columnfPago.MaxLength = 100
             Me.columnestatus.MaxLength = 50
-            Me.columnok2.MaxLength = 100
-            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 50
+            Me.columnok1.MaxLength = 50
             Me.columnnoContrato.MaxLength = 10
             Me.columnconcepto.MaxLength = 50
         End Sub
@@ -4398,8 +4398,8 @@ Partial Public Class dsTesoreria
             Me.columnConcepto.ReadOnly = true
             Me.columnConcepto.MaxLength = 250
             Me.columnmailAutoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 100
-            Me.columnok2.MaxLength = 100
+            Me.columnok1.MaxLength = 50
+            Me.columnok2.MaxLength = 50
             Me.columnestatus.MaxLength = 50
             Me.columnsucursal.MaxLength = 50
             Me.columndepartamento.MaxLength = 50
@@ -5175,8 +5175,8 @@ Partial Public Class dsTesoreria
             Me.columnestatus.MaxLength = 50
             Me.columnautoriza1.MaxLength = 100
             Me.columnautoriza2.MaxLength = 100
-            Me.columnok1.MaxLength = 100
-            Me.columnok2.MaxLength = 100
+            Me.columnok1.MaxLength = 50
+            Me.columnok2.MaxLength = 50
             Me.columnmoneda.MaxLength = 5
             Me.columnnoContrato.MaxLength = 10
             Me.columnnaAutoriza2.MaxLength = 100
@@ -31241,25 +31241,34 @@ Namespace dsTesoreriaTableAdapters
                 "ont.origenRecurso, Vw_CXP_SugPagoEvCont.destinoRecurso, Vw_CXP_SugPagoEvCont.est"& _ 
                 "atusPago, Vw_CXP_SugPagoEvCont.idEmpresa, Vw_CXP_SugPagoEvCont.importeSolicitado"& _ 
                 ", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoEvCont.formaDePago, Vw_CXP_SugPagoEvC"& _ 
-                "ont.monedaPago, Vw_CXP_Autorizaciones.uuid, Vw_CXP_Autorizaciones.folio, Vw_CXP_"& _ 
-                "Autorizaciones.serie, Vw_CXP_Autorizaciones.decripcion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      "& _ 
-                "   Vw_CXP_SugPagoEvCont.referencia, Vw_CXP_SugPagoEvCont.idProveedor, Vw_CXP_Aut"& _ 
-                "orizaciones.subtotalPagado, Vw_CXP_Autorizaciones.totalPagado, Vw_CXP_Autorizaci"& _ 
-                "ones.total AS totalOrg, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoEvCont.idConcep"& _ 
-                "to, CXP_Proveedores.rfc, CXP_Proveedores.razonSocial, Vw_CXP_Autorizaciones.esta"& _ 
-                "tus, Vw_CXP_Autorizaciones.contrato, Vw_CXP_Autorizaciones.Cliente, Vw_CXP_Autor"& _ 
-                "izaciones.Descr, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_Autorizaciones.noContrato, Vw"& _ 
-                "_CXP_Autorizaciones.Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_SugPagoEvCont INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     CXP_Conceptos ON Vw_CXP_SugPagoEvCont.idConcepto = CXP_Conc"& _ 
-                "eptos.idConcepto INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Proveedores ON Vw_CXP_"& _ 
-                "SugPagoEvCont.idProveedor = CXP_Proveedores.idProveedor RIGHT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                   Vw_CXP_Autorizaciones ON Vw_CXP_SugPagoEvCont.idEmpresa = Vw_"& _ 
-                "CXP_Autorizaciones.idEmpresas AND Vw_CXP_SugPagoEvCont.folioSolicitud = Vw_CXP_A"& _ 
-                "utorizaciones.folioSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_SugPagoEvCont.destinoRecurso "& _ 
-                "= @destinoRecurso) AND (Vw_CXP_SugPagoEvCont.importe = @importe) AND (Vw_CXP_Sug"& _ 
-                "PagoEvCont.origenRecurso = @origenRecurso) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_CX"& _ 
-                "P_Autorizaciones.estatus <> 'CompGtos') AND (Vw_CXP_SugPagoEvCont.folioSolicitud"& _ 
-                " = @folioSolicitud)"
+                "ont.monedaPago, Vw_CXP_SugPagoEvCont.referencia, Vw_CXP_SugPagoEvCont.idProveedo"& _ 
+                "r, SUM(Vw_CXP_Autorizaciones.subtotalPagado) AS subtotalPagado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           SUM(Vw_CXP_Autorizaciones.totalPagado) AS totalPagado, SUM(Vw_CXP_Aut"& _ 
+                "orizaciones.total) AS totalOrg, Vw_CXP_SugPagoEvCont.idConcepto, CXP_Proveedores"& _ 
+                ".rfc, CXP_Proveedores.razonSocial, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_Autorizacio"& _ 
+                "nes.estatus, Vw_CXP_Autorizaciones.contrato, Vw_CXP_Autorizaciones.Cliente, Vw_C"& _ 
+                "XP_Autorizaciones.Descr, Vw_CXP_Autorizaciones.noContrato, Vw_CXP_Autorizaciones"& _ 
+                ".Tipar"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_CXP_SugPagoEvCont INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  CXP_Conceptos ON Vw_CXP_SugPagoEvCont.idConcepto = CXP_Conceptos.idConcepto IN"& _ 
+                "NER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Proveedores ON Vw_CXP_SugPagoEvCont.idPro"& _ 
+                "veedor = CXP_Proveedores.idProveedor RIGHT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "Vw_CXP_Autorizaciones ON Vw_CXP_SugPagoEvCont.idEmpresa = Vw_CXP_Autorizaciones."& _ 
+                "idEmpresas AND Vw_CXP_SugPagoEvCont.folioSolicitud = Vw_CXP_Autorizaciones.folio"& _ 
+                "Solicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Vw_CXP_SugPagoEvCont.destinoRecurso = @destinoRecurso) "& _ 
+                "AND (Vw_CXP_SugPagoEvCont.importe = @importe) AND (Vw_CXP_SugPagoEvCont.origenRe"& _ 
+                "curso = @origenRecurso) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_CXP_Autorizaciones.es"& _ 
+                "tatus <> 'CompGtos') AND (Vw_CXP_SugPagoEvCont.folioSolicitud = @folioSolicitud)"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY CXP_Conceptos.ctaCargoPago, CXP_Conceptos.ctaAbonoPago, Vw_CXP_SugPag"& _ 
+                "oEvCont.tipoSolicitud, Vw_CXP_SugPagoEvCont.folioSolicitud, Vw_CXP_SugPagoEvCont"& _ 
+                ".origenRecurso, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_SugPagoEvCont.destinoRecurso, "& _ 
+                "Vw_CXP_SugPagoEvCont.estatusPago, Vw_CXP_SugPagoEvCont.idEmpresa, Vw_CXP_SugPago"& _ 
+                "EvCont.importeSolicitado, Vw_CXP_SugPagoEvCont.formaDePago, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       Vw_CXP_SugPagoEvCont.monedaPago, Vw_CXP_SugPagoEvCont.referencia, Vw_CXP_"& _ 
+                "SugPagoEvCont.idProveedor, Vw_CXP_SugPagoEvCont.idConcepto, CXP_Proveedores.rfc,"& _ 
+                " CXP_Proveedores.razonSocial, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CXP_Autorizaciones.e"& _ 
+                "status, Vw_CXP_Autorizaciones.contrato, Vw_CXP_Autorizaciones.Cliente, Vw_CXP_Au"& _ 
+                "torizaciones.Descr, Vw_CXP_Autorizaciones.noContrato, Vw_CXP_Autorizaciones.Tipa"& _ 
+                "r"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@destinoRecurso", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "destinoRecurso", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@importe", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 2, "importe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

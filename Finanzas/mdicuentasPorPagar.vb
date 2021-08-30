@@ -548,6 +548,12 @@ Public Class mdicuentasPorPagar
 
     Private Sub InversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem.Click
         varGlobal_submenu2 = sender.ToString.Replace(" ", "")
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmInversion.MdiParent = Me
+        frmInversion.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
     End Sub
 
     Private Sub FacturasElctrónicasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FacturasElctrónicasToolStripMenuItem.Click
@@ -905,22 +911,12 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = True
     End Sub
 
-    Private Sub InversionesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem1.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmInversion.MdiParent = Me
-        frmInversion.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub InversionesToolStripMenuItem1_Click(sender As Object, e As EventArgs)
+
     End Sub
 
-    Private Sub RetiroDeInversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RetiroDeInversionesToolStripMenuItem.Click
-        Me.Cursor = Cursors.WaitCursor
-        MenuStrip.Enabled = False
-        frmRetiroDeInversion.MdiParent = Me
-        frmRetiroDeInversion.Show()
-        Me.Cursor = Cursors.Default
-        MenuStrip.Enabled = True
+    Private Sub RetiroDeInversionesToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub InversionesToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles InversionesToolStripMenuItem2.Click
@@ -998,6 +994,26 @@ Public Class mdicuentasPorPagar
         MenuStrip.Enabled = False
         fmrCancelCompGastos.MdiParent = Me
         fmrCancelCompGastos.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub CuentasInversionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CuentasInversionesToolStripMenuItem.Click
+        varGlobal_submenu1 = sender.ToString.Replace(" ", "")
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmCatalogoInversiones.MdiParent = Me
+        frmCatalogoInversiones.Show()
+        Me.Cursor = Cursors.Default
+        MenuStrip.Enabled = True
+    End Sub
+
+    Private Sub RetiroDeInversionesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles RetiroDeInversionesToolStripMenuItem.Click
+        varGlobal_submenu2 = sender.ToString.Replace(" ", "")
+        Me.Cursor = Cursors.WaitCursor
+        MenuStrip.Enabled = False
+        frmRetiroDeInversion.MdiParent = Me
+        frmRetiroDeInversion.Show()
         Me.Cursor = Cursors.Default
         MenuStrip.Enabled = True
     End Sub

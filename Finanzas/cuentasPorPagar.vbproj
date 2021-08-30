@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>156</ApplicationRevision>
+    <ApplicationRevision>160</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -308,6 +308,12 @@
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </Compile>
     <Compile Include="configuracion\frmUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contabilidad\Catalogos\frmCatalogoInversiones.Designer.vb">
+      <DependentUpon>frmCatalogoInversiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="contabilidad\Catalogos\frmCatalogoInversiones.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="contabilidad\dsContabilidad.Designer.vb">
@@ -848,6 +854,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="configuracion\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contabilidad\Catalogos\frmCatalogoInversiones.resx">
+      <DependentUpon>frmCatalogoInversiones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="contabilidad\fmrCancelCompGastos.resx">
       <DependentUpon>fmrCancelCompGastos.vb</DependentUpon>

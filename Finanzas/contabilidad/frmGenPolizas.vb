@@ -647,6 +647,8 @@ Public Class frmGenPolizas
                                             nConcepto = Stuff("MINISTRACION CONTRATO " & referencia & "  " & Trim(rwPolizasEnc.razonSocial & " " & rwPolizasEnc.folioSolicitud & " " & nConceptoD), "D", " ", 100)
                                         ElseIf rwPolizasEnc.tipoSolicitud = "TRA" Then
                                             nConcepto = Stuff(nConceptoD & " " & taCuentasBancarias.ObtNombreCuenta_ScalarQuery(rwPolizasEnc.origenRecurso) & " A " & taCuentasBancariasProv.NombreCuenta_ScalarQuery(rwPolizasEnc.destinoRecurso), "D", " ", 100)
+                                        ElseIf rwPolizasEnc.tipoSolicitud = "INV" Then
+                                            nConcepto = Stuff(nConceptoD & " " & taCuentasBancarias.ObtNombreCuenta_ScalarQuery(rwPolizasEnc.origenRecurso) & " " & rwPolizasEnc.fecha.ToShortDateString, "D", " ", 100)
                                         End If
                                     Else
                                         nConcepto = Stuff(Trim("S-" & rwPolizasEnc.folioSolicitud & " " & conceptoNominaD), "D", " ", 100)
@@ -666,6 +668,8 @@ Public Class frmGenPolizas
                                     Dim uuidA(0) As String
                                     Dim cont As Integer = 0
                                     Dim m As String
+
+
                                     For Each rwPolizasDet As dsContabilidad.Vw_CXP_PolizasDetRow In dtPolizaDet.Rows
 
                                         CuentasTableAdapter.DatosCtas_FillBy(dtCuentasCpq, rwPolizasDet.idCuenta)
@@ -728,6 +732,13 @@ Public Class frmGenPolizas
                                                 dsegNegocios = Stuff(Trim("1"), "D", " ", 4)
                                             End If
                                             renglonD = ""
+
+                                            'If rwPolizasEnc.folioSolicitud = 6150 Then
+                                            '    MsgBox("6150")
+                                            'End If
+
+                                            dReferencia = Stuff(Eliminar_AcentosPolizas(dReferencia), "D", " ", 100)
+
                                             If rwPolizasDet.uuid <> Nothing And rwPolizasDet.uuid <> "ND" And idConceptoD <> 52 And idConceptoD <> 51 And conComprobante <> "PSC" Then
                                                 renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1) & rwPolizasDet.uuid & Space(37) & vbNewLine &
                                                     "AM " & rwPolizasDet.uuid & vbNewLine & "AD " & rwPolizasDet.uuid
@@ -740,7 +751,7 @@ Public Class frmGenPolizas
                                                 renglonD = "M1 " & rwCuentasCpq.Codigo & Space(15) & dReferencia1 & Space(1) & rwPolizasDet.TipoMovto & Space(1) & dImporte & Space(1) & idDiario & Space(1) & importeME & Space(1) & dReferencia & Space(1) & dsegNegocios & Space(1)
                                             End If
 
-                                            filePolizaD.WriteLine(Eliminar_AcentosPolizas(renglonD.ToUpper))
+                                            filePolizaD.WriteLine(renglonD.ToUpper)
                                             If rwDetalleSol.ref = "CHE" Then
                                                 Dim taDetallePagoCheque As New dsContabilidadTableAdapters.PagosConChequeDetalleTableAdapter
                                                 Dim dtDetallePagoCheque As New dsContabilidad.PagosConChequeDetalleDataTable
