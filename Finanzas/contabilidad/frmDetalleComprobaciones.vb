@@ -13,6 +13,8 @@ Public Class frmDetalleComprobaciones
     Dim taEmpresas As New dsProductionTableAdapters.CXP_EmpresasTableAdapter
     Dim idProveedor As Integer
     Dim idConcepto As Integer
+    Dim totalCargos As Decimal = 0
+    Dim totalAbonos As Decimal = 0
 
     Private Sub frmDetalleComprobaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -26,8 +28,7 @@ Public Class frmDetalleComprobaciones
         Dim totalCargoDed As Decimal = 0
         Dim totalCargoNDed As Decimal = 0
         Dim descripcion, solicitante As String
-        Dim totalCargos As Decimal = 0
-        Dim totalAbonos As Decimal = 0
+
 
         If taRegCont.ConsultaEstatus_ScalarQuery(idSolicitud, varGlobal_IdEmpresa, idComprobacion) = "Contabilizado" Then
             MsgBox("Comprobación ya contabilizada", MsgBoxStyle.Information, "")
@@ -87,15 +88,15 @@ Public Class frmDetalleComprobaciones
                             End If
                         End If
                         If rowsCfdi.mRet <> "X" Then
-                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.mRet), rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
+                            dgvDetalleComprobaciones.Rows.Add("", "", 0, FormatCurrency(rowsCfdi.mRet * Math.Round(porcentajePago, 10)), rowsCfdi.Impuesto.Replace("001", "ISR").Replace("002", "IVA").Replace("003", "IEPS") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & utilerias.Eliminar_AcentosPolizas(rwComprobaciongts.descripcion), rwComprobaciongts.uuid)
                         End If
 
                         If contador = 0 Then
                             If rowsCfdi.mLocTra <> "X" And rowsCfdi.mLocTra <> 0 Then
-                                dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocTra, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.mLocTra * Math.Round(porcentajePago, 10)), 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "ISH").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                             End If
                             If rowsCfdi.mLocRet <> "X" And rowsCfdi.mLocRet <> 0 Then
-                                dgvDetalleComprobaciones.Rows.Add("", "", 0, rowsCfdi.mLocRet, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "IVA Loc").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
+                                dgvDetalleComprobaciones.Rows.Add("", "", FormatCurrency(rowsCfdi.mLocRet * Math.Round(porcentajePago, 10)), 0, rowsCfdi.Impuesto.Replace("001", "ISR Loc").Replace("002", "ISH").Replace("003", "IEPS Loc") & " " & rwComprobaciongts.rfcBen, "S-" & idSolicitud & " F- " & rwComprobaciongts.folio & " " & rwComprobaciongts.descripcion, rwComprobaciongts.uuid)
                             End If
                         End If
                         contador += 1
@@ -118,18 +119,36 @@ Public Class frmDetalleComprobaciones
             End If
             dgvDetalleComprobaciones.Rows.Add(cmbCuentaAbono.SelectedValue, cmbCuentaAbono.Text, 0, totalCargoDed + totalCargoNDed + impPendiXComprobar, "COMP GTS S-" & idSolicitud & " ", "S-" & idSolicitud & " " & solicitante & " " & descripcion, "ND")
 
-            For Each rw As DataGridViewRow In dgvDetalleComprobaciones.Rows
-                totalCargos += CDec(dgvDetalleComprobaciones.Item("cargo", rw.Index).Value)
-                totalAbonos += CDec(dgvDetalleComprobaciones.Item("abono", rw.Index).Value)
-            Next
+            actualizaImportes()
 
-            lblCargos.Text = "Cargos: " & FormatCurrency(totalCargos.ToString)
-            lblAbonos.Text = "Abonos: " & FormatCurrency(totalAbonos.ToString)
+            Dim diferenciaCargosAbonos As Decimal = totalAbonos - totalCargos
+
+            If Math.Abs(diferenciaCargosAbonos) <= 0.5 And Math.Abs(diferenciaCargosAbonos) > 0 Then
+                If totalAbonos > totalCargos Then
+                    dgvDetalleComprobaciones.Rows.Insert(dgvDetalleComprobaciones.Rows.Count - 1, cmbNoDeducibles.SelectedValue, cmbNoDeducibles.Text, totalAbonos - totalCargos, 0, "COMP GTS S-" & idSolicitud & " ", "S-" & idSolicitud & " F- " & rwDetComprobacionGts.folio & " " & utilerias.Eliminar_AcentosPolizas(descripcion), "ND")
+                ElseIf totalAbonos < totalCargos Then
+                    dgvDetalleComprobaciones.Rows.Insert(dgvDetalleComprobaciones.Rows.Count - 1, cmbNoDeducibles.SelectedValue, cmbNoDeducibles.Text, 0, totalCargos - totalAbonos, "COMP GTS S-" & idSolicitud & " ", "S-" & idSolicitud & " F- " & rwDetComprobacionGts.folio & " " & utilerias.Eliminar_AcentosPolizas(descripcion), "ND")
+                End If
+            ElseIf Math.Abs(diferenciaCargosAbonos) >= 0.5 Then
+                gpbDiferencia.Enabled = True
+            End If
+            actualizaImportes()
 
             dgvDetalleComprobaciones.Focus()
         Catch ex As Exception
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
         End Try
+    End Sub
+
+    Private Sub actualizaImportes()
+        totalCargos = 0
+        totalAbonos = 0
+        For Each rw As DataGridViewRow In dgvDetalleComprobaciones.Rows
+            totalCargos += CDec(dgvDetalleComprobaciones.Item("cargo", rw.Index).Value)
+            totalAbonos += CDec(dgvDetalleComprobaciones.Item("abono", rw.Index).Value)
+        Next
+        lblCargos.Text = "Cargos: " & FormatCurrency(totalCargos.ToString)
+        lblAbonos.Text = "Abonos: " & FormatCurrency(totalAbonos.ToString)
     End Sub
 
     Private Sub frmDetalleComprobaciones_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
@@ -239,5 +258,17 @@ Public Class frmDetalleComprobaciones
 
     Private Sub dgvDetalleComprobaciones_KeyUp(sender As Object, e As KeyEventArgs) Handles dgvDetalleComprobaciones.KeyUp
 
+    End Sub
+
+    Private Sub gpbDiferencia_Enter(sender As Object, e As EventArgs) Handles gpbDiferencia.Enter
+
+    End Sub
+
+    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        If IsNumeric(txtCargo.Text) And IsNumeric(txtAbono.Text) Then
+
+        Else
+            MsgBox("El cargo o abono no es un valor númerico válido", MsgBoxStyle.Information, "")
+        End If
     End Sub
 End Class

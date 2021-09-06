@@ -25,11 +25,6 @@ Partial Class frmContabilizaCheques
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PagosConChequeDataGridView = New System.Windows.Forms.DataGridView()
-        Me.PagosConChequeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.PagosConChequeTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.PagosConChequeTableAdapter()
-        Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
         Me.tipoSolicitud = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.folioSolicitud = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.importe = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -38,6 +33,11 @@ Partial Class frmContabilizaCheques
         Me.idConcepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.estatusReemb = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PagosConChequeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsContabilidad = New cuentasPorPagar.dsContabilidad()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.PagosConChequeTableAdapter = New cuentasPorPagar.dsContabilidadTableAdapters.PagosConChequeTableAdapter()
+        Me.TableAdapterManager = New cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager()
         CType(Me.PagosConChequeDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PagosConChequeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsContabilidad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,49 +57,6 @@ Partial Class frmContabilizaCheques
         Me.PagosConChequeDataGridView.ReadOnly = True
         Me.PagosConChequeDataGridView.Size = New System.Drawing.Size(792, 400)
         Me.PagosConChequeDataGridView.TabIndex = 2
-        '
-        'PagosConChequeBindingSource
-        '
-        Me.PagosConChequeBindingSource.DataMember = "PagosConCheque"
-        Me.PagosConChequeBindingSource.DataSource = Me.DsContabilidad
-        '
-        'DsContabilidad
-        '
-        Me.DsContabilidad.DataSetName = "dsContabilidad"
-        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(729, 418)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 3
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'PagosConChequeTableAdapter
-        '
-        Me.PagosConChequeTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Connection = Nothing
-        Me.TableAdapterManager.CONT_TiposDeCambioTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
-        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'tipoSolicitud
         '
@@ -161,6 +118,51 @@ Partial Class frmContabilizaCheques
         Me.estatusReemb.HeaderText = "estatusReemb"
         Me.estatusReemb.Name = "estatusReemb"
         Me.estatusReemb.ReadOnly = True
+        '
+        'PagosConChequeBindingSource
+        '
+        Me.PagosConChequeBindingSource.DataMember = "PagosConCheque"
+        Me.PagosConChequeBindingSource.DataSource = Me.DsContabilidad
+        '
+        'DsContabilidad
+        '
+        Me.DsContabilidad.DataSetName = "dsContabilidad"
+        Me.DsContabilidad.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(729, 418)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 3
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'PagosConChequeTableAdapter
+        '
+        Me.PagosConChequeTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.CONT_TiposDeCambioTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_c_MonedaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ComprobGtos1TableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ConceptosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasBancariasTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_CuentasInversionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_EstatusTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_InversionesTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PagosTesoreriaTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PeriodosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_PolizaMovimientosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_ProveedoresTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDeDocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_TipoDeSolicitudTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_tipoDocumentoSatTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = cuentasPorPagar.dsContabilidadTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'frmContabilizaCheques
         '

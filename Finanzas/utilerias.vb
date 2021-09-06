@@ -711,12 +711,12 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                                 taImpuestos.Fill(dtImpuestos, rwDetalleEvento.uuid)
 
                                                 If rwDetalleEvento.totalOrg > 0 Then
-                                                    percentPago = CDec(rwDetalleEvento.totalPagado) / CDec(rwDetalleEvento.totalOrg)
+                                                    percentPago = CDec(rwDetalleEvento.importeSolicitado) / CDec(rwDetalleEvento.totalPagado)
                                                 Else
                                                     percentPago = 1
                                                 End If
                                                 'cargo
-                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), CDec(rwDetalleEvento.idProveedor), CDec(rwDetalleEvento.subtotalPagado), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
+                                                taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("2311040100000000"), CDec(rwDetalleEvento.idProveedor), CDec(rwDetalleEvento.importeSolicitado), 0, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, CDec(tipoPoliza), CDec(folioPoliza), CDec(varGlobal_IdEmpresa), rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, CDec(rwDetalleEvento.idConcepto), 2, rwDatosSolTmp.tipoSolicitud)
 
                                                 For Each rowsCfdi As dsTesoreria.Vw_CXP_ImpuestosCFDIRow In dtImpuestos
                                                     Dim efecto As String = ""
@@ -742,7 +742,7 @@ Boolean = False, Optional Especiales As Boolean = False, Optional bRepetir As Bo
                                                         taRegContable.Insert(taCuentasConpaq.ObtieneIdCta_ScalarQuery("1501040300000000"), rwDetalleEvento.idProveedor, 0, mPago, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                                     End If
                                                 Next
-                                                taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.totalPagado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
+                                                taRegContable.Insert(origenRecurso, rwDetalleEvento.idProveedor, 0, rwDetalleEvento.importeSolicitado, rwDetalleEvento.noContrato, rwDetalleEvento.Descr, tipoPoliza, folioPoliza, varGlobal_IdEmpresa, rwDetalleEvento.uuid, rwDetalleEvento.folioSolicitud, fechaHorActual, 40, rwDetalleEvento.idConcepto, 2, rwDatosSolTmp.tipoSolicitud)
                                             End If
                                             If rwDetalleEvento.Tipar = "P" Then
                                                 Dim dtImpuestos As New dsTesoreria.Vw_CXP_ImpuestosCFDIDataTable

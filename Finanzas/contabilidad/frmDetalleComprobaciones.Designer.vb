@@ -55,12 +55,23 @@ Partial Class frmDetalleComprobaciones
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblCargos = New System.Windows.Forms.Label()
         Me.lblAbonos = New System.Windows.Forms.Label()
+        Me.gpbDiferencia = New System.Windows.Forms.GroupBox()
+        Me.txtCargo = New System.Windows.Forms.TextBox()
+        Me.txtAbono = New System.Windows.Forms.TextBox()
+        Me.cmbCuentaContableDif = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.CuentasBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnAgregar = New System.Windows.Forms.Button()
         CType(Me.CuentasBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Contpaq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvDetalleComprobaciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCuentasContpaq.SuspendLayout()
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CuentasBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gpbDiferencia.SuspendLayout()
+        CType(Me.CuentasBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmbCuentaAbono
@@ -240,7 +251,7 @@ Partial Class frmDetalleComprobaciones
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(942, 421)
+        Me.btnSalir.Location = New System.Drawing.Point(942, 498)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 4
@@ -249,7 +260,7 @@ Partial Class frmDetalleComprobaciones
         '
         'btnProcesar
         '
-        Me.btnProcesar.Location = New System.Drawing.Point(16, 420)
+        Me.btnProcesar.Location = New System.Drawing.Point(942, 469)
         Me.btnProcesar.Name = "btnProcesar"
         Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
         Me.btnProcesar.TabIndex = 3
@@ -294,7 +305,7 @@ Partial Class frmDetalleComprobaciones
         '
         Me.lblCargos.AutoSize = True
         Me.lblCargos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCargos.Location = New System.Drawing.Point(191, 421)
+        Me.lblCargos.Location = New System.Drawing.Point(688, 479)
         Me.lblCargos.Name = "lblCargos"
         Me.lblCargos.Size = New System.Drawing.Size(50, 13)
         Me.lblCargos.TabIndex = 9
@@ -304,17 +315,103 @@ Partial Class frmDetalleComprobaciones
         '
         Me.lblAbonos.AutoSize = True
         Me.lblAbonos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAbonos.Location = New System.Drawing.Point(438, 421)
+        Me.lblAbonos.Location = New System.Drawing.Point(688, 508)
         Me.lblAbonos.Name = "lblAbonos"
         Me.lblAbonos.Size = New System.Drawing.Size(53, 13)
         Me.lblAbonos.TabIndex = 10
         Me.lblAbonos.Text = "Abonos:"
         '
+        'gpbDiferencia
+        '
+        Me.gpbDiferencia.Controls.Add(Me.btnAgregar)
+        Me.gpbDiferencia.Controls.Add(Me.Label5)
+        Me.gpbDiferencia.Controls.Add(Me.Label4)
+        Me.gpbDiferencia.Controls.Add(Me.Label3)
+        Me.gpbDiferencia.Controls.Add(Me.cmbCuentaContableDif)
+        Me.gpbDiferencia.Controls.Add(Me.txtAbono)
+        Me.gpbDiferencia.Controls.Add(Me.txtCargo)
+        Me.gpbDiferencia.Enabled = False
+        Me.gpbDiferencia.Location = New System.Drawing.Point(16, 416)
+        Me.gpbDiferencia.Name = "gpbDiferencia"
+        Me.gpbDiferencia.Size = New System.Drawing.Size(560, 105)
+        Me.gpbDiferencia.TabIndex = 11
+        Me.gpbDiferencia.TabStop = False
+        Me.gpbDiferencia.Text = "Cargo/Abono por diferencia"
+        '
+        'txtCargo
+        '
+        Me.txtCargo.Location = New System.Drawing.Point(100, 19)
+        Me.txtCargo.Name = "txtCargo"
+        Me.txtCargo.Size = New System.Drawing.Size(100, 20)
+        Me.txtCargo.TabIndex = 0
+        Me.txtCargo.Text = "0"
+        '
+        'txtAbono
+        '
+        Me.txtAbono.Location = New System.Drawing.Point(100, 46)
+        Me.txtAbono.Name = "txtAbono"
+        Me.txtAbono.Size = New System.Drawing.Size(100, 20)
+        Me.txtAbono.TabIndex = 1
+        Me.txtAbono.Text = "0"
+        '
+        'cmbCuentaContableDif
+        '
+        Me.cmbCuentaContableDif.DataSource = Me.CuentasBindingSource3
+        Me.cmbCuentaContableDif.DisplayMember = "nCuenta"
+        Me.cmbCuentaContableDif.FormattingEnabled = True
+        Me.cmbCuentaContableDif.Location = New System.Drawing.Point(100, 73)
+        Me.cmbCuentaContableDif.Name = "cmbCuentaContableDif"
+        Me.cmbCuentaContableDif.Size = New System.Drawing.Size(361, 21)
+        Me.cmbCuentaContableDif.TabIndex = 2
+        Me.cmbCuentaContableDif.ValueMember = "Id"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(45, 22)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(38, 13)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Cargo:"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(42, 49)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(41, 13)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Abono:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 76)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(88, 13)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Cuenta contable:"
+        '
+        'CuentasBindingSource3
+        '
+        Me.CuentasBindingSource3.DataMember = "Cuentas"
+        Me.CuentasBindingSource3.DataSource = Me.Contpaq
+        '
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(479, 73)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAgregar.TabIndex = 6
+        Me.btnAgregar.Text = "Agregar"
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
         'frmDetalleComprobaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1029, 455)
+        Me.ClientSize = New System.Drawing.Size(1029, 533)
+        Me.Controls.Add(Me.gpbDiferencia)
         Me.Controls.Add(Me.lblAbonos)
         Me.Controls.Add(Me.lblCargos)
         Me.Controls.Add(Me.Label1)
@@ -335,6 +432,9 @@ Partial Class frmDetalleComprobaciones
         Me.pnlCuentasContpaq.ResumeLayout(False)
         CType(Me.CuentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CuentasBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gpbDiferencia.ResumeLayout(False)
+        Me.gpbDiferencia.PerformLayout()
+        CType(Me.CuentasBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -369,4 +469,13 @@ Partial Class frmDetalleComprobaciones
     Friend WithEvents Label1 As Label
     Friend WithEvents lblCargos As Label
     Friend WithEvents lblAbonos As Label
+    Friend WithEvents gpbDiferencia As GroupBox
+    Friend WithEvents cmbCuentaContableDif As ComboBox
+    Friend WithEvents txtAbono As TextBox
+    Friend WithEvents txtCargo As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents CuentasBindingSource3 As BindingSource
+    Friend WithEvents btnAgregar As Button
 End Class

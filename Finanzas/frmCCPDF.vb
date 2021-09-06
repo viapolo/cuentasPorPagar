@@ -28,7 +28,11 @@
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         Try
-            VwCXPMisSolicitudesBindingSource.Filter = "folioSolicitud = '" & txtBuscar.Text.Trim & "'"
+            If IsNumeric(txtBuscar.Text) Then
+                VwCXPMisSolicitudesBindingSource.Filter = "folioSolicitud = '" & txtBuscar.Text.Trim & "'"
+            Else
+                VwCXPMisSolicitudesBindingSource.Filter = "razonSocial like '%" & txtBuscar.Text.Trim & "%'"
+            End If
         Catch ex As Exception
             MsgBox(ex.ToString, MsgBoxStyle.Critical, "")
         End Try

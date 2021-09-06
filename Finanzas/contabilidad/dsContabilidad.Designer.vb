@@ -13125,6 +13125,10 @@ Partial Public Class dsContabilidad
         
         Private columnestatusReemb As Global.System.Data.DataColumn
         
+        Private columnok1 As Global.System.Data.DataColumn
+        
+        Private columnok2 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -13361,6 +13365,22 @@ Partial Public Class dsContabilidad
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ok1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnok1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ok2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnok2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -13421,9 +13441,11 @@ Partial Public Class dsContabilidad
                     ByVal fPago As String,  _
                     ByVal Concepto As String,  _
                     ByVal nombre As String,  _
-                    ByVal estatusReemb As String) As PagosConChequeRow
+                    ByVal estatusReemb As String,  _
+                    ByVal ok1 As String,  _
+                    ByVal ok2 As String) As PagosConChequeRow
             Dim rowPagosConChequeRow As PagosConChequeRow = CType(Me.NewRow,PagosConChequeRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, tipoSolicitud, folioSolicitud, origenRecurso, destinoRecurso, estatus, idEmpresa, importe, fechaPago, idFPago, fechaProgPago, moneda, fechaProceso, referencia, uuidPago, idProveedor, idConcepto, tipoCambio, folioCheque, serie, folio, fPago, Concepto, nombre, estatusReemb}
+            Dim columnValuesArray() As Object = New Object() {Nothing, tipoSolicitud, folioSolicitud, origenRecurso, destinoRecurso, estatus, idEmpresa, importe, fechaPago, idFPago, fechaProgPago, moneda, fechaProceso, referencia, uuidPago, idProveedor, idConcepto, tipoCambio, folioCheque, serie, folio, fPago, Concepto, nombre, estatusReemb, ok1, ok2}
             rowPagosConChequeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPagosConChequeRow)
             Return rowPagosConChequeRow
@@ -13477,6 +13499,8 @@ Partial Public Class dsContabilidad
             Me.columnConcepto = MyBase.Columns("Concepto")
             Me.columnnombre = MyBase.Columns("nombre")
             Me.columnestatusReemb = MyBase.Columns("estatusReemb")
+            Me.columnok1 = MyBase.Columns("ok1")
+            Me.columnok2 = MyBase.Columns("ok2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13532,6 +13556,10 @@ Partial Public Class dsContabilidad
             MyBase.Columns.Add(Me.columnnombre)
             Me.columnestatusReemb = New Global.System.Data.DataColumn("estatusReemb", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnestatusReemb)
+            Me.columnok1 = New Global.System.Data.DataColumn("ok1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnok1)
+            Me.columnok2 = New Global.System.Data.DataColumn("ok2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnok2)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnidPagosTesoreria}, true))
             Me.columnidPagosTesoreria.AutoIncrement = true
             Me.columnidPagosTesoreria.AutoIncrementSeed = -1
@@ -13552,6 +13580,8 @@ Partial Public Class dsContabilidad
             Me.columnConcepto.MaxLength = 250
             Me.columnnombre.MaxLength = 250
             Me.columnestatusReemb.MaxLength = 20
+            Me.columnok1.MaxLength = 100
+            Me.columnok2.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -28554,6 +28584,36 @@ Partial Public Class dsContabilidad
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ok1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePagosConCheque.ok1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ok1' de la tabla 'PagosConCheque' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePagosConCheque.ok1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ok2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePagosConCheque.ok2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ok2' de la tabla 'PagosConCheque' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePagosConCheque.ok2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IstipoSolicitudNull() As Boolean
             Return Me.IsNull(Me.tablePagosConCheque.tipoSolicitudColumn)
         End Function
@@ -28838,6 +28898,30 @@ Partial Public Class dsContabilidad
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetestatusReembNull()
             Me(Me.tablePagosConCheque.estatusReembColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isok1Null() As Boolean
+            Return Me.IsNull(Me.tablePagosConCheque.ok1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setok1Null()
+            Me(Me.tablePagosConCheque.ok1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isok2Null() As Boolean
+            Return Me.IsNull(Me.tablePagosConCheque.ok2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setok2Null()
+            Me(Me.tablePagosConCheque.ok2Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -47516,6 +47600,8 @@ Namespace dsContabilidadTableAdapters
             tableMapping.ColumnMappings.Add("Concepto", "Concepto")
             tableMapping.ColumnMappings.Add("nombre", "nombre")
             tableMapping.ColumnMappings.Add("estatusReemb", "estatusReemb")
+            tableMapping.ColumnMappings.Add("ok1", "ok1")
+            tableMapping.ColumnMappings.Add("ok2", "ok2")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -47543,14 +47629,20 @@ Namespace dsContabilidadTableAdapters
                 "                         Vw_CXP_Autorizaciones.idConcepto, Vw_CXP_Autorizaciones"& _ 
                 ".serie, Vw_CXP_Autorizaciones.folio, Vw_CXP_Autorizaciones.fPago, Vw_CXP_Autoriz"& _ 
                 "aciones.Concepto, Vw_CXP_Autorizaciones.nombre, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_CX"& _ 
-                "P_Autorizaciones.estatusReemb"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_PagosTesoreria INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                       Vw_CXP_Autorizaciones ON CXP_PagosTesoreria.tipoSolicitud"& _ 
-                " = Vw_CXP_Autorizaciones.tipoSolicitud AND CXP_PagosTesoreria.folioSolicitud = V"& _ 
-                "w_CXP_Autorizaciones.folioSolicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CXP_PagosTesoreria.idEmpresa "& _ 
-                "= @idEmpresa) AND (CXP_PagosTesoreria.estatus = 33) AND (Vw_CXP_Autorizaciones.s"& _ 
-                "erie = 'PSC') AND (Vw_CXP_Autorizaciones.folio = 'PROVEEDOR') AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                "             (CXP_PagosTesoreria.tipoSolicitud = 'CXP') AND (Vw_CXP_Autorizacion"& _ 
-                "es.fPago = 'CHEQUE')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CXP_PagosTesoreria.folioSolicitud DESC"
+                "P_Autorizaciones.estatusReemb, Vw_CXP_Autorizaciones.ok1, Vw_CXP_Autorizaciones."& _ 
+                "ok2"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_PagosTesoreria INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_"& _ 
+                "CXP_Autorizaciones ON CXP_PagosTesoreria.tipoSolicitud = Vw_CXP_Autorizaciones.t"& _ 
+                "ipoSolicitud AND CXP_PagosTesoreria.folioSolicitud = Vw_CXP_Autorizaciones.folio"& _ 
+                "Solicitud"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CXP_PagosTesoreria.idEmpresa = @idEmpresa) AND (CXP_Pag"& _ 
+                "osTesoreria.estatus = 33) AND (Vw_CXP_Autorizaciones.serie = 'PSC') AND (Vw_CXP_"& _ 
+                "Autorizaciones.folio = 'PROVEEDOR') AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (CXP_PagosTes"& _ 
+                "oreria.tipoSolicitud = 'CXP') AND (Vw_CXP_Autorizaciones.fPago = 'CHEQUE') AND ("& _ 
+                "Vw_CXP_Autorizaciones.ok1 IS NOT NULL) AND (Vw_CXP_Autorizaciones.ok1 <> 'CANCEL"& _ 
+                "ADA') AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_CXP_Autorizaciones.ok1 <> 'RECHAZADA') "& _ 
+                "AND (Vw_CXP_Autorizaciones.ok2 IS NOT NULL) AND (Vw_CXP_Autorizaciones.ok2 <> 'C"& _ 
+                "ANCELADA') AND (Vw_CXP_Autorizaciones.ok2 <> 'RECHAZADA') AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+                "         (Vw_CXP_Autorizaciones.ok1 <> '') AND (Vw_CXP_Autorizaciones.ok2 <> '')"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CXP_PagosTesoreria.folioSolicitud DESC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idEmpresa", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
